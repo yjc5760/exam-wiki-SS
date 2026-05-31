@@ -5,9 +5,6 @@
 # ── 生成輸出：NBLM PDF（體積過大，1.3GB）──
 exports/nblm/
 
-# ── 原始考卷 PDF（考選部著作，建議自行下載）──
-raw/exams/
-
 # ── OS / 編輯器垃圾檔 ──
 .DS_Store
 Thumbs.db

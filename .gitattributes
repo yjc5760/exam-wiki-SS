@@ -1,3 +1,4 @@
 # Auto-generated HTML exports — exclude from language stats
 exports/**  linguist-generated=true
 raw/**      linguist-generated=true
+wiki/**     linguist-generated=true

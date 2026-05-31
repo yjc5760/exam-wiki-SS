@@ -2,9 +2,6 @@
 .claude/
 .vscode/
 
-# ── 生成輸出：NBLM PDF（體積過大，1.3GB）──
-exports/nblm/
-
 # ── OS / 編輯器垃圾檔 ──
 .DS_Store
 Thumbs.db

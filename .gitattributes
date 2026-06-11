@@ -1,10 +1,5 @@
-# 讓 Markdown 被計入 GitHub 語言統計
-*.md linguist-detectable=true
-
-# 排除 HTML、JS、JSON 不計入語言統計
-*.html linguist-detectable=false
-*.js linguist-detectable=false
-*.json linguist-detectable=false
-
-# 將匯出檔標記為自動生成，避免佔用 PR 版面
-exports/** linguist-generated=true
+# Auto-generated HTML exports — exclude from language stats
+exports/**  linguist-generated=true linguist-detectable=false
+raw/**      linguist-generated=true linguist-detectable=false
+wiki/**     linguist-generated=true linguist-detectable=false
+*.html      linguist-generated=true linguist-detectable=false

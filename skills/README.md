@@ -41,14 +41,57 @@
 ## 相關 Skills（已內建於 Cowork，無需另外安裝）
 
 | Skill | 功能 | 觸發語句 |
-|-------|------|---------|
+|-------|------|---------| 
 | `vha` | 為解析 .md 加入 §3.5 VHA 區塊 | 「幫 SS-XXXX-N 做 VHA」 |
 | `add-to-wiki` | 將知識點新增至六層知識庫 | 「把這個知識點加入知識庫」 |
 
 ---
 
+## 新增 Skill 規範
+
+如需新增 skill，請遵守以下格式規範：
+
+### Skill 檔案格式（`.skill` 檔）
+
+```yaml
+name: "skill-name"
+description: "一句話說明這個 skill 做什麼"
+triggers:
+  - "觸發語句 1"
+  - "觸發語句 2"
+instructions: |
+  # Skill 指令說明
+  
+  ## 前置條件
+  [列出執行前需滿足的條件]
+  
+  ## 執行步驟
+  [步驟化說明]
+  
+  ## 輸出
+  [說明產生哪些檔案、存放位置]
+  
+  ## 注意事項
+  [邊界條件、常見錯誤]
+```
+
+### 加入本清單的步驟
+
+1. 將 `.skill` 檔放入本目錄（`skills/`）
+2. 在本 README 的「Skills 清單」補充說明（格式參考 `vha-treasure-map.skill` 的說明方式）
+3. 在 `CLAUDE.md` 的 CHANGELOG 追加一行說明此次新增
+
+### 命名規則
+
+| 規則 | 說明 |
+|------|------|
+| 全小寫連字號 | `vha-treasure-map.skill`，不用底線或大寫 |
+| 動詞開頭或名詞主題開頭 | 清楚表達功能，如 `generate-xxx`、`analyze-xxx` |
+| 副檔名固定 `.skill` | 不可用 `.md`、`.txt` |
+
+---
+
 ## 貢獻
 
-歡迎 PR！新增 skill 請：
-1. 將 `.skill` 檔放入本目錄
-2. 在本 README 的「Skills 清單」補充說明
+歡迎 PR！新增 skill 請按照上方「新增 Skill 規範」格式操作。
+

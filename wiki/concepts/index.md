@@ -1,6 +1,6 @@
 # 概念索引（Concepts Index）
 
-> 共 58 個概念頁，每頁含：定義、關鍵公式、常見陷阱、出現題目。
+> 共 60 個概念頁，每頁含：定義、關鍵公式、常見陷阱、出現題目。
 > 三種瀏覽方式：依知識分類 | 依出現頻率 | 依字母
 
 ---
@@ -68,6 +68,8 @@
 | 承壓型螺栓接合 | [BEARING-TYPE-CONNECTION](BEARING-TYPE-CONNECTION.md) | 螺栓桿承剪，板面承壓 |
 | 高拉力螺栓施工 | [HIGH-STRENGTH-BOLT-PRACTICE](HIGH-STRENGTH-BOLT-PRACTICE.md) | 預拉力、摩擦面、施工順序 |
 | 銲接接合設計 | [WELDED-CONNECTION-DESIGN](WELDED-CONNECTION-DESIGN.md) | 填角銲/開槽銲強度 |
+| 填角銲設計 | [FILLET-WELD-DESIGN](FILLET-WELD-DESIGN.md) | 0.707w 有效喉厚 × 0.6FEXX 設計 |
+| 偏心接合 | [ECCENTRIC-CONNECTION](ECCENTRIC-CONNECTION.md) | 剪力 + 扭矩，彈性向量法，Jp = Σr² |
 | 銲接施工實務 | [WELDING-PRACTICE](WELDING-PRACTICE.md) | 最小/最大銲腳、最小長度 |
 | 銲接方法 | [WELDING-PROCESSES](WELDING-PROCESSES.md) | SMAW/GMAW/SAW/FCAW |
 | 銲道瑕疵 | [WELD-DEFECTS](WELD-DEFECTS.md) | 裂縫/氣孔/夾渣/未熔合 |
@@ -173,6 +175,8 @@
 | 板梁設計 | PLATE-GIRDER-DESIGN | 梁 |
 | 柱強度曲線 | COLUMN-STRENGTH-CURVE | 壓力 |
 | 連續板 | CONTINUITY-PLATE | 耐震 |
+| 偏心接合 | ECCENTRIC-CONNECTION | 接合 |
+| 填角銲設計 | FILLET-WELD-DESIGN | 接合 |
 | 高拉力螺栓施工 | HIGH-STRENGTH-BOLT-PRACTICE | 接合 |
 | 側向扭轉挫屈 LTB | LATERAL-TORSIONAL-BUCKLING | 梁 |
 | 拉力構材設計 | TENSION-MEMBER-DESIGN | 拉力 |

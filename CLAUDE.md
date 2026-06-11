@@ -150,6 +150,8 @@ Wiki 導航依七層知識架構組織（七層均由 Cowork 直接維護）：
 | 2026-05-27 | 修正 CLAUDE-SOLVE.md 過時引用（格式規範指向 CLAUDE-SPEC.md）；連結 GLOSSARY.md 至 wiki/index.md 與 wiki/concepts/index.md；新建 study/ 目錄存放讀書講義 | 消除殘留的文件不一致問題 |
 | 2026-05-31 | 新增 `skills/` 目錄；建立 `vha-treasure-map.skill`（VHA→藏寶圖互動儀表板，含 KaTeX 渲染） | 將 SS-2020-3 藏寶圖工作流程打包為可重用 skill，方便 GitHub 開源共享 |
 | 2026-05-31 | 清除 `study/` 中的 VHA skill 草稿（vha.skill、vha-updated.skill、vha-SKILL-updated.md） | 正式 skill 已安裝，草稿無需保留 |
+| 2026-06-11 | 分類代號全面遷移至 `syllabus_taxonomy.json` 的 XX-Un-m 格式（4.1.x→SS-U1-x、6.3.1→SD-U3-1、1.1.1→MM-U1-1）；raw/solutions 標頭經使用者核准一次性例外更新；CLAUDE-CODE.md LINT 新增 topicId 驗證項 | 六科統一分類代號，消除新舊代號並存 |
+| 2026-06-11 | 新增 `dashboard.html` + `dashboard-data.js` 知識庫儀表板；CLAUDE-CODE.md 新增 DASHBOARD 指令 | 單頁總覽 98 題全貌：篩選瀏覽、統計圖、七層導覽、站內解析閱讀器 |
 
 ---
 

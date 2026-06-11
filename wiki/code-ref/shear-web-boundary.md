@@ -2,7 +2,7 @@
 
 **Code-Ref ID：** shear-web-boundary
 **對應概念頁：** [[SHEAR-BUCKLING-WEB]]
-**對應題型：** 4.1.2 梁桿件剪力強度檢核
+**對應題型：** SS-U1-2 梁桿件剪力強度檢核
 
 ---
 

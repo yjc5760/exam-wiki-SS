@@ -1,7 +1,7 @@
 {
-  "description": "考題總索引 v2。包含分類標籤系統。verificationStatus 和 tags 是主要人工維護欄位。",
+  "description": "考題總索引 v3。包含分類標籤系統。verificationStatus 和 tags 是主要人工維護欄位。topicId 格式升級為 syllabus_taxonomy.json 的 XX-Un-m 代號。",
   "tagSystem": {
-    "primaryTopicId": "命題大綱主分類（依 knowledge_map.json）",
+    "primaryTopicId": "命題大綱主分類（依 syllabus_taxonomy.json，格式：XX-Un-m）",
     "secondaryTopicIds": "命題大綱副分類（跨主題時使用）",
     "designMethod": "設計法：LRFD / ASD / 概念題 / 混合",
     "tags": "自由標籤，描述核心考點、概念、陷阱類型"
@@ -10,7 +10,7 @@
     {
       "moduleId": "SS-2025-1",
       "year": 114,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -32,7 +32,7 @@
     {
       "moduleId": "SS-2025-2",
       "year": 114,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "ASD",
@@ -53,7 +53,7 @@
     {
       "moduleId": "SS-2025-3",
       "year": 114,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -77,7 +77,7 @@
     {
       "moduleId": "SS-2025-4",
       "year": 114,
-      "primaryTopicId": "4.2.1",
+      "primaryTopicId": "SS-U2-1",
       "primaryTopicName": "塑性分析與設計",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
@@ -98,7 +98,7 @@
     {
       "moduleId": "SS-2024-1",
       "year": 113,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -121,10 +121,10 @@
     {
       "moduleId": "SS-2024-2",
       "year": 113,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [
-        "4.1.4"
+        "SS-U1-4"
       ],
       "designMethod": "LRFD",
       "tags": [
@@ -145,7 +145,7 @@
     {
       "moduleId": "SS-2024-3",
       "year": 113,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -168,11 +168,11 @@
     {
       "moduleId": "SS-2024-4",
       "year": 113,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [
-        "6.3.1",
-        "4.2.3"
+        "SD-U3-1",
+        "SS-U2-3"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -193,7 +193,7 @@
     {
       "moduleId": "SS-2023-1",
       "year": 112,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
@@ -216,7 +216,7 @@
     {
       "moduleId": "SS-2023-2",
       "year": 112,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "ASD",
@@ -239,10 +239,10 @@
     {
       "moduleId": "SS-2023-3",
       "year": 112,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [
-        "4.2.1"
+        "SS-U2-1"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -264,10 +264,10 @@
     {
       "moduleId": "SS-2023-4",
       "year": 112,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [
-        "4.2.3"
+        "SS-U2-3"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -289,7 +289,7 @@
     {
       "moduleId": "SS-2022-1",
       "year": 111,
-      "primaryTopicId": "4.1.3",
+      "primaryTopicId": "SS-U1-3",
       "primaryTopicName": "梁柱桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -312,10 +312,10 @@
     {
       "moduleId": "SS-2022-2",
       "year": 111,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [
-        "4.1.4"
+        "SS-U1-4"
       ],
       "designMethod": "ASD",
       "verificationStatus": "verified",
@@ -335,10 +335,10 @@
     {
       "moduleId": "SS-2022-3",
       "year": 111,
-      "primaryTopicId": "4.2.3",
+      "primaryTopicId": "SS-U2-3",
       "primaryTopicName": "設計規範對施工之要求",
       "secondaryTopicIds": [
-        "6.3.1"
+        "SD-U3-1"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -358,10 +358,10 @@
     {
       "moduleId": "SS-2022-4",
       "year": 111,
-      "primaryTopicId": "6.3.1",
+      "primaryTopicId": "SD-U3-1",
       "primaryTopicName": "結構耐震設計",
       "secondaryTopicIds": [
-        "4.2.2"
+        "SS-U2-2"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -381,7 +381,7 @@
     {
       "moduleId": "SS-2021-1",
       "year": 110,
-      "primaryTopicId": "4.2.3",
+      "primaryTopicId": "SS-U2-3",
       "primaryTopicName": "設計規範對施工之要求",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
@@ -404,7 +404,7 @@
     {
       "moduleId": "SS-2021-2",
       "year": 110,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -425,10 +425,10 @@
     {
       "moduleId": "SS-2021-3",
       "year": 110,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [
-        "6.3.1"
+        "SD-U3-1"
       ],
       "designMethod": "LRFD",
       "verificationStatus": "verified",
@@ -449,10 +449,10 @@
     {
       "moduleId": "SS-2021-4",
       "year": 110,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [
-        "4.2.3"
+        "SS-U2-3"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -471,10 +471,10 @@
     {
       "moduleId": "SS-2020-1",
       "year": 109,
-      "primaryTopicId": "6.3.1",
+      "primaryTopicId": "SD-U3-1",
       "primaryTopicName": "結構耐震設計",
       "secondaryTopicIds": [
-        "4.1.4"
+        "SS-U1-4"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -495,10 +495,10 @@
     {
       "moduleId": "SS-2020-2",
       "year": 109,
-      "primaryTopicId": "4.2.1",
+      "primaryTopicId": "SS-U2-1",
       "primaryTopicName": "塑性分析與設計",
       "secondaryTopicIds": [
-        "4.1.2"
+        "SS-U1-2"
       ],
       "designMethod": "塑性分析",
       "verificationStatus": "verified",
@@ -519,7 +519,7 @@
     {
       "moduleId": "SS-2020-3",
       "year": 109,
-      "primaryTopicId": "4.1.3",
+      "primaryTopicId": "SS-U1-3",
       "primaryTopicName": "梁柱桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -542,10 +542,10 @@
     {
       "moduleId": "SS-2020-4",
       "year": 109,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [
-        "4.1.2"
+        "SS-U1-2"
       ],
       "designMethod": "ASD",
       "verificationStatus": "verified",
@@ -567,7 +567,7 @@
     {
       "moduleId": "SS-2019-1",
       "year": 108,
-      "primaryTopicId": "4.2.3",
+      "primaryTopicId": "SS-U2-3",
       "primaryTopicName": "設計規範對施工之要求",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
@@ -587,7 +587,7 @@
     {
       "moduleId": "SS-2019-2",
       "year": 108,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -609,10 +609,10 @@
     {
       "moduleId": "SS-2019-3",
       "year": 108,
-      "primaryTopicId": "4.1.3",
+      "primaryTopicId": "SS-U1-3",
       "primaryTopicName": "梁柱桿件",
       "secondaryTopicIds": [
-        "4.1.1"
+        "SS-U1-1"
       ],
       "designMethod": "ASD",
       "verificationStatus": "verified",
@@ -635,10 +635,10 @@
     {
       "moduleId": "SS-2019-4",
       "year": 108,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [
-        "4.1.2"
+        "SS-U1-2"
       ],
       "designMethod": "LRFD",
       "verificationStatus": "verified",
@@ -658,7 +658,7 @@
     {
       "moduleId": "SS-2018-1",
       "year": 107,
-      "primaryTopicId": "4.2.2",
+      "primaryTopicId": "SS-U2-2",
       "primaryTopicName": "鋼結構材料特性",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
@@ -679,7 +679,7 @@
     {
       "moduleId": "SS-2018-2",
       "year": 107,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -700,7 +700,7 @@
     {
       "moduleId": "SS-2018-3",
       "year": 107,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
       "designMethod": "ASD",
@@ -723,7 +723,7 @@
     {
       "moduleId": "SS-2018-4",
       "year": 107,
-      "primaryTopicId": "4.2.3",
+      "primaryTopicId": "SS-U2-3",
       "primaryTopicName": "設計規範對施工之要求",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
@@ -744,7 +744,7 @@
     {
       "moduleId": "SS-2017-1",
       "year": 106,
-      "primaryTopicId": "4.2.2",
+      "primaryTopicId": "SS-U2-2",
       "primaryTopicName": "鋼結構材料特性",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
@@ -765,7 +765,7 @@
     {
       "moduleId": "SS-2017-2",
       "year": 106,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -785,7 +785,7 @@
     {
       "moduleId": "SS-2017-3",
       "year": 106,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "ASD",
@@ -801,7 +801,7 @@
     {
       "moduleId": "SS-2017-4",
       "year": 106,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -822,7 +822,7 @@
     {
       "moduleId": "SS-2016-1",
       "year": 105,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "ASD",
@@ -843,7 +843,7 @@
     {
       "moduleId": "SS-2016-2",
       "year": 105,
-      "primaryTopicId": "4.2.3",
+      "primaryTopicId": "SS-U2-3",
       "primaryTopicName": "設計規範對施工之要求",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
@@ -862,7 +862,7 @@
     {
       "moduleId": "SS-2016-3",
       "year": 105,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -881,7 +881,7 @@
     {
       "moduleId": "SS-2016-4",
       "year": 105,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -898,7 +898,7 @@
     {
       "moduleId": "SS-2016-5",
       "year": 105,
-      "primaryTopicId": "4.2.2",
+      "primaryTopicId": "SS-U2-2",
       "primaryTopicName": "鋼結構材料特性",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
@@ -919,7 +919,7 @@
     {
       "moduleId": "SS-2015-1",
       "year": 104,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -942,10 +942,10 @@
     {
       "moduleId": "SS-2015-2",
       "year": 104,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [
-        "4.1.4"
+        "SS-U1-4"
       ],
       "designMethod": "LRFD",
       "verificationStatus": "verified",
@@ -964,7 +964,7 @@
     {
       "moduleId": "SS-2015-3",
       "year": 104,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "ASD",
@@ -985,7 +985,7 @@
     {
       "moduleId": "SS-2015-4",
       "year": 104,
-      "primaryTopicId": "4.2.2",
+      "primaryTopicId": "SS-U2-2",
       "primaryTopicName": "鋼結構材料特性",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
@@ -1006,7 +1006,7 @@
     {
       "moduleId": "SS-2014-1",
       "year": 103,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1028,10 +1028,10 @@
     {
       "moduleId": "SS-2014-2",
       "year": 103,
-      "primaryTopicId": "4.2.2",
+      "primaryTopicId": "SS-U2-2",
       "primaryTopicName": "鋼結構材料特性",
       "secondaryTopicIds": [
-        "6.3.1"
+        "SD-U3-1"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -1052,7 +1052,7 @@
     {
       "moduleId": "SS-2014-3",
       "year": 103,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1074,10 +1074,10 @@
     {
       "moduleId": "SS-2014-4",
       "year": 103,
-      "primaryTopicId": "4.1.3",
+      "primaryTopicId": "SS-U1-3",
       "primaryTopicName": "梁柱桿件",
       "secondaryTopicIds": [
-        "6.3.1"
+        "SD-U3-1"
       ],
       "designMethod": "LRFD",
       "verificationStatus": "verified",
@@ -1097,7 +1097,7 @@
     {
       "moduleId": "SS-2013-1",
       "year": 102,
-      "primaryTopicId": "1.1.1",
+      "primaryTopicId": "MM-U1-1",
       "primaryTopicName": "斷面性質計算",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1118,7 +1118,7 @@
     {
       "moduleId": "SS-2013-2",
       "year": 102,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1138,7 +1138,7 @@
     {
       "moduleId": "SS-2013-3",
       "year": 102,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1159,7 +1159,7 @@
     {
       "moduleId": "SS-2013-4",
       "year": 102,
-      "primaryTopicId": "4.1.3",
+      "primaryTopicId": "SS-U1-3",
       "primaryTopicName": "梁柱桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1181,7 +1181,7 @@
     {
       "moduleId": "SS-2012-1",
       "year": 101,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1203,10 +1203,10 @@
     {
       "moduleId": "SS-2012-2",
       "year": 101,
-      "primaryTopicId": "6.3.1",
+      "primaryTopicId": "SD-U3-1",
       "primaryTopicName": "結構耐震設計(含RC結構與鋼結構)",
       "secondaryTopicIds": [
-        "4.1.4"
+        "SS-U1-4"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -1226,10 +1226,10 @@
     {
       "moduleId": "SS-2012-3",
       "year": 101,
-      "primaryTopicId": "4.1.3",
+      "primaryTopicId": "SS-U1-3",
       "primaryTopicName": "梁柱桿件",
       "secondaryTopicIds": [
-        "4.1.1"
+        "SS-U1-1"
       ],
       "designMethod": "LRFD",
       "verificationStatus": "verified",
@@ -1250,7 +1250,7 @@
     {
       "moduleId": "SS-2012-4",
       "year": 101,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1271,7 +1271,7 @@
     {
       "moduleId": "SS-2011-1",
       "year": 100,
-      "primaryTopicId": "4.1.3",
+      "primaryTopicId": "SS-U1-3",
       "primaryTopicName": "梁柱桿件",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
@@ -1295,7 +1295,7 @@
     {
       "moduleId": "SS-2011-2",
       "year": 100,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1316,7 +1316,7 @@
     {
       "moduleId": "SS-2011-3",
       "year": 100,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1339,7 +1339,7 @@
     {
       "moduleId": "SS-2011-4",
       "year": 100,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "ASD",
@@ -1362,7 +1362,7 @@
     {
       "moduleId": "SS-2010-1",
       "year": 99,
-      "primaryTopicId": "1.1.1",
+      "primaryTopicId": "MM-U1-1",
       "primaryTopicName": "斷面性質計算",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
@@ -1383,10 +1383,10 @@
     {
       "moduleId": "SS-2010-2",
       "year": 99,
-      "primaryTopicId": "4.2.3",
+      "primaryTopicId": "SS-U2-3",
       "primaryTopicName": "設計規範對施工之要求",
       "secondaryTopicIds": [
-        "4.2.2"
+        "SS-U2-2"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -1406,7 +1406,7 @@
     {
       "moduleId": "SS-2010-3",
       "year": 99,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "混合",
@@ -1429,7 +1429,7 @@
     {
       "moduleId": "SS-2010-4",
       "year": 99,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1451,10 +1451,10 @@
     {
       "moduleId": "SS-2009-1",
       "year": 98,
-      "primaryTopicId": "6.3.1",
+      "primaryTopicId": "SD-U3-1",
       "primaryTopicName": "結構耐震設計",
       "secondaryTopicIds": [
-        "4.1.3"
+        "SS-U1-3"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -1474,10 +1474,10 @@
     {
       "moduleId": "SS-2009-2",
       "year": 98,
-      "primaryTopicId": "6.3.1",
+      "primaryTopicId": "SD-U3-1",
       "primaryTopicName": "結構耐震設計",
       "secondaryTopicIds": [
-        "4.2.3"
+        "SS-U2-3"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -1499,10 +1499,10 @@
     {
       "moduleId": "SS-2009-3",
       "year": 98,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [
-        "4.1.1"
+        "SS-U1-1"
       ],
       "designMethod": "LRFD",
       "verificationStatus": "verified",
@@ -1524,10 +1524,10 @@
     {
       "moduleId": "SS-2009-4",
       "year": 98,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [
-        "4.2.3"
+        "SS-U2-3"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -1549,7 +1549,7 @@
     {
       "moduleId": "SS-2008-1",
       "year": 97,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "ASD",
@@ -1570,7 +1570,7 @@
     {
       "moduleId": "SS-2008-2",
       "year": 97,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1591,7 +1591,7 @@
     {
       "moduleId": "SS-2008-3",
       "year": 97,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1612,7 +1612,7 @@
     {
       "moduleId": "SS-2008-4",
       "year": 97,
-      "primaryTopicId": "4.1.3",
+      "primaryTopicId": "SS-U1-3",
       "primaryTopicName": "梁柱桿件",
       "secondaryTopicIds": [],
       "designMethod": "ASD",
@@ -1636,10 +1636,10 @@
     {
       "moduleId": "SS-2007-1",
       "year": 96,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [
-        "4.1.1"
+        "SS-U1-1"
       ],
       "designMethod": "ASD",
       "verificationStatus": "verified",
@@ -1660,7 +1660,7 @@
     {
       "moduleId": "SS-2007-2",
       "year": 96,
-      "primaryTopicId": "4.1.3",
+      "primaryTopicId": "SS-U1-3",
       "primaryTopicName": "梁柱桿件",
       "secondaryTopicIds": [],
       "designMethod": "ASD",
@@ -1683,7 +1683,7 @@
     {
       "moduleId": "SS-2007-3",
       "year": 96,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1707,7 +1707,7 @@
     {
       "moduleId": "SS-2007-4",
       "year": 96,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1730,7 +1730,7 @@
     {
       "moduleId": "SS-2006-1",
       "year": 95,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1751,7 +1751,7 @@
     {
       "moduleId": "SS-2006-2",
       "year": 95,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1770,7 +1770,7 @@
     {
       "moduleId": "SS-2006-3",
       "year": 95,
-      "primaryTopicId": "1.1.1",
+      "primaryTopicId": "MM-U1-1",
       "primaryTopicName": "斷面性質計算",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1790,7 +1790,7 @@
     {
       "moduleId": "SS-2006-4",
       "year": 95,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1809,7 +1809,7 @@
     {
       "moduleId": "SS-2006-5",
       "year": 95,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1830,10 +1830,10 @@
     {
       "moduleId": "SS-2005-1",
       "year": 94,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [
-        "4.1.4"
+        "SS-U1-4"
       ],
       "designMethod": "LRFD",
       "verificationStatus": "verified",
@@ -1853,7 +1853,7 @@
     {
       "moduleId": "SS-2005-2",
       "year": 94,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1872,7 +1872,7 @@
     {
       "moduleId": "SS-2005-3",
       "year": 94,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1893,10 +1893,10 @@
     {
       "moduleId": "SS-2005-4",
       "year": 94,
-      "primaryTopicId": "4.2.1",
+      "primaryTopicId": "SS-U2-1",
       "primaryTopicName": "塑性分析與設計",
       "secondaryTopicIds": [
-        "4.1.2"
+        "SS-U1-2"
       ],
       "designMethod": "塑性分析",
       "verificationStatus": "verified",
@@ -1918,7 +1918,7 @@
     {
       "moduleId": "SS-2004-1",
       "year": 93,
-      "primaryTopicId": "4.2.3",
+      "primaryTopicId": "SS-U2-3",
       "primaryTopicName": "設計規範對施工之要求",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
@@ -1938,10 +1938,10 @@
     {
       "moduleId": "SS-2004-2",
       "year": 93,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [
-        "4.1.1"
+        "SS-U1-1"
       ],
       "designMethod": "ASD",
       "verificationStatus": "verified",
@@ -1961,7 +1961,7 @@
     {
       "moduleId": "SS-2004-3",
       "year": 93,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -1982,7 +1982,7 @@
     {
       "moduleId": "SS-2004-4",
       "year": 93,
-      "primaryTopicId": "4.1.3",
+      "primaryTopicId": "SS-U1-3",
       "primaryTopicName": "梁柱桿件",
       "secondaryTopicIds": [],
       "designMethod": "ASD",
@@ -2004,10 +2004,10 @@
     {
       "moduleId": "SS-2003-1",
       "year": 92,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [
-        "4.1.4"
+        "SS-U1-4"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -2030,7 +2030,7 @@
     {
       "moduleId": "SS-2003-2",
       "year": 92,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
@@ -2055,10 +2055,10 @@
     {
       "moduleId": "SS-2003-3",
       "year": 92,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [
-        "4.1.1"
+        "SS-U1-1"
       ],
       "designMethod": "LRFD",
       "verificationStatus": "verified",
@@ -2080,7 +2080,7 @@
     {
       "moduleId": "SS-2003-4",
       "year": 92,
-      "primaryTopicId": "4.1.3",
+      "primaryTopicId": "SS-U1-3",
       "primaryTopicName": "梁柱桿件",
       "secondaryTopicIds": [],
       "designMethod": "ASD",
@@ -2105,11 +2105,11 @@
     {
       "moduleId": "SS-2002-1",
       "year": 91,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [
-        "4.1.1",
-        "4.2.3"
+        "SS-U1-1",
+        "SS-U2-3"
       ],
       "designMethod": "概念題",
       "verificationStatus": "verified",
@@ -2132,7 +2132,7 @@
     {
       "moduleId": "SS-2002-2",
       "year": 91,
-      "primaryTopicId": "4.1.2",
+      "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
       "designMethod": "ASD",
@@ -2156,7 +2156,7 @@
     {
       "moduleId": "SS-2002-3",
       "year": 91,
-      "primaryTopicId": "4.1.1",
+      "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
       "designMethod": "混合",
@@ -2184,7 +2184,7 @@
     {
       "moduleId": "SS-2002-4",
       "year": 91,
-      "primaryTopicId": "4.1.4",
+      "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
       "designMethod": "ASD",

@@ -98,8 +98,8 @@ raw/solutions/methods/[method-id]/
 ```markdown
 ### 考題編號：SS-YYYY-N
 
-**主分類：** `4.X.X` 分類名稱
-**副分類：** `4.X.X` 分類名稱（無副分類則省略）
+**主分類：** `SS-U1-2` 分類名稱
+**副分類：** `SS-U1-4` 分類名稱（無副分類則省略）
 **設計法：** LRFD / ASD / 概念題 / 塑性分析 / 混合
 **標籤：** `標籤1` `標籤2` `標籤3` ...
 ```
@@ -274,7 +274,7 @@ SS-YYYY-N-[內容碼]-viz.html
 | 內容碼 | 說明 | 觸發條件 | 範例 |
 |--------|------|---------|------|
 | `sfd-bmd` | 剪力圖 + 彎矩圖 | 題目要求「繪製剪力圖/彎矩圖」 | `SS-2015-1-sfd-bmd-viz.html` |
-| `pm` | P-M 互制圖 | 梁柱桿件題目（4.1.3） | `SS-2022-1-pm-viz.html` |
+| `pm` | P-M 互制圖 | 梁柱桿件題目（SS-U1-3） | `SS-2022-1-pm-viz.html` |
 | `column-curve` | 柱強度曲線（Fcr/Fy vs λc） | 柱強度曲線相關題目 | `SS-2024-1-column-curve-viz.html` |
 | `section` | 斷面幾何示意（互動版） | 組合斷面幾何計算題目 | `SS-2015-3-section-viz.html` |
 | `connection` | 接合詳圖（互動版） | 接合詳圖說明題目 | `SS-2015-2-connection-viz.html` |
@@ -317,8 +317,8 @@ raw/solutions/methods/conjugate-beam/conjugate-beam-chart.html
 
 **來源：** [examName] · [subject] · [questionNumber]
 **考年：** [year]（民國[year-1911]年）
-**主分類：** [[topicId]] [topicName]
-**副分類：** [[secondaryTopicId]]（無則省略）
+**主分類：** [[SS-U1-2]] [topicName]
+**副分類：** [[SS-U1-4]]（無則省略）
 **設計法：** LRFD / ASD / 概念題
 **標籤：** `標籤1` `標籤2` `標籤3`
 **驗證狀態：** ✅ verified
@@ -387,25 +387,27 @@ $$[公式]$$
 
 | 欄位 | 說明 | 範例 |
 |------|------|------|
-| `primaryTopicId` | 命題大綱主分類（唯一） | `"4.1.2"` |
+| `primaryTopicId` | 命題大綱主分類（唯一） | `"SS-U1-2"` |
 | `primaryTopicName` | 主分類名稱 | `"梁桿件"` |
-| `secondaryTopicIds` | 命題大綱副分類（跨主題時用） | `["4.1.4"]` |
+| `secondaryTopicIds` | 命題大綱副分類（跨主題時用） | `["SS-U1-4"]` |
 | `designMethod` | 設計法 | `"LRFD"` / `"ASD"` / `"概念題"` / `"混合"` |
 | `tags` | 自由標籤（核心考點，3–8 個） | `["LTB側扭挫屈","剪力強度","使用性撓度"]` |
 
 ### 命題大綱分類對照
 
-| topicId | 分類名稱 |
-|---------|---------|
-| 4.1.1 | 拉力及壓力桿件 |
-| 4.1.2 | 梁桿件 |
-| 4.1.3 | 梁柱桿件 |
-| 4.1.4 | 接合之分析與設計 |
-| 4.2.1 | 塑性分析與設計 |
-| 4.2.2 | 鋼結構材料特性 |
-| 4.2.3 | 設計規範對施工之要求 |
-| 1.1.1 | 斷面性質計算（材力） |
-| 6.3.1 | 結構耐震設計 |
+> 完整六科分類見 `raw/json/syllabus_taxonomy.json`
+
+| topicId   | 分類名稱                  |
+|-----------|--------------------------|
+| SS-U1-1   | 拉力及壓力桿件             |
+| SS-U1-2   | 梁桿件                    |
+| SS-U1-3   | 梁柱桿件                  |
+| SS-U1-4   | 接合之分析與設計            |
+| SS-U2-1   | 塑性分析與設計              |
+| SS-U2-2   | 鋼結構材料特性              |
+| SS-U2-3   | 設計規範對施工之要求         |
+| MM-U1-1   | 斷面性質計算（材力）         |
+| SD-U3-1   | 結構耐震設計               |
 
 ### 標準標籤詞彙
 
@@ -434,9 +436,9 @@ $$[公式]$$
 |------|--------|------|
 | `moduleId` | `SS-YYYY-N` | 題目唯一識別碼 |
 | `year` | 整數（如 `114`） | 民國年 |
-| `primaryTopicId` | 見第 8 節對照表 | 命題大綱主分類，唯一 |
+| `primaryTopicId` | 見第 8 節對照表，格式 `XX-Un-m`（如 `SS-U1-2`） | 命題大綱主分類，唯一 |
 | `primaryTopicName` | 見第 8 節對照表 | 主分類名稱 |
-| `secondaryTopicIds` | `[]` 或 `["4.X.X"]` | 跨主題時填入，可多個 |
+| `secondaryTopicIds` | `[]` 或 `["SS-U1-4"]` | 跨主題時填入，可多個 |
 | `designMethod` | `LRFD` / `ASD` / `概念題` / `塑性分析` / `混合` | 設計方法 |
 | `verificationStatus` | `verified` / `unverified` / `needs-review` | 驗證狀態 |
 | `hasSolution` | `true` / `false` | 是否已有解析 `.md` |

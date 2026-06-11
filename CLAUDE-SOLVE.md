@@ -39,7 +39,7 @@
 
 **方法 ID：** [method-id]
 **知識分類：** 解題工具
-**適用題型：** [列出適用的 topicId]
+**適用題型：** [列出適用的 syllabusCode，如 `SS-U1-2`、`SS-U1-3`]
 
 ## 核心原理
 ## 邊界條件 / 對應關係表
@@ -182,7 +182,7 @@ raw/solutions/SS-YYYY-N/SS-YYYY-N-fig-2.png   ← 第二張（同題有多圖時
 
 #### 設計哲學框架（解題邏輯對照）
 
-**LRFD 梁桿件（4.1.2）**
+**LRFD 梁桿件（SS-U1-2）**
 ```
 核心：φbMn 取所有極限狀態中最脆弱一環
 步驟：① 基準強度（全斷面塑性化 Mp）
@@ -192,7 +192,7 @@ raw/solutions/SS-YYYY-N/SS-YYYY-N-fig-2.png   ← 第二張（同題有多圖時
       ⑤ 使用性撓度（未因數化活載重）
 ```
 
-**LRFD 壓力桿件（4.1.1）**
+**LRFD 壓力桿件（SS-U1-1）**
 ```
 核心：φcPn 取所有極限狀態中最脆弱一環
 步驟：① 基準強度（全斷面降伏 AgFy）
@@ -203,7 +203,7 @@ raw/solutions/SS-YYYY-N/SS-YYYY-N-fig-2.png   ← 第二張（同題有多圖時
             λc > 1.5 → 彈性：Fcr = [0.877/λc²] Fy
 ```
 
-**ASD 壓力桿件（4.1.1）**
+**ASD 壓力桿件（SS-U1-1）**
 ```
 核心：fa ≤ Fa（工作載重應力不超過容許應力）
 步驟：① 計算需求應力 fa = P/A
@@ -213,7 +213,7 @@ raw/solutions/SS-YYYY-N/SS-YYYY-N-fig-2.png   ← 第二張（同題有多圖時
       ④ 檢核 fa ≤ Fa
 ```
 
-**LRFD 拉力桿件（4.1.1）**
+**LRFD 拉力桿件（SS-U1-1）**
 ```
 核心：φtPn 取三種極限狀態最小值
 步驟：① GSY 全斷面降伏：φt=0.9，Pn=FyAg
@@ -225,14 +225,14 @@ raw/solutions/SS-YYYY-N/SS-YYYY-N-fig-2.png   ← 第二張（同題有多圖時
          上限：φ[0.6FuAnv+FuAnt]
 ```
 
-**LRFD 接合設計（4.1.4）**
+**LRFD 接合設計（SS-U1-4）**
 ```
 填角銲：φRn = (0.75)(0.6FEXX)(t)(L)
         t = 有效喉厚 = 0.707w
 高拉力螺栓：依承壓型/摩阻型分別計算
 ```
 
-**LRFD 梁柱桿件（箱形 BOX 斷面，4.1.3）**
+**LRFD 梁柱桿件（箱形 BOX 斷面，SS-U1-3）**
 ```
 斷面性質（BOX b_o × b_o × t，正方形）：
   A = b_o² - b_i²，b_i = b_o - 2t
@@ -253,7 +253,7 @@ P-M 互制：
 充分側向支撐 → 無 LTB → φbMn = φbMp = 0.9FyZ（兩軸對稱）
 ```
 
-**ASD 插銷鉸接拉力構件（4.1.1）**
+**ASD 插銷鉸接拉力構件（SS-U1-1）**
 ```
 設計服務載重：P = PD + PL（不因數化）
 四種破壞模式（Ω 值）：
@@ -264,7 +264,7 @@ P-M 互制：
 取最小 Pa = Pn/Ω，確認 Pa ≥ P
 ```
 
-**機率分析題（6.3.1 強柱弱梁）**
+**機率分析題（SD-U3-1 強柱弱梁）**
 ```
 核心：建立不等式條件 → 對聯合機率密度作二重積分
 步驟：
@@ -443,7 +443,7 @@ wiki/queries/asd-vs-lrfd-column-20260407.md
 ### 【REVIEW】複習題組（在 Cowork 執行）
 
 **觸發語句：** `review [標籤或主題]`
-例：`review LTB側扭挫屈` / `review 4.1.2` / `review 接合設計`
+例：`review LTB側扭挫屈` / `review SS-U1-2` / `review 接合設計`
 
 **執行：**
 ```
@@ -534,7 +534,7 @@ wiki/queries/asd-vs-lrfd-column-20260407.md
 ### 【STUDY】單元專題複習（在 Cowork 執行）
 
 **觸發語句：** `study [主題/topicId]`
-例：`study 4.1.1` / `study 壓力桿件` / `study LTB`
+例：`study SS-U1-1` / `study 壓力桿件` / `study LTB`
 
 **執行：**
 ```
@@ -623,7 +623,7 @@ wiki/queries/asd-vs-lrfd-column-20260407.md
 
 **執行：**
 ```
-1. 讀取所有涉及材料特性的題目解析（primaryTopicId = 4.2.2 或 tags 含材料關鍵字）
+1. 讀取所有涉及材料特性的題目解析（primaryTopicId = SS-U2-2 或 tags 含材料關鍵字）
 2. 更新 wiki/materials/ 四大主題頁面：
    → 應力應變行為
    → 殘留應力

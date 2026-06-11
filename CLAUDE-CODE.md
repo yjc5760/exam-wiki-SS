@@ -18,6 +18,7 @@
 | [REINDEX](#reindex) | `reindex` | 掃描 raw/solutions/ 修正 question_index.json 不一致 |
 | [ADD-CONCEPT](#add-concept) | `add concept [概念名]` | 新增概念到 concepts.json 並建立 wiki 頁面 |
 | [LINT](#lint) | `lint wiki` | 健檢 wiki 完整性 |
+| [DASHBOARD](#dashboard) | `更新儀表板資料` | 從 question_index.json 重新生成 dashboard-data.js |
 
 ### 查詢類
 | 指令 | 觸發語句 | 用途 |
@@ -129,6 +130,33 @@
 
 ---
 
+## DASHBOARD
+
+**觸發語句（在 Cowork 輸入）：** `更新儀表板資料`
+
+**用途：** `dashboard.html`（根目錄）讀取 `dashboard-data.js` 顯示題庫全貌。
+question_index.json 或 viz 檔案變動後，須重新生成快照。
+
+**執行步驟：**
+```
+1. 讀取 raw/json/question_index.json（全部題目）
+2. 掃描 raw/solutions/SS-*/*-viz.html，取得各題互動圖內容碼
+3. 生成 dashboard-data.js（UTF-8，根目錄），格式：
+   window.SS_QUESTIONS=[ [moduleId, primaryTopicId, secondaryTopicIds[],
+     designMethod, vizCodes[], tags[], v, hs], ... ]
+   - v：verified→1、unverified→0、needs-review→2
+   - hs：hasSolution true→1、false→0
+   - 一題一行，依 JSON 原始順序
+   window.SS_TOPICS={topicId: 名稱}（須涵蓋所有出現的 topicId）
+   window.SS_UNITS={"SS-U1":..., "SS-U2":..., "SD-U3":..., "MM-U1":...}
+4. 核對：題數與 JSON 一致、TOPICS 無遺漏、viz 題數與掃描結果一致
+5. 在 wiki/log.md 追加紀錄
+6. 驗證提示：「請用瀏覽器開啟 dashboard.html，確認題數為 XX 題、各 viz 圖表連結可點擊開啟、篩選與統計功能正常」
+【注意】dashboard.html 本身不需重新生成，只更新 dashboard-data.js
+```
+
+---
+
 ## QUERY
 
 **觸發語句（在 Cowork 輸入）：** 直接提問
@@ -154,7 +182,8 @@
 3.  概念缺口（concepts.json 有 related_concept_ids 但頁面未建立）
 4.  手寫補充未登錄（raw/solutions/ 有 hand-*.png 但 problems/ 頁面未標注）
 5.  圖形未登錄（raw/solutions/ 有 *-viz.html 但 problems/ 頁面無圖形區塊）
-6.  圖形遺漏（4.1.3 梁柱桿件題目但無 pm-viz.html）
+6.  圖形警示（SS-U1-3 梁柱桿件題目且年份 ≥ 2016 但無 pm-viz.html）
+    — [warn] 等級：提示建議建立，不屬錯誤。年份 < 2016 的梁柱題目不報告。
 7.  方法論缺口（raw/solutions/methods/ 有資料夾但 wiki/methods/ 無對應頁面）
 8.  圖片圖說缺漏（.md 中有 ![...](*.png) 但下方無 *圖說：* 的題目）
 9.  eqn.png 圖說未文字化（有 *-eqn.png 但圖說未包含公式 LaTeX）
@@ -165,7 +194,9 @@
 14. failure-modes/ 缺口（四大類別頁面是否齊全）
 15. materials/ 缺口（四大主題頁面是否齊全）
 16. code-ref/ 孤立（index.md 存在但 wiki/index.md 未連結）
-17. 輸出待補清單，依優先順序排列
+17. topicId 驗證（question_index.json 的 primaryTopicId / secondaryTopicIds
+    必須存在於 raw/json/syllabus_taxonomy.json；偵測舊代號格式如 4.1.2）
+18. 輸出待補清單，依優先順序排列（[error] > [warn] > [info]）
 ```
 
 ---

@@ -414,6 +414,9 @@
     const t0=Date.now();
     (function chk(){if(katexState!=='loading'||Date.now()-t0>ms)return res();setTimeout(chk,100);})();});}
 
+  // ---- 讀檔模式：http(s) 伺服器（如 GitHub Pages）直接 fetch；本機 file:// 用 File System Access ----
+  const IS_WEB=location.protocol==='http:'||location.protocol==='https:';
+
   // ---- File System Access：資料夾授權 ----
   const IDB='sswiki-fs';let dirHandle=null;
   function idbGet(){return new Promise(res=>{const r=indexedDB.open(IDB,1);
@@ -516,6 +519,15 @@
     rTitle.textContent=title||relPath;
     overlay.classList.add('on');reader.classList.add('on');
     rBody.innerHTML='<div class="rmsg">讀取中…</div>';
+    let text;
+    if(IS_WEB){
+      // 部署於網頁伺服器（GitHub Pages 等）：直接以相對路徑 fetch
+      try{
+        const res=await fetch(encodeURI(relPath));
+        if(!res.ok)throw new Error('HTTP '+res.status);
+        text=await res.text();
+      }catch(e){rBody.innerHTML=`<div class="rmsg">讀取失敗：${esc(relPath)}<br><div class="small">${esc(e.message||String(e))}</div></div>`;return;}
+    }else{
     if(!window.showDirectoryPicker){
       rBody.innerHTML=`<div class="rmsg">此瀏覽器不支援資料夾讀取（File System Access API）。<br>
         建議使用 Edge 或 Chrome 開啟本儀表板。<br>
@@ -529,9 +541,9 @@
         h=await ensureDir(true);
         if(h)openMd(relPath,title);});
       return;}
-    let text;
     try{const f=await readFileByPath(relPath);text=await f.text();}
     catch(e){rBody.innerHTML=`<div class="rmsg">讀取失敗：${esc(relPath)}<br><div class="small">${esc(e.message||String(e))}</div></div>`;return;}
+    }
     await waitKatex(4000);
     mathHint.style.display=(window.katex)?'none':'inline-block';
     const today=new Date().toISOString().slice(0,10);
@@ -542,6 +554,7 @@
     rBody.querySelectorAll('img[data-mdsrc]').forEach(async img=>{
       const p=img.dataset.mdsrc;
       if(/^https?:/.test(p)){img.src=p;return;}
+      if(IS_WEB){img.src=baseDir?baseDir+'/'+p:p;return;}
       try{const f=await readFileByPath(baseDir?baseDir+'/'+decodeURIComponent(p):decodeURIComponent(p));
         const u=URL.createObjectURL(f);blobUrls.push(u);img.src=u;}
       catch(e){img.alt='（找不到圖片：'+p+'）';img.style.minHeight='40px';}

@@ -152,6 +152,7 @@ Wiki 導航依七層知識架構組織（七層均由 Cowork 直接維護）：
 | 2026-05-31 | 清除 `study/` 中的 VHA skill 草稿（vha.skill、vha-updated.skill、vha-SKILL-updated.md） | 正式 skill 已安裝，草稿無需保留 |
 | 2026-06-11 | 分類代號全面遷移至 `syllabus_taxonomy.json` 的 XX-Un-m 格式（4.1.x→SS-U1-x、6.3.1→SD-U3-1、1.1.1→MM-U1-1）；raw/solutions 標頭經使用者核准一次性例外更新；CLAUDE-CODE.md LINT 新增 topicId 驗證項 | 六科統一分類代號，消除新舊代號並存 |
 | 2026-06-11 | 新增 `dashboard.html` + `dashboard-data.js` 知識庫儀表板；CLAUDE-CODE.md 新增 DASHBOARD 指令 | 單頁總覽 98 題全貌：篩選瀏覽、統計圖、七層導覽、站內解析閱讀器 |
+| 2026-06-12 | GitHub Pages 部署：新增 `index.html`（導向儀表板）與 `.nojekyll`；dashboard.html 解析閱讀器改為雙模式（http(s) 用 fetch、本機 file:// 維持資料夾授權） | 知識庫以靜態網站佈署至 GitHub Pages |
 
 ---
 

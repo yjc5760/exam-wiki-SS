@@ -136,6 +136,7 @@
     <button data-p="charts">📊 考點統計</button>
     <button data-p="nav">🗺️ 知識庫導覽</button>
     <button data-p="cmd">⌨️ 指令速查</button>
+    <button data-p="exams">📑 歷年考卷</button>
   </nav>
 
   <!-- 題庫瀏覽 -->
@@ -228,6 +229,15 @@
         <tr><td><code>cross-ref [concept-id]</code></td><td>列出所有涉及某概念的題目（如 <code>cross-ref LATERAL-TORSIONAL-BUCKLING</code>）</td></tr>
         <tr><td>直接提問</td><td>自由查詢知識庫，結果存入 wiki/queries/</td></tr>
       </table>
+    </div>
+  </section>
+
+  <!-- 歷年考卷 -->
+  <section class="panel" id="p-exams">
+    <div class="card">
+      <h2>原始考卷 PDF（2002–2025）</h2>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:10px">點擊在新分頁開啟原始考卷。</p>
+      <div class="navgrid" id="examList"></div>
     </div>
   </section>
 
@@ -375,7 +385,16 @@
     if(nc&&nc.dataset.md)openMd(nc.dataset.md,nc.dataset.t||nc.dataset.md);
   });
 
-  renderStats();render();renderCharts();
+  // ---- 歷年考卷 ----
+  function renderExams(){
+    const years=[...new Set(Q.map(q=>q.year))].sort((a,b)=>b-a);
+    document.getElementById('examList').innerHTML=years.map(y=>{
+      const n=Q.filter(q=>q.year===y).length;
+      return `<a class="navcard" href="${encodeURI('raw/exams/SS-'+y+'_鋼結構設計.pdf')}" target="_blank">
+        <b>📄 ${y} 年考卷</b><p>民國 ${y-1911} 年｜已收錄 ${n} 題解析</p></a>`;}).join('');
+  }
+
+  renderStats();render();renderCharts();renderExams();
 
   /* ================= 解析閱讀器 ================= */
   const overlay=document.getElementById('overlay'),reader=document.getElementById('reader'),

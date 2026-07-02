@@ -273,9 +273,9 @@
   if(!window.SS_QUESTIONS){document.getElementById('list').innerHTML='<div class="empty">找不到 dashboard-data.js，請確認檔案與本頁在同一資料夾。</div>';return;}
   const Q = SS_QUESTIONS.map(r=>({id:r[0],year:+r[0].split('-')[1],num:+r[0].split('-')[2],roc:+r[0].split('-')[1]-1911,topic:r[1],sec:r[2],method:r[3],viz:r[4],tags:r[5],pdf:r[6]||[]}));
   const TOPICS=SS_TOPICS, UNITS=SS_UNITS;
-  const UCOLOR={U1:'var(--u1)',U2:'var(--u2)',U3:'var(--u3)',U4:'var(--u4)'};
-  const unitOf=t=>t.split('-')[0];
-  const PKEY='rcwiki-progress';
+  const UCOLOR={'U1':'var(--u1)','U2':'var(--u2)','SD-U3':'var(--u3)','MM-U1':'var(--u4)'};
+  const unitOf=t=>{const p=t.split('-');return p.slice(0,p.length-1).join('-')};
+  const PKEY='sswiki-progress';
   let prog={}; try{prog=JSON.parse(localStorage.getItem(PKEY)||'{}')}catch(e){}
   const saveProg=()=>localStorage.setItem(PKEY,JSON.stringify(prog));
 
@@ -373,7 +373,8 @@
     const uc={};Q.forEach(q=>{const u=unitOf(q.topic);uc[u]=(uc[u]||0)+1});
     const umax=Math.max(...Object.values(uc));
     document.getElementById('chartUnit').innerHTML=Object.entries(UNITS)
-      .map(([u,n])=>bar(`<span class="unitchip" style="background:${UCOLOR[u]}"></span>${n}（${(uc[u]/Q.length*100).toFixed(0)}%）`,uc[u]||0,umax,UCOLOR[u])).join('');
+      .filter(([u,n])=>(uc[u]||0)>0)
+      .map(([u,n])=>bar(`<span class="unitchip" style="background:${UCOLOR[u]||'var(--muted)'}"></span>${n}（${((uc[u]||0)/Q.length*100).toFixed(0)}%）`,uc[u]||0,umax,UCOLOR[u]||'var(--muted)')).join('');
 
     // 【近5年趨勢】（依實際收錄年份動態取最近 5 年）
     const yearsDesc=[...new Set(Q.map(q=>q.year))].sort((a,b)=>b-a);
@@ -387,7 +388,7 @@
     let html='',yr=0;
     recent.forEach(q=>{if(q.year!==yr){yr=q.year;html+=`<div style="margin-top:8px;font-weight:700">${yr}（民國 ${yr-1911}）</div>`;}
       const secTxt=q.sec.length?`（副：${q.sec.map(s=>TOPICS[s]||s).join('、')}）`:'';
-      html+=`<div style="font-size:.85rem;margin-left:8px"><span class="unitchip" style="background:${UCOLOR[unitOf(q.topic)]}"></span>第${q.num}題：${TOPICS[q.topic]}${secTxt}</div>`;});
+      html+=`<div style="font-size:.85rem;margin-left:8px"><span class="unitchip" style="background:${UCOLOR[unitOf(q.topic)]||'var(--muted)'}"></span>第${q.num}題：${TOPICS[q.topic]}${secTxt}</div>`;});
     document.getElementById('recent').innerHTML=html;
   }
 

@@ -3,7 +3,7 @@
 
 > **使用環境：Cowork**
 > 在 Cowork 開啟 `exam-wiki-SS/` 資料夾後，此檔案提供解題、分析的完整規範。
-> wiki 的維護（ingest/compile/lint）請使用 Claude Code，詳見 CLAUDE.md。
+> wiki 的維護（ingest/compile/lint）請對 Cowork 說出對應指令，詳見 CLAUDE-CODE.md。
 
 ---
 
@@ -39,7 +39,7 @@
 
 **方法 ID：** [method-id]
 **知識分類：** 解題工具
-**適用題型：** [列出適用的 syllabusCode，如 `SS-U1-2`、`SS-U1-3`]
+**適用題型：** [列出適用的 topicId，如 `SS-U1-2`、`SS-U1-3`]
 
 ## 核心原理
 ## 邊界條件 / 對應關係表
@@ -49,17 +49,6 @@
 ## 圖形
 ## 出現題目（使用本方法的考題）
 ```
-
-**你的後續動作：**
-```
-1. 加入手寫補充圖片（如有）
-2. 在 Cowork 輸入：add method [method-id]
-   → 生成 wiki/methods/[method-id].md
-   → 更新 wiki/index.md（方法論區塊）
-   → 在 wiki/log.md 追加紀錄
-```
-
----
 
 ---
 
@@ -76,24 +65,16 @@
 自動讀取：
   - CLAUDE.md（身份層：分工、資料流、重要規則）
   - CLAUDE-SPEC.md（格式規範、命名規則、完成標準）
-  - raw/exams/[對應考卷].pdf
+  - raw/exams/SS-YYYY_鋼結構設計.pdf（YYYY 為對應西元年）
   - raw/json/question_index.json（確認哪些題目已有解析）
 不需要手動上傳任何檔案
 ```
-
-**Cowork Project 設定建議：**
-```
-Project 名稱：exam-wiki-SS
-指定資料夾：exam-wiki-SS/
-指令檔：CLAUDE-SOLVE.md（設為 Project 指令）
-```
-設定完成後每次開啟 Project 即自動載入所有規範。
 
 **執行規則：**
 ```
 【階段一：建立資料夾並等待截圖（觸發語句後立即執行）】
 
-1. 讀取 raw/exams/SS-YYYY_鋼結構設計.pdf（YYYY 為對應西元年）
+1. 讀取 raw/exams/SS-YYYY_鋼結構設計.pdf
 2. 讀取 raw/json/question_index.json，找出尚無解析的題目
 3. 為所有尚無解析的題目建立資料夾：
    → mkdir raw/solutions/SS-YYYY-N/（每題一個，已有解析者跳過）
@@ -150,13 +131,13 @@ raw/solutions/SS-YYYY-N/SS-YYYY-N-fig-2.png   ← 第二張（同題有多圖時
 > 若某題完全無結構示意圖、幾何圖或表格（題目僅以文字描述幾何與條件），
 > **仍需建立資料夾**，但不建立 `fig-1.png`。
 > .md 中不引用任何 fig PNG，直接以文字說明幾何條件。
-> 常見無附圖題型：純概念說明題、已在題幹完整給出數字的計算題（如 SS-2022-1）。
+> 常見無附圖題型：純概念說明題、已在題幹完整給出數字的計算題。
 
 ---
 
 #### 解題前置：三層掃描法（每題解題前先執行）
 
-**核心原則：** 先見林（外在全貌）→ 再見樹（策略路徑）→ 後見土（內在意圖）
+**核心原則：** 先見林（外外在全貌）→ 再見樹（策略路徑）→ 後見土（內在意圖）
 
 **第一層：外在掃描（2分鐘內完成）**
 ```
@@ -283,8 +264,8 @@ P-M 互制：
 ```
 # 考題編號：[SS-XXXX-N]
 
-**主分類：** `4.X.X` 分類名稱
-**副分類：** `4.X.X` 分類名稱（無則省略）
+**主分類：** `SS-X-X` 分類名稱
+**副分類：** `SS-X-X` 分類名稱（無則省略）
 **設計法：** LRFD / ASD / 概念題
 **標籤：** `標籤1` `標籤2` `標籤3` ...
 
@@ -304,11 +285,31 @@ P-M 互制：
    - 步驟化作戰計畫（先算什麼、後算什麼）
    - 明確列出 3-4 個關鍵陷阱及應對策略
 
-## 3.5 變數層次分析 (Variable Hierarchy Analysis)  ← 必須輸出，格式見 CLAUDE-SPEC.md §4.4
-   - L1 表格：題目直接給定的所有數字（含斷面表、設計圖、參考公式中的係數）
-   - L2 表格：需套公式推導的中間變數（按計算步驟分組）
-   - L3 表格：深層知識點（從陷阱分析 §3 提取，考生若不懂就會用錯 L2）
-   - 卡關欄位（⚠ 欄）全部留空，由考生複習時自填
+## 3.5 變數層次分析 (Variable Hierarchy Analysis)  ← 必須輸出
+   > 複習提示：第一次解題後，在每個卡住的知識點旁標記 `⚠`；第二次複習時只看有 `⚠` 的項目。
+
+   ### 最終目標
+   `一句話說明本題最終要求出什麼`
+
+   ### 本題關鍵公式（依計算順序）
+   - 列出解題主幹公式（5–8 個 Step），**不含數字代入**，只顯示符號結構
+   - 規則：**已由前步驟推導出的中間變數**（非 L1 直接給定），在後續公式中出現時用 `\boxed{}` 框選
+     - 示例：Step 1 求出 $L_b$；Step 2 用到它時寫 $C_b = \dots (\text{含 } \boxed{L_b})$
+     - 目的：讓考生一眼看出哪些量是「需要先算出來才能帶入」的
+   - 格式：每個 Step 獨立一行 display math，加簡短文字說明
+
+   ### L1：題目直接給定
+   _看到題目就能讀出的數字，不需要任何公式。_
+   - 欄位：**符號 ∣ 數值 ∣ 說明**（無卡關欄）
+
+   ### L2：需知識點推導
+   _需要知道公式名稱與適用條件，套入 L1 即可算出。_
+   - 按計算步驟分組，每組加粗標題
+   - 欄位：**符號 ∣ 公式／來源 ∣ 卡關?**（卡關欄全部留空，由考生複習時自填 ⚠）
+
+   ### L3：深層知識（不懂就卡住）
+   - 從陷阱分析 §3 提取，列出考生若觀念不清就會在 L2 用錯公式的知識點
+   - 欄位：**知識點 ∣ 說明 ∣ 卡關?**（卡關欄全部留空）
 
 ## 4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)
    > 📊 互動圖（如有）：`SS-XXXX-N-sfd-bmd-viz.html`
@@ -339,14 +340,13 @@ N    = 題號（1、2、3、4，部分年份有 5）
 
 1. 確認 fig PNG（你預先截圖者）品質正確（圖片完整、無截到其他題目）
 2. 加入補充截圖（依命名規則拍照或截圖命名後存入）：
-   - SS-XXXX-N-chart-1.png  ← 設計圖表（如有，例如φbMn vs Lb 曲線）
-   - SS-XXXX-N-eqn-1.png    ← 參考公式截圖（如有，從考卷截圖）
+   - SS-XXXX-N-chart-1.png  ← 設計圖表（如有）
+   - SS-XXXX-N-eqn-1.png    ← 參考公式截圖
 3. 加入手寫補充（如有）：
    - SS-XXXX-N-hand-1.png
-4. 人工驗算解析內容正確後，更新 verificationStatus（此欄位需人工確認）：
+4. 人工驗算解析內容正確後，更新 verificationStatus：
    告訴 Cowork：「將 SS-XXXX-N 的 verificationStatus 改為 verified」
-   → Cowork 修改 question_index.json 中對應題目的 verificationStatus 欄位
-5. 在 Cowork 輸入：`ingest SS-XXXX-N`
+5. 說：「ingest SS-XXXX-N」 → Cowork 直接執行，wiki 自動更新
 6. 說「繼續下一題」→ Cowork 解析下一道尚未有解析的題目
 ```
 
@@ -360,274 +360,3 @@ N    = 題號（1、2、3、4，部分年份有 5）
 | `secondaryTopicIds` | Cowork 自動 | SOLVE 結束時 |
 | `verificationStatus` | **人工確認後告知 Cowork** | 驗算正確後 |
 | `hasHandwritten` | 人工（加入 hand PNG 後） | 手寫補充存入後 |
-
----
-
-
----
-
-### 【ANALYZE】考題分布分析（在 Cowork 執行）
-
-**觸發語句：** `考題分布`
-
-**執行：** 讀取 `raw/json/question_index.json`，輸出兩段式報告：
-
-```
-第一部分：總體趨勢分析報告
-  一、總體分布概況
-  二、各主題題數分布（表格）
-  三、各單元主題細部分布
-  四、趨勢與結論分析
-
-第二部分：依主題條列式考題列表
-  #### 主題名稱（Topic ID: 4.X.X）
-  * [考題編號]: [核心精神摘要]
-```
-
----
-
-### 【QUERY】查詢知識庫並存回（在 Cowork 執行）
-
-**觸發方式：** 直接向 Cowork 提問，問完後說「把這個答案存進知識庫」
-
-**適用情境：**
-```
-跨題目分析：「LTB 在歷年考題中怎麼演變？」
-弱點整理：「塊狀剪力破壞有哪些常見陷阱？」
-比較分析：「LRFD 和 ASD 柱設計的核心差異是什麼？」
-趨勢判斷：「接合設計最近三年考什麼？今年可能考什麼？」
-考前衝刺：「哪些三星陷阱出現頻率最高？」
-```
-
-**執行流程：**
-```
-1. Cowork 讀取 wiki/index.md 定位相關分類
-2. Cowork 讀取相關 concepts/、problems/、traps/、methods/ 頁面
-3. Cowork 合成跨頁面的分析答案
-4. 你說「把這個答案存進知識庫」
-5. Cowork 存成 wiki/queries/[主題]-[日期].md
-```
-
-**wiki/queries/[id].md 格式：**
-```markdown
-# [查詢主題]
-
-**查詢日期：** YYYY-MM-DD
-**關鍵字：** `標籤1` `標籤2`
-**參考來源：** [[概念頁]] · [[題目頁]]
-
-## 問題
-[你當時問的問題]
-
-## 分析結果
-[Cowork 合成的答案]
-
-## 關鍵結論
-[2-3 條最重要的洞察]
-```
-
-**命名規則：**
-```
-wiki/queries/ltb-historical-trend-20260407.md
-wiki/queries/bsr-common-traps-20260407.md
-wiki/queries/asd-vs-lrfd-column-20260407.md
-```
-
-**注意：**
-- `wiki/queries/` 的內容**不走 ingest 流程**，由 Cowork 直接存入
-- `wiki/queries/` 由 Cowork 直接寫入，不走 ingest 流程
-- `lint wiki` 會檢查 queries/ 的連結是否有效
-
----
-
-### 【REVIEW】複習題組（在 Cowork 執行）
-
-**觸發語句：** `review [標籤或主題]`
-例：`review LTB側扭挫屈` / `review SS-U1-2` / `review 接合設計`
-
-**執行：**
-```
-1. 讀取 wiki/index.md 與 question_index.json
-2. 找出所有符合標籤/主題的 verified 題目
-3. 輸出複習題組：
-   一、考點摘要（核心公式、常見陷阱、設計法）
-   二、題目列表（依難度排序）
-      | 題號 | 年份 | 設計法 | 核心考點 | 難度 |
-   三、建議複習順序與重點提示
-```
-
----
-
-### 【PREDICT】出題預測（在 Cowork 執行）
-
-**觸發語句：** `predict`
-
-**執行：**
-```
-1. 讀取 question_index.json（所有 98 題歷年分布）
-2. 分析：近 5 年（2021–2025）各主題出現頻率、輪替規律
-3. 輸出預測報告：
-   一、今年（2026）最可能出現的 3 個主題（含信心程度）
-   二、各主題近 5 年出題熱力表
-   三、歷年從未考或近年未考的冷門題型（潛在黑馬）
-   四、備考建議：各主題推薦複習優先順序
-```
-
----
-
-### 【EXAM-SIM】模擬考試（在 Cowork 執行）
-
-**觸發語句：** `exam-sim YYYY`
-例：`exam-sim 2023`
-
-**執行：**
-```
-1. 讀取 raw/exams/SS-YYYY_鋼結構設計.pdf
-2. 輸出四道題目的題幹（不含解答）
-3. 等待使用者作答（可說「給提示」或「解答」）
-   → 「給提示」→ 輸出三層掃描法的外在掃描結果（不透露計算）
-   → 「解答」→ 讀取對應 raw/solutions/ 輸出完整解析
-4. 作答完成後輸出對比分析：考生解法 vs 標準解法的差異
-```
-
----
-
-### 【COMPARE】比較兩題（在 Cowork 執行）
-
-**觸發語句：** `compare SS-XXXX-N SS-YYYY-M`
-例：`compare SS-2018-2 SS-2022-3`
-
-**執行：**
-```
-1. 讀取兩題的 raw/solutions/[id]/[id].md
-2. 並排輸出對比表：
-   | 項目 | SS-XXXX-N | SS-YYYY-M |
-   |------|-----------|-----------|
-   | 主題 | | |
-   | 設計法 | | |
-   | 核心考點 | | |
-   | 關鍵公式 | | |
-   | 主要陷阱 | | |
-   | 難度差異 | | |
-3. 輸出：兩題的共同考點、差異所在、備考建議
-```
-
----
-
-### 【ANALYZE-YEAR】單年考卷分析（在 Cowork 執行）
-
-**觸發語句：** `analyze YYYY`
-例：`analyze 2024`
-
-**執行：**
-```
-1. 讀取 raw/exams/SS-YYYY_鋼結構設計.pdf 與 question_index.json 中該年四題
-2. 輸出單年分析報告：
-   一、四題考點分布（topicId、designMethod）
-   二、難度評估（各題）
-   三、該年命題特色與趨勢觀察
-   四、與前後年相比的異同
-```
-
----
-
-### 【STUDY】單元專題複習（在 Cowork 執行）
-
-**觸發語句：** `study [主題/topicId]`
-例：`study SS-U1-1` / `study 壓力桿件` / `study LTB`
-
-**執行：**
-```
-1. 讀取 wiki/concepts/ 與 wiki/methods/ 中相關頁面
-2. 讀取該主題所有 verified 題目的解析
-3. 輸出系統性專題整理：
-   一、核心概念地圖（觀念架構）
-   二、關鍵公式整理（含適用條件）
-   三、歷年題目列表與各題核心考點
-   四、高頻陷阱清單（三星 ⭐⭐⭐ 優先）
-   五、建議解題流程（決策樹）
-```
-
----
-
-### 【FIND】關鍵字搜尋（在 Cowork 執行）
-
-**觸發語句：** `find [關鍵字]`
-例：`find 接頭剪力` / `find Cb係數` / `find 塊狀剪力`
-
-**執行：**
-```
-1. 掃描所有 raw/solutions/SS-XXXX-N/SS-XXXX-N.md，搜尋包含關鍵字的題目
-2. 同時搜尋 question_index.json 的 tags 欄位
-3. 輸出搜尋結果：
-   找到 X 題：
-   | 題號 | 年份 | 關鍵字出現位置（題幹/計算/陷阱） | 相關摘要 |
-```
-
----
-
-### 【RELATED】相似題查詢（在 Cowork 執行）
-
-**觸發語句：** `related SS-XXXX-N`
-例：`related SS-2020-2`
-
-**執行：**
-```
-1. 讀取指定題目的 primaryTopicId、tags、designMethod
-2. 從 question_index.json 找出：
-   → 同主分類的所有題目
-   → tags 有 2 個以上重疊的題目
-3. 輸出相似題列表：
-   | 題號 | 年份 | 共同考點 | 差異 | 推薦複習順序 |
-4. 輸出：這組題目的命題模式分析
-```
-
----
-
-### 【UPDATE-DIAGNOSIS】更新診斷層（在 Cowork 執行）
-
-**觸發語句：** `update diagnosis`
-
-**執行：**
-```
-1. 讀取所有 verified 題目的解析與 question_index.json
-2. 依題型（topicId）更新 wiki/diagnosis/ 下對應頁面：
-   → 決策樹：拿到題目如何快速判斷解題路徑
-   → 更新各節點的代表題目與陷阱
-3. 如 diagnosis/ 缺少某 topicId 的頁面 → 新建
-4. 在 wiki/log.md 追加紀錄
-```
-
----
-
-### 【UPDATE-FAILURE-MODES】更新失敗模式層（在 Cowork 執行）
-
-**觸發語句：** `update failure-modes`
-
-**執行：**
-```
-1. 讀取所有 verified 題目解析中「陷阱分析」區塊
-2. 歸類並更新 wiki/failure-modes/ 四大類頁面：
-   → 強度失敗（降伏/斷裂）
-   → 穩定失敗（挫屈/LTB）
-   → 使用性失敗（撓度/振動）
-   → 接合失敗（銲接/螺栓）
-3. 在 wiki/log.md 追加紀錄
-```
-
----
-
-### 【UPDATE-MATERIALS】更新材料層（在 Cowork 執行）
-
-**觸發語句：** `update materials`
-
-**執行：**
-```
-1. 讀取所有涉及材料特性的題目解析（primaryTopicId = SS-U2-2 或 tags 含材料關鍵字）
-2. 更新 wiki/materials/ 四大主題頁面：
-   → 應力應變行為
-   → 殘留應力
-   → 斷裂韌性
-   → 銲接性
-3. 在 wiki/log.md 追加紀錄
-```

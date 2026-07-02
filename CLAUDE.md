@@ -27,7 +27,7 @@ Cowork 讀取 CLAUDE.md + 考卷 PDF + question_index.json
 你加入補充截圖（chart/eqn/hand）
 請 Cowork 更新 question_index.json（tags、verified）
     ↓
-Cowork: ingest SS-XXXX-N → wiki 自動更新
+說：「ingest SS-XXXX-N」→ Cowork 直接執行，wiki 自動更新
 ```
 
 ---
@@ -36,8 +36,8 @@ Cowork: ingest SS-XXXX-N → wiki 自動更新
 
 | 環境 | 負責什麼 |
 |------|---------|
-| **你（使用者）** | PDF 題目附圖截圖（fig-N.png）、chart/eqn/hand 補充截圖、驗算後更新 verificationStatus |
-| **Cowork** | 解題（SOLVE，**一次一題**）、存檔（.md + viz.html）、更新 question_index.json（hasSolution/tags/designMethod）、考題分布分析、直接維護 wiki/diagnosis/ · wiki/failure-modes/ · wiki/materials/ · wiki/code-ref/ · wiki/queries/；以及 ingest、compile-all、lint、status、add method（詳見 CLAUDE-CODE.md） |
+| **你（使用者）** | PDF 題目附圖截圖（fig-N.png）、chart/eqn/hand 補充截圖、人工驗算後通知 Cowork 更新 verificationStatus |
+| **Cowork** | 解題（SOLVE，**一次一題**）、存檔（.md + viz.html）、更新 question_index.json、**所有 wiki 操作指令**（ingest / compile-all / lint / status / reindex / add-concept / add-method / refresh-dashboard / frequency / analyze / predict / study / find / related / unverified / query，共 16 個，詳見 CLAUDE-CODE.md）、直接維護 wiki/diagnosis/ · wiki/failure-modes/ · wiki/materials/ · wiki/code-ref/ · wiki/queries/ · study/（study 指令輸出） |
 
 ---
 
@@ -45,9 +45,10 @@ Cowork: ingest SS-XXXX-N → wiki 自動更新
 
 ```
 raw/solutions/SS-XXXX-N/SS-XXXX-N.md  ──→  wiki/problems/      （Cowork: ingest）
-raw/json/concepts.json                 ──→  wiki/concepts/      （Cowork: compile）
-raw/solutions/methods/                 ──→  wiki/methods/       （Cowork: add method）
+raw/json/concepts.json                 ──→  wiki/concepts/      （Cowork: compile-all）
+raw/solutions/methods/                 ──→  wiki/methods/       （Cowork: compile-all）
 Cowork 查詢結果                        ──→  wiki/queries/       （Cowork 直接存入）
+Cowork study 指令輸出                  ──→  study/              （Cowork 直接存入）
 Cowork 跨層知識工具                    ──→  wiki/diagnosis/     （Cowork 直接存入）
                                        ──→  wiki/failure-modes/ （Cowork 直接存入）
                                        ──→  wiki/materials/     （Cowork 直接存入）
@@ -55,7 +56,7 @@ Cowork 跨層知識工具                    ──→  wiki/diagnosis/     （C
 
 解題內容唯一來源：raw/solutions/ 下的 .md 檔案
 索引資訊唯一來源：raw/json/question_index.json
-wiki/queries/ 及四個跨層知識目錄：由 Cowork 直接寫入，不走 ingest 流程
+wiki/queries/、study/（study 輸出）及四個跨層知識目錄：由 Cowork 直接寫入，不走 ingest 流程
 ```
 
 ---
@@ -69,8 +70,10 @@ exam-wiki-SS/
 ├── CLAUDE-SOLVE.md                  ← Cowork 解題 Skill
 ├── CLAUDE-CODE.md                   ← Cowork 操作指令（Runbook）
 ├── CLAUDE-SPEC.md                   ← 規格驗證層（格式、命名、完成標準）
+├── index.html                       ← 離線儀表板（題庫篩選/統計/進度追蹤/指令速查）
+├── dashboard-data.js                ← 儀表板快照（更新儀表板資料 指令重新生成）
 │
-├── study/                           ← 讀書筆記與講義（非架構核心，供參考）
+├── study/                           ← 讀書筆記、講義、study 指令 HTML 輸出
 │
 ├── raw/                             ← 所有原始資料（唯讀，絕對不可修改）
 │   ├── exams/                       ← 原始考卷 PDF（命名：SS-YYYY_鋼結構設計.pdf）
@@ -81,40 +84,67 @@ exam-wiki-SS/
 │       ├── SS-YYYY-N/
 │       │   ├── SS-YYYY-N.md
 │       │   ├── SS-YYYY-N-fig-1.png
-│       │   └── SS-YYYY-N-[內容碼]-viz.html
+│       │   ├── SS-YYYY-N-[內容碼]-viz.html
+│       │   └── *.pdf                ← 補充筆記（選用，命名無限制）
 │       └── methods/                 ← 解題方法論
 │
 └── wiki/                            ← 知識庫輸出
     ├── index.md                     ← 主導航（七層架構）
     ├── by-year.md                   ← 依考年分類
     ├── log.md                       ← 操作紀錄（append only）
-    ├── concepts/                    ← 概念頁         ← Cowork
-    ├── methods/                     ← 方法論頁       ← Cowork
-    ├── traps/                       ← 陷阱頁         ← Cowork
-    ├── problems/                    ← 題目頁         ← Cowork
-    ├── philosophy/                  ← 設計哲學頁     ← Cowork
-    ├── queries/                     ← 查詢結果頁     ← Cowork
-    ├── diagnosis/                   ← 題型診斷層     ← Cowork
-    ├── failure-modes/               ← 失敗模式層     ← Cowork
-    ├── materials/                   ← 材料行為層     ← Cowork
-    └── code-ref/                    ← 規範條文對應層 ← Cowork
+    ├── concepts/                    ← 概念頁         ← Cowork (compile-all)
+    ├── methods/                     ← 方法論頁       ← Cowork (compile-all)
+    ├── traps/                       ← 陷阱頁         ← Cowork (compile-all)
+    ├── problems/                    ← 題目頁         ← Cowork (ingest)
+    ├── philosophy/                  ← 設計哲學頁     ← Cowork (compile-all)
+    ├── queries/                     ← 查詢結果頁     ← Cowork (直接存入)
+    ├── diagnosis/                   ← 題型診斷層     ← Cowork (直接存入)
+    ├── failure-modes/               ← 失敗模式層     ← Cowork (直接存入)
+    ├── materials/                   ← 材料行為層     ← Cowork (直接存入)
+    └── code-ref/                    ← 規範條文對應層 ← Cowork (直接存入)
 ```
 
 ---
 
 ## 知識分類骨架（七層）
 
-Wiki 導航依七層知識架構組織（七層均由 Cowork 直接維護）：
+Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/ingest 生成，後四層由 Cowork 直接維護）：
 
 | 層 | 目錄 | 維護者 | 內容 |
 |----|------|:------:|------|
-| Layer 1 | `concepts/` + `problems/` | Cowork | 核心構件設計（拉壓/梁/梁柱/接合） |
-| Layer 2 | `philosophy/` | Cowork | 設計哲學與實務（耐震/材料/施工） |
-| Layer 3 | `methods/` | Cowork | 解題方法論（共軛梁/虛功/P-M圖） |
-| Layer 4 | `diagnosis/` | Cowork | 題型診斷決策樹 |
-| Layer 5 | `failure-modes/` | Cowork | 失敗模式（強度/穩定/使用性/接合） |
-| Layer 6 | `materials/` | Cowork | 材料行為（應力應變/殘留應力/斷裂韌性/銲接性） |
-| Layer 7 | `code-ref/` | Cowork | 規範條文對應（AISC 360/341/AWS D1.1） |
+| Layer 1 | `concepts/` + `problems/` | Cowork (ingest/compile) | 核心構件設計（拉壓/梁/梁柱/接合） |
+| Layer 2 | `philosophy/` | Cowork (compile-all) | 設計哲學與實務（耐震/材料/施工） |
+| Layer 3 | `methods/` | Cowork (compile-all) | 解題方法論（共軛梁/虛功/P-M圖） |
+| Layer 4 | `diagnosis/` | Cowork (直接存入) | 題型診斷決策樹 |
+| Layer 5 | `failure-modes/` | Cowork (直接存入) | 失敗模式（強度/穩定/使用性/接合） |
+| Layer 6 | `materials/` | Cowork (直接存入) | 材料行為（應力應變/殘留應力/斷裂韌性/銲接性） |
+| Layer 7 | `code-ref/` | Cowork (直接存入) | 規範條文對應（AISC 360/341/AWS D1.1） |
+
+---
+
+## 命題大綱分類（依官方命題大綱）
+
+> topicId 格式：`SS-UN-n` 等，U = 單元號，n = 子項號。
+> `primaryTopicId` 填最主要考點；跨子項時用 `secondaryTopicIds` 列出。
+
+### SS 單元：鋼結構設計
+
+| topicId | 命題大綱子項 |
+|---------|------------|
+| SS-U1-1 | 拉力及壓力桿件 |
+| SS-U1-2 | 梁桿件 |
+| SS-U1-3 | 梁柱桿件 |
+| SS-U1-4 | 接合之分析與設計 |
+| SS-U2-1 | 塑性分析與設計 |
+| SS-U2-2 | 鋼結構材料特性 |
+| SS-U2-3 | 設計規範對施工之要求 |
+
+### 其他相關單元
+
+| topicId | 命題大綱子項 |
+|---------|------------|
+| MM-U1-1 | 斷面性質計算（材力） |
+| SD-U3-1 | 結構耐震設計 |
 
 ---
 
@@ -127,7 +157,7 @@ Wiki 導航依七層知識架構組織（七層均由 Cowork 直接維護）：
 5. **ingest 前必須確認 verificationStatus = "verified"**
 6. 概念連結使用 `[[concept_id]]`（Obsidian 相容）
 7. 每次 ingest 同時更新 index.md 和 by-year.md
-8. **格式與命名規範見 CLAUDE-SPEC.md；操作指令見 CLAUDE-CODE.md**
+8. **格式與命名規範見 CLAUDE-SPEC.md；操作指令（ingest/compile/lint/status 等 16 項）見 CLAUDE-CODE.md，全部由 Cowork 執行**
 
 ---
 
@@ -135,24 +165,12 @@ Wiki 導航依七層知識架構組織（七層均由 Cowork 直接維護）：
 
 | 日期 | 變更 | 原因 |
 |------|------|------|
-| 2026-04-06 | 初始建立 schema v1 | 從 Karpathy LLM Wiki 概念出發 |
-| 2026-04-06 | 升級 v2：加入 solutions/ 資料夾、手寫補充機制 | 整合實際解題流程 |
 | 2026-04-06 | 升級 v3：question_index 獨立、by-year.md、單向資料流 | 四項架構優化 |
-| 2026-04-06 | 移除 formulas.json；加入標籤分類系統；加入圖片雙重保險規範；統一圖片命名規則 | 多項規格優化 |
-| 2026-04-06 | 資料夾改名為 exam-wiki-SS，確立每科獨立資料庫策略 | 六科規模差異大，獨立維護效率更高 |
-| 2026-04-07 | 移除 symbols.json、base/ 目錄；整合多個 JSON 進 CLAUDE.md | 簡化結構，減少中間層 |
-| 2026-04-07 | 解題環境從 Claude.ai Chat 改為 Cowork | Cowork 可直接存取資料夾 |
-| 2026-04-21 | SOLVE 工作流程加入 PDF 截圖步驟；fig PNG 由使用者負責 | 統一截圖品質與流程 |
-| 2026-04-22 | 七項文件優化（解析格式、多子圖命名、設計哲學框架擴充等） | 2018–2022 年解題實戰缺口修正 |
-| 2026-04-28 | Cowork 每次僅解一題；fig 截圖責任移轉至使用者 | token 上限與截圖品質控制 |
 | 2026-05-27 | 知識庫架構從三層升為七層（diagnosis / failure-modes / materials / code-ref） | 98 題累積後需要更豐富的橫向知識工具 |
-| 2026-05-27 | Harness 四層拆分：新建 CLAUDE-CODE.md / CLAUDE-SPEC.md / README.md / GLOSSARY.md；CLAUDE.md 精簡為純身份層（~150行） | 降低每次 session 的閒置 token，固化執行路徑 |
-| 2026-05-27 | 修正 CLAUDE-SOLVE.md 過時引用（格式規範指向 CLAUDE-SPEC.md）；連結 GLOSSARY.md 至 wiki/index.md 與 wiki/concepts/index.md；新建 study/ 目錄存放讀書講義 | 消除殘留的文件不一致問題 |
-| 2026-05-31 | 新增 `skills/` 目錄；建立 `vha-treasure-map.skill`（VHA→藏寶圖互動儀表板，含 KaTeX 渲染） | 將 SS-2020-3 藏寶圖工作流程打包為可重用 skill，方便 GitHub 開源共享 |
-| 2026-05-31 | 清除 `study/` 中的 VHA skill 草稿（vha.skill、vha-updated.skill、vha-SKILL-updated.md） | 正式 skill 已安裝，草稿無需保留 |
-| 2026-06-11 | 分類代號全面遷移至 `syllabus_taxonomy.json` 的 XX-Un-m 格式（4.1.x→SS-U1-x、6.3.1→SD-U3-1、1.1.1→MM-U1-1）；raw/solutions 標頭經使用者核准一次性例外更新；CLAUDE-CODE.md LINT 新增 topicId 驗證項 | 六科統一分類代號，消除新舊代號並存 |
-| 2026-06-11 | 新增 `dashboard.html` + `dashboard-data.js` 知識庫儀表板；CLAUDE-CODE.md 新增 DASHBOARD 指令 | 單頁總覽 98 題全貌：篩選瀏覽、統計圖、七層導覽、站內解析閱讀器 |
-| 2026-06-12 | GitHub Pages 部署：新增 `index.html`（導向儀表板）與 `.nojekyll`；dashboard.html 解析閱讀器改為雙模式（http(s) 用 fetch、本機 file:// 維持資料夾授權） | 知識庫以靜態網站佈署至 GitHub Pages |
+| 2026-05-27 | Harness 四層拆分：新建 CLAUDE-CODE.md / CLAUDE-SPEC.md / README.md / GLOSSARY.md | 降低每次 session 的閒置 token，固化執行路徑 |
+| 2026-06-11 | 分類代號全面遷移至 `syllabus_taxonomy.json` 的 XX-Un-m 格式；新增 `dashboard.html` | 六科統一分類代號；單頁總覽 98 題全貌 |
+| 2026-06-12 | GitHub Pages 部署：新增 `index.html`（導向儀表板）與 `.nojekyll` | 知識庫以靜態網站佈署至 GitHub Pages |
+| 2026-07-02 | 參考 RC 知識庫進行全文件升級，導入 16 項指令工作流、儀表板 `index.html` 整合、補充筆記 PDF 支援、以及 `study` 複習講義功能 | 統一 SS 與 RC 的文件架構，提升使用體驗與分析能力 |
 
 ---
 

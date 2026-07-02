@@ -152,7 +152,7 @@
       <select id="fUnit"><option value="">全部單元</option></select>
       <select id="fTopic"><option value="">全部考點</option></select>
       <select id="fMethod"><option value="">全部設計法</option>
-        <option>USD</option><option>WSD</option><option>概念題</option><option>混合</option></select>
+        <option>LRFD</option><option>ASD</option><option>概念題</option><option>混合</option></select>
       <select id="fProg"><option value="">全部進度</option>
         <option value="0">⬜ 未練習</option><option value="1">✅ 已練習</option><option value="2">🔁 需複習</option></select>
       <select id="fViz"><option value="">互動圖（全部）</option><option value="1">有互動圖</option></select>
@@ -298,8 +298,10 @@
         sortSel=document.getElementById('sort'),qIn=document.getElementById('q');
   [...new Set(Q.map(q=>q.year))].sort((a,b)=>b-a).forEach(y=>{
     fYear.insertAdjacentHTML('beforeend',`<option value="${y}">${y}（民國 ${y-1911}）</option>`)});
-  Object.entries(UNITS).forEach(([u,n])=>fUnit.insertAdjacentHTML('beforeend',`<option value="${u}">${n}</option>`));
-  Object.entries(TOPICS).forEach(([t,n])=>fTopic.insertAdjacentHTML('beforeend',`<option value="${t}">${t}｜${n}</option>`));
+  const activeUnits=new Set(),activeTopics=new Set();
+  Q.forEach(q=>{activeTopics.add(q.topic);activeUnits.add(unitOf(q.topic));q.sec.forEach(s=>{activeTopics.add(s);activeUnits.add(unitOf(s));});});
+  Object.entries(UNITS).filter(([u])=>activeUnits.has(u)).forEach(([u,n])=>fUnit.insertAdjacentHTML('beforeend',`<option value="${u}">${n}</option>`));
+  Object.entries(TOPICS).filter(([t])=>activeTopics.has(t)).forEach(([t,n])=>fTopic.insertAdjacentHTML('beforeend',`<option value="${t}">${t}｜${n}</option>`));
 
   // ---- 題目清單 ----
   function render(){

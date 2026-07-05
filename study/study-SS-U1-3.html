@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-U1-3 梁柱桿件 — 複習導覽</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<style>
+:root{
+  --bg:#f5f6fa; --surface:#fff; --surface2:#f0f2f8; --border:#dde1ee;
+  --text:#1a1d2e; --muted:#6b7280; --accent:#2563eb; --accent2:#7c3aed;
+  --green:#16a34a; --orange:#d97706; --red:#dc2626; --pink:#be185d;
+  --teal:#0891b2; --yellow:#ca8a04;
+  --asd:#d97706; --lrfd:#2563eb; --concept:#be185d; --secondary:#6b7280; --b2:#7c3aed;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:15px;line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.page-header{background:var(--surface);border-bottom:2px solid var(--border);padding:20px 32px;display:flex;align-items:center;gap:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.page-header h1{font-size:22px;font-weight:700}
+.page-header .badge{background:var(--accent2);color:#fff;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.page-header .back{color:var(--muted);font-size:13px;margin-left:auto}
+main{max-width:1280px;margin:0 auto;padding:28px 24px}
+section{margin-bottom:48px}
+.section-title{font-size:18px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--border);padding-bottom:10px}
+.section-num{background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.kpi .val{font-size:32px;font-weight:700;color:var(--accent)}
+.kpi .lbl{font-size:12px;color:var(--muted);margin-top:4px}
+
+.type-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-bottom:24px}
+.type-card{background:var(--surface);border:2px solid var(--border);border-radius:10px;padding:14px;cursor:pointer;transition:all .2s;user-select:none;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.type-card:hover,.type-card.active{border-color:var(--card-color);background:color-mix(in srgb,var(--card-color) 8%,#fff)}
+.type-card .tc-name{font-weight:600;font-size:13px;margin-bottom:4px}
+.type-card .tc-count{font-size:28px;font-weight:700;color:var(--card-color)}
+.type-card .tc-pct{font-size:11px;color:var(--muted)}
+
+.charts-row{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+.chart-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.chart-box h3{font-size:12px;color:var(--muted);margin-bottom:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+canvas{display:block;width:100%!important}
+
+.svg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.svg-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.svg-card svg{display:block;margin:0 auto 10px}
+.svg-card .svg-name{font-size:13px;font-weight:700;margin-bottom:4px}
+.svg-card .svg-desc{font-size:11px;color:var(--muted);line-height:1.5}
+
+.flowchart-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;overflow-x:auto;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+
+/* PM curve special */
+.pm-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+
+.formula-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.formula-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.formula-card .fc-title{font-size:13px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.formula-card .fc-title .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.formula-card .formula-line{background:var(--surface2);border-radius:6px;padding:10px 14px;margin-bottom:8px;font-size:13px;border-left:3px solid var(--border)}
+.formula-card .formula-note{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.6;padding:8px;background:var(--surface2);border-radius:6px}
+
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.filter-btn{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;cursor:pointer;transition:all .2s;color:var(--text);font-weight:500}
+.filter-btn:hover,.filter-btn.active{color:#fff;border-color:var(--btn-color,var(--accent));background:var(--btn-color,var(--accent))}
+.q-list{display:flex;flex-direction:column;gap:10px}
+.q-item{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--item-color);border-radius:8px;padding:14px 16px;display:flex;align-items:flex-start;gap:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.q-num{font-size:13px;font-weight:700;color:var(--item-color);white-space:nowrap;min-width:82px}
+.q-num a{color:var(--item-color)}
+.q-body{flex:1}
+.q-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.q-tag{background:var(--surface2);border-radius:4px;padding:2px 7px;font-size:11px;color:var(--muted)}
+.q-meta{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap}
+.q-method{font-size:11px;background:var(--surface2);border-radius:4px;padding:1px 7px;color:var(--muted);border:1px solid var(--border)}
+.q-sec-badge{font-size:10px;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:4px;padding:1px 6px}
+.q-viz-badge{font-size:10px;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:4px;padding:1px 6px}
+.icons{display:flex;gap:4px;margin-left:auto;flex-shrink:0}
+.q-item.hidden{display:none}
+
+.trap-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.trap{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--t-color);border-radius:8px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.trap .t-title{font-weight:700;font-size:13px;margin-bottom:6px;display:flex;align-items:center;gap:7px}
+.trap .t-desc{font-size:13px;color:var(--muted);line-height:1.5}
+.trap .t-ref{font-size:11px;margin-top:6px;color:var(--muted)}
+.trap .t-ref a{color:var(--t-color)}
+
+.calc-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;max-width:720px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.calc-row{display:grid;grid-template-columns:200px 1fr 90px;align-items:center;gap:10px;margin-bottom:10px}
+.calc-row label{font-size:13px;color:var(--muted)}
+.calc-row input{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:7px 12px;color:var(--text);font-size:13px;width:100%}
+.calc-row input:focus{outline:2px solid var(--accent);border-color:var(--accent)}
+.calc-row .unit{font-size:12px;color:var(--muted)}
+.calc-sect{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.calc-result{background:var(--surface2);border-radius:8px;padding:14px 16px;margin-top:14px;font-size:13px;line-height:2;border:1px solid var(--border)}
+.calc-btn{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:9px 22px;font-size:14px;cursor:pointer;font-weight:600;margin-top:10px;width:100%}
+.calc-btn:hover{background:#1d4ed8}
+.result-line{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:5px 0}
+.result-line:last-child{border:none}
+.result-pass{color:var(--green);font-weight:700}
+.result-fail{color:var(--red);font-weight:700}
+.result-key{color:var(--accent);font-weight:700}
+.result-warn{color:var(--orange);font-weight:600}
+.calc-note{font-size:11px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px dashed var(--border)}
+
+/* PM canvas */
+#pmCanvas{border:1px solid var(--border);border-radius:8px;background:#fff}
+
+@media(max-width:800px){
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .charts-row{grid-template-columns:1fr}
+  .formula-grid{grid-template-columns:1fr}
+  .trap-list{grid-template-columns:1fr}
+  .calc-row{grid-template-columns:1fr}
+  .calc-row label,.calc-row .unit{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="section-num">梁柱</div>
+  <h1>SS-U1-3 梁柱桿件（Beam-Column）</h1>
+  <span class="badge">12 題</span>
+  <span class="back"><a href="../index.html">← 儀表板</a> ｜ <a href="study-SS-U1.html">SS-U1 單元總覽</a></span>
+</div>
+
+<main>
+
+<!-- ① 命題分析 -->
+<section id="s1">
+  <div class="section-title"><span class="section-num">①</span> 命題分析</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="val">12</div><div class="lbl">歷年題數</div></div>
+    <div class="kpi"><div class="val" style="color:var(--asd)">11</div><div class="lbl">主考點題數</div></div>
+    <div class="kpi"><div class="val" style="color:var(--lrfd)">100%</div><div class="lbl">全有互動圖（viz）</div></div>
+    <div class="kpi"><div class="val" style="color:var(--green)">100%</div><div class="lbl">verified 比率</div></div>
+  </div>
+
+  <div class="type-cards" id="type-cards">
+    <div class="type-card" style="--card-color:var(--asd)" data-type="ASD" onclick="filterType('ASD',this)">
+      <div class="tc-name">📐 ASD 互制方程式</div>
+      <div class="tc-count">5</div>
+      <div class="tc-pct">42% · fa/Fa + Cm·fb/…</div>
+    </div>
+    <div class="type-card" style="--card-color:var(--lrfd)" data-type="LRFD" onclick="filterType('LRFD',this)">
+      <div class="tc-name">🔵 LRFD B1B2 放大法</div>
+      <div class="tc-count">5</div>
+      <div class="tc-pct">42% · Mu=B1·Mnt+B2·Mlt</div>
+    </div>
+    <div class="type-card" style="--card-color:var(--concept)" data-type="概念" onclick="filterType('概念',this)">
+      <div class="tc-name">💡 概念 / 直接分析法</div>
+      <div class="tc-count">1</div>
+      <div class="tc-pct">8% · DAM</div>
+    </div>
+    <div class="type-card" style="--card-color:var(--secondary)" data-type="secondary" onclick="filterType('secondary',this)">
+      <div class="tc-name">📎 副考點</div>
+      <div class="tc-count">1</div>
+      <div class="tc-pct">8%</div>
+    </div>
+    <div class="type-card" style="--card-color:var(--accent);border-color:var(--accent)" data-type="all" onclick="filterType('all',this)">
+      <div class="tc-name">📊 全部題目</div>
+      <div class="tc-count">12</div>
+      <div class="tc-pct">點擊顯示全部</div>
+    </div>
+  </div>
+
+  <div class="charts-row">
+    <div class="chart-box">
+      <h3>年度出題分布（主考點）</h3>
+      <canvas id="yearChart" height="160"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>設計法比例</h3>
+      <canvas id="pieChart" height="220"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ② 截面圖解 -->
+<section id="s2">
+  <div class="section-title"><span class="section-num">②</span> 受力示意 & P-M 互制曲線</div>
+  <div class="svg-grid">
+
+    <div class="svg-card">
+      <svg width="200" height="150" viewBox="0 0 200 150">
+        <!-- beam-column member -->
+        <rect x="85" y="20" width="30" height="110" fill="#eff6ff" stroke="#2563eb" stroke-width="2" rx="2"/>
+        <!-- Axial load P top -->
+        <line x1="100" y1="5" x2="100" y2="18" stroke="#dc2626" stroke-width="3" marker-end="url(#arrR)"/>
+        <text x="106" y="14" fill="#dc2626" font-size="11" font-weight="700">P</text>
+        <!-- Moment at top -->
+        <path d="M 120 22 A 18 18 0 0 1 120 42" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrO)"/>
+        <text x="141" y="36" fill="#d97706" font-size="10" font-weight="700">M₁</text>
+        <!-- Moment at bottom -->
+        <path d="M 120 108 A 18 18 0 0 0 120 128" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrO2)"/>
+        <text x="141" y="122" fill="#d97706" font-size="10" font-weight="700">M₂</text>
+        <!-- deflection curve -->
+        <path d="M 100 20 Q 116 75 100 130" stroke="#16a34a" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
+        <text x="120" y="80" fill="#16a34a" font-size="9">δ（P-δ）</text>
+        <defs>
+          <marker id="arrR" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#dc2626"/></marker>
+          <marker id="arrO" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#d97706"/></marker>
+          <marker id="arrO2" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#d97706"/></marker>
+        </defs>
+        <text x="100" y="148" text-anchor="middle" fill="#6b7280" font-size="9">梁柱（同時承受 P + M）</text>
+      </svg>
+      <div class="svg-name">梁柱受力</div>
+      <div class="svg-desc">軸壓 $P$ + 彎矩 $M_1$、$M_2$ 同時作用<br>P-δ（構材挫屈）+ P-Δ（層間側移）</div>
+    </div>
+
+    <div class="svg-card">
+      <svg width="200" height="150" viewBox="0 0 200 150">
+        <!-- P-M interaction curve -->
+        <!-- axes -->
+        <line x1="30" y1="130" x2="180" y2="130" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrAx)"/>
+        <line x1="30" y1="130" x2="30" y2="10" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrAy)"/>
+        <defs>
+          <marker id="arrAx" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#9ca3af"/></marker>
+          <marker id="arrAy" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#9ca3af"/></marker>
+        </defs>
+        <text x="185" y="134" fill="#6b7280" font-size="10">M</text>
+        <text x="22" y="8" fill="#6b7280" font-size="10">P</text>
+        <!-- P-M curve (bilinear LRFD) -->
+        <!-- Pn at top, Mp at right -->
+        <circle cx="30" cy="18" r="3" fill="#2563eb"/>
+        <text x="34" y="18" fill="#2563eb" font-size="9">φcPn</text>
+        <circle cx="160" cy="130" r="3" fill="#2563eb"/>
+        <text x="155" y="143" fill="#2563eb" font-size="9">φbMn</text>
+        <!-- LRFD bilinear: H1-1a line (Pu/φPn ≥ 0.2) -->
+        <!-- from (0, φcPn=18) breakpoint at Pu/φPn=0.2: (0, 0.2×112=40.4 from top → at y=90) to (φbMnx, 0) = (160,130) -->
+        <!-- kink point: Pu/φPn = 0.2 => P = 0.2*φPn => y=130-0.2*112=107.6 (not right) let me just draw schematically -->
+        <!-- schematic breakpoint at ~P=35% -->
+        <path d="M 30 18 L 80 76 L 160 130" stroke="#2563eb" stroke-width="2.5" fill="none"/>
+        <!-- kink point -->
+        <circle cx="80" cy="76" r="3" fill="#2563eb" opacity=".7"/>
+        <text x="82" y="72" fill="#6b7280" font-size="8">Pu/φPn=0.2</text>
+        <!-- safe region shading -->
+        <path d="M 30 18 L 80 76 L 160 130 L 30 130 Z" fill="#eff6ff" opacity=".5"/>
+        <!-- H1-1a label -->
+        <text x="50" y="48" fill="#2563eb" font-size="9">H1-1a</text>
+        <text x="105" y="100" fill="#2563eb" font-size="9">H1-1b</text>
+        <!-- unsafe region dot -->
+        <circle cx="130" cy="50" r="4" fill="#dc2626"/>
+        <text x="136" y="48" fill="#dc2626" font-size="8">NG</text>
+        <circle cx="60" cy="100" r="4" fill="#16a34a"/>
+        <text x="66" y="98" fill="#16a34a" font-size="8">OK</text>
+      </svg>
+      <div class="svg-name">LRFD P-M 互制曲線</div>
+      <div class="svg-desc">H1-1a（$P_u/\phi P_n \ge 0.2$）折線<br>H1-1b（$P_u/\phi P_n < 0.2$）</div>
+    </div>
+
+    <div class="svg-card">
+      <svg width="200" height="150" viewBox="0 0 200 150">
+        <!-- Sway vs non-sway -->
+        <!-- Left: braced (non-sway) -->
+        <rect x="10" y="30" width="6" height="100" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1"/>
+        <rect x="16" y="30" width="50" height="8" fill="#9ca3af"/>
+        <line x1="16" y1="38" x2="16" y2="128" stroke="#9ca3af" stroke-width="1.5"/>
+        <line x1="66" y1="38" x2="66" y2="128" stroke="#9ca3af" stroke-width="1.5"/>
+        <!-- bracing diagonal -->
+        <line x1="16" y1="38" x2="66" y2="128" stroke="#16a34a" stroke-width="2"/>
+        <line x1="66" y1="38" x2="16" y2="128" stroke="#16a34a" stroke-width="2"/>
+        <rect x="16" y="120" width="50" height="8" fill="#9ca3af"/>
+        <text x="41" y="148" text-anchor="middle" fill="#16a34a" font-size="10" font-weight="700">斜撐構架</text>
+        <text x="41" y="14" text-anchor="middle" fill="#6b7280" font-size="9">K ≈ 0.5~1.0</text>
+
+        <!-- Right: unbraced (sway) -->
+        <rect x="130" y="30" width="6" height="100" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1"/>
+        <rect x="136" y="30" width="50" height="8" fill="#9ca3af"/>
+        <line x1="136" y1="38" x2="136" y2="128" stroke="#9ca3af" stroke-width="1.5"/>
+        <line x1="186" y1="38" x2="186" y2="128" stroke="#9ca3af" stroke-width="1.5"/>
+        <rect x="136" y="120" width="50" height="8" fill="#9ca3af"/>
+        <!-- sway arrows -->
+        <line x1="136" y1="38" x2="160" y2="38" stroke="#dc2626" stroke-width="2" marker-end="url(#arrS)"/>
+        <defs><marker id="arrS" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#dc2626"/></marker></defs>
+        <text x="161" y="148" text-anchor="middle" fill="#dc2626" font-size="10" font-weight="700">無側撐剛架</text>
+        <text x="161" y="14" text-anchor="middle" fill="#6b7280" font-size="9">K ≥ 1.0</text>
+      </svg>
+      <div class="svg-name">有側撐 vs 無側撐構架</div>
+      <div class="svg-desc">斜撐：$K_1 \le 1.0$，$B_2$ 通常 $\approx 1.0$<br>剛架：$K \ge 1.0$，需計 $B_2$</div>
+    </div>
+
+    <div class="svg-card">
+      <svg width="200" height="150" viewBox="0 0 200 150">
+        <!-- Cm diagram: moment gradient -->
+        <!-- single curvature -->
+        <text x="30" y="14" fill="#6b7280" font-size="9" font-weight="700">單曲率（同向彎矩）</text>
+        <line x1="10" y1="20" x2="10" y2="70" stroke="#9ca3af" stroke-width="1.5"/>
+        <line x1="80" y1="20" x2="80" y2="70" stroke="#9ca3af" stroke-width="1.5"/>
+        <path d="M 10 20 Q 45 52 80 20" stroke="#d97706" stroke-width="2" fill="none"/>
+        <text x="20" y="18" fill="#d97706" font-size="9">+M₁</text>
+        <text x="62" y="18" fill="#d97706" font-size="9">+M₂</text>
+        <text x="45" y="62" text-anchor="middle" fill="#6b7280" font-size="8">Cm接近1</text>
+        <!-- reverse curvature -->
+        <text x="110" y="14" fill="#6b7280" font-size="9" font-weight="700">雙曲率（反向彎矩）</text>
+        <line x1="100" y1="20" x2="100" y2="70" stroke="#9ca3af" stroke-width="1.5"/>
+        <line x1="170" y1="20" x2="170" y2="70" stroke="#9ca3af" stroke-width="1.5"/>
+        <path d="M 100 20 Q 115 38 135 45 Q 155 52 170 70" stroke="#2563eb" stroke-width="2" fill="none"/>
+        <text x="90" y="18" fill="#2563eb" font-size="9">−M₁</text>
+        <text x="158" y="68" fill="#2563eb" font-size="9">+M₂</text>
+        <text x="135" y="85" text-anchor="middle" fill="#6b7280" font-size="8">Cm &lt; 1（有利）</text>
+        <!-- Cm formula -->
+        <rect x="10" y="95" width="180" height="48" rx="4" fill="#fffbeb" stroke="#d97706" stroke-width="1"/>
+        <text x="100" y="110" text-anchor="middle" fill="#d97706" font-size="10" font-weight="700">Cm = 0.6 − 0.4(M₁/M₂)</text>
+        <text x="100" y="124" text-anchor="middle" fill="#6b7280" font-size="9">M₁：較小端彎矩（雙曲率取負）</text>
+        <text x="100" y="137" text-anchor="middle" fill="#6b7280" font-size="9">側移構架：Cm = 0.85（保守）</text>
+      </svg>
+      <div class="svg-name">$C_m$ 係數圖示</div>
+      <div class="svg-desc">反曲率 → $C_m < 1$（有利）<br>同向彎矩 → $C_m \to 1$（不利）</div>
+    </div>
+
+    <div class="svg-card">
+      <svg width="200" height="150" viewBox="0 0 200 150">
+        <!-- P-Delta vs p-delta -->
+        <!-- frame with P-Delta -->
+        <rect x="10" y="130" width="80" height="8" fill="#e5e7eb"/>
+        <line x1="20" y1="130" x2="20" y2="30" stroke="#9ca3af" stroke-width="2"/>
+        <line x1="80" y1="130" x2="80" y2="30" stroke="#9ca3af" stroke-width="2"/>
+        <rect x="20" y="22" width="60" height="8" fill="#9ca3af"/>
+        <!-- lateral load H -->
+        <line x1="0" y1="30" x2="18" y2="30" stroke="#dc2626" stroke-width="2" marker-end="url(#arrH)"/>
+        <defs><marker id="arrH" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#dc2626"/></marker></defs>
+        <text x="4" y="28" fill="#dc2626" font-size="9">H</text>
+        <!-- delta at top -->
+        <line x1="80" y1="30" x2="97" y2="30" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="99" y="34" fill="#7c3aed" font-size="9">Δ</text>
+        <!-- P at top -->
+        <line x1="50" y1="10" x2="50" y2="22" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrP)"/>
+        <defs><marker id="arrP" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#dc2626"/></marker></defs>
+        <text x="55" y="8" fill="#dc2626" font-size="9">P</text>
+        <!-- P-Delta label -->
+        <text x="50" y="75" text-anchor="middle" fill="#7c3aed" font-size="9" font-weight="700">P-Δ（層間）</text>
+        <text x="50" y="86" text-anchor="middle" fill="#6b7280" font-size="8">B₂ 放大 Mlt</text>
+
+        <!-- p-delta: member -->
+        <line x1="120" y1="130" x2="120" y2="30" stroke="#9ca3af" stroke-width="2"/>
+        <path d="M 120 30 Q 140 80 120 130" stroke="#16a34a" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
+        <text x="148" y="82" fill="#16a34a" font-size="9">δ</text>
+        <text x="135" y="75" text-anchor="middle" fill="#16a34a" font-size="9" font-weight="700">P-δ（構材）</text>
+        <text x="135" y="86" text-anchor="middle" fill="#6b7280" font-size="8">B₁ 放大 Mnt</text>
+      </svg>
+      <div class="svg-name">P-Δ vs P-δ 效應</div>
+      <div class="svg-desc">P-Δ：層間側移（$B_2$ 放大 $M_{lt}$）<br>P-δ：構材撓曲（$B_1$ 放大 $M_{nt}$）</div>
+    </div>
+
+    <div class="svg-card">
+      <svg width="200" height="150" viewBox="0 0 200 150">
+        <!-- alignment chart (nomograph) schematic -->
+        <text x="100" y="12" text-anchor="middle" fill="#6b7280" font-size="10" font-weight="700">對位圖（Nomograph）</text>
+        <!-- 3 vertical lines: GA, K, GB -->
+        <!-- GA line -->
+        <line x1="35" y1="20" x2="35" y2="135" stroke="#2563eb" stroke-width="2"/>
+        <text x="35" y="17" text-anchor="middle" fill="#2563eb" font-size="9" font-weight="700">GA</text>
+        <text x="35" y="145" text-anchor="middle" fill="#6b7280" font-size="8">∞</text>
+        <!-- K line -->
+        <line x1="100" y1="20" x2="100" y2="135" stroke="#dc2626" stroke-width="2"/>
+        <text x="100" y="17" text-anchor="middle" fill="#dc2626" font-size="9" font-weight="700">K</text>
+        <!-- tick marks on K line -->
+        <text x="112" y="28" fill="#dc2626" font-size="8">∞</text>
+        <text x="112" y="58" fill="#dc2626" font-size="8">5</text>
+        <text x="112" y="85" fill="#dc2626" font-size="8">2</text>
+        <text x="112" y="107" fill="#dc2626" font-size="8">1.2</text>
+        <text x="112" y="128" fill="#dc2626" font-size="8">1.0</text>
+        <line x1="97" y1="25" x2="103" y2="25" stroke="#dc2626" stroke-width="1"/>
+        <line x1="97" y1="55" x2="103" y2="55" stroke="#dc2626" stroke-width="1"/>
+        <line x1="97" y1="82" x2="103" y2="82" stroke="#dc2626" stroke-width="1"/>
+        <line x1="97" y1="103" x2="103" y2="103" stroke="#dc2626" stroke-width="1"/>
+        <line x1="97" y1="124" x2="103" y2="124" stroke="#dc2626" stroke-width="1"/>
+        <!-- GB line -->
+        <line x1="165" y1="20" x2="165" y2="135" stroke="#2563eb" stroke-width="2"/>
+        <text x="165" y="17" text-anchor="middle" fill="#2563eb" font-size="9" font-weight="700">GB</text>
+        <text x="165" y="145" text-anchor="middle" fill="#6b7280" font-size="8">∞</text>
+        <!-- example line -->
+        <line x1="35" y1="72" x2="100" y2="82" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <line x1="100" y1="82" x2="165" y2="65" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <circle cx="35" cy="72" r="3" fill="#d97706"/>
+        <circle cx="165" cy="65" r="3" fill="#d97706"/>
+        <circle cx="100" cy="82" r="3" fill="#dc2626"/>
+      </svg>
+      <div class="svg-name">對位圖（Nomograph）</div>
+      <div class="svg-desc">由 $G_A$、$G_B$ 查有效長度係數 $K$<br>$G = \frac{\sum(I_c/L_c)}{\sum(I_g/L_g)}$</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ③ 解題流程圖 -->
+<section id="s3">
+  <div class="section-title"><span class="section-num">③</span> 解題流程圖（ASD vs LRFD）</div>
+  <div class="flowchart-wrap">
+    <svg width="980" height="500" viewBox="0 0 980 500" style="max-width:100%;height:auto">
+      <defs>
+        <marker id="fArr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6 Z" fill="#6b7280"/>
+        </marker>
+      </defs>
+
+      <!-- START -->
+      <rect x="390" y="8" width="200" height="40" rx="20" fill="#2563eb"/>
+      <text x="490" y="33" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">梁柱設計 START</text>
+
+      <!-- 設計法 -->
+      <polygon points="490,68 630,96 490,124 350,96" fill="#f0f9ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="490" y="93" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="700">設計法？</text>
+      <text x="490" y="107" text-anchor="middle" fill="#6b7280" font-size="10">ASD / LRFD</text>
+      <line x1="490" y1="48" x2="490" y2="68" stroke="#6b7280" stroke-width="1.5" marker-end="url(#fArr)"/>
+
+      <!-- ═══ ASD BRANCH (left) ═══ -->
+      <line x1="350" y1="96" x2="170" y2="96" stroke="#6b7280" stroke-width="1.5" marker-end="url(#fArr)"/>
+      <text x="254" y="90" fill="#d97706" font-size="10" font-weight="600">ASD</text>
+
+      <!-- ASD step 1: fa Fa -->
+      <rect x="40" y="76" width="200" height="40" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+      <text x="140" y="93" text-anchor="middle" fill="#d97706" font-size="11" font-weight="700">① 計算 fa、Fa</text>
+      <text x="140" y="108" text-anchor="middle" fill="#6b7280" font-size="10">fa=P/A, Fa 依 KL/r 查表</text>
+
+      <!-- fa/Fa check -->
+      <polygon points="140,138 240,162 140,186 40,162" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+      <text x="140" y="160" text-anchor="middle" fill="#d97706" font-size="11" font-weight="600">fa/Fa &gt; 0.15？</text>
+      <text x="140" y="174" text-anchor="middle" fill="#6b7280" font-size="9">選用方程式</text>
+      <line x1="140" y1="116" x2="140" y2="138" stroke="#6b7280" stroke-width="1.5" marker-end="url(#fArr)"/>
+
+      <!-- YES: 穩定方程式 -->
+      <rect x="10" y="210" width="260" height="80" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+      <text x="140" y="228" text-anchor="middle" fill="#d97706" font-size="10" font-weight="700">穩定方程式（fa/Fa &gt; 0.15）</text>
+      <text x="140" y="244" text-anchor="middle" fill="#6b7280" font-size="9">fa/Fa + CmxfbxA / [(1-fa/F'ex)Fbx]</text>
+      <text x="140" y="256" text-anchor="middle" fill="#6b7280" font-size="9">       + Cmyfby / [(1-fa/F'ey)Fby] ≤ 1.0</text>
+      <text x="140" y="272" text-anchor="middle" fill="#d97706" font-size="9" font-weight="600">且：fa/(0.6Fy) + fbx/Fbx + fby/Fby ≤ 1.0</text>
+      <text x="140" y="283" text-anchor="middle" fill="#6b7280" font-size="8">（強度方程式同時驗算）</text>
+      <line x1="140" y1="186" x2="140" y2="210" stroke="#6b7280" stroke-width="1.5" marker-end="url(#fArr)"/>
+      <text x="143" y="200" fill="#16a34a" font-size="10">是</text>
+
+      <!-- NO: 簡化方程式 -->
+      <rect x="10" y="360" width="260" height="52" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="140" y="380" text-anchor="middle" fill="#16a34a" font-size="10" font-weight="700">簡化方程式（fa/Fa ≤ 0.15）</text>
+      <text x="140" y="396" text-anchor="middle" fill="#6b7280" font-size="9">fa/Fa + fbx/Fbx + fby/Fby ≤ 1.0</text>
+      <text x="140" y="408" text-anchor="middle" fill="#6b7280" font-size="8">（無需 Cm 放大，可直接線性疊加）</text>
+      <line x1="40" y1="162" x2="10" y2="162" stroke="#6b7280" stroke-width="1"/>
+      <line x1="10" y1="162" x2="10" y2="384" stroke="#6b7280" stroke-width="1"/>
+      <line x1="10" y1="384" x2="10" y2="384" stroke="#6b7280" stroke-width="1.5" marker-end="url(#fArr)"/>
+      <text x="4" y="275" fill="#dc2626" font-size="10">否</text>
+
+      <!-- ═══ LRFD BRANCH (right) ═══ -->
+      <line x1="630" y1="96" x2="810" y2="96" stroke="#6b7280" stroke-width="1.5" marker-end="url(#fArr)"/>
+      <text x="716" y="90" fill="#2563eb" font-size="10" font-weight="600">LRFD</text>
+
+      <!-- LRFD step 1 -->
+      <rect x="730" y="76" width="220" height="40" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+      <text x="840" y="93" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">① 計算 φcPn、φbMnx/y</text>
+      <text x="840" y="108" text-anchor="middle" fill="#6b7280" font-size="10">依 KL/r 求 Pn，依 LTB 求 Mnx</text>
+
+      <!-- LRFD step 2: B1B2 -->
+      <rect x="730" y="138" width="220" height="52" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+      <text x="840" y="156" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">② B1B2 放大法</text>
+      <text x="840" y="172" text-anchor="middle" fill="#6b7280" font-size="9">Mu = B1·Mnt + B2·Mlt</text>
+      <text x="840" y="184" text-anchor="middle" fill="#6b7280" font-size="9">B1 = Cm/(1−αPr/Pe1) ≥ 1.0</text>
+      <line x1="840" y1="116" x2="840" y2="138" stroke="#6b7280" stroke-width="1.5" marker-end="url(#fArr)"/>
+
+      <!-- LRFD step 3: Pu/φPn check -->
+      <polygon points="840,212 960,236 840,260 720,236" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+      <text x="840" y="233" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="600">③ Pu/φcPn ≥ 0.2？</text>
+      <text x="840" y="247" text-anchor="middle" fill="#6b7280" font-size="9">選用互制方程式</text>
+      <line x1="840" y1="190" x2="840" y2="212" stroke="#6b7280" stroke-width="1.5" marker-end="url(#fArr)"/>
+
+      <!-- H1-1a -->
+      <rect x="720" y="285" width="240" height="52" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+      <text x="840" y="303" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="700">H1-1a（Pu/φPn ≥ 0.2）</text>
+      <text x="840" y="319" text-anchor="middle" fill="#6b7280" font-size="9">Pu/(φcPn) + 8/9·(Mux/φbMnx + Muy/φbMny) ≤ 1.0</text>
+      <text x="840" y="331" text-anchor="middle" fill="#6b7280" font-size="8">（軸壓較大，彎矩係數 8/9）</text>
+      <line x1="840" y1="260" x2="840" y2="285" stroke="#6b7280" stroke-width="1.5" marker-end="url(#fArr)"/>
+      <text x="843" y="275" fill="#16a34a" font-size="10">是</text>
+
+      <!-- H1-1b -->
+      <rect x="720" y="370" width="240" height="52" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="840" y="388" text-anchor="middle" fill="#16a34a" font-size="10" font-weight="700">H1-1b（Pu/φPn &lt; 0.2）</text>
+      <text x="840" y="404" text-anchor="middle" fill="#6b7280" font-size="9">Pu/(2φcPn) + (Mux/φbMnx + Muy/φbMny) ≤ 1.0</text>
+      <text x="840" y="416" text-anchor="middle" fill="#6b7280" font-size="8">（軸壓較小，軸力係數除以2）</text>
+      <line x1="720" y1="236" x2="690" y2="236" stroke="#6b7280" stroke-width="1.5"/>
+      <line x1="690" y1="236" x2="690" y2="394" stroke="#6b7280" stroke-width="1.5"/>
+      <line x1="690" y1="394" x2="720" y2="394" stroke="#6b7280" stroke-width="1.5" marker-end="url(#fArr)"/>
+      <text x="682" y="322" fill="#dc2626" font-size="10">否</text>
+
+      <!-- PASS banner -->
+      <rect x="350" y="455" width="280" height="38" rx="19" fill="#16a34a"/>
+      <text x="490" y="479" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">互制比 ≤ 1.0 → 設計完成 ✓</text>
+      <line x1="140" y1="412" x2="140" y2="470" stroke="#6b7280" stroke-width="1"/>
+      <line x1="140" y1="470" x2="490" y2="470" stroke="#6b7280" stroke-width="1"/>
+      <line x1="490" y1="470" x2="490" y2="455" stroke="#6b7280" stroke-width="1.5" marker-end="url(#fArr)"/>
+      <line x1="840" y1="422" x2="840" y2="445" stroke="#6b7280" stroke-width="1"/>
+      <line x1="840" y1="445" x2="490" y2="445" stroke="#6b7280" stroke-width="1"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ④ 核心公式 -->
+<section id="s4">
+  <div class="section-title"><span class="section-num">④</span> 核心公式速查</div>
+  <div class="formula-grid">
+
+    <div class="formula-card">
+      <div class="fc-title"><span class="dot" style="background:var(--asd)"></span>ASD 互制方程式（fa/Fa &gt; 0.15）</div>
+      <div class="formula-line">$$\frac{f_a}{F_a} + \frac{C_{mx}f_{bx}}{\left(1-\dfrac{f_a}{F'_{ex}}\right)F_{bx}} + \frac{C_{my}f_{by}}{\left(1-\dfrac{f_a}{F'_{ey}}\right)F_{by}} \le 1.0$$</div>
+      <div class="formula-line">強度驗算（同時）：$\dfrac{f_a}{0.6F_y} + \dfrac{f_{bx}}{F_{bx}} + \dfrac{f_{by}}{F_{by}} \le 1.0$</div>
+      <div class="formula-note">$F'_e = \dfrac{12\pi^2 E}{23(KL/r)^2}$（對應方向歐拉應力）<br>$f_a/F_a \le 0.15$ 時：直接線性疊加</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="fc-title"><span class="dot" style="background:var(--asd)"></span>$C_m$ 係數</div>
+      <div class="formula-line">無側移（有端點彎矩）：$C_m = 0.6 - 0.4\dfrac{M_1}{M_2}$</div>
+      <div class="formula-line">側移構架：$C_m = 0.85$</div>
+      <div class="formula-line">有橫向載重（無端部約束）：$C_m = 1.0$</div>
+      <div class="formula-note">$M_1/M_2$：小/大端彎矩比（同向曲率取正，反向取負）<br>雙曲率（反向）時 $M_1/M_2 < 0$，$C_m < 0.6$（有利）</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="fc-title"><span class="dot" style="background:var(--lrfd)"></span>LRFD P-M 互制（Chapter H）</div>
+      <div class="formula-line">$\dfrac{P_u}{\phi_c P_n} \ge 0.2$：$\quad\dfrac{P_u}{\phi_c P_n} + \dfrac{8}{9}\!\left(\dfrac{M_{ux}}{\phi_b M_{nx}} + \dfrac{M_{uy}}{\phi_b M_{ny}}\right) \le 1.0$</div>
+      <div class="formula-line">$\dfrac{P_u}{\phi_c P_n} < 0.2$：$\quad\dfrac{P_u}{2\phi_c P_n} + \left(\dfrac{M_{ux}}{\phi_b M_{nx}} + \dfrac{M_{uy}}{\phi_b M_{ny}}\right) \le 1.0$</div>
+      <div class="formula-note">$\phi_c = 0.85$（壓力）；$\phi_b = 0.90$（彎矩）<br>弱軸對稱斷面：$M_{ny} = M_{py} = F_y Z_y$（無 LTB）</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="fc-title"><span class="dot" style="background:var(--lrfd)"></span>B1 放大係數（P-δ 效應）</div>
+      <div class="formula-line">$$B_1 = \frac{C_m}{1 - \alpha P_r / P_{e1}} \ge 1.0$$</div>
+      <div class="formula-line">$P_{e1} = \dfrac{\pi^2 EI}{(K_1 L)^2}$（對應方向，$K_1$ 取無側移值 $\le 1.0$）</div>
+      <div class="formula-note">$\alpha = 1.0$（LRFD）；$\alpha = 1.6$（ASD）<br>$M_u = B_1 M_{nt} + B_2 M_{lt}$（含側移時）<br>$B_1 \ge 1.0$，若計算值 &lt; 1.0 取 1.0</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="fc-title"><span class="dot" style="background:var(--b2)"></span>B2 放大係數（P-Δ 效應）</div>
+      <div class="formula-line">$$B_2 = \frac{1}{1 - \dfrac{\alpha \sum P_r}{\sum P_{e2}}} \ge 1.0$$</div>
+      <div class="formula-line">$\sum P_{e2} = \dfrac{\pi^2 EI}{(KL)^2}$（有側移，K 用對位圖求）</div>
+      <div class="formula-note">
+        $\sum P_r$：同層所有柱的設計軸力總和<br>
+        $\sum P_{e2}$：同層所有柱的有側移彈性挫屈載重總和<br>
+        斜撐構架：通常 $M_{lt} = 0$，$B_2$ 不起作用
+      </div>
+    </div>
+
+    <div class="formula-card">
+      <div class="fc-title"><span class="dot" style="background:var(--b2)"></span>有效長度係數 K</div>
+      <div class="formula-line">對位圖：$G = \dfrac{\sum(I_c/L_c)}{\sum(I_g/L_g)}$（柱端約束比）</div>
+      <div class="formula-line">特殊邊界：固接端 $G = 1.0$（建議）；鉸接端 $G = 10$（或取 $\infty \to G = 10$）</div>
+      <div class="formula-note">
+        無側移構架（斜撐）：$K \le 1.0$<br>
+        有側移構架（剛架）：$K \ge 1.0$<br>
+        簡化保守：無側移取 $K=1.0$；有側移需用對位圖
+      </div>
+    </div>
+
+    <div class="formula-card">
+      <div class="fc-title"><span class="dot" style="background:var(--concept)"></span>直接分析法（DAM，AISC Ch. C）</div>
+      <div class="formula-line">剛度折減：$EI^* = 0.8\tau_b EI$，$EA^* = 0.8EA$</div>
+      <div class="formula-line">$\tau_b = 1.0$（$\alpha P_r \le 0.5P_y$）；$\tau_b < 1.0$（軸壓較大時）</div>
+      <div class="formula-line">假想水平力：$N_i = 0.002 \alpha Y_i$（每層）</div>
+      <div class="formula-note">
+        DAM 中 $K=1.0$（不需對位圖），以折減剛度 + 初始不完美替代<br>
+        LRFD：$\alpha=1.0$；ASD：$\alpha=1.6$<br>
+        與 B1B2 法主要差別：K 值不同、剛度修正方式不同
+      </div>
+    </div>
+
+    <div class="formula-card">
+      <div class="fc-title"><span class="dot" style="background:var(--asd)"></span>柱強度 Fa（ASD）與 φcPn（LRFD）</div>
+      <div class="formula-line">ASD：$F_a = \left[\dfrac{1-(KL/r)^2}{2C_c^2}\right]F_y / FS$（$KL/r \le C_c$）</div>
+      <div class="formula-line">LRFD：$F_{cr} = \left[0.658^{\lambda_c^2}\right]F_y$（$\lambda_c \le 1.5$）</div>
+      <div class="formula-line">$\lambda_c = \dfrac{KL}{r\pi}\sqrt{\dfrac{F_y}{E}}$，$\phi_c = 0.85$</div>
+      <div class="formula-note">$C_c = \pi\sqrt{2E/F_y}$（彈塑性分界細長比）<br>$KL/r > C_c$ 時（彈性）：$F_a = 12\pi^2 E / (23(KL/r)^2)$</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ⑤ 考題清單 -->
+<section id="s5">
+  <div class="section-title"><span class="section-num">⑤</span> 考題清單</div>
+  <div class="filter-bar" id="filter-bar">
+    <button class="filter-btn active" style="--btn-color:var(--accent)" data-f="all" onclick="setFilter('all',this)">全部（12）</button>
+    <button class="filter-btn" style="--btn-color:var(--asd)" data-f="ASD" onclick="setFilter('ASD',this)">📐 ASD 互制（5）</button>
+    <button class="filter-btn" style="--btn-color:var(--lrfd)" data-f="LRFD" onclick="setFilter('LRFD',this)">🔵 LRFD B1B2（5）</button>
+    <button class="filter-btn" style="--btn-color:var(--concept)" data-f="概念" onclick="setFilter('概念',this)">💡 概念/DAM（1）</button>
+    <button class="filter-btn" style="--btn-color:var(--secondary)" data-f="secondary" onclick="setFilter('secondary',this)">📎 副考點（1）</button>
+  </div>
+  <div class="q-list" id="q-list"></div>
+</section>
+
+<!-- ⑥ 高頻陷阱 -->
+<section id="s6">
+  <div class="section-title"><span class="section-num">⑥</span> 高頻陷阱 Top 8</div>
+  <div class="trap-list">
+
+    <div class="trap" style="--t-color:var(--asd)">
+      <div class="t-title"><span>📐</span> ASD：穩定方程式與強度方程式要同時驗算</div>
+      <div class="t-desc">fa/Fa > 0.15 時，必須同時驗算兩個方程式，取不利者。許多人只算穩定方程式就停，忘記強度方程式 $f_a/(0.6F_y) + f_{bx}/F_{bx} + f_{by}/F_{by} \le 1.0$ 也要滿足。</div>
+      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2003-4/SS-2003-4.md&t=SS-2003-4" target="_blank">SS-2003-4</a>、<a href="../index.html#md=raw/solutions/SS-2008-4/SS-2008-4.md&t=SS-2008-4" target="_blank">SS-2008-4</a></div>
+    </div>
+
+    <div class="trap" style="--t-color:var(--asd)">
+      <div class="t-title"><span>📐</span> F'e 的 KL/r 方向要正確</div>
+      <div class="t-desc">$F'_{ex}$ 用強軸（x方向）的 $(KL/r)_x$ 計算，$F'_{ey}$ 用弱軸。加了彎矩在哪個方向，放大係數就用對應方向的歐拉應力，方向不能搞混。</div>
+      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2007-2/SS-2007-2.md&t=SS-2007-2" target="_blank">SS-2007-2</a>、<a href="../index.html#md=raw/solutions/SS-2019-3/SS-2019-3.md&t=SS-2019-3" target="_blank">SS-2019-3</a></div>
+    </div>
+
+    <div class="trap" style="--t-color:var(--asd)">
+      <div class="t-title"><span>📐</span> Cm 符號：反向彎矩（雙曲率）M₁/M₂ 為負</div>
+      <div class="t-desc">$C_m = 0.6 - 0.4(M_1/M_2)$，單曲率（同方向）$M_1/M_2 > 0$ → $C_m < 0.6$；雙曲率（反向）$M_1/M_2 < 0$ → $C_m > 0.6$。反向曲率對穩定有利（$C_m$ 較小），別弄反了。</div>
+      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2004-4/SS-2004-4.md&t=SS-2004-4" target="_blank">SS-2004-4</a></div>
+    </div>
+
+    <div class="trap" style="--t-color:var(--lrfd)">
+      <div class="t-title"><span>🔵</span> LRFD：H1-1a/H1-1b 門檻值判斷</div>
+      <div class="t-desc">$P_u/\phi_c P_n \ge 0.2$ 用 H1-1a（彎矩係數 8/9）；$< 0.2$ 用 H1-1b（軸力係數除以2）。先求比值再選公式，不可兩個都算取大。</div>
+      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2012-3/SS-2012-3.md&t=SS-2012-3" target="_blank">SS-2012-3</a>、<a href="../index.html#md=raw/solutions/SS-2020-3/SS-2020-3.md&t=SS-2020-3" target="_blank">SS-2020-3</a></div>
+    </div>
+
+    <div class="trap" style="--t-color:var(--lrfd)">
+      <div class="t-title"><span>🔵</span> B1 放大只作用於 Mnt，B2 作用於 Mlt</div>
+      <div class="t-desc">$M_u = B_1 M_{nt} + B_2 M_{lt}$。$M_{nt}$：假設無側移的分析彎矩；$M_{lt}$：側移引起的彎矩。斜撐構架通常 $M_{lt} = 0$，$B_2$ 不起作用；剛架才需要算 $B_2$。</div>
+      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2013-4/SS-2013-4.md&t=SS-2013-4" target="_blank">SS-2013-4</a>、<a href="../index.html#md=raw/solutions/SS-2014-4/SS-2014-4.md&t=SS-2014-4" target="_blank">SS-2014-4</a></div>
+    </div>
+
+    <div class="trap" style="--t-color:var(--b2)">
+      <div class="t-title"><span>🔷</span> B2 計算：ΣPr 是全層，Pe2 也是全層</div>
+      <div class="t-desc">$B_2$ 分子 $\alpha\sum P_r$ 是同層所有柱的設計軸力總和，$\sum P_{e2}$ 也是全層彈性挫屈載重之和，不是單根柱子的值。</div>
+      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2013-4/SS-2013-4.md&t=SS-2013-4" target="_blank">SS-2013-4</a></div>
+    </div>
+
+    <div class="trap" style="--t-color:var(--b2)">
+      <div class="t-title"><span>🔷</span> 對位圖 G 值：固接端取 1.0，鉸接端取 10</div>
+      <div class="t-desc">理論上固接端 $G = 0$，鉸接端 $G = \infty$，但規範建議：固接端用 $G = 1.0$（考慮基礎轉動），鉸接端用 $G = 10$（避免 K 趨向無窮大）。</div>
+      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2013-4/SS-2013-4.md&t=SS-2013-4" target="_blank">SS-2013-4</a></div>
+    </div>
+
+    <div class="trap" style="--t-color:var(--concept)">
+      <div class="t-title"><span>💡</span> 直接分析法 DAM：α 在 ASD 是 1.6</div>
+      <div class="t-desc">DAM 假想水平力 $N_i = 0.002 \alpha Y_i$，LRFD 的 $\alpha = 1.0$，ASD 的 $\alpha = 1.6$。剛度折減也一樣：$EI^* = 0.8\tau_b EI$。ASD 用 DAM 時載重係數不能忘。</div>
+      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2011-1/SS-2011-1.md&t=SS-2011-1" target="_blank">SS-2011-1</a></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ⑦ P-M 互制計算器 -->
+<section id="s7">
+  <div class="section-title"><span class="section-num">⑦</span> LRFD P-M 互制計算器</div>
+  <div style="display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start">
+    <div class="calc-wrap" style="max-width:none">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">LRFD 梁柱 H1-1 互制驗算。先輸入 φcPn、φbMnx/y，再輸入 B1 放大後的 Mu。</p>
+
+      <div class="calc-sect">構材設計強度</div>
+      <div class="calc-row">
+        <label>φcPn（kN）</label>
+        <input type="number" id="pm_phiPn" value="2000" min="1">
+        <span class="unit">kN</span>
+      </div>
+      <div class="calc-row">
+        <label>φbMnx（kN·m）</label>
+        <input type="number" id="pm_phiMnx" value="400" min="1">
+        <span class="unit">kN·m</span>
+      </div>
+      <div class="calc-row">
+        <label>φbMny（kN·m）</label>
+        <input type="number" id="pm_phiMny" value="200" min="1">
+        <span class="unit">kN·m</span>
+      </div>
+
+      <div class="calc-sect">設計需求（B1 放大後）</div>
+      <div class="calc-row">
+        <label>Pu（kN）</label>
+        <input type="number" id="pm_Pu" value="800" min="0">
+        <span class="unit">kN</span>
+      </div>
+      <div class="calc-row">
+        <label>Mux（kN·m）</label>
+        <input type="number" id="pm_Mux" value="180" min="0">
+        <span class="unit">kN·m</span>
+      </div>
+      <div class="calc-row">
+        <label>Muy（kN·m）</label>
+        <input type="number" id="pm_Muy" value="0" min="0">
+        <span class="unit">kN·m</span>
+      </div>
+
+      <button class="calc-btn" onclick="calcPM()">計算 P-M 互制比</button>
+      <div class="calc-result" id="res-pm" style="display:none"></div>
+    </div>
+
+    <!-- P-M curve canvas -->
+    <div class="pm-wrap">
+      <h3 style="font-size:12px;color:var(--muted);margin-bottom:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">P-M 互制曲線（強軸）</h3>
+      <canvas id="pmCanvas" width="320" height="280"></canvas>
+      <p style="font-size:10px;color:var(--muted);margin-top:8px">輸入計算後自動更新。紅點 = 設計需求點。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+// ─── Data ──────────────────────────────────────────────────────────────────
+const questions = [
+  {id:'SS-2003-4',year:2003,type:'ASD',method:'ASD',tags:['雙軸彎矩','P-M互制','Cm係數','放大係數','F\'e歐拉應力','穩定方程式','強度方程式','側移構架'],sec:false,viz:true},
+  {id:'SS-2004-4',year:2004,type:'ASD',method:'ASD',tags:['Cm係數','懸臂柱','弱軸彎曲','45°斜置構材','互制方程式','有效長度'],sec:false,viz:true},
+  {id:'SS-2007-2',year:2007,type:'ASD',method:'ASD',tags:['雙軸彎矩','LTB側扭挫屈','Cm放大係數','F\'e歐拉應力','互制方程式','H型鋼'],sec:false,viz:true},
+  {id:'SS-2008-4',year:2008,type:'ASD',method:'ASD',tags:['P-M互制','偏心軸壓','側向力','有效長度','Fa','Fbx','穩定方程式','強度方程式'],sec:false,viz:true},
+  {id:'SS-2009-1',year:2009,type:'secondary',method:'概念題',tags:['強柱弱梁','梁柱彎矩強度比','容量設計','SMRF','P-M互制曲線','Ry超強係數'],sec:true,viz:false},
+  {id:'SS-2011-1',year:2011,type:'概念',method:'概念題',tags:['直接分析法DAM','二階分析','初始不完美','剛度修正','P-Δ效應','P-δ效應','假想水平力'],sec:false,viz:true},
+  {id:'SS-2012-3',year:2012,type:'LRFD',method:'LRFD',tags:['P-M互制','雙軸彎矩','斜撐構架','B1放大法','弱軸挫屈','固接柱','有效長度'],sec:false,viz:true},
+  {id:'SS-2013-4',year:2013,type:'LRFD',method:'LRFD',tags:['B1B2放大法','無側撐剛架','有效長度係數','對位圖','Mnt','Mlt','層間穩定'],sec:false,viz:true},
+  {id:'SS-2014-4',year:2014,type:'LRFD',method:'LRFD',tags:['P-M互制','B1放大法','B2放大法','二階效應','斜撐構架','地震力組合'],sec:false,viz:true},
+  {id:'SS-2019-3',year:2019,type:'ASD',method:'ASD',tags:['偏心載重','ASD','互制公式','Cm','F\'e','LTB','Cb','弱軸挫屈'],sec:false,viz:true},
+  {id:'SS-2020-3',year:2020,type:'LRFD',method:'LRFD',tags:['P-M互制','雙軸彎矩','B1放大法','有效長度','柱強度','弱軸彎矩'],sec:false,viz:true},
+  {id:'SS-2022-1',year:2022,type:'LRFD',method:'LRFD',tags:['箱形柱','雙軸彎矩','軸壓','P-M互制','整體挫屈','局部挫屈','剪力強度','有效長細比'],sec:false,viz:true},
+];
+
+const typeColor = {'ASD':'var(--asd)','LRFD':'var(--lrfd)','概念':'var(--concept)','secondary':'var(--secondary)'};
+const typeName  = {'ASD':'📐 ASD 互制','LRFD':'🔵 LRFD B1B2','概念':'💡 概念/DAM','secondary':'📎 副考點'};
+
+function renderQList(filter='all') {
+  const list = document.getElementById('q-list');
+  list.innerHTML = '';
+  questions.forEach(q => {
+    const show = filter==='all' || q.type===filter;
+    const color = typeColor[q.type]||'var(--accent)';
+    const href = `../index.html#md=raw/solutions/${q.id}/${q.id}.md&t=${q.id}`;
+    const vizBadge = q.viz ? '<span class="q-viz-badge">📊 viz</span>' : '';
+    const secBadge = q.sec ? '<span class="q-sec-badge">副考點</span>' : '';
+    const div = document.createElement('div');
+    div.className = 'q-item' + (show?'':' hidden');
+    div.style.setProperty('--item-color', color);
+    div.dataset.type = q.type;
+    div.innerHTML = `
+      <div class="q-num"><a href="${href}" target="_blank">${q.id}</a></div>
+      <div class="q-body">
+        <div class="q-meta">
+          <span style="font-size:12px;font-weight:700;color:${color}">${typeName[q.type]||q.type}</span>
+          <span class="q-method">${q.method}</span>
+          ${secBadge}${vizBadge}
+        </div>
+        <div class="q-tags">${q.tags.map(t=>`<span class="q-tag">${t}</span>`).join('')}</div>
+      </div>
+      <div class="icons"><span title="verified">✅</span></div>
+    `;
+    list.appendChild(div);
+  });
+}
+
+function setFilter(f, btn) {
+  document.querySelectorAll('#filter-bar .filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.q-item').forEach(el=>{
+    if(f==='all'||el.dataset.type===f) el.classList.remove('hidden');
+    else el.classList.add('hidden');
+  });
+}
+
+function filterType(type, card) {
+  document.querySelectorAll('.type-card').forEach(c=>c.classList.remove('active'));
+  card.classList.add('active');
+  const f = type==='all'?'all':type;
+  document.querySelectorAll('.q-item').forEach(el=>{
+    if(f==='all'||el.dataset.type===f) el.classList.remove('hidden');
+    else el.classList.add('hidden');
+  });
+  document.querySelectorAll('#filter-bar .filter-btn').forEach(b=>{
+    b.classList.remove('active');
+    if(b.dataset.f===f) b.classList.add('active');
+  });
+  document.getElementById('s5').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ─── Year Chart ─────────────────────────────────────────────────────────────
+function drawYearChart() {
+  const canvas = document.getElementById('yearChart');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.parentElement.clientWidth - 36;
+  canvas.width = W; canvas.height = 160;
+  const years = [2003,2004,2007,2008,2011,2012,2013,2014,2019,2020,2022];
+  const allYrs = Array.from({length:2022-2003+1},(_,i)=>2003+i);
+  const counts = allYrs.map(y=>years.filter(yr=>yr===y).length);
+  const maxC = Math.max(...counts,1);
+  const pad = {l:36,r:8,t:16,b:28};
+  const bw = Math.max(7,Math.floor((W-pad.l-pad.r)/allYrs.length)-2);
+  const barPad = 2;
+  const chartH = 160-pad.t-pad.b;
+  ctx.clearRect(0,0,W,160);
+  ctx.strokeStyle='#e5e7eb'; ctx.lineWidth=0.5;
+  for(let i=0;i<=maxC;i++){
+    const y=pad.t+chartH-(i/maxC)*chartH;
+    ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(W-pad.r,y); ctx.stroke();
+    ctx.fillStyle='#9ca3af'; ctx.font='10px sans-serif'; ctx.textAlign='right';
+    ctx.fillText(i,pad.l-3,y+4);
+  }
+  allYrs.forEach((year,i)=>{
+    const cnt=counts[i];
+    const x=pad.l+i*(bw+barPad)+barPad;
+    const bh=(cnt/maxC)*chartH;
+    const y=pad.t+chartH-bh;
+    if(cnt>0){
+      // color by type
+      const q=questions.find(q=>q.year===year&&!q.sec);
+      const cl=q?(q.type==='ASD'?'rgba(217,119,6,0.85)':(q.type==='LRFD'?'rgba(37,99,235,0.85)':'rgba(190,24,93,0.85)')):'rgba(107,114,128,0.6)';
+      ctx.fillStyle=cl; ctx.fillRect(x,y,bw,bh);
+      ctx.fillStyle='#1a1d2e'; ctx.font='bold 10px sans-serif'; ctx.textAlign='center';
+      ctx.fillText(cnt,x+bw/2,y-3);
+    }
+    ctx.fillStyle='#9ca3af'; ctx.font='9px sans-serif'; ctx.textAlign='center';
+    if(year%2===1||counts[i]>0) ctx.fillText(year,x+bw/2,160-pad.b+12);
+  });
+  // legend
+  ctx.fillStyle='rgba(217,119,6,0.85)'; ctx.fillRect(W-160,6,12,10);
+  ctx.fillStyle='#6b7280'; ctx.font='10px sans-serif'; ctx.textAlign='left'; ctx.fillText('ASD',W-144,15);
+  ctx.fillStyle='rgba(37,99,235,0.85)'; ctx.fillRect(W-105,6,12,10);
+  ctx.fillStyle='#6b7280'; ctx.fillText('LRFD',W-89,15);
+}
+
+function drawPieChart() {
+  const canvas = document.getElementById('pieChart');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.parentElement.clientWidth - 36;
+  canvas.width = W; canvas.height = 220;
+  const data = [
+    {label:'ASD 互制',val:5,color:'#d97706'},
+    {label:'LRFD B1B2',val:5,color:'#2563eb'},
+    {label:'概念/DAM',val:1,color:'#be185d'},
+    {label:'副考點',val:1,color:'#9ca3af'},
+  ];
+  const total = data.reduce((s,d)=>s+d.val,0);
+  const cx=W*0.4, cy=110, r=82;
+  let angle=-Math.PI/2;
+  data.forEach(d=>{
+    const slice=(d.val/total)*2*Math.PI;
+    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,r,angle,angle+slice);
+    ctx.fillStyle=d.color; ctx.fill();
+    ctx.strokeStyle='#fff'; ctx.lineWidth=2; ctx.stroke();
+    // label on pie
+    const mid = angle + slice/2;
+    const lx = cx + Math.cos(mid)*r*0.65;
+    const ly = cy + Math.sin(mid)*r*0.65;
+    ctx.fillStyle='#fff'; ctx.font='bold 12px sans-serif'; ctx.textAlign='center';
+    ctx.fillText(d.val,lx,ly+4);
+    angle+=slice;
+  });
+  let ly=30;
+  data.forEach(d=>{
+    ctx.fillStyle=d.color; ctx.fillRect(W*0.75,ly,12,12);
+    ctx.fillStyle='#1a1d2e'; ctx.font='11px sans-serif'; ctx.textAlign='left';
+    ctx.fillText(`${d.label}`,W*0.75+18,ly+10);
+    ly+=26;
+  });
+}
+
+// ─── P-M Calculator & Canvas ─────────────────────────────────────────────────
+let lastPM = {phiPn:2000,phiMnx:400,Pu:800,Mux:180};
+
+function drawPMCurve(phiPn, phiMnx, Pu, Mux) {
+  const canvas = document.getElementById('pmCanvas');
+  const ctx = canvas.getContext('2d');
+  const W=320, H=280;
+  ctx.clearRect(0,0,W,H);
+  const pad={l:52,r:20,t:20,b:40};
+  const pw=W-pad.l-pad.r, ph=H-pad.t-pad.b;
+
+  // axes
+  ctx.strokeStyle='#9ca3af'; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(pad.l,pad.t); ctx.lineTo(pad.l,pad.t+ph); ctx.lineTo(pad.l+pw,pad.t+ph); ctx.stroke();
+
+  // axis labels
+  ctx.fillStyle='#6b7280'; ctx.font='11px sans-serif'; ctx.textAlign='center';
+  ctx.fillText('Mux / φbMnx',pad.l+pw/2,H-6);
+  ctx.save(); ctx.translate(14,pad.t+ph/2); ctx.rotate(-Math.PI/2);
+  ctx.fillText('Pu / φcPn',0,0); ctx.restore();
+
+  // grid
+  ctx.strokeStyle='#e5e7eb'; ctx.lineWidth=0.5;
+  [0.2,0.4,0.6,0.8,1.0].forEach(v=>{
+    const x=pad.l+v*pw, y=pad.t+(1-v)*ph;
+    ctx.beginPath(); ctx.moveTo(x,pad.t); ctx.lineTo(x,pad.t+ph); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(pad.l+pw,y); ctx.stroke();
+    ctx.fillStyle='#9ca3af'; ctx.font='9px sans-serif'; ctx.textAlign='center';
+    ctx.fillText(v.toFixed(1),x,pad.t+ph+14);
+    ctx.textAlign='right'; ctx.fillText(v.toFixed(1),pad.l-4,y+4);
+  });
+
+  // LRFD P-M interaction (bilinear)
+  // H1-1a: Pu/phiPn + 8/9*Mux/phiMnx = 1.0 => Mux/phiMnx = 9/8*(1 - Pu/phiPn)  for Pu/phiPn >= 0.2
+  // At Pu/phiPn = 0.2: Mux/phiMnx = 9/8*0.8 = 0.9
+  // H1-1b: Pu/(2phiPn) + Mux/phiMnx = 1.0 => Mux/phiMnx = 1 - Pu/(2phiPn)  for Pu/phiPn < 0.2
+  // At Pu/phiPn = 0: Mux/phiMnx = 1.0
+  // At Pu/phiPn = 0.2: Mux/phiMnx = 1 - 0.1 = 0.9 ✓
+
+  ctx.strokeStyle='#2563eb'; ctx.lineWidth=2.5; ctx.setLineDash([]);
+  ctx.beginPath();
+  // H1-1b segment: from (1.0, 0) to (0.9, 0.2)
+  ctx.moveTo(pad.l+1.0*pw, pad.t+(1-0)*ph);
+  ctx.lineTo(pad.l+0.9*pw, pad.t+(1-0.2)*ph);
+  // H1-1a segment: from (0.9, 0.2) to (0, 1.0)
+  ctx.lineTo(pad.l+0*pw, pad.t+(1-1.0)*ph);
+  ctx.stroke();
+
+  // kink point label
+  ctx.fillStyle='#2563eb'; ctx.font='9px sans-serif'; ctx.textAlign='left';
+  ctx.fillText('H1-1a',pad.l+4,pad.t+ph*0.15);
+  ctx.fillStyle='#16a34a';
+  ctx.fillText('H1-1b',pad.l+pw*0.7,pad.t+ph*0.88);
+
+  // kink dot
+  ctx.fillStyle='#2563eb';
+  ctx.beginPath(); ctx.arc(pad.l+0.9*pw, pad.t+(1-0.2)*ph, 4, 0, 2*Math.PI); ctx.fill();
+  ctx.fillStyle='#6b7280'; ctx.font='8px sans-serif'; ctx.textAlign='left';
+  ctx.fillText('0.2',pad.l+0.9*pw+6,pad.t+(1-0.2)*ph+4);
+
+  // safe zone shading
+  ctx.globalAlpha=0.08; ctx.fillStyle='#2563eb';
+  ctx.beginPath();
+  ctx.moveTo(pad.l,pad.t+ph);
+  ctx.lineTo(pad.l+1.0*pw,pad.t+ph);
+  ctx.lineTo(pad.l+0.9*pw,pad.t+(1-0.2)*ph);
+  ctx.lineTo(pad.l,pad.t);
+  ctx.closePath(); ctx.fill();
+  ctx.globalAlpha=1.0;
+
+  // demand point
+  const px = Mux/phiMnx, py = Pu/phiPn;
+  const dx = pad.l+Math.min(px,1.5)*pw, dy = pad.t+(1-Math.min(py,1.5))*ph;
+  // check OK
+  let ratio;
+  if(py>=0.2) ratio = py + 8/9*px;
+  else ratio = py/2 + px;
+  const ok = ratio <= 1.0;
+  ctx.fillStyle = ok ? '#16a34a' : '#dc2626';
+  ctx.beginPath(); ctx.arc(Math.min(dx,pad.l+pw+10), Math.max(dy,pad.t-10), 6, 0, 2*Math.PI); ctx.fill();
+  ctx.fillStyle='#fff'; ctx.font='bold 8px sans-serif'; ctx.textAlign='center';
+  ctx.fillText(ok?'✓':'✗', Math.min(dx,pad.l+pw+10), Math.max(dy,pad.t-10)+3);
+
+  // ratio label
+  ctx.fillStyle='#1a1d2e'; ctx.font='bold 11px sans-serif'; ctx.textAlign='center';
+  ctx.fillText(`互制比 = ${ratio.toFixed(3)} ${ok?'≤ 1.0 OK':'> 1.0 NG'}`, W/2, H-2);
+}
+
+function calcPM() {
+  const phiPn  = +document.getElementById('pm_phiPn').value;
+  const phiMnx = +document.getElementById('pm_phiMnx').value;
+  const phiMny = +document.getElementById('pm_phiMny').value;
+  const Pu     = +document.getElementById('pm_Pu').value;
+  const Mux    = +document.getElementById('pm_Mux').value;
+  const Muy    = +document.getElementById('pm_Muy').value;
+
+  const rP = Pu / phiPn;
+  let ratio, eq;
+  if(rP >= 0.2) {
+    ratio = rP + 8/9*(Mux/phiMnx + Muy/phiMny);
+    eq = 'H1-1a（Pu/φcPn ≥ 0.2）';
+  } else {
+    ratio = rP/2 + (Mux/phiMnx + Muy/phiMny);
+    eq = 'H1-1b（Pu/φcPn < 0.2）';
+  }
+  const ok = ratio <= 1.0;
+  const el = document.getElementById('res-pm');
+  el.style.display='block';
+  el.innerHTML = `
+    <div class="result-line"><span>Pu / φcPn</span><span class="result-key">${rP.toFixed(3)}</span></div>
+    <div class="result-line"><span>Mux / φbMnx</span><span class="result-key">${(Mux/phiMnx).toFixed(3)}</span></div>
+    <div class="result-line"><span>Muy / φbMny</span><span class="result-key">${Muy>0?(Muy/phiMny).toFixed(3):'0 （單軸）'}</span></div>
+    <div class="result-line"><span>適用方程式</span><span class="result-warn">${eq}</span></div>
+    <div class="result-line"><span>互制比 (UR)</span><span class="${ok?'result-pass':'result-fail'}">${ratio.toFixed(4)}</span></div>
+    <div class="result-line"><span>判斷</span><span class="${ok?'result-pass':'result-fail'}">${ok?'✓ UR ≤ 1.0，設計 OK':'✗ UR > 1.0，需加大斷面'}</span></div>
+  `;
+  lastPM={phiPn,phiMnx,Pu,Mux};
+  drawPMCurve(phiPn,phiMnx,Pu,Mux);
+}
+
+// ─── Init ────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',()=>{
+  renderQList('all');
+  drawYearChart();
+  drawPieChart();
+  drawPMCurve(2000,400,800,180);
+});
+window.addEventListener('resize',()=>{
+  drawYearChart();
+  drawPieChart();
+});
+</script>
+</body>
+</html>

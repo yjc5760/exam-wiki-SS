@@ -1,1066 +1,367 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SS-U1-1 拉力及壓力桿件 — 複習講義</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<title>SS-U1-1 拉力及壓力桿件｜深度複習</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
 <style>
-:root{
-  --blue:#2563eb;--blue-lt:#dbeafe;--blue-dk:#1e40af;
-  --green:#16a34a;--green-lt:#dcfce7;
-  --amber:#d97706;--amber-lt:#fef3c7;
-  --purple:#7c3aed;--purple-lt:#ede9fe;
-  --red:#dc2626;--red-lt:#fee2e2;
-  --gray:#6b7280;--gray-lt:#f3f4f6;
-  --border:#e5e7eb;--text:#111827;--muted:#6b7280;
-  --ca:#2563eb;--ca-lt:#dbeafe;
-  --cb:#16a34a;--cb-lt:#dcfce7;
-  --cc:#d97706;--cc-lt:#fef3c7;
-  --cd:#7c3aed;--cd-lt:#ede9fe;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8fafc;color:var(--text);line-height:1.6}
-
-/* Header */
-.hdr{background:linear-gradient(135deg,#1e40af,#3b82f6);color:#fff;padding:2rem;text-align:center}
-.hdr .badge{display:inline-block;background:rgba(255,255,255,.2);padding:.2rem .8rem;border-radius:99px;font-size:.78rem;margin-bottom:.5rem}
-.hdr h1{font-size:1.75rem;font-weight:700;margin-bottom:.2rem}
-.hdr p{opacity:.85;font-size:.9rem}
-
-/* Back bar */
-.back-bar{background:#fff;border-bottom:1px solid var(--border);padding:.55rem 1.5rem}
-.back-bar a{font-size:.82rem;color:var(--blue);text-decoration:none}
-.back-bar a:hover{text-decoration:underline}
-
-/* Sticky nav */
-.snav{background:#fff;border-bottom:1px solid var(--border);display:flex;overflow-x:auto;position:sticky;top:0;z-index:100}
-.snav a{padding:.7rem 1.1rem;color:var(--gray);text-decoration:none;font-size:.82rem;white-space:nowrap;border-bottom:2px solid transparent;transition:.2s}
-.snav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
-
-/* Main */
-.main{max-width:1100px;margin:0 auto;padding:2rem 1.25rem}
-.sec{margin-bottom:3rem}
-.sec-title{font-size:1.15rem;font-weight:700;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2.5px solid var(--blue);display:flex;align-items:center;gap:.5rem}
-.sec-title .ico{font-size:1.25rem}
-
-/* KPI grid */
-.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.25rem}
-@media(max-width:700px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
-.kpi{background:#fff;border-radius:12px;padding:1.2rem;border:1px solid var(--border);text-align:center}
-.kpi .val{font-size:2rem;font-weight:800;color:var(--blue)}
-.kpi .lbl{font-size:.78rem;color:var(--gray);margin-top:.2rem}
-.kpi .sub{font-size:.72rem;color:var(--muted)}
-
-/* Type cards */
-.type-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-bottom:1.25rem}
-@media(max-width:700px){.type-cards{grid-template-columns:repeat(2,1fr)}}
-.tc{border-radius:10px;padding:1rem;cursor:pointer;border:2px solid transparent;transition:.2s}
-.tc:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
-.tc.sel{border-color:currentColor}
-.tc .tlbl{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;opacity:.7}
-.tc .tname{font-size:.88rem;font-weight:700;margin:.2rem 0;line-height:1.3}
-.tc .tcnt{font-size:1.5rem;font-weight:800}
-.tA{background:var(--ca-lt);color:var(--ca)}
-.tB{background:var(--cb-lt);color:var(--cb)}
-.tC{background:var(--cc-lt);color:var(--cc)}
-.tD{background:var(--cd-lt);color:var(--cd)}
-
-/* Charts row */
-.chart-row{display:grid;grid-template-columns:1fr 260px;gap:1.25rem}
-@media(max-width:700px){.chart-row{grid-template-columns:1fr}}
-.cbox{background:#fff;border-radius:12px;padding:1.25rem;border:1px solid var(--border)}
-.cbox h3{font-size:.82rem;color:var(--gray);margin-bottom:.75rem}
-
-/* SVG boxes */
-.svg-row{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
-@media(max-width:680px){.svg-row{grid-template-columns:1fr}}
-.sbox{background:#fff;border-radius:12px;padding:1.25rem;border:1px solid var(--border)}
-.sbox h3{font-size:.9rem;font-weight:600;color:var(--blue);margin-bottom:.75rem}
-
-/* Formula cards */
-.formula-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-@media(max-width:680px){.formula-grid{grid-template-columns:1fr}}
-.fc{background:#fff;border-radius:12px;padding:1.25rem;border:1px solid var(--border)}
-.fc.fA{border-left:4px solid var(--ca)}
-.fc.fB{border-left:4px solid var(--cb)}
-.fc.fC{border-left:4px solid var(--cc)}
-.fc.fD{border-left:4px solid var(--cd)}
-.fc h3{font-size:.9rem;font-weight:700;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
-.tbadge{font-size:.68rem;padding:.1rem .45rem;border-radius:99px;font-weight:700}
-.bA{background:var(--ca-lt);color:var(--ca)}
-.bB{background:var(--cb-lt);color:var(--cb)}
-.bC{background:var(--cc-lt);color:var(--cc)}
-.bD{background:var(--cd-lt);color:var(--cd)}
-.fblock{background:#f8fafc;border-radius:8px;padding:.6rem .8rem;margin:.4rem 0;font-size:.88rem}
-.fnote{font-size:.78rem;color:var(--gray);margin-top:.4rem;padding:.4rem .6rem;background:var(--gray-lt);border-radius:6px;line-height:1.5}
-
-/* Filter bar */
-.fbar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.9rem}
-.fbtn{padding:.35rem .9rem;border-radius:99px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:.82rem;transition:.2s}
-.fbtn.on{color:#fff;border-color:transparent}
-.fbtn.on.fall{background:var(--blue)}
-.fbtn.on.fA{background:var(--ca)}
-.fbtn.on.fB{background:var(--cb)}
-.fbtn.on.fC{background:var(--cc)}
-.fbtn.on.fD{background:var(--cd)}
-
-/* Question list */
-.qlist{display:flex;flex-direction:column;gap:.55rem}
-.qi{background:#fff;border-radius:10px;padding:.85rem 1rem;border:1px solid var(--border);display:flex;align-items:flex-start;gap:.9rem;transition:.2s}
-.qi:hover{box-shadow:0 2px 8px rgba(0,0,0,.07)}
-.qi.gone{display:none}
-.qdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:.42rem}
-.dA{background:var(--ca)}.dB{background:var(--cb)}.dC{background:var(--cc)}.dD{background:var(--cd)}
-.qbody{flex:1;min-width:0}
-.qid{font-size:.78rem;font-weight:700;color:var(--blue);text-decoration:none}
-.qid:hover{text-decoration:underline}
-.qtitle{font-size:.87rem;margin-top:.1rem}
-.qtags{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.35rem}
-.qtag{font-size:.7rem;padding:.1rem .4rem;background:var(--gray-lt);border-radius:4px;color:var(--gray)}
-.qmeta{display:flex;gap:.4rem;margin-top:.3rem;flex-wrap:wrap}
-.qb{font-size:.7rem;padding:.1rem .4rem;border-radius:4px}
-.bLRFD{background:var(--blue-lt);color:var(--blue-dk)}
-.bASD{background:var(--green-lt);color:#15803d}
-.bMix{background:var(--purple-lt);color:#6d28d9}
-.bConcept{background:var(--amber-lt);color:#92400e}
-.bViz{background:#f0fdf4;color:#166534}
-.qicons{display:flex;gap:.3rem;align-items:center;flex-shrink:0;font-size:.88rem}
-
-/* Traps */
-.trap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-@media(max-width:680px){.trap-grid{grid-template-columns:1fr}}
-.trap{background:#fff;border-radius:10px;padding:1rem;border:1px solid var(--border)}
-.trap.tA{border-left:3px solid var(--ca)}
-.trap.tB{border-left:3px solid var(--cb)}
-.trap.tC{border-left:3px solid var(--cc)}
-.trap.tD{border-left:3px solid var(--cd)}
-.trap .tnum{font-size:.68rem;color:var(--gray);margin-bottom:.2rem}
-.trap .ttitle{font-size:.88rem;font-weight:700;margin-bottom:.35rem}
-.trap .tbody{font-size:.8rem;color:var(--muted);line-height:1.55}
-.trap .teg{font-size:.75rem;color:var(--blue);margin-top:.3rem}
-
-/* Priority table */
-.ptable{width:100%;border-collapse:collapse;font-size:.85rem;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
-.ptable th{background:var(--gray-lt);padding:.6rem 1rem;text-align:left;font-size:.78rem;font-weight:700}
-.ptable td{padding:.6rem 1rem;border-bottom:1px solid var(--border)}
-.pbadge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:.7rem;font-weight:800;color:#fff}
-.p1{background:#dc2626}.p2{background:#f59e0b}.p3{background:#10b981}.p4{background:#6b7280}
-
-/* Calculator */
-.calc-wrap{background:#fff;border-radius:12px;padding:1.5rem;border:1px solid var(--border)}
-.ctabs{display:flex;gap:.5rem;margin-bottom:1.25rem;flex-wrap:wrap}
-.ctab{padding:.35rem .9rem;border-radius:6px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:.82rem;transition:.2s}
-.ctab.on{background:var(--blue);color:#fff;border-color:var(--blue)}
-.cform{display:none}
-.cform.on{display:block}
-.grow{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:.75rem}
-@media(max-width:600px){.grow{grid-template-columns:1fr 1fr}}
-.gl label{display:block;font-size:.78rem;color:var(--gray);margin-bottom:.2rem}
-.gl input,.gl select{width:100%;padding:.45rem .7rem;border:1.5px solid var(--border);border-radius:6px;font-size:.88rem}
-.cbtn{background:var(--blue);color:#fff;padding:.5rem 1.25rem;border:none;border-radius:6px;cursor:pointer;font-size:.88rem;margin-top:.25rem}
-.cres{margin-top:.75rem;padding:.9rem;background:var(--blue-lt);border-radius:8px;font-size:.88rem;display:none}
-.cres.show{display:block}
-.cres .cline{margin:.15rem 0}
-.cres .ans{font-weight:700;color:var(--blue-dk);font-size:1rem}
-
-/* Misc */
-.info-box{background:var(--blue-lt);border-radius:8px;padding:.9rem 1rem;font-size:.85rem;margin-bottom:1rem;color:var(--blue-dk)}
+:root{--ac:#1565c0;--ac2:#e3f2fd;--t:#f57c00;--k:#2e7d32;--c:#1565c0;--x:#8e24aa;
+--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#78909c;--bd:#e0e6ea}
+*{box-sizing:border-box}body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2);color:#fff;padding:28px 24px}
+header h1{margin:0 0 6px;font-size:1.5em}header p{margin:0;opacity:.85;font-size:.92em}
+nav{position:sticky;top:0;z-index:9;background:#fff;border-bottom:2px solid var(--bd);padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px}
+nav a{text-decoration:none;color:var(--ac);font-size:.88em;padding:5px 10px;border-radius:16px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:1080px;margin:0 auto;padding:20px 16px 60px}
+section{margin-bottom:38px}
+h2{font-size:1.25em;border-left:5px solid var(--ac);padding-left:10px;margin:30px 0 14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center}
+.kpi .n{font-size:1.9em;font-weight:700;color:var(--ac)}.kpi .l{font-size:.82em;color:var(--mut)}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.cat{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:10px;padding:12px 14px;cursor:pointer;transition:.15s}
+.cat:hover{transform:translateY(-2px);box-shadow:0 3px 10px rgba(0,0,0,.1)}
+.cat h3{margin:0 0 4px;font-size:1em}.cat p{margin:0;font-size:.82em;color:var(--mut)}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:760px){.charts{grid-template-columns:1fr}}
+.chartbox{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
+.chartbox h4{margin:0 0 8px;font-size:.95em;color:var(--mut)}
+canvas{width:100%;height:auto}
+.svgbox{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:16px;overflow-x:auto}
+.fcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.fcard{background:var(--card);border:1px solid var(--bd);border-top:5px solid;border-radius:10px;padding:14px 16px}
+.fcard h3{margin:0 0 8px;font-size:1em}
+.fcard .note{font-size:.82em;color:var(--mut);border-top:1px dashed var(--bd);margin-top:10px;padding-top:8px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.fbtn{border:1px solid var(--bd);background:#fff;border-radius:18px;padding:6px 14px;cursor:pointer;font-size:.88em;font-family:inherit}
+.fbtn.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.qrow{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:8px;padding:10px 14px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.qrow a{font-weight:700;text-decoration:none;color:var(--ac);min-width:88px}
+.qrow a:hover{text-decoration:underline}
+.qrow .sum{flex:1;min-width:200px;font-size:.92em}
+.qrow .tags{font-size:.75em;color:var(--mut)}
+.qrow .ico{font-size:.85em;white-space:nowrap}
+.traps{counter-reset:tr}
+.trap{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:12px 14px 12px 48px;margin-bottom:10px;position:relative}
+.trap::before{counter-increment:tr;content:counter(tr);position:absolute;left:12px;top:12px;width:26px;height:26px;border-radius:50%;background:#d32f2f;color:#fff;font-weight:700;text-align:center;line-height:26px;font-size:.85em}
+.trap b .pill{font-size:.72em;border-radius:10px;padding:1px 8px;color:#fff;margin-right:6px;vertical-align:middle}
+.calc{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:18px}
+.calc .row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px}
+.calc label{font-size:.85em;color:var(--mut);display:block}
+.calc input{width:110px;padding:6px;border:1px solid var(--bd);border-radius:6px;font-size:1em}
+.calc button{background:var(--ac);color:#fff;border:none;border-radius:6px;padding:8px 22px;font-size:.95em;cursor:pointer;font-family:inherit}
+.calc .out{margin-top:14px;background:var(--ac2);border-radius:8px;padding:12px 16px;font-size:.95em;display:none}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:.9em}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left}
+th{background:var(--ac2)}
+.heat{display:flex;flex-wrap:wrap;gap:4px}
+.heat .cell{width:44px;height:44px;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.68em;color:#fff}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 </style>
 </head>
 <body>
-
-<div class="hdr">
-  <div class="badge">SS-U1-1 · 拉力及壓力桿件</div>
-  <h1>拉力及壓力桿件 複習講義</h1>
-  <p>2002–2025 年考古題完整彙整 · 共 24 題（主題） · 佔全科 24.5%</p>
-</div>
-
-<div class="back-bar">
-  <a href="../index.html">← 返回儀表板</a>
-  &nbsp;·&nbsp;
-  <a href="../wiki/index.md">知識庫索引</a>
-</div>
-
-<nav class="snav">
-  <a href="#s1">① 命題分析</a>
-  <a href="#s2">② 截面圖解</a>
-  <a href="#s3">③ 解題流程</a>
-  <a href="#s4">④ 核心公式</a>
-  <a href="#s5">⑤ 考題清單</a>
-  <a href="#s6">⑥ 高頻陷阱</a>
-  <a href="#s7">⑦ 備考優先序</a>
-  <a href="#s8">⑧ 互動計算器</a>
+<header>
+<h1>SS-U1-1 拉力及壓力桿件 — 深度複習</h1>
+<p>結構技師「鋼結構設計」子項複習頁｜資料來源：question_index.json（2002–2025，98 題）｜生成日期 2026-07-10</p>
+</header>
+<nav>
+<a href="#s1">① 命題分析</a><a href="#s2">② 截面圖解</a><a href="#s3">③ 解題流程</a>
+<a href="#s4">④ 公式速查</a><a href="#s5">⑤ 考題清單</a><a href="#s6">⑥ 高頻陷阱</a><a href="#s7">⑦ 柱強度計算器</a>
 </nav>
+<main>
 
-<div class="main">
-
-<!-- ① 命題分析 -->
-<div class="sec" id="s1">
-  <div class="sec-title"><span class="ico">📊</span> 命題分析</div>
-
-  <div class="kpi-grid">
-    <div class="kpi"><div class="val">24</div><div class="lbl">主題題數（2002–2025）</div><div class="sub">佔全科 98 題之 24.5%</div></div>
-    <div class="kpi"><div class="val">#1</div><div class="lbl">出題頻率排名</div><div class="sub">與 SS-U1-2 並列最高頻</div></div>
-    <div class="kpi"><div class="val">83%</div><div class="lbl">近 6 年出題率</div><div class="sub">2020–2025：5/6 年有出</div></div>
-    <div class="kpi"><div class="val">4</div><div class="lbl">題型分類</div><div class="sub">壓力挫屈 / K值 / 拉力 / 複合柱</div></div>
-  </div>
-
-  <div class="type-cards">
-    <div class="tc tA" onclick="filterQ('A')" id="tcA">
-      <div class="tlbl">Type A</div>
-      <div class="tname">壓力桿件<br>挫屈強度</div>
-      <div class="tcnt">8題</div>
-    </div>
-    <div class="tc tB" onclick="filterQ('B')" id="tcB">
-      <div class="tlbl">Type B</div>
-      <div class="tname">壓力桿件<br>有效長度 K</div>
-      <div class="tcnt">8題</div>
-    </div>
-    <div class="tc tC" onclick="filterQ('C')" id="tcC">
-      <div class="tlbl">Type C</div>
-      <div class="tname">拉力桿件<br>淨截面 / 剪力遲滯</div>
-      <div class="tcnt">5題</div>
-    </div>
-    <div class="tc tD" onclick="filterQ('D')" id="tcD">
-      <div class="tlbl">Type D</div>
-      <div class="tname">複合柱<br>SRC / 組合柱</div>
-      <div class="tcnt">3題</div>
-    </div>
-  </div>
-
-  <div class="chart-row">
-    <div class="cbox">
-      <h3>年度出題統計（依題型分色）</h3>
-      <canvas id="barChart" height="180"></canvas>
-    </div>
-    <div class="cbox">
-      <h3>題型比例</h3>
-      <canvas id="pieChart" height="220"></canvas>
-    </div>
-  </div>
+<section id="s1">
+<h2>① 命題分析</h2>
+<div class="kpis">
+<div class="kpi"><div class="n">24</div><div class="l">主考點題數</div></div>
+<div class="kpi"><div class="n">24.5%</div><div class="l">佔全科比例（24/98）</div></div>
+<div class="kpi"><div class="n">#1</div><div class="l">全科出題排名</div></div>
+<div class="kpi"><div class="n">6/6</div><div class="l">近6年出題（2020–25）</div></div>
 </div>
-
-<!-- ② 截面圖解 -->
-<div class="sec" id="s2">
-  <div class="sec-title"><span class="ico">📐</span> 截面圖解</div>
-  <div class="svg-row">
-    <div class="sbox">
-      <h3>壓力桿件常見斷面</h3>
-      <svg viewBox="0 0 340 180" xmlns="http://www.w3.org/2000/svg" style="font-size:10px;font-family:sans-serif">
-        <!-- H型鋼 -->
-        <g transform="translate(20,20)">
-          <rect x="10" y="0" width="50" height="7" fill="#93c5fd" stroke="#2563eb" stroke-width="1.2"/>
-          <rect x="28" y="7" width="14" height="46" fill="#93c5fd" stroke="#2563eb" stroke-width="1.2"/>
-          <rect x="10" y="53" width="50" height="7" fill="#93c5fd" stroke="#2563eb" stroke-width="1.2"/>
-          <text x="35" y="76" text-anchor="middle" fill="#1e40af" font-weight="bold">H型鋼</text>
-          <text x="35" y="87" text-anchor="middle" fill="#6b7280" font-size="9">翼板+腹板</text>
-          <line x1="0" y1="30" x2="9" y2="30" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,2"/>
-          <line x1="61" y1="30" x2="70" y2="30" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,2"/>
-          <text x="72" y="33" fill="#dc2626" font-size="9">𝑟y</text>
-        </g>
-        <!-- 箱型斷面 -->
-        <g transform="translate(105,20)">
-          <rect x="5" y="0" width="60" height="60" fill="none" stroke="#2563eb" stroke-width="7" stroke-linejoin="round"/>
-          <text x="35" y="76" text-anchor="middle" fill="#1e40af" font-weight="bold">箱型斷面</text>
-          <text x="35" y="87" text-anchor="middle" fill="#6b7280" font-size="9">雙軸對稱 高 r</text>
-        </g>
-        <!-- 角鋼/雙角鋼 -->
-        <g transform="translate(200,20)">
-          <polyline points="0,60 0,0 60,0" fill="none" stroke="#2563eb" stroke-width="7" stroke-linejoin="round" stroke-linecap="square"/>
-          <text x="30" y="76" text-anchor="middle" fill="#1e40af" font-weight="bold">角鋼 (L)</text>
-          <text x="30" y="87" text-anchor="middle" fill="#6b7280" font-size="9">拉力/壓力皆用</text>
-        </g>
-        <!-- 圓管HSS -->
-        <g transform="translate(285,20)">
-          <circle cx="20" cy="30" r="20" fill="none" stroke="#2563eb" stroke-width="7"/>
-          <text x="20" y="76" text-anchor="middle" fill="#1e40af" font-weight="bold">圓管HSS</text>
-          <text x="20" y="87" text-anchor="middle" fill="#6b7280" font-size="9">拉力構材</text>
-        </g>
-        <!-- Legend -->
-        <g transform="translate(10,105)">
-          <text x="0" y="0" fill="#374151" font-size="9" font-weight="600">Key: 細長比 λ = KL/r</text>
-          <text x="0" y="13" fill="#6b7280" font-size="9">r 大 → λ 小 → 較不易挫屈</text>
-          <text x="0" y="26" fill="#6b7280" font-size="9">箱型 r 最大；角鋼單軸 r 小需注意</text>
-          <text x="0" y="39" fill="#dc2626" font-size="9">⚠ 控制軸通常是 r 最小的方向</text>
-        </g>
-      </svg>
-    </div>
-    <div class="sbox">
-      <h3>拉力桿件破壞模式</h3>
-      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg" style="font-size:10px;font-family:sans-serif">
-        <!-- 全斷面降伏 -->
-        <g transform="translate(10,10)">
-          <rect x="5" y="10" width="90" height="20" fill="#bbf7d0" stroke="#16a34a" stroke-width="1.5"/>
-          <text x="50" y="38" text-anchor="middle" fill="#15803d" font-weight="bold" font-size="9">① 全斷面降伏</text>
-          <text x="50" y="49" text-anchor="middle" fill="#6b7280" font-size="8">φtPn = 0.9·Fy·Ag</text>
-          <text x="50" y="59" text-anchor="middle" fill="#6b7280" font-size="8">(ASD: Pall = Fy·Ag/1.67)</text>
-        </g>
-        <!-- 淨截面斷裂 -->
-        <g transform="translate(10,80)">
-          <rect x="5" y="10" width="35" height="20" fill="#fef9c3" stroke="#d97706" stroke-width="1.5"/>
-          <circle cx="42" cy="20" r="4" fill="#fff" stroke="#d97706" stroke-width="1.5"/>
-          <rect x="48" y="10" width="47" height="20" fill="#fef9c3" stroke="#d97706" stroke-width="1.5"/>
-          <text x="50" y="38" text-anchor="middle" fill="#d97706" font-weight="bold" font-size="9">② 淨截面斷裂</text>
-          <text x="50" y="49" text-anchor="middle" fill="#6b7280" font-size="8">φtPn = 0.75·Fu·Ae</text>
-          <text x="50" y="59" text-anchor="middle" fill="#6b7280" font-size="8">Ae = U·An</text>
-        </g>
-        <!-- 塊狀剪力 -->
-        <g transform="translate(170,10)">
-          <rect x="5" y="5" width="120" height="160" fill="none" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4,3" rx="4"/>
-          <text x="65" y="20" text-anchor="middle" fill="#374151" font-weight="bold" font-size="9">③ 塊狀剪力 (Block Shear)</text>
-          <rect x="20" y="30" width="10" height="90" fill="#fecaca" stroke="#dc2626" stroke-width="1.2"/>
-          <rect x="35" y="30" width="10" height="90" fill="#fecaca" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="3,2"/>
-          <rect x="20" y="30" width="80" height="15" fill="#fca5a5" stroke="#dc2626" stroke-width="1.2"/>
-          <text x="65" y="140" text-anchor="middle" fill="#dc2626" font-size="8" font-weight="600">剪力面 (Anv) + 拉力面 (Ant)</text>
-          <text x="65" y="151" text-anchor="middle" fill="#6b7280" font-size="8">φRn=φ(0.6Fu·Anv+Ubs·Fu·Ant)</text>
-          <text x="65" y="162" text-anchor="middle" fill="#6b7280" font-size="8">Ubs=1.0(均勻拉力) 或 0.5</text>
-        </g>
-      </svg>
-    </div>
-    <div class="sbox">
-      <h3>複合柱斷面（SRC）</h3>
-      <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" style="font-size:10px;font-family:sans-serif">
-        <!-- 包覆型 -->
-        <g transform="translate(10,10)">
-          <rect x="0" y="0" width="120" height="120" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5" rx="4"/>
-          <rect x="30" y="30" width="60" height="12" fill="#93c5fd" stroke="#2563eb" stroke-width="1.2"/>
-          <rect x="50" y="42" width="20" height="36" fill="#93c5fd" stroke="#2563eb" stroke-width="1.2"/>
-          <rect x="30" y="78" width="60" height="12" fill="#93c5fd" stroke="#2563eb" stroke-width="1.2"/>
-          <!-- rebars -->
-          <circle cx="15" cy="15" r="5" fill="#4b5563" stroke="#1f2937" stroke-width="1"/>
-          <circle cx="105" cy="15" r="5" fill="#4b5563" stroke="#1f2937" stroke-width="1"/>
-          <circle cx="15" cy="105" r="5" fill="#4b5563" stroke="#1f2937" stroke-width="1"/>
-          <circle cx="105" cy="105" r="5" fill="#4b5563" stroke="#1f2937" stroke-width="1"/>
-          <text x="60" y="138" text-anchor="middle" fill="#4338ca" font-weight="bold">包覆型（SRC）</text>
-          <text x="60" y="149" text-anchor="middle" fill="#6b7280" font-size="9">Fmy = Fy + 0.85f'c(Ac/As) + Fyr(Ar/As)</text>
-          <text x="60" y="160" text-anchor="middle" fill="#6b7280" font-size="9">Em = E + 0.4Ec(Ac/As)</text>
-        </g>
-        <!-- 充填型 -->
-        <g transform="translate(160,10)">
-          <rect x="0" y="0" width="100" height="100" fill="none" stroke="#2563eb" stroke-width="8" stroke-linejoin="round"/>
-          <rect x="8" y="8" width="84" height="84" fill="#e0e7ff" stroke="none"/>
-          <text x="50" y="120" text-anchor="middle" fill="#1e40af" font-weight="bold">充填型（CFT）</text>
-          <text x="50" y="131" text-anchor="middle" fill="#6b7280" font-size="9">鋼管內灌混凝土</text>
-          <text x="50" y="142" text-anchor="middle" fill="#6b7280" font-size="9">相同 Fmy/Em 公式</text>
-        </g>
-      </svg>
-    </div>
-    <div class="sbox">
-      <h3>有效長度係數 K（常見端部條件）</h3>
-      <svg viewBox="0 0 320 175" xmlns="http://www.w3.org/2000/svg" style="font-size:10px;font-family:sans-serif">
-        <!-- Case 1: 兩端固接無側移 -->
-        <g transform="translate(10,10)">
-          <line x1="25" y1="0" x2="25" y2="110" stroke="#374151" stroke-width="2"/>
-          <rect x="10" y="0" width="30" height="6" fill="#374151"/>
-          <rect x="10" y="104" width="30" height="6" fill="#374151"/>
-          <line x1="5" y1="55" x2="25" y2="55" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,2"/>
-          <text x="28" y="58" fill="#dc2626" font-size="9">0.5L</text>
-          <text x="25" y="130" text-anchor="middle" fill="#374151" font-weight="bold">兩端固</text>
-          <text x="25" y="141" text-anchor="middle" fill="#374151" font-weight="bold">無側移</text>
-          <text x="25" y="156" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="800">K=0.5</text>
-        </g>
-        <!-- Case 2: 一固一鉸無側移 -->
-        <g transform="translate(75,10)">
-          <line x1="25" y1="0" x2="25" y2="110" stroke="#374151" stroke-width="2"/>
-          <rect x="10" y="0" width="30" height="6" fill="#374151"/>
-          <polygon points="25,110 15,122 35,122" fill="#374151" stroke="none"/>
-          <line x1="5" y1="55" x2="25" y2="55" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,2"/>
-          <text x="28" y="58" fill="#dc2626" font-size="9">0.7L</text>
-          <text x="25" y="138" text-anchor="middle" fill="#374151" font-weight="bold">一固一鉸</text>
-          <text x="25" y="156" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="800">K=0.7</text>
-        </g>
-        <!-- Case 3: 兩端鉸接 -->
-        <g transform="translate(140,10)">
-          <line x1="25" y1="10" x2="25" y2="100" stroke="#374151" stroke-width="2"/>
-          <polygon points="25,10 15,0 35,0" fill="#374151"/>
-          <polygon points="25,100 15,112 35,112" fill="#374151"/>
-          <line x1="5" y1="55" x2="25" y2="55" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,2"/>
-          <text x="28" y="58" fill="#dc2626" font-size="9">1.0L</text>
-          <text x="25" y="130" text-anchor="middle" fill="#374151" font-weight="bold">兩端鉸</text>
-          <text x="25" y="141" text-anchor="middle" fill="#374151" font-weight="bold">無側移</text>
-          <text x="25" y="156" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="800">K=1.0</text>
-        </g>
-        <!-- Case 4: 一固一自由（懸臂） -->
-        <g transform="translate(205,10)">
-          <line x1="25" y1="0" x2="25" y2="110" stroke="#374151" stroke-width="2"/>
-          <rect x="10" y="104" width="30" height="6" fill="#374151"/>
-          <circle cx="25" cy="0" r="5" fill="#fff" stroke="#374151" stroke-width="2"/>
-          <line x1="5" y1="55" x2="25" y2="55" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,2"/>
-          <text x="28" y="58" fill="#dc2626" font-size="9">2.0L</text>
-          <text x="25" y="130" text-anchor="middle" fill="#374151" font-weight="bold">一固一自</text>
-          <text x="25" y="141" text-anchor="middle" fill="#374151" font-weight="bold">由（懸臂）</text>
-          <text x="25" y="156" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="800">K=2.0</text>
-        </g>
-        <!-- Case 5: 兩端固接有側移 -->
-        <g transform="translate(268,10)">
-          <path d="M 25,110 Q 25,55 35,0" fill="none" stroke="#374151" stroke-width="2"/>
-          <rect x="10" y="104" width="30" height="6" fill="#374151"/>
-          <rect x="20" y="0" width="30" height="6" fill="#374151"/>
-          <line x1="0" y1="55" x2="45" y2="55" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,2"/>
-          <text x="37" y="140" text-anchor="middle" fill="#374151" font-weight="bold">兩固有</text>
-          <text x="37" y="151" text-anchor="middle" fill="#374151" font-weight="bold">側移</text>
-          <text x="37" y="166" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="800">K=1.2</text>
-        </g>
-      </svg>
-    </div>
-  </div>
+<div class="cats">
+<div class="cat" style="border-left-color:var(--t)" onclick="filterQ('T')"><h3>🔩 拉力桿件（5題）</h3><p>剪力遲滯 U、淨斷面斷裂、塊狀剪力、插銷接合</p></div>
+<div class="cat" style="border-left-color:var(--k)" onclick="filterQ('K')"><h3>📐 有效長度 K 值（7題）</h3><p>對位圖、LeMessurier、靠桿效應、側移構架</p></div>
+<div class="cat" style="border-left-color:var(--c)" onclick="filterQ('C')"><h3>🏛️ 柱挫屈強度（8題）</h3><p>柱強度曲線、λc、殘留應力、切線模數</p></div>
+<div class="cat" style="border-left-color:var(--x)" onclick="filterQ('X')"><h3>🧱 組合／複合柱（4題）</h3><p>SRC 複合柱、組合柱平行軸定理</p></div>
 </div>
-
-<!-- ③ 解題流程圖 -->
-<div class="sec" id="s3">
-  <div class="sec-title"><span class="ico">🔀</span> 解題流程圖</div>
-  <div class="svg-row">
-    <div class="sbox">
-      <h3>壓力桿件設計流程（LRFD）</h3>
-      <svg viewBox="0 0 260 400" xmlns="http://www.w3.org/2000/svg" style="font-size:10px;font-family:sans-serif">
-        <defs><marker id="arr" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#6b7280"/></marker></defs>
-        <!-- Step 1 -->
-        <rect x="30" y="10" width="200" height="36" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
-        <text x="130" y="25" text-anchor="middle" fill="#1e40af" font-weight="bold">確定有效長度 KL</text>
-        <text x="130" y="38" text-anchor="middle" fill="#374151">查對位圖或計算 G 值</text>
-        <line x1="130" y1="46" x2="130" y2="65" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arr)"/>
-        <!-- Step 2 -->
-        <rect x="30" y="65" width="200" height="36" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
-        <text x="130" y="80" text-anchor="middle" fill="#1e40af" font-weight="bold">計算細長比</text>
-        <text x="130" y="93" text-anchor="middle" fill="#374151">KL/r（取強弱軸中較大值）</text>
-        <line x1="130" y1="101" x2="130" y2="120" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arr)"/>
-        <!-- Step 3 -->
-        <rect x="30" y="120" width="200" height="36" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
-        <text x="130" y="135" text-anchor="middle" fill="#1e40af" font-weight="bold">計算無因次細長比</text>
-        <text x="130" y="148" text-anchor="middle" fill="#374151">$\lambda_c = \frac{KL}{r\pi}\sqrt{\frac{F_y}{E}}$</text>
-        <line x1="130" y1="156" x2="130" y2="175" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arr)"/>
-        <!-- Decision -->
-        <polygon points="130,175 220,205 130,235 40,205" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
-        <text x="130" y="201" text-anchor="middle" fill="#92400e" font-weight="bold">λc ≤ 1.5?</text>
-        <text x="130" y="213" text-anchor="middle" fill="#92400e">(非彈性 vs 彈性)</text>
-        <!-- Yes branch -->
-        <line x1="40" y1="205" x2="10" y2="205" stroke="#6b7280" stroke-width="1.2"/>
-        <line x1="10" y1="205" x2="10" y2="265" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arr)"/>
-        <text x="25" y="200" fill="#16a34a" font-size="9" font-weight="bold">是</text>
-        <rect x="0" y="265" width="110" height="46" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
-        <text x="55" y="281" text-anchor="middle" fill="#15803d" font-weight="bold">非彈性挫屈</text>
-        <text x="55" y="294" text-anchor="middle" fill="#374151">$F_{cr}=0.658^{\lambda_c^2}F_y$</text>
-        <text x="55" y="305" text-anchor="middle" fill="#6b7280" font-size="9">λc→0: Fcr→Fy（殘留應力影響）</text>
-        <!-- No branch -->
-        <line x1="220" y1="205" x2="250" y2="205" stroke="#6b7280" stroke-width="1.2"/>
-        <line x1="250" y1="205" x2="250" y2="265" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arr)"/>
-        <text x="232" y="200" fill="#dc2626" font-size="9" font-weight="bold">否</text>
-        <rect x="148" y="265" width="110" height="46" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
-        <text x="203" y="281" text-anchor="middle" fill="#dc2626" font-weight="bold">彈性挫屈</text>
-        <text x="203" y="294" text-anchor="middle" fill="#374151">$F_{cr}=\frac{0.877}{\lambda_c^2}F_y$</text>
-        <text x="203" y="305" text-anchor="middle" fill="#6b7280" font-size="9">Euler挫屈（0.877折減）</text>
-        <!-- Merge -->
-        <line x1="55" y1="311" x2="55" y2="340" stroke="#6b7280" stroke-width="1.2"/>
-        <line x1="203" y1="311" x2="203" y2="340" stroke="#6b7280" stroke-width="1.2"/>
-        <line x1="55" y1="340" x2="203" y2="340" stroke="#6b7280" stroke-width="1.2"/>
-        <line x1="130" y1="340" x2="130" y2="355" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arr)"/>
-        <!-- Final -->
-        <rect x="30" y="355" width="200" height="36" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
-        <text x="130" y="370" text-anchor="middle" fill="#1e40af" font-weight="bold">設計強度</text>
-        <text x="130" y="383" text-anchor="middle" fill="#1e40af">$\phi_c P_n = 0.85 \cdot F_{cr} \cdot A_g$</text>
-      </svg>
-    </div>
-    <div class="sbox">
-      <h3>拉力桿件設計流程（LRFD）</h3>
-      <svg viewBox="0 0 260 400" xmlns="http://www.w3.org/2000/svg" style="font-size:10px;font-family:sans-serif">
-        <defs><marker id="arr2" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#6b7280"/></marker></defs>
-        <!-- Step 1 -->
-        <rect x="30" y="10" width="200" height="36" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
-        <text x="130" y="25" text-anchor="middle" fill="#15803d" font-weight="bold">① 全斷面降伏</text>
-        <text x="130" y="38" text-anchor="middle" fill="#374151">$\phi_t P_n = 0.9 \cdot F_y \cdot A_g$</text>
-        <line x1="130" y1="46" x2="130" y2="65" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arr2)"/>
-        <!-- Step 2 -->
-        <rect x="30" y="65" width="200" height="56" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
-        <text x="130" y="80" text-anchor="middle" fill="#15803d" font-weight="bold">② 淨截面斷裂</text>
-        <text x="130" y="93" text-anchor="middle" fill="#374151">計算 $A_n$（減去螺栓孔/銲接）</text>
-        <text x="130" y="106" text-anchor="middle" fill="#374151">$A_e = U \cdot A_n$，$\phi_t P_n = 0.75 F_u A_e$</text>
-        <text x="130" y="117" text-anchor="middle" fill="#d97706" font-size="9">⚠ U 值由接合型式決定（查表）</text>
-        <line x1="130" y1="121" x2="130" y2="140" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arr2)"/>
-        <!-- Step 3 -->
-        <rect x="30" y="140" width="200" height="70" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
-        <text x="130" y="157" text-anchor="middle" fill="#15803d" font-weight="bold">③ 塊狀剪力（Block Shear）</text>
-        <text x="130" y="170" text-anchor="middle" fill="#374151">剪力面：$0.6F_u \cdot A_{nv}$</text>
-        <text x="130" y="183" text-anchor="middle" fill="#374151">拉力面：$U_{bs} F_u \cdot A_{nt}$</text>
-        <text x="130" y="196" text-anchor="middle" fill="#374151">$\phi R_n = 0.75 (0.6F_u A_{nv}+U_{bs}F_u A_{nt})$</text>
-        <text x="130" y="207" text-anchor="middle" fill="#d97706" font-size="9">⚠ Ubs=1.0（均勻拉力）；0.5（非均勻）</text>
-        <line x1="130" y1="210" x2="130" y2="229" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arr2)"/>
-        <!-- Step 4 -->
-        <polygon points="130,229 220,259 130,289 40,259" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
-        <text x="130" y="255" text-anchor="middle" fill="#92400e" font-weight="bold">取三者</text>
-        <text x="130" y="268" text-anchor="middle" fill="#92400e">最小值控制</text>
-        <line x1="130" y1="289" x2="130" y2="308" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arr2)"/>
-        <!-- Final -->
-        <rect x="30" y="308" width="200" height="46" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
-        <text x="130" y="325" text-anchor="middle" fill="#15803d" font-weight="bold">設計強度 φtPn（最小值）</text>
-        <text x="130" y="338" text-anchor="middle" fill="#374151">需滿足：$P_u \leq \phi_t P_n$</text>
-        <text x="130" y="350" text-anchor="middle" fill="#6b7280" font-size="9">同時檢查細長比：L/r ≤ 300</text>
-      </svg>
-    </div>
-  </div>
+<div class="charts">
+<div class="chartbox"><h4>年度分布（依題型堆疊）</h4><canvas id="cvBar" width="520" height="260"></canvas></div>
+<div class="chartbox"><h4>題型比例</h4><canvas id="cvPie" width="520" height="260"></canvas></div>
 </div>
+</section>
 
-<!-- ④ 核心公式速查 -->
-<div class="sec" id="s4">
-  <div class="sec-title"><span class="ico">📐</span> 核心公式速查</div>
-  <div class="formula-grid">
-    <!-- Type A -->
-    <div class="fc fA">
-      <h3><span class="tbadge bA">Type A</span> 壓力桿件—挫屈強度</h3>
-      <div style="font-size:.85rem;font-weight:600;color:var(--ca);margin-bottom:.4rem">LRFD（我國規範 AISC）</div>
-      <div class="fblock">
-        $\lambda_c = \dfrac{KL}{r\pi}\sqrt{\dfrac{F_y}{E}}$
-        <br>
-        $\lambda_c \leq 1.5$：$F_{cr} = 0.658^{\lambda_c^2} F_y$（非彈性）
-        <br>
-        $\lambda_c > 1.5$：$F_{cr} = \dfrac{0.877}{\lambda_c^2} F_y$（彈性）
-        <br>
-        $\phi_c P_n = 0.85 \cdot F_{cr} \cdot A_g$
-      </div>
-      <div style="font-size:.85rem;font-weight:600;color:var(--ca);margin-bottom:.4rem;margin-top:.6rem">ASD（舊規範）</div>
-      <div class="fblock">
-        $C_c = \sqrt{\dfrac{2\pi^2 E}{F_y}}$（彈性/非彈性界限細長比）
-        <br>
-        $KL/r \leq C_c$：$F_a = \dfrac{\left[1 - \dfrac{(KL/r)^2}{2C_c^2}\right]F_y}{F.S.}$，$F.S. = \dfrac{5}{3}+\dfrac{3(KL/r)}{8C_c}-\dfrac{(KL/r)^3}{8C_c^3}$
-        <br>
-        $KL/r > C_c$：$F_a = \dfrac{12\pi^2 E}{23(KL/r)^2}$
-      </div>
-      <div class="fnote">⚠ 殘留應力（Fr = 0.3Fy）會降低非彈性挫屈強度 → 柱強度曲線低於理想值<br>⚠ 切線模數 Et &lt; E（非彈性區間）→ 真實挫屈載重低於 Euler 值</div>
-    </div>
-    <!-- Type B -->
-    <div class="fc fB">
-      <h3><span class="tbadge bB">Type B</span> 壓力桿件—有效長度 K</h3>
-      <div style="font-size:.85rem;font-weight:600;color:var(--cb);margin-bottom:.4rem">對位圖（Alignment Chart）G 值計算</div>
-      <div class="fblock">
-        $G = \dfrac{\sum (I_c/L_c)}{\sum (I_g/L_g)}$（柱與梁之剛度比）
-        <br>
-        端部條件：固接 G=1（理論）；鉸接 G=10；自由 G=∞
-        <br>
-        查圖：無側移構架左圖；有側移構架右圖
-      </div>
-      <div style="font-size:.85rem;font-weight:600;color:var(--cb);margin-bottom:.4rem;margin-top:.6rem">LeMessurier 公式（側移構架精確法）</div>
-      <div class="fblock">
-        $K = \sqrt{\dfrac{1.6\,G_1 G_2 + 4(G_1+G_2)+7.5}{G_1+G_2+7.5}}$
-        <br>
-        靠柱效應修正：$K_i^2 = \dfrac{\pi^2 E I_i}{L_i^2} \cdot \dfrac{P_{crit}}{P_i}$（系統挫屈）
-      </div>
-      <div style="font-size:.85rem;font-weight:600;color:var(--cb);margin-bottom:.4rem;margin-top:.6rem">ASD 非彈性修正（τa 折減）</div>
-      <div class="fblock">
-        當 $\dfrac{P_u}{P_y} > 0.5$：$G^* = \tau_a \cdot G$，$\tau_a = \dfrac{4(P_u/P_y)[1-(P_u/P_y)]}{1}$
-        <br>以修正後 G* 查對位圖
-      </div>
-      <div class="fnote">⚠ 對位圖假設所有梁承受均勻載重（無遠端抵抗）→ 實際上偏保守<br>⚠ LeMessurier 公式考慮靠柱效應，適合不規則框架</div>
-    </div>
-    <!-- Type C -->
-    <div class="fc fC">
-      <h3><span class="tbadge bC">Type C</span> 拉力桿件—淨截面 / 剪力遲滯</h3>
-      <div style="font-size:.85rem;font-weight:600;color:var(--cc);margin-bottom:.4rem">LRFD 三種破壞模式</div>
-      <div class="fblock">
-        ① 全斷面降伏：$\phi_t P_n = 0.9 F_y A_g$
-        <br>
-        ② 淨截面斷裂：$\phi_t P_n = 0.75 F_u A_e$，$A_e = U \cdot A_n$
-        <br>
-        ③ 塊狀剪力：$\phi R_n = 0.75(0.6F_u A_{nv} + U_{bs} F_u A_{nt})$
-        <br>上限：$0.75(0.6F_y A_{gv} + U_{bs} F_u A_{nt})$
-      </div>
-      <div style="font-size:.85rem;font-weight:600;color:var(--cc);margin-bottom:.4rem;margin-top:.6rem">剪力遲滯係數 U（常用值）</div>
-      <div class="fblock">
-        連接所有板件：$U = 1.0$
-        <br>
-        W 型鋼翼板接合（$b_f \geq 2d/3$）：$U = 0.9$；否則 $U = 0.85$
-        <br>
-        一般情況：$U = 1 - \bar{x}/L$（$\bar{x}$ 為形心至接觸面距離，$L$ 為連接長度）
-        <br>
-        縱向銲接 $L \geq 2w$：$U=1.0$；$w \leq L &lt; 2w$：$U=0.87$；$L &lt; w$：$U=0.75$
-      </div>
-      <div style="font-size:.85rem;font-weight:600;color:var(--cc);margin-bottom:.4rem;margin-top:.6rem">ASD</div>
-      <div class="fblock">
-        全面積降伏：$P_{all} = 0.6 F_y \cdot A_g$
-        <br>
-        淨截面斷裂：$P_{all} = 0.5 F_u \cdot A_e$
-      </div>
-      <div class="fnote">⚠ U 值取計算值與查表值之較大者<br>⚠ 螺栓孔面積：$A_n = A_g - \sum (d_h + 3.2) \cdot t$（孔徑加 3.2 mm）</div>
-    </div>
-    <!-- Type D -->
-    <div class="fc fD">
-      <h3><span class="tbadge bD">Type D</span> 複合柱 / SRC</h3>
-      <div style="font-size:.85rem;font-weight:600;color:var(--cd);margin-bottom:.4rem">有效材料性質（包覆型 SRC）</div>
-      <div class="fblock">
-        $F_{my} = F_y + 0.85f'_c\dfrac{A_c}{A_s} + F_{yr}\dfrac{A_r}{A_s}$
-        <br>
-        $E_m = E_s + 0.4E_c\dfrac{A_c}{A_s}$
-        <br>
-        其中：$A_s$ 鋼材面積、$A_c$ 混凝土面積、$A_r$ 鋼筋面積
-      </div>
-      <div style="font-size:.85rem;font-weight:600;color:var(--cd);margin-bottom:.4rem;margin-top:.6rem">使用限制</div>
-      <div class="fblock">
-        鋼材面積 $A_s \geq 4\%$ 總面積（AISC 規定）
-        <br>
-        鋼骨承擔載重 = $\phi_c P_n = 0.85 F_{cr} A_s$（$F_{cr}$ 以 $F_{my}$、$E_m$ 計算 $\lambda_c$）
-      </div>
-      <div style="font-size:.85rem;font-weight:600;color:var(--cd);margin-bottom:.4rem;margin-top:.6rem">組合柱（鋼構件拼合）</div>
-      <div class="fblock">
-        $r_{min} = \sqrt{\dfrac{I_{total}}{A_{total}}}$（以平行軸定理疊加各構件）
-        <br>
-        ASD 判斷彈性/非彈性：比較 $KL/r$ 與 $C_c = \sqrt{2\pi^2 E/F_{my}}$
-      </div>
-      <div class="fnote">⚠ 混凝土 Ec 不是 Es；別混用<br>⚠ 複合柱 Cc 要用 Fmy（不是 Fy）計算</div>
-    </div>
-  </div>
+<section id="s2">
+<h2>② 截面圖解</h2>
+<div class="svgbox">
+<svg viewBox="0 0 940 260" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+<!-- H section -->
+<g transform="translate(30,30)">
+<rect x="0" y="0" width="120" height="16" fill="#90caf9" stroke="#1565c0"/>
+<rect x="52" y="16" width="16" height="128" fill="#90caf9" stroke="#1565c0"/>
+<rect x="0" y="144" width="120" height="16" fill="#90caf9" stroke="#1565c0"/>
+<line x1="-14" y1="80" x2="134" y2="80" stroke="#d32f2f" stroke-dasharray="5 4"/>
+<line x1="60" y1="-14" x2="60" y2="174" stroke="#2e7d32" stroke-dasharray="5 4"/>
+<text x="138" y="84" font-size="12" fill="#d32f2f">x（強軸）</text>
+<text x="64" y="-4" font-size="12" fill="#2e7d32">y（弱軸）</text>
+<text x="18" y="200" font-size="13" font-weight="bold">H 型鋼：ry ≪ rx</text>
+<text x="18" y="218" font-size="11" fill="#78909c">弱軸常控制挫屈</text>
+</g>
+<!-- Box -->
+<g transform="translate(280,30)">
+<rect x="0" y="0" width="120" height="160" fill="none" stroke="#1565c0" stroke-width="14"/>
+<text x="8" y="200" font-size="13" font-weight="bold">箱型斷面（SS-2018-2）</text>
+<text x="8" y="218" font-size="11" fill="#78909c">rx≈ry，扭轉勁度大</text>
+</g>
+<!-- double channel built-up -->
+<g transform="translate(500,30)">
+<path d="M0,0 h20 v14 h-8 v132 h8 v14 h-20 z" fill="#ce93d8" stroke="#8e24aa"/>
+<path d="M120,0 h-20 v14 h8 v132 h-8 v14 h20 z" fill="#ce93d8" stroke="#8e24aa"/>
+<line x1="24" y1="30" x2="96" y2="70" stroke="#8e24aa" stroke-width="3"/>
+<line x1="96" y1="70" x2="24" y2="110" stroke="#8e24aa" stroke-width="3"/>
+<line x1="24" y1="110" x2="96" y2="150" stroke="#8e24aa" stroke-width="3"/>
+<text x="0" y="200" font-size="13" font-weight="bold">雙槽鋼組合柱（綴材）</text>
+<text x="0" y="218" font-size="11" fill="#78909c">平行軸定理求 Iy（SS-2015-3）</text>
+</g>
+<!-- SRC -->
+<g transform="translate(720,30)">
+<rect x="0" y="0" width="150" height="160" fill="#eceff1" stroke="#546e7a"/>
+<rect x="40" y="42" width="70" height="10" fill="#90caf9" stroke="#1565c0"/>
+<rect x="68" y="52" width="14" height="56" fill="#90caf9" stroke="#1565c0"/>
+<rect x="40" y="108" width="70" height="10" fill="#90caf9" stroke="#1565c0"/>
+<circle cx="14" cy="14" r="5" fill="#f57c00"/><circle cx="136" cy="14" r="5" fill="#f57c00"/>
+<circle cx="14" cy="146" r="5" fill="#f57c00"/><circle cx="136" cy="146" r="5" fill="#f57c00"/>
+<text x="6" y="200" font-size="13" font-weight="bold">SRC 包覆型複合柱</text>
+<text x="6" y="218" font-size="11" fill="#78909c">Fmy、Em 修正（SS-2003-2）</text>
+</g>
+</svg>
 </div>
+</section>
 
-<!-- ⑤ 考題清單 -->
-<div class="sec" id="s5">
-  <div class="sec-title"><span class="ico">📋</span> 考題清單</div>
-  <div class="fbar">
-    <button class="fbtn fall on" onclick="filterQ('all')">全部 (24)</button>
-    <button class="fbtn fA" onclick="filterQ('A')">● 壓力挫屈強度 A (8)</button>
-    <button class="fbtn fB" onclick="filterQ('B')">● 有效長度K B (8)</button>
-    <button class="fbtn fC" onclick="filterQ('C')">● 拉力桿件 C (5)</button>
-    <button class="fbtn fD" onclick="filterQ('D')">● 複合柱 D (3)</button>
-  </div>
-  <div class="qlist" id="qlist"></div>
+<section id="s3">
+<h2>③ 解題流程圖</h2>
+<div class="svgbox">
+<svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#546e7a"/></marker></defs>
+<!-- compression flow -->
+<text x="20" y="24" font-size="14" font-weight="bold" fill="#1565c0">壓力桿件</text>
+<rect x="20" y="36" width="150" height="44" rx="8" fill="#e3f2fd" stroke="#1565c0"/><text x="34" y="56">判斷構架型式</text><text x="34" y="72">側移？無側移？</text>
+<rect x="210" y="36" width="160" height="44" rx="8" fill="#e3f2fd" stroke="#1565c0"/><text x="222" y="56">求 K（對位圖 G 值</text><text x="222" y="72">或 LeMessurier）</text>
+<rect x="410" y="36" width="150" height="44" rx="8" fill="#e3f2fd" stroke="#1565c0"/><text x="424" y="56">各軸 KL/r</text><text x="424" y="72">取最大（控制軸）</text>
+<rect x="600" y="36" width="130" height="44" rx="8" fill="#fff3e0" stroke="#f57c00"/><text x="612" y="62">λc = f(KL/r, Fy)</text>
+<polygon points="800,30 880,58 800,86 720,58" fill="#fffde7" stroke="#f9a825"/><text x="768" y="62">λc ≤ 1.5？</text>
+<rect x="740" y="120" width="180" height="40" rx="8" fill="#e8f5e9" stroke="#2e7d32"/><text x="752" y="145">非彈性：Fcr=0.658^λc² Fy</text>
+<rect x="530" y="120" width="180" height="40" rx="8" fill="#ffebee" stroke="#c62828"/><text x="546" y="145">彈性：Fcr=0.877Fy/λc²</text>
+<rect x="640" y="190" width="180" height="40" rx="8" fill="#e3f2fd" stroke="#1565c0"/><text x="660" y="215">φcPn = 0.85 Fcr Ag</text>
+<line x1="170" y1="58" x2="210" y2="58" stroke="#546e7a" marker-end="url(#ar)"/>
+<line x1="370" y1="58" x2="410" y2="58" stroke="#546e7a" marker-end="url(#ar)"/>
+<line x1="560" y1="58" x2="600" y2="58" stroke="#546e7a" marker-end="url(#ar)"/>
+<line x1="730" y1="58" x2="720" y2="58" stroke="#546e7a"/>
+<line x1="820" y1="86" x2="828" y2="120" stroke="#546e7a" marker-end="url(#ar)"/><text x="836" y="106" fill="#2e7d32">是</text>
+<line x1="760" y1="80" x2="640" y2="120" stroke="#546e7a" marker-end="url(#ar)"/><text x="672" y="100" fill="#c62828">否</text>
+<line x1="620" y1="160" x2="700" y2="190" stroke="#546e7a" marker-end="url(#ar)"/>
+<line x1="830" y1="160" x2="760" y2="190" stroke="#546e7a" marker-end="url(#ar)"/>
+<!-- tension flow -->
+<text x="20" y="270" font-size="14" font-weight="bold" fill="#f57c00">拉力桿件（三種極限狀態取小）</text>
+<rect x="20" y="286" width="230" height="52" rx="8" fill="#fff3e0" stroke="#f57c00"/><text x="34" y="308">全斷面降伏</text><text x="34" y="326">φt = 0.90，Pn = Fy Ag</text>
+<rect x="290" y="286" width="270" height="52" rx="8" fill="#fff3e0" stroke="#f57c00"/><text x="304" y="308">淨斷面斷裂（剪力遲滯）</text><text x="304" y="326">φt = 0.75，Pn = Fu Ae，Ae = U·An</text>
+<rect x="600" y="286" width="320" height="52" rx="8" fill="#fff3e0" stroke="#f57c00"/><text x="614" y="308">塊狀剪力（接合處）</text><text x="614" y="326">Rn = 0.6Fu·Anv + Ubs·Fu·Ant（上限式）</text>
+<rect x="290" y="366" width="270" height="38" rx="8" fill="#e8f5e9" stroke="#2e7d32"/><text x="330" y="390" font-weight="bold">設計強度 = min（三者）</text>
+<line x1="135" y1="338" x2="380" y2="366" stroke="#546e7a" marker-end="url(#ar)"/>
+<line x1="425" y1="338" x2="425" y2="366" stroke="#546e7a" marker-end="url(#ar)"/>
+<line x1="760" y1="338" x2="480" y2="366" stroke="#546e7a" marker-end="url(#ar)"/>
+</svg>
 </div>
+</section>
 
-<!-- ⑥ 高頻陷阱 -->
-<div class="sec" id="s6">
-  <div class="sec-title"><span class="ico">⚠️</span> 高頻陷阱 Top 8</div>
-  <div class="trap-grid">
-    <div class="trap tA">
-      <div class="tnum">陷阱 01 · Type A</div>
-      <div class="ttitle">λc 分界點記錯（1.5 不是 1.0）</div>
-      <div class="tbody">非彈性與彈性挫屈的分界是 λc = 1.5，對應 KL/r ≈ 133（Fy=250 MPa）。常見錯誤是誤用 λc = 1.0 或直接套 Cc。</div>
-      <div class="teg">考題：SS-2014-1、SS-2018-2</div>
-    </div>
-    <div class="trap tA">
-      <div class="tnum">陷阱 02 · Type A</div>
-      <div class="ttitle">ASD Cc 計算時忘記 Fmy（複合柱）</div>
-      <div class="tbody">一般壓力柱 Cc 用 Fy；複合柱或 SRC 則需用 Fmy 計算臨界細長比。兩者公式相同但代入值不同，考題中常陷阱。</div>
-      <div class="teg">考題：SS-2015-3、SS-2003-1</div>
-    </div>
-    <div class="trap tB">
-      <div class="tnum">陷阱 03 · Type B</div>
-      <div class="ttitle">對位圖端部條件設錯（固接 G=1，非 G=0）</div>
-      <div class="tbody">理論固接端 G=0，但設計上取 G=1.0（有限剛度假設）；理論鉸接端 G=∞，設計取 G=10。直接代 G=0 或 G=∞ 會讀到不合理的 K 值。</div>
-      <div class="teg">考題：SS-2023-1、SS-2007-4、SS-2011-4</div>
-    </div>
-    <div class="trap tB">
-      <div class="tnum">陷阱 04 · Type B</div>
-      <div class="ttitle">LeMessurier 公式：只算單柱忘記靠柱效應</div>
-      <div class="tbody">側移構架中，各柱的挫屈互相影響（靠柱效應）。弱柱依賴強柱提供側向束制，系統挫屈載重 ΣPcr 需全樓層計算，不能只算單柱。</div>
-      <div class="teg">考題：SS-2008-2、SS-2011-2、SS-2013-2</div>
-    </div>
-    <div class="trap tC">
-      <div class="tnum">陷阱 05 · Type C</div>
-      <div class="ttitle">螺栓孔扣除面積多加 3.2 mm（孔比螺栓大）</div>
-      <div class="tbody">計算淨截面積時，孔徑 = 螺栓標稱直徑 + 1.6 mm（沖孔）；在計算 An 時再額外加 1.6 mm 損傷，共加 3.2 mm。不加或少加均常見失誤。</div>
-      <div class="teg">考題：SS-2022-2、SS-2005-1</div>
-    </div>
-    <div class="trap tC">
-      <div class="tnum">陷阱 06 · Type C</div>
-      <div class="ttitle">U 值選錯（銲接 vs 螺栓接合規則不同）</div>
-      <div class="tbody">縱向銲接 U 值依銲道長度 L 與銲件寬度 w 的比值查表（1.0 / 0.87 / 0.75）；螺栓接合則用 $\bar{x}/L$ 公式或翼板/腹板接合類型查表。兩者不能混用。</div>
-      <div class="teg">考題：SS-2025-2、SS-2024-2、SS-2015-2</div>
-    </div>
-    <div class="trap tC">
-      <div class="tnum">陷阱 07 · Type C</div>
-      <div class="ttitle">塊狀剪力面判斷錯誤（哪個路徑控制）</div>
-      <div class="tbody">塊狀剪力有兩個可能破壞面，需各自計算後取最小值。常見錯誤是只算一個面，或搞錯剪力面（Anv）與拉力面（Ant）的方向。</div>
-      <div class="teg">考題：SS-2015-2、SS-2005-1、SS-2003-1</div>
-    </div>
-    <div class="trap tD">
-      <div class="tnum">陷阱 08 · Type D</div>
-      <div class="ttitle">複合柱 Fmy 中 Ec 代入 Es（單位混淆）</div>
-      <div class="tbody">Em 公式中的 0.4Ec 是混凝土彈性模數（Ec ≈ 4700√f'c MPa），不是鋼材 Es。混淆後 Em 會嚴重偏大，λc 偏小，導致設計強度誇大。</div>
-      <div class="teg">考題：SS-2003-2、SS-2010-3</div>
-    </div>
-  </div>
+<section id="s4">
+<h2>④ 核心公式速查</h2>
+<div class="fcards">
+<div class="fcard" style="border-top-color:var(--t)">
+<h3>🔩 拉力桿件</h3>
+$$\phi_t P_n = 0.90\,F_y A_g \quad\text{（降伏）}$$
+$$\phi_t P_n = 0.75\,F_u A_e,\qquad A_e = U\,A_n$$
+$$U = 1-\dfrac{\bar{x}}{L} \;\le\; 0.9$$
+<div class="note">An 扣孔徑（標準孔＝螺栓徑＋0.2 cm）；縱向填角銲板材與圓管 HSS 之 U 值另有專用公式（SS-2024-2）。插銷接合另檢核有效淨面積與剪力斷裂（SS-2022-2）。</div>
 </div>
-
-<!-- ⑦ 備考優先序 -->
-<div class="sec" id="s7">
-  <div class="sec-title"><span class="ico">🎯</span> 備考優先序</div>
-  <div class="info-box">SS-U1-1 是全科出題頻率最高的子項之一，歷年幾乎每年必考 1～2 題。建議以 Type A（LRFD λc 計算）和 Type C（拉力桿件剪力遲滯）為核心，再補強 Type B（K 值對位圖）。</div>
-  <table class="ptable">
-    <thead>
-      <tr><th>優先</th><th>題型</th><th>掌握目標</th><th>備考要點</th><th>代表題</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="pbadge p1">1</span></td>
-        <td><span style="color:var(--ca);font-weight:700">A</span> 壓力桿件<br>LRFD Fcr</td>
-        <td>給定截面與 KL/r → 計算 φcPn</td>
-        <td>熟記 λc 公式與 1.5 分界；非彈性 0.658^λc² × Fy；彈性 0.877/λc²</td>
-        <td>SS-2014-1<br>SS-2018-2</td>
-      </tr>
-      <tr>
-        <td><span class="pbadge p1">1</span></td>
-        <td><span style="color:var(--cc);font-weight:700">C</span> 拉力桿件<br>剪力遲滯 U</td>
-        <td>計算 Ae = U·An → 三種破壞取小值</td>
-        <td>U 值查表或用 1-x̄/L；塊狀剪力 Anv + Ant 路徑判斷</td>
-        <td>SS-2025-2<br>SS-2015-2</td>
-      </tr>
-      <tr>
-        <td><span class="pbadge p2">2</span></td>
-        <td><span style="color:var(--cb);font-weight:700">B</span> 有效長度 K<br>對位圖</td>
-        <td>算 G 值 → 查圖得 K（有/無側移）</td>
-        <td>固接 G=1；鉸接 G=10；LeMessurier 考靠柱效應；ASD 記得 τa 修正</td>
-        <td>SS-2023-1<br>SS-2007-4</td>
-      </tr>
-      <tr>
-        <td><span class="pbadge p2">2</span></td>
-        <td><span style="color:var(--ca);font-weight:700">A</span> 壓力桿件<br>ASD Cc 法</td>
-        <td>Cc 計算 → Fa → 檢核 fa ≤ Fa</td>
-        <td>F.S. 為變數（非固定 1.67）；Cc 分界記住 KL/r vs Cc</td>
-        <td>SS-2023-2<br>SS-2015-3</td>
-      </tr>
-      <tr>
-        <td><span class="pbadge p3">3</span></td>
-        <td><span style="color:var(--cb);font-weight:700">B</span> LeMessurier<br>靠柱效應</td>
-        <td>系統挫屈載重計算、靠柱效應修正</td>
-        <td>ΣPcr / ΣP 為系統層級量；各柱 K 由系統挫屈反算</td>
-        <td>SS-2011-2<br>SS-2008-2</td>
-      </tr>
-      <tr>
-        <td><span class="pbadge p4">4</span></td>
-        <td><span style="color:var(--cd);font-weight:700">D</span> 複合柱<br>SRC</td>
-        <td>Fmy/Em 計算 → λc → φcPn</td>
-        <td>Ec ≠ Es；Fmy 三項各對應 As/Ac/Ar；鋼材面積需 ≥ 4%</td>
-        <td>SS-2003-2<br>SS-2010-3</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="fcard" style="border-top-color:var(--t)">
+<h3>🧱 塊狀剪力</h3>
+$$R_n = 0.6F_u A_{nv} + U_{bs}F_u A_{nt}$$
+$$\le\; 0.6F_y A_{gv} + U_{bs}F_u A_{nt}$$
+<div class="note">Ubs＝1.0（拉應力均勻）；多條破壞路徑時逐一計算取最小。φ = 0.75。</div>
 </div>
-
-<!-- ⑧ 互動計算器 -->
-<div class="sec" id="s8">
-  <div class="sec-title"><span class="ico">🧮</span> 互動計算器</div>
-  <div class="calc-wrap">
-    <div class="ctabs">
-      <button class="ctab on" onclick="switchCalc('lrfd')">LRFD 壓力桿件（φcPn）</button>
-      <button class="ctab" onclick="switchCalc('asd')">ASD 壓力桿件（Fa）</button>
-      <button class="ctab" onclick="switchCalc('tension')">拉力桿件（φtPn）</button>
-    </div>
-
-    <!-- LRFD Calc -->
-    <div class="cform on" id="calc-lrfd">
-      <div class="grow">
-        <div class="gl"><label>Fy (MPa)</label><input id="l-fy" type="number" value="250" step="10"></div>
-        <div class="gl"><label>E (MPa)</label><input id="l-e" type="number" value="200000" step="1000"></div>
-        <div class="gl"><label>Ag (cm²)</label><input id="l-ag" type="number" value="100" step="1"></div>
-        <div class="gl"><label>KL (cm)</label><input id="l-kl" type="number" value="500" step="10"></div>
-        <div class="gl"><label>r (cm)</label><input id="l-r" type="number" value="5" step="0.1"></div>
-      </div>
-      <button class="cbtn" onclick="calcLRFD()">計算 φcPn</button>
-      <div class="cres" id="res-lrfd"></div>
-    </div>
-
-    <!-- ASD Calc -->
-    <div class="cform" id="calc-asd">
-      <div class="grow">
-        <div class="gl"><label>Fy (MPa)</label><input id="a-fy" type="number" value="250" step="10"></div>
-        <div class="gl"><label>E (MPa)</label><input id="a-e" type="number" value="200000" step="1000"></div>
-        <div class="gl"><label>KL/r</label><input id="a-klr" type="number" value="80" step="1"></div>
-      </div>
-      <button class="cbtn" onclick="calcASD()">計算 Fa</button>
-      <div class="cres" id="res-asd"></div>
-    </div>
-
-    <!-- Tension Calc -->
-    <div class="cform" id="calc-tension">
-      <div class="grow">
-        <div class="gl"><label>Fy (MPa)</label><input id="t-fy" type="number" value="250" step="10"></div>
-        <div class="gl"><label>Fu (MPa)</label><input id="t-fu" type="number" value="400" step="10"></div>
-        <div class="gl"><label>Ag (cm²)</label><input id="t-ag" type="number" value="50" step="1"></div>
-        <div class="gl"><label>An (cm²)</label><input id="t-an" type="number" value="42" step="1"></div>
-        <div class="gl"><label>U</label><input id="t-u" type="number" value="0.85" step="0.01" min="0" max="1"></div>
-        <div class="gl"><label>Anv (cm²) <small>塊狀剪力</small></label><input id="t-anv" type="number" value="30" step="1"></div>
-        <div class="gl"><label>Ant (cm²) <small>塊狀剪力</small></label><input id="t-ant" type="number" value="10" step="1"></div>
-        <div class="gl"><label>Ubs</label>
-          <select id="t-ubs"><option value="1.0">1.0（均勻拉力）</option><option value="0.5">0.5（非均勻）</option></select>
-        </div>
-      </div>
-      <button class="cbtn" onclick="calcTension()">計算 φtPn</button>
-      <div class="cres" id="res-tension"></div>
-    </div>
-  </div>
+<div class="fcard" style="border-top-color:var(--c)">
+<h3>🏛️ LRFD 柱強度曲線</h3>
+$$\lambda_c=\dfrac{KL}{r\pi}\sqrt{\dfrac{F_y}{E}}$$
+$$\lambda_c\le1.5:\; F_{cr}=\left(0.658^{\lambda_c^2}\right)F_y$$
+$$\lambda_c>1.5:\; F_{cr}=\dfrac{0.877}{\lambda_c^2}F_y,\quad \phi_c=0.85$$
+<div class="note">0.877 為初始彎曲折減；非彈性段反映殘留應力（切線模數理論，比例限約 0.5Fy）。推導題：SS-2014-1、2016-3、2024-1。</div>
 </div>
+<div class="fcard" style="border-top-color:var(--c)">
+<h3>🏛️ ASD 容許壓應力</h3>
+$$C_c=\sqrt{\dfrac{2\pi^2E}{F_y}}$$
+$$\tfrac{KL}{r}\le C_c:\; F_a=\dfrac{\left[1-\frac{(KL/r)^2}{2C_c^2}\right]F_y}{FS}$$
+$$FS=\dfrac{5}{3}+\dfrac{3(KL/r)}{8C_c}-\dfrac{(KL/r)^3}{8C_c^3}$$
+$$\tfrac{KL}{r}>C_c:\; F_a=\dfrac{12\pi^2E}{23(KL/r)^2}$$
+<div class="note">FS 隨 KL/r 由 1.67 漸增至 1.92（非定值）。SS-2011-4、2023-2。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--k)">
+<h3>📐 有效長度 K（對位圖）</h3>
+$$G=\dfrac{\sum (I_c/L_c)}{\sum (I_g/L_g)}$$
+<div class="note">鉸接 G=10、固接 G=1；側移構架 K≥1.0、無側移 K≤1.0（兩張圖勿用錯）。梁遠端條件修正：無側移－遠端鉸 ×1.5、遠端固 ×2.0；側移－遠端鉸 ×0.5。非彈性修正以 τ=Fcr(inelastic)/Fcr(elastic) 折減 G。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--k)">
+<h3>📐 LeMessurier／靠桿效應</h3>
+$$K_i^2=\dfrac{\pi^2 EI_i}{L_i^2 P_{ui}}\cdot\dfrac{\sum P_u}{\sum P_{e}}\;\text{（層間觀念）}$$
+<div class="note">同層剛柱可「扶持」靠柱（leaning column）；靠柱本身 K=1，但被靠的柱 K 放大。SS-2008-2、2011-2、2013-2。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--x)">
+<h3>🧱 SRC 複合柱（修正材料性質）</h3>
+$$F_{my}=F_y+c_1F_{yr}\dfrac{A_r}{A_s}+c_2f'_c\dfrac{A_c}{A_s}$$
+$$E_m=E+c_3E_c\dfrac{A_c}{A_s}$$
+<div class="note">包覆型：c1=0.7、c2=0.6、c3=0.2；再以 Fmy、Em、rm 代入柱強度曲線求 Fcr。SS-2003-2。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--x)">
+<h3>🧱 組合柱斷面性質</h3>
+$$I_y=\sum\left(I_{y0}+A\,d^2\right),\qquad r=\sqrt{I/A}$$
+<div class="note">平行軸定理：d 為分件形心至組合形心距離；雙槽鋼、雙角鋼常考（SS-2010-3、2015-3）。綴材柱另有修正長細比規定。</div>
+</div>
+</div>
+</section>
 
-</div><!-- .main -->
+<section id="s5">
+<h2>⑤ 考題清單（24 題，點題號開啟完整解析）</h2>
+<div class="filters">
+<button class="fbtn on" onclick="filterQ('ALL',this)">全部（24）</button>
+<button class="fbtn" onclick="filterQ('T',this)">拉力桿件（5）</button>
+<button class="fbtn" onclick="filterQ('K',this)">有效長度 K（7）</button>
+<button class="fbtn" onclick="filterQ('C',this)">柱挫屈強度（8）</button>
+<button class="fbtn" onclick="filterQ('X',this)">組合／複合柱（4）</button>
+</div>
+<div id="qlist"></div>
+</section>
+
+<section id="s6">
+<h2>⑥ 高頻陷阱 Top 8</h2>
+<div class="traps">
+<div class="trap"><b><span class="pill" style="background:var(--k)">K值</span>側移 vs 無側移對位圖用錯張</b><br>側移構架 K≥1.0、無側移 K≤1.0，兩張 nomograph 完全不同；題目說「有斜撐」「剪力牆」即無側移。SS-2007-4、2011-4、2023-1。</div>
+<div class="trap"><b><span class="pill" style="background:var(--c)">挫屈</span>分段側撐時控制軸誤判</b><br>中間僅弱軸側撐時，須分別算各段 (KL/r)x 與 (KL/r)y，控制者未必是弱軸。SS-2002-3、2013-3。</div>
+<div class="trap"><b><span class="pill" style="background:var(--t)">剪力遲滯</span>U = 1 − x̄/L 的 L 用錯</b><br>L 是「接合長度」（銲道或首末排螺栓距），不是構材長度；x̄ 為連接肢形心偏距。SS-2005-1、2024-2、2025-2。</div>
+<div class="trap"><b><span class="pill" style="background:var(--t)">塊剪</span>破壞路徑與孔徑扣除錯誤</b><br>Anv 沿力方向受剪、Ant 垂直受拉；孔徑＝螺栓徑＋0.2 cm；多路徑取最小。SS-2003-1、2015-2。</div>
+<div class="trap"><b><span class="pill" style="background:var(--c)">ASD</span>安全係數 FS 當定值 1.67</b><br>ASD 短中柱 FS 是 KL/r 的三次式，長柱段才固定（23/12≈1.92）。SS-2023-2。</div>
+<div class="trap"><b><span class="pill" style="background:var(--c)">判別</span>彈性／非彈性分界搞混</b><br>LRFD 用 λc=1.5；ASD 用 KL/r 與 Cc 比較。兩套判別勿混用。</div>
+<div class="trap"><b><span class="pill" style="background:var(--c)">殘留應力</span>忘記殘留應力的物理意義</b><br>殘留應力使斷面提早局部降伏 → 切線模數下降 → 非彈性挫屈；申論題要能畫出柱強度曲線並標比例限 0.5Fy。SS-2014-1、2016-3、2024-1。</div>
+<div class="trap"><b><span class="pill" style="background:var(--x)">組合柱</span>平行軸定理漏 Ad²</b><br>雙槽鋼背對背或開口相對時，分件形心至組合形心距離不同；勿直接抄型錄 Iy。SS-2010-3、2015-3。</div>
+</div>
+</section>
+
+<section id="s7">
+<h2>⑦ 互動計算器：LRFD 柱強度</h2>
+<div class="calc">
+<div class="row">
+<div><label>Fy（tf/cm²）</label><input id="iFy" type="number" value="2.5" step="0.1"></div>
+<div><label>E（tf/cm²）</label><input id="iE" type="number" value="2040" step="10"></div>
+<div><label>KL/r（控制軸）</label><input id="iSl" type="number" value="80" step="1"></div>
+<div><label>Ag（cm²）</label><input id="iAg" type="number" value="100" step="1"></div>
+</div>
+<button onclick="calcCol()">計算 φcPn</button>
+<div class="out" id="calcOut"></div>
+</div>
+</section>
+
+<footer>study SS-U1-1｜exam-wiki-SS 知識庫自動生成｜連結經 ../index.html markdown 渲染器開啟（KaTeX＋附圖）</footer>
+</main>
 
 <script>
-// ─── Data ───────────────────────────────────────────────────────────────────
-const QS = [
-  {id:'SS-2024-1',yr:2024,type:'A',m:'LRFD',title:'殘留應力、切線模數、柱強度曲線—理論推導與非彈性/彈性挫屈',tags:['壓力桿件','殘留應力','切線模數','柱強度曲線','非彈性挫屈','彈性挫屈','有效慣性矩'],viz:true},
-  {id:'SS-2023-2',yr:2023,type:'A',m:'ASD',title:'ASD整體挫屈：Cc判斷彈性/非彈性，有效長細比計算',tags:['壓力桿件','ASD','整體挫屈','彈性挫屈','非彈性挫屈','Cc','有效長細比','柱強度曲線'],viz:false},
-  {id:'SS-2018-2',yr:2018,type:'A',m:'LRFD',title:'LRFD箱型斷面柱：λc → Fcr → φcPn 完整計算',tags:['壓力桿件','箱型斷面','整體彎曲挫屈','λc','Fcr','φcPn','非彈性挫屈'],viz:false},
-  {id:'SS-2017-3',yr:2017,type:'A',m:'ASD',title:'壓力/拉力桿件概念題：柱強度曲線對比分析',tags:['壓力桿件','拉力桿件','柱強度曲線'],viz:false},
-  {id:'SS-2016-3',yr:2016,type:'A',m:'LRFD',title:'殘留應力（塊狀 vs 拋物線）對切線模數與柱強度的影響',tags:['壓力桿件','殘留應力','柱強度曲線','切線模數'],viz:true},
-  {id:'SS-2015-3',yr:2015,type:'A',m:'ASD',title:'ASD組合柱挫屈：平行軸定理求 r，Cc 判斷，彈性挫屈 Fa',tags:['壓力桿件','組合柱','ASD','平行軸定理','有效長度','迴旋半徑','Cc判斷','彈性挫屈'],viz:false},
-  {id:'SS-2014-1',yr:2014,type:'A',m:'LRFD',title:'LRFD柱強度曲線推導：λc分界、φcPn與殘留應力效應',tags:['壓力桿件','整體挫屈','柱強度曲線','λc推導','有效長度','殘留應力','非彈性挫屈','彈性挫屈'],viz:true},
-  {id:'SS-2006-1',yr:2006,type:'A',m:'LRFD',title:'壓力桿件挫屈模式辨析：整體/局部/LTB，細長比判斷',tags:['整體挫屈','局部挫屈','結實斷面','彎曲挫屈','有效長度','細長比'],viz:false},
-  // Type B
-  {id:'SS-2023-1',yr:2023,type:'B',m:'概念題',title:'對位圖查圖法（nomograph）：側移構架G值計算與K值讀取',tags:['有效長度','K係數','對位圖','nomograph','側移構架','G值','不規則框架','固接','鉸接'],viz:false},
-  {id:'SS-2013-2',yr:2013,type:'B',m:'LRFD',title:'LeMessurier公式：側移框架有效長度精確計算',tags:['有效長度係數','對位圖','LeMessurier公式','側移框架','層間穩定','彈性挫屈'],viz:false},
-  {id:'SS-2013-3',yr:2013,type:'B',m:'LRFD',title:'分段側撐壓力柱：弱/強軸各自計算有效長度與挫屈',tags:['壓力桿件','有效長度','弱軸挫屈','強軸挫屈','分段側撐','迴旋半徑'],viz:false},
-  {id:'SS-2011-2',yr:2011,type:'B',m:'LRFD',title:'LeMessurier靠柱效應：側移構架系統挫屈載重計算',tags:['壓力桿件','有效長度','LeMessurier公式','靠柱效應','側移構架','整體挫屈','K值修正','系統挫屈載重'],viz:false},
-  {id:'SS-2011-4',yr:2011,type:'B',m:'ASD',title:'ASD對位圖查K：無側撐構架非彈性修正（τa折減）',tags:['壓力桿件','有效長度','對位圖','nomograph','無側撐構架','非彈性修正','τ_a折減'],viz:false},
-  {id:'SS-2008-2',yr:2008,type:'B',m:'LRFD',title:'LeMessurier：未束制頂層靠桿效應，P-Δ效應對K值影響',tags:['壓力桿件','有效長度係數','靠桿效應','LeMessurier公式','未束制頂層','鋼架穩定','P-Δ效應'],viz:false},
-  {id:'SS-2007-4',yr:2007,type:'B',m:'LRFD',title:'多層側移構架：各柱G值計算與對位圖查K值',tags:['壓力桿件','有效長度','K係數','對位圖','nomograph','側移構架','G值','多層框架'],viz:false},
-  {id:'SS-2002-3',yr:2002,type:'B',m:'混合',title:'中間側向支撐壓力柱：弱/強軸分別 ASD 與 LRFD 計算',tags:['壓力桿件','有效長度','K值','端部條件','中間側向支撐','弱軸挫屈','強軸挫屈','ASD','LRFD'],viz:false},
-  // Type C
-  {id:'SS-2025-2',yr:2025,type:'C',m:'ASD',title:'ASD銲接拉力桿件：剪力遲滯U值最佳化設計',tags:['拉力桿件','容許應力法','剪力遲滯','U值','淨截面斷裂','全斷面降伏','最佳化','銲接拉力接合'],viz:false},
-  {id:'SS-2024-2',yr:2024,type:'C',m:'LRFD',title:'LRFD圓管HSS縱向填角銲拉力接合：剪力遲滯與半圓管U值',tags:['拉力桿件','圓管HSS','縱向填角銲','剪力遲滯','U值','半圓管','淨截面斷裂','銲道設計'],viz:false},
-  {id:'SS-2022-2',yr:2022,type:'C',m:'ASD',title:'ASD插銷接合（Pin）拉力桿件：有效淨面積與承壓強度',tags:['拉力桿件','插銷接合','鉸接','ASD','有效淨面積','剪力斷裂','承壓','A572'],viz:false},
-  {id:'SS-2015-2',yr:2015,type:'C',m:'LRFD',title:'LRFD雙槽鋼拉力桿件：剪力遲滯U值 + 塊狀剪力控制',tags:['拉力桿件','接合設計','剪力遲滯','塊狀剪力','填角銲','雙槽鋼','U值'],viz:false},
-  {id:'SS-2005-1',yr:2005,type:'C',m:'LRFD',title:'LRFD等肢角鋼螺栓拉力接合：剪力遲滯 + 塊狀剪力三種破壞',tags:['拉力桿件','剪力遲滯','U值','淨斷面斷裂','塊狀剪力','螺栓接合','等肢角鋼','有效淨面積'],viz:false},
-  // Type D
-  {id:'SS-2010-3',yr:2010,type:'D',m:'混合',title:'組合柱（不等肢角鋼）：平行軸定理求r，ASD+LRFD挫屈計算',tags:['組合柱','壓力桿件','不等肢角鋼','ASD','LRFD','Euler公式','長柱','有效長度','迴轉半徑','Cc判斷'],viz:false},
-  {id:'SS-2003-1',yr:2003,type:'D',m:'概念題',title:'複合柱有效降伏應力Fmy、腹板承壓降伏、塊狀剪力概念',tags:['塊狀剪力','複合柱','有效降伏應力','Fmy','殘留應力','Cc臨界細長比','腹板承壓降伏'],viz:false},
-  {id:'SS-2003-2',yr:2003,type:'D',m:'LRFD',title:'LRFD SRC包覆型複合柱：Fmy與Em推導，φcPn完整計算',tags:['SRC複合柱','包覆型複合柱','有效降伏強度Fmy','修正彈性模數Em','整體挫屈','彈性挫屈','λc','Fcr','φcPn'],viz:false},
+const CATC={T:'#f57c00',K:'#2e7d32',C:'#1565c0',X:'#8e24aa'};
+const CATN={T:'拉力桿件',K:'有效長度K',C:'柱挫屈強度',X:'組合/複合柱'};
+const Q=[
+["SS-2002-3","K","兩段側撐柱弱軸挫屈與 K 值端部條件",["有效長度","K值","中間側向支撐","弱軸挫屈"],0],
+["SS-2003-1","X","塊狀剪力、腹板承壓降伏與複合柱有效降伏應力（概念）",["塊狀剪力","腹板承壓降伏","複合柱","概念題"],0],
+["SS-2003-2","X","SRC 包覆型複合柱 Fmy／Em 與整體挫屈強度",["SRC複合柱","Fmy","Em","整體挫屈"],0],
+["SS-2005-1","T","螺栓接合拉力桿件：淨斷面、剪力遲滯 U、塊狀剪力",["剪力遲滯","U值","淨斷面斷裂","塊狀剪力"],0],
+["SS-2006-1","C","整體挫屈 vs 局部挫屈 vs LTB 概念比較",["整體挫屈","局部挫屈","結實斷面","LTB"],0],
+["SS-2007-4","K","側移構架對位圖（nomograph）求 K",["對位圖","nomograph","側移構架"],0],
+["SS-2008-2","K","靠桿效應 LeMessurier 修正 K",["LeMessurier","靠桿效應","未束制頂層"],0],
+["SS-2010-3","X","不等肢角鋼組合柱 ASD／LRFD 比較",["組合柱","不等肢角鋼","Euler公式"],0],
+["SS-2011-2","K","LeMessurier 公式與靠柱效應",["LeMessurier","靠柱效應","側移構架"],0],
+["SS-2011-4","K","無側撐構架對位圖＋非彈性修正（ASD）",["對位圖","無側撐構架","非彈性修正"],0],
+["SS-2013-2","K","對位圖與 LeMessurier 層間穩定",["對位圖","LeMessurier","層間穩定"],0],
+["SS-2013-3","C","分段側撐強弱軸挫屈控制",["弱軸挫屈","強軸挫屈","分段側撐","迴旋半徑"],0],
+["SS-2014-1","C","柱強度曲線 λc 推導與殘留應力",["柱強度曲線","λc推導","殘留應力"],1],
+["SS-2015-2","T","雙槽鋼拉力桿件填角銲接合設計",["剪力遲滯","塊狀剪力","填角銲","雙槽鋼"],0],
+["SS-2015-3","X","組合柱平行軸定理 ASD 檢核",["組合柱","平行軸定理","ASD","迴旋半徑"],0],
+["SS-2016-3","C","殘留應力對柱強度曲線影響（切線模數）",["殘留應力","柱強度曲線","切線模數"],1],
+["SS-2017-3","C","拉壓桿件柱強度曲線（ASD）",["壓力桿件","拉力桿件","柱強度曲線"],0],
+["SS-2018-2","C","箱型斷面整體彎曲挫屈 λc、Fcr",["箱型斷面","整體彎曲挫屈","λc","Fcr"],0],
+["SS-2022-2","T","插銷（pin）接合拉力桿件 ASD",["插銷接合","鉸接","有效淨面積","剪力斷裂"],0],
+["SS-2023-1","K","對位圖查圖法與 K 係數（概念）",["對位圖","查圖法","K係數","概念題"],0],
+["SS-2023-2","C","ASD 彈性／非彈性挫屈 Cc 判別",["ASD","彈性挫屈","非彈性挫屈","Cc"],0],
+["SS-2024-1","C","殘留應力／切線模數柱強度曲線",["殘留應力","切線模數","柱強度曲線"],1],
+["SS-2024-2","T","圓管 HSS 縱向填角銲剪力遲滯 U",["圓管HSS","縱向填角銲","剪力遲滯","U值"],0],
+["SS-2025-2","T","ASD 拉力桿件全斷面降伏／淨斷面斷裂",["ASD","剪力遲滯","淨截面斷裂","全斷面降伏"],0]
 ];
-
-// Year data for bar chart
-const YEARS = [2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
-const YEAR_DATA = {};
-YEARS.forEach(y=>YEAR_DATA[y]={A:0,B:0,C:0,D:0});
-QS.forEach(q=>YEAR_DATA[q.yr][q.type]++);
-
-// ─── Render question list ────────────────────────────────────────────────────
-const MBADGE = {LRFD:'bLRFD',ASD:'bASD','混合':'bMix','概念題':'bConcept'};
-const MTEXT  = {LRFD:'LRFD',ASD:'ASD','混合':'ASD+LRFD','概念題':'概念題'};
-
-function renderList(){
-  const el = document.getElementById('qlist');
-  el.innerHTML = QS.map(q=>`
-    <div class="qi" data-type="${q.type}">
-      <div class="qdot d${q.type}"></div>
-      <div class="qbody">
-        <a class="qid" href="../index.html#md=raw/solutions/${q.id}/${q.id}.md&t=${q.id}" target="_blank">${q.id}</a>
-        <div class="qtitle">${q.title}</div>
-        <div class="qmeta">
-          <span class="qb ${MBADGE[q.m]}">${MTEXT[q.m]}</span>
-          <span class="qb" style="background:var(--t${q.type}-lt,var(--gray-lt));color:var(--c${q.type==null?'a':q.type.toLowerCase()},var(--gray))">Type ${q.type}</span>
-          ${q.viz?'<span class="qb bViz">📊 互動圖</span>':''}
-        </div>
-        <div class="qtags">${q.tags.slice(0,6).map(t=>`<span class="qtag">${t}</span>`).join('')}</div>
-      </div>
-    </div>
-  `).join('');
+function renderQ(cat){
+  const box=document.getElementById('qlist');box.innerHTML='';
+  Q.filter(q=>cat==='ALL'||q[1]===cat).forEach(q=>{
+    const d=document.createElement('div');d.className='qrow';d.style.borderLeftColor=CATC[q[1]];
+    d.innerHTML=`<a href="../index.html#md=raw/solutions/${q[0]}/${q[0]}.md&t=${q[0]}" target="_blank">${q[0]}</a>
+    <span class="sum">${q[2]}</span><span class="tags">${q[3].join('・')}</span>
+    <span class="ico" title="解析/互動圖/驗證">📄${q[4]?' 📊':''} ✅</span>`;
+    box.appendChild(d);});
 }
-renderList();
-
-// ─── Filter ──────────────────────────────────────────────────────────────────
-let activeFilter = 'all';
-function filterQ(t){
-  activeFilter = t;
-  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
-  // find correct button
-  document.querySelectorAll('.fbtn').forEach(b=>{
-    const cls = [...b.classList];
-    if(t==='all'&&cls.includes('fall')) b.classList.add('on');
-    if(t!=='all'&&cls.includes('f'+t)) b.classList.add('on');
-  });
-  document.querySelectorAll('.qi').forEach(el=>{
-    el.classList.toggle('gone', t!=='all'&&el.dataset.type!==t);
-  });
-  // highlight type cards
-  ['A','B','C','D'].forEach(x=>{
-    document.getElementById('tc'+x).classList.toggle('sel',t===x);
-  });
+function filterQ(cat,btn){renderQ(cat);
+  if(btn){document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+  else{document.getElementById('s5').scrollIntoView({behavior:'smooth'});
+    document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+    const idx={ALL:0,T:1,K:2,C:3,X:4}[cat];document.querySelectorAll('.fbtn')[idx].classList.add('on');}
 }
-
-// ─── Bar Chart ───────────────────────────────────────────────────────────────
+renderQ('ALL');
+// charts
+const byYear={};Q.forEach(q=>{const y=q[0].split('-')[1];(byYear[y]=byYear[y]||{T:0,K:0,C:0,X:0})[q[1]]++;});
 function drawBar(){
-  const canvas = document.getElementById('barChart');
-  if(!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const W = canvas.offsetWidth;
-  canvas.width  = W;
-  canvas.height = 180;
-  const pw=12, H=160, pad={l:28,r:8,t:10,b:30};
-  const colors = {A:'#3b82f6',B:'#22c55e',C:'#f59e0b',D:'#8b5cf6'};
-  const types  = ['A','B','C','D'];
-  const maxY   = 3;
-  const barW   = Math.max(4,(W-pad.l-pad.r)/YEARS.length - 2);
-  const xStep  = (W-pad.l-pad.r)/YEARS.length;
-
-  // grid
-  ctx.strokeStyle='#e5e7eb'; ctx.lineWidth=.5;
-  for(let v=0;v<=maxY;v++){
-    const y = pad.t + (H-pad.t-pad.b)*(1-v/maxY);
-    ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(W-pad.r,y); ctx.stroke();
-    if(v>0){ctx.fillStyle='#9ca3af';ctx.font='9px sans-serif';ctx.fillText(v,2,y+3);}
-  }
-  // bars
-  YEARS.forEach((yr,i)=>{
-    const x = pad.l + i*xStep + (xStep-barW)/2;
-    let yBot = H - pad.b + pad.t;
-    const d = YEAR_DATA[yr];
-    types.forEach(t=>{
-      const cnt = d[t];
-      if(!cnt) return;
-      const bH = cnt*(H-pad.t-pad.b)/maxY;
-      yBot -= bH;
-      ctx.fillStyle = colors[t];
-      ctx.fillRect(x, yBot, barW, bH);
-    });
-    // year label
-    if(i%4===0||i===YEARS.length-1){
-      ctx.fillStyle='#6b7280'; ctx.font='8px sans-serif'; ctx.textAlign='center';
-      ctx.fillText(String(yr).slice(2), x+barW/2, H+5);
-    }
-  });
-  // legend
-  const lx = pad.l, ly = H+16;
-  types.forEach((t,i)=>{
-    const lNames={A:'壓力挫屈',B:'有效長度K',C:'拉力桿件',D:'複合柱'};
-    ctx.fillStyle=colors[t];
-    ctx.fillRect(lx+i*70, ly, 10, 8);
-    ctx.fillStyle='#374151'; ctx.font='8px sans-serif'; ctx.textAlign='left';
-    ctx.fillText(lNames[t], lx+i*70+13, ly+7);
-  });
+  const cv=document.getElementById('cvBar'),ctx=cv.getContext('2d');
+  const years=Object.keys(byYear).sort(),W=cv.width,H=cv.height,bw=(W-60)/years.length;
+  const max=Math.max(...years.map(y=>Object.values(byYear[y]).reduce((a,b)=>a+b,0)));
+  ctx.font='10px sans-serif';ctx.fillStyle='#78909c';
+  for(let i=0;i<=max;i++){const yy=H-30-(H-60)*i/max;ctx.fillText(i,8,yy+3);ctx.strokeStyle='#eceff1';ctx.beginPath();ctx.moveTo(24,yy);ctx.lineTo(W-10,yy);ctx.stroke();}
+  years.forEach((y,i)=>{let acc=0;
+    ['T','K','C','X'].forEach(c=>{const v=byYear[y][c];if(!v)return;
+      const h=(H-60)*v/max;ctx.fillStyle=CATC[c];
+      ctx.fillRect(30+i*bw,H-30-acc-h,bw*0.7,h);acc+=h;});
+    ctx.fillStyle='#78909c';ctx.save();ctx.translate(30+i*bw+bw*0.35,H-18);ctx.rotate(-0.7);ctx.fillText(y.slice(2),0,0);ctx.restore();});
 }
-
-// ─── Pie Chart ───────────────────────────────────────────────────────────────
 function drawPie(){
-  const canvas = document.getElementById('pieChart');
-  if(!canvas) return;
-  canvas.width  = canvas.offsetWidth;
-  canvas.height = 220;
-  const ctx   = canvas.getContext('2d');
-  const cx    = canvas.width/2;
-  const cy    = 100;
-  const R     = 75;
-  const data  = [{t:'A',n:8,c:'#3b82f6',l:'壓力挫屈強度'},{t:'B',n:8,c:'#22c55e',l:'有效長度 K'},{t:'C',n:5,c:'#f59e0b',l:'拉力桿件'},{t:'D',n:3,c:'#8b5cf6',l:'複合柱'}];
-  const total = 24;
-  let start = -Math.PI/2;
-  data.forEach(d=>{
-    const angle = (d.n/total)*Math.PI*2;
-    ctx.beginPath();
-    ctx.moveTo(cx,cy);
-    ctx.arc(cx,cy,R,start,start+angle);
-    ctx.closePath();
-    ctx.fillStyle = d.c;
-    ctx.fill();
-    // label inside
-    const mid = start + angle/2;
-    const tx  = cx + R*.65*Math.cos(mid);
-    const ty  = cy + R*.65*Math.sin(mid);
-    ctx.fillStyle='#fff'; ctx.font='bold 11px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
-    ctx.fillText(d.n+'題', tx, ty);
-    start += angle;
-  });
-  // donut hole
-  ctx.beginPath(); ctx.arc(cx,cy,R*.45,0,Math.PI*2); ctx.fillStyle='#fff'; ctx.fill();
-  ctx.fillStyle='#374151'; ctx.font='bold 13px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
-  ctx.fillText('24', cx, cy-5); ctx.font='10px sans-serif'; ctx.fillText('題', cx, cy+8);
-  // legend
-  data.forEach((d,i)=>{
-    const lx=10, ly=180+i*10;
-    ctx.fillStyle=d.c; ctx.fillRect(lx,ly,10,8);
-    ctx.fillStyle='#374151'; ctx.font='9px sans-serif'; ctx.textAlign='left'; ctx.textBaseline='alphabetic';
-    ctx.fillText(`${d.t}: ${d.l} (${Math.round(d.n/total*100)}%)`, lx+13, ly+7);
-  });
+  const cv=document.getElementById('cvPie'),ctx=cv.getContext('2d');
+  const cnt={T:0,K:0,C:0,X:0};Q.forEach(q=>cnt[q[1]]++);
+  const tot=Q.length,cx=cv.width*0.32,cy=cv.height/2,r=Math.min(cx,cy)-16;let a=-Math.PI/2;
+  Object.keys(cnt).forEach(c=>{const frac=cnt[c]/tot,a2=a+frac*2*Math.PI;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a,a2);ctx.closePath();ctx.fillStyle=CATC[c];ctx.fill();a=a2;});
+  ctx.font='12px sans-serif';let ly=40;
+  Object.keys(cnt).forEach(c=>{ctx.fillStyle=CATC[c];ctx.fillRect(cv.width*0.62,ly-9,12,12);
+    ctx.fillStyle='#263238';ctx.fillText(`${CATN[c]}：${cnt[c]} 題（${Math.round(cnt[c]/tot*100)}%）`,cv.width*0.62+18,ly);ly+=26;});
 }
-
-// ─── Tab switcher ────────────────────────────────────────────────────────────
-function switchCalc(id){
-  document.querySelectorAll('.ctab').forEach(b=>b.classList.remove('on'));
-  document.querySelectorAll('.cform').forEach(f=>f.classList.remove('on'));
-  document.getElementById('calc-'+id).classList.add('on');
-  event.target.classList.add('on');
+drawBar();drawPie();
+// calculator
+function calcCol(){
+  const Fy=+document.getElementById('iFy').value,E=+document.getElementById('iE').value,
+        sl=+document.getElementById('iSl').value,Ag=+document.getElementById('iAg').value;
+  const lc=sl/Math.PI*Math.sqrt(Fy/E);
+  let Fcr,mode;
+  if(lc<=1.5){Fcr=Math.pow(0.658,lc*lc)*Fy;mode='非彈性挫屈（λc ≤ 1.5）';}
+  else{Fcr=0.877/(lc*lc)*Fy;mode='彈性挫屈（λc > 1.5）';}
+  const Pn=Fcr*Ag,phiPn=0.85*Pn;
+  const Cc=Math.sqrt(2*Math.PI*Math.PI*E/Fy);
+  const o=document.getElementById('calcOut');o.style.display='block';
+  o.innerHTML=`λc = <b>${lc.toFixed(3)}</b> → ${mode}<br>
+  Fcr = <b>${Fcr.toFixed(3)}</b> tf/cm²（Fcr/Fy = ${(Fcr/Fy).toFixed(3)}）<br>
+  Pn = ${Pn.toFixed(1)} tf，<b>φcPn = 0.85 × Pn = ${phiPn.toFixed(1)} tf</b><br>
+  <span style="color:#78909c">參考：ASD 之 Cc = ${Cc.toFixed(1)}（KL/r ${sl<=Cc?'≤':'>'} Cc → ASD 亦為${sl<=Cc?'非':''}彈性段）</span>`;
 }
-
-// ─── Calculators ─────────────────────────────────────────────────────────────
-function calcLRFD(){
-  const Fy = +document.getElementById('l-fy').value;
-  const E  = +document.getElementById('l-e').value;
-  const Ag = +document.getElementById('l-ag').value; // cm²
-  const KL = +document.getElementById('l-kl').value; // cm
-  const r  = +document.getElementById('l-r').value;  // cm
-  const klr  = KL/r;
-  const lc   = (klr/Math.PI)*Math.sqrt(Fy/E);
-  let Fcr;
-  if(lc <= 1.5) Fcr = Math.pow(0.658, lc*lc)*Fy;
-  else           Fcr = (0.877/(lc*lc))*Fy;
-  const phiPn = 0.85*Fcr*Ag; // kN (Fy in MPa, Ag in cm²) → 0.85*Fcr(MPa)*Ag(cm²) = 0.85*Fcr*Ag kN
-  // actually MPa * cm² = 0.1 kN, so *0.1
-  const phiPn_kN = phiPn * 0.1;
-  const el = document.getElementById('res-lrfd');
-  el.className='cres show';
-  el.innerHTML=`
-    <div class="cline">KL/r = <strong>${klr.toFixed(1)}</strong></div>
-    <div class="cline">λc = <strong>${lc.toFixed(3)}</strong>（分界：1.5）→ <strong>${lc<=1.5?'非彈性挫屈':'彈性挫屈'}</strong></div>
-    <div class="cline">Fcr = <strong>${Fcr.toFixed(2)} MPa</strong></div>
-    <div class="cline ans">φcPn = 0.85 × ${Fcr.toFixed(2)} × ${Ag} × 0.1 = <strong>${phiPn_kN.toFixed(1)} kN</strong></div>
-  `;
-}
-
-function calcASD(){
-  const Fy  = +document.getElementById('a-fy').value;
-  const E   = +document.getElementById('a-e').value;
-  const klr = +document.getElementById('a-klr').value;
-  const Cc  = Math.sqrt(2*Math.PI*Math.PI*E/Fy);
-  let Fa, regime;
-  if(klr <= Cc){
-    const r = klr/Cc;
-    const fs = 5/3 + 3*r/8 - r*r*r/8;
-    Fa = (1 - r*r/2)*Fy/fs;
-    regime = `非彈性（KL/r=${klr.toFixed(0)} ≤ Cc=${Cc.toFixed(1)}）`;
-  } else {
-    Fa = 12*Math.PI*Math.PI*E/(23*klr*klr);
-    regime = `彈性（KL/r=${klr.toFixed(0)} > Cc=${Cc.toFixed(1)}）`;
-  }
-  const el = document.getElementById('res-asd');
-  el.className='cres show';
-  el.innerHTML=`
-    <div class="cline">Cc = √(2π²E/Fy) = <strong>${Cc.toFixed(1)}</strong></div>
-    <div class="cline">挫屈型態：<strong>${regime}</strong></div>
-    <div class="cline ans">Fa = <strong>${Fa.toFixed(2)} MPa</strong></div>
-  `;
-}
-
-function calcTension(){
-  const Fy  = +document.getElementById('t-fy').value;
-  const Fu  = +document.getElementById('t-fu').value;
-  const Ag  = +document.getElementById('t-ag').value;
-  const An  = +document.getElementById('t-an').value;
-  const U   = +document.getElementById('t-u').value;
-  const Anv = +document.getElementById('t-anv').value;
-  const Ant = +document.getElementById('t-ant').value;
-  const Ubs = +document.getElementById('t-ubs').value;
-  const Agv = Anv * 1.05; // rough estimate, user can adjust
-  const p1  = 0.9*Fy*Ag*0.1;
-  const p2  = 0.75*Fu*U*An*0.1;
-  const p3raw = 0.75*(0.6*Fu*Anv + Ubs*Fu*Ant)*0.1;
-  const p3up  = 0.75*(0.6*Fy*Agv + Ubs*Fu*Ant)*0.1;
-  const p3 = Math.min(p3raw, p3up);
-  const ctrl = Math.min(p1,p2,p3);
-  const which = p1<=p2&&p1<=p3?'全斷面降伏':p2<=p3?'淨截面斷裂':'塊狀剪力';
-  const el = document.getElementById('res-tension');
-  el.className='cres show';
-  el.innerHTML=`
-    <div class="cline">① 全斷面降伏：φtPn = 0.9×${Fy}×${Ag}×0.1 = <strong>${p1.toFixed(1)} kN</strong></div>
-    <div class="cline">② 淨截面斷裂：Ae=${(U*An).toFixed(2)} cm²，φtPn = 0.75×${Fu}×${(U*An).toFixed(2)}×0.1 = <strong>${p2.toFixed(1)} kN</strong></div>
-    <div class="cline">③ 塊狀剪力：φRn = <strong>${p3.toFixed(1)} kN</strong>（已取上限值比較）</div>
-    <div class="cline ans">控制：<strong>${which}</strong>，φtPn = <strong>${ctrl.toFixed(1)} kN</strong></div>
-  `;
-}
-
-// ─── Init ─────────────────────────────────────────────────────────────────────
-window.addEventListener('load',()=>{
-  drawBar();
-  drawPie();
-});
-window.addEventListener('resize',()=>{
-  drawBar();
-  drawPie();
-});
 </script>
-
 </body>
 </html>

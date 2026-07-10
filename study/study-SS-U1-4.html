@@ -1,1020 +1,338 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SS-U1-4 接合之分析與設計 — 複習導覽</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<title>SS-U1-4 接合之分析與設計｜深度複習</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
 <style>
-:root{
-  --bg:#f5f6fa; --surface:#ffffff; --surface2:#f0f2f8; --border:#dde1ee;
-  --text:#1a1d2e; --muted:#6b7280; --accent:#2563eb; --accent2:#7c3aed;
-  --green:#16a34a; --orange:#d97706; --red:#dc2626; --pink:#be185d;
-  --teal:#0891b2; --yellow:#ca8a04;
-  --weld:#d97706; --bolt:#2563eb; --block:#dc2626; --joint:#7c3aed;
-  --concept:#be185d; --secondary:#6b7280;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:15px;line-height:1.6}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-
-.page-header{background:var(--surface);border-bottom:2px solid var(--border);padding:20px 32px;display:flex;align-items:center;gap:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.page-header h1{font-size:22px;font-weight:700}
-.page-header .badge{background:var(--accent2);color:#fff;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600}
-.page-header .back{color:var(--muted);font-size:13px;margin-left:auto}
-main{max-width:1280px;margin:0 auto;padding:28px 24px}
-section{margin-bottom:48px}
-.section-title{font-size:18px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--border);padding-bottom:10px}
-.section-num{background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
-
-/* kpi */
-.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
-.kpi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.kpi .val{font-size:32px;font-weight:700;color:var(--accent)}
-.kpi .lbl{font-size:12px;color:var(--muted);margin-top:4px}
-
-/* type cards */
-.type-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:12px;margin-bottom:24px}
-.type-card{background:var(--surface);border:2px solid var(--border);border-radius:10px;padding:14px;cursor:pointer;transition:all .2s;user-select:none;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.type-card:hover,.type-card.active{border-color:var(--card-color);background:color-mix(in srgb,var(--card-color) 8%,#fff)}
-.type-card .tc-name{font-weight:600;font-size:13px;margin-bottom:4px}
-.type-card .tc-count{font-size:24px;font-weight:700;color:var(--card-color)}
-.type-card .tc-pct{font-size:11px;color:var(--muted)}
-
-/* charts */
-.charts-row{display:grid;grid-template-columns:2fr 1fr;gap:20px}
-.chart-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.chart-box h3{font-size:12px;color:var(--muted);margin-bottom:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
-canvas{display:block;width:100%!important}
-
-/* svg grid */
-.svg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
-.svg-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.svg-card svg{display:block;margin:0 auto 10px}
-.svg-card .svg-name{font-size:13px;font-weight:700;margin-bottom:4px}
-.svg-card .svg-desc{font-size:11px;color:var(--muted);line-height:1.5}
-
-/* flowchart */
-.flowchart-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;overflow-x:auto;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-
-/* formula cards */
-.formula-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
-.formula-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.formula-card .fc-title{font-size:13px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.formula-card .fc-title .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.formula-card .formula-line{background:var(--surface2);border-radius:6px;padding:10px 14px;margin-bottom:8px;font-size:13px;border-left:3px solid var(--border)}
-.formula-card .formula-note{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.6;padding:8px;background:var(--surface2);border-radius:6px}
-
-/* question list */
-.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-.filter-btn{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;cursor:pointer;transition:all .2s;color:var(--text);font-weight:500}
-.filter-btn:hover,.filter-btn.active{color:#fff;border-color:var(--btn-color,var(--accent));background:var(--btn-color,var(--accent))}
-.q-list{display:flex;flex-direction:column;gap:10px}
-.q-item{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--item-color);border-radius:8px;padding:14px 16px;display:flex;align-items:flex-start;gap:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.q-num{font-size:13px;font-weight:700;color:var(--item-color);white-space:nowrap;min-width:82px}
-.q-num a{color:var(--item-color)}
-.q-body{flex:1}
-.q-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
-.q-tag{background:var(--surface2);border-radius:4px;padding:2px 7px;font-size:11px;color:var(--muted)}
-.q-meta{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap}
-.q-method{font-size:11px;background:var(--surface2);border-radius:4px;padding:1px 7px;color:var(--muted);border:1px solid var(--border)}
-.q-sec-badge{font-size:10px;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:4px;padding:1px 6px}
-.icons{display:flex;gap:4px;margin-left:auto;flex-shrink:0}
-.q-item.hidden{display:none}
-
-/* traps */
-.trap-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
-.trap{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--t-color);border-radius:8px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.trap .t-title{font-weight:700;font-size:13px;margin-bottom:6px;display:flex;align-items:center;gap:7px}
-.trap .t-desc{font-size:13px;color:var(--muted);line-height:1.5}
-.trap .t-ref{font-size:11px;margin-top:6px;color:var(--muted)}
-.trap .t-ref a{color:var(--t-color)}
-
-/* calc */
-.calc-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;max-width:700px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.calc-tabs{display:flex;gap:8px;margin-bottom:18px}
-.calc-tab{padding:7px 16px;border-radius:6px;border:1px solid var(--border);cursor:pointer;font-size:13px;font-weight:600;background:var(--surface2)}
-.calc-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.calc-panel{display:none}
-.calc-panel.active{display:block}
-.calc-row{display:grid;grid-template-columns:150px 1fr 80px;align-items:center;gap:10px;margin-bottom:10px}
-.calc-row label{font-size:13px;color:var(--muted)}
-.calc-row input{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:7px 12px;color:var(--text);font-size:13px;width:100%}
-.calc-row input:focus{outline:2px solid var(--accent);border-color:var(--accent)}
-.calc-row .unit{font-size:12px;color:var(--muted)}
-.calc-result{background:var(--surface2);border-radius:8px;padding:14px 16px;margin-top:14px;font-size:13px;line-height:2;border:1px solid var(--border)}
-.calc-btn{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:9px 22px;font-size:14px;cursor:pointer;font-weight:600;margin-top:10px;width:100%}
-.calc-btn:hover{background:#1d4ed8}
-.result-line{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:4px 0}
-.result-line:last-child{border:none}
-.result-pass{color:var(--green);font-weight:700}
-.result-fail{color:var(--red);font-weight:700}
-.result-key{color:var(--accent);font-weight:700}
-.result-warn{color:var(--orange);font-weight:600}
-.calc-note{font-size:11px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px dashed var(--border)}
-
-@media(max-width:800px){
-  .kpi-row{grid-template-columns:repeat(2,1fr)}
-  .charts-row{grid-template-columns:1fr}
-  .formula-grid{grid-template-columns:1fr}
-  .trap-list{grid-template-columns:1fr}
-  .calc-row{grid-template-columns:1fr}
-  .calc-row label,.calc-row .unit{display:none}
-}
+:root{--ac:#bf360c;--ac2:#fbe9e7;--B:#1565c0;--W:#bf360c;--J:#6a1b9a;--N:#2e7d32;
+--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#78909c;--bd:#e0e6ea}
+*{box-sizing:border-box}body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+header{background:linear-gradient(135deg,#bf360c,#e64a19);color:#fff;padding:28px 24px}
+header h1{margin:0 0 6px;font-size:1.5em}header p{margin:0;opacity:.85;font-size:.92em}
+nav{position:sticky;top:0;z-index:9;background:#fff;border-bottom:2px solid var(--bd);padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px}
+nav a{text-decoration:none;color:var(--ac);font-size:.88em;padding:5px 10px;border-radius:16px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:1080px;margin:0 auto;padding:20px 16px 60px}
+section{margin-bottom:38px}
+h2{font-size:1.25em;border-left:5px solid var(--ac);padding-left:10px;margin:30px 0 14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center}
+.kpi .n{font-size:1.9em;font-weight:700;color:var(--ac)}.kpi .l{font-size:.82em;color:var(--mut)}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.cat{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:10px;padding:12px 14px;cursor:pointer;transition:.15s}
+.cat:hover{transform:translateY(-2px);box-shadow:0 3px 10px rgba(0,0,0,.1)}
+.cat h3{margin:0 0 4px;font-size:1em}.cat p{margin:0;font-size:.82em;color:var(--mut)}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:760px){.charts{grid-template-columns:1fr}}
+.chartbox{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
+.chartbox h4{margin:0 0 8px;font-size:.95em;color:var(--mut)}
+canvas{width:100%;height:auto}
+.svgbox{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:16px;overflow-x:auto}
+.fcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.fcard{background:var(--card);border:1px solid var(--bd);border-top:5px solid;border-radius:10px;padding:14px 16px}
+.fcard h3{margin:0 0 8px;font-size:1em}
+.fcard .note{font-size:.82em;color:var(--mut);border-top:1px dashed var(--bd);margin-top:10px;padding-top:8px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.fbtn{border:1px solid var(--bd);background:#fff;border-radius:18px;padding:6px 14px;cursor:pointer;font-size:.88em;font-family:inherit}
+.fbtn.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.qrow{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:8px;padding:10px 14px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.qrow a{font-weight:700;text-decoration:none;color:var(--ac);min-width:88px}
+.qrow a:hover{text-decoration:underline}
+.qrow .sum{flex:1;min-width:200px;font-size:.92em}
+.qrow .tags{font-size:.75em;color:var(--mut)}
+.qrow .ico{font-size:.85em;white-space:nowrap}
+.traps{counter-reset:tr}
+.trap{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:12px 14px 12px 48px;margin-bottom:10px;position:relative}
+.trap::before{counter-increment:tr;content:counter(tr);position:absolute;left:12px;top:12px;width:26px;height:26px;border-radius:50%;background:#d32f2f;color:#fff;font-weight:700;text-align:center;line-height:26px;font-size:.85em}
+.trap b .pill{font-size:.72em;border-radius:10px;padding:1px 8px;color:#fff;margin-right:6px;vertical-align:middle}
+.calc{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:18px}
+.calc .row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px}
+.calc label{font-size:.85em;color:var(--mut);display:block}
+.calc input{width:110px;padding:6px;border:1px solid var(--bd);border-radius:6px;font-size:1em}
+.calc button{background:var(--ac);color:#fff;border:none;border-radius:6px;padding:8px 22px;font-size:.95em;cursor:pointer;font-family:inherit}
+.calc .out{margin-top:14px;background:var(--ac2);border-radius:8px;padding:12px 16px;font-size:.95em;display:none}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 </style>
 </head>
 <body>
-
-<div class="page-header">
-  <div class="section-num">接</div>
-  <h1>SS-U1-4 接合之分析與設計</h1>
-  <span class="badge">26 題</span>
-  <span class="back"><a href="../index.html">← 儀表板</a> ｜ <a href="study-SS-U1.html">SS-U1 單元總覽</a></span>
-</div>
-
+<header>
+<h1>SS-U1-4 接合之分析與設計 — 深度複習</h1>
+<p>結構技師「鋼結構設計」子項複習頁｜資料來源：question_index.json（2002–2025，98 題）｜生成日期 2026-07-10</p>
+</header>
+<nav>
+<a href="#s1">① 命題分析</a><a href="#s2">② 接合圖解</a><a href="#s3">③ 解題流程</a>
+<a href="#s4">④ 公式速查</a><a href="#s5">⑤ 考題清單</a><a href="#s6">⑥ 高頻陷阱</a><a href="#s7">⑦ 填角銲計算器</a>
+</nav>
 <main>
 
-<!-- ① 命題分析 -->
 <section id="s1">
-  <div class="section-title"><span class="section-num">①</span> 命題分析</div>
-  <div class="kpi-row">
-    <div class="kpi"><div class="val">26</div><div class="lbl">歷年題數（含副考點）</div></div>
-    <div class="kpi"><div class="val" style="color:var(--orange)">19</div><div class="lbl">主考點題數</div></div>
-    <div class="kpi"><div class="val" style="color:var(--weld)">2002–2024</div><div class="lbl">出題年份範圍</div></div>
-    <div class="kpi"><div class="val" style="color:var(--green)">100%</div><div class="lbl">verified 比率</div></div>
-  </div>
-
-  <div class="type-cards" id="type-cards">
-    <div class="type-card" style="--card-color:var(--weld)" data-type="填角銲" onclick="filterType('填角銲',this)">
-      <div class="tc-name">🔥 填角銲計算</div>
-      <div class="tc-count">6</div>
-      <div class="tc-pct">23% · 最高頻</div>
-    </div>
-    <div class="type-card" style="--card-color:var(--bolt)" data-type="螺栓" onclick="filterType('螺栓',this)">
-      <div class="tc-name">🔩 螺栓接合</div>
-      <div class="tc-count">5</div>
-      <div class="tc-pct">19%</div>
-    </div>
-    <div class="type-card" style="--card-color:var(--block)" data-type="塊狀剪力" onclick="filterType('塊狀剪力',this)">
-      <div class="tc-name">✂️ 塊狀剪力/剪力遲滯</div>
-      <div class="tc-count">2</div>
-      <div class="tc-pct">8%（主）</div>
-    </div>
-    <div class="type-card" style="--card-color:var(--joint)" data-type="梁柱接頭" onclick="filterType('梁柱接頭',this)">
-      <div class="tc-name">🏗️ 梁柱接頭</div>
-      <div class="tc-count">1</div>
-      <div class="tc-pct">4%</div>
-    </div>
-    <div class="type-card" style="--card-color:var(--concept)" data-type="概念" onclick="filterType('概念',this)">
-      <div class="tc-name">💡 概念 / 規範</div>
-      <div class="tc-count">5</div>
-      <div class="tc-pct">19%</div>
-    </div>
-    <div class="type-card" style="--card-color:var(--secondary)" data-type="secondary" onclick="filterType('secondary',this)">
-      <div class="tc-name">📎 副考點</div>
-      <div class="tc-count">7</div>
-      <div class="tc-pct">27%</div>
-    </div>
-    <div class="type-card" style="--card-color:var(--accent);border-color:var(--accent)" data-type="all" onclick="filterType('all',this)">
-      <div class="tc-name">📊 全部題目</div>
-      <div class="tc-count">26</div>
-      <div class="tc-pct">點擊顯示全部</div>
-    </div>
-  </div>
-
-  <div class="charts-row">
-    <div class="chart-box">
-      <h3>年度出題分布（主考點）</h3>
-      <canvas id="yearChart" height="160"></canvas>
-    </div>
-    <div class="chart-box">
-      <h3>題型比例</h3>
-      <canvas id="pieChart" height="220"></canvas>
-    </div>
-  </div>
+<h2>① 命題分析</h2>
+<div class="kpis">
+<div class="kpi"><div class="n">19</div><div class="l">主考點題數（另 7 題副考點）</div></div>
+<div class="kpi"><div class="n">19.4%</div><div class="l">佔全科比例（19/98）</div></div>
+<div class="kpi"><div class="n">#3</div><div class="l">全科出題排名</div></div>
+<div class="kpi"><div class="n">5/6</div><div class="l">近6年出題（2020–25）</div></div>
+</div>
+<div class="cats">
+<div class="cat" style="border-left-color:var(--B)" onclick="filterQ('B')"><h3>🔩 螺栓接合（8題）</h3><p>承壓型／摩阻型、偏心螺栓群、續接設計</p></div>
+<div class="cat" style="border-left-color:var(--W)" onclick="filterQ('W')"><h3>🔥 銲接接合（6題）</h3><p>填角銲強度、偏心銲縫扭矩分析、斷續銲</p></div>
+<div class="cat" style="border-left-color:var(--J)" onclick="filterQ('J')"><h3>🏗️ 梁柱接頭（2題）</h3><p>連續板、節點域、層狀撕裂</p></div>
+<div class="cat" style="border-left-color:var(--N)" onclick="filterQ('N')"><h3>📘 概念／破壞模式（3題）</h3><p>開槽銲型式、混合接合、HAZ、檢測</p></div>
+</div>
+<div class="charts">
+<div class="chartbox"><h4>年度分布（依題型堆疊）</h4><canvas id="cvBar" width="520" height="260"></canvas></div>
+<div class="chartbox"><h4>題型比例</h4><canvas id="cvPie" width="520" height="260"></canvas></div>
+</div>
 </section>
 
-<!-- ② 截面圖解 -->
 <section id="s2">
-  <div class="section-title"><span class="section-num">②</span> 接合形式圖解</div>
-  <div class="svg-grid">
-
-    <div class="svg-card">
-      <svg width="180" height="130" viewBox="0 0 180 130">
-        <!-- fillet weld illustration -->
-        <!-- base plate -->
-        <rect x="20" y="80" width="140" height="14" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1"/>
-        <!-- vertical plate -->
-        <rect x="82" y="20" width="16" height="60" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1"/>
-        <!-- fillet weld triangles -->
-        <polygon points="82,80 70,80 82,68" fill="#d97706" opacity=".9"/>
-        <polygon points="98,80 110,80 98,68" fill="#d97706" opacity=".9"/>
-        <text x="55" y="75" fill="#d97706" font-size="10" font-weight="700">w</text>
-        <text x="115" y="75" fill="#d97706" font-size="10" font-weight="700">w</text>
-        <!-- throat dimension -->
-        <line x1="70" y1="88" x2="82" y2="68" stroke="#d97706" stroke-width="1" stroke-dasharray="3,2"/>
-        <text x="55" y="102" fill="#9ca3af" font-size="9">喉部 = 0.707w</text>
-        <text x="90" y="16" text-anchor="middle" fill="#6b7280" font-size="10" font-weight="600">填角銲</text>
-        <text x="90" y="27" text-anchor="middle" fill="#9ca3af" font-size="9">Fillet Weld</text>
-      </svg>
-      <div class="svg-name">填角銲（Fillet Weld）</div>
-      <div class="svg-desc">喉部 $= 0.707w$<br>$\phi R_n = 0.75 \times 0.707w \times 0.6F_{EXX}$</div>
-    </div>
-
-    <div class="svg-card">
-      <svg width="180" height="130" viewBox="0 0 180 130">
-        <!-- eccentric weld group -->
-        <rect x="130" y="30" width="14" height="90" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
-        <!-- weld lines -->
-        <line x1="130" y1="30" x2="130" y2="120" stroke="#d97706" stroke-width="4"/>
-        <!-- load P with eccentricity -->
-        <line x1="50" y1="75" x2="128" y2="75" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowB)"/>
-        <defs><marker id="arrowB" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#2563eb"/></marker>
-        <marker id="arrowR" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#dc2626"/></marker></defs>
-        <text x="75" y="70" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">P</text>
-        <!-- centroid -->
-        <circle cx="130" cy="75" r="3" fill="#dc2626"/>
-        <text x="140" y="75" fill="#dc2626" font-size="9">G</text>
-        <!-- eccentricity -->
-        <line x1="50" y1="80" x2="130" y2="80" stroke="#9ca3af" stroke-width="1" stroke-dasharray="3,2"/>
-        <text x="90" y="92" text-anchor="middle" fill="#9ca3af" font-size="9">e（偏心距）</text>
-        <text x="90" y="16" text-anchor="middle" fill="#6b7280" font-size="10" font-weight="600">偏心銲縫</text>
-      </svg>
-      <div class="svg-name">偏心銲縫</div>
-      <div class="svg-desc">彈性向量法<br>$I_p = \sum(I_x + I_y)$，疊加直剪 + 扭剪</div>
-    </div>
-
-    <div class="svg-card">
-      <svg width="180" height="130" viewBox="0 0 180 130">
-        <!-- bearing bolt group -->
-        <rect x="60" y="25" width="60" height="90" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
-        <!-- bolts 3x2 grid -->
-        <circle cx="80" cy="48" r="6" fill="#2563eb" opacity=".8"/>
-        <circle cx="100" cy="48" r="6" fill="#2563eb" opacity=".8"/>
-        <circle cx="80" cy="70" r="6" fill="#2563eb" opacity=".8"/>
-        <circle cx="100" cy="70" r="6" fill="#2563eb" opacity=".8"/>
-        <circle cx="80" cy="92" r="6" fill="#2563eb" opacity=".8"/>
-        <circle cx="100" cy="92" r="6" fill="#2563eb" opacity=".8"/>
-        <!-- shear arrow -->
-        <line x1="25" y1="70" x2="58" y2="70" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrowR)"/>
-        <text x="38" y="64" fill="#dc2626" font-size="10" font-weight="700">V</text>
-        <text x="90" y="16" text-anchor="middle" fill="#6b7280" font-size="10" font-weight="600">承壓型螺栓群</text>
-      </svg>
-      <div class="svg-name">承壓型螺栓（Bearing）</div>
-      <div class="svg-desc">控制：螺栓剪切 vs 鈑件承壓<br>$\phi R_n = 0.75 \times 0.6F_u A_b$</div>
-    </div>
-
-    <div class="svg-card">
-      <svg width="180" height="130" viewBox="0 0 180 130">
-        <!-- slip-critical bolt: clamping force -->
-        <rect x="55" y="50" width="70" height="30" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
-        <!-- pretension arrows -->
-        <line x1="40" y1="65" x2="53" y2="65" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrowG)"/>
-        <line x1="140" y1="65" x2="127" y2="65" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrowG2)"/>
-        <defs>
-          <marker id="arrowG" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#16a34a"/></marker>
-          <marker id="arrowG2" markerWidth="7" markerHeight="7" refX="2" refY="3.5" orient="auto-start-reverse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#16a34a"/></marker>
-        </defs>
-        <text x="28" y="62" fill="#16a34a" font-size="9">Tb</text>
-        <text x="143" y="62" fill="#16a34a" font-size="9">Tb</text>
-        <!-- friction -->
-        <line x1="90" y1="50" x2="90" y2="38" stroke="#d97706" stroke-width="2"/>
-        <text x="95" y="35" fill="#d97706" font-size="9">μN</text>
-        <text x="90" y="16" text-anchor="middle" fill="#6b7280" font-size="10" font-weight="600">摩阻型螺栓</text>
-        <text x="90" y="27" text-anchor="middle" fill="#9ca3af" font-size="9">Slip-Critical</text>
-        <text x="90" y="105" text-anchor="middle" fill="#9ca3af" font-size="9">預拉力 Tb 靠摩擦傳力</text>
-      </svg>
-      <div class="svg-name">摩阻型螺栓（Slip-Critical）</div>
-      <div class="svg-desc">預拉力 $T_b$ + 摩擦係數 $\mu$<br>$\phi R_n = \phi\,\mu\,D_u\,h_f\,T_b\,n_s$</div>
-    </div>
-
-    <div class="svg-card">
-      <svg width="180" height="130" viewBox="0 0 180 130">
-        <!-- block shear failure path -->
-        <rect x="30" y="30" width="100" height="80" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/>
-        <!-- bolts -->
-        <circle cx="75" cy="55" r="5" fill="#9ca3af"/>
-        <circle cx="100" cy="55" r="5" fill="#9ca3af"/>
-        <circle cx="75" cy="85" r="5" fill="#9ca3af"/>
-        <circle cx="100" cy="85" r="5" fill="#9ca3af"/>
-        <!-- block shear failure path: shear on sides, tension on top -->
-        <path d="M62,40 L62,100 L112,100 L112,40" stroke="#dc2626" stroke-width="2.5" fill="none" stroke-dasharray="5,3"/>
-        <text x="87" y="115" text-anchor="middle" fill="#dc2626" font-size="9" font-weight="700">剪力破壞面</text>
-        <!-- tension path -->
-        <line x1="62" y1="40" x2="112" y2="40" stroke="#d97706" stroke-width="2.5" stroke-dasharray="5,3"/>
-        <text x="165" y="43" fill="#d97706" font-size="9">拉力面</text>
-        <text x="90" y="16" text-anchor="middle" fill="#6b7280" font-size="10" font-weight="600">塊狀剪力破壞</text>
-      </svg>
-      <div class="svg-name">塊狀剪力（Block Shear）</div>
-      <div class="svg-desc">剪力面（net/gross）+ 拉力面<br>$\phi R_n = 0.75[0.6F_u A_{nv}+U_{bs}F_u A_{nt}]$</div>
-    </div>
-
-    <div class="svg-card">
-      <svg width="180" height="130" viewBox="0 0 180 130">
-        <!-- beam-column panel zone -->
-        <rect x="30" y="10" width="120" height="110" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
-        <!-- column flanges -->
-        <rect x="20" y="10" width="20" height="110" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
-        <rect x="140" y="10" width="20" height="110" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
-        <!-- beam stubs -->
-        <rect x="0" y="50" width="30" height="20" fill="#ddd6fe" stroke="#7c3aed" stroke-width="1"/>
-        <rect x="150" y="50" width="30" height="20" fill="#ddd6fe" stroke="#7c3aed" stroke-width="1"/>
-        <!-- panel zone label -->
-        <text x="90" y="55" text-anchor="middle" fill="#7c3aed" font-size="10" font-weight="700">Panel</text>
-        <text x="90" y="68" text-anchor="middle" fill="#7c3aed" font-size="10" font-weight="700">Zone</text>
-        <!-- shear diagonal -->
-        <line x1="40" y1="20" x2="140" y2="110" stroke="#dc2626" stroke-width="1" stroke-dasharray="4,3" opacity=".6"/>
-        <text x="90" y="16" text-anchor="middle" fill="#6b7280" font-size="10" font-weight="600">梁柱接頭節點域</text>
-      </svg>
-      <div class="svg-name">梁柱接頭 Panel Zone</div>
-      <div class="svg-desc">節點域剪力核算<br>$V_n = 0.6F_y d_c t_w$</div>
-    </div>
-
-  </div>
+<h2>② 接合圖解</h2>
+<div class="svgbox">
+<svg viewBox="0 0 960 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+<!-- fillet weld throat -->
+<g transform="translate(30,30)">
+<polygon points="0,120 120,120 120,140 0,140" fill="#cfd8dc" stroke="#546e7a"/>
+<polygon points="60,120 60,20 80,20 80,120" fill="#cfd8dc" stroke="#546e7a"/>
+<polygon points="60,120 60,80 20,120" fill="#ef9a9a" stroke="#bf360c"/>
+<line x1="60" y1="80" x2="20" y2="120" stroke="#bf360c" stroke-width="2"/>
+<line x1="60" y1="120" x2="40" y2="100" stroke="#d32f2f" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="6" y="98" fill="#bf360c">腳長 w</text>
+<text x="26" y="132" fill="#d32f2f" font-size="11">喉厚 te=0.707w</text>
+<text x="0" y="170" font-weight="bold" font-size="13">填角銲有效喉厚</text>
+<text x="0" y="188" fill="#78909c" font-size="11">破壞面沿 45° 喉部</text>
+</g>
+<!-- eccentric bolt group -->
+<g transform="translate(280,30)">
+<rect x="0" y="20" width="60" height="140" fill="#cfd8dc" stroke="#546e7a"/>
+<rect x="60" y="50" width="120" height="60" fill="#eceff1" stroke="#546e7a"/>
+<circle cx="85" cy="65" r="7" fill="#1565c0"/><circle cx="115" cy="65" r="7" fill="#1565c0"/>
+<circle cx="85" cy="95" r="7" fill="#1565c0"/><circle cx="115" cy="95" r="7" fill="#1565c0"/>
+<line x1="220" y1="30" x2="220" y2="70" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#arW)"/>
+<text x="226" y="52" fill="#d32f2f">P（偏心 e）</text>
+<line x1="100" y1="80" x2="220" y2="80" stroke="#90a4ae" stroke-dasharray="4 3"/>
+<text x="140" y="76" fill="#78909c">e</text>
+<text x="0" y="200" font-weight="bold" font-size="13">偏心螺栓群（彈性法）</text>
+<text x="0" y="218" fill="#78909c" font-size="11">直接剪力＋扭矩 T=P·e 向量疊加</text>
+</g>
+<!-- moment connection -->
+<g transform="translate(560,30)">
+<rect x="60" y="0" width="46" height="180" fill="#cfd8dc" stroke="#546e7a"/>
+<rect x="106" y="60" width="150" height="14" fill="#eceff1" stroke="#546e7a"/>
+<rect x="106" y="120" width="150" height="14" fill="#eceff1" stroke="#546e7a"/>
+<rect x="106" y="74" width="10" height="46" fill="#eceff1" stroke="#546e7a"/>
+<rect x="60" y="60" width="46" height="14" fill="#ffe0b2" stroke="#f57c00"/>
+<rect x="60" y="120" width="46" height="14" fill="#ffe0b2" stroke="#f57c00"/>
+<path d="M100,60 l6,-6 l0,6 z" fill="#bf360c"/>
+<path d="M100,134 l6,6 l0,-6 z" fill="#bf360c"/>
+<text x="270" y="66" fill="#f57c00" font-size="11">連續板</text>
+<line x1="266" y1="64" x2="150" y2="66" stroke="#f57c00" stroke-width="0"/>
+<rect x="60" y="74" width="46" height="46" fill="#e1bee7" opacity="0.7"/>
+<text x="64" y="101" fill="#6a1b9a" font-size="10">節點域</text>
+<text x="0" y="220" font-weight="bold" font-size="13">梁柱彎矩接頭</text>
+<text x="0" y="238" fill="#78909c" font-size="11">翼板 CJP 銲、節點域剪力檢核（SS-2006-5）</text>
+</g>
+<defs><marker id="arW" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#d32f2f"/></marker></defs>
+</svg>
+</div>
 </section>
 
-<!-- ③ 解題流程圖 -->
 <section id="s3">
-  <div class="section-title"><span class="section-num">③</span> 接合設計判斷流程</div>
-  <div class="flowchart-wrap">
-    <svg width="980" height="560" viewBox="0 0 980 560" style="max-width:100%;height:auto">
-      <defs>
-        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-          <path d="M0,0 L8,3 L0,6 Z" fill="#6b7280"/>
-        </marker>
-      </defs>
-
-      <!-- START -->
-      <rect x="380" y="8" width="220" height="40" rx="20" fill="#2563eb"/>
-      <text x="490" y="33" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">接合設計 START</text>
-
-      <!-- 接合方式 diamond -->
-      <polygon points="490,68 640,100 490,132 340,100" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-      <text x="490" y="97" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="700">接合方式</text>
-      <text x="490" y="112" text-anchor="middle" fill="#6b7280" font-size="10">銲接 / 螺栓 / 混合</text>
-      <line x1="490" y1="48" x2="490" y2="68" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
-
-      <!-- LEFT: 銲接 -->
-      <rect x="40" y="76" width="180" height="48" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
-      <text x="130" y="98" text-anchor="middle" fill="#d97706" font-size="12" font-weight="700">銲接（Weld）</text>
-      <text x="130" y="115" text-anchor="middle" fill="#6b7280" font-size="10">填角銲 / 對接銲 / CJP</text>
-      <line x1="340" y1="100" x2="220" y2="100" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
-      <text x="275" y="94" fill="#d97706" font-size="10">銲接</text>
-
-      <!-- RIGHT: 螺栓 -->
-      <rect x="760" y="76" width="180" height="48" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
-      <text x="850" y="98" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="700">螺栓（Bolt）</text>
-      <text x="850" y="115" text-anchor="middle" fill="#6b7280" font-size="10">A325 / A490 / 高拉力</text>
-      <line x1="640" y1="100" x2="760" y2="100" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
-      <text x="700" y="94" fill="#2563eb" font-size="10">螺栓</text>
-
-      <!-- === WELD BRANCH === -->
-      <!-- 偏心？ -->
-      <polygon points="130,172 250,198 130,224 10,198" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
-      <text x="130" y="196" text-anchor="middle" fill="#d97706" font-size="11" font-weight="600">偏心載重？</text>
-      <text x="130" y="210" text-anchor="middle" fill="#6b7280" font-size="9">e ≠ 0 ?</text>
-      <line x1="130" y1="124" x2="130" y2="172" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
-
-      <!-- NO: 直接計算 -->
-      <rect x="30" y="270" width="200" height="52" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
-      <text x="130" y="290" text-anchor="middle" fill="#d97706" font-size="11" font-weight="700">直接剪切（無偏心）</text>
-      <text x="130" y="306" text-anchor="middle" fill="#6b7280" font-size="9">φRn = 0.75×0.707w×0.6FEXX×Lw</text>
-      <text x="130" y="318" text-anchor="middle" fill="#6b7280" font-size="9">LRFD: φRn ≥ Vu</text>
-      <line x1="130" y1="224" x2="130" y2="270" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
-      <text x="133" y="250" fill="#16a34a" font-size="10">否</text>
-
-      <!-- YES: 彈性向量法 -->
-      <rect x="255" y="172" width="200" height="52" rx="6" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
-      <text x="355" y="192" text-anchor="middle" fill="#ca8a04" font-size="11" font-weight="700">彈性向量法（偏心）</text>
-      <text x="355" y="208" text-anchor="middle" fill="#6b7280" font-size="9">計算 Ip = ΣIx + ΣIy</text>
-      <text x="355" y="220" text-anchor="middle" fill="#6b7280" font-size="9">疊加直剪 V/L + 扭剪 Pe·r/Ip</text>
-      <line x1="250" y1="198" x2="255" y2="198" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
-      <text x="241" y="192" fill="#dc2626" font-size="10">是</text>
-
-      <!-- 最大銲道應力 -->
-      <rect x="255" y="250" width="200" height="40" rx="6" fill="#fff7ed" stroke="#d97706" stroke-width="1.5"/>
-      <text x="355" y="270" text-anchor="middle" fill="#d97706" font-size="11" font-weight="700">求最大合力點</text>
-      <text x="355" y="283" text-anchor="middle" fill="#6b7280" font-size="9">f = √(fx²+fy²) ≤ φfv</text>
-      <line x1="355" y1="224" x2="355" y2="250" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
-
-      <!-- === BOLT BRANCH === -->
-      <!-- 承壓/摩阻 -->
-      <polygon points="850,172 960,198 850,224 740,198" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
-      <text x="850" y="196" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="600">接合型式</text>
-      <text x="850" y="210" text-anchor="middle" fill="#6b7280" font-size="9">承壓型 / 摩阻型</text>
-      <line x1="850" y1="124" x2="850" y2="172" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
-
-      <!-- Bearing type -->
-      <rect x="740" y="265" width="200" height="60" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
-      <text x="840" y="283" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">承壓型（Bearing）</text>
-      <text x="840" y="298" text-anchor="middle" fill="#6b7280" font-size="9">① 螺栓剪切 φRn=0.75×0.6Fu×Ab×ns</text>
-      <text x="840" y="311" text-anchor="middle" fill="#6b7280" font-size="9">② 承壓 φRn=0.75×2.4Fu×d×t</text>
-      <text x="840" y="323" text-anchor="middle" fill="#6b7280" font-size="9">③ 取小值控制</text>
-      <line x1="850" y1="224" x2="850" y2="265" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
-      <text x="856" y="250" fill="#2563eb" font-size="10">承壓型</text>
-
-      <!-- Slip-critical -->
-      <rect x="580" y="172" width="140" height="60" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
-      <text x="650" y="192" text-anchor="middle" fill="#16a34a" font-size="11" font-weight="700">摩阻型</text>
-      <text x="650" y="208" text-anchor="middle" fill="#6b7280" font-size="9">φRn=φ·μ·Du·hf·Tb·ns</text>
-      <text x="650" y="221" text-anchor="middle" fill="#6b7280" font-size="9">A類μ=0.35, B類μ=0.50</text>
-      <line x1="740" y1="198" x2="720" y2="198" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
-      <line x1="650" y1="198" x2="650" y2="172" stroke="none"/>
-      <text x="726" y="192" fill="#16a34a" font-size="10">摩阻</text>
-
-      <!-- 塊狀剪力 check -->
-      <rect x="30" y="370" width="200" height="52" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
-      <text x="130" y="390" text-anchor="middle" fill="#dc2626" font-size="11" font-weight="700">⚠️ 塊狀剪力驗算</text>
-      <text x="130" y="406" text-anchor="middle" fill="#6b7280" font-size="9">φRn=0.75[0.6Fu·Anv+Ubs·Fu·Ant]</text>
-      <text x="130" y="418" text-anchor="middle" fill="#6b7280" font-size="9">必須 ≥ Pu（不可省略！）</text>
-      <line x1="130" y1="322" x2="130" y2="370" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
-
-      <!-- 最小接合強度 -->
-      <rect x="560" y="370" width="200" height="52" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
-      <text x="660" y="390" text-anchor="middle" fill="#7c3aed" font-size="11" font-weight="700">⚠️ 最小接合強度</text>
-      <text x="660" y="406" text-anchor="middle" fill="#6b7280" font-size="9">規範：接合強度 ≥ 構材強度 50%</text>
-      <text x="660" y="418" text-anchor="middle" fill="#6b7280" font-size="9">ASD 4.2 kN/mm 最小銲道強度</text>
-      <line x1="840" y1="325" x2="840" y2="350" stroke="#6b7280" stroke-width="1.5"/>
-      <line x1="840" y1="350" x2="660" y2="350" stroke="#6b7280" stroke-width="1.5"/>
-      <line x1="660" y1="350" x2="660" y2="370" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
-
-      <!-- END check -->
-      <rect x="370" y="490" width="240" height="40" rx="20" fill="#16a34a"/>
-      <text x="490" y="515" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">φRn ≥ Pu → 設計完成 ✓</text>
-      <line x1="130" y1="422" x2="130" y2="470" stroke="#6b7280" stroke-width="1.5"/>
-      <line x1="130" y1="470" x2="490" y2="470" stroke="#6b7280" stroke-width="1.5"/>
-      <line x1="490" y1="470" x2="490" y2="490" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
-    </svg>
-  </div>
+<h2>③ 解題流程圖（偏心接合群 — 彈性向量法）</h2>
+<div class="svgbox">
+<svg viewBox="0 0 960 250" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#546e7a"/></marker></defs>
+<rect x="20" y="20" width="190" height="52" rx="8" fill="#fbe9e7" stroke="#bf360c"/><text x="32" y="42">① 求群形心</text><text x="32" y="60">（螺栓群或銲道線段）</text>
+<rect x="250" y="20" width="200" height="52" rx="8" fill="#fbe9e7" stroke="#bf360c"/><text x="262" y="42">② 荷載移至形心</text><text x="262" y="60">P（直接剪力）＋ T=P·e（扭矩）</text>
+<rect x="490" y="20" width="210" height="52" rx="8" fill="#fbe9e7" stroke="#bf360c"/><text x="502" y="42">③ 極慣性矩</text><text x="502" y="60">J=Ip=Σ(x²+y²) 或 Ix+Iy</text>
+<rect x="740" y="20" width="200" height="52" rx="8" fill="#fff3e0" stroke="#f57c00"/><text x="752" y="42">④ 各分量</text><text x="752" y="60">fv=P/n，ft=T·r/J（垂直 r）</text>
+<rect x="490" y="120" width="270" height="52" rx="8" fill="#e8f5e9" stroke="#2e7d32"/><text x="502" y="142">⑤ 最遠點向量合成</text><text x="502" y="160">fr=√[(fvx+ftx)²+(fvy+fty)²]</text>
+<rect x="150" y="120" width="280" height="52" rx="8" fill="#e3f2fd" stroke="#1565c0"/><text x="162" y="142">⑥ 與單根強度比較</text><text x="162" y="160">螺栓：φrn／銲道：φ0.6FEXX×0.707w</text>
+<line x1="210" y1="46" x2="250" y2="46" stroke="#546e7a" marker-end="url(#ar)"/>
+<line x1="450" y1="46" x2="490" y2="46" stroke="#546e7a" marker-end="url(#ar)"/>
+<line x1="700" y1="46" x2="740" y2="46" stroke="#546e7a" marker-end="url(#ar)"/>
+<line x1="820" y1="72" x2="660" y2="120" stroke="#546e7a" marker-end="url(#ar)"/>
+<line x1="490" y1="146" x2="430" y2="146" stroke="#546e7a" marker-end="url(#ar)"/>
+<text x="20" y="215" fill="#78909c">💡 臨界點＝離形心最遠、且直接剪力與扭矩分量「同向相加」的角點；銲道以單位線寬計算（J 為線慣性矩）。</text>
+</svg>
+</div>
 </section>
 
-<!-- ④ 核心公式 -->
 <section id="s4">
-  <div class="section-title"><span class="section-num">④</span> 核心公式速查</div>
-  <div class="formula-grid">
-
-    <div class="formula-card">
-      <div class="fc-title"><span class="dot" style="background:var(--weld)"></span>填角銲強度（LRFD）</div>
-      <div class="formula-line">$$\phi R_n = 0.75 \times 0.707w \times 0.6F_{EXX} \times L_w$$</div>
-      <div class="formula-line">單位長：$\phi r_n = 0.75 \times 0.707w \times 0.6 \times 482 = 153w\text{ (N/mm)}$</div>
-      <div class="formula-note">
-        E70XX：$F_{EXX} = 482\text{ MPa}$（70 ksi）<br>
-        最小銲道尺寸：依較薄板厚查表（3~8 mm）<br>
-        最大尺寸：$w \le t-1.5\text{ mm}$（板厚 ≥ 6 mm）
-      </div>
-    </div>
-
-    <div class="formula-card">
-      <div class="fc-title"><span class="dot" style="background:var(--weld)"></span>ASD 填角銲容許應力</div>
-      <div class="formula-line">$F_v = 0.30 F_{EXX}$（E70XX → 145 MPa = 21 ksi）</div>
-      <div class="formula-line">每 mm 銲道容許力：$R_{allow} = 0.30 F_{EXX} \times 0.707w$</div>
-      <div class="formula-note">銲道方向折減：$f = \sqrt{f_{direct}^2 + f_{shear}^2}$<br>偏心接合：向量疊加法求合力</div>
-    </div>
-
-    <div class="formula-card">
-      <div class="fc-title"><span class="dot" style="background:var(--weld)"></span>偏心銲縫 — 彈性向量法</div>
-      <div class="formula-line">$I_p = I_x + I_y = \sum\left(\frac{L_i^3}{12} + L_i d_{y}^2\right) + \sum\left(\frac{L_i^3}{12} + L_i d_{x}^2\right)$</div>
-      <div class="formula-line">扭剪：$f_{\tau x} = \dfrac{V \cdot e \cdot y_i}{I_p}$，$f_{\tau y} = \dfrac{V \cdot e \cdot x_i}{I_p}$</div>
-      <div class="formula-line">合力：$f = \sqrt{(f_v + f_{\tau y})^2 + f_{\tau x}^2}$</div>
-      <div class="formula-note">最危險點：距形心最遠且方向不利之銲道端點<br>（通常為最遠角點）</div>
-    </div>
-
-    <div class="formula-card">
-      <div class="fc-title"><span class="dot" style="background:var(--bolt)"></span>承壓型螺栓（LRFD）</div>
-      <div class="formula-line">剪切：$\phi R_n = 0.75 \times 0.6F_u \times A_b \times n_s$</div>
-      <div class="formula-line">承壓：$\phi R_n = 0.75 \times 2.4 F_u \times d \times t$（標準孔）</div>
-      <div class="formula-note">
-        A325：$F_u = 827\text{ MPa}$（有螺紋在剪切面：$0.6F_u$）<br>
-        A490：$F_u = 1034\text{ MPa}$<br>
-        邊距孔：承壓 $1.2F_u l_c t$，端距孔：$1.2F_u l_c t \le 2.4F_u d t$
-      </div>
-    </div>
-
-    <div class="formula-card">
-      <div class="fc-title"><span class="dot" style="background:var(--bolt)"></span>摩阻型螺栓（Slip-Critical，LRFD）</div>
-      <div class="formula-line">$$\phi R_n = \phi \cdot \mu \cdot D_u \cdot h_f \cdot T_b \cdot n_s$$</div>
-      <div class="formula-line">$\phi = 1.0$（使用載重），$D_u = 1.13$，$h_f = 1.0$（標準孔）</div>
-      <div class="formula-note">
-        A類接觸面（未塗裝熱軋）：$\mu = 0.35$<br>
-        B類接觸面（噴砂熱浸鍍鋅）：$\mu = 0.50$<br>
-        A325 預拉力 $T_b$：7/8"=142 kN，1"=179 kN
-      </div>
-    </div>
-
-    <div class="formula-card">
-      <div class="fc-title"><span class="dot" style="background:var(--block)"></span>塊狀剪力（Block Shear，LRFD）</div>
-      <div class="formula-line">$$\phi R_n = 0.75\left[0.6F_u A_{nv} + U_{bs} F_u A_{nt}\right]$$</div>
-      <div class="formula-line">上限：$\phi R_n \le 0.75\left[0.6F_y A_{gv} + U_{bs} F_u A_{nt}\right]$</div>
-      <div class="formula-note">
-        $U_{bs} = 1.0$：拉力應力均勻（單排螺栓）<br>
-        $U_{bs} = 0.5$：拉力應力不均勻（多排螺栓，角鋼等）<br>
-        $A_{nv}$：淨剪力面積；$A_{nt}$：淨拉力面積；$A_{gv}$：毛剪力面積
-      </div>
-    </div>
-
-    <div class="formula-card">
-      <div class="fc-title"><span class="dot" style="background:var(--block)"></span>剪力遲滯 U 值</div>
-      <div class="formula-line">$U = 1 - \bar{x}/L$（通用公式）</div>
-      <div class="formula-line">有效淨面積：$A_e = A_n \times U$</div>
-      <div class="formula-note">
-        $\bar{x}$：連接件重心至連接端面的距離<br>
-        $L$：接合長度（沿力方向）<br>
-        翼板 + 腹板均連接（W型鋼）：$U = 0.90$ 或依表<br>
-        只連翼板或只連腹板：$U = 0.85 \sim 0.70$（依比例）
-      </div>
-    </div>
-
-    <div class="formula-card">
-      <div class="fc-title"><span class="dot" style="background:var(--joint)"></span>梁柱接頭 Panel Zone</div>
-      <div class="formula-line">$V_n = 0.6 F_y\, d_c\, t_w\left(1 + \dfrac{3b_{cf}t_{cf}^2}{d_b d_c t_w}\right)$</div>
-      <div class="formula-line">需求：$V_u = \dfrac{M_{u1}+M_{u2}}{d_b} - V_{col}$</div>
-      <div class="formula-note">
-        $d_c$：柱腹板深；$t_w$：柱腹板厚；$d_b$：梁深<br>
-        $b_{cf}$、$t_{cf}$：柱翼板寬、厚<br>
-        不足時加補強板（Doubler plate）或對角加勁板
-      </div>
-    </div>
-
-    <div class="formula-card">
-      <div class="fc-title"><span class="dot" style="background:var(--bolt)"></span>螺栓配置規範限制</div>
-      <div class="formula-line">最小間距：$s \ge 2\tfrac{2}{3} d$（建議 $3d$）</div>
-      <div class="formula-line">最小邊距：$L_e \ge 1.25d$（查表，依孔型）</div>
-      <div class="formula-note">
-        最大間距（防腐）：$12t$ 或 $150\text{ mm}$<br>
-        最大邊距：$12t$ 或 $150\text{ mm}$<br>
-        高拉力螺栓轉角法：旋緊後再轉動 1/3~1/2 轉
-      </div>
-    </div>
-
-  </div>
+<h2>④ 核心公式速查</h2>
+<div class="fcards">
+<div class="fcard" style="border-top-color:var(--B)">
+<h3>🔩 螺栓剪力／承壓</h3>
+$$\phi R_n=0.75\,F_{nv}A_b\;\text{（每剪切面）}$$
+$$\phi R_n=0.75\left(1.2L_c\,t\,F_u\le2.4\,d\,t\,F_u\right)$$
+<div class="note">A325：螺紋在剪力面（N）Fnv 較低、排除（X）較高；雙剪 ×2。Lc＝淨孔緣距。取「剪力、承壓」小者，全群加總。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--B)">
+<h3>🔩 摩阻型（Slip-critical）</h3>
+$$\phi R_n=\phi\,\mu\,D_u\,h_{sc}\,T_b\,N_s$$
+<div class="note">靠夾緊力 Tb（預拉力）產生摩擦傳剪；使用性極限。滑動後仍須檢核承壓＋剪力（承壓型備援）。傳力機制申論：SS-2017-2、2021-4。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--W)">
+<h3>🔥 填角銲強度</h3>
+$$\phi R_n=0.75\times0.6F_{EXX}\times0.707\,w\times L$$
+<div class="note">E70XX：FEXX=4.9 tf/cm²（70 ksi）。同時檢核母材剪力 0.9×0.6Fy×t×L。最小腳長依板厚；最大 w≤t−0.2cm（板邊）。端部回銲 ≥2w。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--W)">
+<h3>🔥 偏心銲縫（彈性法）</h3>
+$$f_v=\dfrac{P}{L_w},\qquad f_t=\dfrac{T\,c}{J_w},\qquad J_w=I_x+I_y$$
+$$f_r=\sqrt{(f_{vx}+f_{tx})^2+(f_{vy}+f_{ty})^2}\le0.75(0.6F_{EXX})\,t_e$$
+<div class="note">以「單位線寬」計 Lw、Jw（cm³ 線慣性矩）；臨界點取最遠角點。SS-2004-3、2005-3、2017-4。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--B)">
+<h3>🧱 塊狀剪力（接合側）</h3>
+$$R_n=0.6F_uA_{nv}+U_{bs}F_uA_{nt}\le0.6F_yA_{gv}+U_{bs}F_uA_{nt}$$
+<div class="note">φ=0.75；搭接、剪力板、角鋼端接合必檢；多路徑取最小。SS-2012-4、2021-2。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--J)">
+<h3>🏗️ 節點域與連續板</h3>
+$$R_v=0.6F_y\,d_c\,t_w\left[1+\dfrac{3b_{cf}t_{cf}^2}{d_b\,d_c\,t_w}\right]$$
+<div class="note">節點域剪力＝ΣMf/db −Vc；不足時加疊板（doubler plate）；翼板集中力不足時設連續板（continuity plate）。SS-2006-5。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--N)">
+<h3>📘 銲接破壞模式與 HAZ</h3>
+<p style="font-size:.9em;margin:6px 0">填角銲：喉部剪力破壞。對接銲（CJP）：與母材同強，破壞常轉移至 HAZ。層狀撕裂：厚板 Z 向拘束＋夾雜物；對策：Z 向性能鋼、改銲接細節、控制預熱。</p>
+<div class="note">SS-2023-4（破壞形式）、SS-2024-4（電熱熔渣銲 HAZ 脆化、層狀撕裂）、SS-2009-4（開槽型式與 UT）。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--N)">
+<h3>📘 混合接合與施工規定</h3>
+<p style="font-size:.9em;margin:6px 0">承壓型螺栓不得與銲接共同分擔（銲接全擔）；摩阻型（滑動臨界）可與銲接共同承載（既有結構補強）。高強度螺栓不得重複使用（A490 絕對禁止）。</p>
+<div class="note">SS-2021-4、SS-2006-2、SS-2004-1（U2-3 亦考）。</div>
+</div>
+</div>
 </section>
 
-<!-- ⑤ 考題清單 -->
 <section id="s5">
-  <div class="section-title"><span class="section-num">⑤</span> 考題清單</div>
-  <div class="filter-bar" id="filter-bar">
-    <button class="filter-btn active" style="--btn-color:var(--accent)" data-f="all" onclick="setFilter('all',this)">全部（26）</button>
-    <button class="filter-btn" style="--btn-color:var(--weld)" data-f="填角銲" onclick="setFilter('填角銲',this)">🔥 填角銲（6）</button>
-    <button class="filter-btn" style="--btn-color:var(--bolt)" data-f="螺栓" onclick="setFilter('螺栓',this)">🔩 螺栓接合（5）</button>
-    <button class="filter-btn" style="--btn-color:var(--block)" data-f="塊狀剪力" onclick="setFilter('塊狀剪力',this)">✂️ 塊狀剪力（2）</button>
-    <button class="filter-btn" style="--btn-color:var(--joint)" data-f="梁柱接頭" onclick="setFilter('梁柱接頭',this)">🏗️ 梁柱接頭（1）</button>
-    <button class="filter-btn" style="--btn-color:var(--concept)" data-f="概念" onclick="setFilter('概念',this)">💡 概念/規範（5）</button>
-    <button class="filter-btn" style="--btn-color:var(--secondary)" data-f="secondary" onclick="setFilter('secondary',this)">📎 副考點（7）</button>
-  </div>
-  <div class="q-list" id="q-list"></div>
+<h2>⑤ 考題清單（19 題，點題號開啟完整解析）</h2>
+<div class="filters">
+<button class="fbtn on" onclick="filterQ('ALL',this)">全部（19）</button>
+<button class="fbtn" onclick="filterQ('B',this)">螺栓接合（8）</button>
+<button class="fbtn" onclick="filterQ('W',this)">銲接接合（6）</button>
+<button class="fbtn" onclick="filterQ('J',this)">梁柱接頭（2）</button>
+<button class="fbtn" onclick="filterQ('N',this)">概念／破壞模式（3）</button>
+</div>
+<div id="qlist"></div>
 </section>
 
-<!-- ⑥ 高頻陷阱 -->
 <section id="s6">
-  <div class="section-title"><span class="section-num">⑥</span> 高頻陷阱 Top 10</div>
-  <div class="trap-list">
-
-    <div class="trap" style="--t-color:var(--weld)">
-      <div class="t-title"><span>🔥</span> 偏心銲縫 Ip 的計算單位</div>
-      <div class="t-desc">以「單位厚度銲道線」計算時，水平線 $I_x = L^3/12$（取線長三次方），垂直線 $I_y = 0$（厚度方向無展開）。常見錯誤：把水平線算進 Iy。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2004-3/SS-2004-3.md&t=SS-2004-3" target="_blank">SS-2004-3</a>、<a href="../index.html#md=raw/solutions/SS-2017-4/SS-2017-4.md&t=SS-2017-4" target="_blank">SS-2017-4</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--weld)">
-      <div class="t-title"><span>🔥</span> 最危險銲道點不一定在角點</div>
-      <div class="t-desc">偏心銲縫中，合力最大點取決於直剪與扭剪的向量方向，必須逐一計算各角點合力後比較，不可直覺選「最遠」角點。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2005-3/SS-2005-3.md&t=SS-2005-3" target="_blank">SS-2005-3</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--block)">
-      <div class="t-title"><span>✂️</span> 塊狀剪力 Ubs 值選取</div>
-      <div class="t-desc">單排螺栓（拉力均勻）→ $U_{bs}=1.0$；翼板螺栓多排（不均勻）→ $U_{bs}=0.5$。常見錯誤：全部取 1.0。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2003-3/SS-2003-3.md&t=SS-2003-3" target="_blank">SS-2003-3</a>、<a href="../index.html#md=raw/solutions/SS-2021-2/SS-2021-2.md&t=SS-2021-2" target="_blank">SS-2021-2</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--block)">
-      <div class="t-title"><span>✂️</span> 剪力遲滯 U 值忘記乘 An</div>
-      <div class="t-desc">$A_e = A_n \times U$，不是 $A_g \times U$。先計算淨面積 $A_n$（扣孔），再乘 $U$，這兩個折減不可混淆。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2003-3/SS-2003-3.md&t=SS-2003-3" target="_blank">SS-2003-3</a>、<a href="../index.html#md=raw/solutions/SS-2024-2/SS-2024-2.md&t=SS-2024-2" target="_blank">SS-2024-2</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--bolt)">
-      <div class="t-title"><span>🔩</span> 摩阻型 vs 承壓型混用</div>
-      <div class="t-desc">摩阻型（Slip-critical）以夾緊力 $T_b$ 產生摩擦力傳力，不計螺栓剪切；承壓型則以螺栓剪切 + 鈑件承壓傳力。兩者強度公式完全不同，不可混用。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2017-2/SS-2017-2.md&t=SS-2017-2" target="_blank">SS-2017-2</a>、<a href="../index.html#md=raw/solutions/SS-2004-2/SS-2004-2.md&t=SS-2004-2" target="_blank">SS-2004-2</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--bolt)">
-      <div class="t-title"><span>🔩</span> ASD 最小接合強度規定</div>
-      <div class="t-desc">ASD 規範規定接合設計強度不得小於「所連構材強度的 50%」（或規定最小值）。常見錯誤：只按計算需求設計，未核查此下限。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2020-4/SS-2020-4.md&t=SS-2020-4" target="_blank">SS-2020-4</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--weld)">
-      <div class="t-title"><span>🔥</span> ASD 銲道容許應力單位混淆</div>
-      <div class="t-desc">ASD 常以 ksi 為單位（E70XX：$F_v = 21\text{ ksi} = 145\text{ MPa}$）。計算時若混用 kN/mm 與 MPa 會出錯；每 mm 銲道（喉部 0.707w）容許力 = $145 \times 0.707w$ N/mm。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2007-1/SS-2007-1.md&t=SS-2007-1" target="_blank">SS-2007-1</a>、<a href="../index.html#md=raw/solutions/SS-2018-3/SS-2018-3.md&t=SS-2018-3" target="_blank">SS-2018-3</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--concept)">
-      <div class="t-title"><span>💡</span> 對接銲（CJP）與填角銲適用場合</div>
-      <div class="t-desc">CJP（完全滲透對接銲）強度 = 母材強度，不需另外驗算銲道；填角銲依銲喉驗算。耐震要求（塑鉸區）通常規定用 CJP，填角銲不適用。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2006-5/SS-2006-5.md&t=SS-2006-5" target="_blank">SS-2006-5</a>、<a href="../index.html#md=raw/solutions/SS-2023-4/SS-2023-4.md&t=SS-2023-4" target="_blank">SS-2023-4</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--concept)">
-      <div class="t-title"><span>💡</span> 偏心螺栓群：彈性法 vs 極限強度法</div>
-      <div class="t-desc">ASD 通常用彈性向量法（假設螺栓群繞形心旋轉，線性彈性）；LRFD 可用彈性法（保守）或 IC 法（極限強度法，較精確但複雜）。考題通常指定方法。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2002-4/SS-2002-4.md&t=SS-2002-4" target="_blank">SS-2002-4</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--weld)">
-      <div class="t-title"><span>🔥</span> 剪力流銲縫間距設計</div>
-      <div class="t-desc">組合斷面（蓋板梁）的剪力流 $q = VQ/I$，斷續銲縫間距 $s \le R_{allow}/q$。注意 $Q$ 取的是蓋板對整體中性軸的靜矩，不是蓋板本身的靜矩。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2019-4/SS-2019-4.md&t=SS-2019-4" target="_blank">SS-2019-4</a></div>
-    </div>
-
-  </div>
+<h2>⑥ 高頻陷阱 Top 8</h2>
+<div class="traps">
+<div class="trap"><b><span class="pill" style="background:var(--W)">喉厚</span>忘記 0.707 或用腳長算強度</b><br>填角銲強度以「有效喉厚 te=0.707w」計，直接用腳長 w 高估 41%。E70 之 0.6FEXX≈2.94 tf/cm²。</div>
+<div class="trap"><b><span class="pill" style="background:var(--B)">偏心</span>扭矩分量方向搞錯</b><br>ft=T·r/J 方向「垂直於 r」；臨界點是直接剪力與扭矩分量同向疊加的角點，分 x、y 分量再合成。SS-2002-4、2004-3、2017-4。</div>
+<div class="trap"><b><span class="pill" style="background:var(--B)">承壓</span>只算螺栓剪力漏了承壓與孔緣撕裂</b><br>φRn 取剪力、承壓（1.2LctFu≤2.4dtFu）之小者；端距小時 Lc 控制。SS-2012-4。</div>
+<div class="trap"><b><span class="pill" style="background:var(--B)">摩阻</span>摩阻型當強度極限、或漏備援檢核</b><br>滑動屬使用性極限；滑動後承壓型機制接手，故承壓、剪力仍須檢核。傳力機制（夾緊力→摩擦）申論常考。SS-2017-2。</div>
+<div class="trap"><b><span class="pill" style="background:var(--W)">母材</span>只檢核銲材漏檢核母材</b><br>銲道強度＝min（銲材喉部剪力、母材剪力降伏/斷裂）；薄板常由母材控制。SS-2018-3。</div>
+<div class="trap"><b><span class="pill" style="background:var(--N)">混合</span>承壓型螺栓＋銲接共同分擔</b><br>新設計中銲接須承擔全部力量；只有摩阻型可與銲接併用。SS-2021-4。</div>
+<div class="trap"><b><span class="pill" style="background:var(--W)">剪力流</span>斷續銲間距用錯剪力流</b><br>蓋板銲接由水平剪力流 q=VQ/I 控制，銲道供給 ≥ 需求 q×間距。SS-2019-4。</div>
+<div class="trap"><b><span class="pill" style="background:var(--J)">厚板</span>層狀撕裂機理答不出對策</b><br>Z 向拘束應力＋硫化物夾雜 → 沿板厚撕裂；對策：Z 向鋼材（Z25/Z35）、細部改良（減少拘束）、控制入熱量。SS-2024-4。</div>
+</div>
 </section>
 
-<!-- ⑦ 互動計算器 -->
 <section id="s7">
-  <div class="section-title"><span class="section-num">⑦</span> 接合設計計算器</div>
-  <div class="calc-wrap">
-    <div class="calc-tabs">
-      <button class="calc-tab active" onclick="switchTab('weld',this)">🔥 填角銲強度</button>
-      <button class="calc-tab" onclick="switchTab('bolt',this)">🔩 承壓型螺栓</button>
-      <button class="calc-tab" onclick="switchTab('block',this)">✂️ 塊狀剪力</button>
-    </div>
-
-    <!-- Tab 1: 填角銲 -->
-    <div class="calc-panel active" id="tab-weld">
-      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">LRFD 填角銲直接剪切強度。單位：mm、N</p>
-      <div class="calc-row">
-        <label>銲道尺寸 w (mm)</label>
-        <input type="number" id="w_w" value="8" min="3" max="20">
-        <span class="unit">mm</span>
-      </div>
-      <div class="calc-row">
-        <label>銲道總長 Lw (mm)</label>
-        <input type="number" id="w_L" value="300" min="1">
-        <span class="unit">mm</span>
-      </div>
-      <div class="calc-row">
-        <label>FEXX (MPa)</label>
-        <input type="number" id="w_FEXX" value="482">
-        <span class="unit">MPa（E70=482）</span>
-      </div>
-      <div class="calc-row">
-        <label>設計力 Vu (kN)</label>
-        <input type="number" id="w_Vu" value="200">
-        <span class="unit">kN</span>
-      </div>
-      <button class="calc-btn" onclick="calcWeld()">計算填角銲強度</button>
-      <div class="calc-result" id="res-weld" style="display:none"></div>
-    </div>
-
-    <!-- Tab 2: 螺栓 -->
-    <div class="calc-panel" id="tab-bolt">
-      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">LRFD 承壓型螺栓接合強度（單剪）。單位：mm、kN</p>
-      <div class="calc-row">
-        <label>螺栓直徑 d (mm)</label>
-        <input type="number" id="b_d" value="22" min="12" max="38">
-        <span class="unit">mm（22=7/8"）</span>
-      </div>
-      <div class="calc-row">
-        <label>螺栓根數 n</label>
-        <input type="number" id="b_n" value="4" min="1">
-        <span class="unit">個</span>
-      </div>
-      <div class="calc-row">
-        <label>Fu 螺栓 (MPa)</label>
-        <input type="number" id="b_Fu_bolt" value="827">
-        <span class="unit">MPa（A325=827）</span>
-      </div>
-      <div class="calc-row">
-        <label>Fu 板材 (MPa)</label>
-        <input type="number" id="b_Fu_plate" value="400">
-        <span class="unit">MPa（A36→400）</span>
-      </div>
-      <div class="calc-row">
-        <label>板厚 t (mm)</label>
-        <input type="number" id="b_t" value="10">
-        <span class="unit">mm</span>
-      </div>
-      <div class="calc-row">
-        <label>設計剪力 Vu (kN)</label>
-        <input type="number" id="b_Vu" value="300">
-        <span class="unit">kN</span>
-      </div>
-      <button class="calc-btn" onclick="calcBolt()">計算螺栓強度</button>
-      <div class="calc-result" id="res-bolt" style="display:none"></div>
-    </div>
-
-    <!-- Tab 3: 塊狀剪力 -->
-    <div class="calc-panel" id="tab-block">
-      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">LRFD 塊狀剪力強度。單位：mm²、MPa、kN</p>
-      <div class="calc-row">
-        <label>Fy (MPa)</label>
-        <input type="number" id="bs_Fy" value="345">
-        <span class="unit">MPa</span>
-      </div>
-      <div class="calc-row">
-        <label>Fu (MPa)</label>
-        <input type="number" id="bs_Fu" value="448">
-        <span class="unit">MPa</span>
-      </div>
-      <div class="calc-row">
-        <label>Agv（毛剪力面積 mm²）</label>
-        <input type="number" id="bs_Agv" value="2400">
-        <span class="unit">mm²</span>
-      </div>
-      <div class="calc-row">
-        <label>Anv（淨剪力面積 mm²）</label>
-        <input type="number" id="bs_Anv" value="1800">
-        <span class="unit">mm²</span>
-      </div>
-      <div class="calc-row">
-        <label>Ant（淨拉力面積 mm²）</label>
-        <input type="number" id="bs_Ant" value="600">
-        <span class="unit">mm²</span>
-      </div>
-      <div class="calc-row">
-        <label>Ubs</label>
-        <input type="number" id="bs_Ubs" value="1.0" step="0.5" min="0.5" max="1">
-        <span class="unit">1.0 或 0.5</span>
-      </div>
-      <div class="calc-row">
-        <label>設計力 Pu (kN)</label>
-        <input type="number" id="bs_Pu" value="500">
-        <span class="unit">kN</span>
-      </div>
-      <button class="calc-btn" onclick="calcBlock()">計算塊狀剪力強度</button>
-      <div class="calc-result" id="res-block" style="display:none"></div>
-    </div>
-  </div>
+<h2>⑦ 互動計算器：填角銲設計強度</h2>
+<div class="calc">
+<div class="row">
+<div><label>腳長 w（cm）</label><input id="iW" type="number" value="0.8" step="0.1"></div>
+<div><label>總有效長 L（cm）</label><input id="iL" type="number" value="40" step="1"></div>
+<div><label>FEXX（tf/cm²）</label><input id="iF" type="number" value="4.9" step="0.1"></div>
+<div><label>母材 Fy（tf/cm²）</label><input id="iFy" type="number" value="2.5" step="0.1"></div>
+<div><label>母材厚 t（cm）</label><input id="iT" type="number" value="1.0" step="0.1"></div>
+</div>
+<button onclick="calcW()">計算 φRn</button>
+<div class="out" id="calcOut"></div>
+</div>
 </section>
 
+<footer>study SS-U1-4｜exam-wiki-SS 知識庫自動生成｜連結經 ../index.html markdown 渲染器開啟（KaTeX＋附圖）</footer>
 </main>
 
 <script>
-// ─── Data ────────────────────────────────────────────────────────────────────
-const questions = [
-  {id:'SS-2002-4',year:2002,type:'螺栓',method:'ASD',tags:['偏心螺栓群','彈性分析法','承壓型A325X','扭矩極慣性矩','向量疊加'],sec:false},
-  {id:'SS-2003-1',year:2003,type:'secondary',method:'概念題',tags:['塊狀剪力','block shear','腹板承壓降伏','複合柱','殘留應力'],sec:true},
-  {id:'SS-2003-3',year:2003,type:'塊狀剪力',method:'LRFD',tags:['剪力遲滯','U值','塊狀剪力','淨斷面斷裂','WT斷面','有效淨面積'],sec:false},
-  {id:'SS-2004-2',year:2004,type:'螺栓',method:'ASD',tags:['拉力構材續接','摩阻型接合','A325','翼板連接','最短接合長度'],sec:false},
-  {id:'SS-2004-3',year:2004,type:'填角銲',method:'LRFD',tags:['填角銲','偏心接合','彈性向量法','托架','E70XX','極慣性矩'],sec:false},
-  {id:'SS-2005-1',year:2005,type:'secondary',method:'LRFD',tags:['拉力桿件','剪力遲滯','U值','塊狀剪力','等肢角鋼'],sec:true},
-  {id:'SS-2005-3',year:2005,type:'填角銲',method:'LRFD',tags:['填角銲','偏心接合','箱形斷面','牛腿接合','銲接群分析','扭矩'],sec:false},
-  {id:'SS-2006-2',year:2006,type:'概念',method:'LRFD',tags:['高拉力螺栓','預拉力','塊狀剪力','FCAW','現場銲接','施工規範'],sec:false},
-  {id:'SS-2006-5',year:2006,type:'梁柱接頭',method:'LRFD',tags:['梁柱接頭','連續板','節點域','CJP銲','耐震接頭','Panel Zone'],sec:false,viz:true},
-  {id:'SS-2007-1',year:2007,type:'填角銲',method:'ASD',tags:['填角銲','ASD','偏心接合','不等肢角鋼','剪力遲滯','U值','銲道容許應力'],sec:false},
-  {id:'SS-2009-4',year:2009,type:'概念',method:'概念題',tags:['銲接','開槽銲','Single V','SAW潛弧銲','UT超音波','NDT','高拉力螺栓','預拉力'],sec:false},
-  {id:'SS-2012-2',year:2012,type:'secondary',method:'概念題',tags:['韌性抗彎矩構架','塑性轉角需求','SMRF','梁柱接頭','耐震設計'],sec:true},
-  {id:'SS-2012-4',year:2012,type:'螺栓',method:'LRFD',tags:['剪力板','A325螺栓','承壓型螺栓','淨斷面剪力','全滲透銲','梁柱接頭'],sec:false},
-  {id:'SS-2015-2',year:2015,type:'secondary',method:'LRFD',tags:['拉力桿件','接合設計','剪力遲滯','塊狀剪力','填角銲','雙槽鋼','U值'],sec:true},
-  {id:'SS-2017-2',year:2017,type:'螺栓',method:'LRFD',tags:['高強度螺栓','摩阻型接合','Slip-critical','剪力傳遞機制','夾緊力','摩擦係數'],sec:false},
-  {id:'SS-2017-4',year:2017,type:'填角銲',method:'LRFD',tags:['填角銲','偏心銲縫','托架接合','扭矩分析','E70XX','彈性向量法'],sec:false,viz:true},
-  {id:'SS-2018-3',year:2018,type:'填角銲',method:'ASD',tags:['填角銲','梁柱接頭','ASD','銲道容許應力','SN400B','梁翼彎矩','梁腹彎矩','組合應力'],sec:false},
-  {id:'SS-2019-4',year:2019,type:'填角銲',method:'LRFD',tags:['填角銲','斷續銲接','蓋板','組合斷面','剪力流','水平剪力','銲道長度'],sec:false},
-  {id:'SS-2020-1',year:2020,type:'secondary',method:'概念題',tags:['梁柱接頭','RBS犬骨接頭','塑性鉸','強柱弱梁','蓋板補強','肋板補強'],sec:true},
-  {id:'SS-2020-4',year:2020,type:'螺栓',method:'ASD',tags:['腹板續接','四鈑接合','A490螺栓','螺栓尺寸','鈑厚設計','最小接合強度規定'],sec:false},
-  {id:'SS-2021-2',year:2021,type:'塊狀剪力',method:'LRFD',tags:['填角銲','塊狀剪力','高拉力螺栓','搭接接合','剪力破壞','0.6Fy'],sec:false},
-  {id:'SS-2021-4',year:2021,type:'概念',method:'概念題',tags:['高拉力螺栓','摩阻型螺栓','混合接合','施工規範','滑動臨界'],sec:false},
-  {id:'SS-2022-2',year:2022,type:'secondary',method:'ASD',tags:['拉力桿件','插銷接合','鉸接','有效淨面積','剪力斷裂','承壓'],sec:true},
-  {id:'SS-2023-4',year:2023,type:'概念',method:'概念題',tags:['填角銲','對接銲','銲喉面積','熱影響區HAZ','根部破壞','趾部破壞','塊狀剪力'],sec:false},
-  {id:'SS-2024-2',year:2024,type:'secondary',method:'LRFD',tags:['圓管HSS','縱向填角銲','剪力遲滯','U值','半圓管','淨截面斷裂'],sec:true},
-  {id:'SS-2024-4',year:2024,type:'概念',method:'概念題',tags:['梁柱接頭','電熱熔渣銲','層狀撕裂','HAZ脆化','破壞模式','NDT','SN耐震鋼材'],sec:false},
+const CATC={B:'#1565c0',W:'#bf360c',J:'#6a1b9a',N:'#2e7d32'};
+const CATN={B:'螺栓接合',W:'銲接接合',J:'梁柱接頭',N:'概念/破壞模式'};
+const Q=[
+["SS-2002-4","B","偏心螺栓群彈性分析法（ASD）",["偏心螺栓群","彈性分析法","A325X","扭矩極慣性矩"],0],
+["SS-2003-3","B","螺栓接合剪力遲滯與塊狀剪力",["剪力遲滯","U值","A325X","塊狀剪力"],0],
+["SS-2004-2","B","拉力構材續接摩阻型高強度螺栓",["拉力構材續接","摩阻型接合","A325","連接板設計"],0],
+["SS-2004-3","W","填角銲偏心接合彈性向量法（托架）",["填角銲","偏心接合","彈性向量法","E70XX"],0],
+["SS-2005-3","W","箱形斷面牛腿銲接群彎矩剪力接合",["填角銲","箱形斷面","牛腿接合","銲接群分析"],0],
+["SS-2006-2","B","高拉力螺栓預拉力＋塊狀剪力＋FCAW 施工",["預拉力","塊狀剪力","FCAW","施工規範"],0],
+["SS-2006-5","J","箱型柱梁柱接頭連續板與節點域",["箱型柱","連續板","節點域","CJP銲"],1],
+["SS-2007-1","W","不等肢角鋼填角銲偏心接合（ASD）",["填角銲","ASD","不等肢角鋼","剪力遲滯"],0],
+["SS-2009-4","N","開槽銲型式與 UT 檢測（概念）",["開槽銲","Single V","SAW潛弧銲","UT檢測"],0],
+["SS-2012-4","B","剪力板 A325 承壓型接合設計",["剪力板","A325","承壓型","淨斷面剪力"],0],
+["SS-2017-2","B","摩阻型接合剪力傳遞機制",["摩阻型接合","Slip-critical","剪力傳遞","夾緊力"],0],
+["SS-2017-4","W","托架偏心銲縫扭矩分析",["填角銲","偏心銲縫","托架接合","扭矩分析"],1],
+["SS-2018-3","W","箱型柱梁柱接頭填角銲容許應力（ASD）",["填角銲","ASD","SN400B","箱型柱"],0],
+["SS-2019-4","W","蓋板斷續填角銲剪力流設計",["斷續銲接","蓋板","剪力流","水平剪力"],0],
+["SS-2020-4","B","腹板四鈑續接 A490 高強度螺栓（ASD）",["腹板續接","四鈑接合","A490","ASD"],0],
+["SS-2021-2","B","搭接接合填角銲＋螺栓塊狀剪力",["填角銲","塊狀剪力","搭接接合","剪力破壞"],0],
+["SS-2021-4","N","摩阻型螺栓與銲接混合接合施工（概念）",["摩阻型螺栓","混合接合","施工規範","概念題"],0],
+["SS-2023-4","N","填角銲／對接銲破壞形式與熱影響區（概念）",["破壞形式","填角銲","銲喉面積","熱影響區"],0],
+["SS-2024-4","J","電熱熔渣銲翼板層狀撕裂與 HAZ 脆化",["電熱熔渣銲","層狀撕裂","HAZ脆化","破壞模式"],0]
 ];
-
-const typeColor = {
-  '填角銲':'var(--weld)', '螺栓':'var(--bolt)', '塊狀剪力':'var(--block)',
-  '梁柱接頭':'var(--joint)', '概念':'var(--concept)', 'secondary':'var(--secondary)'
-};
-const typeName = {
-  '填角銲':'🔥 填角銲計算', '螺栓':'🔩 螺栓接合', '塊狀剪力':'✂️ 塊狀剪力',
-  '梁柱接頭':'🏗️ 梁柱接頭', '概念':'💡 概念/規範', 'secondary':'📎 副考點'
-};
-
-// ─── Render Q list ────────────────────────────────────────────────────────────
-function renderQList(filter='all') {
-  const list = document.getElementById('q-list');
-  list.innerHTML = '';
-  questions.forEach(q => {
-    const show = filter==='all' || q.type===filter;
-    const color = typeColor[q.type]||'var(--accent)';
-    const href = `../index.html#md=raw/solutions/${q.id}/${q.id}.md&t=${q.id}`;
-    const vizIcon = q.viz ? '<span title="有互動圖">📊</span>' : '';
-    const secBadge = q.sec ? '<span class="q-sec-badge">副考點</span>' : '';
-    const div = document.createElement('div');
-    div.className = 'q-item' + (show?'':' hidden');
-    div.style.setProperty('--item-color', color);
-    div.dataset.type = q.type;
-    div.innerHTML = `
-      <div class="q-num"><a href="${href}" target="_blank">${q.id}</a></div>
-      <div class="q-body">
-        <div class="q-meta">
-          <span style="font-size:12px;font-weight:700;color:${color}">${typeName[q.type]||q.type}</span>
-          <span class="q-method">${q.method}</span>
-          ${secBadge}
-        </div>
-        <div class="q-tags">${q.tags.map(t=>`<span class="q-tag">${t}</span>`).join('')}</div>
-      </div>
-      <div class="icons">${vizIcon}<span title="verified">✅</span></div>
-    `;
-    list.appendChild(div);
-  });
+function renderQ(cat){
+  const box=document.getElementById('qlist');box.innerHTML='';
+  Q.filter(q=>cat==='ALL'||q[1]===cat).forEach(q=>{
+    const d=document.createElement('div');d.className='qrow';d.style.borderLeftColor=CATC[q[1]];
+    d.innerHTML=`<a href="../index.html#md=raw/solutions/${q[0]}/${q[0]}.md&t=${q[0]}" target="_blank">${q[0]}</a>
+    <span class="sum">${q[2]}</span><span class="tags">${q[3].join('・')}</span>
+    <span class="ico" title="解析/互動圖/驗證">📄${q[4]?' 📊':''} ✅</span>`;
+    box.appendChild(d);});
 }
-
-function setFilter(f, btn) {
-  document.querySelectorAll('#filter-bar .filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.q-item').forEach(el=>{
-    if(f==='all'||el.dataset.type===f) el.classList.remove('hidden');
-    else el.classList.add('hidden');
-  });
+function filterQ(cat,btn){renderQ(cat);
+  if(btn){document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+  else{document.getElementById('s5').scrollIntoView({behavior:'smooth'});
+    document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+    const idx={ALL:0,B:1,W:2,J:3,N:4}[cat];document.querySelectorAll('.fbtn')[idx].classList.add('on');}
 }
-
-function filterType(type, card) {
-  document.querySelectorAll('.type-card').forEach(c=>c.classList.remove('active'));
-  card.classList.add('active');
-  const f = type==='all'?'all':type;
-  document.querySelectorAll('.q-item').forEach(el=>{
-    if(f==='all'||el.dataset.type===f) el.classList.remove('hidden');
-    else el.classList.add('hidden');
-  });
-  document.querySelectorAll('#filter-bar .filter-btn').forEach(b=>{
-    b.classList.remove('active');
-    if(b.dataset.f===f) b.classList.add('active');
-  });
-  document.getElementById('s5').scrollIntoView({behavior:'smooth',block:'start'});
+renderQ('ALL');
+const byYear={};Q.forEach(q=>{const y=q[0].split('-')[1];(byYear[y]=byYear[y]||{B:0,W:0,J:0,N:0})[q[1]]++;});
+function drawBar(){
+  const cv=document.getElementById('cvBar'),ctx=cv.getContext('2d');
+  const years=Object.keys(byYear).sort(),W=cv.width,H=cv.height,bw=(W-60)/years.length;
+  const max=Math.max(...years.map(y=>Object.values(byYear[y]).reduce((a,b)=>a+b,0)));
+  ctx.font='10px sans-serif';ctx.fillStyle='#78909c';
+  for(let i=0;i<=max;i++){const yy=H-30-(H-60)*i/max;ctx.fillText(i,8,yy+3);ctx.strokeStyle='#eceff1';ctx.beginPath();ctx.moveTo(24,yy);ctx.lineTo(W-10,yy);ctx.stroke();}
+  years.forEach((y,i)=>{let acc=0;
+    ['B','W','J','N'].forEach(c=>{const v=byYear[y][c];if(!v)return;
+      const h=(H-60)*v/max;ctx.fillStyle=CATC[c];
+      ctx.fillRect(30+i*bw,H-30-acc-h,bw*0.7,h);acc+=h;});
+    ctx.fillStyle='#78909c';ctx.save();ctx.translate(30+i*bw+bw*0.35,H-18);ctx.rotate(-0.7);ctx.fillText(y.slice(2),0,0);ctx.restore();});
 }
-
-// ─── Year Chart ────────────────────────────────────────────────────────────────
-function drawYearChart() {
-  const canvas = document.getElementById('yearChart');
-  const ctx = canvas.getContext('2d');
-  const W = canvas.parentElement.clientWidth - 36;
-  canvas.width = W; canvas.height = 160;
-
-  const primaryYears = [2002,2003,2004,2004,2005,2006,2006,2007,2009,2012,2017,2017,2018,2019,2020,2021,2021,2023,2024];
-  const yearCount = {};
-  primaryYears.forEach(y => yearCount[y] = (yearCount[y]||0)+1);
-  const years = Object.keys(yearCount).map(Number).sort((a,b)=>a-b);
-  const counts = years.map(y=>yearCount[y]);
-  const maxC = Math.max(...counts);
-
-  const pad = {l:36,r:16,t:16,b:28};
-  const bw = Math.max(8, Math.floor((W-pad.l-pad.r)/years.length) - 3);
-  const barPad = 3;
-  const chartH = 160 - pad.t - pad.b;
-
-  ctx.clearRect(0,0,W,160);
-  ctx.strokeStyle='#e5e7eb'; ctx.lineWidth=0.5;
-  for(let i=0;i<=maxC;i++){
-    const y = pad.t + chartH - (i/maxC)*chartH;
-    ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(W-pad.r,y); ctx.stroke();
-    ctx.fillStyle='#9ca3af'; ctx.font='10px sans-serif'; ctx.textAlign='right';
-    ctx.fillText(i, pad.l-3, y+4);
-  }
-  years.forEach((year,i) => {
-    const cnt = counts[i];
-    const x = pad.l + i*(bw+barPad)+barPad;
-    const bh = (cnt/maxC)*chartH;
-    const y = pad.t + chartH - bh;
-    const grad = ctx.createLinearGradient(0,y,0,y+bh);
-    grad.addColorStop(0,'rgba(217,119,6,0.85)');
-    grad.addColorStop(1,'rgba(217,119,6,0.3)');
-    ctx.fillStyle=grad; ctx.fillRect(x,y,bw,bh);
-    ctx.fillStyle='#6b7280'; ctx.font='9px sans-serif'; ctx.textAlign='center';
-    ctx.fillText(year, x+bw/2, 160-pad.b+12);
-    if(cnt>0){ctx.fillStyle='#1a1d2e'; ctx.font='bold 10px sans-serif'; ctx.fillText(cnt, x+bw/2, y-3);}
-  });
+function drawPie(){
+  const cv=document.getElementById('cvPie'),ctx=cv.getContext('2d');
+  const cnt={B:0,W:0,J:0,N:0};Q.forEach(q=>cnt[q[1]]++);
+  const tot=Q.length,cx=cv.width*0.32,cy=cv.height/2,r=Math.min(cx,cy)-16;let a=-Math.PI/2;
+  Object.keys(cnt).forEach(c=>{const frac=cnt[c]/tot,a2=a+frac*2*Math.PI;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a,a2);ctx.closePath();ctx.fillStyle=CATC[c];ctx.fill();a=a2;});
+  ctx.font='12px sans-serif';let ly=40;
+  Object.keys(cnt).forEach(c=>{ctx.fillStyle=CATC[c];ctx.fillRect(cv.width*0.62,ly-9,12,12);
+    ctx.fillStyle='#263238';ctx.fillText(`${CATN[c]}：${cnt[c]} 題（${Math.round(cnt[c]/tot*100)}%）`,cv.width*0.62+18,ly);ly+=26;});
 }
-
-function drawPieChart() {
-  const canvas = document.getElementById('pieChart');
-  const ctx = canvas.getContext('2d');
-  const W = canvas.parentElement.clientWidth - 36;
-  canvas.width = W; canvas.height = 220;
-  const data = [
-    {label:'填角銲',val:6,color:'#d97706'},
-    {label:'螺栓接合',val:5,color:'#2563eb'},
-    {label:'塊狀剪力',val:2,color:'#dc2626'},
-    {label:'梁柱接頭',val:1,color:'#7c3aed'},
-    {label:'概念/規範',val:5,color:'#be185d'},
-    {label:'副考點',val:7,color:'#9ca3af'},
-  ];
-  const total = data.reduce((s,d)=>s+d.val,0);
-  const cx = W*0.38, cy = 110, r = 80;
-  let angle = -Math.PI/2;
-  data.forEach(d=>{
-    const slice = (d.val/total)*2*Math.PI;
-    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,r,angle,angle+slice);
-    ctx.fillStyle=d.color; ctx.fill();
-    ctx.strokeStyle='#fff'; ctx.lineWidth=2; ctx.stroke();
-    angle+=slice;
-  });
-  let ly=24;
-  data.forEach(d=>{
-    ctx.fillStyle=d.color; ctx.fillRect(W*0.73,ly,12,12);
-    ctx.fillStyle='#1a1d2e'; ctx.font='11px sans-serif'; ctx.textAlign='left';
-    ctx.fillText(`${d.label}（${d.val}）`, W*0.73+18, ly+10);
-    ly+=24;
-  });
+drawBar();drawPie();
+function calcW(){
+  const w=+document.getElementById('iW').value,L=+document.getElementById('iL').value,
+        F=+document.getElementById('iF').value,Fy=+document.getElementById('iFy').value,
+        t=+document.getElementById('iT').value;
+  const te=0.707*w;
+  const Rw=0.75*0.6*F*te*L;       // 銲材
+  const Rb=0.9*0.6*Fy*t*L;        // 母材剪力降伏
+  const ctrl=Rw<=Rb?'銲材（喉部剪力）':'母材（剪力降伏）';
+  const o=document.getElementById('calcOut');o.style.display='block';
+  o.innerHTML=`有效喉厚 te = 0.707 × ${w} = <b>${te.toFixed(3)} cm</b><br>
+  銲材：φRn = 0.75×0.6×${F}×${te.toFixed(3)}×${L} = <b>${Rw.toFixed(1)} tf</b><br>
+  母材：φRn = 0.9×0.6×${Fy}×${t}×${L} = ${Rb.toFixed(1)} tf<br>
+  <b>設計強度 = ${Math.min(Rw,Rb).toFixed(1)} tf（${ctrl}控制）</b><br>
+  <span style="color:#78909c">單位長度銲道強度 ≈ ${(Rw/L).toFixed(3)} tf/cm</span>`;
 }
-
-// ─── Calc Tab ─────────────────────────────────────────────────────────────────
-function switchTab(name, btn) {
-  document.querySelectorAll('.calc-tab').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.calc-panel').forEach(p=>p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('tab-'+name).classList.add('active');
-}
-
-function calcWeld() {
-  const w = +document.getElementById('w_w').value;
-  const Lw = +document.getElementById('w_L').value;
-  const FEXX = +document.getElementById('w_FEXX').value;
-  const Vu = +document.getElementById('w_Vu').value * 1000; // N
-  const throat = 0.707 * w;
-  const phiRn = 0.75 * throat * 0.6 * FEXX * Lw; // N
-  const phiRn_kN = phiRn/1000;
-  const ok = phiRn_kN >= Vu/1000;
-  const el = document.getElementById('res-weld');
-  el.style.display='block';
-  el.innerHTML = `
-    <div class="result-line"><span>銲道喉部</span><span class="result-key">${throat.toFixed(2)} mm</span></div>
-    <div class="result-line"><span>φRn（總長）</span><span class="result-key">${phiRn_kN.toFixed(1)} kN</span></div>
-    <div class="result-line"><span>φrn（每 mm）</span><span class="result-key">${(phiRn/Lw).toFixed(1)} N/mm</span></div>
-    <div class="result-line"><span>設計力 Vu</span><span>${(Vu/1000).toFixed(1)} kN</span></div>
-    <div class="result-line"><span>判斷 φRn ≥ Vu</span><span class="${ok?'result-pass':'result-fail'}">${ok?'✓ OK':'✗ NG — 加大銲道或增加長度'}</span></div>
-    <div class="calc-note">最小銲道尺寸依板厚查表；最大尺寸 ≤ 板厚 − 1.5 mm</div>
-  `;
-}
-
-function calcBolt() {
-  const d = +document.getElementById('b_d').value;
-  const n = +document.getElementById('b_n').value;
-  const Fu_bolt = +document.getElementById('b_Fu_bolt').value;
-  const Fu_plate = +document.getElementById('b_Fu_plate').value;
-  const t = +document.getElementById('b_t').value;
-  const Vu = +document.getElementById('b_Vu').value * 1000; // N
-  const Ab = Math.PI * d * d / 4;
-  const phiRn_shear = 0.75 * 0.6 * Fu_bolt * Ab * n; // 有螺紋在剪切面
-  const phiRn_bear = 0.75 * 2.4 * Fu_plate * d * t * n;
-  const phiRn = Math.min(phiRn_shear, phiRn_bear);
-  const controls = phiRn_shear < phiRn_bear ? '螺栓剪切控制' : '鈑件承壓控制';
-  const ok = phiRn >= Vu;
-  const el = document.getElementById('res-bolt');
-  el.style.display='block';
-  el.innerHTML = `
-    <div class="result-line"><span>螺栓截面積 Ab</span><span class="result-key">${Ab.toFixed(1)} mm²</span></div>
-    <div class="result-line"><span>φRn 螺栓剪切（n=${n}）</span><span>${(phiRn_shear/1000).toFixed(1)} kN</span></div>
-    <div class="result-line"><span>φRn 鈑件承壓（n=${n}）</span><span>${(phiRn_bear/1000).toFixed(1)} kN</span></div>
-    <div class="result-line"><span>控制模式</span><span class="result-warn">${controls}</span></div>
-    <div class="result-line"><span>φRn（取小值）</span><span class="result-key">${(phiRn/1000).toFixed(1)} kN</span></div>
-    <div class="result-line"><span>判斷 φRn ≥ Vu</span><span class="${ok?'result-pass':'result-fail'}">${ok?'✓ OK':'✗ NG — 增加螺栓根數'}</span></div>
-    <div class="calc-note">⚠️ 另需驗算塊狀剪力、淨斷面拉斷（拉力構材）</div>
-  `;
-}
-
-function calcBlock() {
-  const Fy = +document.getElementById('bs_Fy').value;
-  const Fu = +document.getElementById('bs_Fu').value;
-  const Agv = +document.getElementById('bs_Agv').value;
-  const Anv = +document.getElementById('bs_Anv').value;
-  const Ant = +document.getElementById('bs_Ant').value;
-  const Ubs = +document.getElementById('bs_Ubs').value;
-  const Pu = +document.getElementById('bs_Pu').value * 1000; // N
-  const phi = 0.75;
-  const Rn1 = phi * (0.6 * Fu * Anv + Ubs * Fu * Ant);
-  const Rn2 = phi * (0.6 * Fy * Agv + Ubs * Fu * Ant); // upper limit
-  const phiRn = Math.min(Rn1, Rn2);
-  const controls = Rn1 < Rn2 ? '淨剪力控制（Anv）' : '毛剪力屈服控制（上限，Agv）';
-  const ok = phiRn >= Pu;
-  const el = document.getElementById('res-block');
-  el.style.display='block';
-  el.innerHTML = `
-    <div class="result-line"><span>0.75[0.6Fu·Anv + Ubs·Fu·Ant]</span><span class="result-key">${(Rn1/1000).toFixed(1)} kN</span></div>
-    <div class="result-line"><span>上限：0.75[0.6Fy·Agv + Ubs·Fu·Ant]</span><span>${(Rn2/1000).toFixed(1)} kN</span></div>
-    <div class="result-line"><span>控制模式</span><span class="result-warn">${controls}</span></div>
-    <div class="result-line"><span>φRn（取小值）</span><span class="result-key">${(phiRn/1000).toFixed(1)} kN</span></div>
-    <div class="result-line"><span>判斷 φRn ≥ Pu</span><span class="${ok?'result-pass':'result-fail'}">${ok?'✓ OK':'✗ NG — 調整螺栓配置'}</span></div>
-    <div class="calc-note">Ubs = 1.0（單排螺栓，均勻拉力）；Ubs = 0.5（多排螺栓，非均勻）</div>
-  `;
-}
-
-// ─── Init ─────────────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', ()=>{
-  renderQList('all');
-  drawYearChart();
-  drawPieChart();
-});
-window.addEventListener('resize', ()=>{
-  drawYearChart();
-  drawPieChart();
-});
 </script>
 </body>
 </html>

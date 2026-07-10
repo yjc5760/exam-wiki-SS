@@ -1,817 +1,353 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SS-U2-3 設計規範對施工之要求 — 複習導覽</title>
+<title>SS-U2-3 設計規範對施工之要求｜深度複習</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
 <style>
-:root{
-  --bg:#f5f6fa; --surface:#fff; --surface2:#f0f2f8; --border:#dde1ee;
-  --text:#1a1d2e; --muted:#6b7280; --accent:#2563eb; --accent2:#7c3aed;
-  --green:#16a34a; --orange:#d97706; --red:#dc2626; --pink:#be185d;
-  --bolt:#2563eb; --rust:#16a34a; --weld:#d97706; --ndt:#7c3aed; --secondary:#6b7280;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:15px;line-height:1.6}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-
-.page-header{background:var(--surface);border-bottom:2px solid var(--border);padding:20px 32px;display:flex;align-items:center;gap:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.page-header h1{font-size:22px;font-weight:700}
-.page-header .badge{background:var(--accent2);color:#fff;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600}
-.page-header .back{color:var(--muted);font-size:13px;margin-left:auto}
-main{max-width:1280px;margin:0 auto;padding:28px 24px}
-section{margin-bottom:48px}
-.section-title{font-size:18px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--border);padding-bottom:10px}
-.section-num{background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
-
-.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
-.kpi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.kpi .val{font-size:32px;font-weight:700;color:var(--accent)}
-.kpi .lbl{font-size:12px;color:var(--muted);margin-top:4px}
-
-.type-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:12px;margin-bottom:24px}
-.type-card{background:var(--surface);border:2px solid var(--border);border-radius:10px;padding:14px;cursor:pointer;transition:all .2s;user-select:none;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.type-card:hover,.type-card.active{border-color:var(--card-color);background:color-mix(in srgb,var(--card-color) 8%,#fff)}
-.type-card .tc-name{font-weight:600;font-size:13px;margin-bottom:4px}
-.type-card .tc-count{font-size:28px;font-weight:700;color:var(--card-color)}
-.type-card .tc-pct{font-size:11px;color:var(--muted)}
-
-.charts-row{display:grid;grid-template-columns:2fr 1fr;gap:20px}
-.chart-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.chart-box h3{font-size:12px;color:var(--muted);margin-bottom:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
-canvas{display:block;width:100%!important}
-
-/* knowledge map */
-.kmap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.kmap-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.kmap-card .kc-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--kc-color)}
-.kmap-card .kc-icon{font-size:22px}
-.kmap-card .kc-title{font-size:14px;font-weight:700;color:var(--kc-color)}
-.kmap-card .kc-count{margin-left:auto;background:var(--kc-color);color:#fff;border-radius:12px;padding:2px 9px;font-size:11px;font-weight:700}
-.kmap-card ul{list-style:none;padding:0}
-.kmap-card ul li{font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:7px;line-height:1.4}
-.kmap-card ul li:last-child{border:none}
-.kmap-card ul li::before{content:'▸';color:var(--kc-color);flex-shrink:0;margin-top:1px}
-
-/* knowledge detail cards */
-.kd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
-.kd-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--kd-color);border-radius:8px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.kd-card .kd-title{font-size:13px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;color:var(--kd-color)}
-.kd-card .kd-row{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--surface2);font-size:13px;line-height:1.4}
-.kd-card .kd-row:last-child{border:none}
-.kd-card .kd-key{font-weight:600;min-width:110px;flex-shrink:0;color:var(--text)}
-.kd-card .kd-val{color:var(--muted);flex:1}
-.kd-card .tag{display:inline-block;background:var(--surface2);border-radius:4px;padding:1px 7px;font-size:11px;margin-right:4px;margin-bottom:2px}
-.kd-card .tag.ok{background:#dcfce7;color:#16a34a}
-.kd-card .tag.no{background:#fee2e2;color:#dc2626}
-.kd-card .tag.warn{background:#fef9c3;color:#ca8a04}
-
-/* NDT comparison table */
-.ndt-wrap{overflow-x:auto}
-.ndt-table{width:100%;border-collapse:collapse;font-size:13px;background:var(--surface)}
-.ndt-table th{background:var(--surface2);padding:10px 12px;text-align:left;font-weight:700;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;border-bottom:2px solid var(--border)}
-.ndt-table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.4}
-.ndt-table tr:last-child td{border:none}
-.ndt-table tr:hover td{background:var(--surface2)}
-.chip{display:inline-block;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;margin:1px}
-.chip-g{background:#dcfce7;color:#16a34a}
-.chip-r{background:#fee2e2;color:#dc2626}
-.chip-y{background:#fef9c3;color:#92400e}
-.chip-b{background:#eff6ff;color:#1d4ed8}
-
-/* q list */
-.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-.filter-btn{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;cursor:pointer;transition:all .2s;color:var(--text);font-weight:500}
-.filter-btn:hover,.filter-btn.active{color:#fff;border-color:var(--btn-color,var(--accent));background:var(--btn-color,var(--accent))}
-.q-list{display:flex;flex-direction:column;gap:10px}
-.q-item{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--item-color);border-radius:8px;padding:14px 16px;display:flex;align-items:flex-start;gap:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.q-num{font-size:13px;font-weight:700;color:var(--item-color);white-space:nowrap;min-width:82px}
-.q-num a{color:var(--item-color)}
-.q-body{flex:1}
-.q-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
-.q-tag{background:var(--surface2);border-radius:4px;padding:2px 7px;font-size:11px;color:var(--muted)}
-.q-meta{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap}
-.q-method{font-size:11px;background:var(--surface2);border-radius:4px;padding:1px 7px;color:var(--muted);border:1px solid var(--border)}
-.q-sec-badge{font-size:10px;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:4px;padding:1px 6px}
-.icons{margin-left:auto;flex-shrink:0}
-.q-item.hidden{display:none}
-
-/* traps */
-.trap-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
-.trap{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--t-color);border-radius:8px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.trap .t-title{font-weight:700;font-size:13px;margin-bottom:6px;display:flex;align-items:center;gap:7px}
-.trap .t-desc{font-size:13px;color:var(--muted);line-height:1.5}
-.trap .t-ref{font-size:11px;margin-top:6px;color:var(--muted)}
-.trap .t-ref a{color:var(--t-color)}
-
-/* quiz */
-.quiz-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.quiz-q{font-size:14px;font-weight:600;margin-bottom:14px;line-height:1.5}
-.quiz-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
-.quiz-opt{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;cursor:pointer;font-size:13px;transition:all .2s;text-align:left}
-.quiz-opt:hover{border-color:var(--accent)}
-.quiz-opt.correct{background:#dcfce7;border-color:#16a34a;color:#15803d;font-weight:600}
-.quiz-opt.wrong{background:#fee2e2;border-color:#dc2626;color:#b91c1c}
-.quiz-opt.reveal{background:#eff6ff;border-color:#2563eb;color:#1d4ed8}
-.quiz-opt[disabled]{cursor:default}
-.quiz-explain{background:var(--surface2);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--muted);line-height:1.5;margin-top:4px;display:none}
-.quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
-.quiz-btn{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:8px 20px;font-size:13px;cursor:pointer;font-weight:600}
-.quiz-btn:hover{background:#1d4ed8}
-.quiz-btn:disabled{background:#9ca3af;cursor:default}
-.quiz-prog{font-size:12px;color:var(--muted)}
-.quiz-score{font-size:14px;font-weight:700;color:var(--green)}
-
-@media(max-width:800px){
-  .kpi-row{grid-template-columns:repeat(2,1fr)}
-  .charts-row{grid-template-columns:1fr}
-  .kd-grid{grid-template-columns:1fr}
-  .trap-list{grid-template-columns:1f}
-  .quiz-opts{grid-template-columns:1fr}
-}
+:root{--ac:#37474f;--ac2:#eceff1;--B:#1565c0;--C:#2e7d32;--W:#bf360c;--N:#6a1b9a;
+--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#78909c;--bd:#e0e6ea}
+*{box-sizing:border-box}body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+header{background:linear-gradient(135deg,#263238,#546e7a);color:#fff;padding:28px 24px}
+header h1{margin:0 0 6px;font-size:1.5em}header p{margin:0;opacity:.85;font-size:.92em}
+nav{position:sticky;top:0;z-index:9;background:#fff;border-bottom:2px solid var(--bd);padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px}
+nav a{text-decoration:none;color:var(--ac);font-size:.88em;padding:5px 10px;border-radius:16px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:1080px;margin:0 auto;padding:20px 16px 60px}
+section{margin-bottom:38px}
+h2{font-size:1.25em;border-left:5px solid var(--ac);padding-left:10px;margin:30px 0 14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center}
+.kpi .n{font-size:1.9em;font-weight:700;color:var(--ac)}.kpi .l{font-size:.82em;color:var(--mut)}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.cat{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:10px;padding:12px 14px;cursor:pointer;transition:.15s}
+.cat:hover{transform:translateY(-2px);box-shadow:0 3px 10px rgba(0,0,0,.1)}
+.cat h3{margin:0 0 4px;font-size:1em}.cat p{margin:0;font-size:.82em;color:var(--mut)}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:760px){.charts{grid-template-columns:1fr}}
+.chartbox{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
+.chartbox h4{margin:0 0 8px;font-size:.95em;color:var(--mut)}
+canvas{width:100%;height:auto}
+.svgbox{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:16px;overflow-x:auto}
+.fcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.fcard{background:var(--card);border:1px solid var(--bd);border-top:5px solid;border-radius:10px;padding:14px 16px}
+.fcard h3{margin:0 0 8px;font-size:1em}
+.fcard ul{margin:6px 0;padding-left:20px;font-size:.9em}
+.fcard li{margin-bottom:4px}
+.fcard .note{font-size:.82em;color:var(--mut);border-top:1px dashed var(--bd);margin-top:10px;padding-top:8px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.fbtn{border:1px solid var(--bd);background:#fff;border-radius:18px;padding:6px 14px;cursor:pointer;font-size:.88em;font-family:inherit}
+.fbtn.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.qrow{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:8px;padding:10px 14px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.qrow a{font-weight:700;text-decoration:none;color:var(--ac);min-width:88px}
+.qrow a:hover{text-decoration:underline}
+.qrow .sum{flex:1;min-width:200px;font-size:.92em}
+.qrow .tags{font-size:.75em;color:var(--mut)}
+.qrow .ico{font-size:.85em;white-space:nowrap}
+.traps{counter-reset:tr}
+.trap{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:12px 14px 12px 48px;margin-bottom:10px;position:relative}
+.trap::before{counter-increment:tr;content:counter(tr);position:absolute;left:12px;top:12px;width:26px;height:26px;border-radius:50%;background:#d32f2f;color:#fff;font-weight:700;text-align:center;line-height:26px;font-size:.85em}
+.trap b .pill{font-size:.72em;border-radius:10px;padding:1px 8px;color:#fff;margin-right:6px;vertical-align:middle}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:.88em}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--ac2)}
+.quiz{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:18px}
+.qcard{background:var(--ac2);border-radius:10px;padding:22px;min-height:120px;cursor:pointer;font-size:1.02em}
+.qcard .qq{font-weight:700;margin-bottom:10px}
+.qcard .aa{display:none;border-top:1px dashed #b0bec5;padding-top:10px;color:#37474f}
+.quiz .ctrl{margin-top:12px;display:flex;gap:10px}
+.quiz button{background:var(--ac);color:#fff;border:none;border-radius:6px;padding:8px 20px;cursor:pointer;font-family:inherit;font-size:.92em}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 </style>
 </head>
 <body>
-
-<div class="page-header">
-  <div class="section-num">施</div>
-  <h1>SS-U2-3 設計規範對施工之要求</h1>
-  <span class="badge">13 題</span>
-  <span class="back"><a href="../index.html">← 儀表板</a></span>
-</div>
-
+<header>
+<h1>SS-U2-3 設計規範對施工之要求 — 深度複習</h1>
+<p>結構技師「鋼結構設計」子項複習頁（全數為概念申論題）｜資料來源：question_index.json（2002–2025，98 題）｜生成日期 2026-07-10</p>
+</header>
+<nav>
+<a href="#s1">① 命題分析</a><a href="#s2">② 主題地圖</a><a href="#s3">③ 答題架構</a>
+<a href="#s4">④ 知識卡速查</a><a href="#s5">⑤ 考題清單</a><a href="#s6">⑥ 高頻陷阱</a><a href="#s7">⑦ 快問快答</a>
+</nav>
 <main>
 
-<!-- ① 命題分析 -->
 <section id="s1">
-  <div class="section-title"><span class="section-num">①</span> 命題分析</div>
-  <div class="kpi-row">
-    <div class="kpi"><div class="val">13</div><div class="lbl">歷年題數（含副考點）</div></div>
-    <div class="kpi"><div class="val" style="color:var(--orange)">7</div><div class="lbl">主考點題數</div></div>
-    <div class="kpi"><div class="val" style="color:var(--ndt)">100%</div><div class="lbl">全部為概念題</div></div>
-    <div class="kpi"><div class="val" style="color:var(--green)">100%</div><div class="lbl">verified 比率</div></div>
-  </div>
-
-  <div class="type-cards" id="type-cards">
-    <div class="type-card" style="--card-color:var(--rust)" data-type="防蝕" onclick="filterType('防蝕',this)">
-      <div class="tc-name">🛡️ 防蝕塗裝</div>
-      <div class="tc-count">3</div>
-      <div class="tc-pct">23% 主考點</div>
-    </div>
-    <div class="type-card" style="--card-color:var(--ndt)" data-type="NDT" onclick="filterType('NDT',this)">
-      <div class="tc-name">🔍 NDT 非破壞檢測</div>
-      <div class="tc-count">2</div>
-      <div class="tc-pct">15% 主考點</div>
-    </div>
-    <div class="type-card" style="--card-color:var(--bolt)" data-type="螺栓" onclick="filterType('螺栓',this)">
-      <div class="tc-name">🔩 高拉力螺栓施工</div>
-      <div class="tc-count">1</div>
-      <div class="tc-pct">8% 主考點</div>
-    </div>
-    <div class="type-card" style="--card-color:var(--weld)" data-type="銲接" onclick="filterType('銲接',this)">
-      <div class="tc-name">🔥 銲接施工規範</div>
-      <div class="tc-count">1</div>
-      <div class="tc-pct">8% 主考點</div>
-    </div>
-    <div class="type-card" style="--card-color:var(--secondary)" data-type="secondary" onclick="filterType('secondary',this)">
-      <div class="tc-name">📎 副考點</div>
-      <div class="tc-count">6</div>
-      <div class="tc-pct">46%（跨 U1-4、SD）</div>
-    </div>
-    <div class="type-card" style="--card-color:var(--accent);border-color:var(--accent)" data-type="all" onclick="filterType('all',this)">
-      <div class="tc-name">📊 全部題目</div>
-      <div class="tc-count">13</div>
-      <div class="tc-pct">點擊顯示全部</div>
-    </div>
-  </div>
-
-  <div class="charts-row">
-    <div class="chart-box">
-      <h3>年度出題分布</h3>
-      <canvas id="yearChart" height="160"></canvas>
-    </div>
-    <div class="chart-box">
-      <h3>主題比例</h3>
-      <canvas id="pieChart" height="220"></canvas>
-    </div>
-  </div>
+<h2>① 命題分析</h2>
+<div class="kpis">
+<div class="kpi"><div class="n">7</div><div class="l">主考點題數（另 6 題副考點）</div></div>
+<div class="kpi"><div class="n">7.1%</div><div class="l">佔全科比例（7/98）</div></div>
+<div class="kpi"><div class="n">100%</div><div class="l">概念申論題（無計算）</div></div>
+<div class="kpi"><div class="n">2/6</div><div class="l">近6年出題（2020–25）</div></div>
+</div>
+<div class="cats">
+<div class="cat" style="border-left-color:var(--B)" onclick="filterQ('B')"><h3>🔩 高強度螺栓施工（1題）</h3><p>鎖緊方法、重複使用、板面密接、孔位校正</p></div>
+<div class="cat" style="border-left-color:var(--C)" onclick="filterQ('C')"><h3>🛡️ 防蝕與塗裝（3題）</h3><p>鏽蝕等級、表面處理、鍍鋅、不予塗裝部位 — 最大宗</p></div>
+<div class="cat" style="border-left-color:var(--W)" onclick="filterQ('W')"><h3>🔥 銲接施工細節（1題）</h3><p>回銲 end return、轉角銲細節</p></div>
+<div class="cat" style="border-left-color:var(--N)" onclick="filterQ('N')"><h3>🔍 非破壞檢測 NDT（2題）</h3><p>VT/PT/MT/UT/RT 比較、耐震接頭檢測</p></div>
+</div>
+<div class="charts">
+<div class="chartbox"><h4>年度分布（依主題堆疊）</h4><canvas id="cvBar" width="520" height="260"></canvas></div>
+<div class="chartbox"><h4>主題比例</h4><canvas id="cvPie" width="520" height="260"></canvas></div>
+</div>
+<p style="font-size:.88em;color:var(--mut)">📌 副考點另出現於 SS-2002-1、2009-2、2009-4、2021-4、2023-4、2024-4 —— 施工規定常「附掛」在接合與材料題後半，跨讀 U1-4 效益高。</p>
 </section>
 
-<!-- ② 知識架構地圖 -->
 <section id="s2">
-  <div class="section-title"><span class="section-num">②</span> 知識架構地圖</div>
-  <div class="kmap-grid">
-
-    <div class="kmap-card" style="--kc-color:var(--bolt)">
-      <div class="kc-header">
-        <span class="kc-icon">🔩</span>
-        <span class="kc-title">高拉力螺栓施工</span>
-        <span class="kc-count">1 主題</span>
-      </div>
-      <ul>
-        <li>鎖緊方法：轉角法（Turn-of-nut）、DTI（直接張力指示器）、力矩扳手法（校正扳手）</li>
-        <li>A490 螺栓嚴禁重複使用；A325 可在特定條件下重複使用（需檢查）</li>
-        <li>接觸板面間隙超規定 → 需加填板（filler plate）</li>
-        <li>孔位校正：不得用氣割擴孔，須用鉸孔器（reamer）</li>
-        <li>摩阻型接觸面：不得塗裝、不得油漆（A 類、B 類面）</li>
-        <li>螺栓安裝：先穿入且至少接觸板面後，才能施加預拉力</li>
-      </ul>
-    </div>
-
-    <div class="kmap-card" style="--kc-color:var(--rust)">
-      <div class="kc-header">
-        <span class="kc-icon">🛡️</span>
-        <span class="kc-title">防蝕塗裝</span>
-        <span class="kc-count">3 主題</span>
-      </div>
-      <ul>
-        <li><strong>不予塗裝部位：</strong>摩擦型螺栓接觸面、鑲埋混凝土部位、現場銲接兩側各 50 mm、密閉箱型斷面內面</li>
-        <li><strong>塗裝方法：</strong>熱浸鍍鋅（最耐久）、金屬噴塗（Zn/Al）、防鏽塗料</li>
-        <li><strong>鏽蝕等級（SIS 055900）：</strong>A（無鏽）→ B（有鏽皮、少鏽蝕）→ C（多鏽蝕）→ D（嚴重鏽蝕）</li>
-        <li><strong>噴砂處理等級：</strong>Sa1（輕度）、Sa2（徹底）、Sa2.5（非常徹底）、Sa3（金屬白）</li>
-        <li>犧牲陽極（Zn/Mg）：電化學防蝕，陽極氧化犧牲以保護鋼材</li>
-        <li>陰極防蝕：外加電流法；適用地下/水下結構</li>
-      </ul>
-    </div>
-
-    <div class="kmap-card" style="--kc-color:var(--weld)">
-      <div class="kc-header">
-        <span class="kc-icon">🔥</span>
-        <span class="kc-title">銲接施工規範</span>
-        <span class="kc-count">1 主題</span>
-      </div>
-      <ul>
-        <li><strong>填角銲端部回銲（end return）：</strong>長度 ≥ 2w（銲道尺寸的 2 倍）</li>
-        <li><strong>銲接前預熱：</strong>依板厚及鋼材類別（SS490 需高預熱溫度），防止氫致冷裂縫（延遲裂縫）</li>
-        <li><strong>銲條乾燥：</strong>低氫銲條（E70XX-H4 等）需在烘箱 300–400°C 保存，避免吸濕</li>
-        <li>仰銲（overhead）一般避免；必要時採特殊程序</li>
-        <li>點銲（tack weld）：應視為永久銲縫，不得由非資格銲工施作</li>
-        <li>SAW（潛弧銲）：高效率自動銲，熔渣需清除，適合長直銲縫</li>
-        <li>開槽銲（Groove weld）CJP 強度 = 母材，PJP 需折減</li>
-      </ul>
-    </div>
-
-    <div class="kmap-card" style="--kc-color:var(--ndt)">
-      <div class="kc-header">
-        <span class="kc-icon">🔍</span>
-        <span class="kc-title">NDT 非破壞檢測</span>
-        <span class="kc-count">2 主題</span>
-      </div>
-      <ul>
-        <li><strong>目視檢測（VT）：</strong>最基本，所有銲縫均須進行，只能找表面缺陷</li>
-        <li><strong>磁粒檢測（MT）：</strong>表面 + 近表面缺陷；限鐵磁性材料（不適用不鏽鋼、鋁）</li>
-        <li><strong>液滲檢測（PT）：</strong>表面開口缺陷；適用各種材料（含非磁性）；不適用多孔材料</li>
-        <li><strong>超音波檢測（UT）：</strong>內部缺陷（最廣用）；CJP 銲縫必須使用；無輻射危害</li>
-        <li><strong>放射線檢測（RT）：</strong>X 射線/γ 射線；可留永久記錄（底片）；有輻射危害</li>
-        <li>SMRF 韌性構架：全滲透銲（CJP）需 100% UT 檢測</li>
-      </ul>
-    </div>
-
-  </div>
+<h2>② 主題地圖（施工要求四大領域）</h2>
+<div class="svgbox">
+<svg viewBox="0 0 960 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+<rect x="380" y="110" width="200" height="60" rx="12" fill="#37474f"/>
+<text x="410" y="136" fill="#fff" font-size="14" font-weight="bold">設計規範對施工</text>
+<text x="435" y="156" fill="#fff" font-size="14" font-weight="bold">之要求</text>
+<g stroke="#90a4ae" stroke-width="1.5">
+<line x1="380" y1="120" x2="230" y2="60"/><line x1="380" y1="160" x2="230" y2="230"/>
+<line x1="580" y1="120" x2="730" y2="60"/><line x1="580" y1="160" x2="730" y2="230"/>
+</g>
+<rect x="30" y="20" width="200" height="76" rx="10" fill="#e3f2fd" stroke="#1565c0"/>
+<text x="42" y="42" font-weight="bold" fill="#1565c0">🔩 高強度螺栓</text>
+<text x="42" y="60">轉矩法／轉角法／TC螺栓</text><text x="42" y="78">重複使用禁止・板面密接</text>
+<rect x="30" y="190" width="200" height="76" rx="10" fill="#e8f5e9" stroke="#2e7d32"/>
+<text x="42" y="212" font-weight="bold" fill="#2e7d32">🛡️ 防蝕與塗裝</text>
+<text x="42" y="230">SIS/SSPC 表面處理等級</text><text x="42" y="248">熱浸鍍鋅・噴塗・陰極防蝕</text>
+<rect x="730" y="20" width="200" height="76" rx="10" fill="#fbe9e7" stroke="#bf360c"/>
+<text x="742" y="42" font-weight="bold" fill="#bf360c">🔥 銲接施工</text>
+<text x="742" y="60">回銲・預熱・層間溫度</text><text x="742" y="78">銲材乾燥・順序與變形</text>
+<rect x="730" y="190" width="200" height="76" rx="10" fill="#f3e5f5" stroke="#6a1b9a"/>
+<text x="742" y="212" font-weight="bold" fill="#6a1b9a">🔍 非破壞檢測 NDT</text>
+<text x="742" y="230">VT/PT/MT/UT/RT</text><text x="742" y="248">耐震接頭 CJP 之 UT 要求</text>
+</svg>
+</div>
 </section>
 
-<!-- ③ 核心知識速查 -->
 <section id="s3">
-  <div class="section-title"><span class="section-num">③</span> 核心知識速查卡</div>
-  <div class="kd-grid">
-
-    <div class="kd-card" style="--kd-color:var(--bolt)">
-      <div class="kd-title">🔩 螺栓鎖緊方法比較</div>
-      <div class="kd-row"><span class="kd-key">轉角法</span><span class="kd-val">初鎖後依板厚旋轉特定角度（1/3~1/2 圈），最常用</span></div>
-      <div class="kd-row"><span class="kd-key">DTI（直接張力指示器）</span><span class="kd-val">特製墊圈突起壓平至規定間隙，確認預拉力達到</span></div>
-      <div class="kd-row"><span class="kd-key">校正力矩扳手</span><span class="kd-val">事先校正，施加規定力矩；精度受摩擦影響，可靠性較低</span></div>
-      <div class="kd-row"><span class="kd-key">扭剪型螺栓</span><span class="kd-val">尾端螺桿斷裂即代表達預拉力，自動確認，施工方便</span></div>
-    </div>
-
-    <div class="kd-card" style="--kd-color:var(--rust)">
-      <div class="kd-title">🛡️ 不予塗裝部位（背誦重點）</div>
-      <div class="kd-row"><span class="kd-key">摩擦型接觸面</span><span class="kd-val"><span class="tag no">禁止塗裝</span> 影響摩擦係數</span></div>
-      <div class="kd-row"><span class="kd-key">混凝土鑲埋部位</span><span class="kd-val"><span class="tag no">不予塗裝</span> 鹼性環境已自然防蝕</span></div>
-      <div class="kd-row"><span class="kd-key">現場銲接附近</span><span class="kd-val"><span class="tag warn">各側 50 mm</span> 塗裝影響銲接品質</span></div>
-      <div class="kd-row"><span class="kd-key">密閉箱型內面</span><span class="kd-val"><span class="tag no">可不塗裝</span> 密封後不接觸空氣</span></div>
-      <div class="kd-row"><span class="kd-key">其他部位</span><span class="kd-val"><span class="tag ok">需塗裝</span> 依規範或設計要求</span></div>
-    </div>
-
-    <div class="kd-card" style="--kd-color:var(--rust)">
-      <div class="kd-title">🛡️ 防蝕方法比較</div>
-      <div class="kd-row"><span class="kd-key">熱浸鍍鋅</span><span class="kd-val">將鋼材浸入熔融鋅液（約 450°C），耐久性最佳，但高溫可能影響尺寸精度</span></div>
-      <div class="kd-row"><span class="kd-key">金屬噴塗</span><span class="kd-val">噴塗 Zn 或 Al，犧牲陽極原理，可現場施作，不受工件尺寸限制</span></div>
-      <div class="kd-row"><span class="kd-key">防鏽塗料</span><span class="kd-val">最普遍，分底漆/中塗/面漆，需定期維護</span></div>
-      <div class="kd-row"><span class="kd-key">犧牲陽極</span><span class="kd-val">Zn/Mg 陽極，電化學防蝕，用於地下/水中結構</span></div>
-      <div class="kd-row"><span class="kd-key">外加電流</span><span class="kd-val">外部供電使鋼材成陰極，適用大型結構（橋梁、管線）</span></div>
-    </div>
-
-    <div class="kd-card" style="--kd-color:var(--weld)">
-      <div class="kd-title">🔥 銲接缺陷與預防</div>
-      <div class="kd-row"><span class="kd-key">氫致冷裂縫（延遲裂縫）</span><span class="kd-val">因氫氣滲入銲縫 → 預熱 + 低氫銲條 + 銲後緩冷</span></div>
-      <div class="kd-row"><span class="kd-key">層狀撕裂</span><span class="kd-val">厚鋼板層狀夾雜物 → 選用 Z 向鋼（SN 系列），避免貫穿型 T 形接頭</span></div>
-      <div class="kd-row"><span class="kd-key">HAZ 脆化</span><span class="kd-val">熱影響區韌性下降 → 控制熱輸入量，使用耐銲性佳之 SN 鋼材</span></div>
-      <div class="kd-row"><span class="kd-key">電弧熔渣</span><span class="kd-val">多層銲道需層間清渣 → 磁粒或目視檢測確認</span></div>
-      <div class="kd-row"><span class="kd-key">根部未熔合</span><span class="kd-val">CJP 銲縫常見 → UT 超音波可偵測；RT 放射線亦可</span></div>
-    </div>
-
-    <div class="kd-card" style="--kd-color:var(--ndt)">
-      <div class="kd-title">🔍 NDT 方法選用原則</div>
-      <div class="kd-row"><span class="kd-key">CJP 銲縫（全滲透）</span><span class="kd-val"><span class="tag b">UT 優先</span> 可偵測內部缺陷；SMRF 需 100% UT</span></div>
-      <div class="kd-row"><span class="kd-key">填角銲縫</span><span class="kd-val"><span class="tag b">VT 目視</span> 基本；<span class="tag b">MT/PT</span> 表面裂縫</span></div>
-      <div class="kd-row"><span class="kd-key">需留記錄</span><span class="kd-val"><span class="tag b">RT 放射線</span> 底片可留存，但有輻射</span></div>
-      <div class="kd-row"><span class="kd-key">非磁性材料</span><span class="kd-val"><span class="tag no">不能用 MT</span> 改用 PT 液滲</span></div>
-      <div class="kd-row"><span class="kd-key">多孔材料</span><span class="kd-val"><span class="tag no">不能用 PT</span> 滲透液無法區分缺陷與孔隙</span></div>
-    </div>
-
-    <div class="kd-card" style="--kd-color:var(--weld)">
-      <div class="kd-title">🔥 填角銲施工規範重點</div>
-      <div class="kd-row"><span class="kd-key">端部回銲（end return）</span><span class="kd-val">端部應繞角回銲，回銲長度 ≥ 2w（w = 銲道尺寸）</span></div>
-      <div class="kd-row"><span class="kd-key">最小銲道尺寸</span><span class="kd-val">依較厚板厚查表（3 mm ~ 8 mm），板越厚最小尺寸越大（確保熔透）</span></div>
-      <div class="kd-row"><span class="kd-key">最大銲道尺寸</span><span class="kd-val">板厚 &lt; 6 mm：w ≤ 板厚；板厚 ≥ 6 mm：w ≤ 板厚 − 1.5 mm</span></div>
-      <div class="kd-row"><span class="kd-key">最小有效長度</span><span class="kd-val">有效長度 ≥ 4w；否則按實際長度除以 4w 折減</span></div>
-      <div class="kd-row"><span class="kd-key">間斷銲縫</span><span class="kd-val">受拉構材端部不宜用間斷銲縫（應力集中）</span></div>
-    </div>
-
-  </div>
+<h2>③ 概念題答題架構（SOP）</h2>
+<div class="svgbox">
+<svg viewBox="0 0 960 210" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#546e7a"/></marker></defs>
+<rect x="20" y="30" width="170" height="60" rx="10" fill="#eceff1" stroke="#37474f"/><text x="34" y="56">① 定義／目的</text><text x="34" y="76">為什麼規範這樣要求</text>
+<rect x="240" y="30" width="180" height="60" rx="10" fill="#eceff1" stroke="#37474f"/><text x="254" y="56">② 分類／方法列舉</text><text x="254" y="76">逐項條列（3–5 項）</text>
+<rect x="470" y="30" width="200" height="60" rx="10" fill="#eceff1" stroke="#37474f"/><text x="484" y="56">③ 機理／原理說明</text><text x="484" y="76">各項背後的力學或化學原因</text>
+<rect x="720" y="30" width="210" height="60" rx="10" fill="#fff3e0" stroke="#f57c00"/><text x="734" y="56">④ 適用時機／限制</text><text x="734" y="76">比較優缺點、注意事項收尾</text>
+<line x1="190" y1="60" x2="240" y2="60" stroke="#546e7a" marker-end="url(#ar)"/>
+<line x1="420" y1="60" x2="470" y2="60" stroke="#546e7a" marker-end="url(#ar)"/>
+<line x1="670" y1="60" x2="720" y2="60" stroke="#546e7a" marker-end="url(#ar)"/>
+<text x="20" y="140" fill="#78909c">💡 概念題得分關鍵：條列化＋每項附「原因」。只背名詞不解釋機理，只能拿一半分數。</text>
+<text x="20" y="164" fill="#78909c">💡 常見題幹動詞：「試述」「說明」「列舉並說明」→ 每項至少 2–3 行，畫簡圖（如銲道回銲示意）可加分。</text>
+</svg>
+</div>
 </section>
 
-<!-- ④ NDT 比較表 -->
 <section id="s4">
-  <div class="section-title"><span class="section-num">④</span> NDT 五法完整比較表</div>
-  <div class="ndt-wrap">
-    <table class="ndt-table">
-      <thead>
-        <tr>
-          <th>方法</th>
-          <th>縮寫</th>
-          <th>偵測範圍</th>
-          <th>適用材料</th>
-          <th>留存記錄</th>
-          <th>輻射危害</th>
-          <th>主要優點</th>
-          <th>主要限制</th>
-          <th>鋼結構常用場合</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>目視檢測</strong></td>
-          <td><span class="chip chip-b">VT</span></td>
-          <td>表面</td>
-          <td>所有材料</td>
-          <td><span class="chip chip-y">照片/記錄</span></td>
-          <td><span class="chip chip-g">無</span></td>
-          <td>成本最低，最普及，所有銲縫必做</td>
-          <td>只能找表面可見缺陷</td>
-          <td>所有銲縫基本驗收</td>
-        </tr>
-        <tr>
-          <td><strong>磁粒檢測</strong></td>
-          <td><span class="chip chip-b">MT</span></td>
-          <td>表面 + 近表面</td>
-          <td><span class="chip chip-r">鐵磁性材料</span>（碳鋼、低合金鋼）</td>
-          <td><span class="chip chip-y">可拍照</span></td>
-          <td><span class="chip chip-g">無</span></td>
-          <td>靈敏度高，操作快速</td>
-          <td>不能用於不鏽鋼、鋁、奧氏體鋼</td>
-          <td>銲縫表面裂縫、銲趾裂縫</td>
-        </tr>
-        <tr>
-          <td><strong>液滲檢測</strong></td>
-          <td><span class="chip chip-b">PT</span></td>
-          <td>表面開口缺陷</td>
-          <td>非多孔材料（金屬、陶瓷等）</td>
-          <td><span class="chip chip-y">可拍照</span></td>
-          <td><span class="chip chip-g">無</span></td>
-          <td>適用各種材料（含非磁性）</td>
-          <td>多孔材料無效；只能找開口缺陷</td>
-          <td>不鏽鋼銲縫、非磁性材料</td>
-        </tr>
-        <tr>
-          <td><strong>超音波檢測</strong></td>
-          <td><span class="chip chip-b">UT</span></td>
-          <td><strong>內部缺陷</strong></td>
-          <td>金屬（需耦合介質）</td>
-          <td><span class="chip chip-y">數位記錄</span></td>
-          <td><span class="chip chip-g">無</span></td>
-          <td>可找內部缺陷；無輻射；可現場施作；最常用</td>
-          <td>需技術人員判讀，結果依賴操作者</td>
-          <td><strong>CJP 銲縫必做；SMRF 100%</strong></td>
-        </tr>
-        <tr>
-          <td><strong>放射線檢測</strong></td>
-          <td><span class="chip chip-b">RT</span></td>
-          <td>內部缺陷（體積型）</td>
-          <td>金屬、非金屬</td>
-          <td><span class="chip chip-g">底片（永久記錄）</span></td>
-          <td><span class="chip chip-r">有（X/γ 射線）</span></td>
-          <td>底片可永久留存，圖像直觀</td>
-          <td>輻射管制、施工面積封鎖、成本高；對面狀缺陷靈敏度低</td>
-          <td>需永久記錄之重要接頭</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p style="font-size:12px;color:var(--muted);margin-top:10px">⭐ 考試重點：UT vs RT 的差異（無輻射 vs 留底片）；MT 限鐵磁性；PT 限開口缺陷；VT 是最基本且必做的方法。</p>
+<h2>④ 知識卡速查</h2>
+<div class="fcards">
+<div class="fcard" style="border-top-color:var(--B)">
+<h3>🔩 高強度螺栓鎖緊方法</h3>
+<ul>
+<li><b>轉矩控制法</b>：校驗扭矩扳手；受摩擦係數影響大</li>
+<li><b>轉角控制法</b>：貼緊後再轉 1/3～1/2 圈（依板厚長度）</li>
+<li><b>TC 螺栓（扭斷型）</b>：尾端梅花頭扭斷即達預拉力</li>
+<li><b>直接張力指示墊圈 DTI</b>：突起壓平間隙檢驗</li>
+</ul>
+<div class="note">預拉力 Tb≈0.7 倍最小拉力強度。檢驗：敲擊檢查＋抽驗。SS-2004-1。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--B)">
+<h3>🔩 螺栓施工規定要點</h3>
+<ul>
+<li><b>重複使用</b>：A490 及鍍鋅 A325 禁止重複使用；A325 經工程師同意可重用一次</li>
+<li><b>板面密接</b>：接合面須密貼，容許間隙有限制，過大須墊填板</li>
+<li><b>孔位偏差</b>：擴孔限制、禁止銲補後再鑽、衝孔限薄板</li>
+<li><b>摩阻面處理</b>：噴砂除鏽、不得油漆（或用認證塗料）</li>
+</ul>
+<div class="note">SS-2004-1 四小題即此四項。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--C)">
+<h3>🛡️ 表面處理與鏽蝕等級</h3>
+<ul>
+<li><b>鏽蝕等級</b>（SIS 05 59 00）：A（氧化皮完整）→ D（全面點蝕）</li>
+<li><b>除鏽等級</b>：Sa2.5（近白級噴砂，最常指定）、Sa3、St2/St3（手工）</li>
+<li><b>SSPC</b> 對應：SP10（近白）、SP5（白金屬）</li>
+</ul>
+<div class="note">塗裝前表面清潔度＋粗糙度是附著力關鍵。SS-2010-2。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--C)">
+<h3>🛡️ 防蝕方法比較</h3>
+<ul>
+<li><b>塗裝系統</b>：底漆（富鋅）＋中塗＋面漆；屏障＋犧牲保護</li>
+<li><b>熱浸鍍鋅</b>：鋅鐵合金層，耐久佳；大構件受鍍槽限制、高溫變形</li>
+<li><b>金屬噴塗</b>：鋅／鋁熔射，現場可施作，需封孔處理</li>
+<li><b>陰極防蝕（犧牲陽極）</b>：埋地／水中構造</li>
+</ul>
+<div class="note">腐蝕機制＝陽極氧化（Fe→Fe²⁺）電化學反應；答題先寫機制再寫方法。SS-2019-1、2010-2。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--C)">
+<h3>🛡️ 不予塗裝之部位</h3>
+<ul>
+<li>摩阻型接合之<b>摩擦面</b>（影響滑動係數）</li>
+<li><b>現場銲接</b>部位兩側（約 5–10 cm，影響銲接品質）</li>
+<li>與<b>混凝土包覆／埋入</b>接觸面（握裹）</li>
+<li>閉合斷面<b>內面</b>、密閉空間（無氧不蝕）</li>
+<li>銷、軸承等<b>機械接觸面</b></li>
+</ul>
+<div class="note">SS-2018-4 直接考此列舉＋原因。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--W)">
+<h3>🔥 銲接施工細節</h3>
+<ul>
+<li><b>回銲 end return</b>：轉角連續繞銲 ≥2w，避免端部起訖弧缺陷</li>
+<li><b>預熱／層間溫度</b>：依板厚與碳當量；防氫致裂紋</li>
+<li><b>低氫銲材乾燥</b>：烘乾保存，限時使用</li>
+<li><b>銲接順序</b>：對稱施銲、由拘束大到小，控制變形與殘留應力</li>
+</ul>
+<div class="note">SS-2016-2（回銲細節，附圖說明佳）；FCAW 現場銲接注意風速防護（SS-2006-2）。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--N)">
+<h3>🔍 NDT 五法比較</h3>
+<table>
+<tr><th>方法</th><th>可測</th><th>限制</th></tr>
+<tr><td><b>VT</b> 目視</td><td>表面成形、腳長</td><td>僅表面</td></tr>
+<tr><td><b>PT</b> 液滲</td><td>表面開口裂縫</td><td>不能測內部</td></tr>
+<tr><td><b>MT</b> 磁粒</td><td>表面／近表面</td><td>限磁性材料</td></tr>
+<tr><td><b>UT</b> 超音波</td><td>內部面狀瑕疵</td><td>依賴人員判讀</td></tr>
+<tr><td><b>RT</b> 放射線</td><td>內部體積瑕疵（氣孔夾渣）</td><td>輻射安全、面狀裂縫角度敏感</td></tr>
+</table>
+<div class="note">SS-2021-1（瑕疵種類 vs 檢測法配對）、SS-2009-4（UT）。</div>
+</div>
+<div class="fcard" style="border-top-color:var(--N)">
+<h3>🔍 耐震接頭檢測要求</h3>
+<ul>
+<li>韌性抗彎構架（SMF）梁翼 <b>CJP 銲道：100% UT</b></li>
+<li>檢測時機：銲後 24–48 hr（延遲裂紋）</li>
+<li>盒柱／厚板注意<b>層狀撕裂</b>檢測（Z向）</li>
+<li>銲接人員資格、WPS 銲接程序書審查</li>
+</ul>
+<div class="note">SS-2022-3 結合耐震設計（SD-U3）出題，跨單元整合答題。</div>
+</div>
+</div>
 </section>
 
-<!-- ⑤ 考題清單 -->
 <section id="s5">
-  <div class="section-title"><span class="section-num">⑤</span> 考題清單</div>
-  <div class="filter-bar" id="filter-bar">
-    <button class="filter-btn active" style="--btn-color:var(--accent)" data-f="all" onclick="setFilter('all',this)">全部（13）</button>
-    <button class="filter-btn" style="--btn-color:var(--rust)" data-f="防蝕" onclick="setFilter('防蝕',this)">🛡️ 防蝕塗裝（3）</button>
-    <button class="filter-btn" style="--btn-color:var(--ndt)" data-f="NDT" onclick="setFilter('NDT',this)">🔍 NDT（2）</button>
-    <button class="filter-btn" style="--btn-color:var(--bolt)" data-f="螺栓" onclick="setFilter('螺栓',this)">🔩 螺栓施工（1）</button>
-    <button class="filter-btn" style="--btn-color:var(--weld)" data-f="銲接" onclick="setFilter('銲接',this)">🔥 銲接規範（1）</button>
-    <button class="filter-btn" style="--btn-color:var(--secondary)" data-f="secondary" onclick="setFilter('secondary',this)">📎 副考點（6）</button>
-  </div>
-  <div class="q-list" id="q-list"></div>
+<h2>⑤ 考題清單（7 題主考點，點題號開啟完整解析）</h2>
+<div class="filters">
+<button class="fbtn on" onclick="filterQ('ALL',this)">全部（7）</button>
+<button class="fbtn" onclick="filterQ('B',this)">螺栓施工（1）</button>
+<button class="fbtn" onclick="filterQ('C',this)">防蝕塗裝（3）</button>
+<button class="fbtn" onclick="filterQ('W',this)">銲接施工（1）</button>
+<button class="fbtn" onclick="filterQ('N',this)">NDT 檢測（2）</button>
+</div>
+<div id="qlist"></div>
 </section>
 
-<!-- ⑥ 高頻陷阱 -->
 <section id="s6">
-  <div class="section-title"><span class="section-num">⑥</span> 高頻陷阱 Top 8</div>
-  <div class="trap-list">
-
-    <div class="trap" style="--t-color:var(--ndt)">
-      <div class="t-title"><span>🔍</span> UT vs RT：無輻射 vs 留底片</div>
-      <div class="t-desc">最常考的辨別：UT 無輻射危害、現場可施作、可找內部缺陷；RT 有放射線危害、須封鎖區域，但可留永久底片記錄。對於「面狀缺陷（裂縫）」，UT 靈敏度優於 RT（RT 較適合體積型缺陷如氣孔）。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2021-1/SS-2021-1.md&t=SS-2021-1" target="_blank">SS-2021-1</a>、<a href="../index.html#md=raw/solutions/SS-2022-3/SS-2022-3.md&t=SS-2022-3" target="_blank">SS-2022-3</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--ndt)">
-      <div class="t-title"><span>🔍</span> MT 只能用於鐵磁性材料</div>
-      <div class="t-desc">磁粒檢測需要材料可被磁化，不鏽鋼（奧氏體型）、鋁、銅等非磁性材料無法使用 MT，應改用 PT 液滲。常見錯誤：把 MT 當作萬用方法。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2021-1/SS-2021-1.md&t=SS-2021-1" target="_blank">SS-2021-1</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--rust)">
-      <div class="t-title"><span>🛡️</span> 現場銲接附近 50 mm 不塗裝</div>
-      <div class="t-desc">預留銲接區不塗裝的範圍是「銲道兩側各 50 mm」，而非整段不塗裝。工廠塗裝時需遮蔽此區，現場銲接後再補塗。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2018-4/SS-2018-4.md&t=SS-2018-4" target="_blank">SS-2018-4</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--rust)">
-      <div class="t-title"><span>🛡️</span> 熱浸鍍鋅 vs 金屬噴塗的差異</div>
-      <div class="t-desc">熱浸鍍鋅需工廠浸槽（受尺寸限制）；金屬噴塗可現場施作、不受工件大小限制，但附著力和耐久性略遜。兩者都是犧牲陽極原理（Zn氧化保護鋼材）。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2019-1/SS-2019-1.md&t=SS-2019-1" target="_blank">SS-2019-1</a>、<a href="../index.html#md=raw/solutions/SS-2010-2/SS-2010-2.md&t=SS-2010-2" target="_blank">SS-2010-2</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--bolt)">
-      <div class="t-title"><span>🔩</span> A490 螺栓嚴禁重複使用</div>
-      <div class="t-desc">A490 高強度螺栓因材質較脆，鎖緊後不得重複使用（即使外觀完好）；A325 在特定條件下可在技術人員確認後重複使用（舊版規範允許，新版趨向不允許）。考題通常考「A490 嚴禁」這個絕對性規定。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2004-1/SS-2004-1.md&t=SS-2004-1" target="_blank">SS-2004-1</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--bolt)">
-      <div class="t-title"><span>🔩</span> 孔位校正不得用氣割擴孔</div>
-      <div class="t-desc">孔位偏差須用「鉸孔器（reamer）」修正，不得用氣割（烙鐵）擴孔——氣割會產生熱影響區、改變孔邊材質，嚴重影響接合強度與疲勞性能。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2004-1/SS-2004-1.md&t=SS-2004-1" target="_blank">SS-2004-1</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--weld)">
-      <div class="t-title"><span>🔥</span> 填角銲 end return 長度 ≥ 2w</div>
-      <div class="t-desc">填角銲端部需回銲繞角，回銲長度 ≥ 2w（2 倍銲道尺寸）。這是為了避免端部應力集中與缺口效應。考題常出「不回銲」vs「回銲」何者符合規範。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2016-2/SS-2016-2.md&t=SS-2016-2" target="_blank">SS-2016-2</a></div>
-    </div>
-
-    <div class="trap" style="--t-color:var(--weld)">
-      <div class="t-title"><span>🔥</span> 低氫銲條需在烘箱保存</div>
-      <div class="t-desc">低氫型銲條（E7016、E7018 等）吸濕後會使銲縫含氫量升高，引發氫致冷裂縫（延遲裂縫）。規範規定使用前需在 300~400°C 烘乾，並在保溫桶中隨用隨取。</div>
-      <div class="t-ref">常見題：<a href="../index.html#md=raw/solutions/SS-2002-1/SS-2002-1.md&t=SS-2002-1" target="_blank">SS-2002-1</a></div>
-    </div>
-
-  </div>
+<h2>⑥ 高頻陷阱 Top 8</h2>
+<div class="traps">
+<div class="trap"><b><span class="pill" style="background:var(--B)">螺栓</span>「A325 可重複使用」寫成一律可以</b><br>正確：黑皮 A325 經工程師同意可重用「一次」；A490 與鍍鋅 A325 一律禁止。條件寫不全就丟分。</div>
+<div class="trap"><b><span class="pill" style="background:var(--C)">塗裝</span>不予塗裝部位漏「原因」</b><br>每個部位要附理由（摩擦面→滑動係數；銲接處→氣孔裂縫；混凝土面→握裹）。只列部位得分減半。</div>
+<div class="trap"><b><span class="pill" style="background:var(--C)">除鏽</span>鏽蝕等級（A–D）與除鏽等級（Sa/St）混為一談</b><br>前者描述「鋼材現況」、後者描述「處理標準」；Sa 噴砂、St 手工，數字越大越乾淨。</div>
+<div class="trap"><b><span class="pill" style="background:var(--N)">NDT</span>瑕疵型態與檢測法配錯</b><br>表面開口→PT；近表面→MT；內部面狀（未熔合、裂縫）→UT；內部體積（氣孔、夾渣）→RT。RT 對面狀裂縫方向敏感、UT 對體積瑕疵較弱。</div>
+<div class="trap"><b><span class="pill" style="background:var(--W)">回銲</span>end return 長度與目的答不全</b><br>轉角連續繞銲 ≥2 倍腳長；目的：避免起訖弧坑、應力集中於端部。畫圖說明最穩。</div>
+<div class="trap"><b><span class="pill" style="background:var(--C)">鍍鋅</span>熱浸鍍鋅只寫優點</b><br>限制也要寫：鍍槽尺寸、高溫（約450°C）翹曲變形、鍍鋅面摩擦係數低（摩阻接合須處理）、氫脆疑慮（高強度螺栓）。</div>
+<div class="trap"><b><span class="pill" style="background:var(--N)">耐震</span>UT 檢測比例與時機漏寫</b><br>SMF 梁翼 CJP 要求 100% UT；厚板銲後延遲 24–48 hr 檢測防延遲裂紋。「全數＋時機」是關鍵詞。</div>
+<div class="trap"><b><span class="pill" style="background:var(--B)">密接</span>板面密接與墊填板規定含糊</b><br>接觸面間隙限制（約 1mm 內可鎖緊；超過須墊填）；填板厚度影響摩阻與承壓值需說明。</div>
+</div>
 </section>
 
-<!-- ⑦ 概念自我測驗 -->
 <section id="s7">
-  <div class="section-title"><span class="section-num">⑦</span> 概念自我測驗（10 題）</div>
-  <div class="quiz-wrap">
-    <div id="quiz-container"></div>
-    <div class="quiz-nav">
-      <span class="quiz-prog" id="quiz-prog">第 1 / 10 題</span>
-      <div style="display:flex;gap:8px">
-        <button class="quiz-btn" id="btn-explain" onclick="showExplain()" style="background:var(--muted)">顯示解說</button>
-        <button class="quiz-btn" id="btn-next" onclick="nextQ()" disabled>下一題 →</button>
-      </div>
-    </div>
-    <div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center">
-      <span class="quiz-score" id="quiz-score"></span>
-      <button class="quiz-btn" id="btn-restart" onclick="startQuiz()" style="display:none;background:var(--green)">重新開始</button>
-    </div>
-  </div>
+<h2>⑦ 快問快答（點卡片翻面）</h2>
+<div class="quiz">
+<div class="qcard" id="qcard" onclick="flip()">
+<div class="qq" id="qq"></div>
+<div class="aa" id="aa"></div>
+</div>
+<div class="ctrl">
+<button onclick="prevQ(event)">← 上一題</button>
+<button onclick="nextQ(event)">下一題 →</button>
+<span id="qidx" style="align-self:center;color:var(--mut);font-size:.85em"></span>
+</div>
+</div>
 </section>
 
+<footer>study SS-U2-3｜exam-wiki-SS 知識庫自動生成｜連結經 ../index.html markdown 渲染器開啟（KaTeX＋附圖）</footer>
 </main>
 
 <script>
-// ─── Data ─────────────────────────────────────────────────────────────────────
-const questions = [
-  {id:'SS-2002-1',year:2002,type:'secondary',method:'概念題',tags:['銲條乾燥','氫脆','氫致冷裂縫','殘留應力','壓力桿件'],sec:true},
-  {id:'SS-2004-1',year:2004,type:'螺栓',method:'概念題',tags:['高強度螺栓','施工規定','摩阻型接合','螺栓重複使用','孔位校正','鉸孔器'],sec:false},
-  {id:'SS-2009-2',year:2009,type:'secondary',method:'概念題',tags:['節點域Panel Zone','SN耐震鋼材','層狀撕裂','EBF偏心斜撐','連桿梁'],sec:true},
-  {id:'SS-2009-4',year:2009,type:'secondary',method:'概念題',tags:['開槽銲','SAW潛弧銲','UT超音波','NDT','高拉力螺栓','預拉力'],sec:true},
-  {id:'SS-2010-2',year:2010,type:'防蝕',method:'概念題',tags:['防銹蝕','鏽蝕等級SIS','SSPC','熱浸鍍鋅','犧牲陽極','表面處理','塗裝'],sec:false},
-  {id:'SS-2016-2',year:2016,type:'銲接',method:'概念題',tags:['填角銲','回銲end return','銲接細節','轉角銲'],sec:false},
-  {id:'SS-2018-4',year:2018,type:'防蝕',method:'概念題',tags:['防蝕塗裝','不予塗裝','摩擦接合','現場銲接50mm','密閉箱型斷面'],sec:false},
-  {id:'SS-2019-1',year:2019,type:'防蝕',method:'概念題',tags:['防蝕','熱浸鍍鋅','金屬噴塗','塗裝','腐蝕機制','表面處理'],sec:false},
-  {id:'SS-2021-1',year:2021,type:'NDT',method:'概念題',tags:['非破壞檢測NDT','銲道瑕疵','超音波UT','放射線RT','磁粒MT','液滲PT','目視VT','填角銲'],sec:false},
-  {id:'SS-2021-4',year:2021,type:'secondary',method:'概念題',tags:['高拉力螺栓','摩阻型螺栓','混合接合','施工規範','滑動臨界'],sec:true},
-  {id:'SS-2022-3',year:2022,type:'NDT',method:'概念題',tags:['NDT','全滲透銲','韌性抗彎構架','超音波UT','100%UT'],sec:false},
-  {id:'SS-2023-4',year:2023,type:'secondary',method:'概念題',tags:['填角銲','對接銲','HAZ熱影響區','根部破壞','趾部破壞'],sec:true},
-  {id:'SS-2024-4',year:2024,type:'secondary',method:'概念題',tags:['梁柱接頭','層狀撕裂','HAZ脆化','SN耐震鋼材','NDT','電熱熔渣銲'],sec:true},
+const CATC={B:'#1565c0',C:'#2e7d32',W:'#bf360c',N:'#6a1b9a'};
+const CATN={B:'螺栓施工',C:'防蝕塗裝',W:'銲接施工',N:'NDT檢測'};
+const Q=[
+["SS-2004-1","B","高強度螺栓施工規定（重複使用、密接、孔位校正）",["摩阻型接合","螺栓重複使用","板面密接","孔位校正"],0],
+["SS-2010-2","C","鏽蝕等級標準與防蝕方法（SIS/SSPC、鍍鋅、犧牲陽極）",["鏽蝕等級","SIS標準","熱浸鍍鋅","犧牲陽極"],0],
+["SS-2016-2","W","填角銲回銲（end return）與銲接細節",["填角銲","回銲","end return","轉角銲"],0],
+["SS-2018-4","C","不予塗裝部位規定（摩擦面、現場銲接、混凝土包覆）",["防蝕塗裝","不予塗裝","摩擦接合","混凝土包覆"],0],
+["SS-2019-1","C","防蝕塗裝、熱浸鍍鋅與金屬噴塗（含腐蝕機制）",["防蝕","塗裝","熱浸鍍鋅","金屬噴塗"],0],
+["SS-2021-1","N","銲道瑕疵與 NDT 方法比較",["非破壞檢測","NDT","銲道瑕疵","UT","RT"],0],
+["SS-2022-3","N","韌性抗彎構架 NDT 與耐震檢測要求",["NDT","韌性抗彎構架","耐震設計","梁柱接頭"],0]
 ];
-
-const typeColor={'防蝕':'var(--rust)','NDT':'var(--ndt)','螺栓':'var(--bolt)','銲接':'var(--weld)','secondary':'var(--secondary)'};
-const typeName={'防蝕':'🛡️ 防蝕塗裝','NDT':'🔍 NDT 非破壞檢測','螺栓':'🔩 螺栓施工','銲接':'🔥 銲接規範','secondary':'📎 副考點'};
-
-function renderQList(filter='all'){
-  const list=document.getElementById('q-list');
-  list.innerHTML='';
-  questions.forEach(q=>{
-    const show=filter==='all'||q.type===filter;
-    const color=typeColor[q.type]||'var(--accent)';
-    const href=`../index.html#md=raw/solutions/${q.id}/${q.id}.md&t=${q.id}`;
-    const secBadge=q.sec?'<span class="q-sec-badge">副考點</span>':'';
-    const div=document.createElement('div');
-    div.className='q-item'+(show?'':' hidden');
-    div.style.setProperty('--item-color',color);
-    div.dataset.type=q.type;
-    div.innerHTML=`
-      <div class="q-num"><a href="${href}" target="_blank">${q.id}</a></div>
-      <div class="q-body">
-        <div class="q-meta">
-          <span style="font-size:12px;font-weight:700;color:${color}">${typeName[q.type]||q.type}</span>
-          <span class="q-method">${q.method}</span>${secBadge}
-          <span class="q-method" style="background:#fef3c7;color:#92400e;border-color:#fde68a">全概念題</span>
-        </div>
-        <div class="q-tags">${q.tags.map(t=>`<span class="q-tag">${t}</span>`).join('')}</div>
-      </div>
-      <div class="icons"><span title="verified">✅</span></div>`;
-    list.appendChild(div);
-  });
+function renderQ(cat){
+  const box=document.getElementById('qlist');box.innerHTML='';
+  Q.filter(q=>cat==='ALL'||q[1]===cat).forEach(q=>{
+    const d=document.createElement('div');d.className='qrow';d.style.borderLeftColor=CATC[q[1]];
+    d.innerHTML=`<a href="../index.html#md=raw/solutions/${q[0]}/${q[0]}.md&t=${q[0]}" target="_blank">${q[0]}</a>
+    <span class="sum">${q[2]}</span><span class="tags">${q[3].join('・')}</span>
+    <span class="ico" title="解析/驗證">📄 ✅</span>`;
+    box.appendChild(d);});
 }
-
-function setFilter(f,btn){
-  document.querySelectorAll('#filter-bar .filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.q-item').forEach(el=>{
-    if(f==='all'||el.dataset.type===f) el.classList.remove('hidden');
-    else el.classList.add('hidden');
-  });
+function filterQ(cat,btn){renderQ(cat);
+  if(btn){document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+  else{document.getElementById('s5').scrollIntoView({behavior:'smooth'});
+    document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+    const idx={ALL:0,B:1,C:2,W:3,N:4}[cat];document.querySelectorAll('.fbtn')[idx].classList.add('on');}
 }
-
-function filterType(type,card){
-  document.querySelectorAll('.type-card').forEach(c=>c.classList.remove('active'));
-  card.classList.add('active');
-  const f=type==='all'?'all':type;
-  document.querySelectorAll('.q-item').forEach(el=>{
-    if(f==='all'||el.dataset.type===f) el.classList.remove('hidden');
-    else el.classList.add('hidden');
-  });
-  document.querySelectorAll('#filter-bar .filter-btn').forEach(b=>{
-    b.classList.remove('active');
-    if(b.dataset.f===f) b.classList.add('active');
-  });
-  document.getElementById('s5').scrollIntoView({behavior:'smooth',block:'start'});
+renderQ('ALL');
+const byYear={};Q.forEach(q=>{const y=q[0].split('-')[1];(byYear[y]=byYear[y]||{B:0,C:0,W:0,N:0})[q[1]]++;});
+function drawBar(){
+  const cv=document.getElementById('cvBar'),ctx=cv.getContext('2d');
+  const years=Object.keys(byYear).sort(),W=cv.width,H=cv.height,bw=(W-60)/years.length;
+  const max=Math.max(...years.map(y=>Object.values(byYear[y]).reduce((a,b)=>a+b,0)));
+  ctx.font='11px sans-serif';ctx.fillStyle='#78909c';
+  for(let i=0;i<=max;i++){const yy=H-30-(H-60)*i/max;ctx.fillText(i,8,yy+3);ctx.strokeStyle='#eceff1';ctx.beginPath();ctx.moveTo(24,yy);ctx.lineTo(W-10,yy);ctx.stroke();}
+  years.forEach((y,i)=>{let acc=0;
+    ['B','C','W','N'].forEach(c=>{const v=byYear[y][c];if(!v)return;
+      const h=(H-60)*v/max;ctx.fillStyle=CATC[c];
+      ctx.fillRect(30+i*bw,H-30-acc-h,bw*0.6,h);acc+=h;});
+    ctx.fillStyle='#78909c';ctx.fillText(y,26+i*bw,H-12);});
 }
-
-// ─── Charts ────────────────────────────────────────────────────────────────────
-function drawYearChart(){
-  const canvas=document.getElementById('yearChart');
-  const ctx=canvas.getContext('2d');
-  const W=canvas.parentElement.clientWidth-36;
-  canvas.width=W; canvas.height=160;
-  // primary years with type color
-  const primaryData=[
-    {year:2004,type:'螺栓'},{year:2010,type:'防蝕'},{year:2016,type:'銲接'},
-    {year:2018,type:'防蝕'},{year:2019,type:'防蝕'},{year:2021,type:'NDT'},{year:2022,type:'NDT'}
-  ];
-  // secondary years
-  const secYears=[2002,2009,2009,2021,2023,2024];
-  const allYears=Array.from({length:2024-2002+1},(_,i)=>2002+i);
-  const pad={l:36,r:8,t:16,b:28};
-  const bw=Math.max(7,Math.floor((W-pad.l-pad.r)/allYears.length)-2);
-  const barPad=2;
-  const chartH=160-pad.t-pad.b;
-  ctx.clearRect(0,0,W,160);
-  ctx.strokeStyle='#e5e7eb'; ctx.lineWidth=0.5;
-  for(let i=0;i<=2;i++){
-    const y=pad.t+chartH-(i/2)*chartH;
-    ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(W-pad.r,y); ctx.stroke();
-    ctx.fillStyle='#9ca3af'; ctx.font='10px sans-serif'; ctx.textAlign='right';
-    ctx.fillText(i,pad.l-3,y+4);
-  }
-  const colors={'螺栓':'rgba(37,99,235,0.85)','防蝕':'rgba(22,163,74,0.85)','銲接':'rgba(217,119,6,0.85)','NDT':'rgba(124,58,237,0.85)','sec':'rgba(156,163,175,0.5)'};
-  allYears.forEach((year,i)=>{
-    const x=pad.l+i*(bw+barPad)+barPad;
-    const prim=primaryData.find(d=>d.year===year);
-    const secCnt=secYears.filter(y=>y===year).length;
-    if(prim){
-      const bh=(1/2)*chartH;
-      const y=pad.t+chartH-bh;
-      ctx.fillStyle=colors[prim.type]; ctx.fillRect(x,y,bw,bh);
-    } else if(secCnt>0){
-      const bh=(secCnt/2)*chartH*0.6;
-      const y=pad.t+chartH-bh;
-      ctx.fillStyle=colors['sec']; ctx.fillRect(x,y,bw,bh);
-    }
-    ctx.fillStyle='#9ca3af'; ctx.font='9px sans-serif'; ctx.textAlign='center';
-    if(year%3===0||prim||secCnt>0) ctx.fillText(year,x+bw/2,160-pad.b+12);
-  });
-  // legend
-  const leg=[['防蝕','rgba(22,163,74,0.85)'],['NDT','rgba(124,58,237,0.85)'],['螺栓','rgba(37,99,235,0.85)'],['銲接','rgba(217,119,6,0.85)']];
-  leg.forEach(([label,color],i)=>{
-    ctx.fillStyle=color; ctx.fillRect(W-160+i*38,6,10,10);
-    ctx.fillStyle='#6b7280'; ctx.font='9px sans-serif'; ctx.textAlign='left';
-    ctx.fillText(label,W-148+i*38,15);
-  });
+function drawPie(){
+  const cv=document.getElementById('cvPie'),ctx=cv.getContext('2d');
+  const cnt={B:0,C:0,W:0,N:0};Q.forEach(q=>cnt[q[1]]++);
+  const tot=Q.length,cx=cv.width*0.32,cy=cv.height/2,r=Math.min(cx,cy)-16;let a=-Math.PI/2;
+  Object.keys(cnt).forEach(c=>{const frac=cnt[c]/tot,a2=a+frac*2*Math.PI;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a,a2);ctx.closePath();ctx.fillStyle=CATC[c];ctx.fill();a=a2;});
+  ctx.font='12px sans-serif';let ly=45;
+  Object.keys(cnt).forEach(c=>{ctx.fillStyle=CATC[c];ctx.fillRect(cv.width*0.62,ly-9,12,12);
+    ctx.fillStyle='#263238';ctx.fillText(`${CATN[c]}：${cnt[c]} 題（${Math.round(cnt[c]/tot*100)}%）`,cv.width*0.62+18,ly);ly+=28;});
 }
-
-function drawPieChart(){
-  const canvas=document.getElementById('pieChart');
-  const ctx=canvas.getContext('2d');
-  const W=canvas.parentElement.clientWidth-36;
-  canvas.width=W; canvas.height=220;
-  const data=[
-    {label:'防蝕塗裝',val:3,color:'#16a34a'},
-    {label:'NDT',val:2,color:'#7c3aed'},
-    {label:'螺栓施工',val:1,color:'#2563eb'},
-    {label:'銲接規範',val:1,color:'#d97706'},
-    {label:'副考點',val:6,color:'#9ca3af'},
-  ];
-  const total=data.reduce((s,d)=>s+d.val,0);
-  const cx=W*0.4,cy=110,r=82;
-  let angle=-Math.PI/2;
-  data.forEach(d=>{
-    const slice=(d.val/total)*2*Math.PI;
-    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,r,angle,angle+slice);
-    ctx.fillStyle=d.color; ctx.fill();
-    ctx.strokeStyle='#fff'; ctx.lineWidth=2; ctx.stroke();
-    const mid=angle+slice/2;
-    const lx=cx+Math.cos(mid)*r*0.65,ly=cy+Math.sin(mid)*r*0.65;
-    ctx.fillStyle='#fff'; ctx.font='bold 11px sans-serif'; ctx.textAlign='center';
-    ctx.fillText(d.val,lx,ly+4);
-    angle+=slice;
-  });
-  let ly=24;
-  data.forEach(d=>{
-    ctx.fillStyle=d.color; ctx.fillRect(W*0.75,ly,12,12);
-    ctx.fillStyle='#1a1d2e'; ctx.font='11px sans-serif'; ctx.textAlign='left';
-    ctx.fillText(`${d.label}（${d.val}）`,W*0.75+18,ly+10);
-    ly+=26;
-  });
-}
-
-// ─── Quiz ──────────────────────────────────────────────────────────────────────
-const quizData = [
-  {
-    q:'下列哪種 NDT 方法可留存永久影像記錄（底片）？',
-    opts:['超音波檢測（UT）','放射線檢測（RT）','磁粒檢測（MT）','液滲檢測（PT）'],
-    ans:1,
-    explain:'RT（放射線檢測）使用 X 射線或 γ 射線，底片可永久留存。UT 可數位記錄但非傳統底片；MT/PT 只能拍照，無法留存可解讀的永久結構影像。'
-  },
-  {
-    q:'SMRF 韌性抗彎矩構架的梁柱接頭全滲透銲（CJP）需採用何種 NDT 進行 100% 檢測？',
-    opts:['目視檢測（VT）','磁粒檢測（MT）','超音波檢測（UT）','液滲檢測（PT）'],
-    ans:2,
-    explain:'規範要求 SMRF 的 CJP 銲縫需 100% 超音波檢測（UT），因 UT 可找到內部缺陷（根部未熔合、裂縫等）。VT 只能找表面，MT/PT 也僅限表面/近表面。'
-  },
-  {
-    q:'高拉力螺栓接合的摩阻型接觸面，施工前應如何處理？',
-    opts:['塗佈防鏽底漆（紅丹）','噴砂後不塗裝，保持潔淨','熱浸鍍鋅以增加表面積','塗佈特殊高摩擦係數塗料'],
-    ans:1,
-    explain:'摩阻型接合依靠接觸面摩擦力傳力，塗裝會大幅降低摩擦係數。A 類面（未塗裝熱軋鋼）μ=0.35，B 類面（噴砂）μ=0.50。施工前需保持接觸面清潔，不得有油污、塗料、鬆動鏽皮。'
-  },
-  {
-    q:'鋼結構施工時，填角銲道端部應做何種處理？',
-    opts:['端部不需要特殊處理，收銲即可','端部應繞角回銲，長度 ≥ 2w','端部應加設蓋板防止應力集中','端部應以砂輪磨平至與母材齊'],
-    ans:1,
-    explain:'填角銲端部需回銲（end return），繞角繼續施銲長度 ≥ 2w（w 為銲道尺寸），目的是避免端部缺口效應與應力集中，提升接合的疲勞壽命。'
-  },
-  {
-    q:'下列哪個部位，鋼結構規範規定「不予塗裝」？',
-    opts:['外露鋼柱的所有表面','高拉力螺栓摩阻型接合的接觸面','梁下翼板暴露在外的部分','螺栓頭部與螺帽'],
-    ans:1,
-    explain:'摩阻型螺栓接觸面、鑲埋混凝土部位、現場銲接兩側各 50mm、密閉箱型內面等均不予塗裝。其中摩阻型接觸面是最常考的，因為塗裝會影響摩擦係數。'
-  },
-  {
-    q:'液滲檢測（PT）不適合用於哪種材料？',
-    opts:['不鏽鋼','碳鋼','鋁合金','多孔性陶瓷'],
-    ans:3,
-    explain:'PT 液滲利用毛細作用滲入表面開口缺陷，多孔材料（如多孔陶瓷、粉末冶金件）本身即有大量孔隙，滲透液無法區分真正缺陷與材料孔隙，因此不適用。'
-  },
-  {
-    q:'A490 高強度螺栓使用後拆卸，可以如何處置？',
-    opts:['檢查外觀後可重複使用','力矩扳手驗扭後可重複使用','嚴禁重複使用，需直接廢棄','退火處理後可重複使用'],
-    ans:3,
-    explain:'A490 螺栓材質高強度且較脆，預拉力鎖緊後已對材料造成不可逆的應力，規範嚴禁重複使用。A325 在舊版規範允許在特定條件下重複使用，但 A490 無此例外。'
-  },
-  {
-    q:'鋼結構防蝕中，「犧牲陽極法」是利用哪種原理？',
-    opts:['陽極氧化使鋼材形成保護膜','較活潑金屬（如 Zn）優先氧化腐蝕以保護鋼材','外加直流電使鋼材成為陰極','塗料阻隔空氣與水分接觸'],
-    ans:1,
-    explain:'犧牲陽極法利用電化學原理：鋅（Zn）或鎂（Mg）的電位比鐵（Fe）更負，在電偶電池中優先氧化（作為陽極），被腐蝕消耗，而保護鋼材（陰極）不被腐蝕。'
-  },
-  {
-    q:'鋼結構施工中，孔位偏差（孔位不對位）時，應如何校正？',
-    opts:['用氣割（烙鐵）擴孔至所需位置','用手工鑿子擴孔','用鉸孔器（reamer）修正','直接放棄該螺栓孔，改移位鑽孔'],
-    ans:2,
-    explain:'孔位偏差必須用鉸孔器修正，嚴禁用氣割擴孔。氣割會使孔邊產生熱影響區（HAZ），改變金屬微結構，降低疲勞強度，且無法保證孔形精度。'
-  },
-  {
-    q:'低氫型銲條（如 E7018）使用前須如何保存？',
-    opts:['室溫乾燥環境即可，不需特別處理','放入冰箱低溫保存防止受熱','在 300～400°C 烘箱烘乾後，置於保溫桶隨取隨用','泡水浸泡後晾乾即可使用'],
-    ans:2,
-    explain:'低氫銲條吸濕後銲縫含氫量增加，易引發氫致冷裂縫（延遲裂縫）。規範要求：使用前在 300~400°C 烘乾 1~2 小時，並置於 100~150°C 保溫桶，隨用隨取，不得在大氣中暴露超過規定時間。'
-  },
+drawBar();drawPie();
+// flashcards
+const CARDS=[
+["A490 高強度螺栓拆下後可否重複使用？A325 呢？","A490 與鍍鋅 A325 一律禁止重複使用；黑皮 A325 經工程師同意可重用一次。原因：預拉導致塑性伸長，再鎖無法達到規定預拉力。"],
+["列舉四種高強度螺栓鎖緊（施加預拉力）方法。","①轉矩控制法（校驗扳手）②轉角控制法（貼緊後加轉 1/3～1/2 圈）③扭斷型 TC 螺栓（梅花頭斷落即達標）④直接張力指示墊圈 DTI（突起壓平）。"],
+["除鏽等級 Sa2.5 是什麼意思？與 St3 差在哪？","Sa2.5＝噴砂近白級（95% 表面無可見殘留物），塗裝前最常指定；St3＝動力手工具徹底除鏽，等級低於噴砂，僅用於局部修補。"],
+["為何摩阻型接合的摩擦面不得塗漆？","摩阻型靠接觸面摩擦力傳剪，油漆會大幅降低滑動係數 μ，使設計摩阻強度失效；如需防蝕須用經認證之無機富鋅塗料並用對應 μ 值。"],
+["熱浸鍍鋅的三項施工限制？","①鍍槽尺寸限制大型構件 ②約450°C 浸鍍溫度使薄長構件翹曲變形 ③高強度螺栓氫脆疑慮＋鍍鋅面摩擦係數低需噴砂處理。"],
+["內部「氣孔、夾渣」與「未熔合裂縫」各用哪種 NDT 最適合？","體積型瑕疵（氣孔夾渣）→ RT 放射線最靈敏；面狀瑕疵（裂縫、未熔合）→ UT 超音波（面狀反射強）。表面開口用 PT、近表面磁性材用 MT。"],
+["SMF 韌性抗彎構架梁翼 CJP 銲道之檢測要求？","100% UT 超音波檢測（全數）；厚板／高拘束銲道應於銲後 24–48 小時再檢測以防延遲裂紋（氫致）；另加目視 VT 檢查成形。"],
+["填角銲「回銲（end return）」的長度與目的？","於構材端部轉角連續繞銲，長度 ≥ 2 倍腳長。目的：起弧收弧之弧坑缺陷移離受力端部、降低端部應力集中，提高疲勞與韌性表現。"],
+["鋼構「不予塗裝」的部位列舉四處。","①摩阻接合摩擦面 ②現場銲接位置兩側約 5–10cm ③與混凝土接觸／埋入面 ④密閉箱型斷面內面（另：機械加工接觸面如銷孔）。"],
+["鋼材腐蝕的電化學機制一句話說明？","鋼面形成陽極（Fe→Fe²⁺＋2e⁻氧化溶出）與陰極（O₂＋H₂O＋e⁻→OH⁻）之局部電池，需水與氧共存；防蝕即切斷電路、隔絕水氧或提供犧牲陽極。"]
 ];
-
-let qIdx=0, score=0, answered=false;
-
-function startQuiz(){
-  qIdx=0; score=0; answered=false;
-  document.getElementById('quiz-score').textContent='';
-  document.getElementById('btn-restart').style.display='none';
-  renderQ();
+let ci=0,flipped=false;
+function showCard(){
+  document.getElementById('qq').textContent=`Q${ci+1}. ${CARDS[ci][0]}`;
+  const aa=document.getElementById('aa');aa.textContent=CARDS[ci][1];aa.style.display=flipped?'block':'none';
+  document.getElementById('qidx').textContent=`${ci+1} / ${CARDS.length}（點卡片看答案）`;
 }
-
-function renderQ(){
-  const q=quizData[qIdx];
-  const container=document.getElementById('quiz-container');
-  container.innerHTML=`
-    <div class="quiz-q">${qIdx+1}. ${q.q}</div>
-    <div class="quiz-opts" id="opts">
-      ${q.opts.map((o,i)=>`<button class="quiz-opt" onclick="selectOpt(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}
-    </div>
-    <div class="quiz-explain" id="explain">${q.explain}</div>
-  `;
-  document.getElementById('quiz-prog').textContent=`第 ${qIdx+1} / ${quizData.length} 題`;
-  document.getElementById('btn-next').disabled=true;
-  document.getElementById('btn-explain').style.display='';
-  document.getElementById('btn-next').textContent=qIdx===quizData.length-1?'查看成績':'下一題 →';
-  answered=false;
-}
-
-function selectOpt(i){
-  if(answered) return;
-  answered=true;
-  const q=quizData[qIdx];
-  const opts=document.querySelectorAll('.quiz-opt');
-  opts.forEach((btn,j)=>{
-    btn.disabled=true;
-    if(j===q.ans) btn.classList.add('correct');
-    else if(j===i&&i!==q.ans) btn.classList.add('wrong');
-  });
-  if(i===q.ans) score++;
-  document.getElementById('explain').style.display='block';
-  document.getElementById('btn-next').disabled=false;
-  document.getElementById('btn-explain').style.display='none';
-}
-
-function showExplain(){
-  if(answered) return;
-  answered=true;
-  const q=quizData[qIdx];
-  const opts=document.querySelectorAll('.quiz-opt');
-  opts.forEach((btn,j)=>{
-    btn.disabled=true;
-    if(j===q.ans) btn.classList.add('reveal');
-  });
-  document.getElementById('explain').style.display='block';
-  document.getElementById('btn-next').disabled=false;
-  document.getElementById('btn-explain').style.display='none';
-}
-
-function nextQ(){
-  qIdx++;
-  if(qIdx>=quizData.length){
-    const pct=Math.round(score/quizData.length*100);
-    document.getElementById('quiz-container').innerHTML=`
-      <div style="text-align:center;padding:30px 0">
-        <div style="font-size:48px;margin-bottom:12px">${pct>=80?'🎉':pct>=60?'📚':'💪'}</div>
-        <div style="font-size:22px;font-weight:700;margin-bottom:8px">得分：${score} / ${quizData.length}</div>
-        <div style="font-size:16px;color:var(--muted)">${pct}%${pct>=80?'　掌握度佳！':pct>=60?'　繼續加油！':'　建議再複習一次。'}</div>
-      </div>`;
-    document.getElementById('quiz-prog').textContent=`完成 ${quizData.length} 題`;
-    document.getElementById('btn-next').disabled=true;
-    document.getElementById('btn-explain').style.display='none';
-    document.getElementById('btn-restart').style.display='';
-    return;
-  }
-  renderQ();
-}
-
-// ─── Init ──────────────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded',()=>{
-  renderQList('all');
-  drawYearChart();
-  drawPieChart();
-  startQuiz();
-});
-window.addEventListener('resize',()=>{
-  drawYearChart();
-  drawPieChart();
-});
+function flip(){flipped=!flipped;showCard();}
+function nextQ(e){e.stopPropagation();ci=(ci+1)%CARDS.length;flipped=false;showCard();}
+function prevQ(e){e.stopPropagation();ci=(ci-1+CARDS.length)%CARDS.length;flipped=false;showCard();}
+showCard();
 </script>
 </body>
 </html>

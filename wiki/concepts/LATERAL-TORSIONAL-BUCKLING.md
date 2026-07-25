@@ -21,9 +21,14 @@
 
 **三區段設計強度（LRFD，$\phi_b = 0.9$）：**
 
-$$L_p = \frac{80 r_y}{\sqrt{F_y}} \quad \text{（塑性區上限，tf/cm²）}$$
+$$L_p = 1.76\,r_y\sqrt{\frac{E}{F_y}} \;=\; \frac{80 r_y}{\sqrt{F_y}} \quad \text{（塑性區上限；}F_y\text{ 用 tf/cm²，}E=2040\text{）}$$
 
-$$L_r = \frac{r_y X_1}{\sqrt{F_y - F_r}} \sqrt{1 + \sqrt{1 + X_2(F_y - F_r)^2}}$$
+$$L_r = \frac{r_y X_1}{F_y - F_r} \sqrt{1 + \sqrt{1 + X_2(F_y - F_r)^2}}$$
+
+$$X_1 = \frac{\pi}{S_x}\sqrt{\frac{E\,G\,J\,A}{2}}\ ,\qquad X_2 = 4\,\frac{C_w}{I_y}\left(\frac{S_x}{GJ}\right)^{2}$$
+
+> **量綱自我檢查**：$X_1$ 的單位是應力，所以 $\dfrac{r_y X_1}{F_y - F_r}$ ＝ 長度 × 應力 ÷ 應力 ＝ **長度** ✓。
+> 若把分母誤寫成 $\sqrt{F_y - F_r}$，結果的量綱不再是長度 —— 這是檢查此式有沒有抄錯的最快方法。
 
 | 無支撐長度 | 設計強度 $\phi_b M_n$ |
 |-----------|----------------------|

@@ -14,17 +14,29 @@ ASD（AISC ASD 9th Edition）梁容許彎曲應力 $F_b$ 依受壓翼板側向�
 
 $$\boxed{F_b = 0.66 F_y}$$
 
-### 中等細長（$L_c < L \leq L_u$，使用較大值）
+### 中等細長（非彈性 LTB，AISC ASD **F1-6**）
 
-$$\boxed{F_b = \left[0.79 - 0.002\frac{L/r_T}{\sqrt{F_y/C_b}}\right] F_y \cdot C_b}$$
+適用範圍 $\sqrt{\dfrac{102{,}000\,C_b}{F_y}} \le \dfrac{L}{r_T} \le \sqrt{\dfrac{510{,}000\,C_b}{F_y}}$：
 
-或
+$$\boxed{F_b = \left[\frac{2}{3} - \frac{F_y(L/r_T)^2}{1{,}530{,}000\,C_b}\right] F_y \le 0.60F_y}\qquad(\text{ksi})$$
 
-$$\boxed{F_b = \left[\frac{2}{3} - \frac{F_y(L/r_T)^2}{10.55 \times 10^6 C_b}\right] F_y \cdot C_b}$$（SI 系統依規範）
+> $C_b$ 已在括號內，**不要再乘一次外層 $C_b$**。
 
-### 彈性 LTB（$L > L_u$）
+### 彈性 LTB（**F1-7**，$L/r_T > \sqrt{510{,}000C_b/F_y}$）
 
-$$\boxed{F_b = \frac{170\,000\,C_b}{(L/r_T)^2}}$$（ksi；SI 系統係數不同）
+$$\boxed{F_b = \frac{170\,000\,C_b}{(L/r_T)^2}}\qquad(\text{ksi})$$
+
+> ✅ **兩式接軌驗算**：在分界點 $L/r_T = \sqrt{510{,}000C_b/F_y}$ 上，F1-6 與 F1-7 必須給出相同的 $F_b$；
+> 在下界 $\sqrt{102{,}000C_b/F_y}$ 上，F1-6 必須剛好給出 $0.60F_y$。
+> （$F_y = 36$ ksi、$C_b = 1$：分界 $L/r_T = 53.2 \sim 119.0$，下界 $F_b = 21.6 = 0.6F_y$ ✓，
+> 分界點兩式皆得 $12.0$ ksi ✓）**抄錯係數時這個檢查會立刻抓到。**
+
+### ⚠️ 另一條容易被混進來的公式（不是 LTB）
+
+$$F_b = \left[0.79 - 0.002\,\frac{b_f}{2t_f}\sqrt{F_y}\right]F_y \qquad(\text{ksi，AISC ASD F1-3})$$
+
+這條是**翼板局部挫屈（FLB）** 的非結實過渡公式，變數是<b>寬厚比 $b_f/2t_f$</b>，
+與 $L/r_T$（LTB）無關。兩者是不同的失敗模式，**不可互相取代，也不參與「取較大值」**。
 
 ---
 
@@ -32,10 +44,19 @@ $$\boxed{F_b = \frac{170\,000\,C_b}{(L/r_T)^2}}$$（ksi；SI 系統係數不同�
 
 ### $L_c$（緊密撐上限）
 
-$$L_c = \min\left(\frac{200 b_f}{F_y},\ \frac{137900}{(d/A_f)F_y}\right) \text{ (cm, kgf/cm² 制)}$$
+$$L_c = \min\left(\frac{76\,b_f}{\sqrt{F_y}},\ \frac{20{,}000}{(d/A_f)F_y}\right) \qquad (\text{in、ksi 制})$$
+
+三種單位制的等價係數：
+
+| 單位制 | 第一式 | 第二式 |
+|--------|--------|--------|
+| in、ksi | $76\,b_f/\sqrt{F_y}$ | $20{,}000/((d/A_f)F_y)$ |
+| cm、tf/cm² | $20\,b_f/\sqrt{F_y}$ | $1{,}406/((d/A_f)F_y)$ |
+| mm、MPa | $200\,b_f/\sqrt{F_y}$ | $137{,}900/((d/A_f)F_y)$ |
 
 - $b_f$：受壓翼板寬度
 - $d/A_f$：梁深除以受壓翼板面積
+- ⚠️ 第一式分母是 $\sqrt{F_y}$ **不是** $F_y$；第二式分母才是 $F_y$。兩式的 $F_y$ 次方不同，抄的時候特別容易混。
 
 物理意義：$L \leq L_c$ 時，側向扭轉挫屈不控制，梁可達塑性強度 $F_b = 0.66F_y$。
 
@@ -53,9 +74,13 @@ $L_u$ 定義為「非彈性 LTB 與彈性 LTB 的分界」，即：
 
 - 梁有充分側向支撐，不發生 LTB
 - $M_n = M_p = Z_x F_y$（塑性彎矩）
-- ASD 安全係數 FS ≈ 1/0.66 ≈ 1.515（取偏保守值）
-- $F_b = M_p / (S_x \cdot \text{FS}) \approx \frac{Z_x}{S_x} \cdot \frac{F_y}{1.515}$
-- 對 I 型鋼 $Z_x/S_x \approx 1.10 \sim 1.15$，近似得 $F_b \approx 0.66F_y$
+- ASD 安全係數 $FS = 5/3 \approx 1.67$（全規範統一值，不是由 0.66 反推的）
+- $F_b = \dfrac{M_p}{S_x \cdot FS} = \dfrac{Z_x}{S_x}\cdot\dfrac{F_y}{1.67}$
+- 對 I 型鋼 $Z_x/S_x \approx 1.12$：$F_b = \dfrac{1.12}{1.67}F_y = 0.67F_y \approx \mathbf{0.66F_y}$ ✓
+
+> 💡 **0.66 與 0.60 的關係就是形狀因子**：
+> $0.60F_y = F_y/1.67$ 是把「初始降伏 $M_y$」除以 FS；$0.66F_y$ 是把「塑性彎矩 $M_p$」除以同一個 FS。
+> 兩者比值 $0.66/0.60 = 1.10 \approx Z_x/S_x$。這是「為何 ASD 有兩個係數」的標準答法。
 
 ### 段 2：非彈性 LTB 段（線性內插）
 
@@ -65,11 +90,17 @@ $$F_{cr} = \frac{\pi}{L/r_T}\sqrt{\frac{E^2 C_b^2}{(L/r_T)^2} + \text{GJ 項}}$$
 
 規範簡化為二次拋物線形式（非彈性段）：
 
-$$F_b = C_b \left[\frac{2F_y}{3} - \frac{F_y^2(L/r_T)^2}{1055\,000\,C_b}\right] \leq 0.60F_y$$
+$$F_b = \left[\frac{2F_y}{3} - \frac{F_y^2(L/r_T)^2}{1{,}530{,}000\,C_b}\right] \leq 0.60F_y \qquad(\text{ksi})$$
 
-此拋物線在 $L/r_T = 0$ 時給出 $F_b = 0.66F_y$（應與緊密撐段接續），在 $L/r_T = L_u/r_T$ 時與彈性段接續。
+此拋物線在 $L/r_T \to 0$ 時給出 $F_b = \frac23 F_y$（與緊密撐段 $0.66F_y$ 接續），
+在 $L/r_T = L_u/r_T = \sqrt{510{,}000C_b/F_y}$ 時與彈性段 F1-7 精確接續。
 
-> ⚠️ **注意：** 兩個非彈性段公式（大板長式與小板長式）取**較大值**，非較小值。
+> ⚠️ **注意 1：** $C_b$ 只出現在分母括號內，**外面不要再乘一次**。
+>
+> ⚠️ **注意 2：** 取**較大值**的是「$L/r_T$ 家族（F1-6/F1-7）」與「$L\,d/A_f$ 式（F1-8）」這兩者，
+> 不是非彈性段內部的兩條式子。理由：前者只計翹曲扭轉、後者只計純扭轉，**都是保守下界**，
+> 真實梁兩種勁度都有，故取大仍保守。
+> （對照：不同<b>失敗模式</b>之間才是取小。）
 
 ### 段 3：彈性 LTB 段
 

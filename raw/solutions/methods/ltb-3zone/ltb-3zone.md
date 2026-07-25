@@ -25,7 +25,7 @@ C_b \cdot M_{cr} \leq M_p & L_b > L_r \quad \text{（彈性 LTB）}
 |------|------|------|
 | $M_p$ | 塑性彎矩 | $F_y Z_x$ |
 | $M_r$ | 殘留應力修正彎矩 | $(F_y - F_r) S_x$，$F_r = 1.16\ \text{tf/cm}^2$（焊接型） / $0.7\ \text{tf/cm}^2$（輾軋型）|
-| $L_p$ | 塑性區上限長度 | $\dfrac{300 r_y}{\sqrt{F_y}}$（$F_y$ 單位 kgf/cm²）|
+| $L_p$ | 塑性區上限長度 | $1.76\,r_y\sqrt{\dfrac{E}{F_y}}\;=\;\dfrac{80\,r_y}{\sqrt{F_y}}$（$F_y$ 單位 **tf/cm²**，$E=2040$ tf/cm²）|
 | $L_r$ | 非彈性 LTB 上限長度 | $\dfrac{r_y X_1}{F_y - F_r}\sqrt{1 + \sqrt{1 + X_2(F_y-F_r)^2}}$ |
 | $X_1$ | LTB 輔助參數 | $\dfrac{\pi}{S_x}\sqrt{\dfrac{EGJA}{2}}$ |
 | $X_2$ | LTB 輔助參數 | $4\dfrac{C_w}{I_y}\left(\dfrac{S_x}{GJ}\right)^2$ |
@@ -43,8 +43,9 @@ C_b \cdot M_{cr} \leq M_p & L_b > L_r \quad \text{（彈性 LTB）}
 
 ```
 Step 1  確認斷面結實（Compact Section）
-        翼板：λf = bf/(2tf) ≤ λpf = 65/√Fy
-        腹板：λw = h/tw  ≤ λpw = 640/√Fy
+        ※ 以下係數為 tf/cm² 制（Fy 用 tf/cm²）；括號內為 ksi 制對應係數
+        翼板：λf = bf/(2tf) ≤ λpf = 0.38√(E/Fy) = 17/√Fy   （ksi 制：65/√Fy）
+        腹板：λw = h/tw  ≤ λpw = 3.76√(E/Fy) = 170/√Fy  （ksi 制：640/√Fy）
         → 結實斷面才能達到 Mp，否則用非結實斷面公式
 
 Step 2  計算塑性/彈性彎矩
@@ -55,7 +56,8 @@ Step 2  計算塑性/彈性彎矩
 Step 3  計算 LTB 輔助參數（若未給 Lp、Lr 需自行算）
         X1 = (π/Sx)√(EGJA/2)
         X2 = 4(Cw/Iy)(Sx/GJ)²
-        Lp = 300ry/√Fy   [cm, kgf/cm²]
+        Lp = 1.76·ry·√(E/Fy) = 80ry/√Fy   [cm, tf/cm², E=2040]
+             ↳ 心算門檻：Fy=2.5 時 Lp ≈ 50ry；Fy=3.3 時 Lp ≈ 44ry
         Lr = ry·X1/(Fy-Fr) × √(1 + √(1 + X2(Fy-Fr)²))
 
 Step 4  計算每個無束制段的 Cb
@@ -86,6 +88,11 @@ $$F_b = \begin{cases}
 \text{線性內插或 Fbx 公式} & L_c < L_b \leq L_u \\
 \dfrac{170000 C_b}{(L_b/r_T)^2} & L_b/r_T > \sqrt{703000 C_b/F_y}
 \end{cases}$$
+
+> ⚠️ **單位警告**：上式的 170000、703000 是 **ksi 制**係數（$F_y$ 用 ksi、長度用 in）。
+> 台灣教科書若改用 tf/cm² 或 kgf/cm²，係數完全不同。ASD 題目通常直接給 $L_c$、$L_u$ 或設計表；
+> 若須自算，先確認題目的 $F_y$ 單位再選係數，並在答案卷上寫明採用的單位制。
+> 詳見 [[asd-beam]] 與 [[asd-beam-fb-derivation]]。
 
 ---
 

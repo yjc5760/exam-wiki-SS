@@ -23,17 +23,27 @@ $$f_b = \frac{M_{max}}{S_x} \leq F_b$$
 | $L_c < L_b \leq L_u$ | $0.60 F_y$ | 非彈性 LTB，稍降但仍結實 |
 | $L_b > L_u$ | $F_b < 0.60F_y$（需計算） | 彈性 LTB，依 L/rT 公式 |
 
+> ⚠️ **單位是本頁最大的地雷**：AISC ASD 的係數全部是 **imperial 制（長度 in、應力 ksi）** 推導的。
+> 以下每條式子都同時列出 ksi 制與 tf/cm² 制係數。**換算關係：$F_y[\text{ksi}] = 14.223 \times F_y[\text{tf/cm}^2]$**。
+> 考場上 ASD 題通常會直接給 $L_c$、$L_u$ 或設計表；若要自算，先確認題目的 $F_y$ 單位再選係數。
+
 ### $L_c$ 定義（結實斷面臨界無支撐長度）
 
-$$L_c = \min\left[\frac{76.0\,b_f}{\sqrt{F_y}},\ \frac{20\,000}{(d/A_f)\,F_y}\right]$$
+$$L_c = \min\left[\frac{76\,b_f}{\sqrt{F_y}},\ \frac{20{,}000}{(d/A_f)\,F_y}\right]
+\qquad (\text{ksi 制：}b_f, d \text{ 用 in，}F_y \text{ 用 ksi})$$
 
-（$b_f$ 單位 cm，$F_y$ 單位 tf/cm²，$A_f = b_f t_f$）
+$$L_c = \min\left[\frac{20\,b_f}{\sqrt{F_y}},\ \frac{1{,}406}{(d/A_f)\,F_y}\right]
+\qquad (\text{tf/cm² 制：長度用 cm，}F_y \text{ 用 tf/cm²})$$
+
+（$A_f = b_f t_f$ 為受壓翼板面積）
 
 ### $L_u$ 定義（非彈性/彈性 LTB 分界）
 
-$$L_u = \sqrt{\frac{1{,}170{,}000\,C_b}{F_y}} \times r_T$$
+$$\frac{L_u}{r_T} = \sqrt{\frac{510{,}000\,C_b}{F_y}}\ (\text{ksi})
+\qquad\Longleftrightarrow\qquad
+\frac{L_u}{r_T} = \sqrt{\frac{35{,}900\,C_b}{F_y}}\ (\text{tf/cm}^2)$$
 
-（$r_T$ 單位 cm，$F_y$ 單位 tf/cm²）
+（$L/r_T$ 是無因次比值，所以兩式只差在 $F_y$ 的單位）
 
 ---
 
@@ -43,19 +53,37 @@ $$L_u = \sqrt{\frac{1{,}170{,}000\,C_b}{F_y}} \times r_T$$
 
 ### 公式一（以 $L/r_T$ 為基）
 
-**非彈性段**（$\sqrt{703{,}000 C_b/F_y} < L/r_T \leq \sqrt{1{,}170{,}000 C_b/F_y}$）：
+**非彈性段**（AISC ASD F1-6），適用範圍
+$\sqrt{\dfrac{102{,}000 C_b}{F_y}} \le \dfrac{L}{r_T} \le \sqrt{\dfrac{510{,}000 C_b}{F_y}}$（ksi 制）：
 
-$$F_b = \left[\frac{2}{3} - \frac{F_y(L/r_T)^2}{1{,}055{,}000\,C_b}\right]F_y$$
+$$F_b = \left[\frac{2}{3} - \frac{F_y(L/r_T)^2}{1{,}530{,}000\,C_b}\right]F_y \le 0.60F_y
+\qquad (\text{ksi})$$
 
-**彈性段**（$L/r_T > \sqrt{1{,}170{,}000 C_b/F_y}$）：
+**彈性段**（F1-7），$\dfrac{L}{r_T} > \sqrt{\dfrac{510{,}000 C_b}{F_y}}$：
 
-$$F_b = \frac{170{,}000\,C_b}{(L/r_T)^2}$$
+$$F_b = \frac{170{,}000\,C_b}{(L/r_T)^2} \qquad (\text{ksi})$$
+
+**tf/cm² 制對應**（同樣的式子，只換係數）：
+
+| 項目 | ksi 制 | tf/cm² 制 |
+|------|--------|-----------|
+| 非彈性段下界 $(L/r_T)$ | $\sqrt{102{,}000\,C_b/F_y}$ | $\sqrt{7{,}170\,C_b/F_y}$ |
+| 非彈性／彈性分界 $(L/r_T)$ | $\sqrt{510{,}000\,C_b/F_y}$ | $\sqrt{35{,}900\,C_b/F_y}$ |
+| F1-6 括號內分母 | $1{,}530{,}000\,C_b$ | $107{,}600\,C_b$ |
+| F1-7 分子 | $170{,}000\,C_b$ | $11{,}950\,C_b$ |
+
+> ✅ **自洽驗算（建議照做一次，確認你抄對了）**：把 $L/r_T$ 代入<b>下界</b>，F1-6 應剛好給出 $0.60F_y$；
+> 代入<b>分界點</b>，F1-6 與 F1-7 應給出<b>相同</b>的 $F_b$。
+> 以 $F_y = 2.5$ tf/cm²、$C_b = 1$ 為例：分界為 $L/r_T = 53.6 \sim 119.8$，
+> 下界 $F_b = 1.500 = 0.60F_y$ ✓，分界點兩式皆得 $F_b = 0.833$ tf/cm² ✓。
 
 ### 公式二（以 $L \cdot d/A_f$ 為基，另一彈性計算式）
 
-$$F_b = \frac{12{,}000\,C_b}{L \cdot d / A_f}$$
+$$F_b = \frac{12{,}000\,C_b}{L \cdot d / A_f}\ (\text{ksi})
+\qquad\Longleftrightarrow\qquad
+F_b = \frac{844\,C_b}{L \cdot d / A_f}\ (\text{tf/cm}^2)$$
 
-（$L$ 單位 cm，$d$ = 梁深，$A_f = b_f t_f$）
+（$L$、$d$ 與 $A_f$ 用一致的長度單位；$L\,d/A_f$ 本身無因次，故只需換算 $F_b$ 的係數）
 
 ---
 

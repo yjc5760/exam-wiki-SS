@@ -82,13 +82,17 @@ Step 8  代入互制方程式（兩個都要驗）
 
 以 $L/r_T$ 為判斷依據（$r_T$ = 翼板有效迴轉半徑）：
 
-$$\sqrt{\frac{703\,000\,C_b}{F_y}} < \frac{L}{r_T} \leq \sqrt{\frac{1\,170\,000\,C_b}{F_y}}：$$
+> ⚠️ **以下係數為 ksi 制**（$F_y$ 用 ksi）。tf/cm² 制的對應係數見 [[asd-beam]] 的換算表
+> （$F_y[\text{ksi}] = 14.223\,F_y[\text{tf/cm}^2]$）。
 
-$$F_{bx} = \left[2/3 - \frac{F_y (L/r_T)^2}{1{,}055{,}000\,C_b}\right]F_y \leq 0.60F_y \quad \text{（非彈性 LTB）}$$
+$$\sqrt{\frac{102{,}000\,C_b}{F_y}} \le \frac{L}{r_T} \leq \sqrt{\frac{510{,}000\,C_b}{F_y}}：$$
 
-$$\frac{L}{r_T} > \sqrt{\frac{1{,}170{,}000\,C_b}{F_y}}：\quad F_{bx} = \frac{170\,000\,C_b}{(L/r_T)^2} \quad \text{（彈性 LTB）}$$
+$$F_{bx} = \left[\frac{2}{3} - \frac{F_y (L/r_T)^2}{1{,}530{,}000\,C_b}\right]F_y \leq 0.60F_y \quad \text{（非彈性 LTB，AISC ASD F1-6）}$$
 
-兩公式**取較大值**（保守取小值），並受 $F_{bx} \leq 0.60F_y$ 限制。
+$$\frac{L}{r_T} > \sqrt{\frac{510{,}000\,C_b}{F_y}}：\quad F_{bx} = \frac{170{,}000\,C_b}{(L/r_T)^2} \quad \text{（彈性 LTB，F1-7）}$$
+
+上式與下方「公式二」（$12{,}000C_b/(Ld/A_f)$）**取較大值**，並受 $F_{bx} \leq 0.60F_y$ 限制。
+（取大的理由：兩式分別只計翹曲扭轉與只計純扭轉，都是保守下界 —— 見 [[asd-beam-fb-derivation]]。）
 
 **補充（另一段公式）：**
 $$F_{bx} = \frac{12\,000\,C_b}{L \cdot d / A_f} \quad \text{（另一彈性 LTB 計算式，取大值）}$$

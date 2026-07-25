@@ -29,7 +29,8 @@
 |----------|-------|
 | **視覺化瀏覽整個知識庫** | **雙擊 `index.html`**（題庫搜尋篩選、考點統計、進度追蹤、指令速查） |
 | 特定題目的解析 | `raw/solutions/SS-YYYY-N/SS-YYYY-N.md` |
-| 子項深度複習講義 | `study/study-SS-UN-n.html`（說 `study SS-UN-n` 生成） |
+| 子項深度複習講義（速查型） | `study/study-SS-UN-n.html`（說 `study SS-UN-n` 生成） |
+| **單元觀念講義（練題前建立原理直覺）** | `study/lecture-SS-UN-n.html` + `.pdf`（說「生成 SS-UN-n 講義」生成） |
 | wiki 題目頁（含標籤/圖形） | `wiki/problems/SS-YYYY-N.md` |
 | 依年份瀏覽所有題目 | `wiki/by-year.md` |
 | 概念說明（LTB、柱強度等） | `wiki/concepts/` |
@@ -51,7 +52,12 @@ exam-wiki-SS/
 ├── index.html         ← 離線儀表板（題庫篩選/統計/進度追蹤/指令速查）
 ├── dashboard-data.js  ← 儀表板快照（更新儀表板資料 指令重新生成）
 │
-├── study/             ← 讀書講義（study 指令輸出的 HTML 複習頁）
+├── skills/            ← 配套 Cowork Skills（.skill 打包檔 + 原始碼，見 skills/README.md）
+│
+├── study/             ← 讀書講義
+│   ├── study-*.html   ← 速查／複習頁（study 指令輸出）
+│   ├── lecture-*.html ← 單元觀念講義 + 同名 .pdf（unit-lecture skill 輸出）
+│   └── assets/katex/  ← 本機 KaTeX，供 lecture-*.html 離線渲染數學式（勿刪）
 │
 ├── raw/               ← 原始資料（唯讀）
 │   ├── exams/         ← 考卷 PDF（SS-YYYY_鋼結構設計.pdf）

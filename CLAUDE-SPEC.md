@@ -28,6 +28,22 @@
 
 > **⚠️ 禁止：** 不可使用 `SS-2015-1-fig.png`（必須有後置序號 `-1`）。
 
+### 1.3 `study/` 產出命名
+
+`study/` 底下有兩種用途不同的教材，**以前綴區分，不可混用**：
+
+| 前綴 | 檔名 | 產生方式 | 定位 |
+|------|------|---------|------|
+| `study-` | `study/study-SS-UN.html`<br>`study/study-SS-UN-n.html` | `study` 指令 | **速查／複習頁**：公式速查、考題清單、統計圖表。考前總複習用 |
+| `lecture-` | `study/lecture-SS-UN-n.html`<br>`study/lecture-SS-UN-n.pdf` | `unit-lecture` skill | **觀念講義**：物理原理、公式來源、圖解推導。第一次接觸該單元、練題**之前**用 |
+
+- 兩者針對同一子項時**並存**，後者不可覆蓋前者。
+- 講義的 PDF 與 HTML **同名**，僅副檔名不同。
+- 共用資源放 `study/assets/`（目前有 `assets/katex/`，供 `lecture-*.html` 離線渲染數學式）。
+  此目錄**必須進版控**，刪除會導致所有講義的數學式無法顯示。
+
+> **⚠️ 禁止：** 觀念講義不可命名為 `study-SS-UN-n.html`（會覆蓋速查頁）。
+
 ### 1.3 互動圖（HTML）
 
 - 由 Cowork 在解析時生成，格式為 `SS-YYYY-N-[內容碼]-viz.html`

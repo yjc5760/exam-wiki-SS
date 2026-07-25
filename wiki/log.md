@@ -365,3 +365,4 @@ LATERAL-TORSIONAL-BUCKLING.md：`[[PLASTIC-MOMENT-MP]]` → `[塑性彎矩 Mp](P
 **�O�d�G** SS-U1-1.md �� 9 �ӷs�N���D���]�t�U�����D�زM��^+ index.md �����v�T
 - **2026-07-02**: ���� \��s�����O���\ (REFRESH-DASHBOARD) ���O�A�q \question_index.json\ �P \syllabus_taxonomy.json\ ���s�ͦ��F \dashboard-data.js\ �����O�ַӸ�ơC
 - 2026-07-10｜STUDY｜產生子項深度複習頁 ×5：study/study-SS-U1-1.html（24題）、study-SS-U1-2.html（21題）、study-SS-U1-3.html（11題）、study-SS-U1-4.html（19題）、study-SS-U2-3.html（7題）。七區塊架構（命題分析/圖解/流程圖/公式速查/互動考題清單/高頻陷阱/互動計算器），KaTeX 渲染，題號連結至 index.html markdown 渲染器。
+- 2026-07-19: 新增 Keynote PDF 按鈕至所有 study HTML 檔案。

@@ -171,6 +171,7 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-06-11 | 分類代號全面遷移至 `syllabus_taxonomy.json` 的 XX-Un-m 格式；新增 `dashboard.html` | 六科統一分類代號；單頁總覽 98 題全貌 |
 | 2026-06-12 | GitHub Pages 部署：新增 `index.html`（導向儀表板）與 `.nojekyll` | 知識庫以靜態網站佈署至 GitHub Pages |
 | 2026-07-02 | 參考 RC 知識庫進行全文件升級，導入 16 項指令工作流、儀表板 `index.html` 整合、補充筆記 PDF 支援、以及 `study` 複習講義功能 | 統一 SS 與 RC 的文件架構，提升使用體驗與分析能力 |
+| 2026-07-25 | 新增 `skills/unit-lecture.skill`（單元觀念講義產生器，六科通用）；新增 `study/lecture-SS-U1-1.html` / `.pdf` 與共用的 `study/assets/katex/` | 建立「練題前先建立物理直覺」的教材類型，與既有 `study-*.html` 速查頁分工 |
 
 ---
 

@@ -316,6 +316,16 @@ SD-U3（耐震設計）：XX%
 
 **用途：** 彙整某單元／子項所有考題、重點公式、常見陷阱，產生帶圖表的互動 HTML 複習導覽頁面，存入 `study/` 目錄。
 
+> **與 `unit-lecture` skill 的分工（別搞混）**
+> | | `study` 指令（本節） | `unit-lecture` skill |
+> |---|---|---|
+> | 輸出 | `study/study-SS-UN-n.html` | `study/lecture-SS-UN-n.html` + `.pdf` |
+> | 內容 | 公式速查、考題清單、統計圖表 | 物理原理、公式來源、圖解、自我檢測、精選必練題 |
+> | 使用時機 | 考前總複習 | 第一次接觸該單元、**練題之前** |
+>
+> 兩者**並存不覆蓋**。`unit-lecture` 是 skill 不是指令，不列入本文件的 16 個指令，
+> 觸發方式為「生成 SS-U1-2 講義」，說明見 `skills/README.md`。
+
 **輸出格式：帶圖表的自含 HTML 檔案**（非純 Markdown，需使用 KaTeX 渲染公式）
 
 ### 單元層級（study SS-UN）頁面結構（六區塊）：

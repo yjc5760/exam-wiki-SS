@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-U1-3 梁柱桿件 — 觀念講義（理解導向）</title>
+<!-- KaTeX 本機資源（assets/katex/），離線亦可正常顯示數學式 -->
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{
+  --ac:#1565c0; --ac2:#e3f2fd; --tension:#2e7d32; --tension2:#e8f5e9;
+  --comp:#c62828; --comp2:#ffebee; --warn:#ef6c00; --warn2:#fff3e0;
+  --key:#6a1b9a; --key2:#f3e5f5;
+  --bg:#f7f9fb; --card:#fff; --ink:#263238; --mut:#607d8b; --bd:#dfe6ea;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:34px 26px}
+header h1{margin:0 0 8px;font-size:1.6em;letter-spacing:.5px}
+header .sub{opacity:.9;font-size:.93em;margin:0}
+header .meta{margin-top:12px;font-size:.82em;opacity:.8}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid var(--bd);
+padding:9px 14px;display:flex;flex-wrap:wrap;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+nav a{text-decoration:none;color:var(--ac);font-size:.85em;padding:4px 11px;border-radius:14px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:980px;margin:0 auto;padding:24px 18px 80px}
+section{margin-bottom:46px}
+h2{font-size:1.32em;border-left:6px solid var(--ac);padding-left:12px;margin:44px 0 18px;line-height:1.4}
+h3{font-size:1.08em;margin:30px 0 10px;color:#0d47a1}
+h4{font-size:.99em;margin:20px 0 8px;color:#37474f}
+.lead{font-size:1.03em;background:#fff;border:1px solid var(--bd);border-left:5px solid var(--ac);
+border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:11px;padding:16px 18px;margin:16px 0}
+.why{background:var(--key2);border:1px solid #ce93d8;border-left:5px solid var(--key);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.why b:first-child{color:var(--key)}
+.trap{background:var(--warn2);border:1px solid #ffcc80;border-left:5px solid var(--warn);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.trap b:first-child{color:#e65100}
+.tens{background:var(--tension2);border:1px solid #a5d6a7;border-left:5px solid var(--tension);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.comp{background:var(--comp2);border:1px solid #ef9a9a;border-left:5px solid var(--comp);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.fig{background:#fff;border:1px solid var(--bd);border-radius:11px;padding:16px 14px 10px;margin:20px 0;overflow-x:auto}
+.fig svg{display:block;margin:0 auto;max-width:100%;height:auto}
+.fig .cap{font-size:.85em;color:var(--mut);text-align:center;margin-top:10px;line-height:1.6}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9em;background:#fff}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600}
+tbody tr:nth-child(even){background:#fafcfd}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}li{margin:5px 0}
+.pill{display:inline-block;font-size:.76em;padding:2px 8px;border-radius:10px;margin-right:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+details{background:#fff;border:1px solid var(--bd);border-radius:9px;padding:10px 14px;margin:12px 0}
+summary{cursor:pointer;font-weight:600;color:var(--ac)}
+details p{border-left:3px solid #e0e0e0;padding-left:12px;margin:8px 0;color:#37474f}
+.qlink{color:#1565c0;text-decoration:none;border-bottom:1px dotted #90caf9;font-weight:600}
+.katex-display{margin:14px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-top:1px solid var(--bd)}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SS-U1-3　梁柱桿件 — 觀念講義</h1>
+  <p class="sub">理解導向教材：梁柱是全科目唯一「內力會自己長大」的構材。先弄懂為什麼會長大、長多少，再回頭套公式。觀念圖解 ＋ 五個完整手算範例。</p>
+  <p class="meta">科目：鋼結構設計（SS）｜命題大綱：第一單元（三）梁柱桿件｜歷屆：主分類 11 題、副分類 1 題（共 12 題，2003–2022）｜前置單元：SS-U1-1（壓力桿件）、SS-U1-2（梁桿件）</p>
+</header>
+
+<nav>
+  <a href="#s0">0 全景</a>
+  <a href="#s1">1 內力會長大</a>
+  <a href="#s2">2 放大係數推導</a>
+  <a href="#s3">3 B1 與 Cm</a>
+  <a href="#s4">4 B2 與 Mnt/Mlt</a>
+  <a href="#s5">5 強度側</a>
+  <a href="#s6">6 P-M 互制</a>
+  <a href="#s7">7 ASD 版本</a>
+  <a href="#s8">8 K 值與 DAM</a>
+  <a href="#s9">9 強柱弱梁</a>
+  <a href="#s10">10 因果鏈與流程</a>
+  <a href="#s11">11 考點對應</a>
+  <a href="#s12">12 陷阱總表</a>
+  <a href="#s13" style="background:#f3e5f5;color:#6a1b9a">13 自我檢測</a>
+  <a href="#s14" style="background:#ffe0b2;color:#e65100;font-weight:600">★ 14 精選 6 題</a>
+  <span style="flex:1"></span>
+  <a href="study-SS-U1-3.html" title="考前速查：公式、考題清單、統計圖表"
+     style="background:#eceff1;color:#455a64">📊 速查頁</a>
+  <a href="SS-U1-3_梁柱桿件.pdf" target="_blank" title="課堂講義投影片"
+     style="background:#eceff1;color:#455a64">📄 Keynote</a>
+  <a href="lecture-SS-U1-3.pdf" target="_blank" title="本講義的列印版"
+     style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+</nav>
+
+<main>
+<section id="s0">
+<h2>§0　全景：這個單元只有一句話</h2>
+
+<div class="lead">
+<b>柱和梁的內力是「算出來就定了」；<br>
+梁柱的內力會<u>自己長大</u> —— 因為只有它同時擁有軸力 \(P\) 和側向變形 \(\delta\)，而 \(P\times\delta\) 又是彎矩。</b>
+</div>
+
+<p>這句話是本單元唯一真正新的東西。<b>強度側</b>你已經會了 ——
+\(\phi_c P_n\) 是 U1-1 壓力桿件的成果，\(\phi_b M_n\) 是 U1-2 梁桿件的成果，本單元不重新教。
+本單元教的是<b>需求側</b>：一階分析算出來的彎矩，為什麼不能直接用？要放大多少？</p>
+
+<div class="fig">
+<svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
+  <line x1="330" y1="10" x2="330" y2="330" stroke="#b0bec5" stroke-width="2" stroke-dasharray="7,5"/>
+
+  <!-- 左：柱 / 梁 -->
+  <text x="165" y="30" font-size="16" font-weight="700" fill="#2e7d32" text-anchor="middle">柱 或 梁（U1-1／U1-2）</text>
+  <!-- 柱 -->
+  <line x1="80" y1="70" x2="80" y2="200" stroke="#2e7d32" stroke-width="7"/>
+  <line x1="80" y1="52" x2="80" y2="66" stroke="#455a64" stroke-width="3"/>
+  <polygon points="80,66 74,55 86,55" fill="#455a64"/>
+  <text x="80" y="46" font-size="13" fill="#455a64" text-anchor="middle">P</text>
+  <path d="M 80 70 Q 100 135 80 200" fill="none" stroke="#c62828" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="118" y="140" font-size="12.5" fill="#c62828">δ</text>
+  <text x="80" y="222" font-size="12.5" fill="#37474f" text-anchor="middle">有 P，δ 只是挫屈模態</text>
+  <text x="80" y="240" font-size="12.5" fill="#37474f" text-anchor="middle">沒有外加彎矩</text>
+  <!-- 梁 -->
+  <line x1="200" y1="130" x2="300" y2="130" stroke="#2e7d32" stroke-width="7"/>
+  <line x1="250" y1="88" x2="250" y2="122" stroke="#455a64" stroke-width="3"/>
+  <polygon points="250,122 244,111 256,111" fill="#455a64"/>
+  <text x="250" y="80" font-size="13" fill="#455a64" text-anchor="middle">w</text>
+  <path d="M 200 130 Q 250 172 300 130" fill="none" stroke="#c62828" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="250" y="192" font-size="12.5" fill="#c62828" text-anchor="middle">δ</text>
+  <text x="250" y="222" font-size="12.5" fill="#37474f" text-anchor="middle">有 δ，但沒有 P</text>
+  <text x="250" y="240" font-size="12.5" fill="#37474f" text-anchor="middle">P×δ = 0</text>
+  <text x="165" y="278" font-size="15" font-weight="700" fill="#1b5e20" text-anchor="middle">內力算一次就定案</text>
+  <text x="165" y="302" font-size="12.5" fill="#546e7a" text-anchor="middle">一階分析 = 最終答案</text>
+
+  <!-- 右：梁柱 -->
+  <text x="615" y="30" font-size="16" font-weight="700" fill="#c62828" text-anchor="middle">梁柱（U1-3）＝ P 與 δ 同時存在</text>
+  <line x1="420" y1="70" x2="420" y2="220" stroke="#c62828" stroke-width="7"/>
+  <line x1="420" y1="48" x2="420" y2="64" stroke="#455a64" stroke-width="3"/>
+  <polygon points="420,64 414,53 426,53" fill="#455a64"/>
+  <text x="420" y="42" font-size="13" fill="#455a64" text-anchor="middle">P</text>
+  <line x1="378" y1="80" x2="414" y2="80" stroke="#ef6c00" stroke-width="3"/>
+  <polygon points="414,80 403,74 403,86" fill="#ef6c00"/>
+  <text x="372" y="84" font-size="13" fill="#ef6c00" text-anchor="end">M</text>
+  <!-- 三條逐次放大的變形線 -->
+  <path d="M 420 70 Q 452 145 420 220" fill="none" stroke="#ef6c00" stroke-width="2" stroke-dasharray="4,3"/>
+  <path d="M 420 70 Q 476 145 420 220" fill="none" stroke="#c62828" stroke-width="2" stroke-dasharray="4,3"/>
+  <path d="M 420 70 Q 494 145 420 220" fill="none" stroke="#b71c1c" stroke-width="2.5"/>
+  <text x="504" y="120" font-size="12" fill="#ef6c00">δ₁（M 造成）</text>
+  <text x="504" y="146" font-size="12" fill="#c62828">δ₂ = δ₁ + P·δ₁ 造成的</text>
+  <text x="504" y="172" font-size="12" fill="#b71c1c">δ₃ …收斂到 δ∞</text>
+  <text x="420" y="244" font-size="12.5" fill="#37474f" text-anchor="middle">P 與 δ 互餵</text>
+  <text x="615" y="278" font-size="15" font-weight="700" fill="#b71c1c" text-anchor="middle">內力自己長大，要放大後才能用</text>
+  <text x="615" y="302" font-size="12.5" fill="#546e7a" text-anchor="middle">一階分析只是起點 → 乘 B₁／B₂（或 ASD 的 Cm／F'e）</text>
+</svg>
+<div class="cap">圖 0-1　本單元的核心對立。右邊的無窮迴圈（彎矩 → 變形 → 更多彎矩 → 更多變形）是<b>幾何非線性</b>，
+它<b>收斂</b>到一個有限值 —— 那個收斂倍率就是放大係數。若不收斂，就是挫屈。</div>
+</div>
+
+<h3>0.1 兩條腿走路：本單元的解題骨架</h3>
+
+<p>每一道梁柱題，不論 LRFD 還是 ASD、不論考幾分，都是同一個骨架：</p>
+
+<div class="grid2">
+<div class="comp">
+<b>左腿：需求側（本單元的新東西）</b><br>
+一階分析 \(\to\) 二階放大：
+$$M_u = B_1 M_{nt} + B_2 M_{lt}$$
+<ul>
+<li>\(B_1\)：構件自己彎（P-δ）→ §3</li>
+<li>\(B_2\)：整層一起歪（P-Δ）→ §4</li>
+</ul>
+ASD 版本把放大藏在互制式的分母裡：\(\dfrac{C_m}{1-f_a/F'_e}\) → §7
+</div>
+<div class="tens">
+<b>右腿：強度側（前兩個單元的成果）</b><br>
+$$\phi_c P_n \ \text{（U1-1）},\qquad \phi_b M_n \ \text{（U1-2）}$$
+<ul>
+<li>\(\phi_c P_n\)：\(K\!L/r \to \lambda_c \to F_{cr}\)</li>
+<li>\(\phi_b M_n\)：\(L_b\) 三區段判斷 → LTB</li>
+<li><b>弱軸沒有 LTB</b>，直接 \(M_p\)（有上限）→ §5</li>
+</ul>
+</div>
+</div>
+
+<p style="text-align:center;font-size:1.06em;margin:18px 0">
+<b>兩腿在 P-M 互制式會合 → §6</b>
+</p>
+
+<div class="why">
+<b>為什麼這個骨架值得先記住？</b>因為梁柱題的分數是<b>分段給的</b>。
+一道 25 分的題目，通常 \(\phi_c P_n\) 值 6 分、\(\phi_b M_n\) 值 6 分、\(B_1/B_2\) 值 8 分、互制式代入 5 分。
+<b>你只要把骨架列出來、逐項標明「這一項我要算什麼」，即使某一項算錯，其他項的分數照拿。</b>
+最慘的寫法是從頭列一長串式子、中間某個數字錯了，改卷者找不到你的結構。
+</div>
+
+<div class="trap">
+<b>如果你只帶一句話進考場</b>：梁柱題的第一個動作是<b>在紙上畫兩欄</b>，
+左欄寫「需求：\(P_u\)、\(M_{nt}\)、\(M_{lt}\)、\(B_1\)、\(B_2\)」，右欄寫「強度：\(\phi_cP_n\)、\(\phi_bM_{nx}\)、\(\phi_bM_{ny}\)」。
+兩欄填滿才動互制式。
+</div>
+</section>
+
+<section id="s1">
+<h2>§1　內力為什麼會長大：P-δ 與 P-Δ</h2>
+
+<div class="lead">二階效應有兩種，它們的差別不是「大小」，而是<b>誰在動</b>：
+構件自己彎（P-δ）／整層一起平移（P-Δ）。搞清楚這件事，\(B_1\) 與 \(B_2\) 就不會用錯。</div>
+
+<div class="fig">
+<svg viewBox="0 0 900 350" xmlns="http://www.w3.org/2000/svg">
+  <line x1="450" y1="10" x2="450" y2="340" stroke="#b0bec5" stroke-width="2" stroke-dasharray="7,5"/>
+
+  <!-- 左：P-delta -->
+  <text x="225" y="30" font-size="16" font-weight="700" fill="#ef6c00" text-anchor="middle">P-δ 效應（構件自己彎）</text>
+  <!-- 支承 -->
+  <line x1="150" y1="260" x2="300" y2="260" stroke="#455a64" stroke-width="2"/>
+  <g stroke="#455a64" stroke-width="1.5">
+    <line x1="160" y1="260" x2="152" y2="272"/><line x1="180" y1="260" x2="172" y2="272"/>
+    <line x1="200" y1="260" x2="192" y2="272"/><line x1="220" y1="260" x2="212" y2="272"/>
+    <line x1="240" y1="260" x2="232" y2="272"/><line x1="260" y1="260" x2="252" y2="272"/>
+    <line x1="280" y1="260" x2="272" y2="272"/>
+  </g>
+  <!-- 柱：彎曲但兩端不平移 -->
+  <path d="M 225 260 Q 285 175 225 90" fill="none" stroke="#ef6c00" stroke-width="6"/>
+  <line x1="225" y1="90" x2="225" y2="86" stroke="#ef6c00" stroke-width="6"/>
+  <!-- 兩端固定位置標記 -->
+  <circle cx="225" cy="260" r="6" fill="#455a64"/>
+  <circle cx="225" cy="90" r="6" fill="#455a64"/>
+  <line x1="225" y1="60" x2="225" y2="84" stroke="#c62828" stroke-width="3"/>
+  <polygon points="225,84 219,73 231,73" fill="#c62828"/>
+  <text x="225" y="52" font-size="14" font-weight="700" fill="#c62828" text-anchor="middle">P</text>
+  <!-- delta 標註 -->
+  <line x1="225" y1="175" x2="271" y2="175" stroke="#6a1b9a" stroke-width="1.8"/>
+  <line x1="225" y1="169" x2="225" y2="181" stroke="#6a1b9a" stroke-width="1.8"/>
+  <text x="282" y="180" font-size="14" font-weight="700" fill="#6a1b9a">δ</text>
+  <line x1="225" y1="90" x2="225" y2="260" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="4,3"/>
+  <text x="225" y="300" font-size="13" fill="#37474f" text-anchor="middle">兩端不相對位移，中間鼓出去</text>
+  <text x="225" y="322" font-size="13.5" font-weight="700" fill="#e65100" text-anchor="middle">附加彎矩 = P × δ（在跨中最大）</text>
+  <text x="225" y="342" font-size="13" font-weight="700" fill="#e65100" text-anchor="middle">→ 用 B₁ 放大（放大 Mnt）</text>
+
+  <!-- 右：P-Delta -->
+  <text x="675" y="30" font-size="16" font-weight="700" fill="#c62828" text-anchor="middle">P-Δ 效應（整層一起歪）</text>
+  <line x1="540" y1="260" x2="820" y2="260" stroke="#455a64" stroke-width="2"/>
+  <g stroke="#455a64" stroke-width="1.5">
+    <line x1="550" y1="260" x2="542" y2="272"/><line x1="580" y1="260" x2="572" y2="272"/>
+    <line x1="610" y1="260" x2="602" y2="272"/><line x1="640" y1="260" x2="632" y2="272"/>
+    <line x1="670" y1="260" x2="662" y2="272"/><line x1="700" y1="260" x2="692" y2="272"/>
+    <line x1="730" y1="260" x2="722" y2="272"/><line x1="760" y1="260" x2="752" y2="272"/>
+    <line x1="790" y1="260" x2="782" y2="272"/><line x1="810" y1="260" x2="802" y2="272"/>
+  </g>
+  <!-- 原位置虛線 -->
+  <line x1="570" y1="260" x2="570" y2="100" stroke="#b0bec5" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="780" y1="260" x2="780" y2="100" stroke="#b0bec5" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="570" y1="100" x2="780" y2="100" stroke="#b0bec5" stroke-width="2" stroke-dasharray="5,4"/>
+  <!-- 變形後（整體傾斜） -->
+  <line x1="570" y1="260" x2="615" y2="100" stroke="#c62828" stroke-width="6"/>
+  <line x1="780" y1="260" x2="825" y2="100" stroke="#c62828" stroke-width="6"/>
+  <line x1="615" y1="100" x2="825" y2="100" stroke="#c62828" stroke-width="6"/>
+  <!-- 垂直載重 -->
+  <line x1="615" y1="66" x2="615" y2="94" stroke="#455a64" stroke-width="3"/>
+  <polygon points="615,94 609,83 621,83" fill="#455a64"/>
+  <text x="615" y="58" font-size="13" fill="#455a64" text-anchor="middle">P</text>
+  <line x1="825" y1="66" x2="825" y2="94" stroke="#455a64" stroke-width="3"/>
+  <polygon points="825,94 819,83 831,83" fill="#455a64"/>
+  <text x="825" y="58" font-size="13" fill="#455a64" text-anchor="middle">P</text>
+  <!-- 水平力 H -->
+  <line x1="546" y1="112" x2="608" y2="112" stroke="#ef6c00" stroke-width="3"/>
+  <polygon points="608,112 597,106 597,118" fill="#ef6c00"/>
+  <text x="540" y="116" font-size="13" font-weight="700" fill="#ef6c00" text-anchor="end">H</text>
+  <!-- Delta 標註 -->
+  <line x1="570" y1="86" x2="615" y2="86" stroke="#6a1b9a" stroke-width="1.8"/>
+  <line x1="570" y1="80" x2="570" y2="92" stroke="#6a1b9a" stroke-width="1.8"/>
+  <line x1="615" y1="80" x2="615" y2="92" stroke="#6a1b9a" stroke-width="1.8"/>
+  <text x="592" y="76" font-size="14" font-weight="700" fill="#6a1b9a" text-anchor="middle">Δ</text>
+  <text x="675" y="300" font-size="13" fill="#37474f" text-anchor="middle">柱本身可以是直的，但兩端相對位移了</text>
+  <text x="675" y="322" font-size="13.5" font-weight="700" fill="#b71c1c" text-anchor="middle">附加彎矩 = ΣP × Δ（在柱端最大）</text>
+  <text x="675" y="342" font-size="13" font-weight="700" fill="#b71c1c" text-anchor="middle">→ 用 B₂ 放大（放大 Mlt）</text>
+</svg>
+<div class="cap">圖 1-1　兩種二階效應。判斷法極簡單：<b>看柱的兩端有沒有相對移動</b>。
+沒有 → 只有 P-δ（只需 \(B_1\)）；有 → 兩者都有（\(B_1\) 與 \(B_2\) 都要）。
+所以「有斜撐構架」只需 \(B_1\)，「無側撐／有側移構架」兩個都要。</div>
+</div>
+
+<table>
+<thead><tr><th>比較項</th><th>P-δ（\(B_1\)）</th><th>P-Δ（\(B_2\)）</th></tr></thead>
+<tbody>
+<tr><td>誰在動</td><td><b>構件自己</b>彎出去</td><td><b>整個樓層</b>平移</td></tr>
+<tr><td>放大誰</td><td>\(M_{nt}\)（無側移彎矩）</td><td>\(M_{lt}\)（側移彎矩）</td></tr>
+<tr><td>尺度</td><td>單一構件</td><td>整層所有柱</td></tr>
+<tr><td>\(P_e\) 用哪個 \(K\)</td><td><b>非側移 \(K\)（一般取 1.0）</b></td><td><b>側移 \(K\)（對位圖，通常 &gt; 1）</b></td></tr>
+<tr><td>附加彎矩最大處</td><td>跨中附近</td><td>柱端</td></tr>
+<tr><td>有斜撐構架</td><td>要算</td><td>\(M_{lt} = 0\)，不必算</td></tr>
+</tbody>
+</table>
+
+<div class="trap">
+<b>本單元最經典的混淆：\(B_1\) 用 \(K=1\)、\(B_2\) 用對位圖的 \(K\)。</b>
+兩個都叫「有效長度」，但問的是不同問題：
+<ul>
+<li>\(P_{e1}\)（給 \(B_1\)）問：「這根構件在<b>兩端不許相對移動</b>的前提下，離挫屈多遠？」→ 非側移模式，\(K \leq 1\)，實務取 1.0。</li>
+<li>\(\sum P_{e2}\)（給 \(B_2\)）問：「這整層在<b>允許側移</b>的前提下，離側移挫屈多遠？」→ 側移模式，\(K > 1\)。</li>
+</ul>
+用錯的後果：\(P_e \propto 1/K^2\)，把 \(K=1.8\) 誤用成 \(K=1\) 會讓 \(P_e\) 高估 <b>3.24 倍</b>，二階效應幾乎被抹平（§8 有數字）。
+</div>
+
+<div class="box" style="border-left:5px solid var(--ac)">
+<b>§1 因果鏈</b>：梁柱同時有 \(P\) 與側向變形 → \(P\times\)（變形）＝ 額外彎矩 → 額外彎矩造成更多變形 →
+迴圈收斂到一個放大倍率 → 變形分兩種（構件自彎 δ／整層平移 Δ）→ 對應兩個放大係數 \(B_1\)、\(B_2\) →
+兩者用<b>不同</b>的 \(K\) 與<b>不同</b>的尺度（單構件／整層）。
+</div>
+</section>
+<section id="s2">
+<h2>§2　放大係數 \(\dfrac{1}{1-P/P_{cr}}\)：三行微分方程就推出來</h2>
+
+<div class="lead">這是本單元唯一需要「推」的東西，而它只要三行。推過一次，\(B_1\)、\(B_2\)、ASD 的 \(1-f_a/F'_e\)
+三個看起來不同的分母，你會發現它們是同一件事。</div>
+
+<h3>2.1 推導（假設：簡支、兩端等值彎矩、正弦變形）</h3>
+
+<div class="box">
+<b>Case 1：只有彎矩 \(M_0\)，沒有軸力</b>
+$$-EI\,y_t'' = M_0,\qquad y_t = y_{t0}\sin\frac{\pi x}{L}$$
+$$\Rightarrow\quad EI\left(\frac{\pi}{L}\right)^2 y_{t0} = M_0
+\quad\Rightarrow\quad \boxed{P_{cr}\,y_{t0} = M_0}\qquad \left(P_{cr} = \frac{\pi^2 EI}{L^2}\right)$$
+
+<b>Case 2：同時有軸壓 \(P\) 與彎矩 \(M_0\)</b>（多了 \(Py\) 這一項 —— 這就是二階效應的全部）
+$$-EI\,y'' = M_0 + P\,y$$
+$$\Rightarrow\quad \left[EI\left(\frac{\pi}{L}\right)^2 - P\right]y_0 = M_0
+\quad\Rightarrow\quad \boxed{(P_{cr}-P)\,y_0 = M_0}$$
+
+<b>兩式相除，消掉 \(M_0\)</b>
+$$\frac{y_0}{y_{t0}} = \frac{P_{cr}}{P_{cr}-P} = \frac{1}{1-P/P_{cr}}
+\quad\Rightarrow\quad \boxed{\ D_m = \frac{1}{1-P/P_{cr}}\ }$$
+彎矩與位移成正比，所以彎矩以同一倍率放大：\(M_{max} = D_m M_0\)。
+</div>
+
+<div class="why">
+<b>這個分母真正的意思是「勁度被吃掉了多少」。</b>
+把 Case 2 改寫成 \(\left(P_{cr}-P\right)y_0 = M_0\)，左邊的 \((P_{cr}-P)\) 就是<b>剩下的勁度</b>：
+<ul>
+<li>\(P_{cr}\) 是構件原本的彈性彎曲勁度（正的）</li>
+<li>\(-P\) 是軸力貢獻的<b>幾何勁度</b>（負的，軸壓會「幫倒忙」）</li>
+</ul>
+兩者相加就是實際勁度。當 \(P \to P_{cr}\)，實際勁度歸零 → 一點點彎矩就造成無限大位移 —— <b>這就是挫屈的定義</b>。
+<br><br>所以 <b>\(D_m \to \infty\) 與「挫屈」是同一件事的兩種說法</b>。
+你不必分別記「挫屈公式」和「放大公式」，它們是同一條式子的兩端。
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 840 350" xmlns="http://www.w3.org/2000/svg">
+  <!-- 軸 -->
+  <line x1="95" y1="290" x2="740" y2="290" stroke="#455a64" stroke-width="2"/>
+  <line x1="95" y1="290" x2="95" y2="45" stroke="#455a64" stroke-width="2"/>
+  <text x="420" y="325" font-size="13.5" fill="#455a64" text-anchor="middle">軸力比 P / Pcr（＝離挫屈有多近）</text>
+  <text x="52" y="55" font-size="13.5" fill="#455a64">Dm</text>
+  <!-- y 刻度：Dm 1..5 -->
+  <g font-size="12" fill="#607d8b">
+    <line x1="90" y1="240" x2="95" y2="240" stroke="#607d8b"/><text x="85" y="245" text-anchor="end">1</text>
+    <line x1="90" y1="190" x2="95" y2="190" stroke="#607d8b"/><text x="85" y="195" text-anchor="end">2</text>
+    <line x1="90" y1="140" x2="95" y2="140" stroke="#607d8b"/><text x="85" y="145" text-anchor="end">3</text>
+    <line x1="90" y1="90" x2="95" y2="90" stroke="#607d8b"/><text x="85" y="95" text-anchor="end">4</text>
+  </g>
+  <!-- x 刻度 0..0.9 -->
+  <g font-size="12" fill="#607d8b" text-anchor="middle">
+    <line x1="95" y1="290" x2="95" y2="295" stroke="#607d8b"/><text x="95" y="311">0</text>
+    <line x1="224" y1="290" x2="224" y2="295" stroke="#607d8b"/><text x="224" y="311">0.2</text>
+    <line x1="353" y1="290" x2="353" y2="295" stroke="#607d8b"/><text x="353" y="311">0.4</text>
+    <line x1="482" y1="290" x2="482" y2="295" stroke="#607d8b"/><text x="482" y="311">0.6</text>
+    <line x1="611" y1="290" x2="611" y2="295" stroke="#607d8b"/><text x="611" y="311">0.8</text>
+    <line x1="740" y1="290" x2="740" y2="295" stroke="#607d8b"/><text x="740" y="311">1.0</text>
+  </g>
+  <!-- 漸近線 P/Pcr = 1 -->
+  <line x1="740" y1="290" x2="740" y2="45" stroke="#c62828" stroke-width="2" stroke-dasharray="7,5"/>
+  <text x="712" y="62" font-size="12.5" font-weight="700" fill="#c62828" text-anchor="end">P = Pcr → Dm = ∞</text>
+  <text x="712" y="80" font-size="12.5" fill="#c62828" text-anchor="end">（＝挫屈）</text>
+  <!-- 曲線 Dm = 1/(1-r)，y = 240 - 50*(Dm-1) -->
+  <path d="M 95 240 L 159 224 L 224 228 L 224 228" fill="none" stroke="#fff" stroke-width="0"/>
+  <path d="M 95 240
+           L 160 227.5 L 224 227.5
+           L 224 227.5" fill="none" stroke="#fff" stroke-width="0"/>
+  <path d="M 95 240 C 200 232, 300 218, 400 196 C 470 176, 530 150, 580 118 C 620 88, 650 62, 668 45"
+        fill="none" stroke="#1565c0" stroke-width="3.5"/>
+  <!-- 標點 -->
+  <circle cx="224" cy="227.5" r="5.5" fill="#2e7d32"/>
+  <text x="234" y="248" font-size="12.5" fill="#2e7d32">0.2 → 1.25（+25%）</text>
+  <circle cx="418" cy="190" r="5.5" fill="#ef6c00"/>
+  <text x="330" y="176" font-size="12.5" font-weight="700" fill="#ef6c00">0.5 → 2.0（彎矩翻倍）</text>
+  <circle cx="482" cy="165" r="6" fill="#c62828"/>
+  <line x1="482" y1="165" x2="482" y2="290" stroke="#c62828" stroke-width="1.6" stroke-dasharray="4,3"/>
+  <text x="496" y="140" font-size="12.5" font-weight="700" fill="#c62828">0.6 → 2.5</text>
+  <text x="496" y="158" font-size="11.5" fill="#c62828">AISC 對 B₂ 的上限</text>
+  <!-- 說明框 -->
+  <rect x="112" y="52" width="290" height="90" fill="#f3e5f5" stroke="#ce93d8" stroke-width="1.5" rx="7"/>
+  <text x="126" y="76" font-size="12.5" font-weight="700" fill="#4a148c">邊界檢查（忘記公式時自救）</text>
+  <text x="126" y="98" font-size="12" fill="#4a148c">P = 0 → Dm = 1（沒有軸力，不放大）✓</text>
+  <text x="126" y="118" font-size="12" fill="#4a148c">P = Pcr → Dm = ∞（挫屈）✓</text>
+  <text x="126" y="136" font-size="12" fill="#4a148c">P 增加 → Dm 單調增加 ✓</text>
+</svg>
+<div class="cap">圖 2-1　放大係數是一條<b>雙曲線</b>，不是直線。前半段很平（\(P/P_{cr}<0.2\) 時只放大 25% 以內），
+但 0.5 之後急遽上升。<b>AISC 因此規定 \(\sum P_u/\sum P_{e2} \leq 0.6\)（即 \(B_2 \leq 2.5\)）</b> ——
+超過就代表這個構架太軟，應該改用更硬的側力系統，而不是繼續放大。</div>
+</div>
+
+<h3>2.2 從 \(D_m\) 到規範公式：三個推廣</h3>
+
+<table>
+<thead><tr><th>推導的假設</th><th>真實情況</th><th>規範怎麼補</th></tr></thead>
+<tbody>
+<tr><td>簡支（\(K=1\)）</td><td>各種端部條件</td><td>\(P_{cr} \to P_{e1} = \dfrac{\pi^2EI}{(KL)^2}\)</td></tr>
+<tr><td>兩端等值彎矩（均勻）</td><td>彎矩沿長度變化</td><td>乘上 \(C_m \leq 1.0\)（<b>折減</b>，因為均勻彎矩是最不利情形）</td></tr>
+<tr><td>—</td><td>\(C_m\) 很小時算出 \(B_1<1\)</td><td>規定 \(B_1 \geq 1.0\)（一階分析已經低估了，不可再往下折）</td></tr>
+</tbody>
+</table>
+
+$$\boxed{\ B_1 = \frac{C_m}{1-P_u/P_{e1}} \geq 1.0\ }\qquad
+\boxed{\ B_2 = \frac{1}{1-\sum P_u/\sum P_{e2}} \geq 1.0\ }$$
+
+<div class="why">
+<b>為什麼 \(B_2\) 的分子沒有 \(C_m\)？</b>因為 \(C_m\) 修正的是「彎矩沿<b>構件長度</b>的分佈不均勻」。
+\(B_2\) 處理的是整層的<b>剛體平移</b> —— 側移彎矩在柱的兩端都是最大值（線性分佈、單曲率），
+本來就是最不利的那種分佈，沒有折減的空間。<b>所以 \(B_2\) 的分子恆為 1。</b>
+</div>
+
+<div class="box" style="border-left:5px solid var(--ac)">
+<b>§2 因果鏈</b>：微分方程多了 \(Py\) 項 → 有效勁度變成 \((P_{cr}-P)\) → 位移與彎矩同時放大 \(1/(1-P/P_{cr})\) 倍 →
+勁度歸零即挫屈（\(D_m\to\infty\)）→ 推廣到任意端部（\(K\)）與非均勻彎矩（\(C_m\)）→ 得 \(B_1\)；
+整層版本沒有 \(C_m\) → 得 \(B_2\)，並以 0.6 封頂。
+</div>
+</section>
+
+<section id="s3">
+<h2>§3　\(B_1\)：\(C_m\) 與 \(M_1/M_2\) 的符號（本單元最常錯的一格）</h2>
+
+<div class="lead">\(C_m\) 只有一條公式 \(C_m = 0.6-0.4\,(M_1/M_2)\)，但符號錯了答案就往「不安全」的方向跑。
+記住方向的方法不是背，是<b>看撓曲形狀</b>。</div>
+
+<h3>3.1 為什麼單曲率比雙曲率危險</h3>
+
+<div class="fig">
+<svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+  <line x1="450" y1="10" x2="450" y2="370" stroke="#b0bec5" stroke-width="2" stroke-dasharray="7,5"/>
+
+  <!-- 左：單曲率 -->
+  <text x="225" y="30" font-size="16" font-weight="700" fill="#c62828" text-anchor="middle">單曲率（C 形）— 危險</text>
+  <!-- 端彎矩箭頭（同向） -->
+  <path d="M 150 70 A 26 26 0 1 1 186 82" fill="none" stroke="#ef6c00" stroke-width="2.5"/>
+  <polygon points="186,82 176,76 180,90" fill="#ef6c00"/>
+  <text x="128" y="66" font-size="13" font-weight="700" fill="#ef6c00">M₂</text>
+  <path d="M 150 290 A 26 26 0 1 1 186 302" fill="none" stroke="#ef6c00" stroke-width="2.5"/>
+  <polygon points="186,302 176,296 180,310" fill="#ef6c00"/>
+  <text x="128" y="300" font-size="13" font-weight="700" fill="#ef6c00">M₁</text>
+  <!-- 柱：C 形（同一側鼓出） -->
+  <line x1="225" y1="72" x2="225" y2="68" stroke="#455a64" stroke-width="3"/>
+  <path d="M 225 78 Q 300 186 225 294" fill="none" stroke="#c62828" stroke-width="6"/>
+  <line x1="225" y1="42" x2="225" y2="66" stroke="#455a64" stroke-width="3"/>
+  <polygon points="225,66 219,55 231,55" fill="#455a64"/>
+  <text x="225" y="34" font-size="14" font-weight="700" fill="#455a64" text-anchor="middle">P</text>
+  <line x1="225" y1="78" x2="225" y2="294" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="4,3"/>
+  <!-- 最大 delta -->
+  <line x1="225" y1="186" x2="281" y2="186" stroke="#6a1b9a" stroke-width="2"/>
+  <text x="292" y="191" font-size="14" font-weight="700" fill="#6a1b9a">δmax</text>
+  <text x="225" y="322" font-size="13" fill="#37474f" text-anchor="middle">變形全部往同一側累積</text>
+  <text x="225" y="342" font-size="13" fill="#b71c1c" text-anchor="middle">δmax 很大 → P·δ 很大</text>
+  <text x="225" y="366" font-size="14.5" font-weight="700" fill="#b71c1c" text-anchor="middle">M₁/M₂ = 負　→　Cm 大（最大 1.0）</text>
+
+  <!-- 右：雙曲率 -->
+  <text x="675" y="30" font-size="16" font-weight="700" fill="#2e7d32" text-anchor="middle">雙曲率（S 形）— 安全</text>
+  <path d="M 600 70 A 26 26 0 1 1 636 82" fill="none" stroke="#ef6c00" stroke-width="2.5"/>
+  <polygon points="636,82 626,76 630,90" fill="#ef6c00"/>
+  <text x="578" y="66" font-size="13" font-weight="700" fill="#ef6c00">M₂</text>
+  <path d="M 712 302 A 26 26 0 1 1 676 290" fill="none" stroke="#ef6c00" stroke-width="2.5"/>
+  <polygon points="676,290 686,296 682,282" fill="#ef6c00"/>
+  <text x="726" y="300" font-size="13" font-weight="700" fill="#ef6c00">M₁</text>
+  <!-- 柱：S 形 -->
+  <path d="M 675 78 C 726 120, 624 252, 675 294" fill="none" stroke="#2e7d32" stroke-width="6"/>
+  <line x1="675" y1="42" x2="675" y2="66" stroke="#455a64" stroke-width="3"/>
+  <polygon points="675,66 669,55 681,55" fill="#455a64"/>
+  <text x="675" y="34" font-size="14" font-weight="700" fill="#455a64" text-anchor="middle">P</text>
+  <line x1="675" y1="78" x2="675" y2="294" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="4,3"/>
+  <circle cx="675" cy="186" r="6" fill="#1565c0"/>
+  <text x="690" y="180" font-size="12.5" fill="#1565c0">反曲點（δ = 0）</text>
+  <text x="675" y="322" font-size="13" fill="#37474f" text-anchor="middle">上下互相抵消，中間穿回原位</text>
+  <text x="675" y="342" font-size="13" fill="#1b5e20" text-anchor="middle">δmax 小很多 → P·δ 小</text>
+  <text x="675" y="366" font-size="14.5" font-weight="700" fill="#1b5e20" text-anchor="middle">M₁/M₂ = 正　→　Cm 小（最小 0.2）</text>
+</svg>
+<div class="cap">圖 3-1　\(C_m\) 的符號規則不需要背 —— 只要問「變形會不會累積到同一側」。
+單曲率的兩端彎矩<b>推波助瀾</b>，雙曲率的<b>互相抵消</b>（有反曲點，該處位移為零）。
+位移小 → \(P\delta\) 小 → 放大少 → \(C_m\) 小。</div>
+</div>
+
+<div class="box">
+<b>符號與大小的兩條規則（缺一不可）</b>
+<table style="margin:8px 0">
+<tr><th>規則</th><th>內容</th></tr>
+<tr><td>符號</td><td>單曲率（C 形）→ \(M_1/M_2\) 取<b>負</b>；雙曲率（S 形）→ 取<b>正</b></td></tr>
+<tr><td>大小</td><td>\(M_2\) 是<b>絕對值較大</b>的端彎矩（放分母），所以 \(|M_1/M_2| \leq 1\) 恆成立</td></tr>
+</table>
+$$C_m = 0.6 - 0.4\frac{M_1}{M_2}\quad\Rightarrow\quad 0.2 \leq C_m \leq 1.0$$
+<b>兩個端點值</b>：兩端等值單曲率 → \(M_1/M_2=-1\) → \(C_m = 1.0\)（最不利，等於均勻彎矩，回到推導的原始假設）；
+兩端等值雙曲率 → \(+1\) → \(C_m = 0.2\)（最有利）。
+</div>
+
+<div class="trap">
+<b>有橫向載重時不能用這條公式。</b>\(C_m = 0.6-0.4(M_1/M_2)\) 的前提是「構件上<b>只有端彎矩</b>、沒有橫向載重」。
+若構件中間有集中載重或均布載重（彎矩不是線性分佈），規範改用保守定值：
+<ul>
+<li>兩端有轉動束制：\(C_m = 0.85\)</li>
+<li>兩端無束制（鉸接）：\(C_m = 1.0\)</li>
+<li>有側移構架的 \(M_{lt}\) 部分：\(C_m = 1.0\)（放大交給 \(B_2\)）</li>
+</ul>
+一端彎矩為零（懸臂式）→ \(M_1 = 0\) → \(C_m = 0.6\)。
+</div>
+
+<h3>3.2 手算範例 A：同一根柱、同一個軸力，端彎矩型態不同的差別</h3>
+
+<div class="box">
+<b>本講義的貫穿斷面</b>（§3～§6、§9 都用它）：
+<table style="margin:8px 0">
+<tr><th>\(A_g\)</th><th>\(I_x\)</th><th>\(I_y\)</th><th>\(S_x\)</th><th>\(Z_x\)</th><th>\(r_x\)</th><th>\(r_y\)</th></tr>
+<tr><td>219 cm²</td><td>66,600 cm⁴</td><td>22,400 cm⁴</td><td>3,330 cm³</td><td>3,670 cm³</td><td>17.44 cm</td><td>10.11 cm</td></tr>
+</table>
+\(E = 2040\) tf/cm²，柱高 \(L = 700\) cm，\(P_u = 250\) tf。
+
+<h4>Step 1：\(P_{e1}\)（\(B_1\) 一律用 \(K = 1\)）</h4>
+$$P_{e1x} = \frac{\pi^2 E I_x}{(1.0\times 700)^2} = \frac{9.8696\times 2040\times 66{,}600}{490{,}000} = 2{,}737\ \text{tf}$$
+$$P_{e1y} = \frac{\pi^2 E I_y}{490{,}000} = 920\ \text{tf}\qquad(\text{比例即 } I_y/I_x)$$
+
+<h4>Step 2：放大部分 \(1/(1-P_u/P_{e1})\)</h4>
+$$\text{強軸：}\ \frac{1}{1-250/2737} = 1.1005\qquad
+\text{弱軸：}\ \frac{1}{1-250/920} = 1.3729$$
+
+<h4>Step 3：三種端彎矩型態的 \(B_1\)（以強軸為例）</h4>
+<table>
+<thead><tr><th>端彎矩型態</th><th>\(M_1/M_2\)</th><th>\(C_m\)</th><th>\(C_m \times 1.1005\)</th><th>取用 \(B_1\)</th></tr></thead>
+<tbody>
+<tr><td>兩端等值、單曲率</td><td>−1.0</td><td>1.00</td><td>1.101</td><td><b>1.101</b></td></tr>
+<tr><td>小端為大端一半、單曲率</td><td>−0.5</td><td>0.80</td><td>0.880</td><td><b>1.000</b>（下限控制）</td></tr>
+<tr><td>一端彎矩為零</td><td>0</td><td>0.60</td><td>0.660</td><td><b>1.000</b>（下限控制）</td></tr>
+<tr><td>兩端等值、雙曲率</td><td>+1.0</td><td>0.20</td><td>0.220</td><td><b>1.000</b>（下限控制）</td></tr>
+</tbody>
+</table>
+
+<h4>Step 4：同樣四種型態，但發生在<b>弱軸</b>（\(P_{e1}\) 小得多）</h4>
+<table>
+<thead><tr><th>端彎矩型態</th><th>\(C_m\)</th><th>\(C_m \times 1.3729\)</th><th>取用 \(B_1\)</th></tr></thead>
+<tbody>
+<tr><td>單曲率 −1.0</td><td>1.00</td><td>1.373</td><td><b>1.373</b>（放大 37%）</td></tr>
+<tr><td>雙曲率 +1.0</td><td>0.20</td><td>0.275</td><td><b>1.000</b></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="why">
+<b>這個範例真正要你看見的三件事</b>
+<ol>
+<li><b>\(B_1 = 1.0\) 這個下限很常被觸發。</b>只要 \(P_u/P_{e1}\) 不大、又不是單曲率等值彎矩，\(B_1\) 幾乎都是 1.0。
+所以考試時<b>先算 \(C_m\times\) 放大項，再與 1.0 比大小</b> —— 不要看到 \(B_1<1\) 就以為算錯了。</li>
+<li><b>弱軸的放大遠比強軸嚴重。</b>同一根柱、同一個軸力，弱軸放大 37%、強軸只放大 10% ——
+因為 \(P_{e1} \propto I\)，而 \(I_y/I_x = 0.336\)。<b>雙軸彎矩題一定要兩軸分別算 \(B_1\)</b>，不能算一個套兩邊。</li>
+<li><b>自我檢查</b>：\(P_{e1y}/P_{e1x}\) 必須等於 \(I_y/I_x\)（本例 920/2737 = 0.336 = 22400/66600 ✓）。
+這個檢查兩秒鐘，可以抓到 90% 的 \(P_{e1}\) 代錯數。</li>
+</ol>
+</div>
+
+<div class="box" style="border-left:5px solid var(--ac)">
+<b>§3 因果鏈</b>：推導假設均勻彎矩（最不利）→ 真實彎矩多半不均勻 → 需要折減係數 \(C_m\) →
+折減多少取決於「變形會不會累積」→ 單曲率累積（\(C_m\) 大）、雙曲率抵消（\(C_m\) 小）→
+\(B_1 = C_m/(1-P_u/P_{e1})\)，並以 1.0 為下限 → \(P_{e1}\) 隨軸別而異，故雙軸須分開算。
+</div>
+</section>
+<section id="s4">
+<h2>§4　\(B_2\) 與 \(M_{nt}\)／\(M_{lt}\)：把一次分析拆成兩次</h2>
+
+<div class="lead">\(M_u = B_1 M_{nt} + B_2 M_{lt}\) 這條式子之所以要拆，是因為<b>兩種彎矩的放大倍率不同</b>。
+拆的方法是做兩次一階分析，而不是把一次分析的結果切一半。</div>
+
+<h3>4.1 怎麼拆：加一個假想支撐，然後把它拿掉</h3>
+
+<div class="fig">
+<svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- 格 1：全載重 -->
+  <text x="140" y="26" font-size="14.5" font-weight="700" fill="#0d47a1" text-anchor="middle">① 真實狀態</text>
+  <line x1="55" y1="230" x2="230" y2="230" stroke="#455a64" stroke-width="2"/>
+  <line x1="80" y1="230" x2="80" y2="90" stroke="#455a64" stroke-width="5"/>
+  <line x1="205" y1="230" x2="205" y2="90" stroke="#455a64" stroke-width="5"/>
+  <line x1="80" y1="90" x2="205" y2="90" stroke="#455a64" stroke-width="5"/>
+  <line x1="110" y1="58" x2="110" y2="84" stroke="#c62828" stroke-width="2.5"/>
+  <polygon points="110,84 105,74 115,74" fill="#c62828"/>
+  <line x1="175" y1="58" x2="175" y2="84" stroke="#c62828" stroke-width="2.5"/>
+  <polygon points="175,84 170,74 180,74" fill="#c62828"/>
+  <text x="142" y="52" font-size="12.5" fill="#c62828" text-anchor="middle">垂直載重</text>
+  <line x1="30" y1="100" x2="74" y2="100" stroke="#ef6c00" stroke-width="2.5"/>
+  <polygon points="74,100 64,95 64,105" fill="#ef6c00"/>
+  <text x="26" y="104" font-size="13" font-weight="700" fill="#ef6c00" text-anchor="end">H</text>
+  <text x="142" y="256" font-size="12.5" fill="#37474f" text-anchor="middle">垂直 ＋ 水平，會側移</text>
+  <text x="142" y="278" font-size="13" font-weight="700" fill="#0d47a1" text-anchor="middle">Mu（要求的答案）</text>
+
+  <!-- = -->
+  <text x="272" y="160" font-size="26" font-weight="700" fill="#455a64" text-anchor="middle">=</text>
+
+  <!-- 格 2：阻止側移 -->
+  <text x="420" y="26" font-size="14.5" font-weight="700" fill="#2e7d32" text-anchor="middle">② 加假想支撐（阻止側移）</text>
+  <line x1="330" y1="230" x2="510" y2="230" stroke="#455a64" stroke-width="2"/>
+  <line x1="355" y1="230" x2="355" y2="90" stroke="#2e7d32" stroke-width="5"/>
+  <line x1="480" y1="230" x2="480" y2="90" stroke="#2e7d32" stroke-width="5"/>
+  <line x1="355" y1="90" x2="480" y2="90" stroke="#2e7d32" stroke-width="5"/>
+  <line x1="385" y1="58" x2="385" y2="84" stroke="#c62828" stroke-width="2.5"/>
+  <polygon points="385,84 380,74 390,74" fill="#c62828"/>
+  <line x1="450" y1="58" x2="450" y2="84" stroke="#c62828" stroke-width="2.5"/>
+  <polygon points="450,84 445,74 455,74" fill="#c62828"/>
+  <line x1="305" y1="100" x2="349" y2="100" stroke="#ef6c00" stroke-width="2.5"/>
+  <polygon points="349,100 339,95 339,105" fill="#ef6c00"/>
+  <text x="301" y="104" font-size="13" font-weight="700" fill="#ef6c00" text-anchor="end">H</text>
+  <!-- 假想支撐 -->
+  <line x1="480" y1="90" x2="530" y2="90" stroke="#6a1b9a" stroke-width="3"/>
+  <line x1="530" y1="72" x2="530" y2="108" stroke="#6a1b9a" stroke-width="3"/>
+  <g stroke="#6a1b9a" stroke-width="1.5">
+    <line x1="530" y1="76" x2="540" y2="68"/><line x1="530" y1="90" x2="540" y2="82"/><line x1="530" y1="104" x2="540" y2="96"/>
+  </g>
+  <text x="533" y="126" font-size="11.5" font-weight="700" fill="#6a1b9a">假想支撐</text>
+  <text x="533" y="142" font-size="11.5" fill="#6a1b9a">反力 = R</text>
+  <text x="420" y="256" font-size="12.5" fill="#37474f" text-anchor="middle">不側移 → 只有構件自己彎</text>
+  <text x="420" y="278" font-size="13" font-weight="700" fill="#1b5e20" text-anchor="middle">Mnt　→　乘 B₁</text>
+
+  <!-- + -->
+  <text x="572" y="160" font-size="26" font-weight="700" fill="#455a64" text-anchor="middle">+</text>
+
+  <!-- 格 3：純側移 -->
+  <text x="740" y="26" font-size="14.5" font-weight="700" fill="#c62828" text-anchor="middle">③ 只施加反力 R（反向）</text>
+  <line x1="640" y1="230" x2="850" y2="230" stroke="#455a64" stroke-width="2"/>
+  <line x1="640" y1="230" x2="640" y2="90" stroke="#b0bec5" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="765" y1="230" x2="765" y2="90" stroke="#b0bec5" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="665" y1="230" x2="665" y2="90" stroke="#c62828" stroke-width="5"/>
+  <line x1="790" y1="230" x2="790" y2="90" stroke="#c62828" stroke-width="5"/>
+  <line x1="665" y1="90" x2="790" y2="90" stroke="#c62828" stroke-width="5"/>
+  <line x1="618" y1="90" x2="659" y2="90" stroke="#6a1b9a" stroke-width="3"/>
+  <polygon points="659,90 649,85 649,95" fill="#6a1b9a"/>
+  <text x="614" y="94" font-size="13" font-weight="700" fill="#6a1b9a" text-anchor="end">R</text>
+  <line x1="640" y1="72" x2="665" y2="72" stroke="#455a64" stroke-width="1.8"/>
+  <text x="652" y="64" font-size="12.5" font-weight="700" fill="#455a64" text-anchor="middle">Δ</text>
+  <text x="745" y="256" font-size="12.5" fill="#37474f" text-anchor="middle">純側移，沒有垂直載重</text>
+  <text x="745" y="278" font-size="13" font-weight="700" fill="#b71c1c" text-anchor="middle">Mlt　→　乘 B₂</text>
+</svg>
+<div class="cap">圖 4-1　\(M_{nt}\)／\(M_{lt}\) 的標準拆法。②的假想支撐吸收了全部的側移趨勢，得到的彎矩就是 \(M_{nt}\)；
+把該支撐的反力 \(R\) 反向單獨施加（③），得到的就是 \(M_{lt}\)。②＋③恢復真實狀態，所以疊加是合法的。
+<b>考試簡化版：只有水平力 \(H\) 與垂直力 \(P\) 時，\(M_{nt}\) ＝ \(P\) 造成的（阻止側移）、\(M_{lt}\) ＝ \(H\) 造成的。</b></div>
+</div>
+
+<div class="why">
+<b>為什麼不能「先算完整彎矩再一起放大」？</b>因為兩者的放大機制不同：
+\(M_{nt}\) 的放大靠 \(P_{e1}\)（單一構件、非側移 \(K\)），\(M_{lt}\) 的放大靠 \(\sum P_{e2}\)（整層、側移 \(K\)）。
+以本講義的柱為例，\(P_{e1} = 2737\) tf 但 \(P_{eK}(K{=}1.8) = 845\) tf —— 相差 3.24 倍。
+用同一個倍率放大兩者，等於在其中一項上錯 3 倍。
+</div>
+
+<h3>4.2 \(B_2\) 的分母：一條幾何級數</h3>
+
+<div class="box">
+側移 \(\Delta\) 使整層的軸力 \(\sum P_u\) 產生一個等效水平力 \(\dfrac{\sum P_u \cdot \Delta}{L}\)，
+這個力又造成更多側移，如此反覆：
+$$\Delta = \Delta_0 + \alpha\Delta_0 + \alpha^2\Delta_0 + \cdots = \frac{\Delta_0}{1-\alpha},
+\qquad \alpha = \frac{\sum P_u}{\sum P_{e2}}$$
+彎矩與側移成正比 → \(\boxed{B_2 = \dfrac{1}{1-\sum P_u/\sum P_{e2}}}\)
+<br><br><b>\(\sum P_{e2}\) 的兩種算法</b>（題目給什麼用什麼）：
+$$\text{①（幾何法）}\ \sum P_{e2} = \sum \frac{\pi^2 EI}{(K_2 L)^2}\quad K_2\ \text{由側移對位圖查}$$
+$$\text{②（勁度法）}\ \sum P_{e2} = R_M\,\frac{\sum H \cdot L}{\Delta_H}\quad R_M = 1.0\ (\text{純剛架})\ /\ 0.85$$
+</div>
+
+<div class="trap">
+<b>\(\sum\) 這個符號是整層，不是這一根柱。</b>這是本節最高頻的扣分點（出自
+<a class="qlink" href="problems-view/SS-2013-4.html" target="_blank">SS-2013-4</a>）：
+<ul>
+<li>\(\sum P_u\) ＝ 這一層<b>所有</b>柱承受的垂直載重總和</li>
+<li>\(\sum P_{e2}\) ＝ 這一層<b>所有提供側向勁度的</b>柱的挫屈載重總和</li>
+</ul>
+物理理由：<b>側移是整層一起發生的</b>。你這根柱不可能自己往左歪而隔壁柱不動 —— 樓板把它們綁在一起了。
+所以側移穩定是「整層的共同資產與共同負債」。
+</div>
+
+<h3>4.3 靠桿（Leaning Column）：只出力不幫忙的那些柱</h3>
+
+<p>真實建築裡有大量「重力柱」—— 兩端接合幾乎沒有彎矩勁度，只負責把樓板的重量傳下去。
+它們<b>不提供任何側向勁度</b>（不進 \(\sum P_{e2}\)），但<b>它們的重量照樣要靠抗側力構架撐著不倒</b>（要進 \(\sum P_u\)）。</p>
+
+<div class="fig">
+<svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg">
+  <line x1="60" y1="235" x2="820" y2="235" stroke="#455a64" stroke-width="2"/>
+  <g stroke="#455a64" stroke-width="1.4">
+    <line x1="70" y1="235" x2="62" y2="246"/><line x1="140" y1="235" x2="132" y2="246"/>
+    <line x1="210" y1="235" x2="202" y2="246"/><line x1="280" y1="235" x2="272" y2="246"/>
+    <line x1="350" y1="235" x2="342" y2="246"/><line x1="420" y1="235" x2="412" y2="246"/>
+    <line x1="490" y1="235" x2="482" y2="246"/><line x1="560" y1="235" x2="552" y2="246"/>
+    <line x1="630" y1="235" x2="622" y2="246"/><line x1="700" y1="235" x2="692" y2="246"/>
+    <line x1="770" y1="235" x2="762" y2="246"/><line x1="810" y1="235" x2="802" y2="246"/>
+  </g>
+  <!-- 頂梁 -->
+  <line x1="110" y1="95" x2="760" y2="95" stroke="#455a64" stroke-width="5"/>
+  <!-- 抗側力柱 x2（剛接，粗） -->
+  <line x1="150" y1="235" x2="150" y2="95" stroke="#1565c0" stroke-width="8"/>
+  <line x1="330" y1="235" x2="330" y2="95" stroke="#1565c0" stroke-width="8"/>
+  <rect x="138" y="222" width="24" height="13" fill="#1565c0"/>
+  <rect x="318" y="222" width="24" height="13" fill="#1565c0"/>
+  <text x="240" y="270" font-size="13" font-weight="700" fill="#0d47a1" text-anchor="middle">抗側力柱（剛接）：Pu = 250 tf 各</text>
+  <text x="240" y="290" font-size="12.5" fill="#0d47a1" text-anchor="middle">進 ΣPu，也進 ΣPe2</text>
+  <!-- 靠桿 x2（鉸接，細，傾斜表示倚靠） -->
+  <line x1="530" y1="235" x2="530" y2="95" stroke="#c62828" stroke-width="4"/>
+  <line x1="690" y1="235" x2="690" y2="95" stroke="#c62828" stroke-width="4"/>
+  <circle cx="530" cy="235" r="6" fill="#fff" stroke="#c62828" stroke-width="2.5"/>
+  <circle cx="530" cy="95" r="6" fill="#fff" stroke="#c62828" stroke-width="2.5"/>
+  <circle cx="690" cy="235" r="6" fill="#fff" stroke="#c62828" stroke-width="2.5"/>
+  <circle cx="690" cy="95" r="6" fill="#fff" stroke="#c62828" stroke-width="2.5"/>
+  <text x="610" y="270" font-size="13" font-weight="700" fill="#b71c1c" text-anchor="middle">靠桿（兩端鉸接）：Pu = 300 tf 各</text>
+  <text x="610" y="290" font-size="12.5" font-weight="700" fill="#b71c1c" text-anchor="middle">進 ΣPu，但不進 ΣPe2！</text>
+  <!-- 垂直載重箭頭 -->
+  <g stroke="#455a64" stroke-width="2.5">
+    <line x1="150" y1="52" x2="150" y2="88"/><line x1="330" y1="52" x2="330" y2="88"/>
+    <line x1="530" y1="52" x2="530" y2="88"/><line x1="690" y1="52" x2="690" y2="88"/>
+  </g>
+  <g fill="#455a64">
+    <polygon points="150,88 145,77 155,77"/><polygon points="330,88 325,77 335,77"/>
+    <polygon points="530,88 525,77 535,77"/><polygon points="690,88 685,77 695,77"/>
+  </g>
+  <!-- 傾倒趨勢 -->
+  <path d="M 760 88 Q 800 120 795 175" fill="none" stroke="#ef6c00" stroke-width="2" stroke-dasharray="5,4"/>
+  <text x="806" y="150" font-size="12" fill="#ef6c00">倚靠</text>
+  <!-- 標題 -->
+  <text x="440" y="30" font-size="15.5" font-weight="700" fill="#455a64" text-anchor="middle">靠桿把自己的 P-Δ 負擔「轉嫁」給抗側力構架</text>
+</svg>
+<div class="cap">圖 4-2　靠桿（紅、兩端鉸接）不提供側向勁度，卻把自己的重量壓在整層的側移穩定帳上。
+<b>它們進 \(\sum P_u\) 的分子，卻不進 \(\sum P_{e2}\) 的分母</b> —— 這是 \(B_2\) 最容易被低估的原因。</div>
+</div>
+
+<h3>4.4 手算範例 B：漏算靠桿，\(B_2\) 會少一半</h3>
+
+<div class="box">
+<b>題目設定</b>（對應圖 4-2）：單層構架，柱高 \(L = 700\) cm。
+<b>兩根</b>抗側力柱（本講義斷面，\(I_x = 66{,}600\) cm⁴，側移對位圖查得 \(K_2 = 1.8\)），各承受 \(P_u = 250\) tf；
+另有<b>兩根</b>靠桿（兩端鉸接的重力柱），各承受 \(P_u = 300\) tf。求 \(B_2\)。
+
+<h4>Step 1：抗側力柱的 \(P_{e2}\)（用側移 \(K_2 = 1.8\)）</h4>
+$$P_{e2} = \frac{\pi^2 E I_x}{(1.8\times 700)^2} = \frac{9.8696\times 2040\times 66{,}600}{1{,}587{,}600} = 844.6\ \text{tf（每根）}$$
+$$\sum P_{e2} = 2\times 844.6 = 1{,}689\ \text{tf}\quad(\text{靠桿不計入})$$
+
+<h4>Step 2（錯誤做法）：只算抗側力柱的軸力</h4>
+$$\sum P_u = 2\times 250 = 500\ \text{tf}\ \Rightarrow\ \frac{500}{1689} = 0.296
+\ \Rightarrow\ B_2 = \frac{1}{1-0.296} = 1.420$$
+
+<h4>Step 3（正確做法）：靠桿的軸力也要算進去</h4>
+$$\sum P_u = 2\times 250 + 2\times 300 = 1{,}100\ \text{tf}
+\ \Rightarrow\ \frac{1100}{1689} = 0.651$$
+$$B_2 = \frac{1}{1-0.651} = \boxed{2.867}$$
+
+<h4>Step 4：檢查規範上限</h4>
+$$\frac{\sum P_u}{\sum P_{e2}} = 0.651 > 0.6\ (\text{即 } B_2 > 2.5)
+\ \Rightarrow\ \textbf{不符合 AISC 對二階效應的上限，構架側向勁度不足，須加大柱或加設斜撐}$$
+</div>
+
+<div class="why">
+<b>這個範例的三個結論</b>
+<ol>
+<li><b>1.420 vs 2.867 —— 漏算靠桿讓 \(B_2\) 少了一半。</b>而 \(M_{lt}\) 是直接乘上去的，
+所以側移彎矩會被低估一半。這不是「保守一點」的問題，是<b>設計偏不安全</b>。</li>
+<li><b>注意這個陷阱只在「柱不一樣」時才會咬人。</b>若整層所有柱斷面相同、載重相同，
+\(\sum P_u/\sum P_{e2}\) 與單柱的 \(P_u/P_{e2}\) 恰好相等（分子分母同時乘 \(n\)），漏算不會出錯 ——
+考題正是因此喜歡設計「柱不一樣」或「有靠桿」的題目。</li>
+<li><b>自我檢查</b>：算出 \(\sum P_u/\sum P_{e2} > 0.6\) 時不要硬套公式，要在答案裡寫出
+「已超過規範上限，構架須加勁」—— 這句話本身就是分數（出題者要看的就是你知不知道有這條上限）。</li>
+</ol>
+</div>
+
+<div class="box" style="border-left:5px solid var(--ac)">
+<b>§4 因果鏈</b>：兩種彎矩的放大機制不同 → 必須拆成 \(M_{nt}\)（阻止側移的一階分析）與 \(M_{lt}\)（純側移的一階分析）→
+側移是整層的事 → \(B_2\) 的 \(\sum\) 涵蓋整層 → 只出力不出勁度的靠桿進分子不進分母 →
+\(B_2\) 可能遠大於直覺 → 規範以 \(\sum P_u/\sum P_{e2} \leq 0.6\) 封頂。
+</div>
+</section>
+<section id="s5">
+<h2>§5　強度側：U1-1 與 U1-2 在這裡收帳</h2>
+
+<div class="lead">本節不教新東西，只提醒<b>接口</b>：梁柱題會用到壓力桿件與梁桿件的哪一段結論，以及最容易在接口處出錯的三件事。</div>
+
+<h3>5.1 \(\phi_c P_n\)：從 U1-1 拿</h3>
+
+<div class="box">
+$$\lambda_c = \frac{KL/r}{\pi}\sqrt{\frac{F_y}{E}},\qquad
+F_{cr} = \begin{cases}\left(0.658^{\lambda_c^2}\right)F_y & \lambda_c \leq 1.5\ \text{（非彈性）}\\[4pt]
+\dfrac{0.877}{\lambda_c^2}F_y & \lambda_c > 1.5\ \text{（彈性）}\end{cases}
+\qquad \phi_c P_n = 0.85\,F_{cr}A_g$$
+<b>接口三個要點</b>
+<ol>
+<li><b>\(KL/r\) 取兩軸中<u>較大</u>者</b>（＝細長比控制）。梁柱題常見「強軸有側移（\(K_x=1.8\)）、弱軸有斜撐（\(K_y=1.0\)）」，
+此時 \(K_xL/r_x\) 可能反而大於 \(K_yL/r_y\) —— <b>必須兩個都算再比</b>，不能憑「弱軸一定控制」的直覺。</li>
+<li><b>\(\phi_c = 0.85\)</b>，不是 0.90。挫屈對幾何不完美與殘留應力敏感 → 不確定性高 → \(\phi\) 較小。</li>
+<li>\(0.877\) 的來源：Euler 載重乘以初始彎曲（約 \(L/1500\)）造成的折減 —— 詳見 U1-1 講義。</li>
+</ol>
+</div>
+
+<h3>5.2 \(\phi_b M_{nx}\)：從 U1-2 拿</h3>
+
+<p>強軸彎矩強度由 \(L_b\) 落在哪個區段決定（\(L_b \leq L_p\) → \(M_p\)；\(L_p < L_b \leq L_r\) → 線性內插；
+\(L_b > L_r\) → 彈性 LTB），並乘上 \(C_b\) 紅利。細節見 U1-2 講義。</p>
+
+<div class="trap">
+<b>弱軸的 \(M_{ny}\) 有一個上限，而且大多數 W 型鋼都會觸發它。</b>
+弱軸<b>沒有 LTB</b>（繞弱軸彎曲不會側向扭轉），所以直覺上 \(M_{ny} = F_y Z_y\)。但規範另設上限：
+$$M_{ny} = \min\left(F_y Z_y,\ 1.5F_y S_y\right)\quad\text{（AISC 360-10 起放寬為 } 1.6F_yS_y\text{）}$$
+<b>為什麼？</b>I 型斷面繞弱軸彎曲時，兩片翼板近似「兩塊獨立矩形板」，矩形的形狀因數恰為 1.5。
+W 型鋼的 \(Z_y/S_y\) 通常在 1.50～1.67 之間，<b>多數斷面超過 1.5</b> ——
+若允許發展到 \(F_yZ_y\)，服務載重下翼板外緣會出現大範圍永久變形。
+<br><br><b>觸發信號</b>：題目<b>同時給你 \(Z_y\) 與 \(S_y\)</b> → 這本身就是暗示，出題者要你檢查 \(Z_y/S_y\) 有沒有超過上限。
+（詳見 <code>wiki/traps/WEAK-AXIS-BENDING-LIMIT</code>，出自 <a class="qlink" href="problems-view/SS-2014-3.html" target="_blank">SS-2014-3</a>）
+</div>
+
+<table>
+<thead><tr><th>項目</th><th>強軸 \(M_{nx}\)</th><th>弱軸 \(M_{ny}\)</th></tr></thead>
+<tbody>
+<tr><td>LTB</td><td><b>要考慮</b>（三區段判斷）</td><td>不存在</td></tr>
+<tr><td>\(C_b\)</td><td>要算</td><td>不用</td></tr>
+<tr><td>上限</td><td>\(M_p = F_yZ_x\)</td><td>\(\min(F_yZ_y,\ 1.5F_yS_y)\) ← <b>常被漏</b></td></tr>
+<tr><td>\(\phi_b\)</td><td>0.90</td><td>0.90</td></tr>
+<tr><td>ASD 對應</td><td>\(F_{bx}\)（含 LTB 分段）</td><td>\(F_{by} = 0.75F_y\)（結實斷面）</td></tr>
+</tbody>
+</table>
+
+<div class="why">
+<b>ASD 的 \(F_{by} = 0.75F_y\) 與 LRFD 的 \(1.5F_yS_y\) 是同一件事。</b>
+\(0.75F_y \times S_y = 0.75 F_y S_y\)，而 LRFD 是 \(0.9\times 1.5F_yS_y = 1.35F_yS_y\)。
+兩者比值 \(1.35/0.75 = 1.8\) —— 略高於平均載重因數 1.5，反映 ASD 在弱軸彎曲上更保守一些。
+<b>看到 0.75 這個數字就想到「弱軸、形狀因數 1.5、除以安全係數 2」</b>，不必當成獨立的一條規定去背。
+</div>
+
+<div class="box" style="border-left:5px solid var(--ac)">
+<b>§5 因果鏈</b>：\(\phi_cP_n\) 取兩軸較大細長比 → \(\phi_c=0.85\)（挫屈不確定性高）；
+強軸 \(\phi_bM_{nx}\) 走 LTB 三區段；弱軸沒有 LTB 但受 \(1.5F_yS_y\)（矩形形狀因數）封頂 →
+題目同時給 \(Z_y\) 與 \(S_y\) 就是在提醒你檢查這個上限。
+</div>
+</section>
+
+<section id="s6">
+<h2>§6　P-M 互制式：0.2、8/9、0.9 三個數字的幾何意義</h2>
+
+<div class="lead">兩腿在這裡會合。互制式看起來有兩條、四個係數，其實它只是<b>一條折線</b>，
+而所有係數都是為了讓那條折線<b>連續</b>。</div>
+
+$$\frac{P_u}{\phi_cP_n} \geq 0.2：\quad \frac{P_u}{\phi_cP_n} + \frac{8}{9}\left(\frac{M_{ux}}{\phi_bM_{nx}} + \frac{M_{uy}}{\phi_bM_{ny}}\right) \leq 1.0 \quad\text{(H1-1a)}$$
+
+$$\frac{P_u}{\phi_cP_n} < 0.2：\quad \frac{P_u}{2\phi_cP_n} + \left(\frac{M_{ux}}{\phi_bM_{nx}} + \frac{M_{uy}}{\phi_bM_{ny}}\right) \leq 1.0 \quad\text{(H1-1b)}$$
+
+<h3>6.1 它其實只是「利用率相加 ≤ 1」</h3>
+
+<div class="why">
+<b>每一項都是「需求 ÷ 該作用力單獨存在時的強度」＝ 那個作用力吃掉的強度比例。</b>
+斷面的強度是一塊有限的餅：軸力切一塊、強軸彎矩切一塊、弱軸彎矩切一塊，加起來不能超過整塊。
+<br><br>所以互制式不是一條要背的公式，而是一句話：<b>「你總共用掉了多少 %？」</b>
+這也解釋了為什麼答案應該是一個 0～1 之間的數 —— 如果你算出 3.7，先檢查單位（tf·m vs tf·cm 是最常見的兇手）。
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 840 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- 軸 -->
+  <line x1="110" y1="330" x2="640" y2="330" stroke="#455a64" stroke-width="2"/>
+  <line x1="110" y1="330" x2="110" y2="60" stroke="#455a64" stroke-width="2"/>
+  <text x="375" y="366" font-size="13.5" fill="#455a64" text-anchor="middle">彎矩利用率　M / φbMn</text>
+  <text x="46" y="70" font-size="13" fill="#455a64">軸力利用率</text>
+  <text x="60" y="88" font-size="13" fill="#455a64">P / φcPn</text>
+  <!-- 刻度 -->
+  <g font-size="12" fill="#607d8b">
+    <line x1="105" y1="80" x2="110" y2="80" stroke="#607d8b"/><text x="100" y="85" text-anchor="end">1.0</text>
+    <line x1="105" y1="205" x2="110" y2="205" stroke="#607d8b"/><text x="100" y="210" text-anchor="end">0.5</text>
+    <line x1="105" y1="280" x2="110" y2="280" stroke="#607d8b"/><text x="100" y="285" text-anchor="end">0.2</text>
+  </g>
+  <g font-size="12" fill="#607d8b" text-anchor="middle">
+    <line x1="375" y1="330" x2="375" y2="335" stroke="#607d8b"/><text x="375" y="351">0.5</text>
+    <line x1="640" y1="330" x2="640" y2="335" stroke="#607d8b"/><text x="640" y="351">1.0</text>
+    <line x1="586" y1="330" x2="586" y2="335" stroke="#607d8b"/><text x="586" y="351">0.9</text>
+  </g>
+  <!-- 真實曲線（外凸，虛線） -->
+  <path d="M 110 80 C 300 100, 480 160, 640 330" fill="none" stroke="#90a4ae" stroke-width="2" stroke-dasharray="6,5"/>
+  <text x="470" y="126" font-size="12.5" fill="#78909c">真實包絡線（外凸）</text>
+  <!-- 雙折線 -->
+  <line x1="110" y1="80" x2="586" y2="280" stroke="#1565c0" stroke-width="4"/>
+  <line x1="586" y1="280" x2="640" y2="330" stroke="#c62828" stroke-width="4"/>
+  <!-- 三個關鍵點 -->
+  <circle cx="110" cy="80" r="7" fill="#1565c0"/>
+  <text x="124" y="72" font-size="12.5" font-weight="700" fill="#1565c0">(0, 1.0) 純壓</text>
+  <circle cx="586" cy="280" r="7" fill="#6a1b9a"/>
+  <line x1="586" y1="280" x2="586" y2="330" stroke="#6a1b9a" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="110" y1="280" x2="586" y2="280" stroke="#6a1b9a" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="440" y="264" font-size="12.5" font-weight="700" fill="#6a1b9a">銜接點 (0.9, 0.2)</text>
+  <circle cx="640" cy="330" r="7" fill="#c62828"/>
+  <text x="656" y="326" font-size="12.5" font-weight="700" fill="#c62828">(1.0, 0)</text>
+  <text x="656" y="344" font-size="12.5" fill="#c62828">純彎</text>
+  <!-- 區段標籤 -->
+  <text x="290" y="180" font-size="13.5" font-weight="700" fill="#0d47a1" transform="rotate(23,290,180)">H1-1a（軸力主控，斜率陡）</text>
+  <text x="596" y="316" font-size="12.5" font-weight="700" fill="#b71c1c">H1-1b</text>
+  <!-- 設計點 -->
+  <circle cx="360" cy="190" r="6" fill="#2e7d32"/>
+  <text x="290" y="216" font-size="12.5" font-weight="700" fill="#1b5e20">設計點在線內 → OK</text>
+  <!-- 安全側標示 -->
+  <text x="180" y="310" font-size="12.5" fill="#2e7d32">← 折線內側：安全</text>
+  <text x="656" y="180" font-size="12.5" fill="#c62828">折線外側：超載 →</text>
+</svg>
+<div class="cap">圖 6-1　P-M 互制圖。灰虛線是真實的（外凸）包絡線，藍／紅實線是規範的雙折線。
+<b>雙折線永遠在真實曲線的內側 → 永遠偏安全</b>；用直線取代曲線只是為了讓公式可以直接代入求解。
+對 H 型斷面，這個簡化的誤差在 5% 以內。</div>
+</div>
+
+<h3>6.2 三個數字都是「為了連續」</h3>
+
+<div class="box">
+<b>0.2 是分界，8/9 與 0.9 是被它決定的。</b>把 \(P_u/\phi_cP_n = 0.2\) 代進兩條式子：
+$$\text{H1-1a：}\ 0.2 + \frac{8}{9}\cdot\frac{M_u}{\phi_bM_n} = 1.0
+\ \Rightarrow\ \frac{M_u}{\phi_bM_n} = 0.8\times\frac{9}{8} = \boxed{0.9}$$
+$$\text{H1-1b：}\ \frac{0.2}{2} + \frac{M_u}{\phi_bM_n} = 1.0
+\ \Rightarrow\ \frac{M_u}{\phi_bM_n} = 1.0 - 0.1 = \boxed{0.9}$$
+<b>兩式在分界點給出同一個 0.9 → 折線連續、沒有跳躍。</b>
+這就是 8/9 存在的唯一理由 —— 它是「讓 (0, 1.0) 這一點與 (0.9, 0.2) 這一點連成一條直線」所需的斜率調整。
+</div>
+
+<div class="why">
+<b>為什麼要分兩段？</b>因為構材在兩個區域的<b>行為</b>不同：
+<ul>
+<li><b>H1-1a（軸力 ≥ 20%）</b>：它主要是一根「柱」。軸力項全額計入（係數 1），彎矩項略折（8/9）。</li>
+<li><b>H1-1b（軸力 &lt; 20%）</b>：它主要是一根「梁」。軸力項的分母加倍（貢獻減半），彎矩項可發揮到滿額 \(\phi_bM_n\)。</li>
+</ul>
+<b>直覺</b>：軸力只有 10% 時，就算完全忽略它，誤差也不大 —— H1-1b 就是「以梁為主」的簡化形式，
+它讓小軸力的梁柱不必為了那一點軸力而白白損失彎矩強度。
+</div>
+
+<h3>6.3 手算範例 C：LRFD 完整流程（兩腿都走一遍）</h3>
+
+<div class="box">
+<b>題目設定</b>：本講義斷面（\(A_g=219\)、\(I_x=66{,}600\)、\(I_y=22{,}400\)、\(Z_x=3{,}670\)、\(r_x=17.44\)、\(r_y=10.11\)），
+\(F_y = 3.5\) tf/cm²，柱高 \(L = 700\) cm。<b>有側移構架</b>：強軸 \(K_x = 1.8\)（對位圖），弱軸有斜撐 \(K_y = 1.0\)。
+一階分析結果：\(P_u = 250\) tf、\(M_{nt} = 25\) tf·m、\(M_{lt} = 15\) tf·m（皆繞強軸，單曲率等值端彎矩）。
+整層共三根同樣的柱、同樣的載重。\(L_b \leq L_p\)（充分側撐）。
+
+<h4>右腿 Step 1：\(\phi_c P_n\)</h4>
+$$\frac{K_xL}{r_x} = \frac{1.8\times700}{17.44} = 72.25,\qquad
+\frac{K_yL}{r_y} = \frac{1.0\times700}{10.11} = 69.21
+\quad\Rightarrow\quad \text{強軸控制（72.25）}$$
+$$\lambda_c = \frac{72.25}{\pi}\sqrt{\frac{3.5}{2040}} = 0.9526\ (\leq 1.5)
+\quad\Rightarrow\quad F_{cr} = 0.658^{0.9074}\times 3.5 = 2.394\ \text{tf/cm}^2$$
+$$\phi_cP_n = 0.85\times 2.394\times 219 = \underline{445.6\ \text{tf}}$$
+
+<h4>右腿 Step 2：\(\phi_b M_{nx}\)</h4>
+$$\phi_bM_{nx} = 0.9\,F_yZ_x = 0.9\times3.5\times3670 = 11{,}560\ \text{tf·cm} = \underline{115.6\ \text{tf·m}}$$
+
+<h4>左腿 Step 3：\(B_1\)（\(K=1\)）</h4>
+$$P_{e1x} = \frac{\pi^2\times2040\times66{,}600}{700^2} = 2{,}737\ \text{tf},\qquad
+C_m = 0.6-0.4(-1) = 1.0$$
+$$B_1 = \frac{1.0}{1-250/2737} = \underline{1.101}$$
+
+<h4>左腿 Step 4：\(B_2\)（側移 \(K_2 = 1.8\)，整層三柱）</h4>
+$$P_{e2} = \frac{\pi^2\times2040\times66{,}600}{(1.8\times700)^2} = 844.6\ \text{tf}
+\ \Rightarrow\ \sum P_{e2} = 3\times844.6 = 2{,}534\ \text{tf}$$
+$$\sum P_u = 3\times250 = 750\ \text{tf}
+\ \Rightarrow\ \frac{750}{2534} = 0.296\ (<0.6\ \checkmark)
+\ \Rightarrow\ B_2 = \frac{1}{1-0.296} = \underline{1.799}$$
+
+<h4>左腿 Step 5：二階設計彎矩</h4>
+$$M_u = B_1M_{nt} + B_2M_{lt} = 1.101(25) + 1.799(15) = 27.52 + 26.98 = \underline{54.49\ \text{tf·m}}$$
+（一階合計 40 tf·m → 放大 <b>36%</b>）
+
+<h4>會合 Step 6：選公式並驗核</h4>
+$$\frac{P_u}{\phi_cP_n} = \frac{250}{445.6} = 0.561 \geq 0.2\quad\Rightarrow\quad\text{用 H1-1a}$$
+$$0.561 + \frac{8}{9}\left(\frac{54.49}{115.6}\right) = 0.561 + 0.889\times0.4714 = 0.561+0.419 = \boxed{0.980 \leq 1.0\ \ \text{OK}}$$
+</div>
+
+<div class="why">
+<b>這個範例的四個自我檢查</b>
+<ol>
+<li><b>若忘記做二階放大</b>：\(0.561 + 0.889\times(40/115.6) = 0.869\) ——
+你會以為還有 13% 餘裕，實際只剩 2%。<b>漏做二階的代價是 11 個百分點</b>，而且方向是不安全的。</li>
+<li><b>\(P_{e2}/P_{e1} = (1/1.8)^2 = 0.309\)</b>：本例 844.6/2737 = 0.309 ✓。
+這個檢查可以確認你沒有把兩個 \(K\) 用反。</li>
+<li><b>\(K_xL/r_x\) 竟然大於 \(K_yL/r_y\)</b>（72.25 &gt; 69.21）——
+這就是 §5.1 那個提醒的實例。若你憑直覺只算弱軸，\(\phi_cP_n\) 會高估，利用率會低估。</li>
+<li><b>利用率落在 0.9～1.0 是合理的設計結果</b>。若你算出 0.3，通常是彎矩單位少乘 100（tf·m 與 tf·cm）；
+若算出 3.0，通常是多乘了 100。<b>互制式的答案必須是「幾成」的量級。</b></li>
+</ol>
+</div>
+
+<div class="box" style="border-left:5px solid var(--ac)">
+<b>§6 因果鏈</b>：斷面強度是有限的餅 → 各作用力的利用率相加不得超過 1 → 真實包絡線外凸，規範用內接雙折線（保守且可解）→
+以 \(P_u/\phi_cP_n = 0.2\) 為分界（軸力主控／彎矩主控）→ 為了在分界點連續，H1-1a 的彎矩項須乘 8/9，
+兩式在該點都給出 \(M_u/\phi_bM_n = 0.9\)。
+</div>
+</section>
+<section id="s7">
+<h2>§7　ASD 版本：同一件事，放大係數藏在分母裡</h2>
+
+<div class="lead">本單元 12 題中 <b>5 題是 ASD</b>（2003、2004、2007、2008、2019），所以 ASD 不是選修。
+但你不需要把它當另一套系統背 —— 它是同一個骨架換一種寫法。</div>
+
+<h3>7.1 兩條式子，兩件事</h3>
+
+<div class="box">
+<b>式（一）穩定式（含二階放大）</b>—— 對應 LRFD 的 \(B_1\) 與 H1-1
+$$\frac{f_a}{F_a} + \frac{C_{mx}f_{bx}}{\left(1-\dfrac{f_a}{F'_{ex}}\right)F_{bx}}
++ \frac{C_{my}f_{by}}{\left(1-\dfrac{f_a}{F'_{ey}}\right)F_{by}} \leq 1.0$$
+
+<b>式（二）強度式（斷面本身，不放大）</b>—— 檢查斷面在支點處會不會降伏
+$$\frac{f_a}{0.6F_y} + \frac{f_{bx}}{F_{bx}} + \frac{f_{by}}{F_{by}} \leq 1.0$$
+
+<b>兩式都要驗，取嚴者。</b>若 \(f_a/F_a < 0.15\)，二階效應輕微，可用簡化式
+\(\dfrac{f_a}{F_a}+\dfrac{f_{bx}}{F_{bx}}+\dfrac{f_{by}}{F_{by}} \leq 1.0\) 取代式（一）。
+</div>
+
+<div class="why">
+<b>為什麼 ASD 要兩條式子，LRFD 只要一條？</b>
+因為它們在檢查<b>不同位置</b>：
+<ul>
+<li><b>穩定式</b>檢查構件<b>中段</b> —— 那裡有 \(P\delta\) 放大，但 \(F_a\)（含挫屈折減）是它的容許值。</li>
+<li><b>強度式</b>檢查構件<b>端部（支承處）</b> —— 那裡二階彎矩為零（側向位移為零），
+但軸力的容許值變成 \(0.6F_y\)（純斷面降伏，不折挫屈），所以分母更大、可能反而更嚴。</li>
+</ul>
+LRFD 把兩者合併成一條 H1-1，是因為 \(\phi_cP_n\) 與 \(\phi_bM_n\) 已各自把挫屈折減吃進去了。
+<b>ASD 若只驗穩定式，端部斷面降伏會被漏掉。</b>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg">
+  <text x="220" y="28" font-size="15.5" font-weight="700" fill="#c62828" text-anchor="middle">ASD</text>
+  <text x="660" y="28" font-size="15.5" font-weight="700" fill="#1565c0" text-anchor="middle">LRFD</text>
+  <line x1="440" y1="14" x2="440" y2="306" stroke="#b0bec5" stroke-width="2" stroke-dasharray="7,5"/>
+
+  <g font-size="13">
+  <!-- 列 1 -->
+  <rect x="40" y="46" width="360" height="42" fill="#ffebee" stroke="#c62828" stroke-width="1.6" rx="6"/>
+  <text x="56" y="72" fill="#b71c1c">fa / Fa　（軸力利用率）</text>
+  <rect x="482" y="46" width="360" height="42" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.6" rx="6"/>
+  <text x="498" y="72" fill="#0d47a1">Pu / φcPn　（軸力利用率）</text>
+  <line x1="402" y1="67" x2="478" y2="67" stroke="#455a64" stroke-width="1.6" stroke-dasharray="4,3"/>
+
+  <!-- 列 2 -->
+  <rect x="40" y="100" width="360" height="42" fill="#ffebee" stroke="#c62828" stroke-width="1.6" rx="6"/>
+  <text x="56" y="126" fill="#b71c1c">Cm / (1 − fa/F'e)　（二階放大）</text>
+  <rect x="482" y="100" width="360" height="42" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.6" rx="6"/>
+  <text x="498" y="126" fill="#0d47a1">B₁ = Cm / (1 − Pu/Pe1)　（二階放大）</text>
+  <line x1="402" y1="121" x2="478" y2="121" stroke="#455a64" stroke-width="1.6" stroke-dasharray="4,3"/>
+
+  <!-- 列 3 -->
+  <rect x="40" y="154" width="360" height="42" fill="#ffebee" stroke="#c62828" stroke-width="1.6" rx="6"/>
+  <text x="56" y="180" fill="#b71c1c">F'e = 12π²E / [23(KL/r)²]</text>
+  <rect x="482" y="154" width="360" height="42" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.6" rx="6"/>
+  <text x="498" y="180" fill="#0d47a1">Pe1 = π²EI / (KL)²</text>
+  <line x1="402" y1="175" x2="478" y2="175" stroke="#455a64" stroke-width="1.6" stroke-dasharray="4,3"/>
+
+  <!-- 列 4 -->
+  <rect x="40" y="208" width="360" height="42" fill="#ffebee" stroke="#c62828" stroke-width="1.6" rx="6"/>
+  <text x="56" y="234" fill="#b71c1c">fbx / Fbx　（Fbx 含 LTB 分段）</text>
+  <rect x="482" y="208" width="360" height="42" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.6" rx="6"/>
+  <text x="498" y="234" fill="#0d47a1">Mux / φbMnx　（φbMnx 含 LTB）</text>
+  <line x1="402" y1="229" x2="478" y2="229" stroke="#455a64" stroke-width="1.6" stroke-dasharray="4,3"/>
+
+  <!-- 列 5：差異 -->
+  <rect x="40" y="262" width="360" height="44" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.8" rx="6"/>
+  <text x="56" y="282" fill="#e65100">另需「強度式」：fa/0.6Fy + fb/Fb ≤ 1</text>
+  <text x="56" y="300" font-size="11.5" fill="#e65100">（檢查端部斷面降伏）</text>
+  <rect x="482" y="262" width="360" height="44" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.8" rx="6"/>
+  <text x="498" y="282" fill="#1b5e20">只要一條 H1-1</text>
+  <text x="498" y="300" font-size="11.5" fill="#1b5e20">（φcPn／φbMn 已含挫屈折減）</text>
+  </g>
+</svg>
+<div class="cap">圖 7-1　ASD 與 LRFD 的逐項對應。<b>前四列一一對應，只有最後一列不同。</b>
+把這張圖記住，你就不需要分別背兩套公式 —— 寫完 LRFD 版本，逐項換名字就是 ASD 版本。</div>
+</div>
+
+<h3>7.2 \(F'_e\) 與 \(F_a\)：兩個常數的來源</h3>
+
+<div class="why">
+<b>\(F'_e = \dfrac{12\pi^2E}{23(KL/r)^2}\) 的 12/23 是什麼？</b>它是 <b>Euler 應力 ÷ 安全係數 23/12</b>：
+$$F_e = \frac{\pi^2 E}{(KL/r)^2}\ \xrightarrow{\ \div\, \text{FS} = 23/12\ }\ F'_e = \frac{12}{23}F_e = \frac{12\pi^2E}{23(KL/r)^2}$$
+其中 \(23/12 = 1.917\) 是 ASD 在<b>彈性挫屈段</b>採用的安全係數。
+<br><br><b>一個很省時間的觀察</b>：\(F_a\) 在彈性段（\(KL/r > C_c\)）的公式<b>與 \(F'_e\) 完全相同</b>。
+所以題目若落在彈性挫屈段，<b>\(F'_e = F_a\)，不必算第二次</b>。
+（注意：\(F_a\) 用兩軸中<b>較大</b>的 \(KL/r\)；\(F'_e\) 用<b>該彎矩對應軸</b>的 \(KL/r\)，兩者可能不同軸。）
+</div>
+
+<div class="box">
+<b>\(F_a\) 的分段與 \(C_c\)</b>
+$$C_c = \sqrt{\frac{2\pi^2E}{F_y}}\quad\text{（A36 ≈ 127；A572 Gr.50 ≈ 107）}$$
+$$KL/r \leq C_c：\quad F_a = \frac{\left[1-\dfrac{(KL/r)^2}{2C_c^2}\right]F_y}{\text{FS}},\qquad
+\text{FS} = \frac{5}{3}+\frac{3(KL/r)}{8C_c}-\frac{(KL/r)^3}{8C_c^3}$$
+$$KL/r > C_c：\quad F_a = \frac{12\pi^2E}{23(KL/r)^2}$$
+<b>\(C_c\) 的來源</b>：令 Euler 應力 ＝ \(F_y\) 得 \(KL/r = \pi\sqrt{E/F_y}\)；ASD 再乘 \(\sqrt2\)（考慮殘留應力使比例限降到 \(F_y/2\)）→ \(C_c = \sqrt{2\pi^2E/F_y}\)。
+<br><b>FS 為何不是常數</b>：\(KL/r = 0\) 時 FS \(= 5/3 = 1.67\)（純材料強度，不確定性低）；
+\(KL/r = C_c\) 時 FS \(= 5/3+3/8-1/8 = 23/12 = 1.92\)（挫屈，不確定性高）——
+<b>且剛好與彈性段的 23/12 銜接，所以曲線在 \(C_c\) 處連續。</b>這是很好的自我檢查。
+</div>
+
+<h3>7.3 手算範例 D：ASD 完整流程，並用 LRFD 反過來驗證</h3>
+
+<div class="box">
+<b>題目設定</b>：同一斷面（\(A_g=219\)、\(S_x=3330\)、\(Z_x=3670\)、\(r_x=17.44\)、\(r_y=10.11\)），
+<b>A36 鋼 \(F_y = 2.5\) tf/cm²</b>，\(L = 700\) cm，兩軸 \(K = 1.0\)（有斜撐構架）。
+服務載重：\(P = 140\) tf、\(M_x = 20\) tf·m（單曲率等值端彎矩）。充分側撐。
+
+<h4>Step 1：實際應力</h4>
+$$f_a = \frac{140}{219} = 0.639\ \text{tf/cm}^2,\qquad
+f_{bx} = \frac{20\times100}{3330} = 0.601\ \text{tf/cm}^2$$
+
+<h4>Step 2：\(F_a\)</h4>
+$$C_c = \sqrt{\frac{2\times9.8696\times2040}{2.5}} = 126.9,\qquad
+\frac{KL}{r_y} = \frac{700}{10.11} = 69.21\ (<C_c\ \Rightarrow\ \text{非彈性段})$$
+$$\text{FS} = \frac{5}{3}+\frac{3(69.21)}{8(126.9)}-\frac{69.21^3}{8(126.9)^3} = 1.6667+0.2046-0.0203 = 1.8509$$
+$$F_a = \frac{\left[1-\dfrac{69.21^2}{2(126.9)^2}\right]2.5}{1.8509} = \frac{0.8512\times2.5}{1.8509} = \underline{1.150\ \text{tf/cm}^2}$$
+$$\frac{f_a}{F_a} = \frac{0.639}{1.150} = 0.556 \geq 0.15\quad\Rightarrow\quad\text{用完整式}$$
+
+<h4>Step 3：\(F'_{ex}\)（用<b>強軸</b>的細長比，因為彎矩繞強軸）</h4>
+$$\frac{KL}{r_x} = \frac{700}{17.44} = 40.14
+\ \Rightarrow\ F'_{ex} = \frac{12\times9.8696\times2040}{23\times40.14^2} = \underline{6.520\ \text{tf/cm}^2}$$
+
+<h4>Step 4：\(F_{bx}\) 與 \(C_m\)</h4>
+$$F_{bx} = 0.66F_y = 1.65\ \text{tf/cm}^2\ (\text{充分側撐、結實斷面}),\qquad
+C_m = 0.6-0.4(-1) = 1.0$$
+
+<h4>Step 5：式（一）穩定式</h4>
+$$\text{放大項} = \frac{1}{1-0.639/6.520} = 1.109$$
+$$0.556 + \frac{1.0\times0.601\times1.109}{1.65} = 0.556 + 0.404 = \underline{0.960 \leq 1.0\ \ \text{OK}}$$
+
+<h4>Step 6：式（二）強度式</h4>
+$$\frac{0.639}{0.6\times2.5} + \frac{0.601}{1.65} = 0.426 + 0.364 = \underline{0.790 \leq 1.0\ \ \text{OK}}$$
+
+<h4>結論</h4>
+$$\text{控制者 = 穩定式（0.960 > 0.790）} \quad\Rightarrow\quad \boxed{\text{斷面適用，利用率 96%}}$$
+</div>
+
+<div class="why">
+<b>用 LRFD 反過來驗證（這是本範例最有價值的部分）</b><br>
+把服務載重乘以約 1.5 得因數化載重：\(P_u = 210\) tf、\(M_{u,1st} = 30\) tf·m。
+$$\lambda_c = \frac{69.21}{\pi}\sqrt{\frac{2.5}{2040}} = 0.771
+\ \Rightarrow\ F_{cr} = 1.949\ \Rightarrow\ \phi_cP_n = 0.85(1.949)(219) = 362.8\ \text{tf}$$
+$$\phi_bM_{nx} = 0.9(2.5)(3670) = 8{,}258\ \text{tf·cm} = 82.58\ \text{tf·m}$$
+$$B_1 = \frac{1.0}{1-210/2737} = 1.083\ \Rightarrow\ M_u = 32.49\ \text{tf·m}$$
+$$\frac{P_u}{\phi_cP_n} = 0.579 \geq 0.2\ \Rightarrow\ 0.579 + \frac{8}{9}\left(\frac{32.49}{82.58}\right) = 0.579+0.350 = 0.929$$
+<b>兩法的利用率：ASD 0.960 vs LRFD 0.929，比值 1.03。</b>
+<br>這就是 ASD／LRFD 題最強的自我檢查：<b>同一個構件用兩法算，利用率應落在 ±10% 以內</b>。
+若你算出 ASD 是 LRFD 的兩倍（或一半），幾乎一定是漏乘／多乘了載重因數，或把 \(F_{bx}\) 與 \(\phi_bM_n\) 的量綱搞混了
+（一個是應力、一個是彎矩）。
+</div>
+
+<div class="trap">
+<b>ASD 三個高頻扣分點</b>
+<ul>
+<li><b>\(F_a\) 用兩軸較大的 \(KL/r\)，\(F'_e\) 用彎矩對應軸的 \(KL/r\)。</b>本例 \(F_a\) 用弱軸（69.21）、\(F'_{ex}\) 用強軸（40.14）
+—— 兩個不同的數字，很容易混用。</li>
+<li><b>兩條式子都要寫。</b>只寫穩定式最多拿七成分。</li>
+<li><b>題目問「最大工作載重／工作彎矩」時要換算回服務值。</b>
+ASD 互制式本來就用服務載重（不放大），但若題目在 LRFD 框架下問「工作彎矩 \(M_w\)」，
+必須把解出的 \(M_u\) 除以載重因數。出自 <a class="qlink" href="problems-view/SS-2020-3.html" target="_blank">SS-2020-3</a>。</li>
+</ul>
+</div>
+
+<div class="box" style="border-left:5px solid var(--ac)">
+<b>§7 因果鏈</b>：ASD 把放大係數寫進分母 \(1-f_a/F'_e\) → \(F'_e\) 就是 Euler 應力除以 23/12 →
+與 \(F_a\) 的彈性段公式同形（可省一次計算）→ 穩定式檢查中段（含放大、\(F_a\) 含挫屈）、
+強度式檢查端部（不放大、容許值 \(0.6F_y\)）→ 兩式都要驗，取嚴者 →
+與 LRFD 的利用率比值應在 ±10% 內，可互相驗算。
+</div>
+</section>
+
+<section id="s8">
+<h2>§8　\(K\) 值、對位圖，以及三代穩定處理法</h2>
+
+<div class="lead">\(K\) 值是本單元的「隱形計分點」：它只是一個乘數，卻因為 \(P_e \propto 1/K^2\) 而主宰整題答案。
+理解規範為什麼最後想擺脫它（直接分析法），比記住對位圖怎麼查更重要。</div>
+
+<h3>8.1 \(K\) 的敏感度：為什麼它值那麼多分</h3>
+
+<table>
+<thead><tr><th>\(K\)</th><th>\(P_e\)（本講義柱，\(L=700\)）</th><th>相對 \(K=1\)</th><th>典型情境</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2,737 tf</td><td>100%</td><td>兩端鉸接／有斜撐構架／\(B_1\) 用的 \(P_{e1}\)</td></tr>
+<tr><td>1.2</td><td>1,900 tf</td><td>69%</td><td>有側移但梁很硬</td></tr>
+<tr><td>1.5</td><td>1,216 tf</td><td>44%</td><td>有側移，一般剛架</td></tr>
+<tr><td><b>1.8</b></td><td><b>845 tf</b></td><td><b>31%</b></td><td>有側移，柱底鉸接（\(G=10\)）</td></tr>
+<tr><td>2.0</td><td>684 tf</td><td>25%</td><td>有側移，柱底接近鉸接</td></tr>
+</tbody>
+</table>
+
+<div class="trap">
+<b>把 \(K=1.8\) 誤用成 \(K=1.0\)，\(P_e\) 會高估 3.24 倍</b>（\(1.8^2\)）。
+以本講義範例 C 為例，\(B_2\) 會從 1.799 掉到 1.10 —— 側移彎矩少算 39%，整題答案不及格。
+<b>這也是為什麼 \(B_1\) 用 \(K=1\)、\(B_2\) 用對位圖 \(K\) 這件事不能記反。</b>
+</div>
+
+<div class="box">
+<b>對位圖速記（\(G\) 值）</b>
+$$G = \frac{\sum(I_c/L_c)}{\sum(I_b/L_b)}\quad\text{（節點處柱的線勁度 ÷ 梁的線勁度）}$$
+<ul>
+<li>基礎<b>固接</b>：\(G = 1.0\)（理論 0，設計取 1）　｜　基礎<b>鉸接</b>：\(G = 10\)（理論 ∞，設計取 10）</li>
+<li><b>兩張圖不要拿錯</b>：無側移圖 \(0.5 \leq K \leq 1.0\)；有側移圖 \(K \geq 1.0\)。
+算出「有側移構架的 \(K = 0.8\)」就是拿錯圖了。</li>
+<li>梁遠端條件修正：遠端固接用 \(I_b/L_b\)；遠端<b>鉸接</b>用 \(\tfrac34(I_b/L_b)\)（勁度較小 → \(G\) 較大 → \(K\) 較大）</li>
+</ul>
+<b>方向檢查</b>：\(G\) 大 ＝ 梁太軟撐不住柱 ＝ 柱端接近鉸接 ＝ \(K\) 大。若你算出「\(G\) 變大而 \(K\) 變小」，方向就錯了。
+</div>
+
+<h3>8.2 三代穩定處理法：規範一直想擺脫 \(K\)</h3>
+
+<div class="fig">
+<svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg">
+  <!-- 三格 -->
+  <rect x="20" y="50" width="270" height="180" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <rect x="315" y="50" width="270" height="180" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2"/>
+  <rect x="610" y="50" width="270" height="180" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+  <!-- 箭頭 -->
+  <line x1="292" y1="140" x2="311" y2="140" stroke="#455a64" stroke-width="2.5"/>
+  <polygon points="311,140 301,135 301,145" fill="#455a64"/>
+  <line x1="587" y1="140" x2="606" y2="140" stroke="#455a64" stroke-width="2.5"/>
+  <polygon points="606,140 596,135 596,145" fill="#455a64"/>
+
+  <text x="155" y="34" font-size="14.5" font-weight="700" fill="#1b5e20" text-anchor="middle">第一代：有效長度法 ELM</text>
+  <text x="450" y="34" font-size="14.5" font-weight="700" fill="#e65100" text-anchor="middle">第二代：B₁／B₂ 放大法</text>
+  <text x="745" y="34" font-size="14.5" font-weight="700" fill="#0d47a1" text-anchor="middle">第三代：直接分析法 DAM</text>
+
+  <g font-size="12.5">
+  <text x="36" y="78" fill="#1b5e20">做法：把穩定效應全部塞進 K</text>
+  <text x="36" y="100" fill="#1b5e20">用一階分析 + 對位圖 K</text>
+  <text x="36" y="126" font-weight="700" fill="#b71c1c">問題：</text>
+  <text x="36" y="146" fill="#37474f">・K 只反映「彈性挫屈模態」</text>
+  <text x="36" y="166" fill="#37474f">・不反映實際載重分佈</text>
+  <text x="36" y="186" fill="#37474f">・靠桿、非均勻載重都算不準</text>
+  <text x="36" y="212" fill="#546e7a">・對位圖假設一堆（等 EI、等載重）</text>
+
+  <text x="331" y="78" fill="#e65100">做法：一階分析 + 兩個放大係數</text>
+  <text x="331" y="100" fill="#e65100">Mu = B₁Mnt + B₂Mlt</text>
+  <text x="331" y="126" font-weight="700" fill="#2e7d32">進步：</text>
+  <text x="331" y="146" fill="#37474f">・二階效應顯式計算</text>
+  <text x="331" y="166" fill="#37474f">・整層 ΣPu 抓到靠桿</text>
+  <text x="331" y="192" font-weight="700" fill="#b71c1c">仍需：</text>
+  <text x="331" y="212" fill="#37474f">・B₂ 還是要側移 K（對位圖）</text>
+
+  <text x="626" y="78" fill="#0d47a1">做法：直接做二階分析，</text>
+  <text x="626" y="100" font-weight="700" fill="#0d47a1">K 一律取 1.0</text>
+  <text x="626" y="126" font-weight="700" fill="#2e7d32">代價（四件事）：</text>
+  <text x="626" y="146" fill="#37474f">① 顯式二階分析（P-Δ + P-δ）</text>
+  <text x="626" y="166" fill="#37474f">② 初始不完美（假想水平力）</text>
+  <text x="626" y="186" fill="#37474f">③ 剛度折減 0.8τa</text>
+  <text x="626" y="206" fill="#37474f">④ ASD 載重先乘 1.6</text>
+  </g>
+  <text x="450" y="262" font-size="13" fill="#546e7a" text-anchor="middle">三代方法解的是同一個問題：「這個構架離側移失穩有多遠？」</text>
+  <text x="450" y="286" font-size="13.5" font-weight="700" fill="#455a64" text-anchor="middle">演化方向：把藏在 K 裡的假設一項項搬到分析裡明說</text>
+  <text x="450" y="308" font-size="12.5" fill="#78909c" text-anchor="middle">考試三代都要會：ELM 與 B₁/B₂ 出現在計算題，DAM 出現在概念題（SS-2011-1）</text>
+</svg>
+<div class="cap">圖 8-1　三代穩定處理法的演化。<b>不是新的取代舊的，而是「假設從隱含變成顯式」。</b>
+DAM 之所以能令 \(K=1.0\)，是因為它已經在分析裡把二階效應、初始不完美、非彈性軟化全部算過一遍 ——
+\(K\) 原本就是這些效應的替身，替身沒必要留著。</div>
+</div>
+
+<h3>8.3 直接分析法的四件事（概念題直接照抄）</h3>
+
+<table>
+<thead><tr><th>要素</th><th>內容</th><th>為什麼</th></tr></thead>
+<tbody>
+<tr><td><b>① 二階分析</b></td><td>同時考慮 <b>P-Δ</b>（整層側移）與 <b>P-δ</b>（構件撓曲）</td><td>一階分析用未變形幾何寫平衡方程，低估內力。<b>兩者缺一不可</b>是本題常見陷阱</td></tr>
+<tr><td><b>② 初始不完美</b></td><td>直接在模型中把節點偏移（施工容許值 \(H/500\)）；<b>或</b>改用<b>等效假想水平力</b>（Notional Load）\(N_i = 0.002\,\alpha Y_i\)</td><td>真實結構不可能完全鉛直。假想水平力是「把幾何偏斜換算成等效外力」，建模較方便</td></tr>
+<tr><td><b>③ 剛度折減</b></td><td>\(EI^* = 0.8\tau_a EI\)、\(EA^* = 0.8EA\)；<br>\(\tau_a = 1.0\)（\(\alpha P_r/P_y \leq 0.5\)）／\(4(\alpha P_r/P_y)(1-\alpha P_r/P_y)\)（&gt; 0.5）</td><td>接近極限時<b>殘留應力使斷面部分降伏</b>，實際勁度低於彈性值。0.8 涵蓋一般軟化，\(\tau_a\) 額外處理高軸力柱</td></tr>
+<tr><td><b>④ ASD ×1.6</b></td><td>ASD 分析時先把服務載重乘 1.6，分析完再除回 1.6 與容許強度比較</td><td>DAM 是在 LRFD 因數化載重的架構下開發的（見下方推導）</td></tr>
+</tbody>
+</table>
+
+<div class="why">
+<b>1.6 的推導（考題直接問過，<a class="qlink" href="problems-view/SS-2011-1.html" target="_blank">SS-2011-1</a> 第四小題）</b>
+$$\frac{P_u}{P_a} = \frac{1.2D+1.6L}{D+L}$$
+兩個極端：
+$$L = 0：\ \frac{1.2D}{D} = 1.2\qquad\qquad D = 0\ (L \gg D)：\ \frac{1.6L}{L} = 1.6$$
+所以比值介於 1.2～1.6 之間。<b>規範取最保守的上限 1.6</b>，確保任何載重比例下二階效應都不被低估。
+<br><br><b>為什麼不能取 1.2 或平均值？</b>因為二階效應對軸力是<b>非線性</b>的（\(1/(1-P/P_e)\)）——
+低估軸力造成的低估放大會被進一步放大。保守取上限是唯一安全的選擇。
+<br><br><b>三行答題版</b>：① DAM 基於 LRFD 因數化載重開發 → ② 寫出 \(P_u/P_a\) 比值 →
+③ \(L \gg D\) 時趨近 1.6 → ④ 取最保守上限涵蓋所有載重比例。
+</div>
+
+<div class="trap">
+<b>剛度折減「什麼情況下需要」是這題的第三小題，容易只答一半。</b>
+完整答案有兩層：
+<ul>
+<li><b>一律</b>要做 \(0.8\) 的整體折減（所有貢獻側向勁度的構件）。</li>
+<li><b>額外</b>的 \(\tau_a\) 折減只在 \(\alpha P_r/P_y > 0.5\)（軸力超過降伏軸力一半）時才啟動 ——
+因為那時殘留應力造成的部分降伏才顯著。</li>
+</ul>
+只答「非彈性時才折減」會被扣分，因為 0.8 是無條件的。
+</div>
+
+<div class="box" style="border-left:5px solid var(--ac)">
+<b>§8 因果鏈</b>：\(P_e \propto 1/K^2\) → \(K\) 值主宰答案 → 但 \(K\) 只是「彈性挫屈模態」的替身，
+不反映實際載重分佈與靠桿 → 第二代改以 \(B_1/B_2\) 顯式放大（\(B_2\) 仍需側移 \(K\)）→
+第三代 DAM 把所有假設搬進分析（二階＋初始不完美＋剛度折減＋ASD×1.6）→ 於是 \(K\) 可一律取 1.0。
+</div>
+</section>
+<section id="s9">
+<h2>§9　耐震延伸：強柱弱梁與 \(M_{pc}\) 的軸壓修正</h2>
+
+<div class="lead">梁柱互制在耐震設計裡換了一個問法：<b>不是「這根柱夠不夠強」，而是「柱比梁強嗎」</b>。
+它與 SD-U3-1 共用，是本單元與耐震章節的接縫。</div>
+
+<h3>9.1 為什麼一定要柱比梁強</h3>
+
+<div class="fig">
+<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg">
+  <line x1="450" y1="12" x2="450" y2="318" stroke="#b0bec5" stroke-width="2" stroke-dasharray="7,5"/>
+
+  <!-- 左：梁降伏機制（好） -->
+  <text x="225" y="30" font-size="15.5" font-weight="700" fill="#2e7d32" text-anchor="middle">梁先降伏（強柱弱梁）— 好</text>
+  <!-- 三層框架 -->
+  <g stroke="#455a64" stroke-width="4" fill="none">
+    <line x1="110" y1="250" x2="110" y2="70"/><line x1="340" y1="250" x2="340" y2="70"/>
+    <line x1="110" y1="130" x2="340" y2="130"/><line x1="110" y1="190" x2="340" y2="190"/>
+    <line x1="110" y1="70" x2="340" y2="70"/>
+  </g>
+  <line x1="90" y1="250" x2="360" y2="250" stroke="#455a64" stroke-width="2"/>
+  <!-- 梁端塑鉸（多處） -->
+  <g fill="#2e7d32">
+    <circle cx="130" cy="70" r="7"/><circle cx="320" cy="70" r="7"/>
+    <circle cx="130" cy="130" r="7"/><circle cx="320" cy="130" r="7"/>
+    <circle cx="130" cy="190" r="7"/><circle cx="320" cy="190" r="7"/>
+  </g>
+  <circle cx="110" cy="250" r="7" fill="#2e7d32"/>
+  <circle cx="340" cy="250" r="7" fill="#2e7d32"/>
+  <text x="225" y="278" font-size="13" fill="#37474f" text-anchor="middle">塑鉸分散在每一層的梁端</text>
+  <text x="225" y="300" font-size="13" font-weight="700" fill="#1b5e20" text-anchor="middle">很多個消能點 → 韌性高、變形分散</text>
+  <text x="225" y="320" font-size="12.5" fill="#546e7a" text-anchor="middle">梁壞了樓不會倒（梁不承重力柱的軸力）</text>
+
+  <!-- 右：柱降伏機制（壞） -->
+  <text x="675" y="30" font-size="15.5" font-weight="700" fill="#c62828" text-anchor="middle">柱先降伏（弱柱強梁）— 災難</text>
+  <!-- 原位置（虛線） -->
+  <g stroke="#b0bec5" stroke-width="2" stroke-dasharray="5,4" fill="none">
+    <line x1="560" y1="250" x2="560" y2="70"/><line x1="790" y1="250" x2="790" y2="70"/>
+    <line x1="560" y1="70" x2="790" y2="70"/>
+  </g>
+  <!-- 上部結構：剛體整體平移 48 px -->
+  <g stroke="#455a64" stroke-width="4" fill="none">
+    <line x1="608" y1="190" x2="608" y2="70"/><line x1="838" y1="190" x2="838" y2="70"/>
+    <line x1="608" y1="190" x2="838" y2="190"/><line x1="608" y1="130" x2="838" y2="130"/>
+    <line x1="608" y1="70" x2="838" y2="70"/>
+  </g>
+  <!-- 軟層：底層柱歪掉 -->
+  <line x1="560" y1="250" x2="608" y2="190" stroke="#c62828" stroke-width="4"/>
+  <line x1="790" y1="250" x2="838" y2="190" stroke="#c62828" stroke-width="4"/>
+  <line x1="540" y1="250" x2="856" y2="250" stroke="#455a64" stroke-width="2"/>
+  <!-- 側移量標註 -->
+  <line x1="560" y1="60" x2="608" y2="60" stroke="#6a1b9a" stroke-width="1.8"/>
+  <line x1="560" y1="54" x2="560" y2="66" stroke="#6a1b9a" stroke-width="1.8"/>
+  <line x1="608" y1="54" x2="608" y2="66" stroke="#6a1b9a" stroke-width="1.8"/>
+  <text x="584" y="48" font-size="12.5" font-weight="700" fill="#6a1b9a" text-anchor="middle">Δ 全部集中在這一層</text>
+  <!-- 柱端塑鉸（只有底層） -->
+  <circle cx="560" cy="250" r="8" fill="#c62828"/>
+  <circle cx="790" cy="250" r="8" fill="#c62828"/>
+  <circle cx="608" cy="190" r="8" fill="#c62828"/>
+  <circle cx="838" cy="190" r="8" fill="#c62828"/>
+  <text x="700" y="222" font-size="13" font-weight="700" fill="#b71c1c" text-anchor="middle">軟層（soft story）</text>
+  <text x="675" y="278" font-size="13" fill="#37474f" text-anchor="middle">塑鉸集中在同一層的柱端</text>
+  <text x="675" y="300" font-size="13" font-weight="700" fill="#b71c1c" text-anchor="middle">只有一個消能層 → 變形需求全壓在它身上</text>
+  <text x="675" y="320" font-size="12.5" fill="#546e7a" text-anchor="middle">柱一壞，它上面所有樓層的重量無處可去 → 倒塌</text>
+</svg>
+<div class="cap">圖 9-1　兩種機制的差別不是「哪個構件先壞」，而是<b>消能點的數量與位置</b>。
+左邊有 8 個塑鉸分擔變形；右邊只有 4 個，且集中在同一層 —— 該層的轉角需求是左邊的好幾倍。
+更關鍵的是：<b>梁失去強度只是失去一根梁，柱失去強度是失去上方所有樓層的支撐</b>。</div>
+</div>
+
+<h3>9.2 兩個修正，兩個方向</h3>
+
+$$\frac{\sum M^*_{pc}}{\sum M^*_{pb}} > 1.0,\qquad
+M^*_{pc} = Z_c\left(F_{yc} - \frac{P_u}{A_g}\right),\qquad
+M^*_{pb} = R_y Z_b F_{yb}\ (+\ \text{剪力偏移項})$$
+
+<div class="why">
+<b>兩個修正都往「讓比值變小」的方向走 —— 這不是巧合，是能力設計的邏輯。</b>
+<ul>
+<li><b>柱側要打折（\(-P_u/A_g\)）</b>：柱同時承受軸壓，軸力已經吃掉一部分斷面強度，
+剩下能拿來抗彎的比純彎時少。<b>這其實就是 P-M 互制式在耐震條文裡的另一種寫法</b>：
+\(M_{pc}\) 是「扣掉軸力佔用後的剩餘彎矩容量」。</li>
+<li><b>梁側要放大（\(\times R_y\)）</b>：\(R_y\) 是<b>超強係數</b>（SN490 約 1.2、A36 約 1.5），
+反映實際鋼材的降伏強度高於規範標稱值。設計時必須假設<b>梁比你想的更強</b>，
+因為梁真的更強的話，它就不會如你所願地先降伏。</li>
+</ul>
+<b>能力設計的通則</b>：對「你希望先壞的構件」（梁）要<b>高估</b>它的強度；
+對「你希望不壞的構件」（柱）要<b>低估</b>它的強度。兩邊都往保守走，破壞順序才有保障。
+</div>
+
+<h3>9.3 手算範例 E：兩個修正各自都足以翻盤</h3>
+
+<div class="box">
+<b>題目設定</b>：某 SMRF 內部節點。柱為本講義斷面（\(Z_c = 3{,}670\) cm³、\(A_g = 219\) cm²），
+\(F_{yc} = 3.5\) tf/cm²，柱軸力 \(P_u = 250\) tf（上下柱相同）。
+梁 \(Z_b = 2{,}200\) cm³、\(F_{yb} = 3.5\) tf/cm²、\(R_y = 1.2\)（左右梁相同）。
+節點上下各一柱、左右各一梁。檢核強柱弱梁。
+
+<h4>Step 1：柱側（含軸壓修正）</h4>
+$$\frac{P_u}{A_g} = \frac{250}{219} = 1.142\ \text{tf/cm}^2$$
+$$M^*_{pc} = 3670\times(3.5-1.142) = 3670\times2.358 = 8{,}656\ \text{tf·cm} = 86.56\ \text{tf·m}$$
+$$\sum M^*_{pc} = 2\times86.56 = \underline{173.1\ \text{tf·m}}$$
+
+<h4>Step 2：梁側（含 \(R_y\)）</h4>
+$$M^*_{pb} = 1.2\times2200\times3.5 = 9{,}240\ \text{tf·cm} = 92.40\ \text{tf·m}$$
+$$\sum M^*_{pb} = 2\times92.40 = \underline{184.8\ \text{tf·m}}$$
+
+<h4>Step 3：比值</h4>
+$$\frac{\sum M^*_{pc}}{\sum M^*_{pb}} = \frac{173.1}{184.8} = \boxed{0.937 < 1.0\quad\textbf{不滿足強柱弱梁}}$$
+
+<h4>Step 4：兩種漏算各會得到什麼答案</h4>
+<table>
+<thead><tr><th>做法</th><th>\(\sum M^*_{pc}\)</th><th>\(\sum M^*_{pb}\)</th><th>比值</th><th>結論</th></tr></thead>
+<tbody>
+<tr><td><b>正確</b></td><td>173.1</td><td>184.8</td><td><b>0.937</b></td><td><b>NG</b></td></tr>
+<tr><td>漏軸壓修正（用 \(Z_cF_{yc}\)）</td><td>256.9</td><td>184.8</td><td>1.390</td><td>誤判 OK ✗</td></tr>
+<tr><td>漏 \(R_y\)（用 \(Z_bF_{yb}\)）</td><td>173.1</td><td>154.0</td><td>1.124</td><td>誤判 OK ✗</td></tr>
+<tr><td>兩者都漏</td><td>256.9</td><td>154.0</td><td>1.668</td><td>誤判 OK ✗（差 78%）</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="why">
+<b>這個範例的重點：兩個修正<u>各自單獨</u>就足以把答案從 NG 翻成 OK。</b>
+換句話說，漏掉任何一個都不是「稍微不保守」，而是<b>結論完全相反</b>。
+<br><br><b>自我檢查</b>：軸壓修正的折減幅度 \(= P_u/(A_gF_{yc}) = 250/(219\times3.5) = 32.6\%\) ——
+即柱軸力佔降伏軸力的比例。<b>這個比例通常在 20～40% 之間</b>；
+若你算出折減 5% 或 80%，回去檢查 \(P_u\) 的單位或 \(A_g\)。
+<br><br><b>不滿足時怎麼辦</b>（答題要寫出來）：① 加大柱斷面；② 改用 RBS 削弱梁（見 <a class="qlink" href="lecture-SS-U1-4.html#s7" target="_blank">SS-U1-4 講義 §7.4</a>）；
+③ 降低該柱軸力（調整重力路徑）。三者中②最經濟，也是實務最常見的做法。
+</div>
+
+<div class="box" style="border-left:5px solid var(--ac)">
+<b>§9 因果鏈</b>：柱壞了上方樓層無處支撐 → 必須讓梁先降伏 → 但實際鋼材比標稱強（\(R_y\)）→ 梁側要放大；
+柱的軸力已吃掉部分斷面強度（P-M 互制的另一種寫法）→ 柱側要折減 →
+兩邊都往保守走 → \(\sum M^*_{pc}/\sum M^*_{pb} > 1.0\)；不滿足時加大柱或削弱梁（RBS）。
+</div>
+</section>
+
+<section id="s10">
+<h2>§10　九條因果鏈與解題決策流程</h2>
+
+<h3>10.1 把整個單元濃縮成九句話</h3>
+
+<div class="box">
+<ol>
+<li><b>核心</b>：梁柱同時有 \(P\) 與側向變形 → \(P\times\)變形＝額外彎矩 → 迴圈收斂到一個放大倍率 →
+所以「需求會自己長大」，這是本單元唯一的新東西。</li>
+<li><b>兩條腿</b>：需求側（\(B_1/B_2\) 或 \(C_m/F'_e\)）＋ 強度側（\(\phi_cP_n\) 來自 U1-1、\(\phi_bM_n\) 來自 U1-2），
+在 P-M 互制式會合。</li>
+<li><b>兩種二階效應</b>：構件自彎（P-δ → \(B_1\)）／整層平移（P-Δ → \(B_2\)）；
+判斷法是「柱兩端有沒有相對移動」。</li>
+<li><b>放大係數的推導</b>：微分方程多了 \(Py\) 項 → 有效勁度 \((P_{cr}-P)\) → \(D_m = 1/(1-P/P_{cr})\) →
+勁度歸零即挫屈。</li>
+<li><b>\(C_m\)</b>：推導假設均勻彎矩（最不利）→ 真實不均勻要折減 → 單曲率累積變形（\(C_m\) 大）、
+雙曲率抵消（\(C_m\) 小）→ \(B_1 \geq 1.0\)。</li>
+<li><b>\(B_2\)</b>：側移是整層的事 → \(\sum\) 涵蓋整層 → 靠桿進分子不進分母 → 以 \(\sum P_u/\sum P_{e2} \leq 0.6\) 封頂。</li>
+<li><b>P-M 互制式</b>：利用率相加 ≤ 1 → 真實包絡線外凸，規範用內接雙折線 →
+0.2 為分界，8/9 與 0.9 是為了讓折線連續。</li>
+<li><b>ASD</b>：放大藏在 \(1-f_a/F'_e\) 分母裡；\(F'_e\) ＝ Euler ÷ (23/12)；
+穩定式查中段、強度式查端部，兩式都要驗；與 LRFD 利用率應差 &lt; 10%。</li>
+<li><b>\(K\) 與 DAM</b>：\(P_e \propto 1/K^2\) → \(K\) 主宰答案 → 但 \(K\) 只是替身 →
+DAM 把二階、初始不完美、剛度折減、ASD×1.6 全部顯式化 → 於是 \(K\) 可取 1.0。</li>
+</ol>
+</div>
+
+<h3>10.2 解題決策流程</h3>
+
+<div class="fig">
+<svg viewBox="0 0 900 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ar3" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0,0 10,4 0,8" fill="#455a64"/>
+    </marker>
+  </defs>
+  <g font-size="12.5" fill="#263238">
+
+  <!-- 起點 -->
+  <rect x="290" y="18" width="320" height="42" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+  <text x="450" y="44" text-anchor="middle" font-weight="700" fill="#0d47a1">梁柱題 → 紙上先畫「需求／強度」兩欄</text>
+  <line x1="450" y1="60" x2="450" y2="84" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+
+  <!-- 菱形 0：ASD or LRFD -->
+  <polygon points="300,124 450,86 600,124 450,162" fill="#fff9c4" stroke="#ef6c00" stroke-width="2"/>
+  <text x="450" y="129" text-anchor="middle" font-weight="700">題目用 ASD 還是 LRFD？</text>
+  <!-- ASD 分支 -->
+  <line x1="300" y1="124" x2="176" y2="124" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+  <text x="238" y="116" text-anchor="middle" font-weight="700" fill="#c62828">ASD</text>
+  <rect x="20" y="176" width="300" height="118" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+  <text x="170" y="198" text-anchor="middle" font-weight="700" fill="#b71c1c">ASD 路線（§7）</text>
+  <text x="34" y="220">① fa=P/A、fb=M/S</text>
+  <text x="34" y="240">② Fa（Cc 分段，用較大 KL/r）</text>
+  <text x="34" y="260">③ F'e（用彎矩軸 KL/r）、Cm、Fbx</text>
+  <text x="34" y="280" fill="#b71c1c" font-weight="700">④ 穩定式 + 強度式，兩式都寫</text>
+  <line x1="176" y1="124" x2="176" y2="174" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+  <!-- ASD 路線：沿最左側下行，避開 H1-1a 方塊，直接匯入終點 -->
+  <line x1="170" y1="294" x2="170" y2="306" stroke="#455a64" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="170" y1="306" x2="10" y2="306" stroke="#455a64" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="10" y1="306" x2="10" y2="753" stroke="#455a64" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="10" y1="753" x2="262" y2="753" stroke="#455a64" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#ar3)"/>
+  <!-- LRFD 分支 -->
+  <text x="468" y="182" font-weight="700" fill="#1565c0">LRFD</text>
+  <line x1="450" y1="162" x2="450" y2="194" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+
+  <!-- 右腿 -->
+  <rect x="620" y="176" width="272" height="118" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="756" y="198" text-anchor="middle" font-weight="700" fill="#1b5e20">右腿：強度側（§5）</text>
+  <text x="634" y="220">φcPn：KL/r 取兩軸較大，φc=0.85</text>
+  <text x="634" y="240">φbMnx：Lb 三區段（LTB）</text>
+  <text x="634" y="260">φbMny：min(FyZy, 1.5FySy)</text>
+  <text x="634" y="282" fill="#b71c1c">弱軸沒有 LTB，但有上限！</text>
+
+  <!-- 菱形 1：有側移? -->
+  <polygon points="298,232 450,196 602,232 450,268" fill="#fff9c4" stroke="#ef6c00" stroke-width="2"/>
+  <text x="450" y="228" text-anchor="middle" font-weight="700">構架會側移嗎？</text>
+  <text x="450" y="248" text-anchor="middle" font-size="11.5" fill="#546e7a">（有斜撐／剪力牆 = 不會）</text>
+  <line x1="450" y1="268" x2="450" y2="300" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+
+  <!-- 分岔：兩個 box -->
+  <line x1="240" y1="316" x2="660" y2="316" stroke="#455a64" stroke-width="2"/>
+  <line x1="450" y1="300" x2="450" y2="316" stroke="#455a64" stroke-width="2"/>
+  <line x1="300" y1="316" x2="300" y2="336" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+  <line x1="620" y1="316" x2="620" y2="336" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+  <text x="270" y="310" font-weight="700" fill="#2e7d32">不會</text>
+  <text x="640" y="310" font-weight="700" fill="#c62828">會</text>
+
+  <rect x="150" y="338" width="300" height="96" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.8"/>
+  <text x="300" y="360" text-anchor="middle" font-weight="700" fill="#1b5e20">只有 B₁（§3）</text>
+  <text x="164" y="382">Mlt = 0，Mu = B₁·Mnt</text>
+  <text x="164" y="402">Pe1 = π²EI/(KL)²，K = 1</text>
+  <text x="164" y="422">Cm = 0.6 − 0.4(M₁/M₂)，B₁ ≥ 1.0</text>
+
+  <rect x="470" y="338" width="410" height="96" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="1.8"/>
+  <text x="675" y="360" text-anchor="middle" font-weight="700" fill="#b71c1c">B₁ 與 B₂ 都要（§3＋§4）</text>
+  <text x="484" y="382">先拆 Mnt（阻止側移）與 Mlt（純側移）</text>
+  <text x="484" y="402">B₁ 用 K=1；B₂ 用 側移 K（對位圖）</text>
+  <text x="484" y="422">ΣPu／ΣPe2 整層（含靠桿！）≤ 0.6</text>
+
+  <!-- 匯流 -->
+  <line x1="300" y1="434" x2="300" y2="458" stroke="#455a64" stroke-width="2"/>
+  <line x1="675" y1="434" x2="675" y2="458" stroke="#455a64" stroke-width="2"/>
+  <line x1="300" y1="458" x2="675" y2="458" stroke="#455a64" stroke-width="2"/>
+  <line x1="450" y1="458" x2="450" y2="482" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+  <rect x="286" y="484" width="330" height="44" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="2"/>
+  <text x="451" y="511" text-anchor="middle" font-weight="700" fill="#e65100">Mu = B₁·Mnt + B₂·Mlt（二階彎矩）</text>
+  <line x1="450" y1="528" x2="450" y2="552" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+  <!-- 右腿匯入 -->
+  <line x1="756" y1="294" x2="756" y2="506" stroke="#455a64" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="756" y1="506" x2="756" y2="590" stroke="#455a64" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="756" y1="590" x2="620" y2="590" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+
+  <!-- 菱形 2：0.2 -->
+  <polygon points="300,592 450,554 600,592 450,630" fill="#fff9c4" stroke="#ef6c00" stroke-width="2"/>
+  <text x="450" y="590" text-anchor="middle" font-weight="700">Pu / φcPn ≥ 0.2 ？</text>
+  <text x="450" y="610" text-anchor="middle" font-size="11.5" fill="#546e7a">（軸力主控 vs 彎矩主控）</text>
+  <line x1="300" y1="592" x2="216" y2="592" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+  <text x="256" y="584" font-weight="700" fill="#c62828">是</text>
+  <line x1="600" y1="592" x2="684" y2="592" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+  <text x="644" y="584" font-weight="700" fill="#2e7d32">否</text>
+  <rect x="30" y="632" width="270" height="62" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.8"/>
+  <text x="44" y="652" font-weight="700" fill="#0d47a1">H1-1a（軸力主控）：</text>
+  <text x="44" y="670" font-size="11.5">Pu/φcPn + (8/9) ×</text>
+  <text x="44" y="686" font-size="11.5">( Mux/φbMnx + Muy/φbMny ) ≤ 1.0</text>
+  <line x1="216" y1="592" x2="216" y2="630" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+  <rect x="610" y="632" width="270" height="62" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.8"/>
+  <text x="624" y="652" font-weight="700" fill="#0d47a1">H1-1b（彎矩主控）：</text>
+  <text x="624" y="670" font-size="11.5">Pu/(2φcPn) +</text>
+  <text x="624" y="686" font-size="11.5">( Mux/φbMnx + Muy/φbMny ) ≤ 1.0</text>
+  <line x1="684" y1="592" x2="684" y2="630" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+  <line x1="165" y1="694" x2="165" y2="700" stroke="#455a64" stroke-width="2"/>
+  <line x1="745" y1="694" x2="745" y2="700" stroke="#455a64" stroke-width="2"/>
+  <line x1="165" y1="700" x2="745" y2="700" stroke="#455a64" stroke-width="2"/>
+  <line x1="450" y1="700" x2="450" y2="722" stroke="#455a64" stroke-width="2" marker-end="url(#ar3)"/>
+
+  <!-- 終點 -->
+  <rect x="266" y="724" width="370" height="58" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="2.5"/>
+  <text x="451" y="748" text-anchor="middle" font-weight="700" fill="#b71c1c">利用率 ≤ 1.0 ？　答案應是「幾成」的量級</text>
+  <text x="451" y="770" text-anchor="middle" font-size="11.5" fill="#546e7a">耐震題再加：ΣMpc*／ΣMpb* &gt; 1.0（§9）</text>
+  </g>
+</svg>
+<div class="cap">圖 10-1　梁柱題的完整判斷路徑。三個分歧點：<b>ASD 還是 LRFD</b>、<b>會不會側移</b>（決定要不要 \(B_2\)）、
+<b>軸力比是否 ≥ 0.2</b>（決定用哪條互制式）。綠色的右腿（強度側）不論走哪條路都要算，
+而且它就是 U1-1 與 U1-2 的成果 —— <b>這一格算不出來，代表要回去補前兩個單元</b>。</div>
+</div>
+</section>
+<section id="s11">
+<h2>§11　歷屆考點對應表</h2>
+
+<div class="lead">本單元 12 題（主分類 11、副分類 1）。題號可直接點開完整解析。
+<b>本單元題數不多但單題分數高（多為 25～30 分的計算題），投報率是全科最高的之一。</b></div>
+
+<h3>11.1 主分類（11 題）</h3>
+
+<table>
+<thead><tr><th>題號</th><th>考年</th><th>設計法</th><th>考點群</th><th>本講義章節</th></tr></thead>
+<tbody>
+<tr><td><a class="qlink" href="problems-view/SS-2003-4.html" target="_blank">SS-2003-4</a></td><td>92</td><td>ASD</td><td>雙軸彎矩、P-M 互制、\(C_m\)、\(F'_e\)、<b>穩定式＋強度式</b>、側移構架、W12×170</td><td>§7（全節）</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2004-4.html" target="_blank">SS-2004-4</a></td><td>93</td><td>ASD</td><td>\(C_m\)、<b>懸臂柱</b>、弱軸彎曲、<b>45° 斜置構材</b>、互制方程式、有效長度</td><td>§3.1、§7、§8.1</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2007-2.html" target="_blank">SS-2007-2</a></td><td>96</td><td>ASD</td><td>雙軸彎矩、<b>LTB</b>、\(C_m\) 放大、\(F'_e\)、彈性挫屈、H 型鋼</td><td>§5.2、§7</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2008-4.html" target="_blank">SS-2008-4</a></td><td>97</td><td>ASD</td><td>P-M 互制、<b>偏心軸壓</b>、側向力、有效長度、\(F_a\)／\(F_{bx}\)、穩定式＋強度式</td><td>§7</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2011-1.html" target="_blank">SS-2011-1</a></td><td>100</td><td>概念</td><td><b>直接分析法</b>（DAM）、二階分析、初始不完美、剛度修正、<b>ASD 1.6 推導</b>、P-Δ／P-δ、假想水平力</td><td>§8.2、§8.3、§1</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2012-3.html" target="_blank">SS-2012-3</a></td><td>101</td><td>LRFD</td><td>P-M 互制、雙軸彎矩、<b>斜撐構架</b>（只需 \(B_1\)）、弱軸挫屈、固接柱、有效長度</td><td>§3、§5、§6</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2013-4.html" target="_blank">SS-2013-4</a></td><td>102</td><td>LRFD</td><td>二階效應、<b>\(B_1\)＋\(B_2\) 完整計算</b>、無側撐剛架、對位圖 \(K\)、\(M_{nt}\)／\(M_{lt}\)、<b>層間穩定 \(\sum P_{eK}\)</b></td><td>§4（全節）、§8.1</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2014-4.html" target="_blank">SS-2014-4</a></td><td>103</td><td>LRFD</td><td>P-M 互制、\(B_1\)＋\(B_2\)、二階效應、斜撐構架、<b>地震力組合</b>（副分類 SD-U3-1）</td><td>§3、§4、§6</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2019-3.html" target="_blank">SS-2019-3</a></td><td>108</td><td>ASD</td><td>偏心載重、互制公式、\(C_m\)、\(F'_e\)、LTB、\(C_b\)、弱軸挫屈、<b>P-M 互制圖繪製</b></td><td>§6.1、§7、§5.2</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2020-3.html" target="_blank">SS-2020-3</a></td><td>109</td><td>LRFD</td><td>雙軸彎矩、\(B_1\) 放大、有效長度、<b>\(M_1/M_2\) 符號判斷</b>、<b>回算工作彎矩 \(M_{wy}\)</b></td><td>§3.1、§6、§7.3</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2022-1.html" target="_blank">SS-2022-1</a></td><td>111</td><td>LRFD</td><td><b>箱形柱</b>、雙軸彎矩、軸壓、P-M 互制、<b>整體＋局部挫屈</b>、剪力強度、有效長細比</td><td>§5、§6</td></tr>
+</tbody>
+</table>
+
+<h3>11.2 副分類（1 題）</h3>
+
+<table>
+<thead><tr><th>題號</th><th>考年</th><th>主分類</th><th>梁柱部分考什麼</th><th>本講義章節</th></tr></thead>
+<tbody>
+<tr><td><a class="qlink" href="problems-view/SS-2009-1.html" target="_blank">SS-2009-1</a></td><td>98</td><td>結構耐震設計</td><td><b>強柱弱梁</b>、梁柱彎矩強度比、容量設計、SMRF、P-M 互制曲線、\(R_y\) 超強係數</td><td>§9（全節）</td></tr>
+</tbody>
+</table>
+
+<h3>11.3 考點群的出題頻次（決定複習順序）</h3>
+
+<table>
+<thead><tr><th>考點群</th><th>題數</th><th>章節</th><th>優先度</th></tr></thead>
+<tbody>
+<tr><td>P-M 互制式（含互制圖繪製）</td><td>8</td><td>§6</td><td>★★★</td></tr>
+<tr><td>雙軸彎矩（兩軸都要算 \(B_1\)、\(\phi_bM_n\)）</td><td>5</td><td>§3.2、§5.2</td><td>★★★</td></tr>
+<tr><td>ASD 互制（穩定式＋強度式、\(C_m\)、\(F'_e\)）</td><td>5</td><td>§7</td><td>★★★</td></tr>
+<tr><td>\(B_1\)／\(B_2\) 二階放大（含 \(M_{nt}\)／\(M_{lt}\) 拆解）</td><td>4</td><td>§3、§4</td><td>★★★</td></tr>
+<tr><td>有效長度 \(K\) 與對位圖</td><td>4</td><td>§8.1</td><td>★★</td></tr>
+<tr><td>LTB 併入梁柱（\(F_{bx}\)／\(\phi_bM_{nx}\)）</td><td>3</td><td>§5.2</td><td>★★</td></tr>
+<tr><td>直接分析法／穩定設計哲學</td><td>1</td><td>§8.2、§8.3</td><td>★★（概念題必考型）</td></tr>
+<tr><td>強柱弱梁／耐震容量設計</td><td>1</td><td>§9</td><td>★★（與 SD-U3-1 共用）</td></tr>
+</tbody>
+</table>
+
+<div class="why">
+<b>一個值得注意的分佈</b>：本單元 <b>2003～2008 年五題全是 ASD</b>，<b>2012 年之後轉向 LRFD</b>，
+而 2019 年又出了一題 ASD。<b>所以不能只準備 LRFD。</b>
+好消息是 §7 那張對應圖（圖 7-1）讓你用同一套理解走完兩種寫法 ——
+真正需要額外記的只有 \(F'_e = 12\pi^2E/[23(KL/r)^2]\)、\(C_c\)、\(F_a\) 的 FS 式子，以及「兩式都要驗」。
+</div>
+</section>
+
+<section id="s12">
+<h2>§12　陷阱總表（考前十分鐘掃過）</h2>
+
+<div class="lead">16 條，全部來自本單元實際考題或知識庫 <code>traps/BEAM-COLUMN-TRAPS</code>。
+格式：<b>觸發信號 → 錯誤思維 → 正確認知</b>。</div>
+
+<table>
+<thead><tr><th style="width:4%">#</th><th style="width:20%">觸發信號</th><th style="width:32%">錯誤思維</th><th style="width:34%">正確認知</th><th style="width:10%">出處</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>拿到一階分析的彎矩</td><td>直接代進互制式</td><td><b>必須先做二階放大</b>（\(B_1\)、\(B_2\) 或 ASD 的 \(1/(1-f_a/F'_e)\)）。漏做的代價：本講義範例 C 少估 11 個百分點</td><td>通則</td></tr>
+<tr><td>2</td><td>同一題同時要 \(B_1\) 與 \(B_2\)</td><td>兩個都用對位圖的 \(K\)（或都用 \(K=1\)）</td><td><b>\(P_{e1}\) 用非側移 \(K\)（取 1.0）；\(\sum P_{e2}\) 用側移 \(K\)（對位圖，&gt;1）</b>。用錯：\(P_e\) 差 \(K^2\) 倍</td><td>PM-02</td></tr>
+<tr><td>3</td><td>框架有多根柱，求 \(B_2\)</td><td>\(\sum P_{e2}\) 只算目標柱</td><td><b>\(\sum\) 是整層所有柱</b>。側移是整層一起發生的，不是單根柱的事</td><td>SS-2013-4</td></tr>
+<tr><td>4</td><td>構架裡有兩端鉸接的重力柱</td><td>靠桿沒有側向勁度，所以不用管</td><td><b>靠桿進 \(\sum P_u\)（分子）但不進 \(\sum P_{e2}\)（分母）</b>。漏算會讓 \(B_2\) 少一半（範例 B）</td><td>§4.3</td></tr>
+<tr><td>5</td><td>\(C_m\) 的 \(M_1/M_2\)</td><td>單曲率取正</td><td><b>單曲率取負（\(C_m\) 大、不利）；雙曲率取正（\(C_m\) 小、有利）</b>。判斷法：看變形會不會累積到同一側</td><td>PM-04</td></tr>
+<tr><td>6</td><td>\(|M_1/M_2|\) 算出 &gt; 1</td><td>照算</td><td>\(M_2\) 必須是<b>絕對值較大</b>的端彎矩（放分母），所以 \(|M_1/M_2| \leq 1\) 恆成立</td><td>§3.1</td></tr>
+<tr><td>7</td><td>算出 \(B_1 < 1\)</td><td>以為算錯，回頭找錯</td><td><b>\(B_1 \geq 1.0\) 是規定的下限，取 1.0 即可</b>。一階分析已低估彎矩，不可再往下折</td><td>§3.2</td></tr>
+<tr><td>8</td><td>構件中間有橫向載重</td><td>照用 \(C_m = 0.6-0.4(M_1/M_2)\)</td><td>該公式僅適用「只有端彎矩」。有橫向載重改用定值：<b>有束制 0.85／無束制 1.0</b></td><td>§3.1</td></tr>
+<tr><td>9</td><td>雙軸彎矩題</td><td>算一個 \(B_1\) 套兩軸</td><td><b>\(P_{e1} \propto I\)</b>，兩軸差很多。本講義柱的弱軸放大 37%、強軸只 10%（範例 A）</td><td>§3.2</td></tr>
+<tr><td>10</td><td>P-M 互制驗核</td><td>不判斷就套 H1-1a</td><td>先算 \(P_u/\phi_cP_n\) 與 <b>0.2</b> 比大小再選式</td><td>PM-05</td></tr>
+<tr><td>11</td><td>\(\phi\) 值</td><td>壓力與彎矩都用 0.9</td><td><b>\(\phi_c = 0.85\)（壓力）、\(\phi_b = 0.90\)（彎矩）</b>，不可混用</td><td>§5.1</td></tr>
+<tr><td>12</td><td>題目同時給 \(Z_y\) 與 \(S_y\)</td><td>弱軸沒有 LTB，所以 \(M_{ny} = F_yZ_y\)</td><td><b>\(M_{ny} = \min(F_yZ_y,\ 1.5F_yS_y)\)</b>。W 型鋼 \(Z_y/S_y\) 多在 1.50～1.67，通常上限控制</td><td>SS-2014-3</td></tr>
+<tr><td>13</td><td>ASD 梁柱題</td><td>只寫穩定式</td><td><b>穩定式（中段，含放大）＋ 強度式（端部，\(0.6F_y\)）兩式都要驗，取嚴者</b></td><td>SS-2003-4</td></tr>
+<tr><td>14</td><td>ASD 算 \(F_a\) 與 \(F'_e\)</td><td>兩者用同一個 \(KL/r\)</td><td><b>\(F_a\) 用兩軸較大的 \(KL/r\)；\(F'_e\) 用該彎矩對應軸的 \(KL/r\)</b>。彈性段時 \(F'_e = F_a\)（可省算）</td><td>§7.2</td></tr>
+<tr><td>15</td><td>題目問「工作彎矩／最大工作載重」</td><td>直接寫出因數化的答案</td><td>要<b>除回載重因數</b>換算成服務值</td><td>SS-2020-3</td></tr>
+<tr><td>16</td><td>強柱弱梁檢核</td><td>\(\sum M_{pc} = Z_cF_y\)、\(\sum M_{pb} = Z_bF_y\)</td><td><b>柱要扣軸壓：\(Z_c(F_y - P_u/A_g)\)；梁要乘 \(R_y\)</b>。兩者<u>各自單獨</u>就能把答案從 NG 翻成 OK（範例 E）</td><td>SS-2009-1</td></tr>
+</tbody>
+</table>
+
+<div class="trap">
+<b>兩個「量綱型」失分（比觀念錯更冤）</b>：
+① 彎矩 tf·m 與 tf·cm 差 100 倍 —— 互制式的答案若不是「幾成」的量級，先查這個；
+② 正方形箱形柱（<a class="qlink" href="problems-view/SS-2022-1.html" target="_blank">SS-2022-1</a>）的板件淨寬是 \(b = B - 2t\)，
+不是 \(B\) 也不是 \(B-t\)；且正方形 BOX 兩軸強度相同（\(I_2 = I_3\)），不必分強弱軸。
+</div>
+</section>
+
+<section id="s13">
+<h2>§13　自我檢測：12 個「為什麼」</h2>
+
+<div class="lead">答不出來的，回到括號裡的章節。<b>能用自己的話講出「為什麼」，才是真的懂。</b></div>
+
+<details><summary>Q1　為什麼柱和梁的內力算一次就定了，梁柱卻要放大？（§0、§1）</summary>
+<p>因為二階效應需要 \(P\) 與側向變形<b>同時存在</b>。純柱有 \(P\) 但沒有外加彎矩造成的變形（\(\delta\) 只是挫屈模態）；
+純梁有 \(\delta\) 但沒有 \(P\)，\(P\delta = 0\)。只有梁柱兩者都有，於是「彎矩 → 變形 → 更多彎矩」形成迴圈。</p>
+</details>
+
+<details><summary>Q2　\(1/(1-P/P_{cr})\) 這個分母的物理意義是什麼？（§2.1）</summary>
+<p>它是「剩餘勁度的倒數」。微分方程 \(-EIy''=M_0+Py\) 整理後得 \((P_{cr}-P)y_0 = M_0\)，
+左邊 \((P_{cr}-P)\) 就是彈性勁度 \(P_{cr}\) 減去軸力貢獻的負「幾何勁度」\(P\)。
+當 \(P \to P_{cr}\)，剩餘勁度歸零 → 位移無限大 → 這就是挫屈。所以放大係數趨於無限與挫屈是同一件事。</p>
+</details>
+
+<details><summary>Q3　\(B_1\) 為什麼要乘 \(C_m\)，而 \(B_2\) 不用？（§2.2、§3.1）</summary>
+<p>推導假設「兩端等值彎矩」（均勻彎矩，最不利），真實彎矩多半沿長度變化，所以要用 \(C_m \leq 1\) 折減。
+但 \(B_2\) 處理的是整層剛體平移，側移彎矩在柱兩端都是最大值（線性、單曲率），本來就是最不利分佈，
+沒有折減空間 → 分子恆為 1。</p>
+</details>
+
+<details><summary>Q4　為什麼單曲率的 \(C_m\) 比雙曲率大？（§3.1）</summary>
+<p>因為單曲率（C 形）的兩端彎矩把變形<b>推往同一側</b>，\(\delta_{max}\) 大 → \(P\delta\) 大 → 需要更大的放大。
+雙曲率（S 形）上下互相抵消、中間有反曲點（該處位移為零），\(\delta_{max}\) 小很多 → 放大少。
+所以規則不是背的：\(C_m\) 大小反映「變形會不會累積」。</p>
+</details>
+
+<details><summary>Q5　\(B_1\) 為什麼用 \(K=1\)，\(B_2\) 卻用對位圖的 \(K\)？（§1、§8.1）</summary>
+<p>它們問的是不同問題。\(P_{e1}\) 問「這根構件在<b>兩端不許相對移動</b>下離挫屈多遠」→ 非側移模式，\(K \leq 1\)，實務取 1.0。
+\(\sum P_{e2}\) 問「這整層在<b>允許側移</b>下離側移挫屈多遠」→ 側移模式，\(K>1\)。
+兩者差 \(K^2\) 倍（\(K=1.8\) 時差 3.24 倍）。</p>
+</details>
+
+<details><summary>Q6　為什麼靠桿要進 \(\sum P_u\) 但不進 \(\sum P_{e2}\)？（§4.3）</summary>
+<p>因為 \(\sum P_{e2}\) 是「這一層能提供多少抗側移能力」，靠桿兩端鉸接、彎矩勁度為零，貢獻 0。
+但 \(\sum P_u\) 是「這一層的重量在側移時會造成多少傾倒需求」，靠桿的重量照樣壓在整層帳上，
+且必須靠抗側力構架撐著不倒。<b>只出力不幫忙</b>，所以進分子不進分母。</p>
+</details>
+
+<details><summary>Q7　為什麼 \(\sum P_u/\sum P_{e2}\) 有 0.6 的上限？（§2.1、§4.2）</summary>
+<p>因為放大係數是雙曲線，0.6 對應 \(B_2 = 2.5\)，之後曲線急遽上升 ——
+再往前一點點，答案就對輸入誤差極度敏感（分析本身的不確定性被放大）。
+規範的意思是：<b>超過 0.6 代表構架太軟，應該改設計（加大柱、加斜撐），而不是繼續放大算下去。</b></p>
+</details>
+
+<details><summary>Q8　P-M 互制式裡的 8/9 是怎麼來的？（§6.2）</summary>
+<p>它是為了讓兩段折線在分界點 \(P_u/\phi_cP_n = 0.2\) 連續。
+把 0.2 代入 H1-1b 得 \(M_u/\phi_bM_n = 1-0.1 = 0.9\)；要讓 H1-1a 在同一點也得到 0.9，
+彎矩項的係數必須是 \(0.8/0.9 = 8/9\)。所以 8/9 不是實驗值，是幾何約束的結果。</p>
+</details>
+
+<details><summary>Q9　為什麼規範用雙折線而不用真實的外凸曲線？（§6.1）</summary>
+<p>三個理由：① 雙折線在真實曲線<b>內側</b>，永遠偏保守；② 線性方程可直接代入求解未知量，不必解非線性；
+③ 對 H 型斷面誤差在 5% 以內，工程上可接受。</p>
+</details>
+
+<details><summary>Q10　ASD 為什麼需要「穩定式」和「強度式」兩條？（§7.1）</summary>
+<p>它們檢查不同位置。穩定式檢查構件<b>中段</b>（有 \(P\delta\) 放大，容許值 \(F_a\) 含挫屈折減）；
+強度式檢查構件<b>端部</b>（二階彎矩為零，但軸力容許值放寬為 \(0.6F_y\)，分母變大後彎矩項相對更吃重，可能反而更嚴）。
+LRFD 合併成一條，是因為 \(\phi_cP_n\) 與 \(\phi_bM_n\) 已各自吃進挫屈折減。</p>
+</details>
+
+<details><summary>Q11　直接分析法憑什麼可以令 \(K = 1.0\)？（§8.2）</summary>
+<p>因為 \(K\) 原本就是「二階效應 ＋ 初始不完美 ＋ 非彈性軟化」的替身。
+DAM 已經在分析中把這三件事全部顯式算過（顯式二階分析、假想水平力 \(0.002\alpha Y_i\)、剛度折減 \(0.8\tau_a\)），
+替身沒有必要再留著。演化方向是「把藏在 \(K\) 裡的假設一項項搬到分析裡明說」。</p>
+</details>
+
+<details><summary>Q12　強柱弱梁為什麼柱要扣軸壓、梁要乘 \(R_y\)？（§9.2）</summary>
+<p>這是能力設計的通則：<b>對希望先壞的構件（梁）高估其強度，對希望不壞的構件（柱）低估其強度。</b>
+柱同時受軸壓，軸力吃掉部分斷面強度（這就是 P-M 互制的另一種寫法）→ 剩餘彎矩容量要扣；
+梁的實際降伏強度高於標稱值（\(R_y\)），若不放大，梁可能不會如你所願先降伏。兩邊都往保守走，破壞順序才有保障。</p>
+</details>
+</section>
+<section id="s14">
+<h2>§14　★ 精選 6 題（時間有限就練這些）</h2>
+
+<div class="lead">從 12 題中挑出彼此重疊最少、能練到最多<b>獨立技能</b>的 6 題（占全單元一半）。
+選題邏輯：<b>練完之後，剩下 6 題你都知道該從哪裡下手。</b></div>
+
+<h3>① <a class="qlink" href="problems-view/SS-2013-4.html" target="_blank">SS-2013-4</a>（102 年，LRFD）— 二階效應的完整訓練</h3>
+<div class="box">
+<b>為什麼選它</b>：本單元<b>唯一</b>把 \(M_{nt}\)／\(M_{lt}\) 拆解、對位圖查 \(K\)、\(P_{e1}\) 與 \(\sum P_{eK}\) 的差別、
+\(C_m\)、\(B_1\)、\(B_2\) 六件事一次考完的題目。它還逼你做兩次一階結構分析（阻止側移／純側移），
+這是別題練不到的<b>前置資料自建</b>能力。<br>
+<b>先讀</b>：§4（全節）、§3、§8.1<br>
+<b>做完要能回答</b>：\(\sum P_{eK}\) 為什麼要含左右兩根外柱？如果三根柱的斷面不同，答案會怎麼變？
+如果柱底改成固接（\(G=1\)），\(K\) 與 \(B_2\) 各往哪個方向變、變多少？
+</div>
+
+<h3>② <a class="qlink" href="problems-view/SS-2020-3.html" target="_blank">SS-2020-3</a>（109 年，LRFD）— 雙軸 P-M 完整流程＋兩個符號陷阱</h3>
+<div class="box">
+<b>為什麼選它</b>：雙軸彎矩 → 兩軸都要算 \(B_1\) 與 \(\phi_bM_n\)；
+還埋了本單元最惡毒的兩個陷阱：<b>\(M_1/M_2\) 的單／雙曲率判斷</b>（知識庫記載原解析曾誤判為雙曲率、後更正）
+與<b>回算工作彎矩 \(M_{wy}\)</b>（答案要除回載重因數）。
+這兩個陷阱一個在觀念、一個在讀題，練一次抵兩次。<br>
+<b>先讀</b>：§3.1、§3.2、§6、§7.3<br>
+<b>做完要能回答</b>：為什麼強軸與弱軸的 \(B_1\) 不一樣？兩軸的 \(P_{e1}\) 比值應該等於什麼（自我檢查）？
+題目問的是 \(M_{wy}\) 還是 \(M_{uy}\)，差在哪裡？
+</div>
+
+<h3>③ <a class="qlink" href="problems-view/SS-2003-4.html" target="_blank">SS-2003-4</a>（92 年，ASD）— ASD 全套，權重最高的一題</h3>
+<div class="box">
+<b>為什麼選它</b>：ASD 雙軸互制的完整版 —— \(f_a/F_a\) 門檻判斷、\(C_{mx}\)／\(C_{my}\)、
+\(F'_{ex}\)／\(F'_{ey}\)、<b>穩定式與強度式兩條都要寫</b>、側移構架。
+它的標籤權重是全單元最高（貪婪演算法第一名），練會它，
+<a class="qlink" href="problems-view/SS-2007-2.html" target="_blank">SS-2007-2</a>、
+<a class="qlink" href="problems-view/SS-2008-4.html" target="_blank">SS-2008-4</a>、
+<a class="qlink" href="problems-view/SS-2019-3.html" target="_blank">SS-2019-3</a> 是同一套流程換數字。<br>
+<b>先讀</b>：§7（全節，特別是圖 7-1 與範例 D）<br>
+<b>做完要能回答</b>：\(F_a\) 與 \(F'_e\) 各用哪個軸的 \(KL/r\)？為什麼？
+強度式為什麼分母是 \(0.6F_y\) 而不是 \(F_a\)？兩式哪一個控制，為什麼？
+</div>
+
+<h3>④ <a class="qlink" href="problems-view/SS-2011-1.html" target="_blank">SS-2011-1</a>（100 年，概念）— 觀念鏈題，投報率最高</h3>
+<div class="box">
+<b>為什麼選它</b>：計算量為零，但它是<b>整個穩定設計哲學的因果鏈</b>：
+二階 vs 一階、初始不完美的兩種模擬法、剛度折減的物理意義與啟動條件、1.6 係數的推導。
+四個小題各 6 分左右，<b>是本單元最容易全拿的 25 分</b>。
+而且它的內容會直接複用到 U1-1 的有效長度題與 SD 的穩定題。<br>
+<b>先讀</b>：§8.2、§8.3、§1、§2<br>
+<b>做完要能回答</b>：二階分析除了 P-Δ 還要考慮什麼（漏答 P-δ 是本題最常見失分）？
+假想水平力為什麼是 \(0.002\) 倍的重力載重？剛度折減是「一律 0.8」還是「有條件」——兩層都要答到。
+</div>
+
+<h3>⑤ <a class="qlink" href="problems-view/SS-2022-1.html" target="_blank">SS-2022-1</a>（111 年，LRFD）— 需要自己建立斷面性質的近年題</h3>
+<div class="box">
+<b>為什麼選它</b>：箱形柱 → 斷面性質要<b>自己算</b>（\(A\)、\(I\)、\(S\)、\(Z\)、\(r\)），
+寬厚比要判斷<b>局部挫屈</b>（且淨寬 \(b = B-2t\) 是獨立陷阱），
+還要驗<b>剪力強度</b>。這是本單元唯一「前置資料全部自建」的題型，也是最近年的一題。
+正方形箱形柱兩軸強度相同這件事，本身就是一個可以省一半計算的判斷。<br>
+<b>先讀</b>：§5、§6、§12（陷阱 PM-07）<br>
+<b>做完要能回答</b>：正方形 BOX 為什麼不用分強弱軸？板件淨寬為什麼是 \(B-2t\)？
+局部挫屈的寬厚比限值與整體挫屈的細長比，兩者哪一個控制？
+</div>
+
+<h3>⑥ <a class="qlink" href="problems-view/SS-2009-1.html" target="_blank">SS-2009-1</a>（98 年，概念）— 梁柱互制在耐震裡的變形</h3>
+<div class="box">
+<b>為什麼選它</b>：它把 P-M 互制翻譯成「柱比梁強嗎」，是本單元與 <b>SD-U3-1 耐震設計</b>的接縫。
+兩個修正（柱扣軸壓、梁乘 \(R_y\)）各自單獨就能翻轉結論（範例 E 示範），
+所以它考的不是計算量而是<b>你知不知道有這兩個修正</b>。
+耐震觀念題在近年出現頻率上升，這一題的內容也適用於 <a class="qlink" href="lecture-SS-U1-4.html#s7" target="_blank">SS-U1-4 講義 §7.4</a> 的耐震接頭。<br>
+<b>先讀</b>：§9（全節）<br>
+<b>做完要能回答</b>：為什麼一定要梁先降伏（不只答「柱比較重要」，要講消能點數量與變形集中）？
+兩個修正各往哪個方向走？為什麼方向相反卻都是保守的？不滿足時有哪三種對策？
+</div>
+
+<h3>練這六題的正確方法</h3>
+
+<div class="box">
+<ol>
+<li><b>每題開始前，先在紙上畫「需求／強度」兩欄</b>（§0.1）。這個動作本身就是分數。</li>
+<li><b>計算題先把 \(K\) 值那一格處理掉。</b>\(P_e \propto 1/K^2\)，\(K\) 錯了後面全錯，
+而且它是最容易「想當然」的一格。寫下「這是側移還是非側移模式」再查圖。</li>
+<li><b>每題算完做一次自我檢查</b>（本講義示範了五種）：
+\(P_{e1y}/P_{e1x} = I_y/I_x\)？\(P_{e2}/P_{e1} = (1/K_2)^2\)？
+ASD 與 LRFD 利用率比在 ±10% 內？互制式答案是「幾成」的量級？軸壓修正折減在 20～40%？</li>
+<li><b>概念題（④⑥）用嘴巴答一次再寫。</b>這兩題的分數全在「因果鏈完整不完整」，
+講不出鏈條就會寫成散裝的條列。</li>
+<li><b>做完六題後回頭掃 §12。</b>大部分陷阱你剛剛都親自踩過一次 —— 這時候記住的才會留下來。</li>
+</ol>
+</div>
+
+<h3>誠實告知：這六題<u>沒有</u>涵蓋的考點</h3>
+
+<div class="trap">
+兩個數字：八大考點群<b>涵蓋 7 個（88%）</b>，標籤權重覆蓋率 <b>75%</b>（本單元題數少、考點集中，
+所以比 U1-4 的 47% 高得多）。以下是具體落空的部分：
+<ul>
+<li><b>LTB 併入梁柱的完整計算</b>（\(F_{bx}\) 的 \(L/r_T\) 分段、\(C_b\) 在梁柱題裡怎麼取）→ 補
+<a class="qlink" href="problems-view/SS-2007-2.html" target="_blank">SS-2007-2</a>（§5.2、§7）。
+<b>這是唯一完全落空的群，而且它同時牽動 U1-2，優先度最高。</b></li>
+<li><b>P-M 互制圖的繪製</b>（不是驗核，是要你畫出折線並標設計點）→ 補
+<a class="qlink" href="problems-view/SS-2019-3.html" target="_blank">SS-2019-3</a>（§6.1）。
+本單元唯一考「畫圖」的題型，圖 6-1 就是照它的要求畫的。</li>
+<li><b>45° 斜置構材與懸臂柱</b>（軸力／彎矩要先做幾何分解）→ 補
+<a class="qlink" href="problems-view/SS-2004-4.html" target="_blank">SS-2004-4</a>（§3.1、§8.1）。
+幾何分解是別題練不到的獨立技能。</li>
+<li><b>斜撐構架（只需 \(B_1\)）的完整題</b>→ 補
+<a class="qlink" href="problems-view/SS-2012-3.html" target="_blank">SS-2012-3</a>（§3、§6）。
+六題裡的 LRFD 計算題都是有側移構架，沒練到「\(M_{lt}=0\)、只算 \(B_1\)」的簡化情形。</li>
+<li><b>地震力載重組合下的梁柱設計</b>→ 補
+<a class="qlink" href="problems-view/SS-2014-4.html" target="_blank">SS-2014-4</a>（§3、§4、§6，副分類 SD-U3-1）。</li>
+<li><b>偏心軸壓（\(P\) 偏心 → 自動產生 \(M = Pe\)）</b>→ 補
+<a class="qlink" href="problems-view/SS-2008-4.html" target="_blank">SS-2008-4</a>（§7）。</li>
+</ul>
+<b>候補優先順序</b>：若只能多練兩題，選
+<b><a class="qlink" href="problems-view/SS-2007-2.html" target="_blank">SS-2007-2</a></b>（補上唯一落空的 LTB 群，且複習 U1-2）與
+<b><a class="qlink" href="problems-view/SS-2019-3.html" target="_blank">SS-2019-3</a></b>（補上互制圖繪製，近年題）。
+</div>
+</section>
+</main>
+
+<footer>
+  SS-U1-3 梁柱桿件 — 觀念講義｜exam-wiki-SS<br>
+  資料來源：<code>raw/json/question_index.json</code>、<code>wiki/code-ref/</code>（b1／b2 推導、P-M 物理意義、ASD Fa／Cc）、<code>wiki/methods/</code>、<code>wiki/traps/BEAM-COLUMN-TRAPS.md</code>
+</footer>
+
+</body>
+</html>

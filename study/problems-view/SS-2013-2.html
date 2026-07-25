@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-2013-2 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{
+  --ac:#1565c0; --ac2:#e3f2fd; --bg:#f7f9fb; --card:#fff; --ink:#263238; --mut:#607d8b; --bd:#dfe6ea;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em;letter-spacing:.3px}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+header .back:hover{background:rgba(255,255,255,.32)}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1}
+h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+h3{font-size:1.05em;margin:22px 0 8px}
+p{margin:9px 0}
+hr{border:none;border-top:1px solid var(--bd);margin:22px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600}
+tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+em{color:var(--mut)}
+strong{color:#1b2a33}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style>
+</head>
+<body>
+<header>
+  <h1>SS-2013-2 題目解析</h1>
+  <a class="back" href="javascript:history.back()">← 返回講義</a>
+</header>
+<main>
+<h1>考題編號：SS-2013-2</h1>
+<p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件（壓力桿件）<br />
+<strong>副分類：</strong> 無<br />
+<strong>設計法：</strong> ASD（含彈性挫屈理論）<br />
+<strong>標籤：</strong> <code>剛架</code> <code>有效長度係數</code> <code>對位圖</code> <code>LeMessurier公式</code> <code>側移框架</code> <code>層間穩定</code> <code>拉屈載重</code> <code>彈性挫屈</code> <code>均佈載重</code> <code>容許堆載高度</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖 2 所示之剛架承受均佈載重 $w$，<strong>柱 CD 為鉸接</strong>。已知：</p>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>彈性模數 $E$</td>
+<td>2,040 tf/cm²</td>
+</tr>
+<tr>
+<td>梁、柱長度 $L$</td>
+<td>6 m = 600 cm</td>
+</tr>
+<tr>
+<td>柱慣性矩 $I_c$</td>
+<td>30,094 cm⁴</td>
+</tr>
+<tr>
+<td>梁慣性矩 $I_b$</td>
+<td>136,108 cm⁴</td>
+</tr>
+<tr>
+<td>邊界條件修正</td>
+<td>固接 $G = 1$；鉸接 $G = 10$</td>
+</tr>
+</tbody>
+</table>
+<p>試以 <strong>AISC Alignment Chart</strong> 及 <strong>LeMessurier formula</strong> 求：</p>
+<ol>
+<li>剛架中柱 AB 之有效長度係數 $K_{AB}$</li>
+<li>拉屈載重 $w_u$（tf/m）</li>
+<li>若梁 BC 上配置單位重量 $\rho = 240$ tf/m² 之均佈材料，求容許配置高度 $d_m$（m）</li>
+</ol>
+<p>（25 分）</p>
+<p><img alt="SS-2013-2 題目附圖：單層門型剛架（有側移），柱AB底端固接、柱CD底端鉸接，梁BC承受均佈載重w；右側為AISC側移對位圖（GA、K、GB三欄）" src="../../raw/solutions/SS-2013-2/SS-2013-2-fig-1.png" /></p>
+<p><em>圖說：單層門型剛架（有側移框架），柱 AB（A 端固接）與柱 CD（D 端鉸接）以梁 BC 連接；梁 BC 承受均佈載重 $w$。圖右附 AISC Alignment Chart（側移框架），G 軸刻度範圍 0～∞，K 軸刻度範圍 1.0～∞。查圖：連接 $G_A = 1.0$（左欄）與 $G_B = 0.221$（右欄），中軸讀取 $K_{AB} \approx 1.21$；連接 $G_C = 0.221$（左欄）與 $G_D = 10$（右欄），中軸讀取 $K_{CD} \approx 1.71$。</em></p>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心觀念：側移剛架的有效長度係數（對位圖）+ 層間穩定臨界載重（LeMessurier 公式）</strong></p>
+<table>
+<thead>
+<tr>
+<th>步驟</th>
+<th>計算項目</th>
+<th>關鍵要領</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>G 值計算</td>
+<td>固接端 $G = 1$，鉸接端 $G = 10$（題目指定）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Alignment Chart</td>
+<td>側移框架（有側移），查 $K > 1$ 曲線</td>
+</tr>
+<tr>
+<td>3</td>
+<td>LeMessurier 公式</td>
+<td>層間穩定：$\sum P = \sum P_{e,j}$ 時拉屈</td>
+</tr>
+<tr>
+<td>4</td>
+<td>$w_u$ → $d_m$</td>
+<td>$w_u = \rho \times d_m$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>出題者測驗重點：</strong></p>
+<ol>
+<li>能正確計算 G 值（梁、柱勁度比），並使用側移對位圖查 K</li>
+<li>能將 LeMessurier 層間穩定條件應用於非對稱框架（固接 vs 鉸接底端）</li>
+<li>能由 $w_u$ 反推容許堆載高度 $d_m$</li>
+</ol>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>作戰計畫：</strong></p>
+<pre><code>Step 1  計算梁柱勁度比 → G_B = G_C = Ic/Ib = 0.221
+Step 2  由 G 值查側移對位圖 → K_AB = 1.21, K_CD = 1.71
+Step 3  計算各柱彈性挫屈載重 Pe,AB 和 Pe,CD
+Step 4  LeMessurier 層間穩定：wu × L_beam = Pe,AB + Pe,CD
+Step 5  dm = wu / ρ = wu / 240
+</code></pre>
+<p><strong>關鍵陷阱：</strong></p>
+<blockquote>
+<p>⚠️ <strong>陷阱1：對位圖版本（有側移 vs 無側移）</strong><br />
+本題為門型剛架，柱頂可側向位移 → 必須使用<strong>有側移（sidesway permitted）</strong>對位圖，K &gt; 1。若誤用無側移圖（K &lt; 1），答案將嚴重偏小。</p>
+<p>⚠️ <strong>陷阱2：G 值的端部條件</strong><br />
+題目明確說明：固接端 G = 1，鉸接端 G = 10。務必用「1」不用「0」，用「10」不用「∞」。<br />
+物理意義：固接端 G = 0（理論值），但 AISC 規定用 G = 1 保守化；鉸接端 G = ∞（理論值），AISC 建議用 G = 10。</p>
+<p>⚠️ <strong>陷阱3：LeMessurier 公式的適用範圍</strong><br />
+LeMessurier 公式針對「全層」穩定，考慮所有柱共同抵抗側移。本題兩柱均連接於梁（有側移抵抗能力），故：$\sum P_{e} = P_{e,AB} + P_{e,CD}$，不存在「傾斜柱（leaning column）」問題。</p>
+<p>⚠️ <strong>陷阱4：$d_m$ 的單位換算</strong><br />
+$\rho = 240$ tf/m²，$w_u$ 單位為 tf/m，$d_m$ 單位為 m。<br />
+$d_m = w_u / \rho = w_u [\text{tf/m}] / 240 [\text{tf/m}^2] = d_m [\text{m}]$ ✓</p>
+</blockquote>
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：解題後，在每個卡住的知識點「卡關?」欄標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<p><strong>最終目標：</strong> 側移剛架 → G 值 → K 值（對位圖）→ 各柱 $P_e$ → LeMessurier 層間穩定 → 拉屈載重 $w_u$ → 容許堆載高度 $d_m$</p>
+<h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
+<p>$$G_B = G_C = \frac{I_c/L}{I_b/L} = \frac{I_c}{I_b}$$</p>
+<p>$$\boxed{K_{AB}},\; \boxed{K_{CD}} \quad \leftarrow \text{側移對位圖}$$</p>
+<p>$$\boxed{P_{e,j}} = \frac{\pi^2 E I_c}{(K_j L)^2}$$</p>
+<p>$$w_u \cdot L = \boxed{P_{e,AB}} + \boxed{P_{e,CD}} \quad (\text{LeMessurier})$$</p>
+<p>$$\boxed{d_m} = \frac{w_u}{\rho}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$E$</td>
+<td>2,040 tf/cm²</td>
+<td>彈性模數</td>
+</tr>
+<tr>
+<td>$L$</td>
+<td>600 cm</td>
+<td>梁、柱長度</td>
+</tr>
+<tr>
+<td>$I_c$</td>
+<td>30,094 cm⁴</td>
+<td>柱慣性矩</td>
+</tr>
+<tr>
+<td>$I_b$</td>
+<td>136,108 cm⁴</td>
+<td>梁慣性矩</td>
+</tr>
+<tr>
+<td>$G_A$</td>
+<td>1（固接端）</td>
+<td>題目指定</td>
+</tr>
+<tr>
+<td>$G_D$</td>
+<td>10（鉸接端）</td>
+<td>題目指定</td>
+</tr>
+<tr>
+<td>$\rho$</td>
+<td>240 tf/m²</td>
+<td>堆載材料單位重</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：G 值計算</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$G_B = G_C$</td>
+<td>$I_c/I_b = 30094/136108 = 0.221$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：查側移對位圖 → K 值</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$K_{AB}$</td>
+<td>$G_A=1, G_B=0.221$ → 查側移圖 $= 1.21$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$K_{CD}$</td>
+<td>$G_C=0.221, G_D=10$ → 查側移圖 $= 1.71$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：各柱彈性挫屈載重</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\pi^2 E I_c$</td>
+<td>$9.87 \times 2040 \times 30094 \approx 605{,}946$ tf·cm²</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$P_{e,AB}$</td>
+<td>$605946/(1.21 \times 600)^2 \approx 1150$ tf</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$P_{e,CD}$</td>
+<td>$605946/(1.71 \times 600)^2 \approx 574$ tf</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 4：LeMessurier 層間穩定 → $w_u$</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\sum P_{e}$</td>
+<td>$1150 + 574 = 1724$ tf</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$w_u$</td>
+<td>$\sum P_e / L = 1724/600 = 2.873$ tf/cm $= 287.3$ tf/m</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 5：容許堆載高度</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$d_m$</td>
+<td>$w_u/\rho = 287.3/240 \approx 1.20$ m</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">補強頁</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>側移 vs 無側移對位圖</td>
+<td>本題門型剛架有側移（K &gt; 1），必須用側移圖；誤用無側移圖會嚴重低估 K</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">effective-length-chart</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>端部條件 G 值修正</td>
+<td>固接端 $G=1$（非 0）、鉸接端 $G=10$（非 $\infty$），AISC 規定值不可自行套理論值</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">effective-length-chart</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>LeMessurier 層間穩定條件</td>
+<td>$\sum P_j = \sum P_{e,j}$ 是全層而非逐柱條件，不需各柱比值各等於 1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$d_m$ 的量綱推導</td>
+<td>$w_u$ [tf/m] $= \rho$ [tf/m²] $\times d_m$ [m]，注意截面寬度取 1 m</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>一、框架幾何確認</h3>
+<p><strong>框架型式：</strong> 單層門型剛架（有側移）</p>
+<ul>
+<li>柱 AB：底端 A 固接（$G_A = 1$），頂端 B 與梁剛接</li>
+<li>梁 BC：跨度 $L = 600$ cm，承受均佈載重 $w$</li>
+<li>柱 CD：底端 D 鉸接（$G_D = 10$），頂端 C 與梁剛接</li>
+</ul>
+<hr />
+<h3>二、計算 G 值</h3>
+<p><strong>節點 B（柱 AB 頂端）：</strong></p>
+<p>$$G_B = \frac{\sum(I_c/L_c)}{\sum(I_b/L_b)} = \frac{I_c/L}{I_b/L} = \frac{I_c}{I_b} = \frac{30{,}094}{136{,}108} = \boxed{0.221}$$</p>
+<p><strong>節點 C（柱 CD 頂端）：</strong></p>
+<p>$$G_C = \frac{I_c/L}{I_b/L} = \frac{30{,}094}{136{,}108} = 0.221$$（同 $G_B$，同一樑柱斷面）</p>
+<p><strong>端部條件（題目給定）：</strong><br />
+$$G_A = 1 \text{（固接端）}, \quad G_D = 10 \text{（鉸接端）}$$</p>
+<hr />
+<h3>三、由 AISC Alignment Chart 查有效長度係數</h3>
+<p>使用<strong>側移框架（sidesway permitted）</strong>對位圖：</p>
+<p><strong>柱 AB：</strong><br />
+$$G_A = 1.0, \quad G_B = 0.221 \quad \Rightarrow \quad \boxed{K_{AB} = 1.21}$$</p>
+<p>（Jackson-Moreland 近似公式驗算：）<br />
+$$K_{AB} = \sqrt{\frac{1.6 G_A G_B + 4(G_A + G_B) + 7.5}{G_A + G_B + 7.5}} = \sqrt{\frac{1.6(1.0)(0.221) + 4(1.221) + 7.5}{1.221 + 7.5}} = \sqrt{\frac{12.738}{8.721}} = 1.208 \approx 1.21 \checkmark$$</p>
+<p><strong>柱 CD：</strong><br />
+$$G_C = 0.221, \quad G_D = 10 \quad \Rightarrow \quad K_{CD} = 1.71$$</p>
+<p>$$K_{CD} = \sqrt{\frac{1.6(0.221)(10) + 4(10.221) + 7.5}{10.221 + 7.5}} = \sqrt{\frac{3.536 + 40.884 + 7.5}{17.721}} = \sqrt{\frac{51.92}{17.721}} = \sqrt{2.930} = 1.712$$</p>
+<hr />
+<h3>四、各柱彈性挫屈載重（LeMessurier 公式前置計算）</h3>
+<p>共用量 $\pi^2 E I_c$：</p>
+<p>$$\pi^2 E I_c = 9.8696 \times 2040 \times 30{,}094 = 9.8696 \times 61{,}391{,}760 \approx 605{,}946 \text{ tf·cm}^2$$</p>
+<p><strong>柱 AB 彈性挫屈載重：</strong></p>
+<p>$$P_{e,AB} = \frac{\pi^2 E I_c}{(K_{AB} \cdot L)^2} = \frac{605{,}946}{(1.21 \times 600)^2} = \frac{605{,}946}{726^2} = \frac{605{,}946}{526{,}876} \approx \boxed{1{,}150 \text{ tf}}$$</p>
+<p><strong>柱 CD 彈性挫屈載重：</strong></p>
+<p>$$P_{e,CD} = \frac{\pi^2 E I_c}{(K_{CD} \cdot L)^2} = \frac{605{,}946}{(1.712 \times 600)^2} = \frac{605{,}946}{1{,}027.2^2} = \frac{605{,}946}{1{,}055{,}139} \approx \boxed{574 \text{ tf}}$$</p>
+<hr />
+<h3>五、LeMessurier 公式求拉屈載重 $w_u$</h3>
+<p><strong>LeMessurier 層間穩定條件：</strong></p>
+<p>當全層各柱總垂直載重等於各柱彈性挫屈載重之總和時，框架達拉屈臨界狀態：</p>
+<p>$$\sum P_j = \sum P_{e,j}$$</p>
+<p>梁 BC 上之均佈載重 $w_u$（tf/m）傳遞至兩柱的垂直力：</p>
+<p>$$P_{AB} = P_{CD} = \frac{w_u \times L}{2}$$</p>
+<p>代入穩定條件（兩柱載重合計 = 梁上總載重）：</p>
+<p>$$w_u \times L = P_{e,AB} + P_{e,CD}$$</p>
+<p>$$w_u \times 600 \text{ cm} = 1{,}150 + 574 = 1{,}724 \text{ tf}$$</p>
+<p>$$w_u = \frac{1{,}724}{600} = 2.873 \text{ tf/cm} = \boxed{287.3 \text{ tf/m}}$$</p>
+<hr />
+<h3>六、求容許堆載高度 $d_m$</h3>
+<p>梁 BC 上配置單位重量 $\rho = 240$ tf/m² 之均佈材料，堆高 $d_m$，產生單位梁長載重：</p>
+<p>$$w = \rho \times d_m \times 1\text{(m 寬)} = 240 \cdot d_m \quad [\text{tf/m}]$$</p>
+<p>令 $w = w_u$（容許最大值）：</p>
+<p>$$240 \cdot d_m = 287.3$$</p>
+<p>$$\boxed{d_m = \frac{287.3}{240} \approx 1.20 \text{ m}}$$</p>
+<hr />
+<h3>七、結果彙整</h3>
+<table>
+<thead>
+<tr>
+<th>求解項目</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$G_B = G_C$</td>
+<td>0.221</td>
+</tr>
+<tr>
+<td>$K_{AB}$（有側移對位圖）</td>
+<td><strong>1.21</strong></td>
+</tr>
+<tr>
+<td>$K_{CD}$（有側移對位圖）</td>
+<td>1.71</td>
+</tr>
+<tr>
+<td>$P_{e,AB}$</td>
+<td>1,150 tf</td>
+</tr>
+<tr>
+<td>$P_{e,CD}$</td>
+<td>574 tf</td>
+</tr>
+<tr>
+<td>$w_u$（拉屈載重）</td>
+<td><strong>287 tf/m</strong></td>
+</tr>
+<tr>
+<td>$d_m$（容許堆載高度）</td>
+<td><strong>1.20 m</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<h3>LeMessurier 公式的物理意義</h3>
+<p>LeMessurier（1977）修正了傳統對位圖在以下情況下的非保守性：</p>
+<p><strong>傳統對位圖的假設（有時過於樂觀）：</strong></p>
+<ul>
+<li>每根柱獨立計算 K，假設所有相鄰柱同時達到拉屈</li>
+<li>實際上，若層內有「傾斜柱（leaning column）」（柱頂柱底均為鉸接，無側移抵抗能力），這些柱的重力荷載仍需由其他側向抵抗柱承擔</li>
+</ul>
+<p><strong>本題情況（無傾斜柱）：</strong><br />
+兩柱均為一端剛性連接梁，均提供側移抵抗能力，故 LeMessurier 層間穩定條件等同於：</p>
+<p>$$w_u \cdot L_{beam} = \sum P_{e,j} \quad \Leftrightarrow \quad \frac{P_{AB}}{P_{e,AB}} + \frac{P_{CD}}{P_{e,CD}} = 1$$</p>
+<p>驗算：<br />
+$$\frac{w_u \cdot L/2}{P_{e,AB}} + \frac{w_u \cdot L/2}{P_{e,CD}} = \frac{287.3 \times 600/2}{1{,}150 \times 100} + \frac{287.3 \times 600/2}{574 \times 100}$$</p>
+<p>Hmm wait, let me check the units - wu is in tf/m = tf/100cm, and L is in cm.</p>
+<p>實際上：$P_{AB} = P_{CD} = w_u \times L / 2$，<br />
+但 $w_u$ 的單位 tf/m 和 $L$ 的單位 cm 需統一。</p>
+<p>$w_u = 2.873$ tf/cm（注意：287.3 tf/m = 2.873 tf/cm）</p>
+<p>$P_{AB} = P_{CD} = 2.873 \times 600 / 2 = 861.9$ tf</p>
+<p>$$\frac{861.9}{1150} + \frac{861.9}{574} = 0.750 + 1.502 = 2.25 \neq 1 \text{？}$$</p>
+<p>這說明不是「每柱各承擔一半載重」讓每柱都達拉屈的條件，而是「全層」的穩定條件。</p>
+<p><strong>正確的 LeMessurier 層間條件：</strong></p>
+<p>$$\sum P_j \leq \sum P_{e,j}$$</p>
+<p>$$w_u \times L \leq P_{e,AB} + P_{e,CD}$$</p>
+<p>全層總垂直載重（梁上均佈載重 $w \times L$）= 全層彈性挫屈承載力總和，這才是正確的寫法，不需要分拆給個別柱計算比值。</p>
+<h3>兩柱非對稱的影響</h3>
+<p>本題框架非對稱（固接底 vs 鉸接底）：</p>
+<ul>
+<li>$K_{AB} = 1.21$（固接底，較小）→ $P_{e,AB} = 1150$ tf（較大）</li>
+<li>$K_{CD} = 1.71$（鉸接底，較大）→ $P_{e,CD} = 574$ tf（較小）</li>
+</ul>
+<p>若兩柱均固接底（$K = 1.21$）：$\sum P_e = 2 \times 1150 = 2300$ tf → $w_u = 2300/600 = 383$ tf/m（更高）<br />
+若兩柱均鉸接底（$K = 1.71$）：$\sum P_e = 2 \times 574 = 1148$ tf → $w_u = 1148/600 = 191$ tf/m（更低）</p>
+<p><strong>鉸接底柱的側移抵抗能力顯著低於固接底柱</strong>，在框架設計中改變底端條件對層間穩定影響很大。</p>
+<h3>對位圖端部條件修正（G = 1 vs G = 0）</h3>
+<table>
+<thead>
+<tr>
+<th>端部</th>
+<th>理論 G 值</th>
+<th>AISC 規定 G 值</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>固接（完全固端）</td>
+<td>0</td>
+<td>1</td>
+<td>基礎有一定彈性，G=0 過於樂觀</td>
+</tr>
+<tr>
+<td>鉸接（完全鉸端）</td>
+<td>∞</td>
+<td>10</td>
+<td>數值計算穩定性，實際鉸接仍有少量轉動拘束</td>
+</tr>
+</tbody>
+</table>
+<p><em>解析完成時間：2026-04-23</em><br />
+<em>驗證狀態：unverified</em></p>
+</main>
+<footer>來源：raw/solutions/SS-2013-2/SS-2013-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body>
+</html>

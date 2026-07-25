@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-2025-1 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{
+  --ac:#1565c0; --ac2:#e3f2fd; --bg:#f7f9fb; --card:#fff; --ink:#263238; --mut:#607d8b; --bd:#dfe6ea;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em;letter-spacing:.3px}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+header .back:hover{background:rgba(255,255,255,.32)}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1}
+h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+h3{font-size:1.05em;margin:22px 0 8px}
+p{margin:9px 0}
+hr{border:none;border-top:1px solid var(--bd);margin:22px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600}
+tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+em{color:var(--mut)}
+strong{color:#1b2a33}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style>
+</head>
+<body>
+<header>
+  <h1>SS-2025-1 題目解析</h1>
+  <a class="back" href="javascript:history.back()">← 返回講義</a>
+</header>
+<main>
+<h1>考題編號：SS-2025-1</h1>
+<p><strong>主分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
+<strong>副分類：</strong> 無<br />
+<strong>設計法：</strong> LRFD<br />
+<strong>標籤：</strong> <code>梁桿件</code> <code>撓曲構材</code> <code>結實斷面</code> <code>塑性彎矩</code> <code>寬厚比</code> <code>銲接組合斷面</code> <code>殘留應力</code> <code>完全側向支撐</code> <code>φbMn</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>設計一銲接 H 型鋼梁，斷面尺寸如下：</p>
+<ul>
+<li>翼板寬 $b_f = 30$ cm，翼板厚 $t_f = 1.5$ cm</li>
+<li>腹板高 $h_w = 42$ cm，腹板厚 $t_w = 1.5$ cm</li>
+<li>材料：$F_y = 2.5$ tf/cm²</li>
+<li>殘留應力：$F_r = 1.16$ tf/cm²（銲接組合斷面）</li>
+<li>梁具完全側向支撐（Complete lateral bracing）</li>
+</ul>
+<p>試依 LRFD 規範求此梁之設計撓曲強度 $\phi_b M_{nx}$。</p>
+<p><img alt="SS-2025-1 題目附圖：銲接 H 型鋼斷面示意圖，翼板寬 30 cm、翼板厚 1.5 cm（上下各一），腹板高 42 cm、腹板厚 1.5 cm，翼板與腹板交接處有填角銲" src="../../raw/solutions/SS-2025-1/SS-2025-1-fig-1.png" /></p>
+<p><em>圖說：銲接組合 H 型鋼斷面（正面視圖）。翼板寬度 $b_f = 30\text{ cm}$，翼板厚度 $t_f = 1.5\text{ cm}$（上下翼板相同）；腹板淨高 $h_w = 42\text{ cm}$，腹板厚度 $t_w = 1.5\text{ cm}$；全深 $d = 42 + 2 \times 1.5 = 45\text{ cm}$。腹板與翼板之連接以填角銲施作（圖中黑色三角形區域）。翼板寬厚比 $\lambda_f = b_f/(2t_f) = 30/3 = 10.0$，腹板寬厚比 $\lambda_w = h_w/t_w = 42/1.5 = 28.0$。</em></p>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心觀念：結實斷面 + 完全側向支撐 → 設計強度即為塑性彎矩</strong></p>
+<p>本題考查三層判斷能力：</p>
+<ol>
+<li>能正確計算銲接 H 型鋼的<strong>寬厚比</strong>，並與 $\lambda_p$ 比較判斷是否為結實斷面</li>
+<li>能利用「完全側向支撐」條件，直接跳過 LTB 計算</li>
+<li>能正確計算組合斷面的<strong>塑性斷面模數 $Z_x$</strong></li>
+</ol>
+<p><strong>出題者關鍵考點：</strong></p>
+<ul>
+<li>翼板寬厚比計算：$\lambda = b_f / (2t_f)$（注意分母是 $2t_f$，因為翼板是懸臂板）</li>
+<li>$\lambda_p = 17/\sqrt{F_y}$（$F_y$ 以 tf/cm² 代入）</li>
+<li>殘留應力 $F_r = 1.16$ tf/cm² 是「銲接組合斷面」特徵值，提醒考生此題是銲接斷面</li>
+<li>題目明示「完全側向支撐」→ $L_b = 0 < L_p$ → 無 LTB → $M_n = M_p$</li>
+</ul>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>步驟規劃：</strong></p>
+<ol>
+<li>計算翼板、腹板寬厚比，與 $\lambda_p$ 比較 → 確認結實斷面</li>
+<li>用完全側向支撐條件確認 $M_n = M_p$</li>
+<li>計算塑性斷面模數 $Z_x$</li>
+<li>計算 $\phi_b M_n = 0.9 \times F_y \times Z_x$</li>
+</ol>
+<p><strong>關鍵陷阱：</strong></p>
+<blockquote>
+<p>⚠️ <strong>陷阱1：誤用 Sx 而非 Zx</strong><br />
+結實斷面且完全支撐時，$M_n = M_p = F_y Z_x$（塑性），不是 $F_y S_x$（彈性）。這是最常見的粗心失分點。</p>
+<p>⚠️ <strong>陷阱2：寬厚比計算錯誤</strong><br />
+翼板寬厚比 $\lambda = b_f / (2t_f)$，分母是 $2t_f$ 而非 $t_f$。因為翼板從腹板兩側懸出，懸臂長度是 $b_f/2$，所以 $\lambda = (b_f/2)/t_f = b_f/(2t_f)$。</p>
+<p>⚠️ <strong>陷阱3：誤將殘留應力帶入 Mp 計算</strong><br />
+殘留應力 $F_r = 1.16$ tf/cm² 影響的是 $M_r$（用於計算 $L_r$）和 LTB 計算，但 $M_p = F_y Z_x$ 不受殘留應力影響。本題有完全支撐，LTB 不控制，$F_r$ 對本題計算無直接影響。</p>
+<p>⚠️ <strong>陷阱4：Zx 計算漏算腹板貢獻</strong><br />
+組合斷面 $Z_x$ 包含翼板和腹板兩部分，腹板貢獻 $= 2 \times (h_w/2) \times t_w \times (h_w/4)$，不可漏算。</p>
+</blockquote>
+<hr />
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：解題後，在每個卡住的知識點「卡關?」欄標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<p><strong>最終目標：</strong> 確認銲接 H 型鋼為結實斷面 + 完全側向支撐，計算塑性斷面模數 $Z_x$，求設計撓曲強度 $\phi_b M_{nx}$</p>
+<h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
+<p><strong>Step 1：寬厚比判斷</strong><br />
+$$\boxed{\lambda_f} = \frac{b_f}{2t_f}, \quad \lambda_{pf} = \frac{17}{\sqrt{F_y}} \quad \Rightarrow \lambda_f < \lambda_{pf}?$$<br />
+$$\boxed{\lambda_w} = \frac{h_w}{t_w}, \quad \lambda_{pw} = \frac{170}{\sqrt{F_y}} \quad \Rightarrow \lambda_w < \lambda_{pw}?$$</p>
+<p><strong>Step 2：LTB 判斷</strong><br />
+$$L_b = 0 < L_p \quad \Rightarrow M_n = M_p$$</p>
+<p><strong>Step 3：塑性斷面模數</strong><br />
+$$\boxed{Z_x} = 2 b_f t_f \left(\frac{h_w}{2} + \frac{t_f}{2}\right) + \frac{t_w h_w^2}{4}$$</p>
+<p><strong>Step 4：設計強度</strong><br />
+$$\boxed{\phi_b M_{nx}} = 0.9 \times F_y \times \boxed{Z_x}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$b_f$</td>
+<td>30 cm</td>
+<td>翼板寬度</td>
+</tr>
+<tr>
+<td>$t_f$</td>
+<td>1.5 cm</td>
+<td>翼板厚度</td>
+</tr>
+<tr>
+<td>$h_w$</td>
+<td>42 cm</td>
+<td>腹板淨高</td>
+</tr>
+<tr>
+<td>$t_w$</td>
+<td>1.5 cm</td>
+<td>腹板厚度</td>
+</tr>
+<tr>
+<td>$F_y$</td>
+<td>2.5 tf/cm²</td>
+<td>降伏強度</td>
+</tr>
+<tr>
+<td>$F_r$</td>
+<td>1.16 tf/cm²</td>
+<td>殘留應力（銲接組合斷面，本題不需代入計算）</td>
+</tr>
+<tr>
+<td>側向支撐條件</td>
+<td>完全側向支撐</td>
+<td>即 $L_b = 0$，LTB 不控制</td>
+</tr>
+<tr>
+<td>設計法</td>
+<td>LRFD</td>
+<td>$\phi_b = 0.9$</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：寬厚比計算</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\lambda_f$</td>
+<td>$b_f/(2t_f) = 30/3 = 10.0$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\lambda_{pf}$</td>
+<td>$17/\sqrt{F_y} = 17/\sqrt{2.5} = 10.75$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\lambda_w$</td>
+<td>$h_w/t_w = 42/1.5 = 28.0$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\lambda_{pw}$</td>
+<td>$170/\sqrt{F_y} = 170/\sqrt{2.5} = 107.5$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>結論</td>
+<td>$\lambda_f < \lambda_{pf}$ 且 $\lambda_w < \lambda_{pw}$ → 結實斷面</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：LTB 判斷</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L_b$</td>
+<td>完全側向支撐 → $L_b = 0$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>結論</td>
+<td>$L_b < L_p$ → 無 LTB，$M_n = M_p$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：塑性斷面模數 $Z_x$</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$Z_{x,\text{flange}}$</td>
+<td>$2 \times 30 \times 1.5 \times (21 + 0.75) = 1957.5$ cm³</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$Z_{x,\text{web}}$</td>
+<td>$2 \times 21 \times 1.5 \times 10.5 = 661.5$ cm³ ⚠ 常見卡關</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$Z_x$</td>
+<td>$1957.5 + 661.5 = 2619$ cm³</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 4：設計強度</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_p$</td>
+<td>$F_y \times Z_x = 2.5 \times 2619 = 6547.5$ tf·cm</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\phi_b M_{nx}$</td>
+<td>$0.9 \times 6547.5 = 5892.75$ tf·cm</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">補強頁</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>翼板寬厚比分母是 $2t_f$</td>
+<td>翼板從腹板懸出，懸臂長 $b_f/2$，故 $\lambda = (b_f/2)/t_f = b_f/(2t_f)$</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COMPACT-SECTION</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\lambda_p$ 公式（銲接 vs 熱軋皆同）</td>
+<td>$\lambda_{pf} = 17/\sqrt{F_y}$（tf/cm² 制），不因斷面類型而異</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COMPACT-SECTION</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>完全側向支撐 → $M_n = M_p$（直接跳過 LTB）</td>
+<td>$L_b = 0 < L_p$，三段判斷邏輯的第一段</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">LATERAL-TORSIONAL-BUCKLING</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$Z_x$ 包含腹板貢獻</td>
+<td>腹板分上下兩半，各部分 $= (h_w/2) \times t_w \times (h_w/4)$，不可漏算</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>殘留應力 $F_r$ 不影響 $M_p$</td>
+<td>$M_p = F_y Z_x$，殘留應力只影響 $M_r$ 和 $L_r$（LTB 相關），本題完全支撐故無影響</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">RESIDUAL-STRESS</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\phi_b = 0.9$（彎曲）</td>
+<td>不可與 $\phi_c = 0.85$（壓力）混用</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-phi-values</span></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：計算斷面尺寸確認</h3>
+<table>
+<thead>
+<tr>
+<th>部位</th>
+<th>尺寸</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>翼板寬 $b_f$</td>
+<td>30 cm</td>
+</tr>
+<tr>
+<td>翼板厚 $t_f$</td>
+<td>1.5 cm</td>
+</tr>
+<tr>
+<td>腹板高 $h_w$</td>
+<td>42 cm</td>
+</tr>
+<tr>
+<td>腹板厚 $t_w$</td>
+<td>1.5 cm</td>
+</tr>
+<tr>
+<td>全深 $d$</td>
+<td>$42 + 2 \times 1.5 = 45$ cm</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Step 2：結實斷面檢核</h3>
+<p><strong>翼板寬厚比（不加勁元素，懸臂板）：</strong><br />
+$$\lambda_f = \frac{b_f}{2t_f} = \frac{30}{2 \times 1.5} = \frac{30}{3} = 10.0$$</p>
+<p>$$\lambda_{pf} = \frac{17}{\sqrt{F_y}} = \frac{17}{\sqrt{2.5}} = \frac{17}{1.581} = 10.75$$</p>
+<p>$$\lambda_f = 10.0 < \lambda_{pf} = 10.75 \quad \Rightarrow \quad \text{翼板結實} \checkmark$$</p>
+<p><strong>腹板寬厚比（加勁元素，純彎）：</strong><br />
+$$\lambda_w = \frac{h_w}{t_w} = \frac{42}{1.5} = 28.0$$</p>
+<p>$$\lambda_{pw} = \frac{170}{\sqrt{F_y}} = \frac{170}{\sqrt{2.5}} = \frac{170}{1.581} = 107.5$$</p>
+<p>$$\lambda_w = 28.0 < \lambda_{pw} = 107.5 \quad \Rightarrow \quad \text{腹板結實} \checkmark$$</p>
+<p>$$\boxed{\text{翼板、腹板均為結實 → 斷面為結實斷面（Compact Section）}}$$</p>
+<hr />
+<h3>Step 3：側向扭轉挫屈（LTB）判斷</h3>
+<p>題目明示<strong>完全側向支撐</strong>（梁的整個長度均有側向束制），即 $L_b = 0$：</p>
+<p>$$L_b = 0 < L_p \quad \Rightarrow \quad \text{無側扭挫屈，} M_n = M_p$$</p>
+<blockquote>
+<p>💡 <strong>策略提示：</strong> 有了「完全側向支撐」這個條件，就不需要計算 $L_p$、$r_{ts}$、$C_b$ 等複雜參數，直接確認 $M_n = M_p$。</p>
+</blockquote>
+<hr />
+<h3>Step 4：計算塑性斷面模數 $Z_x$</h3>
+<p>塑性斷面模數 $Z_x$ = 中性軸上下各部分面積 × 各面積形心到中性軸距離之代數和。</p>
+<p>對於對稱 H 型鋼（中性軸在腹板中點）：</p>
+<p>$$Z_x = \underbrace{2 \times b_f t_f \times \left(\frac{h_w}{2} + \frac{t_f}{2}\right)}_{\text{翼板貢獻（上下各一）}} + \underbrace{2 \times \frac{h_w}{2} \times t_w \times \frac{h_w}{4}}_{\text{腹板貢獻（上下各半）}}$$</p>
+<p><strong>翼板貢獻：</strong><br />
+$$Z_{x,\text{flange}} = 2 \times (30 \times 1.5) \times \left(\frac{42}{2} + \frac{1.5}{2}\right) = 2 \times 45 \times (21 + 0.75) = 2 \times 45 \times 21.75 = 1{,}957.5 \text{ cm}^3$$</p>
+<p><strong>腹板貢獻：</strong><br />
+$$Z_{x,\text{web}} = 2 \times \frac{42}{2} \times 1.5 \times \frac{42}{4} = 2 \times 21 \times 1.5 \times 10.5 = 2 \times 330.75 = 661.5 \text{ cm}^3$$</p>
+<p><strong>總塑性斷面模數：</strong><br />
+$$Z_x = 1{,}957.5 + 661.5 = \mathbf{2{,}619 \text{ cm}^3}$$</p>
+<hr />
+<h3>Step 5：計算塑性彎矩 $M_p$</h3>
+<p>$$M_p = F_y \times Z_x = 2.5 \times 2{,}619 = 6{,}547.5 \text{ tf·cm}$$</p>
+<hr />
+<h3>Step 6：計算設計撓曲強度 $\phi_b M_n$</h3>
+<p>由 Step 2–3 確認：$M_n = M_p$（結實斷面 + 完全側向支撐）</p>
+<p>$$\phi_b M_n = \phi_b M_p = 0.9 \times 6{,}547.5 = \mathbf{5{,}892.75 \text{ tf·cm}}$$</p>
+<p>$$\boxed{\phi_b M_{nx} = 5{,}892.75 \text{ tf·cm} \approx 58.9 \text{ tf·m}}$$</p>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<h3>銲接組合斷面殘留應力的角色</h3>
+<p>本題給出 $F_r = 1.16$ tf/cm²（銲接組合斷面殘留應力），許多考生困惑此值在何處使用：</p>
+<table>
+<thead>
+<tr>
+<th>殘留應力影響的量</th>
+<th>計算式</th>
+<th>本題是否用到</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_r$（彈性限制彎矩）</td>
+<td>$M_r = (F_y - F_r) S_x$</td>
+<td><strong>否</strong>（完全支撐，不算 LTB）</td>
+</tr>
+<tr>
+<td>$L_p$（塑性極限無支撐長度）</td>
+<td>查表，含 $r_y$、$F_y$</td>
+<td><strong>否</strong>（同上）</td>
+</tr>
+<tr>
+<td>$L_r$（彈性極限無支撐長度）</td>
+<td>含 $F_r$ 的公式</td>
+<td><strong>否</strong>（同上）</td>
+</tr>
+<tr>
+<td>$M_p$（塑性彎矩）</td>
+<td>$M_p = F_y Z_x$</td>
+<td>完全不含 $F_r$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>結論：</strong> 本題的 $F_r = 1.16$ tf/cm² 是「給出但不需計算」的資訊（題目暗示考生注意斷面類型），<strong>不影響最終結果</strong>。在考場上，應說明「因完全側向支撐，$L_b < L_p$，無需計算 LTB，故殘留應力不影響本題計算」。</p>
+<h3>銲接組合斷面 vs. 熱軋斷面的殘留應力差異</h3>
+<table>
+<thead>
+<tr>
+<th>斷面類型</th>
+<th>$F_r$（tf/cm²）</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>熱軋斷面</td>
+<td>0.7</td>
+<td>翼板端部殘留壓應力較低</td>
+</tr>
+<tr>
+<td>銲接組合斷面</td>
+<td>1.16</td>
+<td>翼板-腹板銲縫區殘留壓應力更高</td>
+</tr>
+</tbody>
+</table>
+<p>銲接熱收縮在翼板-腹板接合處產生更大殘留應力，使 $M_r = (F_y - F_r)S_x$ 較小、$L_r$ 較短，LTB 的彈性範圍縮小。這也是為什麼規範對銲接組合斷面使用較大的 $F_r$。</p>
+<h3>翼板寬厚比恰好接近極限值的設計意義</h3>
+<p>本題 $\lambda_f = 10.0$，$\lambda_{pf} = 10.75$，兩者相差僅 7%！這代表翼板非常接近非結實斷面的邊界：若翼板稍厚（如 $t_f = 1.4$ cm → $\lambda_f = 10.71 < 10.75$，仍結實）或稍薄（如 $t_f = 1.3$ cm → $\lambda_f = 11.54 > 10.75$，非結實），設計策略完全不同。出題者刻意製造這個緊張感，考驗計算精準度。</p>
+<h3>考場安全答法</h3>
+<ol>
+<li>確認 $\lambda_f = b_f/(2t_f) = 10.0 < \lambda_{pf} = 10.75$（結實）</li>
+<li>確認 $\lambda_w = h_w/t_w = 28 < \lambda_{pw} = 107.5$（結實）</li>
+<li>完全側向支撐 → $M_n = M_p$</li>
+<li>計算 $Z_x = 1957.5 + 661.5 = 2619$ cm³</li>
+<li>$\phi_b M_n = 0.9 \times 2.5 \times 2619 = 5892.75$ tf·cm ≈ <strong>58.9 tf·m</strong></li>
+</ol>
+</main>
+<footer>來源：raw/solutions/SS-2025-1/SS-2025-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body>
+</html>

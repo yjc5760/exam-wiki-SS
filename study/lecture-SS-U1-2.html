@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-U1-2 梁桿件 — 觀念講義（理解導向）</title>
+<!-- KaTeX 本機資源（assets/katex/），離線亦可正常顯示數學式 -->
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{
+  --ac:#1565c0; --ac2:#e3f2fd; --tension:#2e7d32; --tension2:#e8f5e9;
+  --comp:#c62828; --comp2:#ffebee; --warn:#ef6c00; --warn2:#fff3e0;
+  --key:#6a1b9a; --key2:#f3e5f5;
+  --bg:#f7f9fb; --card:#fff; --ink:#263238; --mut:#607d8b; --bd:#dfe6ea;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:34px 26px}
+header h1{margin:0 0 8px;font-size:1.6em;letter-spacing:.5px}
+header .sub{opacity:.9;font-size:.93em;margin:0}
+header .meta{margin-top:12px;font-size:.82em;opacity:.8}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid var(--bd);
+  padding:9px 14px;display:flex;flex-wrap:wrap;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+nav a{text-decoration:none;color:var(--ac);font-size:.85em;padding:4px 11px;border-radius:14px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:980px;margin:0 auto;padding:24px 18px 80px}
+section{margin-bottom:46px}
+h2{font-size:1.32em;border-left:6px solid var(--ac);padding-left:12px;margin:44px 0 18px;line-height:1.4}
+h2.t{border-color:var(--tension)} h2.c{border-color:var(--comp)}
+h3{font-size:1.08em;margin:30px 0 10px;color:#0d47a1}
+h3.t{color:#1b5e20} h3.c{color:#b71c1c}
+h4{font-size:.99em;margin:20px 0 8px;color:#37474f}
+p{margin:10px 0}
+.lead{font-size:1.03em;background:#fff;border:1px solid var(--bd);border-left:5px solid var(--ac);
+  border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:11px;padding:16px 18px;margin:16px 0}
+.why{background:var(--key2);border:1px solid #ce93d8;border-left:5px solid var(--key);
+  border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.why b:first-child{color:var(--key)}
+.trap{background:var(--warn2);border:1px solid #ffcc80;border-left:5px solid var(--warn);
+  border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.trap b:first-child{color:#e65100}
+.tens{background:var(--tension2);border:1px solid #a5d6a7;border-left:5px solid var(--tension);
+  border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.comp{background:var(--comp2);border:1px solid #ef9a9a;border-left:5px solid var(--comp);
+  border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.fig{background:#fff;border:1px solid var(--bd);border-radius:11px;padding:16px 14px 10px;margin:20px 0;overflow-x:auto}
+.fig svg{display:block;margin:0 auto;max-width:100%;height:auto}
+.fig .cap{font-size:.85em;color:var(--mut);text-align:center;margin-top:10px;line-height:1.6}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9em;background:#fff}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600}
+tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+.pill{display:inline-block;font-size:.76em;padding:2px 8px;border-radius:10px;margin-right:4px}
+.p-t{background:var(--tension2);color:#1b5e20;border:1px solid #a5d6a7}
+.p-c{background:var(--comp2);color:#b71c1c;border:1px solid #ef9a9a}
+.p-k{background:var(--key2);color:#4a148c;border:1px solid #ce93d8}
+.p-w{background:var(--warn2);color:#e65100;border:1px solid #ffcc80}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+details{background:#fff;border:1px solid var(--bd);border-radius:9px;padding:10px 14px;margin:12px 0}
+summary{cursor:pointer;font-weight:600;color:var(--ac)}
+.katex-display{margin:14px 0!important;overflow-x:auto;overflow-y:hidden}
+.qlink{color:#1565c0;text-decoration:none;border-bottom:1px dotted #90caf9;font-weight:600}
+.qlink:hover{background:#e3f2fd}
+details p{border-left:3px solid #e0e0e0;padding-left:12px;margin:8px 0;color:#37474f}
+footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-top:1px solid var(--bd)}
+@media print{
+  body{background:#fff;font-size:11.5pt}
+  nav{display:none}
+  header{background:#0d47a1!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section{page-break-inside:auto}
+  h2{page-break-after:avoid} .fig,table,.why,.trap,.tens,.comp{page-break-inside:avoid}
+  details{page-break-inside:avoid} details>summary{list-style:none}
+  details[open]>summary{margin-bottom:6px}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SS-U1-2 梁桿件 — 觀念講義</h1>
+  <p class="sub">梁是一根壓桿和一根拉桿被腹板銲在一起。整個單元都在算「這根梁有沒有資格把 Mp 用完」。</p>
+  <p class="meta">科目四 鋼結構設計｜命題大綱 第一單元（二）｜涵蓋歷屆 21 題主分類 + 4 題副分類
+　｜含 2 則完整手算範例、12 題自我檢測、★ 精選 5 題（§14）｜理解導向．非速查表</p>
+</header>
+
+<nav>
+  <a href="#s0">0 全景</a>
+  <a href="#s1">1 斷面能給多少</a>
+  <a href="#s2">2 關卡一 局部挫屈</a>
+  <a href="#s3">3 關卡二 LTB</a>
+  <a href="#s4">4 Cb 紅利</a>
+  <a href="#s5">5 ASD 版本</a>
+  <a href="#s6">6 剪力</a>
+  <a href="#s7">7 撓度</a>
+  <a href="#s8">8 弱軸與雙軸</a>
+  <a href="#s9">9 三個延伸</a>
+  <a href="#s10">10 解題流程</a>
+  <a href="#s11">11 考點對應</a>
+  <a href="#s12">12 陷阱總表</a>
+  <a href="#s13" style="background:#f3e5f5;color:#6a1b9a">13 自我檢測</a>
+  <a href="#s14" style="background:#ffe0b2;color:#e65100;font-weight:600">★ 14 精選 5 題</a>
+  <span style="flex:1"></span>
+  <a href="study-SS-U1-2.html" title="考前速查：公式、考題清單、統計圖表"
+     style="background:#eceff1;color:#455a64">📊 速查頁</a>
+  <a href="SS-U1-2_梁桿件.pdf" target="_blank" title="課堂講義投影片"
+     style="background:#eceff1;color:#455a64">📄 Keynote</a>
+  <a href="lecture-SS-U1-2.pdf" target="_blank" title="本講義的列印版"
+     style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+</nav>
+
+<main>
+<section id="s0">
+<h2>0 ｜全景：梁是一根壓桿和一根拉桿被腹板銲在一起</h2>
+
+<p class="lead">整個 SS-U1-2 只有一句話撐著：<b>梁的受拉翼板是拉桿（自我穩定），受壓翼板是壓桿（想挫屈）。
+受壓側想側移、受拉側不肯動 —— 於是梁不能純側移，只能一邊側移一邊扭轉。</b>
+這就是側扭挫屈（LTB），也是本單元 25 題裡 12 題的核心。若你只記得一件事，記這一件。</p>
+
+<p>把 SS-U1-1 學到的東西直接搬過來：一根 H 型鋼受強軸彎矩時，斷面上半部受壓、下半部受拉。
+把上半部單獨拿出來看，它就是一根<b>被壓的桿件</b> —— 而壓桿會挫屈，這件事跟它是不是梁的一部分無關。</p>
+
+<div class="fig">
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <text x="16" y="20" font-size="14" font-weight="bold" fill="#263238">把梁的斷面拆開看：上下兩半是完全不同的東西</text>
+
+  <!-- Left: cross-section decomposition -->
+  <text x="20" y="48" font-size="12.5" font-weight="bold" fill="#b71c1c">受壓翼板 ＝ 一根壓桿</text>
+  <rect x="30" y="58" width="150" height="16" fill="#ef9a9a" stroke="#c62828" stroke-width="1.5"/>
+  <rect x="97" y="74" width="16" height="82" fill="#eceff1" stroke="#546e7a" stroke-width="1.3"/>
+  <rect x="30" y="156" width="150" height="16" fill="#a5d6a7" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="20" y="192" font-size="12.5" font-weight="bold" fill="#1b5e20">受拉翼板 ＝ 一根拉桿</text>
+  <text x="120" y="120" font-size="11" fill="#546e7a">腹板</text>
+  <text x="30" y="215" font-size="11.5" fill="#546e7a">腹板把兩者綁在一起，</text>
+  <text x="30" y="233" font-size="11.5" fill="#546e7a">不准它們各走各的。</text>
+
+  <line x1="215" y1="30" x2="215" y2="280" stroke="#cfd8dc" stroke-width="1.5"/>
+
+  <!-- Middle: what compression flange wants -->
+  <text x="238" y="48" font-size="12.5" font-weight="bold" fill="#b71c1c">受壓翼板想做的事</text>
+  <rect x="245" y="62" width="130" height="14" fill="#ef9a9a" stroke="#c62828" stroke-width="1.3"/>
+  <path d="M245 100 Q310 128 375 100" stroke="#c62828" stroke-width="2.4" fill="none" stroke-dasharray="5 4"/>
+  <text x="248" y="150" font-size="11.5" fill="#b71c1c">往旁邊拱出去（側向挫屈）</text>
+  <text x="248" y="168" font-size="11.5" fill="#607d8b">跟 SS-U1-1 的壓桿一模一樣</text>
+
+  <text x="238" y="200" font-size="12.5" font-weight="bold" fill="#1b5e20">受拉翼板做的事</text>
+  <rect x="245" y="214" width="130" height="14" fill="#a5d6a7" stroke="#2e7d32" stroke-width="1.3"/>
+  <text x="248" y="252" font-size="11.5" fill="#1b5e20">待在原地不動（張力自我穩定）</text>
+  <text x="248" y="270" font-size="11.5" fill="#607d8b">它是那個「拉住」的角色</text>
+
+  <line x1="405" y1="30" x2="405" y2="280" stroke="#cfd8dc" stroke-width="1.5"/>
+
+  <!-- Right: result = LTB -->
+  <text x="425" y="48" font-size="12.5" font-weight="bold" fill="#4a148c">結果：只能側移＋扭轉</text>
+  <!-- undeformed section -->
+  <g transform="translate(455,80)">
+    <rect x="-45" y="0" width="90" height="9" fill="#cfd8dc" stroke="#90a4ae"/>
+    <rect x="-4" y="9" width="8" height="52" fill="#eceff1" stroke="#90a4ae"/>
+    <rect x="-45" y="61" width="90" height="9" fill="#cfd8dc" stroke="#90a4ae"/>
+  </g>
+  <text x="418" y="168" font-size="11" fill="#90a4ae">原始斷面</text>
+
+  <g transform="translate(600,80) rotate(14)">
+    <rect x="-45" y="0" width="90" height="9" fill="#ef9a9a" stroke="#c62828" stroke-width="1.3"/>
+    <rect x="-4" y="9" width="8" height="52" fill="#eceff1" stroke="#546e7a"/>
+    <rect x="-45" y="61" width="90" height="9" fill="#a5d6a7" stroke="#2e7d32" stroke-width="1.3"/>
+  </g>
+  <text x="560" y="168" font-size="11" fill="#4a148c" font-weight="bold">挫屈後：轉了一個角</text>
+  <path d="M470.0 186.0 L551.0 186.0" stroke="#6a1b9a" stroke-width="2" fill="none"/><path d="M551.0 190.2 L560.0 186.0 L551.0 181.8 Z" fill="#6a1b9a"/>
+  <text x="428" y="208" font-size="11.5" fill="#4a148c">上翼板跑掉 δ，下翼板幾乎沒動</text>
+  <text x="428" y="226" font-size="11.5" fill="#4a148c">→ 斷面被迫「轉」了一個角 φ</text>
+  <text x="428" y="252" font-size="12" fill="#4a148c" font-weight="bold">側向位移 + 扭轉 ＝ LTB</text>
+  <text x="428" y="272" font-size="11.5" fill="#607d8b">控制參數：ry（或 rT）、Lb、Cb</text>
+
+  
+</svg>
+<div class="cap">圖 0-1｜LTB 為什麼一定同時有「側移」和「扭轉」？因為受壓翼板想跑、受拉翼板不肯跑，
+兩片翼板被腹板綁著，位移量不同就只能靠斷面轉一個角來湊。<br>
+理解這張圖，你就不需要背「LTB 是側向扭轉挫屈」這句定義了 —— 你可以自己推出來。</div>
+</div>
+
+<h3>整個單元其實是一條「逐級扣減」的流水線</h3>
+
+<p>斷面能給的最大值是 \(M_p = F_y Z_x\)（全斷面都降伏）。但你不一定拿得到，因為要通過三道關卡：</p>
+
+<div class="fig">
+<svg viewBox="0 0 730 250" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <text x="16" y="20" font-size="13.5" font-weight="bold" fill="#263238">梁設計＝逐級確認「有沒有資格用 Mp」</text>
+
+  <rect x="20" y="38" width="128" height="52" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.6"/>
+  <text x="36" y="60" font-size="12.5" font-weight="bold" fill="#0d47a1">斷面的本錢</text>
+  <text x="36" y="80" font-size="12" fill="#0d47a1">Mp = Fy · Zx</text>
+
+  <path d="M150.0 64.0 L173.0 64.0" stroke="#455a64" stroke-width="2" fill="none"/><path d="M173.0 68.2 L182.0 64.0 L173.0 59.8 Z" fill="#455a64"/>
+
+  <rect x="185" y="30" width="150" height="68" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+  <text x="197" y="50" font-size="12.5" font-weight="bold" fill="#e65100">關卡一：板夠不夠厚</text>
+  <text x="197" y="68" font-size="11.5" fill="#e65100">寬厚比 λ vs λp、λr</text>
+  <text x="197" y="86" font-size="11.5" fill="#e65100">沒過 → 局部挫屈先發生</text>
+
+  <path d="M337.0 64.0 L360.0 64.0" stroke="#455a64" stroke-width="2" fill="none"/><path d="M360.0 68.2 L369.0 64.0 L360.0 59.8 Z" fill="#455a64"/>
+
+  <rect x="372" y="30" width="150" height="68" rx="8" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.6"/>
+  <text x="384" y="50" font-size="12.5" font-weight="bold" fill="#4a148c">關卡二：撐夠不夠密</text>
+  <text x="384" y="68" font-size="11.5" fill="#4a148c">Lb vs Lp、Lr</text>
+  <text x="384" y="86" font-size="11.5" fill="#4a148c">沒過 → LTB 先發生</text>
+
+  <path d="M524.0 64.0 L547.0 64.0" stroke="#455a64" stroke-width="2" fill="none"/><path d="M547.0 68.2 L556.0 64.0 L547.0 59.8 Z" fill="#455a64"/>
+
+  <rect x="559" y="38" width="150" height="52" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+  <text x="571" y="58" font-size="12.5" font-weight="bold" fill="#1b5e20">真正能用的強度</text>
+  <text x="571" y="78" font-size="12" fill="#1b5e20">φb Mn ≤ φb Mp</text>
+
+  <!-- second row: shear + deflection -->
+  <rect x="185" y="132" width="337" height="58" rx="8" fill="#eceff1" stroke="#546e7a" stroke-width="1.5"/>
+  <text x="200" y="153" font-size="12.5" font-weight="bold" fill="#37474f">另外兩條獨立檢核（跟彎矩無關，但一樣會讓你落選）</text>
+  <text x="200" y="173" font-size="11.5" fill="#37474f">剪力：Vn = 0.6 Fy Aw（§6）　　　撓度：δ ≤ L/360（§7，用「服務載重」）</text>
+
+  <path d="M353.0 100.0 L353.0 119.0" stroke="#455a64" stroke-width="2" stroke-dasharray="4 3" fill="none"/><path d="M348.8 119.0 L353.0 128.0 L357.2 119.0 Z" fill="#455a64"/>
+
+  <text x="20" y="222" font-size="11.5" fill="#607d8b">
+    ＊「關卡」的意思是：三道都要過。任何一道沒過，Mp 就拿不到 —— 不是取平均、不是加起來，是取最不利那道。</text>
+  <text x="20" y="240" font-size="11.5" fill="#607d8b">
+    ＊考卷上絕大多數的「錯」不是算錯，是<tspan font-weight="bold">跳過某一道關卡沒檢查</tspan>。</text>
+
+  
+</svg>
+<div class="cap">圖 0-2｜本講義的骨架。§1 講「本錢」，§2 講關卡一，§3–§5 講關卡二，§6、§7 講兩條獨立檢核。</div>
+</div>
+
+<div class="why">
+<b>觀念鑰匙</b>：拿到一題梁，腦中要跑的不是公式，是這三個問句 ——<br>
+① <b>斷面結實嗎？</b>（不結實 → 連 \(M_p\) 的資格都沒有，先折減）<br>
+② <b>\(L_b\) 落在哪一區？</b>（\(\le L_p\) 才拿滿；否則按三區段折減）<br>
+③ <b>剪力與撓度過了嗎？</b>（強度過關不代表這根梁能用）<br>
+這三問的順序不能顛倒 —— <b>斷面不結實時，LTB 三區段公式的形式會變</b>，先跳去算 \(L_p\) 等於白算。
+</div>
+
+<h3>本單元的知識地圖與配重</h3>
+
+<table>
+<thead><tr><th style="width:16%">主軸</th><th style="width:28%">核心問題</th><th>知識鏈（本講義章節）</th><th style="width:9%">題數</th></tr></thead>
+<tbody>
+<tr><td><span class="pill p-k">本錢</span></td><td>這個斷面最多能給多少彎矩？</td>
+<td>\(M_y \to M_p\)、\(Z_x\) 與 \(S_x\)、PNA 與 ENA、形狀因子（§1）</td><td>4 題</td></tr>
+<tr><td><span class="pill p-w">關卡一</span></td><td>板件會不會先皺掉？</td>
+<td>寬厚比 \(\lambda_p/\lambda_r\)、結實／非結實／細長（§2）</td><td>4 題</td></tr>
+<tr><td><span class="pill p-c">關卡二</span></td><td>梁會不會先歪掉？</td>
+<td>LTB 物理（§3.1）→ \(L_p/L_r\) 三區段（§3.2–3.4）→ \(C_b\)（§4）→ ASD 的 \(L_c/L_u\)（§5）</td><td>12 題</td></tr>
+<tr><td><span class="pill p-t">獨立檢核</span></td><td>剪得住嗎？彎得會不會太醜？</td>
+<td>腹板剪力與剪力挫屈（§6）、使用性撓度（§7）</td><td>4 題</td></tr>
+<tr><td><span class="pill p-k">延伸</span></td><td>不是標準單向彎曲怎麼辦？</td>
+<td>弱軸與雙軸彎曲（§8）、塑性分析／合成梁／板梁（§9）</td><td>6 題</td></tr>
+</tbody>
+</table>
+
+<p class="lead" style="border-left-color:var(--warn)">
+<b>統計事實（25 題標籤分析）</b>：「梁桿件」15 次、「LTB 側扭挫屈」<b>12 次</b>、「結實斷面」6 次、
+「非彈性 LTB」5 次、「\(C_b\) 係數」5 次、「\(L_p\)／\(L_r\)」各 3 次。<br>
+<b>結論很清楚：LTB 是本單元的絕對主場，而且考的幾乎都是「非彈性區」那一段（\(L_p < L_b \le L_r\)）。</b>
+理由也很現實 —— 塑性區只要寫 \(M_n=M_p\) 一行，彈性區公式醜但機械，只有非彈性區同時要你判斷區段、算 \(L_p/L_r\)、
+乘 \(C_b\)、再檢查 \(M_p\) 上限，一題就能看出四個能力。<br>
+另外 ASD 出現 4 次（\(L_c/L_u/F_b\) 系統），<b>這科依然沒有「只念 LRFD 就好」這種事</b>。
+</p>
+</section>
+
+
+<section id="s1">
+<h2>1 ｜斷面的本錢：從 \(M_y\) 到 \(M_p\)，多出來的那 12% 是哪來的</h2>
+
+<p class="lead">彈性設計說「最外緣一降伏就算壞了」，塑性設計說「等到全斷面都降伏才算壞」。
+兩者之間的比值就是<b>形狀因子</b> \(f = Z_x/S_x\)。它不是查表得來的神秘數字，
+是「這個斷面把材料放在哪裡」的直接後果。</p>
+
+<h3>1.1 一根梁被壓到底的四個階段</h3>
+
+<div class="fig">
+<svg viewBox="0 0 740 240" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <text x="16" y="18" font-size="13.5" font-weight="bold" fill="#263238">彎矩慢慢加大時，斷面上的應力分佈怎麼變</text>
+
+  <!-- stage 1 -->
+  <g transform="translate(30,40)">
+    <rect x="0" y="0" width="10" height="120" fill="#eceff1" stroke="#90a4ae"/>
+    <path d="M10 0 L38 0 L10 60 Z" fill="#bbdefb" stroke="#1565c0" stroke-width="1.3"/>
+    <path d="M10 60 L38 120 L10 120 Z" fill="#bbdefb" stroke="#1565c0" stroke-width="1.3"/>
+    <line x1="10" y1="60" x2="70" y2="60" stroke="#455a64" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="0" y="142" font-size="11.5" font-weight="bold" fill="#1565c0">① 全彈性</text>
+    <text x="0" y="159" font-size="11" fill="#546e7a">最大應力 &lt; Fy</text>
+    <text x="0" y="176" font-size="11" fill="#546e7a">M &lt; My</text>
+  </g>
+
+  <!-- stage 2 -->
+  <g transform="translate(190,40)">
+    <rect x="0" y="0" width="10" height="120" fill="#eceff1" stroke="#90a4ae"/>
+    <path d="M10 0 L44 0 L10 60 Z" fill="#90caf9" stroke="#1565c0" stroke-width="1.3"/>
+    <path d="M10 60 L44 120 L10 120 Z" fill="#90caf9" stroke="#1565c0" stroke-width="1.3"/>
+    <line x1="10" y1="60" x2="76" y2="60" stroke="#455a64" stroke-width="1" stroke-dasharray="3 3"/>
+    <circle cx="44" cy="2" r="3.5" fill="#c62828"/>
+    <circle cx="44" cy="118" r="3.5" fill="#c62828"/>
+    <text x="0" y="142" font-size="11.5" font-weight="bold" fill="#1565c0">② 初始降伏</text>
+    <text x="0" y="159" font-size="11" fill="#c62828">最外緣剛好 = Fy</text>
+    <text x="0" y="176" font-size="11" fill="#546e7a">M = My = Fy·Sx</text>
+  </g>
+
+  <!-- stage 3 -->
+  <g transform="translate(350,40)">
+    <rect x="0" y="0" width="10" height="120" fill="#eceff1" stroke="#90a4ae"/>
+    <rect x="10" y="0" width="44" height="26" fill="#ef9a9a" stroke="#c62828" stroke-width="1.2"/>
+    <path d="M10 26 L54 26 L10 60 Z" fill="#90caf9" stroke="#1565c0" stroke-width="1.2"/>
+    <path d="M10 60 L54 94 L10 94 Z" fill="#90caf9" stroke="#1565c0" stroke-width="1.2"/>
+    <rect x="10" y="94" width="44" height="26" fill="#ef9a9a" stroke="#c62828" stroke-width="1.2"/>
+    <line x1="10" y1="60" x2="86" y2="60" stroke="#455a64" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="0" y="142" font-size="11.5" font-weight="bold" fill="#e65100">③ 部分塑化</text>
+    <text x="0" y="159" font-size="11" fill="#546e7a">降伏區從外往內吃</text>
+    <text x="0" y="176" font-size="11" fill="#546e7a">My &lt; M &lt; Mp</text>
+  </g>
+
+  <!-- stage 4 -->
+  <g transform="translate(510,40)">
+    <rect x="0" y="0" width="10" height="120" fill="#eceff1" stroke="#90a4ae"/>
+    <rect x="10" y="0" width="54" height="60" fill="#ef9a9a" stroke="#c62828" stroke-width="1.3"/>
+    <rect x="10" y="60" width="54" height="60" fill="#ef9a9a" stroke="#c62828" stroke-width="1.3"/>
+    <line x1="10" y1="60" x2="96" y2="60" stroke="#455a64" stroke-width="1.4"/>
+    <text x="0" y="142" font-size="11.5" font-weight="bold" fill="#c62828">④ 全斷面塑化</text>
+    <text x="0" y="159" font-size="11" fill="#c62828">整個斷面都 = Fy</text>
+    <text x="0" y="176" font-size="11" fill="#c62828">M = Mp = Fy·Zx</text>
+  </g>
+
+  <text x="640" y="70" font-size="11.5" fill="#4a148c" font-weight="bold">此時形成</text>
+  <text x="640" y="88" font-size="11.5" fill="#4a148c" font-weight="bold">「塑性鉸」</text>
+  <text x="640" y="108" font-size="11" fill="#607d8b">彎矩不再增加</text>
+  <text x="640" y="124" font-size="11" fill="#607d8b">但可以一直轉</text>
+
+  <text x="30" y="212" font-size="11.5" fill="#607d8b">
+    ＊注意第 ④ 階段的應力圖是<tspan font-weight="bold">兩塊矩形</tspan>，不是三角形 —— 所以 Zx 是「面積 × 形心距」（一次矩），</text>
+  <text x="30" y="230" font-size="11.5" fill="#607d8b">
+    而 Sx = Ix/c 來自三角形分佈的二次矩。<tspan font-weight="bold" fill="#c62828">兩者計算方式完全不同，這是 §1 最常錯的地方。</tspan></text>
+</svg>
+<div class="cap">圖 1-1｜彈性 → 塑性的四個階段。\(M_p/M_y\) 之所以大於 1，是因為第 ②→④ 之間，
+還沒降伏的內層材料可以繼續「接手」。</div>
+</div>
+
+<div class="why">
+<b>形狀因子為什麼 H 型鋼只有 1.12，矩形卻有 1.50？</b><br>
+形狀因子衡量的是「初始降伏之後還剩多少沒被動用的材料」。<br><br>
+<b>矩形斷面</b>：材料均勻分佈，最外緣降伏時，中間一大片還在低應力狀態 → 剩餘潛力大 → \(f = 1.50\)。<br>
+<b>H 型鋼強軸</b>：材料絕大部分集中在上下翼板，也就是<b>最外緣附近</b>。翼板一降伏，
+「還沒動用的材料」就只剩薄薄的腹板 → 剩餘潛力小 → \(f \approx 1.10 \sim 1.18\)。<br>
+<b>H 型鋼弱軸</b>：繞弱軸彎時，翼板變成兩塊「躺著的矩形板」，行為回到矩形 → \(f \approx 1.5\sim1.67\)。<br><br>
+<b>一句話</b>：<i>材料放得越靠外，\(S_x\) 越有效率，但形狀因子越低。</i>
+這也解釋了為什麼工程師愛用 H 型鋼卻不能靠形狀因子賺太多 —— 兩者是同一件事的兩面。
+</div>
+
+<h3>1.2 \(Z_x\) 與 \(S_x\)：兩個模數，兩套算法</h3>
+
+<table>
+<thead><tr><th style="width:16%"></th><th>\(S_x\)（彈性斷面模數）</th><th>\(Z_x\)（塑性斷面模數）</th></tr></thead>
+<tbody>
+<tr><td><b>對應狀態</b></td><td>最外緣<b>剛好</b>達 \(F_y\)</td><td>全斷面<b>都</b>達 \(F_y\)</td></tr>
+<tr><td><b>中性軸</b></td><td>ENA：\(\sum A_i y_i = 0\)（形心軸）</td><td>PNA：上下面積相等（等面積軸）</td></tr>
+<tr><td><b>算法</b></td><td>\(S_x = I_x / c\)（二次矩 ÷ 最遠距離）</td><td>\(Z_x = \sum A_i \bar y_i\)（各半面積對 PNA 的<b>一次矩</b>和）</td></tr>
+<tr><td><b>對應彎矩</b></td><td>\(M_y = F_y S_x\)</td><td>\(M_p = F_y Z_x\)</td></tr>
+</tbody>
+</table>
+
+<div class="trap">
+<b>陷阱 A-01（極高頻）｜\(Z_x \ne I_x/c\)</b><br>
+看到「求 \(Z_x\)」就先算 \(I_x\) 再除以 \(c\) —— 這是把 \(S_x\) 的公式套到 \(Z_x\) 上，整題報銷。<br>
+\(Z_x\) 從頭到尾<b>不需要 \(I_x\)</b>。它只要：找 PNA → 分割面積 → 每塊「面積 × 形心到 PNA 的距離」→ 全部加起來。
+</div>
+
+<div class="trap">
+<b>陷阱 A-02｜對稱斷面 ENA = PNA，非對稱斷面兩者不重合</b><br>
+雙對稱 H 型鋼可以偷懶（形心軸就是等面積軸）。但只要上下翼板不一樣（單軸對稱、T 形、加蓋板），
+<b>就必須分開解兩次</b>：<br>
+・ENA 用「面積矩平衡」\(\bar y = \sum A_i y_i / \sum A_i\)，拿去算 \(I_x\)、\(S_x\)<br>
+・PNA 用「等面積」\(A_{\text{上}} = A_{\text{下}} = A/2\)，拿去算 \(Z_x\)<br>
+<b>出處：SS-2023-3</b>（直接考這件事）。
+</div>
+
+<div class="trap">
+<b>陷阱 A-03｜非對稱斷面的 \(M_y\) 由「小翼板側」控制</b><br>
+\(M_y = F_y \cdot S_{\min}\)，而 \(S_{\min} = I_x / c_{\max}\)。<br>
+關鍵在 \(c_{\max}\)：<b>面積較小的那片翼板離 ENA 較遠</b>（因為形心會被大翼板拉過去），
+所以<b>小翼板那側先降伏</b>。不要拿 \(d/2\) 當 \(c\) 用。<br>
+<b>出處：SS-2023-3</b>
+</div>
+
+<h3>1.3 手算範例 ①：非對稱 H 斷面，一次算完 ENA / PNA / \(S_x\) / \(Z_x\) / \(f\)</h3>
+
+<div class="box">
+<p><b>題目</b>　銲接組合 H 斷面（單軸對稱），\(F_y = 2.5\) tf/cm²：</p>
+<ul>
+<li>上翼板：\(20 \times 1.0\) cm（面積 20 cm²）</li>
+<li>腹　板：\(40 \times 1.0\) cm（面積 40 cm²）</li>
+<li>下翼板：\(20 \times 2.0\) cm（面積 40 cm²）</li>
+</ul>
+<p>全高 \(d = 1.0 + 40 + 2.0 = 43.0\) cm，總面積 \(A = 100\) cm²。求 \(M_y\)、\(M_p\)、形狀因子。</p>
+
+<p><b>Step 1　ENA（彈性中性軸）</b>—— 以斷面<b>底部</b>為基準取形心：<br>
+上翼板形心 \(y_1 = 2.0 + 40 + 0.5 = 42.5\)；腹板 \(y_2 = 2.0 + 20 = 22.0\)；下翼板 \(y_3 = 1.0\)</p>
+$$\bar y = \frac{20(42.5) + 40(22.0) + 40(1.0)}{100} = \frac{850 + 880 + 40}{100} = \mathbf{17.70}\ \text{cm（自底部）}$$
+
+<p><b>Step 2　PNA（塑性中性軸）</b>—— 等面積，\(A/2 = 50\) cm²：<br>
+自底部往上累積：下翼板 40 cm²（不夠 50）→ 還差 10 cm²，由腹板提供 \(10 / 1.0 = 10\) cm</p>
+$$y_{PNA} = 2.0 + 10 = \mathbf{12.00}\ \text{cm（自底部）}$$
+
+<p class="lead" style="margin:12px 0"><b>ENA 17.70 cm、PNA 12.00 cm，差了 5.7 cm。</b>
+這就是陷阱 A-02 的實體 —— 若拿 ENA 去算 \(Z_x\)，上下面積不等，力平衡直接違反。</p>
+
+<p><b>Step 3　\(Z_x\)</b>（各塊面積 × 到 PNA 的距離，上下分別加總）<br>
+PNA 以上：腹板剩餘段 \(30 \times 1.0 = 30\) cm²（形心距 PNA \(15.0\)）＋ 上翼板 \(20\) cm²（形心距 \(42.5-12.0=30.5\)）<br>
+PNA 以下：腹板 \(10 \times 1.0 = 10\) cm²（形心距 \(5.0\)）＋ 下翼板 \(40\) cm²（形心距 \(12.0-1.0=11.0\)）</p>
+$$Z_x = \underbrace{[30(15.0) + 20(30.5)]}_{1060} + \underbrace{[10(5.0) + 40(11.0)]}_{490} = \mathbf{1550}\ \text{cm}^3$$
+<p style="font-size:.92em;color:#607d8b">（檢查：上半面積 \(30+20=50\)，下半 \(10+40=50\)，各為 \(A/2\) ✓）</p>
+
+<p><b>Step 4　\(I_x\)</b>（對 ENA，平行軸定理）</p>
+$$I_x = \underbrace{\tfrac{20(1)^3}{12} + 20(42.5-17.7)^2}_{1.7 + 12300.8}
++ \underbrace{\tfrac{1(40)^3}{12} + 40(22.0-17.7)^2}_{5333.3 + 739.6}
++ \underbrace{\tfrac{20(2)^3}{12} + 40(17.7-1.0)^2}_{13.3 + 11155.6} = \mathbf{29544}\ \text{cm}^4$$
+
+<p><b>Step 5　\(S_x\)：兩側都算，取小的</b><br>
+\(c_{\text{上}} = 43.0 - 17.70 = 25.30\) cm　→　\(S_{x,\text{上}} = 29544/25.30 = \mathbf{1167.8}\) cm³ ← <b>控制</b><br>
+\(c_{\text{下}} = 17.70\) cm　→　\(S_{x,\text{下}} = 29544/17.70 = 1669.2\) cm³</p>
+
+<p><b>Step 6　結果</b></p>
+$$M_y = F_y S_{x,\min} = 2.5(1167.8) = 2919\ \text{tf·cm} = \mathbf{29.2}\ \text{tf·m}$$
+$$M_p = F_y Z_x = 2.5(1550) = 3875\ \text{tf·cm} = \mathbf{38.8}\ \text{tf·m}$$
+$$f = \frac{Z_x}{S_{x,\min}} = \frac{1550}{1167.8} = \mathbf{1.33}$$
+
+<p class="lead" style="margin-bottom:0"><b>自我檢查</b>：<br>
+① 形狀因子 1.33 落在「雙對稱 H（1.12）」與「矩形（1.50）」之間 —— 合理，因為這個斷面比雙對稱 H 更不均勻。
+若你算出 \(f < 1\) 或 \(f > 1.7\)，一定有地方錯了。<br>
+② 小翼板（上翼板 20 cm²）那側控制 \(M_y\) ✓ 符合陷阱 A-03。<br>
+③ PNA（12.0）比 ENA（17.7）更靠近大翼板 ✓ —— 因為塑性時只看面積、不看距離，大翼板「權重變小」。</p>
+</div>
+</section>
+
+
+<section id="s2">
+<h2 class="c">2 ｜關卡一：局部挫屈 —— 板太薄，斷面連 \(M_p\) 的資格都沒有</h2>
+
+<p class="lead">寬厚比檢核在考卷上常常被當成「例行公事」，隨手寫兩行就過。
+但它其實在問一個很硬的問題：<b>翼板這片薄板，撐得到全斷面降伏那一刻嗎？</b>
+撐不到的話，後面所有 LTB 公式都得換一套 —— 這是為什麼它一定要放在最前面。</p>
+
+<h3 class="c">2.1 三種斷面分類，其實是三種「時間先後」</h3>
+
+<div class="fig">
+<svg viewBox="0 0 740 270" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <text x="16" y="18" font-size="13.5" font-weight="bold" fill="#263238">同一件事的三種結局：局部挫屈和全斷面降伏，誰先發生？</text>
+
+  <!-- compact -->
+  <g transform="translate(20,36)">
+    <rect x="0" y="0" width="210" height="196" rx="9" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+    <text x="14" y="24" font-size="12.8" font-weight="bold" fill="#1b5e20">結實斷面 Compact</text>
+    <text x="14" y="44" font-size="11.5" fill="#1b5e20">λ ≤ λp（板厚、夠壯）</text>
+    <!-- thick plate -->
+    <rect x="30" y="60" width="150" height="14" fill="#a5d6a7" stroke="#2e7d32" stroke-width="1.5"/>
+    <text x="30" y="92" font-size="11" fill="#1b5e20">板夠厚，壓到降伏也不皺</text>
+    <line x1="20" y1="106" x2="190" y2="106" stroke="#a5d6a7" stroke-width="1.2"/>
+    <text x="14" y="128" font-size="11.5" font-weight="bold" fill="#1b5e20">順序：全斷面降伏 → 才局部挫屈</text>
+    <text x="14" y="150" font-size="12.5" font-weight="bold" fill="#1b5e20">可用強度 Mn = Mp</text>
+    <text x="14" y="172" font-size="11" fill="#546e7a">而且有足夠轉動能力，</text>
+    <text x="14" y="188" font-size="11" fill="#546e7a">可以形成塑性鉸（塑性分析前提）</text>
+  </g>
+
+  <!-- noncompact -->
+  <g transform="translate(248,36)">
+    <rect x="0" y="0" width="210" height="196" rx="9" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+    <text x="14" y="24" font-size="12.8" font-weight="bold" fill="#e65100">非結實 Non-compact</text>
+    <text x="14" y="44" font-size="11.5" fill="#e65100">λp &lt; λ ≤ λr</text>
+    <rect x="30" y="62" width="150" height="9" fill="#ffcc80" stroke="#ef6c00" stroke-width="1.4"/>
+    <path d="M30 66 Q67 57 105 66 Q142 75 180 66" stroke="#e65100" stroke-width="1.6" fill="none" stroke-dasharray="4 3"/>
+    <text x="30" y="92" font-size="11" fill="#e65100">還沒全降伏，板就開始起波浪</text>
+    <line x1="20" y1="106" x2="190" y2="106" stroke="#ffcc80" stroke-width="1.2"/>
+    <text x="14" y="128" font-size="11.5" font-weight="bold" fill="#e65100">順序：局部挫屈卡在中途</text>
+    <text x="14" y="150" font-size="12.5" font-weight="bold" fill="#e65100">Mr &lt; Mn &lt; Mp（內插）</text>
+    <text x="14" y="172" font-size="11" fill="#546e7a">拿得到部分紅利，但不能</text>
+    <text x="14" y="188" font-size="11" fill="#546e7a">做塑性分析（轉動能力不足）</text>
+  </g>
+
+  <!-- slender -->
+  <g transform="translate(476,36)">
+    <rect x="0" y="0" width="244" height="196" rx="9" fill="#ffebee" stroke="#c62828" stroke-width="1.6"/>
+    <text x="14" y="24" font-size="12.8" font-weight="bold" fill="#b71c1c">細長 Slender</text>
+    <text x="14" y="44" font-size="11.5" fill="#b71c1c">λ &gt; λr（板太薄）</text>
+    <rect x="30" y="64" width="180" height="5" fill="#ef9a9a" stroke="#c62828" stroke-width="1.2"/>
+    <path d="M30 66 Q60 48 90 66 Q120 84 150 66 Q180 48 210 66" stroke="#b71c1c" stroke-width="1.8" fill="none"/>
+    <text x="30" y="92" font-size="11" fill="#b71c1c">應力還在彈性範圍就皺了</text>
+    <line x1="20" y1="106" x2="224" y2="106" stroke="#ef9a9a" stroke-width="1.2"/>
+    <text x="14" y="128" font-size="11.5" font-weight="bold" fill="#b71c1c">順序：局部挫屈搶先發生</text>
+    <text x="14" y="150" font-size="12.5" font-weight="bold" fill="#b71c1c">Mn &lt; Mr（低於初始降伏）</text>
+    <text x="14" y="172" font-size="11" fill="#546e7a">實務上多見於板梁（§9.3），</text>
+    <text x="14" y="188" font-size="11" fill="#546e7a">熱軋型鋼幾乎不會落在此區</text>
+  </g>
+
+  <text x="20" y="256" font-size="11.5" fill="#607d8b">
+    ＊三個分類的差別<tspan font-weight="bold">不在「會不會挫屈」（都會），而在「挫屈發生在降伏之前還是之後」</tspan>。
+    規範用寬厚比 λ 當這場競賽的裁判。</text>
+</svg>
+<div class="cap">圖 2-1｜結實／非結實／細長的真正定義，是「局部挫屈與全斷面降伏的先後順序」。
+把 \(\lambda_p\)、\(\lambda_r\) 想成兩個時間分界，比背數字有用得多。</div>
+</div>
+
+<h3 class="c">2.2 寬厚比限值：先記無因次式，再記單位版</h3>
+
+<div class="trap">
+<b>陷阱 A-04（會害你整題單位全錯）｜寬厚比係數隨單位制而變</b><br>
+同一條限值在不同教科書／規範版本會寫成 \(0.38\sqrt{E/F_y}\)、\(65/\sqrt{F_y}\)（\(F_y\) 用 ksi）、
+\(17/\sqrt{F_y}\)（\(F_y\) 用 tf/cm²）—— <b>三者是同一件事</b>。<br>
+考場對策：<b>先看題目給的 \(F_y\) 單位</b>，再選對應係數；不確定時一律回到無因次式 \(c\sqrt{E/F_y}\)，
+把 \(E = 2040\) tf/cm² 代進去自己算，永遠不會錯。
+</div>
+
+<table>
+<thead><tr><th style="width:20%">板件</th><th style="width:12%">\(\lambda\) 定義</th><th>\(\lambda_p\)（結實上限）</th><th>\(\lambda_r\)（非結實上限）</th></tr></thead>
+<tbody>
+<tr><td>翼板（I 型，受壓）</td><td>\(\dfrac{b_f}{2t_f}\)</td>
+<td>\(0.38\sqrt{E/F_y}\)　≈ \(17/\sqrt{F_y}\)<br><span style="color:#607d8b">\(F_y=2.5\) → <b>10.9</b></span></td>
+<td><b>LRFD</b>：\(0.83\sqrt{E/(F_y-F_r)}\) ≈ \(37/\sqrt{F_y-F_r}\)<br><span style="color:#607d8b">\(F_y=2.5,F_r=0.7\) → <b>27.9</b></span><br>
+<b>ASD</b>：\(25/\sqrt{F_y}\)<span style="color:#607d8b">　→ <b>15.8</b></span></td></tr>
+<tr><td>腹板（純彎，梁）</td><td>\(\dfrac{h}{t_w}\)</td>
+<td>\(3.76\sqrt{E/F_y}\)　≈ \(170/\sqrt{F_y}\)<br><span style="color:#607d8b">\(F_y=2.5\) → <b>107</b></span></td>
+<td>\(5.70\sqrt{E/F_y}\)　≈ \(260/\sqrt{F_y}\)<br><span style="color:#607d8b">\(F_y=2.5\) → <b>163</b></span></td></tr>
+<tr><td>腹板（純壓，柱）</td><td>\(\dfrac{h}{t_w}\)</td>
+<td>—</td><td>\(1.49\sqrt{E/F_y}\)　≈ \(68/\sqrt{F_y}\)<br><span style="color:#607d8b">\(F_y=2.5\) → <b>42.6</b></span></td></tr>
+</tbody>
+</table>
+<p style="font-size:.9em;color:#607d8b">（\(E = 2040\) tf/cm²；\(F_r\) 為殘留應力，熱軋 0.7、銲接組合 1.16 tf/cm²）</p>
+
+<div class="why">
+<b>為什麼翼板的限值（≈11）比腹板（≈107）嚴這麼多？</b> 差了十倍，不是筆誤，是<b>邊界條件不同</b>。<br><br>
+<b>翼板是「懸臂板」</b>：從腹板往兩側伸出去，外緣是自由邊，沒有任何東西扶著。
+一片只有一邊被夾住的板，當然容易皺。<br>
+<b>腹板是「兩邊都被夾住的板」</b>：上下都連到翼板，等於兩邊固定。而且<b>梁的腹板只有上半受壓、下半受拉</b>——
+受拉那一半會把受壓那一半「拉住」，等於免費多一層束制。<br><br>
+<b>推論（常考的定性題）</b>：柱的腹板是<b>全斷面受壓</b>，沒有受拉區幫忙，所以限值嚴很多
+（\(1.49\sqrt{E/F_y} \approx 43\) vs 梁的 \(5.70\sqrt{E/F_y} \approx 163\)）。<br>
+<b>看到「腹板寬厚比」，先問這是梁還是柱。</b>
+</div>
+
+<div class="trap">
+<b>陷阱 A-05｜翼板寬厚比是<b>半寬</b>除以厚</b><br>
+\(\lambda_f = b_f/(2t_f)\)，不是 \(b_f/t_f\)。<br>
+原因就在上面那段：翼板從腹板兩側各懸出 \(b_f/2\)，<b>懸臂長度是半寬</b>。
+寫成 \(b_f/t_f\) 會讓所有斷面都變成「非結實」，然後你會很困惑為什麼答案總是偏低。<br>
+（對照：箱形斷面的翼板兩端都有腹板扶著，用<b>淨寬</b> \(b/t\)，限值也不同。）
+</div>
+
+<div class="trap">
+<b>陷阱 A-06｜耐震設計要用更嚴的 \(\lambda_{pd}\)</b><br>
+一般 \(\lambda_p\) 只保證「能達到 \(M_p\)」；耐震要的是「達到 \(M_p\) 之後還能<b>反覆轉很多圈不掉強度</b>」。
+後者嚴格得多（下列為<b>台灣規範值</b>，與本知識庫 SS-2021-3 一致）：<br>
+・翼板：\(\lambda_{pd} = 14/\sqrt{F_y} \approx 0.31\sqrt{E/F_y}\)（vs 一般 \(17/\sqrt{F_y}\)，\(F_y=2.5\) 時 <b>8.9 vs 10.9</b>）<br>
+・腹板：\(\lambda_{pd} = 138/\sqrt{F_y} \approx 3.06\sqrt{E/F_y}\)（vs 一般 \(170/\sqrt{F_y}\)，\(F_y=2.5\) 時 <b>87 vs 107</b>）<br>
+（AISC 341 的對應值略嚴一些：翼板 \(0.30\sqrt{E/F_y}\)、腹板 \(2.45\sqrt{E/F_y}\)。<b>考試依題目給定的規範作答</b>。）<br>
+題目出現「耐震」「SMRF」「塑性轉角」「SN 鋼材」時，用一般 \(\lambda_p\) 判定＝送分題送掉。
+<b>出處：SS-2021-3</b>（耐震緊實斷面）。
+</div>
+
+<div class="tens">
+<b>一條要背起來的分界</b>：<i>「結實 ≠ 沒有 LTB」。</i><br>
+斷面結實只代表<b>板件</b>不會先皺（關卡一過了）。梁還是可能因為側撐太疏而發生 LTB（關卡二）。
+兩者是完全獨立的兩個失敗模式，一個是「板的尺度」、一個是「桿的尺度」。<br>
+<b>出處：SS-2006-1</b> 就是直接考這兩者的分工。
+</div>
+</section>
+
+
+<section id="s3">
+<h2 class="c">3 ｜關卡二：LTB 三區段 —— 本單元 12 題的主戰場</h2>
+
+<h3 class="c">3.1 先把物理弄清楚：LTB 在對抗什麼</h3>
+
+<p>受壓翼板想側向挫屈，但它不是自由的。有兩股力量在拉住它：</p>
+
+<div class="fig">
+<svg viewBox="0 0 730 280" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <text x="16" y="18" font-size="13.5" font-weight="bold" fill="#263238">抵抗 LTB 的兩種勁度：短梁靠翹曲，長梁靠純扭轉</text>
+
+  <!-- St Venant torsion -->
+  <g transform="translate(24,36)">
+    <rect x="0" y="0" width="320" height="200" rx="9" fill="#fff" stroke="#dfe6ea" stroke-width="1.4"/>
+    <text x="14" y="24" font-size="12.5" font-weight="bold" fill="#1565c0">① 純扭轉勁度 GJ（St. Venant）</text>
+    <text x="14" y="44" font-size="11.3" fill="#546e7a">斷面「整片一起轉」時的抵抗</text>
+    <!-- twisted bar -->
+    <rect x="30" y="66" width="250" height="34" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.3"/>
+    <path d="M40 83 Q90 66 140 83 Q190 100 240 83" stroke="#1565c0" stroke-width="1.7" fill="none"/>
+    <text x="30" y="126" font-size="11.3" fill="#0d47a1">J ∝ Σ b·t³　→ 板越厚，抵抗越大</text>
+    <text x="14" y="152" font-size="11.3" fill="#546e7a">與 Lb 的關係：貢獻 ∝ 1 / Lb</text>
+    <text x="14" y="172" font-size="11.8" font-weight="bold" fill="#1565c0">長梁（Lb 大）由這一項主導</text>
+    <text x="14" y="191" font-size="11" fill="#607d8b">→ 強度隨 Lb 緩慢下降</text>
+  </g>
+
+  <!-- warping -->
+  <g transform="translate(376,36)">
+    <rect x="0" y="0" width="330" height="200" rx="9" fill="#fff" stroke="#dfe6ea" stroke-width="1.4"/>
+    <text x="14" y="24" font-size="12.5" font-weight="bold" fill="#6a1b9a">② 翹曲勁度 E·Cw（Warping）</text>
+    <text x="14" y="44" font-size="11.3" fill="#546e7a">兩片翼板「往反方向彎」時的抵抗</text>
+    <!-- two flanges bending opposite -->
+    <path d="M40 74 Q110 58 180 74 Q250 90 300 74" stroke="#c62828" stroke-width="2.2" fill="none"/>
+    <text x="304" y="78" font-size="10.5" fill="#c62828">上翼</text>
+    <path d="M40 112 Q110 128 180 112 Q250 96 300 112" stroke="#2e7d32" stroke-width="2.2" fill="none"/>
+    <text x="304" y="116" font-size="10.5" fill="#2e7d32">下翼</text>
+    <text x="14" y="146" font-size="11.3" fill="#4a148c">Cw ≈ Iy·h₀²/4　→ 梁越深、翼板越寬，越大</text>
+    <text x="14" y="166" font-size="11.3" fill="#546e7a">與 Lb 的關係：貢獻 ∝ 1 / Lb³</text>
+    <text x="14" y="186" font-size="11.8" font-weight="bold" fill="#6a1b9a">短梁（Lb 小）由這一項主導</text>
+  </g>
+
+  <text x="24" y="258" font-size="11.5" fill="#37474f">
+    彈性 LTB 臨界彎矩就是這兩項相加：<tspan font-weight="bold">Mcr = (π/Lb)·√[ E·Iy·G·J + (πE/Lb)²·Iy·Cw ]</tspan></text>
+  <text x="24" y="276" font-size="11.5" fill="#607d8b">
+    ＊第一項是純扭轉（分母 Lb¹），第二項是翹曲（分母 Lb³）。這解釋了為什麼強度曲線在短梁段掉得快、長梁段掉得慢。</text>
+</svg>
+<div class="cap">圖 3-1｜LTB 的抵抗來自兩種完全不同的扭轉勁度。記住「短梁靠翹曲、長梁靠純扭轉」，
+你就能理解為什麼 \(M_{cr}\) 公式裡會有兩項、而且分母的 \(L_b\) 次方不一樣。</div>
+</div>
+
+<div class="why">
+<b>為什麼 I 型鋼的 \(J\) 這麼小、\(C_w\) 這麼大？</b><br>
+\(J = \frac{1}{3}\sum b t^3\) —— 注意是<b>厚度的三次方</b>。開口薄壁斷面的板都很薄，
+\(t^3\) 一乘就變得微不足道。所以 I 型鋼的純扭轉勁度<b>差得可憐</b>。<br>
+反過來 \(C_w \approx I_y h_0^2/4\)，跟<b>梁深的平方</b>成正比 —— 梁越深，兩片翼板「反向彎」時的力臂越長，翹曲抵抗越強。<br><br>
+<b>推論</b>：這就是為什麼<b>閉合斷面（箱形、圓管）幾乎不會 LTB</b>。
+閉合斷面的 \(J\) 用 Bredt 公式算，比開口斷面大好幾個數量級，純扭轉勁度直接把 LTB 壓死。
+考卷若問「哪種斷面不必檢核 LTB」，答案是<b>閉合斷面</b>與<b>繞弱軸彎曲的 I 型鋼</b>（§8）。
+</div>
+
+<h3 class="c">3.2 三區段：為什麼是三段而不是一條曲線</h3>
+
+<div class="fig">
+<svg viewBox="0 0 730 330" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <!-- axes -->
+  <line x1="80" y1="270" x2="690" y2="270" stroke="#455a64" stroke-width="1.8"/>
+  <line x1="80" y1="270" x2="80" y2="40" stroke="#455a64" stroke-width="1.8"/>
+  <text x="620" y="292" font-size="12.5" fill="#455a64" font-weight="bold">Lb（無支撐長度）</text>
+  <text x="26" y="52" font-size="12.5" fill="#455a64" font-weight="bold">Mn</text>
+
+  <!-- gridlines -->
+  <line x1="250" y1="270" x2="250" y2="60" stroke="#cfd8dc" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <line x1="470" y1="270" x2="470" y2="60" stroke="#cfd8dc" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <line x1="80" y1="80" x2="690" y2="80" stroke="#cfd8dc" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <line x1="80" y1="186" x2="690" y2="186" stroke="#cfd8dc" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <text x="42" y="85" font-size="12" fill="#c62828" font-weight="bold">Mp</text>
+  <text x="42" y="191" font-size="12" fill="#ef6c00" font-weight="bold">Mr</text>
+  <text x="236" y="288" font-size="12" fill="#455a64" font-weight="bold">Lp</text>
+  <text x="456" y="288" font-size="12" fill="#455a64" font-weight="bold">Lr</text>
+
+  <!-- ideal elastic curve (dashed) - extends over whole range -->
+  <path d="M120 -60 Q200 60 250 118 Q340 190 470 186 Q560 220 690 244"
+        stroke="#90a4ae" stroke-width="1.6" fill="none" stroke-dasharray="6 5" clip-path="url(#clipbox)"/>
+  <defs><clipPath id="clipbox"><rect x="80" y="40" width="610" height="230"/></clipPath></defs>
+  <text x="452" y="56" font-size="10.8" fill="#78909c">灰虛線＝理論彈性 LTB 曲線（Mcr）</text>
+  <text x="452" y="71" font-size="10.8" fill="#78909c">短梁段高估，因為它忽略了降伏</text>
+
+  <!-- zone 1: plateau -->
+  <line x1="80" y1="80" x2="250" y2="80" stroke="#2e7d32" stroke-width="4"/>
+  <!-- zone 2: linear interp -->
+  <line x1="250" y1="80" x2="470" y2="186" stroke="#ef6c00" stroke-width="4"/>
+  <!-- zone 3: elastic -->
+  <path d="M470 186 Q560 220 690 244" stroke="#1565c0" stroke-width="4" fill="none"/>
+
+  <!-- zone labels -->
+  <rect x="92" y="102" width="146" height="52" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.3"/>
+  <text x="102" y="120" font-size="11.3" font-weight="bold" fill="#1b5e20">① 塑性區</text>
+  <text x="102" y="137" font-size="11" fill="#1b5e20">Mn = Mp（拿滿）</text>
+  <text x="102" y="151" font-size="10.5" fill="#546e7a">LTB 不控制</text>
+
+  <rect x="262" y="106" width="196" height="66" rx="6" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.3"/>
+  <text x="272" y="124" font-size="11.3" font-weight="bold" fill="#e65100">② 非彈性 LTB ← 最常考</text>
+  <text x="272" y="141" font-size="11" fill="#e65100">線性內插（Mp → Mr）</text>
+  <text x="272" y="156" font-size="10.5" fill="#546e7a">翼板端已因殘留應力降伏，</text>
+  <text x="272" y="169" font-size="10.5" fill="#546e7a">勁度打折 → 提早失穩</text>
+
+  <rect x="482" y="118" width="196" height="52" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.3"/>
+  <text x="492" y="136" font-size="11.3" font-weight="bold" fill="#0d47a1">③ 彈性 LTB</text>
+  <text x="492" y="153" font-size="11" fill="#0d47a1">Mn = Cb·Mcr</text>
+  <text x="492" y="166" font-size="10.5" fill="#546e7a">全斷面仍彈性，純穩定問題</text>
+
+  <!-- annotation of the gap -->
+  <path d="M360 186 L360 205" stroke="#6a1b9a" stroke-width="1.5" fill="none"/>
+  <text x="300" y="222" font-size="11" fill="#4a148c">Mr =（Fy − Fr）Sx　←　殘留應力把「初始降伏」拉低了</text>
+
+  <text x="80" y="315" font-size="11.5" fill="#607d8b">
+    ＊三段之所以存在，全部源自一件事：<tspan font-weight="bold" fill="#4a148c">殘留應力</tspan>。
+    沒有殘留應力的話，只會有「塑性平台」與「彈性曲線」兩段，中間直接相交。</text>
+</svg>
+<div class="cap">圖 3-2｜LTB 強度曲線。灰色虛線是理論彈性解，實線是規範採用的三段式。
+非彈性區（橘）就是規範用一條直線去「補」理論曲線高估的那一段。</div>
+</div>
+
+<div class="why">
+<b>為什麼中間那段是直線？規範偷懶嗎？</b><br>
+不是偷懶，是<b>誠實承認算不準</b>。<br>
+非彈性區的真實行為極複雜：翼板端因殘留壓應力已經降伏 → 那部分材料的切線模數 \(E_t \approx 0\) →
+斷面的<b>有效</b> \(I_y\)、\(J\)、\(C_w\) 都在隨載重變化，而且降伏區的形狀還跟殘留應力分佈有關。
+要精確解得逐步積分。<br>
+規範的作法是：拿兩個端點（\(L_p, M_p\)）與（\(L_r, M_r\)）拉一條直線，
+試驗資料顯示這條線落在實測點<b>下方</b>（保守下包絡線），於是就用它。<br><br>
+<b>這條邏輯在 SS-U1-1 也出現過</b>：柱強度曲線的 \(0.658^{\lambda_c^2}\) 同樣是「試驗迴歸 + 保守包絡」。
+<i>凡是牽涉到殘留應力造成的非彈性行為，規範一律用迴歸曲線，不用解析解。</i>記一次，兩個單元通吃。
+</div>
+
+<h3 class="c">3.3 \(L_p\) 與 \(L_r\)：兩個分界點的來歷</h3>
+
+<p><b>\(L_p\)（塑性區上限）</b>—— 「短到 LTB 來不及發生」：</p>
+$$L_p = 1.76\, r_y \sqrt{\frac{E}{F_y}} \qquad\Longleftrightarrow\qquad L_p \approx \frac{80\, r_y}{\sqrt{F_y}}\ \ (F_y\ \text{用 tf/cm²})$$
+
+<div class="why">
+<b>1.76 是推出來的還是湊出來的？</b> 老實說：<b>湊出來的（校準值）</b>。<br>
+它的意思是「令 \(L_p/r_y = 1.76\sqrt{E/F_y}\)，可讓<b>絕大多數常見 I 型斷面</b>在此長度下剛好能完整發展 \(M_p\)」。
+對 \(F_y = 2.5\) tf/cm²：\(L_p/r_y = 1.76\sqrt{2040/2.5} \approx 50\)。<br>
+<b>所以你可以用「\(L_b \le 50 r_y\)」當考場心算的粗略門檻</b>（A36/SN400 級鋼材），
+高強度鋼 \(F_y\) 大 → 門檻變小（\(F_y=3.3\) 時約 \(44 r_y\)）。<br><br>
+<b>為什麼是 \(r_y\) 不是 \(r_x\)？</b> 因為 LTB 是<b>往弱軸方向</b>倒的（受壓翼板往側面跑）。
+跟 SS-U1-1 的柱一樣：挫屈永遠往最弱的方向去。
+</div>
+
+<p><b>\(L_r\)（非彈性／彈性分界）</b>—— 「長到全斷面挫屈時還是彈性的」。定義是令 \(M_{cr} = M_r\) 解出的 \(L_b\)：</p>
+$$L_r = \frac{r_y X_1}{F_y - F_r}\sqrt{1 + \sqrt{1 + X_2 (F_y - F_r)^2}}$$
+$$X_1 = \frac{\pi}{S_x}\sqrt{\frac{E\,G\,J\,A}{2}}\ ,\qquad
+X_2 = 4\,\frac{C_w}{I_y}\left(\frac{S_x}{G J}\right)^{\!2}$$
+
+<div class="why">
+<b>\(X_1\)、\(X_2\) 到底是什麼？</b> 它們沒有獨立的物理意義，是<b>為了把冗長的 \(M_{cr}\) 公式壓縮成可手算形式</b>
+而定義的「打包參數」：\(X_1\) 打包純扭轉項（含 \(GJ\)），\(X_2\) 打包翹曲項與純扭轉項的<b>比值</b>。<br>
+考場上不必理解它們的物理，但要知道兩件事：<br>
+① <b>兩者都只跟斷面性質有關，跟 \(L_b\)、\(C_b\)、載重完全無關</b> —— 所以題目給了斷面就能先算好；<br>
+② 單位要一致（cm、tf 制，\(G = 800\) tf/cm²），\(X_1\) 的單位是應力（tf/cm²），\(X_2\) 是應力的 \(-2\) 次方。
+</div>
+
+<div class="trap">
+<b>陷阱 A-07（高頻）｜\(F_r\) 只影響 \(M_r\) 和 \(L_r\)，<b>不影響</b> \(M_p\)</b><br>
+\(M_p = F_y Z_x\) —— <b>沒有 \(F_r\)</b>。<br>
+\(M_r = (F_y - F_r) S_x\) —— 有 \(F_r\)。<br>
+為什麼？殘留應力是<b>自相平衡</b>的（斷面上合力與合力矩皆為零）。當全斷面都降伏到 \(F_y\) 時，
+殘留應力早已被「洗掉」，對 \(M_p\) 毫無影響。它只在<b>部分降伏</b>的階段起作用 —— 也就是決定「什麼時候開始降伏」。<br>
+<b>出處：SS-2025-1、SS-2025-3</b>
+</div>
+
+<div class="trap">
+<b>陷阱 A-08｜熱軋 vs 銲接組合的 \(F_r\) 不同</b><br>
+熱軋（輾軋）型鋼：\(F_r = 0.7\) tf/cm²　｜　銲接組合斷面：\(F_r = 1.16\) tf/cm²<br>
+銲接的殘留應力更大（局部加熱冷卻更劇烈），所以 \(M_r\) 更低、\(L_r\) 更短。
+題目說「銲接組合斷面」而你用 0.7，\(L_r\) 會偏長，可能讓你誤判區段。<br>
+<b>出處：SS-2025-1</b>（銲接組合斷面）
+</div>
+
+<h3 class="c">3.4 三區段公式總表</h3>
+
+<table>
+<thead><tr><th style="width:22%">區段</th><th style="width:18%">條件</th><th>\(M_n\)</th><th style="width:26%">要注意的事</th></tr></thead>
+<tbody>
+<tr><td><b>① 塑性區</b></td><td>\(L_b \le L_p\)</td><td>\(M_n = M_p = F_y Z_x\)</td>
+<td>\(C_b\) <b>不適用</b>（已經是上限了，沒得再加）</td></tr>
+<tr><td><b>② 非彈性 LTB</b></td><td>\(L_p < L_b \le L_r\)</td>
+<td>\(M_n = C_b\!\left[M_p - (M_p-M_r)\dfrac{L_b-L_p}{L_r-L_p}\right] \le M_p\)</td>
+<td>乘 \(C_b\) 後<b>務必檢查是否超過 \(M_p\)</b></td></tr>
+<tr><td><b>③ 彈性 LTB</b></td><td>\(L_b > L_r\)</td>
+<td>\(M_n = C_b M_{cr} \le M_p\)<br>\(M_{cr}=\dfrac{C_b S_x X_1\sqrt2}{L_b/r_y}\sqrt{1+\dfrac{X_1^2X_2}{2(L_b/r_y)^2}}\)</td>
+<td>此區 \(M_n\) 幾乎不可能碰到 \(M_p\)，但上限仍要寫</td></tr>
+</tbody>
+</table>
+<p>設計強度一律 \(\phi_b M_n\)，\(\phi_b = 0.90\)。</p>
+
+<div class="why">
+<b>\(\phi_b = 0.90\) 為什麼比壓力桿件的 \(\phi_c = 0.85\) 寬鬆？</b><br>
+沿用 SS-U1-1 §1 那條貫穿全規範的邏輯：<b>φ 值反映「破壞模式的延性 + 預測的離散度」</b>。<br>
+梁受彎是延性行為 —— 達到 \(M_p\) 之前會有明顯撓度，而且撓度大到肉眼可見（這也是為什麼另有使用性檢核）。
+柱挫屈則對初始彎曲、殘留應力極度敏感，試驗離散度大。<br>
+所以：梁 0.90 &gt; 柱 0.85 &gt; 斷裂／塊狀剪力 0.75。<b>這個排序本身就是一道送分的觀念題。</b>
+</div>
+
+<h3 class="c">3.5 手算範例 ②：LTB 三區段完整跑一遍</h3>
+
+<div class="box">
+<p><b>題目</b>　熱軋 H 型鋼 \(H400\times200\times8\times13\)（mm），\(F_y = 2.5\) tf/cm²，\(E = 2040\)、\(G = 800\) tf/cm²，
+熱軋型 \(F_r = 0.7\) tf/cm²。側撐間距 \(L_b = 4.0\) m，該段承受簡支均佈載重（\(C_b = 1.14\)）。
+求 \(\phi_b M_n\)。</p>
+
+<p><b>Step 0　斷面性質</b>（cm 制：\(d=40,\ b_f=20,\ t_w=0.8,\ t_f=1.3,\ h=40-2(1.3)=37.4\)）<br>
+\(A = 2(20)(1.3) + 37.4(0.8) = 52 + 29.9 = 81.9\) cm²<br>
+\(I_x = \frac{20(40)^3}{12} - \frac{19.2(37.4)^3}{12} = 106667 - 83702 = 22965\) cm⁴　→　\(S_x = 22965/20 = 1148\) cm³<br>
+\(Z_x = b_f t_f (d-t_f) + \frac{t_w h^2}{4} = 20(1.3)(38.7) + \frac{0.8(37.4)^2}{4} = 1006 + 280 = 1286\) cm³<br>
+\(I_y = \frac{2(1.3)(20)^3}{12} + \frac{37.4(0.8)^3}{12} = 1733 + 1.6 = 1735\) cm⁴　→　\(r_y = \sqrt{1735/81.9} = 4.60\) cm<br>
+\(J = \frac13[2(20)(1.3)^3 + 37.4(0.8)^3] = \frac13[87.9 + 19.1] = 35.7\) cm⁴<br>
+\(C_w = I_y h_0^2/4 = 1735(38.7)^2/4 = 6.50\times10^5\) cm⁶　（\(h_0 = d - t_f = 38.7\) cm）</p>
+
+<p><b>Step 1　關卡一：斷面結實嗎？</b><br>
+翼板 \(\lambda_f = \frac{20}{2(1.3)} = 7.69\)　vs　\(\lambda_{pf} = 0.38\sqrt{2040/2.5} = 10.9\)　→　\(7.69 < 10.9\) ✓<br>
+腹板 \(\lambda_w = \frac{37.4}{0.8} = 46.8\)　vs　\(\lambda_{pw} = 3.76\sqrt{2040/2.5} = 107\)　→　\(46.8 < 107\) ✓<br>
+<b>結實斷面 ✓ 可以用 \(M_p\)，繼續走 LTB 三區段。</b></p>
+
+<p><b>Step 2　\(M_p\) 與 \(M_r\)</b><br>
+\(M_p = 2.5(1286) = 3215\) tf·cm　｜　\(M_r = (2.5-0.7)(1148) = 2067\) tf·cm</p>
+
+<p><b>Step 3　\(L_p\)</b><br>
+\(L_p = 1.76(4.60)\sqrt{2040/2.5} = 8.10 \times 28.57 = 231\) cm \(= 2.31\) m</p>
+
+<p><b>Step 4　\(X_1\)、\(X_2\)、\(L_r\)</b><br>
+\(X_1 = \frac{\pi}{1148}\sqrt{\frac{2040(800)(35.7)(81.9)}{2}} = \frac{\pi}{1148}\sqrt{2.385\times10^9} = \frac{\pi(48838)}{1148} = 133.6\) tf/cm²<br>
+\(X_2 = 4\left(\frac{6.50\times10^5}{1735}\right)\left(\frac{1148}{800(35.7)}\right)^2 = 4(374.4)(0.04023)^2 = 2.42\)<br>
+\(X_2(F_y-F_r)^2 = 2.42(1.8)^2 = 7.85\)　→　\(\sqrt{1+\sqrt{1+7.85}} = \sqrt{1+2.975} = 1.994\)<br>
+\(L_r = \frac{4.60(133.6)}{1.8}(1.994) = 341.6(1.994) = 681\) cm \(= 6.81\) m</p>
+
+<p><b>Step 5　判斷區段</b><br>
+\(L_p = 2.31\) m　\(< L_b = 4.00\) m　\(< L_r = 6.81\) m　→　<b>② 非彈性 LTB 區</b></p>
+
+<p><b>Step 6　線性內插</b></p>
+$$M_n^{(C_b=1)} = 3215 - (3215-2067)\frac{400-231}{681-231} = 3215 - 1148(0.375) = 2785\ \text{tf·cm}$$
+
+<p><b>Step 7　乘 \(C_b\)，然後檢查上限</b><br>
+\(M_n = 1.14(2785) = 3175\) tf·cm　vs　\(M_p = 3215\) tf·cm　→　\(3175 < 3215\) ✓ <b>不需截頂</b></p>
+
+$$\phi_b M_n = 0.90(3175) = 2858\ \text{tf·cm} = \mathbf{28.6}\ \text{tf·m}$$
+
+<p class="lead" style="margin-bottom:0"><b>三個自我檢查</b>：<br>
+① \(\phi_b M_n = 28.6\) 對比 \(\phi_b M_p = 0.9(3215)/100 = 28.9\) tf·m —— <b>只差 1%</b>。
+這告訴你：\(C_b = 1.14\) 幾乎把非彈性折減全部補回來了。若你算出來遠低於此，回頭檢查 \(L_r\)。<br>
+② \(L_p/r_y = 231/4.60 = 50.2\) ✓ 符合 §3.3 的心算門檻「約 50\(r_y\)」。<br>
+③ 形狀因子 \(Z_x/S_x = 1286/1148 = 1.12\) ✓ 標準 H 型鋼值。<b>斷面性質一算完就先驗這個比值</b>，
+偏離 1.10–1.18 表示 \(Z_x\) 或 \(S_x\) 算錯了 —— 這一招可以在三十秒內救回一整題。</p>
+</div>
+</section>
+
+
+<section id="s4">
+<h2 class="c">4 ｜\(C_b\)：彎矩梯度給的紅利，而且是免費的</h2>
+
+<p class="lead">LTB 公式是在<b>均勻彎矩</b>假設下推導的 —— 整段無支撐長度上每個斷面都承受同樣大的彎矩。
+但真實的梁幾乎不是這樣。\(C_b\) 就是把「實際彎矩圖沒那麼嚴苛」這件事換算成強度紅利的係數。</p>
+
+<h3 class="c">4.1 為什麼均勻彎矩最不利</h3>
+
+<div class="fig">
+<svg viewBox="0 0 730 250" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <text x="16" y="18" font-size="13.5" font-weight="bold" fill="#263238">同樣的 Lb、同樣的最大彎矩，但受壓翼板的「處境」差很多</text>
+
+  <!-- uniform -->
+  <g transform="translate(24,34)">
+    <text x="0" y="14" font-size="12.3" font-weight="bold" fill="#c62828">均勻彎矩：Cb = 1.0（最不利）</text>
+    <line x1="10" y1="30" x2="290" y2="30" stroke="#455a64" stroke-width="1.4"/>
+    <rect x="10" y="34" width="280" height="42" fill="#ef9a9a" stroke="#c62828" stroke-width="1.3"/>
+    <text x="120" y="60" font-size="11.5" fill="#b71c1c" font-weight="bold">M = Mmax（整段）</text>
+    <text x="10" y="100" font-size="11.3" fill="#b71c1c">整段每一個斷面都在最大壓力狀態</text>
+    <text x="10" y="118" font-size="11.3" fill="#b71c1c">→ 沒有任何一段「有餘力」拉住別人</text>
+    <text x="10" y="136" font-size="11.3" fill="#546e7a">→ 整段一起想倒，臨界彎矩最低</text>
+  </g>
+
+  <line x1="345" y1="34" x2="345" y2="215" stroke="#cfd8dc" stroke-width="1.5"/>
+
+  <!-- triangular -->
+  <g transform="translate(368,34)">
+    <text x="0" y="14" font-size="12.3" font-weight="bold" fill="#1b5e20">三角形彎矩：Cb = 1.67（有利）</text>
+    <line x1="10" y1="30" x2="320" y2="30" stroke="#455a64" stroke-width="1.4"/>
+    <path d="M10 34 L320 34 L320 76 Z" fill="#a5d6a7" stroke="#2e7d32" stroke-width="1.3"/>
+    <text x="222" y="64" font-size="11.5" fill="#1b5e20" font-weight="bold">Mmax</text>
+    <text x="22" y="48" font-size="11" fill="#1b5e20">M ≈ 0</text>
+    <text x="10" y="100" font-size="11.3" fill="#1b5e20">只有右端接近 Mmax，左半段壓力很小</text>
+    <text x="10" y="118" font-size="11.3" fill="#1b5e20">→ 低壓力那半段仍有側向勁度</text>
+    <text x="10" y="136" font-size="11.3" fill="#546e7a">→ 它會「拉住」高壓力端，臨界彎矩提高</text>
+  </g>
+
+  <text x="24" y="228" font-size="11.5" fill="#37474f">
+    <tspan font-weight="bold">Cb 的定義：</tspan>Cb = (實際彎矩分佈的 Mcr) ÷ (均勻彎矩的 Mcr) ≥ 1.0　——
+    它是一個<tspan font-weight="bold">比值</tspan>，不是修正誤差的安全係數。</text>
+  <text x="24" y="246" font-size="11.5" fill="#607d8b">
+    ＊所以 Cb = 1.0 不是「最好」，是「最保守」。很多人把這兩件事講反了。</text>
+</svg>
+<div class="cap">圖 4-1｜\(C_b\) 的物理來源。均勻彎矩讓整段無支撐長度同時處於最不利狀態，
+所以它是規範用來當基準的「最壞情況」。</div>
+</div>
+
+<h3 class="c">4.2 四分點公式</h3>
+
+$$C_b = \frac{12.5\,M_{\max}}{2.5\,M_{\max} + 3M_A + 4M_B + 3M_C} \le 3.0$$
+
+<p>\(M_A, M_B, M_C\) 分別是該<b>無支撐段</b>的 \(1/4\)、\(1/2\)、\(3/4\) 點彎矩，<b>全部取絕對值</b>。</p>
+
+<div class="why">
+<b>分母的權重 2.5 / 3 / 4 / 3 是怎麼決定的？</b><br>
+這是對「彎矩圖形狀」做加權平均的近似（Kirby–Nethercot 迴歸）。三個線索：<br>
+① <b>中點權重最高（4）</b>：LTB 的挫屈波形在無支撐段中央振幅最大，那裡的彎矩最能驅動失穩。<br>
+② <b>兩個四分點各 3</b>，對稱處理。<br>
+③ <b>\(M_{\max}\) 佔 2.5</b>：這個項的作用是<b>設下限</b> —— 就算 \(M_A=M_B=M_C=0\)（極端集中的彎矩尖峰），
+分母至少是 \(2.5M_{\max}\)，於是 \(C_b \le 12.5/2.5 = 5.0\)。規範再另外把上限壓到 3.0。<br><br>
+<b>驗算習慣</b>：代入均勻彎矩（\(M_{\max}=M_A=M_B=M_C=M\)）應該得到
+\(C_b = 12.5M/(2.5+3+4+3)M = 12.5/12.5 = 1.0\) ✓ —— <b>一秒驗證你公式有沒有背錯。</b>
+</div>
+
+<h3 class="c">4.3 常見載重的 \(C_b\)（會自己推，就不必背）</h3>
+
+<table>
+<thead><tr><th style="width:34%">情況（僅兩端有側撐）</th><th style="width:12%">\(C_b\)</th><th>怎麼來的</th></tr></thead>
+<tbody>
+<tr><td>均勻彎矩（兩端等彎矩、單曲率）</td><td><b>1.00</b></td><td>定義基準，最保守</td></tr>
+<tr><td>一端彎矩、另一端為零（線性）</td><td><b>1.67</b></td>
+<td>\(M_A,M_B,M_C = 0.25,0.5,0.75\,M_{\max}\)　→　\(12.5/(2.5+0.75+2+2.25)=1.667\)</td></tr>
+<tr><td>簡支 + 均佈載重（拋物線）</td><td><b>1.14</b></td>
+<td>\(M_A,M_C = \frac34 M_{\max}\)，\(M_B = M_{\max}\)　→　\(50/44 = 1.136\)</td></tr>
+<tr><td>簡支 + 跨中集中力（對稱三角形）</td><td><b>1.32</b></td>
+<td>\(M_A,M_C = \frac12 M_{\max}\)，\(M_B = M_{\max}\)　→　\(3.125/2.375 = 1.316\)</td></tr>
+<tr><td>反曲率（S 形彎矩圖）</td><td><b>≈2.3</b></td><td>正負彎矩混合，分母被壓得很小（受 3.0 上限約束）</td></tr>
+<tr><td>懸臂梁，自由端無側向束制</td><td><b>1.0</b></td><td><b>規範強制規定</b>，不套四分點公式</td></tr>
+</tbody>
+</table>
+
+<div class="why">
+<b>同一根梁，側撐位置不同，\(C_b\) 完全不同 —— 三分點載重是最好的例子</b><br>
+簡支梁在 \(L/3\) 與 \(2L/3\) 各有一個集中力 \(P\)：<br><br>
+<b>情況甲：只有兩端有側撐</b>（\(L_b = L\)）<br>
+\(M_{\max}=PL/3\)（中段），\(M_A = M_C = PL/4\)，\(M_B = PL/3\)　→　\(C_b = 1.14\)<br><br>
+<b>情況乙：載重點也設側撐</b>（分成三段，各 \(L_b = L/3\)）<br>
+・中段：彎矩<b>完全均勻</b>（\(=PL/3\) 常數）→ \(C_b = 1.00\)<br>
+・兩端段：三角形（0 → \(PL/3\)）→ \(C_b = 1.67\)<br><br>
+<b>所以「三分點載重的 \(C_b\)」沒有唯一答案 —— 取決於側撐在哪裡。</b>
+知識庫裡同時出現 1.14 與 1.01 兩個數字，講的就是這兩種情況（1.01 是中段近似均勻的情形）。<br>
+<b>考場動作</b>：先在題目上把所有側撐點圈起來，再逐段算 \(C_b\)。不要問「這種載重的 \(C_b\) 是多少」。
+</div>
+
+<div class="trap">
+<b>陷阱 A-09（本單元最高頻）｜乘完 \(C_b\) 忘記檢查 \(M_p\) 上限</b><br>
+$$M_n = \min\left(C_b \times M_n^{(C_b=1)},\ M_p\right)$$
+\(C_b\) 是把「非均勻彎矩的紅利」加回去，但天花板永遠是斷面本身的 \(M_p\) —— 斷面不可能因為彎矩圖好看就變強。<br>
+非彈性區用 \(C_b \ge 1.3\) 時特別容易超過，<b>算完一定要多寫一行比較</b>。
+</div>
+
+<div class="trap">
+<b>陷阱 A-10｜每個無支撐段各算各的 \(C_b\)，而且要各自判斷區段</b><br>
+多側撐的梁不是「算一個 \(C_b\) 全梁通用」。正確流程：<br>
+① 標出所有側撐點 → 切成若干段；② 每段各自求 \(L_b\)、\(C_b\)、判斷落在哪一區、算 \(\phi_b M_n\)；<br>
+③ 每段各自與<b>該段的 \(M_u\)</b> 比較 —— <b>不是拿全梁最大 \(M_u\) 去比每一段</b>。<br>
+④ 控制的是「\(M_u/\phi_bM_n\) 比值最大」的那一段，未必是彎矩最大的那一段。<br>
+<b>出處：SS-2008-3、SS-2015-1</b>
+</div>
+
+<div class="trap">
+<b>陷阱 A-11｜塑性區（\(L_b \le L_p\)）不乘 \(C_b\)</b><br>
+已經是 \(M_n = M_p\) 了，乘 \(C_b\) 只會超過上限然後被截回 \(M_p\)。寫了不算錯，但顯示你沒搞懂。
+</div>
+</section>
+
+
+<section id="s5">
+<h2 class="c">5 ｜ASD 版本：換一套符號，同一個故事</h2>
+
+<p class="lead">很多人把 ASD 當成「另外要背的一套」。其實 \(L_c \leftrightarrow L_p\)、\(L_u \leftrightarrow L_r\)，
+三段的物理完全相同，只是把「彎矩強度 ÷ φ」換成「容許應力 \(F_b\)」。
+本單元 ASD 出現 4 次，不能跳過。</p>
+
+<h3 class="c">5.1 三段對照</h3>
+
+<table>
+<thead><tr><th style="width:22%">物理狀態</th><th style="width:30%">LRFD</th><th>ASD</th></tr></thead>
+<tbody>
+<tr><td>側撐夠密，可達塑性</td><td>\(L_b \le L_p\)：\(M_n = M_p\)</td><td>\(L_b \le L_c\)：\(F_b = 0.66F_y\)</td></tr>
+<tr><td>中等，非彈性 LTB</td><td>\(L_p < L_b \le L_r\)：線性內插</td><td>\(L_c < L_b \le L_u\)：\(F_b = 0.60F_y\)</td></tr>
+<tr><td>細長，彈性 LTB</td><td>\(L_b > L_r\)：\(C_b M_{cr}\)</td><td>\(L_b > L_u\)：\(F_b\) 由 \(L/r_T\) 公式算，\(\le 0.60F_y\)</td></tr>
+<tr><td>安全係數</td><td>顯式 \(\phi_b = 0.90\)</td><td>隱含在 0.66／0.60／係數裡（\(FS \approx 1.67\)）</td></tr>
+<tr><td>檢核式</td><td>\(M_u \le \phi_b M_n\)</td><td>\(f_b = M/S_x \le F_b\)</td></tr>
+</tbody>
+</table>
+
+<div class="why">
+<b>0.66 和 0.60 這兩個數字是哪來的？—— 這題直接把 §1 和 §5 接起來</b><br><br>
+ASD 的安全係數 \(FS = 5/3 \approx 1.67\)。<br><br>
+<b>0.60\(F_y\)</b>：把<b>初始降伏</b>當極限 → \(F_b = \dfrac{M_y/S_x}{FS} = \dfrac{F_y}{1.67} = 0.599 F_y \approx 0.60F_y\) ✓<br><br>
+<b>0.66\(F_y\)</b>：把<b>塑性彎矩</b>當極限 →
+\(F_b = \dfrac{M_p/S_x}{FS} = \dfrac{F_y Z_x/S_x}{1.67} = \dfrac{1.12 F_y}{1.67} = 0.67F_y \approx 0.66F_y\) ✓<br><br>
+<b>兩者的比值就是形狀因子</b>：\(0.66/0.60 = 1.10 \approx Z_x/S_x\)。<br>
+<i>所以「ASD 為什麼有 0.66 和 0.60 兩個值」的答案是：一個用了塑性強度，一個只用到初始降伏，
+差別正是 §1 講的形狀因子。</i> 這是一個很漂亮的定性題答案，寫得出來就跟只會查表的人分出高下。
+</div>
+
+<h3 class="c">5.2 \(L_c\)、\(L_u\)、\(r_T\)</h3>
+
+$$L_c = \min\left(\frac{76\,b_f}{\sqrt{F_y}},\ \frac{20000}{(d/A_f)F_y}\right)
+\qquad (b_f, d \text{ 用 in；} F_y \text{ 用 ksi；} A_f = b_f t_f)$$
+
+<div class="trap">
+<b>陷阱 A-12｜ASD 的係數幾乎都是 imperial 制推導的</b><br>
+上式的 76 與 20000 是 <b>in / ksi</b> 制的係數。台灣教科書常改寫成 kgf/cm² 或 tf/cm² 制，
+係數會完全不同（例如 \(76/\sqrt{F_y[\text{ksi}]} \Rightarrow \approx 20/\sqrt{F_y[\text{tf/cm}^2]}\)）。<br>
+<b>考場對策</b>：ASD 題目通常會<b>直接給你 \(L_c\)、\(L_u\) 或設計表</b>。<br>
+若題目要你自己算而沒給係數版本，先看它給的 \(F_y\) 單位，用對應那一套；
+<b>並在答案卷上寫明你採用的單位制</b> —— 閱卷者看得懂你知道有這回事。
+</div>
+
+<p><b>\(L_c\) 為什麼取兩式的<b>小</b>值？</b>因為兩式代表兩種不同的失穩驅動因素：</p>
+<ul>
+<li>\(76b_f/\sqrt{F_y}\)：由<b>翼板寬度</b>（側向勁度）控制 —— 翼板寬 → 抗側移強 → 可以撐更長</li>
+<li>\(20000/((d/A_f)F_y)\)：由<b>梁深與翼板面積比</b>控制 —— 梁越深、翼板越小，扭轉越不利</li>
+</ul>
+<p>兩個機制哪個先失效就由哪個控制，所以取小 —— 跟 §0 的「關卡」邏輯完全一致。</p>
+
+<p><b>\(L_b > L_u\) 時的 \(F_b\)</b>：規範給兩條公式，<b>取較大值</b>（但不得超過 \(0.60F_y\)）：</p>
+$$\text{（一）以 } L/r_T \text{ 為基}\quad F_b = \left[\frac{2}{3} - \frac{F_y (L/r_T)^2}{1055000\,C_b}\right]F_y
+\quad\text{或}\quad F_b = \frac{170000\,C_b}{(L/r_T)^2}$$
+$$\text{（二）以 } L\,d/A_f \text{ 為基}\quad F_b = \frac{12000\,C_b}{L\,d/A_f}$$
+
+<div class="why">
+<b>為什麼是「取大」不是「取小」？（跟其他地方都相反，所以很容易錯）</b><br>
+因為這<b>兩條式子不是兩個獨立的失敗模式</b>，而是<b>對同一件事的兩種近似算法</b>：<br>
+・公式（一）只考慮<b>翹曲扭轉</b>（把 \(GJ\) 當成零）<br>
+・公式（二）只考慮<b>純扭轉 St. Venant</b>（把 \(C_w\) 當成零）<br>
+真實的梁<b>兩種勁度都有</b>（見圖 3-1），所以真實強度必然<b>大於</b>任一個單獨的估計。
+規範允許取大值，是因為兩者都是保守的下界。<br><br>
+<b>對照 §0 的「關卡」</b>：關卡取小（不同失敗模式競爭），這裡取大（同一模式的兩種保守估計）。
+<i>分辨的方法：問自己「這兩式描述的是兩件不同的壞事，還是同一件事的兩種算法？」</i>
+</div>
+
+<p><b>\(r_T\) 是什麼？</b>不是 \(r_y\)。它是「<b>受壓翼板 + 腹板受壓部分的 1/3</b>」這個組合斷面對 y 軸的迴轉半徑。
+物理意義：LTB 時真正在「當壓桿」的只有受壓區，所以用受壓區的側向迴轉半徑才對。
+（LRFD 用 \(r_y\) 是為了簡化，再用 \(X_1, X_2\) 把差異補回去。）</p>
+
+<h3 class="c">5.3 ASD 的 \(C_b\) 是另一條公式</h3>
+
+$$C_b = 1.75 + 1.05\left(\frac{M_1}{M_2}\right) + 0.3\left(\frac{M_1}{M_2}\right)^2 \le 2.3$$
+
+<div class="trap">
+<b>陷阱 A-13｜ASD \(C_b\) 的符號約定：單曲率取負、雙曲率取正</b><br>
+\(M_1/M_2\) 是無支撐段兩端彎矩的比（小 ÷ 大）：<br>
+・<b>單曲率</b>（兩端彎矩使梁彎成同一方向的弧）→ <b>負號</b><br>
+・<b>雙曲率／反曲率</b>（S 形）→ <b>正號</b><br><br>
+<b>驗算法（強烈建議每次都做）</b>：均勻彎矩是單曲率且兩端等值，\(M_1/M_2 = -1\)：
+$$C_b = 1.75 - 1.05 + 0.3 = 1.00\ ✓$$
+<b>若你算出 3.10，就是符號取反了。</b>（\(M_1/M_2=+1\) 給 3.10，超過上限被截成 2.3，那是反曲率的情形。）<br><br>
+另外：無支撐段內<b>有橫向載重</b>時，ASD 規定直接取 \(C_b = 1.0\)（因為兩端彎矩不足以描述段內彎矩圖）。
+這一點與 LRFD 四分點法不同 —— LRFD 可以處理任意彎矩圖。
+</div>
+</section>
+
+
+<section id="s6">
+<h2 class="t">6 ｜剪力：另一條獨立的檢核線</h2>
+
+<p class="lead">彎矩由翼板扛（力臂長），剪力由腹板扛（面積大）。兩者幾乎互不干涉，
+所以剪力是一條<b>完全獨立</b>的檢核 —— 彎矩過關不代表剪力過關，短跨深梁尤其容易由剪力控制。</p>
+
+<h3 class="t">6.1 \(0.6F_y\) 又出現了</h3>
+
+$$V_n = 0.6\,F_y\,A_w \cdot C_v,\qquad A_w = d \times t_w,\qquad \phi_v = 0.90$$
+
+<div class="why">
+<b>這個 0.6 跟 SS-U1-1 塊狀剪力的 0.6 是同一個</b> —— von Mises 降伏準則：
+$$\tau_y = \frac{F_y}{\sqrt3} = 0.577F_y \approx 0.6F_y$$
+規範把 0.577 進位成 0.6。<b>鋼結構規範裡看到的每一個 0.6，幾乎都是這個 \(1/\sqrt3\)</b>：
+腹板剪力、塊狀剪力的剪力面、螺栓剪力、銲道強度…… 記一個，通吃一片。
+</div>
+
+<div class="trap">
+<b>陷阱 A-14｜台灣規範的 \(A_w = d \times t_w\)（用<b>全深</b>）</b><br>
+不是 \(h \times t_w\)（腹板淨高）。這跟寬厚比用的 \(h/t_w\)（<b>淨高</b>）不一樣，很容易混。<br>
+記法：<b>寬厚比問「腹板這片板多細長」→ 用淨高 \(h\)；剪力面積問「有多少鋼在抗剪」→ 用全深 \(d\)（保守地把翼板也算進來）。</b>
+</div>
+
+<h3 class="t">6.2 \(C_v\)：腹板太薄時的剪力挫屈</h3>
+
+<table>
+<thead><tr><th style="width:32%">條件（\(k_v=5\) 為無加勁板）</th><th style="width:14%">\(C_v\)</th><th>物理</th></tr></thead>
+<tbody>
+<tr><td>\(\dfrac{h}{t_w} \le 50\sqrt{k_v/F_y}\)</td><td><b>1.0</b></td><td>腹板在挫屈前就全面剪力降伏 —— 拿滿</td></tr>
+<tr><td>\(50\sqrt{k_v/F_y} < \dfrac{h}{t_w} \le 62\sqrt{k_v/F_y}\)</td>
+<td>\(\dfrac{50\sqrt{k_v/F_y}}{h/t_w}\)</td><td>非彈性剪力挫屈，線性折減</td></tr>
+<tr><td>\(\dfrac{h}{t_w} > 62\sqrt{k_v/F_y}\)</td><td>\(\dfrac{1860\,k_v}{(h/t_w)^2 F_y}\)</td>
+<td>彈性剪力挫屈，\(\propto 1/(h/t_w)^2\)</td></tr>
+</tbody>
+</table>
+<p style="font-size:.9em;color:#607d8b">（\(F_y\) 用 tf/cm²。係數 50、62 分別對應 \(1.10\sqrt{E}\)、\(1.37\sqrt{E}\)，\(E=2040\)）</p>
+
+<div class="why">
+<b>又是三段式，而且結構跟 LTB 一模一樣</b>：<br>
+降伏平台（\(C_v=1\)）→ 非彈性過渡（線性）→ 彈性挫屈（\(\propto 1/\lambda^2\)）。<br>
+這是<b>整本鋼結構規範反覆使用的同一個模板</b>：柱強度曲線、LTB 三區段、腹板剪力三段、局部挫屈三分類 ——
+全部都是「短的拿滿 → 中間線性過渡 → 長的走彈性理論」。<br>
+<b>看到任何新的三段式公式，先套這個模板去理解，通常八九不離十。</b>
+</div>
+
+<p><b>\(k_v\)（剪力挫屈係數）</b>：無加勁板（或 \(a/h > 3\)）取 5.0；有橫向加勁板時
+\(k_v = 5 + 5/(a/h)^2\)（\(a\) 為加勁板間距）。加勁板越密 → \(k_v\) 越大 → 越不容易剪力挫屈。</p>
+
+<div class="tens">
+<b>什麼時候剪力會變成控制？</b>三個訊號：<br>
+① <b>跨深比小</b>（短跨深梁，例如轉換梁、連接梁）—— 彎矩沒長大，剪力已經很大<br>
+② <b>集中載重靠近支承</b> —— 剪力圖高、彎矩圖低<br>
+③ <b>板梁</b>（\(h/t_w\) 很大的銲接組合斷面）—— \(C_v\) 掉下來<br>
+一般熱軋型鋼在正常跨度下，剪力通常很寬裕（範例 ② 的 \(\phi_vV_n = 43\) tf 對一般樓版載重綽綽有餘），
+但<b>不能因此就不寫檢核</b> —— 申論題不寫等於沒做。
+</div>
+</section>
+
+
+<section id="s7">
+<h2 class="t">7 ｜使用性撓度：強度過關，不代表這根梁能用</h2>
+
+<p class="lead">撓度檢核不是「順便算一下」。它是<b>第二類極限狀態</b>，跟強度用<b>不同的載重</b>、
+問<b>不同的問題</b>。搞混載重是本節唯一但致命的錯誤。</p>
+
+<div class="fig">
+<svg viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <text x="16" y="18" font-size="13.5" font-weight="bold" fill="#263238">兩類極限狀態問的不是同一件事</text>
+
+  <g transform="translate(24,32)">
+    <rect x="0" y="0" width="316" height="150" rx="9" fill="#ffebee" stroke="#c62828" stroke-width="1.5"/>
+    <text x="14" y="24" font-size="12.6" font-weight="bold" fill="#b71c1c">強度極限狀態（Strength）</text>
+    <text x="14" y="48" font-size="11.6" fill="#b71c1c">問：這根梁會不會壞掉？</text>
+    <text x="14" y="72" font-size="11.6" fill="#37474f">載重：<tspan font-weight="bold">因數化</tspan>（1.2D + 1.6L）</text>
+    <text x="14" y="94" font-size="11.6" fill="#37474f">判準：Mu ≤ φb·Mn</text>
+    <text x="14" y="116" font-size="11.6" fill="#37474f">用到的斷面性質：<tspan font-weight="bold">Zx（或 Sx）</tspan></text>
+    <text x="14" y="138" font-size="11" fill="#546e7a">關心的是「材料撐不撐得住」</text>
+  </g>
+
+  <g transform="translate(376,32)">
+    <rect x="0" y="0" width="320" height="150" rx="9" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+    <text x="14" y="24" font-size="12.6" font-weight="bold" fill="#1b5e20">使用性極限狀態（Serviceability）</text>
+    <text x="14" y="48" font-size="11.6" fill="#1b5e20">問：能不能舒服地用？</text>
+    <text x="14" y="72" font-size="11.6" fill="#37474f">載重：<tspan font-weight="bold" fill="#c62828">未因數化的服務載重</tspan>（常只用 L）</text>
+    <text x="14" y="94" font-size="11.6" fill="#37474f">判準：δ ≤ L/360（活載）、L/240（全載）</text>
+    <text x="14" y="116" font-size="11.6" fill="#37474f">用到的斷面性質：<tspan font-weight="bold">Ix（慣性矩）</tspan></text>
+    <text x="14" y="138" font-size="11" fill="#546e7a">關心的是「天花板會不會裂、門關不關得上」</text>
+  </g>
+
+  <text x="24" y="200" font-size="11.5" fill="#607d8b">
+    ＊三個「不一樣」：載重不一樣、判準不一樣、用的斷面性質也不一樣（Zx vs Ix）。任何一個搞混，答案就錯。</text>
+</svg>
+<div class="cap">圖 7-1｜強度與使用性是兩條平行的檢核線。它們唯一的共同點是「同一根梁」。</div>
+</div>
+
+<div class="trap">
+<b>陷阱 A-15（最常見的失分）｜撓度用<b>服務載重</b>，不是因數化載重</b><br>
+用 \(1.2D+1.6L\) 去算撓度，結果會高估 40–60%，然後你會選一根過大的斷面。<br>
+<b>而且 \(L/360\) 這條限值是針對「活載重造成的撓度」</b>（因為靜載重撓度可以靠<b>起拱</b>抵銷，
+且它在裝修完成前就已經發生了，不會傷到天花板）。<br>
+全部載重的撓度另有較寬的 \(L/240\)。<b>看清楚題目問哪一個。</b>
+</div>
+
+<table>
+<thead><tr><th style="width:44%">載重型式（簡支梁）</th><th>最大撓度</th></tr></thead>
+<tbody>
+<tr><td>均佈載重 \(w\)</td><td>\(\delta = \dfrac{5wL^4}{384EI}\)</td></tr>
+<tr><td>跨中集中力 \(P\)</td><td>\(\delta = \dfrac{PL^3}{48EI}\)</td></tr>
+<tr><td>三分點對稱兩個集中力（各 \(P\)）</td><td>\(\delta = \dfrac{23PL^3}{648EI}\)</td></tr>
+<tr><td>懸臂梁端部集中力 \(P\)</td><td>\(\delta = \dfrac{PL^3}{3EI}\)</td></tr>
+</tbody>
+</table>
+
+<div class="trap">
+<b>陷阱 A-16｜三分點雙集中力用 \(23PL^3/648EI\)，不是 \(PL^3/48EI\)</b><br>
+\(23/648 = 0.0355\) vs \(1/48 = 0.0208\) —— 差 1.7 倍。而且公式裡的 \(P\) 是<b>單個</b>集中力。<br>
+<b>出處：SS-2015-1</b>（三分點集中力 + 使用性撓度）
+</div>
+
+<div class="why">
+<b>撓度公式為什麼都長成 \(\dfrac{\text{係數} \times \text{載重} \times L^3\ \text{或}\ L^4}{EI}\)？</b><br>
+因為它們全部來自 \(EI\,y'''' = w\) 積分四次（或 \(EI\,y''=M\) 積分兩次）。<br>
+・集中力 → \(L^3\)（力 × 長度³ / \(EI\)）<br>
+・均佈載重 → \(L^4\)（力/長度 × 長度⁴ / \(EI\)）<br>
+<b>量綱檢查法</b>：忘記係數時，先確認 \(L\) 的次方對不對 —— 次方錯了，係數再對也沒用。<br><br>
+<b>設計上的關鍵推論</b>：撓度 \(\propto L^4/I\)，而強度 \(\propto 1/L^2\)（\(M \propto wL^2\)）。
+<b>跨度增加時，撓度惡化得比強度快得多</b>。所以<b>長跨梁常由撓度控制、短跨梁由強度或剪力控制</b>。
+這是「斷面選擇題」的核心判斷（§14 精選第 5 題）。
+</div>
+</section>
+
+
+<section id="s8">
+<h2 class="t">8 ｜弱軸與雙軸彎曲：沒有 LTB，但有另一個上限</h2>
+
+<h3 class="t">8.1 為什麼弱軸彎曲不會 LTB</h3>
+
+<div class="why">
+<b>回到 §0 那張圖</b>：LTB 是「受壓翼板往<b>更弱的方向</b>跑」。<br>
+強軸彎曲時，受壓翼板想往側向（\(y\) 方向）跑，而 \(I_y \ll I_x\) —— <b>有更弱的方向可以去</b>，所以會 LTB。<br>
+弱軸彎曲時，受壓區已經在翼板的側緣了，它若要挫屈就得往 \(x\) 方向跑 ——
+但 \(I_x \gg I_y\)，<b>那是更強的方向，沒有東西會往更強的方向失穩</b>。<br><br>
+<b>所以：\(M_{ny}\) 與 \(L_b\) 完全無關。</b>題目給你一堆側撐資訊時，那些是給強軸用的。
+</div>
+
+<h3 class="t">8.2 但有一個 \(1.5F_yS_y\) 的上限</h3>
+
+$$M_{ny} = \min\left(F_y Z_y,\ \ 1.5\,F_y S_y\right),\qquad Z_y \approx \frac{b_f^2 t_f}{2}$$
+
+<div class="why">
+<b>1.5 這個數字不是隨便訂的 —— 它就是矩形的形狀因子</b><br>
+I 型鋼繞弱軸彎曲時，腹板幾乎不貢獻（它位於中性軸上），力矩幾乎全由<b>兩片翼板</b>承擔。
+把翼板單獨看，它就是一塊<b>躺著的矩形板</b>：<br><br>
+\(Z_{y}\)（兩翼板）\(= 2 \times \dfrac{t_f b_f^2}{4} = \dfrac{t_f b_f^2}{2}\)　；
+\(S_y = \dfrac{I_y}{b_f/2} = \dfrac{t_f b_f^3/6}{b_f/2} = \dfrac{t_f b_f^2}{3}\)<br><br>
+$$\frac{Z_y}{S_y} = \frac{t_f b_f^2/2}{t_f b_f^2/3} = \frac{3}{2} = 1.5$$
+<b>正是矩形的形狀因子 1.50</b>（§1.1 那張表）。<br><br>
+實際斷面加上腹板貢獻後，\(Z_y/S_y\) 會落在 1.50–1.67，<b>常常超過 1.5</b>。
+規範把上限壓在 \(1.5F_yS_y\)，理由是：若允許用到 \(F_yZ_y\)，在<b>工作載重</b>下翼板外緣就會出現
+大範圍不可回復的永久變形 —— 這是使用性問題，不是強度問題。
+</div>
+
+<div class="trap">
+<b>陷阱 A-17（高頻扣分）｜題目同時給 \(Z_y\) 和 \(S_y\)，就是在提示你檢查上限</b><br>
+正確流程：① \(M_{py} = F_yZ_y\)　② 上限 \(= 1.5F_yS_y\)　③ 取小　④ \(\times\,0.9\)<br>
+只寫 \(\phi_b F_y Z_y\) 而不比對上限，多數斷面會高估 5–10%。<br>
+<b>出處：SS-2014-3</b>（W21×93，\(Z_y/S_y = 1.57 > 1.5\)，由上限控制）<br>
+<b>版本注意</b>：AISC 360-10 起上限由 \(1.5F_yS_y\) 放寬為 \(1.6F_yS_y\)。依題目給定的規範版本作答。
+</div>
+
+<h3 class="t">8.3 雙軸彎曲互制</h3>
+
+$$\frac{M_{ux}}{\phi_b M_{nx}} + \frac{M_{uy}}{\phi_b M_{ny}} \le 1.0$$
+
+<p>（若同時有顯著軸力，就升級成梁柱的 P-M 互制式，那是 SS-U1-3 的範圍。）</p>
+
+<div class="tens">
+<b>雙軸彎曲題的解題節奏</b>：<br>
+① 強軸：完整跑 LTB 三區段（\(L_b\)、\(C_b\)、區段判斷）→ \(\phi_bM_{nx}\)<br>
+② 弱軸：<b>不理 \(L_b\)</b>，直接 \(\min(F_yZ_y,\ 1.5F_yS_y) \times 0.9\) → \(\phi_bM_{ny}\)<br>
+③ 代互制式<br>
+<b>注意 \(\phi_bM_{ny}\) 遠小於 \(\phi_bM_{nx}\)</b>（\(Z_y\) 可能只有 \(Z_x\) 的 1/5），
+所以即使 \(M_{uy}\) 看起來很小，第二項也可能吃掉一大塊使用率。<b>不要目測跳過。</b>
+</div>
+</section>
+
+
+<section id="s9">
+<h2>9 ｜三個延伸主題（各佔 1–3 題，不能不會但不必深挖）</h2>
+
+<h3>9.1 塑性分析與崩塌機構</h3>
+
+<p>當結構是<b>靜不定</b>時，第一個塑性鉸形成不代表倒塌 —— 內力會重分配，繼續加載到形成足夠多的塑性鉸、
+變成<b>機構</b>才崩塌。虛功法：</p>
+$$\sum P_i\,\delta_i = \sum M_{p,j}\,\theta_j$$
+
+<table>
+<thead><tr><th style="width:32%">結構</th><th style="width:20%">靜不定度 \(n\)</th><th>崩塌所需塑性鉸數 \(= n+1\)</th></tr></thead>
+<tbody>
+<tr><td>簡支梁</td><td>0</td><td>1</td></tr>
+<tr><td>一端固定一端滾支</td><td>1</td><td>2</td></tr>
+<tr><td>兩端固接梁</td><td>2</td><td>3</td></tr>
+<tr><td>單層單跨剛架</td><td>3</td><td>4</td></tr>
+</tbody>
+</table>
+
+<div class="trap">
+<b>陷阱 A-18｜塑性鉸 ≠ 一般鉸接</b><br>
+一般鉸：\(M = 0\)，不傳彎矩。<br>
+塑性鉸：\(M = M_p\)（<b>維持在 \(M_p\)</b>），可自由轉動但<b>仍在傳遞 \(M_p\)</b>。<br>
+這就是為什麼內功是 \(\sum M_p\theta\) 而不是零。<br>
+另外：<b>原本就是鉸接的支承不算塑性鉸</b>（它本來就能轉，不消耗能量）。
+</div>
+
+<div class="trap">
+<b>陷阱 A-19｜多個機構都要試，取<b>最小</b>崩塌載重</b><br>
+虛功法是<b>上限解</b>（機構法）—— 你假設的機構若不是真實的，算出來的載重會偏高（不保守）。
+所以必須把所有可能機構都算過，取最小值。只算一個就下結論是最常見的失分。<br>
+<b>出處：SS-2005-4、SS-2020-2、SS-2025-4</b>
+</div>
+
+<p><b>塑性分析的前提</b>（很容易被問的觀念題）：斷面必須<b>結實</b>（§2），且有<b>足夠側撐</b>（§3）。
+否則塑性鉸還沒轉夠，局部挫屈或 LTB 就先來了 —— <b>塑性分析的整套理論就失效</b>。</p>
+
+<h3>9.2 合成梁：混凝土板一起出力</h3>
+
+<p>鋼梁上方的混凝土板透過剪力釘與鋼梁結合。正彎矩區，混凝土受壓、鋼梁受拉，剛好各自發揮所長。</p>
+
+$$C_s = F_y A_s \ (\text{鋼梁全斷面拉力})\ ,\qquad C_c = 0.85 f'_c\, b_{\text{eff}}\, t_s\ (\text{混凝土壓力容量})$$
+
+<ul>
+<li>\(C_c \ge C_s\)：PNA 在<b>混凝土版內</b>，鋼梁全斷面降伏受拉。壓應力塊深度 \(a = \dfrac{F_yA_s}{0.85f'_c b_{\text{eff}}}\)，
+\(M_n = C_s\left(\dfrac{d_s}{2} + t_s - \dfrac{a}{2}\right)\)</li>
+<li>\(C_c < C_s\)：PNA 落在<b>鋼梁內</b>，鋼梁上部也要幫忙受壓，計算較繁</li>
+</ul>
+
+<div class="why">
+<b>合成梁為什麼這麼有效率？</b> 因為它把中性軸<b>往上推</b>了。
+鋼梁單獨作用時中性軸在梁中央，上半部的鋼被拿去受壓 —— 而鋼受壓要擔心挫屈，很浪費。
+接上混凝土板後，中性軸上移到板內或鋼梁頂部，<b>幾乎整根鋼梁都在受拉</b>（鋼最擅長的事），
+壓力全部交給混凝土（混凝土最擅長的事）。<br>
+<b>順帶好處</b>：混凝土板同時提供<b>連續側撐</b> → \(L_b = 0\) → 完全不必檢核 LTB。
+這也是為什麼題目說「上翼板埋入 RC 版」或「以剪力釘與樓版連接」時，可以直接寫 \(M_n = M_p\)。
+</div>
+
+<h3>9.3 板梁與張力場效應</h3>
+
+<p>腹板極細長（\(h/t_w\) 很大）的銲接組合梁稱為<b>板梁</b>。腹板剪力挫屈後<b>並沒有立刻報廢</b> ——
+它會像桁架的斜向拉桿一樣，形成一道<b>張力場</b>，配合翼板與加勁板繼續承載：</p>
+
+$$V_n = 0.6F_{yw}A_w\left[C_v + \frac{1-C_v}{1.15\sqrt{1+(a/h)^2}}\right]$$
+
+<div class="why">
+<b>張力場的圖像</b>：想像腹板挫屈後，沿著壓力方向那條對角線「皺掉了」（不再承載），
+但<b>拉力方向那條對角線還好好的</b>。這條拉力帶把力傳到加勁板，加勁板再把力傳給翼板 ——
+整個板梁變成一座<b>桁架</b>：翼板＝弦桿，加勁板＝豎向壓桿，腹板的拉力帶＝斜向拉桿。<br>
+公式裡的第二項 \(\frac{1-C_v}{1.15\sqrt{1+(a/h)^2}}\) 就是這個「挫屈後額外強度」。
+</div>
+
+<div class="trap">
+<b>陷阱 A-20｜端部面板不得使用張力場效應</b><br>
+張力場需要「錨定」—— 拉力帶的兩端要有東西擋住。中間面板的兩側都有相鄰面板可以互相平衡，
+但<b>端部面板的外側沒有相鄰面板</b>，無法錨定，所以只能用 \(V_n = 0.6F_{yw}A_wC_v\)。<br>
+<b>出處：SS-2006-4</b>
+</div>
+</section>
+
+
+<section id="s10">
+<h2>10 ｜解題決策流程：拿到一題梁，前三分鐘該做什麼</h2>
+
+<div class="fig">
+<svg viewBox="0 0 740 620" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <!-- start -->
+  <rect x="278" y="10" width="184" height="34" rx="17" fill="#263238"/>
+  <text x="304" y="32" font-size="12.5" fill="#fff" font-weight="bold">拿到梁桿件題目</text>
+  <path d="M370.0 44.0 L370.0 53.0" stroke="#455a64" stroke-width="1.8" fill="none"/><path d="M365.8 53.0 L370.0 62.0 L374.2 53.0 Z" fill="#455a64"/>
+
+  <!-- step: section properties -->
+  <rect x="248" y="62" width="244" height="42" rx="7" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
+  <text x="262" y="80" font-size="11.6" fill="#0d47a1" font-weight="bold">① 整理斷面性質</text>
+  <text x="262" y="96" font-size="11" fill="#0d47a1">Zx, Sx, Ix, ry, A（非對稱要先分 ENA/PNA）</text>
+  <path d="M370.0 104.0 L370.0 113.0" stroke="#455a64" stroke-width="1.8" fill="none"/><path d="M365.8 113.0 L370.0 122.0 L374.2 113.0 Z" fill="#455a64"/>
+
+  <!-- diamond 1: compact? -->
+  <path d="M370 122 L556 168 L370 214 L184 168 Z" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.7"/>
+  <text x="288" y="163" font-size="11.8" fill="#e65100" font-weight="bold">關卡一：斷面結實嗎？</text>
+  <text x="272" y="181" font-size="10.8" fill="#e65100">λf ≤ 0.38√(E/Fy)　且　λw ≤ 3.76√(E/Fy)</text>
+
+  <!-- No branch -->
+  <path d="M184.0 168.0 L96.0 168.0 L96.0 205.0" stroke="#c62828" stroke-width="1.8" fill="none"/><path d="M91.8 205.0 L96.0 214.0 L100.2 205.0 Z" fill="#c62828"/>
+  <text x="126" y="162" font-size="11.5" fill="#c62828" font-weight="bold">否</text>
+  <rect x="16" y="214" width="164" height="60" rx="7" fill="#ffebee" stroke="#c62828" stroke-width="1.5"/>
+  <text x="28" y="233" font-size="11.3" fill="#b71c1c" font-weight="bold">非結實／細長</text>
+  <text x="28" y="249" font-size="10.6" fill="#b71c1c">用 FLB 折減公式</text>
+  <text x="28" y="264" font-size="10.6" fill="#b71c1c">（Mn 在 Mp 與 Mr 間內插）</text>
+
+  <!-- Yes branch -->
+  <text x="384" y="234" font-size="11.5" fill="#2e7d32" font-weight="bold">是</text>
+  <path d="M370.0 214.0 L370.0 235.0" stroke="#455a64" stroke-width="1.8" fill="none"/><path d="M365.8 235.0 L370.0 244.0 L374.2 235.0 Z" fill="#455a64"/>
+
+  <!-- step: mark braces -->
+  <rect x="238" y="244" width="264" height="42" rx="7" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.5"/>
+  <text x="252" y="262" font-size="11.6" fill="#4a148c" font-weight="bold">② 在圖上圈出所有側向支撐點</text>
+  <text x="252" y="278" font-size="11" fill="#4a148c">切成數段，每段各自有 Lb 與 Cb</text>
+  <path d="M370.0 286.0 L370.0 295.0" stroke="#455a64" stroke-width="1.8" fill="none"/><path d="M365.8 295.0 L370.0 304.0 L374.2 295.0 Z" fill="#455a64"/>
+
+  <!-- diamond 2: full braced? -->
+  <path d="M370 304 L556 344 L370 384 L184 344 Z" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.7"/>
+  <text x="266" y="340" font-size="11.6" fill="#1b5e20" font-weight="bold">完全側撐？（Lb=0 或 Lb ≤ Lp）</text>
+  <text x="256" y="358" font-size="10.6" fill="#1b5e20">「埋入 RC 版」「剪力釘連接」＝完全側撐</text>
+
+  <path d="M556.0 344.0 L646.0 344.0 L646.0 387.0" stroke="#2e7d32" stroke-width="1.8" fill="none"/><path d="M641.8 387.0 L646.0 396.0 L650.2 387.0 Z" fill="#2e7d32"/>
+  <text x="580" y="336" font-size="11.5" fill="#2e7d32" font-weight="bold">是</text>
+  <rect x="566" y="396" width="158" height="52" rx="7" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="578" y="416" font-size="11.5" fill="#1b5e20" font-weight="bold">Mn = Mp = Fy·Zx</text>
+  <text x="578" y="434" font-size="10.6" fill="#1b5e20">不必算 Lp、Lr、Cb</text>
+
+  <text x="384" y="404" font-size="11.5" fill="#e65100" font-weight="bold">否</text>
+  <path d="M370.0 384.0 L370.0 405.0" stroke="#455a64" stroke-width="1.8" fill="none"/><path d="M365.8 405.0 L370.0 414.0 L374.2 405.0 Z" fill="#455a64"/>
+
+  <!-- step: compute Lp Lr -->
+  <rect x="234" y="414" width="272" height="42" rx="7" fill="#ffebee" stroke="#c62828" stroke-width="1.5"/>
+  <text x="248" y="432" font-size="11.6" fill="#b71c1c" font-weight="bold">③ 算 Mp, Mr, Lp, Lr（需 X1, X2）</text>
+  <text x="248" y="448" font-size="11" fill="#b71c1c">Mr =（Fy − Fr）Sx；Fr：熱軋 0.7、銲接 1.16</text>
+  <path d="M370.0 456.0 L370.0 465.0" stroke="#455a64" stroke-width="1.8" fill="none"/><path d="M365.8 465.0 L370.0 474.0 L374.2 465.0 Z" fill="#455a64"/>
+
+  <!-- diamond 3: which zone -->
+  <path d="M370 474 L556 512 L370 550 L184 512 Z" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.7"/>
+  <text x="300" y="509" font-size="11.8" fill="#0d47a1" font-weight="bold">Lb 落在哪一區？</text>
+  <text x="238" y="527" font-size="10.6" fill="#0d47a1">（每段各自判斷，不是全梁一個答案）</text>
+
+  <path d="M184.0 512.0 L96.0 512.0 L96.0 551.0" stroke="#1565c0" stroke-width="1.8" fill="none"/><path d="M91.8 551.0 L96.0 560.0 L100.2 551.0 Z" fill="#1565c0"/>
+  <text x="108" y="506" font-size="10.6" fill="#0d47a1" font-weight="bold">Lp&lt;Lb≤Lr</text>
+  <rect x="14" y="560" width="176" height="48" rx="7" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.5"/>
+  <text x="24" y="578" font-size="10.8" fill="#e65100" font-weight="bold">非彈性：線性內插</text>
+  <text x="24" y="596" font-size="10.5" fill="#e65100">Mn = Cb[Mp−(Mp−Mr)·比例]</text>
+
+  <path d="M556.0 512.0 L646.0 512.0 L646.0 551.0" stroke="#1565c0" stroke-width="1.8" fill="none"/><path d="M641.8 551.0 L646.0 560.0 L650.2 551.0 Z" fill="#1565c0"/>
+  <text x="576" y="506" font-size="10.6" fill="#0d47a1" font-weight="bold">Lb &gt; Lr</text>
+  <rect x="558" y="560" width="176" height="48" rx="7" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
+  <text x="568" y="578" font-size="10.8" fill="#0d47a1" font-weight="bold">彈性：Mn = Cb·Mcr</text>
+  <text x="568" y="596" font-size="10.5" fill="#0d47a1">用 X1, X2 或 Iy、J、Cw 公式</text>
+
+  <path d="M370.0 550.0 L370.0 557.0" stroke="#455a64" stroke-width="1.8" fill="none"/><path d="M365.8 557.0 L370.0 566.0 L374.2 557.0 Z" fill="#455a64"/>
+  <rect x="216" y="566" width="308" height="44" rx="7" fill="#263238"/>
+  <text x="230" y="585" font-size="11.5" fill="#fff" font-weight="bold">④ 三個收尾動作（少一個就扣分）</text>
+  <text x="230" y="602" font-size="10.6" fill="#b0bec5">檢查 Mn ≤ Mp　→　φb=0.9　→　另算剪力 §6 與撓度 §7</text>
+
+  
+</svg>
+<div class="cap">圖 10-1｜梁桿件解題決策樹。三個菱形對應 §0 圖 0-2 的三道關卡。
+最下面那條黑色收尾列是最多人漏掉的地方。</div>
+</div>
+
+<div class="tens">
+<b>把整個單元濃縮成一條因果鏈（能用嘴巴講出來就算讀懂了）</b><br><br>
+<b>斷面決定 \(M_p\)　→　板夠不夠厚決定「有沒有資格用 \(M_p\)」　→
+　撐夠不夠密決定「能用到 \(M_p\) 的幾成」　→　\(C_b\) 把彎矩圖的紅利加回來　→
+　但天花板永遠是 \(M_p\)　→　最後還要過剪力與撓度兩關。</b><br><br>
+七步。考前把這七步默寫一次，比翻十頁公式有用。
+</div>
+</section>
+
+
+<section id="s11">
+<h2>11 ｜歷屆考點對應表</h2>
+
+<h3>11.1 主分類 21 題（primaryTopicId = SS-U1-2）</h3>
+
+<table>
+<thead><tr><th style="width:11%">題號</th><th style="width:6%">考年</th><th style="width:9%">設計法</th>
+<th style="width:36%">考什麼</th><th style="width:14%">讀本講義</th><th>關鍵提醒</th></tr></thead>
+<tbody>
+<tr><td><a class="qlink" href="problems-view/SS-2002-1.html" target="_blank">SS-2002-1</a></td><td>91</td><td>概念</td><td>剪力流 \(q=VQ/I\)、弱軸剪力由翼板承擔、殘留應力、銲接氫致裂縫</td><td>§6, §8.1</td><td>弱軸剪力公式與腹板承剪完全不同</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2002-2.html" target="_blank">SS-2002-2</a></td><td>91</td><td>ASD</td><td>\(L_c/L_u/F_b\) 系統、移動集中載重最不利位置、自重疊加、容許彎矩</td><td>§5, §7</td><td>自重產生的 \(wL^2/8\) 不可漏；移動載重在跨中最不利</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2005-2.html" target="_blank">SS-2005-2</a></td><td>94</td><td>LRFD</td><td>SRC 包覆型斷面、塑性應力分佈法、PNA 定位、公稱彎矩強度</td><td>§9.2, §1.2</td><td>先判斷 PNA 在鋼骨內還是混凝土內</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2006-4.html" target="_blank">SS-2006-4</a></td><td>95</td><td>LRFD</td><td>板梁腹板剪力挫屈、張力場效應、加勁板設計、後挫屈強度</td><td>§9.3, §6.2</td><td>端部面板不得用張力場</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2007-3.html" target="_blank">SS-2007-3</a></td><td>96</td><td>LRFD</td><td>LTB 三區段完整計算、\(X_1/X_2\) 推導、\(L_p/L_r\)、\(C_b\)、\(\phi_bM_n\)</td><td>§3 全, §4</td><td>本單元最標準的完整題型</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2008-1.html" target="_blank">SS-2008-1</a></td><td>97</td><td>ASD</td><td>St. Venant 扭轉 vs 翹曲扭轉的角色、\(F_b\) 公式選取、觀念辨析</td><td>§3.1, §5.2</td><td>兩式取<b>大</b>（同一機制的兩種保守估計）</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2008-3.html" target="_blank">SS-2008-3</a></td><td>97</td><td>LRFD</td><td>多側撐段各自算 \(C_b\)、找控制段、結實斷面、均佈載重</td><td>§4.3</td><td>控制段未必是彎矩最大的那段</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2009-3.html" target="_blank">SS-2009-3</a></td><td>98</td><td>LRFD</td><td>斷面性質、\(M_p/M_y\) 與形狀因子、剪力強度 \(V_n\)、弱軸挫屈 \(\lambda_c\)、平行軸定理</td><td>§1, §6</td><td>一題同時考彎矩、剪力、挫屈三件事</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2010-4.html" target="_blank">SS-2010-4</a></td><td>99</td><td>LRFD</td><td>斷面選擇（設計型）、使用性撓度 \(L/360\)、全側撐、樓版載重</td><td>§7, §3.4</td><td>撓度用服務載重；先強度選斷面再驗撓度</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2011-3.html" target="_blank">SS-2011-3</a></td><td>100</td><td>LRFD</td><td>非彈性 LTB 完整流程、端彎矩下的 \(C_b\)、\(X_1/X_2\)、\(L_p/L_r\)、結實斷面</td><td>§3, §4</td><td>覆蓋率最高的單一題目</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2012-1.html" target="_blank">SS-2012-1</a></td><td>101</td><td>LRFD</td><td><b>非結實斷面</b>的翼板局部挫屈 FLB 與 LTB 併行、\(C_b\)、\(F_r\)</td><td>§2, §3</td><td>非結實時 FLB 與 LTB <b>各算一次取小</b></td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2014-3.html" target="_blank">SS-2014-3</a></td><td>103</td><td>LRFD</td><td>雙向彎曲互制、弱軸彎曲 \(1.5F_yS_y\) 上限、非彈性 LTB、\(C_b\)</td><td>§8 全, §3.4</td><td>同時給 \(Z_y\) 與 \(S_y\) 就是上限的提示</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2015-1.html" target="_blank">SS-2015-1</a></td><td>104</td><td>LRFD</td><td>三分點集中力、各段 \(C_b\)、剪力強度、撓度 \(23PL^3/648EI\)、圖表判讀</td><td>§4.3, §6, §7</td><td>三分點撓度公式；側撐位置決定 \(C_b\)</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2016-1.html" target="_blank">SS-2016-1</a></td><td>105</td><td>ASD</td><td>寬厚比與斷面分類、\(\lambda_p/\lambda_r\)、梁腹板 vs 柱腹板限值差異</td><td>§2.2</td><td>梁腹板限值遠寬鬆於柱腹板</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2016-4.html" target="_blank">SS-2016-4</a></td><td>105</td><td>LRFD</td><td>LTB 整體挫屈觀念、弱軸為何無 LTB、彈性 LTB</td><td>§3.1, §8.1</td><td>觀念題要寫「為什麼」，不是列公式</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2019-2.html" target="_blank">SS-2019-2</a></td><td>108</td><td>LRFD</td><td>合成梁完全合成、有效寬度、PNA、塑性應力分布、正彎矩 \(M_n\)</td><td>§9.2</td><td>\(b_{\text{eff}}\) 是兩側之和；先比 \(C_c\) 與 \(C_s\)</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2021-3.html" target="_blank">SS-2021-3</a></td><td>110</td><td>LRFD</td><td><b>耐震</b>緊實斷面 \(\lambda_{pd}\)、SN 鋼材、LTB、形狀因子、斷面選擇</td><td>§2.2, §3</td><td>耐震用更嚴的 \(\lambda_{pd}\)，不是一般 \(\lambda_p\)</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2023-3.html" target="_blank">SS-2023-3</a></td><td>112</td><td>概念</td><td>非對稱斷面 ENA vs PNA、\(M_y\) 由小翼板側控制、\(Z_x\) 等面積法、形狀因子</td><td>§1 全</td><td>兩個中性軸要分開解；\(c_{\max}\) 在小翼板側</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2024-3.html" target="_blank">SS-2024-3</a></td><td>113</td><td>LRFD</td><td>非彈性 LTB、\(C_b\)、強弱軸比較、弱軸彎曲、SN490B、\(M_p\)</td><td>§3, §8</td><td>強弱軸都要算完才能下結論</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2025-1.html" target="_blank">SS-2025-1</a></td><td>114</td><td>LRFD</td><td><b>銲接組合斷面</b>自建斷面性質、寬厚比、殘留應力、完全側撐 → \(M_p\)</td><td>§1, §2, §3.3</td><td>銲接 \(F_r=1.16\)；\(F_r\) 不影響 \(M_p\)</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2025-3.html" target="_blank">SS-2025-3</a></td><td>114</td><td>LRFD</td><td>LTB 三區段、\(M_p\) 與 \(M_r\)、\(L_p/L_r\)、熱軋斷面殘留應力、\(\phi_bM_n\)</td><td>§3 全</td><td>熱軋 \(F_r=0.7\)；\(S_x\) 的 \(c\) 用全深一半</td></tr>
+</tbody>
+</table>
+
+<h3>11.2 副分類 4 題（本單元為 secondaryTopicId）</h3>
+
+<table>
+<thead><tr><th style="width:11%">題號</th><th style="width:6%">考年</th><th style="width:16%">主分類</th><th style="width:40%">與本單元的交集</th><th>讀本講義</th></tr></thead>
+<tbody>
+<tr><td><a class="qlink" href="problems-view/SS-2005-4.html" target="_blank">SS-2005-4</a></td><td>94</td><td>塑性分析與設計</td><td>固端梁崩塌機構、塑性鉸、T 形斷面 \(Z_x\)、虛功法</td><td>§9.1, §1.2</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2019-4.html" target="_blank">SS-2019-4</a></td><td>108</td><td>接合之分析與設計</td><td>蓋板組合斷面的<b>剪力流</b> \(q=VQ/I\) → 斷續填角銲間距</td><td>§6, §1</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2020-2.html" target="_blank">SS-2020-2</a></td><td>109</td><td>塑性分析與設計</td><td>非對稱 H 斷面 \(Z_x\)（半面積法）、虛功法、極限載重</td><td>§1.2, §9.1</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2020-4.html" target="_blank">SS-2020-4</a></td><td>109</td><td>接合之分析與設計</td><td>梁腹板續接、四鈑接合、ASD 容許剪應力</td><td>§6</td></tr>
+</tbody>
+</table>
+</section>
+
+
+<section id="s12">
+<h2>12 ｜陷阱總表：考前十分鐘掃一次</h2>
+
+<table>
+<thead><tr><th style="width:7%">編號</th><th style="width:26%">觸發信號</th><th style="width:30%">錯誤思維</th><th>正確認知</th></tr></thead>
+<tbody>
+<tr><td><b>A-01</b></td><td>題目說「求 \(Z_x\)」</td><td>\(Z_x = I_x/c\)</td>
+<td>那是 \(S_x\)。\(Z_x\) = PNA 上下各半面積的<b>一次矩</b>之和，用不到 \(I_x\)</td></tr>
+<tr><td><b>A-02</b></td><td>上下翼板不一樣的斷面</td><td>形心軸就是塑性中性軸</td>
+<td>ENA（面積矩=0）≠ PNA（等面積）。<b>要解兩次</b>（SS-2023-3）</td></tr>
+<tr><td><b>A-03</b></td><td>非對稱斷面求 \(M_y\)</td><td>\(c = d/2\)</td>
+<td>\(S_{\min} = I_x/c_{\max}\)，\(c_{\max}\) 在<b>小翼板側</b>，該側先降伏</td></tr>
+<tr><td><b>A-04</b></td><td>任何寬厚比／ASD 係數</td><td>直接抄記憶中的數字</td>
+<td>係數隨單位制（ksi / tf·cm⁻² / kgf·cm⁻²）不同。<b>先看題目 \(F_y\) 單位</b>，或回到 \(c\sqrt{E/F_y}\)</td></tr>
+<tr><td><b>A-05</b></td><td>翼板寬厚比</td><td>\(\lambda_f = b_f/t_f\)</td>
+<td>\(\lambda_f = b_f/(2t_f)\)。翼板是<b>懸臂板</b>，懸出長度是半寬</td></tr>
+<tr><td><b>A-06</b></td><td>「耐震」「SMRF」「SN 鋼材」「塑性轉角」</td><td>用一般 \(\lambda_p\) 判定</td>
+<td>耐震用更嚴的 \(\lambda_{pd}\)（翼板 0.30、腹板 2.45 倍 \(\sqrt{E/F_y}\)）（SS-2021-3）</td></tr>
+<tr><td><b>A-07</b></td><td>題目給了殘留應力 \(F_r\)</td><td>\(M_p = (F_y-F_r)Z_x\)</td>
+<td>\(M_p = F_yZ_x\)（<b>不含 \(F_r\)</b>）；\(F_r\) 只進入 \(M_r\) 與 \(L_r\)（SS-2025-1/3）</td></tr>
+<tr><td><b>A-08</b></td><td>「銲接組合斷面」</td><td>沿用 \(F_r = 0.7\)</td>
+<td>銲接 \(F_r = 1.16\) tf/cm²，熱軋才是 0.7。用錯會誤判區段</td></tr>
+<tr><td><b>A-09</b></td><td>非彈性或彈性區乘了 \(C_b\)</td><td>算完就寫答案</td>
+<td>\(M_n = \min(C_b M_n^{(1)},\ M_p)\)。<b>一定要多寫一行比較</b></td></tr>
+<tr><td><b>A-10</b></td><td>梁上有兩個以上側撐點</td><td>算一個 \(C_b\) 全梁通用</td>
+<td><b>逐段</b>算 \(L_b\)、\(C_b\)、區段、\(\phi_bM_n\)，並與<b>該段的</b> \(M_u\) 比（SS-2008-3）</td></tr>
+<tr><td><b>A-11</b></td><td>\(L_b \le L_p\)</td><td>還是乘上 \(C_b\)</td>
+<td>塑性區 \(M_n=M_p\)，\(C_b\) 不適用</td></tr>
+<tr><td><b>A-12</b></td><td>ASD \(L_c\)、\(L_u\)、\(F_b\) 公式</td><td>套 imperial 係數但用 tf/cm²</td>
+<td>76、20000、170000 都是 in/ksi 制。答案卷上<b>寫明你採用的單位制</b></td></tr>
+<tr><td><b>A-13</b></td><td>ASD 的 \(C_b\)（\(M_1/M_2\) 式）</td><td>單曲率取正</td>
+<td><b>單曲率取負、雙曲率取正</b>。驗算：均勻彎矩應得 \(1.75-1.05+0.3=1.00\)</td></tr>
+<tr><td><b>A-14</b></td><td>算剪力面積 \(A_w\)</td><td>\(A_w = h \times t_w\)（淨高）</td>
+<td>台灣規範 \(A_w = d \times t_w\)（<b>全深</b>）。寬厚比才用淨高 \(h\)</td></tr>
+<tr><td><b>A-15</b></td><td>「撓度」「使用性」「\(L/360\)」</td><td>用 \(1.2D+1.6L\) 算撓度</td>
+<td>撓度用<b>未因數化服務載重</b>；\(L/360\) 針對<b>活載重</b>撓度，全載重是 \(L/240\)</td></tr>
+<tr><td><b>A-16</b></td><td>三分點兩個集中力的撓度</td><td>\(\delta = PL^3/48EI\)</td>
+<td>\(\delta = 23PL^3/648EI\)（\(P\) 為<b>單個</b>力），差 1.7 倍（SS-2015-1）</td></tr>
+<tr><td><b>A-17</b></td><td>題目<b>同時</b>給 \(Z_y\) 與 \(S_y\)</td><td>\(\phi_bM_{ny} = 0.9F_yZ_y\)</td>
+<td>\(M_{ny}=\min(F_yZ_y,\ 1.5F_yS_y)\)。多數 W 型鋼 \(Z_y/S_y>1.5\)（SS-2014-3）</td></tr>
+<tr><td><b>A-18</b></td><td>塑性分析、崩塌機構</td><td>塑性鉸處 \(M=0\)</td>
+<td>塑性鉸 \(M = M_p\)（維持不變，仍在傳力）；原有鉸接不算塑性鉸</td></tr>
+<tr><td><b>A-19</b></td><td>虛功法求極限載重</td><td>算一個機構就交卷</td>
+<td>機構法是<b>上限解</b>，必須試所有機構<b>取最小</b>崩塌載重</td></tr>
+<tr><td><b>A-20</b></td><td>板梁加勁板、張力場</td><td>所有面板都用張力場公式</td>
+<td><b>端部面板不得使用</b>（拉力帶無法錨定）（SS-2006-4）</td></tr>
+<tr><td><b>A-21</b></td><td>「結實斷面」四個字</td><td>結實 → 不必檢核 LTB</td>
+<td>結實只保證<b>板件</b>不先皺（關卡一）。LTB 是<b>桿件</b>尺度（關卡二），兩者獨立（SS-2006-1）</td></tr>
+<tr><td><b>A-22</b></td><td>非結實斷面 + 有 \(L_b\)</td><td>只算 LTB 或只算 FLB</td>
+<td><b>FLB 與 LTB 各算一次，取小值</b>（SS-2012-1）</td></tr>
+</tbody>
+</table>
+</section>
+
+
+<section id="s13">
+<h2>13 ｜自我檢測：12 個「為什麼」</h2>
+
+<p class="lead">先自己回答，再展開。答不出來的那幾題，回去讀對應章節 —— 這比重做一遍計算題有效得多。</p>
+
+<details><summary>Q1｜為什麼側扭挫屈一定是「側移 + 扭轉」，不能只是純側移？</summary>
+<p>因為受壓翼板想側移，受拉翼板受張力自我穩定、不肯動。兩片翼板被腹板剛性連接，
+位移量不同就只能靠斷面轉一個角來協調 —— 於是必然是側移與扭轉的耦合。（§0）</p>
+</details>
+
+<details><summary>Q2｜為什麼 I 型鋼繞弱軸彎曲不會發生 LTB？</summary>
+<p>挫屈永遠往「更弱的方向」去。弱軸彎曲時受壓區若要挫屈，只能往強軸方向跑，
+而 \(I_x \gg I_y\)，沒有東西會往更強的方向失穩。所以 \(M_{ny}\) 與 \(L_b\) 無關。（§8.1）</p>
+</details>
+
+<details><summary>Q3｜為什麼閉合斷面（箱形、圓管）幾乎不必檢核 LTB？</summary>
+<p>因為 \(J\)。開口薄壁斷面 \(J = \frac13\sum bt^3\)，厚度三次方讓它小得可憐；
+閉合斷面用 Bredt 公式，\(J\) 大好幾個數量級，純扭轉勁度直接把 LTB 壓死。（§3.1）</p>
+</details>
+
+<details><summary>Q4｜LTB 為什麼要分三段，而不是一條連續曲線？</summary>
+<p>根源是<b>殘留應力</b>。沒有殘留應力的話只會有「塑性平台」與「彈性曲線」兩段直接相交。
+殘留應力讓翼板端提前降伏，在中間造出一段既非全塑性、也非全彈性的過渡區。
+這段真實行為太複雜（有效 \(I_y, J, C_w\) 都隨載重變），規範用線性內插當保守下包絡線。（§3.2）</p>
+</details>
+
+<details><summary>Q5｜\(F_r\) 為什麼影響 \(M_r\) 卻不影響 \(M_p\)？</summary>
+<p>殘留應力在斷面上是<b>自相平衡</b>的（合力與合力矩皆為零）。當全斷面都降伏到 \(F_y\) 時，
+殘留應力已被「洗掉」，對 \(M_p\) 毫無影響。它只在<b>部分降伏</b>階段起作用 —— 也就是決定「何時開始降伏」。（§3.3）</p>
+</details>
+
+<details><summary>Q6｜為什麼翼板的寬厚比限值（≈11）比梁腹板（≈107）嚴這麼多？</summary>
+<p>邊界條件不同。翼板是<b>懸臂板</b>（外緣自由，只有一邊被夾）；腹板<b>上下都連到翼板</b>（兩邊固定），
+而且梁腹板只有一半受壓，受拉那半會拉住受壓那半。<br>
+延伸：柱腹板是全斷面受壓，沒有受拉區幫忙，限值就嚴很多（\(1.49\sqrt{E/F_y}\) vs 梁的 \(5.70\sqrt{E/F_y}\)）。（§2.2）</p>
+</details>
+
+<details><summary>Q7｜「斷面結實」是否代表不必檢核 LTB？</summary>
+<p>不是。結實只保證<b>板件</b>（局部尺度）不會先皺，是關卡一。
+LTB 是<b>整根桿件</b>（整體尺度）的穩定問題，是關卡二。兩者互相獨立，都要過。（§2.2 / SS-2006-1）</p>
+</details>
+
+<details><summary>Q8｜為什麼均勻彎矩的 \(C_b = 1.0\) 是「最不利」而不是「最好」？</summary>
+<p>\(C_b\) 的定義是「實際彎矩分佈的 \(M_{cr}\) ÷ 均勻彎矩的 \(M_{cr}\)」。
+均勻彎矩讓整段無支撐長度的每一個斷面都處於最大壓力，沒有任何一段有餘力去拉住別人，
+所以臨界彎矩最低。它是規範拿來當基準的<b>最壞情況</b>。（§4.1）</p>
+</details>
+
+<details><summary>Q9｜為什麼「三分點集中載重的 \(C_b\)」沒有唯一答案？</summary>
+<p>因為 \(C_b\) 是<b>每個無支撐段</b>各自的性質。<br>
+只有兩端側撐（\(L_b=L\)）：\(C_b = 1.14\)。<br>
+載重點也設側撐：中段彎矩完全均勻 → \(C_b = 1.00\)；兩端段為三角形 → \(C_b = 1.67\)。<br>
+所以問「這種載重的 \(C_b\)」是問錯問題，要先問「側撐在哪裡」。（§4.3）</p>
+</details>
+
+<details><summary>Q10｜ASD 的 \(0.66F_y\) 與 \(0.60F_y\) 差在哪裡？兩者的比值有什麼意義？</summary>
+<p>\(0.60F_y = F_y/1.67\)，是把<b>初始降伏</b> \(M_y\) 除以安全係數。<br>
+\(0.66F_y = (Z_x/S_x)F_y/1.67 = 1.12F_y/1.67\)，是把<b>塑性彎矩</b> \(M_p\) 除以同一個安全係數。<br>
+兩者比值 \(0.66/0.60 = 1.10 \approx Z_x/S_x\) —— <b>正是形狀因子</b>。（§5.1）</p>
+</details>
+
+<details><summary>Q11｜ASD 中 \(L_b > L_u\) 時的兩條 \(F_b\) 公式，為什麼是取「大」值？</summary>
+<p>因為它們不是兩個獨立的失敗模式，而是<b>同一件事的兩種保守近似</b>：
+一條只算翹曲扭轉（令 \(GJ=0\)），另一條只算純扭轉（令 \(C_w=0\)）。
+真實梁兩種勁度都有，強度必然大於任一單獨估計，所以取大仍然保守。<br>
+對照：關卡之間（局部挫屈 vs LTB）是不同的壞事，那才要取小。（§5.2）</p>
+</details>
+
+<details><summary>Q12｜弱軸彎曲的 \(1.5F_yS_y\) 上限，那個 1.5 是哪來的？</summary>
+<p>I 型鋼繞弱軸彎時腹板幾乎不貢獻，力矩由兩片翼板承擔，而翼板就是<b>躺著的矩形板</b>。
+矩形的形狀因子恰好是 1.50：\(Z_y/S_y = (t_fb_f^2/2)/(t_fb_f^2/3) = 3/2\)。<br>
+實際斷面加上腹板後常超過 1.5，規範便以 \(1.5F_yS_y\) 設限，避免工作載重下翼板外緣出現大範圍永久變形。（§8.2）</p>
+</details>
+</section>
+
+
+<section id="s14">
+<h2 style="border-color:#ef6c00">★ 14 ｜精選 5 題：時間只夠練五題的話，練這五題</h2>
+
+<p class="lead">選題邏輯不是「最難」也不是「最新」，是<b>獨立技能覆蓋最大、彼此重疊最少</b>。
+本單元 25 題若全練，重複的 LTB 計算會佔掉一半時間。下面五題把 25 題的能力拆成五塊互不重疊的拼圖。</p>
+
+<table>
+<thead><tr><th style="width:5%">#</th><th style="width:11%">題號</th><th style="width:6%">考年</th>
+<th style="width:30%">為什麼選它（別題練不到的獨立技能）</th><th style="width:14%">先讀哪幾節</th><th>做完要能回答</th></tr></thead>
+<tbody>
+<tr>
+<td><b>1</b></td><td><a class="qlink" href="problems-view/SS-2011-3.html" target="_blank">SS-2011-3</a></td><td>100</td>
+<td><b>LTB 全流程的標準骨架</b>。25 題裡覆蓋權重最高的單一題（單題涵蓋全單元標籤權重的 25%）：
+結實判定 → \(M_p/M_r\) → \(X_1/X_2\) → \(L_p/L_r\) → 端彎矩下的 \(C_b\) → 區段判斷 → 內插 → \(M_p\) 截頂。
+<b>這一題會了，12 道 LTB 題就會了 10 道。</b></td>
+<td>§2, §3 全, §4</td>
+<td>\(X_1, X_2\) 為何與 \(L_b\) 無關？\(L_p\) 為何用 \(r_y\) 而非 \(r_x\)？</td></tr>
+
+<tr>
+<td><b>2</b></td><td><a class="qlink" href="problems-view/SS-2025-1.html" target="_blank">SS-2025-1</a></td><td>114</td>
+<td><b>唯一要你「自己建立斷面性質」的近年題</b>。銲接組合斷面 → 得自己算 \(I_x, S_x, Z_x\)，
+再判寬厚比、用 \(F_r = 1.16\)（銲接值）。<b>自建資料的能力是查表題永遠練不到的</b>，
+而且近年出題明顯往這個方向走（2023-3、2025-1 都是）。</td>
+<td>§1, §2.2, §3.3</td>
+<td>為何銲接 \(F_r\) 比熱軋大？\(F_r\) 影響 \(M_p\) 嗎？</td></tr>
+
+<tr>
+<td><b>3</b></td><td><a class="qlink" href="problems-view/SS-2014-3.html" target="_blank">SS-2014-3</a></td><td>103</td>
+<td><b>唯一同時考弱軸與雙軸的題</b>，而且是 \(1.5F_yS_y\) 上限陷阱的出處
+（\(W21\times93\)，\(Z_y/S_y = 1.57 > 1.5\)，由上限控制）。
+弱軸「不算 LTB 但有另一個上限」這件事，跟強軸的思路完全反過來 —— <b>屬於獨立技能，不能靠強軸題遷移。</b></td>
+<td>§8 全, §3.4, §4</td>
+<td>弱軸為何無 LTB？1.5 這個數字的來源是什麼？</td></tr>
+
+<tr>
+<td><b>4</b></td><td><a class="qlink" href="problems-view/SS-2023-3.html" target="_blank">SS-2023-3</a></td><td>112</td>
+<td><b>投報率最高的觀念鏈題</b>：計算量小，卻一次串起 ENA/PNA、\(S_x\) 兩側取小、\(Z_x\) 等面積法、形狀因子四個概念，
+並直接對應陷阱 A-01/A-02/A-03。<b>它是 §1 的實體版</b>，也是塑性分析（SS-2005-4、SS-2020-2）的前置能力。</td>
+<td>§1 全, §9.1</td>
+<td>非對稱斷面為何 ENA ≠ PNA？\(M_y\) 為何由小翼板側控制？</td></tr>
+
+<tr>
+<td><b>5</b></td><td><a class="qlink" href="problems-view/SS-2010-4.html" target="_blank">SS-2010-4</a></td><td>99</td>
+<td><b>唯一的「設計型」而非「檢核型」題目</b>：不是給你斷面問強度，而是給你載重要你<b>選斷面</b>，
+再驗使用性撓度 \(L/360\)。解題方向相反（從 \(M_u\) 反推需要的 \(Z_x\)），
+而且是唯一逼你分清「因數化載重算強度、服務載重算撓度」的題型。</td>
+<td>§7, §3.4</td>
+<td>為何撓度用服務載重？長跨梁為何常由撓度控制？</td></tr>
+</tbody>
+</table>
+
+<h3 style="color:#e65100">練這五題的正確方法</h3>
+
+<div class="box">
+<ol>
+<li><b>先讀本講義對應章節，再看題目，最後才看解答。</b>
+順序顛倒的話你會以為自己看懂了，其實只是認得解答的長相。</li>
+<li><b>第一遍不查表、不看斷面性質表</b>，逼自己把 \(\lambda_p\)、\(L_p\) 的無因次式寫出來再代 \(E=2040\)。
+考場上記憶會出錯，能自己推的人才不會慌。</li>
+<li><b>每題做完，強迫寫出三個自我檢查</b>（見範例 ① ②）：形狀因子落在合理區間嗎？
+\(L_p/r_y \approx 50\) 嗎？\(\phi_bM_n\) 與 \(\phi_bM_p\) 的比值合理嗎？
+<b>這個習慣的價值高於多做三題。</b></li>
+<li><b>第 1 題與第 3 題請在同一天做</b>。強軸與弱軸的思路互為鏡像，連著做才看得出差異在哪裡。</li>
+<li>做完五題後，回頭掃 §12 陷阱總表。<b>能對每一條說出「這條出自哪一題」的人，這個單元就結束了。</b></li>
+</ol>
+</div>
+
+<h3 style="color:#e65100">候補 2 題（還有時間再加）</h3>
+
+<table>
+<thead><tr><th style="width:12%">題號</th><th style="width:7%">考年</th><th style="width:34%">補什麼</th><th>什麼情況下優先加它</th></tr></thead>
+<tbody>
+<tr><td><a class="qlink" href="problems-view/SS-2008-1.html" target="_blank">SS-2008-1</a></td><td>97</td>
+<td><b>ASD 的 \(L_c/L_u/F_b\) 系統 + 純扭轉 vs 翹曲扭轉的觀念辨析</b></td>
+<td>本單元 ASD 出現 4 次。<b>若你 ASD 一直沒碰過，這題應該升到必做</b></td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2015-1.html" target="_blank">SS-2015-1</a></td><td>104</td>
+<td><b>各段 \(C_b\) 逐段計算 + 剪力強度 + 三分點撓度公式</b>，一題三檢核</td>
+<td>想練「完整設計檢核流程」而非單點計算時</td></tr>
+</tbody>
+</table>
+
+<h3 style="color:#e65100">誠實說明：這五題<b>沒有</b>涵蓋的考點群</h3>
+
+<div class="trap">
+<b>練完這五題不等於本單元滿分。</b>以下五個考點群完全或大部分沒被涵蓋，各自都出過題：<br><br>
+① <b>ASD 系統</b>（\(L_c/L_u/F_b\)、ASD 的 \(C_b\) 符號約定）—— SS-2002-2、SS-2008-1、SS-2016-1，共 3–4 題。
+<b>這是最大的缺口</b>，建議至少把候補的 SS-2008-1 補上。<br>
+② <b>剪力強度與腹板剪力挫屈</b>（\(C_v\) 三段、\(k_v\)）—— SS-2009-3、SS-2015-1。<br>
+③ <b>板梁與張力場效應</b> —— SS-2006-4（1 題，但公式獨特，看過與沒看過差很多）。<br>
+④ <b>合成梁 / SRC 的 PNA 與塑性應力分布</b> —— SS-2019-2、SS-2005-2（2 題，屬另一套計算流程）。<br>
+⑤ <b>塑性崩塌機構與虛功法</b> —— SS-2005-4、SS-2020-2（主分類在 SS-U2-1，但用的 \(Z_x\)、\(M_p\) 都出自本單元）。<br><br>
+<b>時間分配建議</b>：五題核心（約 6–8 小時）→ 補 ASD 一題 → 掃過 ③④⑤ 的<b>解答</b>建立印象即可，
+不必每題完整手算。這三群合計 5 題，但公式各自獨立、彼此不遷移，投報率低於把核心五題練熟。
+</div>
+
+<div class="tens">
+<b>最後一件事</b>：本講義所有內容都在回答同一個問題 ——
+<b>「這根梁有沒有資格把 \(M_p\) 用完？」</b><br>
+考場上若卡住，回到這句話，然後問自己三道關卡過了沒（板、撐、使用性）。
+大多數時候，卡住不是因為不會算，是因為漏了一道關卡沒檢查。
+</div>
+</section>
+
+</main>
+
+<footer>
+SS-U1-2 梁桿件 觀念講義｜資料來源：exam-wiki-SS 知識庫（raw/solutions、wiki/concepts、wiki/code-ref、wiki/traps）<br>
+使用順序建議：<b>本講義（練題前）→ Keynote（課堂）→ 速查頁（考前）</b>
+</footer>
+
+</body>
+</html>

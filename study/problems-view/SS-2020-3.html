@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-2020-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+pre{background:#eceff1;padding:12px 14px;border-radius:8px;overflow-x:auto;font-size:.88em;line-height:1.5}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;padding:10px 16px;border-radius:0 8px 8px 0}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SS-2020-3 題目解析</h1><a class="back" href="javascript:history.back()">&#8592; 返回講義</a></header>
+<main><h1>考題編號：SS-2020-3</h1>
+<p><strong>主分類：</strong> <code>SS-U1-3</code> 梁柱桿件<br />
+<strong>副分類：</strong> 無<br />
+<strong>設計法：</strong> LRFD<br />
+<strong>標籤：</strong> <code>梁柱桿件</code> <code>P-M互制</code> <code>雙軸彎矩</code> <code>載重放大係數</code> <code>B1放大法</code> <code>有效長度</code> <code>柱強度</code> <code>切線係數公式</code> <code>弱軸彎矩</code> <code>LRFD互制方程式</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>有一梁柱桿件承受端點載重如下圖所示：</p>
+<ul>
+<li>軸力：$P_w = 150$ tf</li>
+<li>強軸彎矩：$M_{wx} = 6$ tf·m（兩端皆施加，強軸單曲率）</li>
+<li>弱軸彎矩：$M_{wy}$（一端 $M_{wy}$，另一端 $0.5M_{wy}$，弱軸單曲率）</li>
+<li>桿件長：$L = 500$ cm</li>
+<li>斷面：H 400×400×12×22</li>
+<li>側向支撐：桿件兩端皆有側向支撐</li>
+<li>有效長度係數：$K_x = 1.8$，$K_y = 1.2$</li>
+<li>材料強度：$F_y = 2.5$ tf/cm²，$E = 2100$ tf/cm²</li>
+<li><strong>載重係數：$r = 1.6$</strong></li>
+</ul>
+<p>試依極限設計規範，求弱軸尚可承受之最大彎矩 $M_{wy}$。（25 分）</p>
+<p><img alt="SS-2020-3 題目附圖：H400×400×12×22 梁柱，上圖強軸方向（Mwx 兩端，Pw 對壓，500cm），下圖弱軸方向（Mwy 一端，0.5Mwy 另一端，Pw 對壓，500cm），兩端皆有側向支撐" src="../../raw/solutions/SS-2020-3/SS-2020-3-fig-1.png" /></p>
+<p><em>圖說：強軸（上圖）：桿件承受等值端彎矩 $M_{wx}$（兩端大小相等、方向使桿件呈單曲率），軸壓力 $P_w$ 由兩端對向施加，桿長 500cm；弱軸（下圖）：兩端分別施加 $M_{wy}$（大端）和 $0.5M_{wy}$（小端），同向（單曲率），軸壓力 $P_w$ 相同。桿件兩端均設有側向支撐。</em></p>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心觀念：LRFD 梁柱互制方程式 + B1 放大係數 + 載重係數轉換</strong></p>
+<p>本題三層考核：</p>
+<ol>
+<li><strong>載重係數 $r = 1.6$</strong>：工作載重（$P_w, M_{wx}, M_{wy}$）乘以 $r$ 得設計載重（$P_u, M_{ux}, M_{uy}$）</li>
+<li><strong>柱強度 $\phi_c P_n$</strong>：用弱軸控制之 $\lambda_c$ 計算 $F_{cr}$，再求 $\phi_c P_n$</li>
+<li><strong>互制方程式</strong>：代入 $P_u/\phi_c P_n \geq 0.2$ 的方程式，解出 $M_{wy}$</li>
+</ol>
+<p><strong>關鍵公式（題目提供）：</strong></p>
+<p>$$\lambda_c = \frac{KL}{\pi r_i}\sqrt{\frac{F_y}{E}} \quad \Rightarrow \quad F_{cr} = \exp\!\left(-0.419\lambda_c^2\right) \cdot F_y$$</p>
+<p>$$\phi_c P_n = 0.85 \cdot F_{cr} \cdot A$$</p>
+<p>$$B_1 = \frac{0.64}{1 - P_u/P_{e1}}\left(1 - \frac{M_1}{M_2}\right) + 0.32\frac{M_1}{M_2}$$</p>
+<p>$$\text{當 } P_u/\phi_c P_n \geq 0.2: \quad \frac{P_u}{\phi_c P_n} + \frac{8}{9}\!\left(\frac{M_{ux}}{\phi_b M_{nx}} + \frac{M_{uy}}{\phi_b M_{ny}}\right) \leq 1.0$$</p>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>步驟規劃：</strong></p>
+<ol>
+<li>計算放大設計載重：$P_u = r \cdot P_w$，$M_{ux,0} = r \cdot M_{wx}$</li>
+<li>判斷強/弱軸 $\lambda_c$，取較大者控制柱強度</li>
+<li>計算 $\phi_c P_n$</li>
+<li>計算 $\phi_b M_{nx}$ 和 $\phi_b M_{ny}$（完全側向支撐 → $M_n = M_p$）</li>
+<li>計算 $B_{1x}$ 和 $B_{1y}$（各軸方向端彎矩比）</li>
+<li>建立互制方程式，解出 $M_{wy}$</li>
+</ol>
+<p><strong>關鍵陷阱：</strong></p>
+<blockquote>
+<p>⚠️ <strong>陷阱1：忽略載重係數 r</strong><br />
+$P_u = r \times P_w = 1.6 \times 150 = 240$ tf，不可直接用 $P_w = 150$ tf 代入互制方程式。所有工作載重（包含彎矩）均需乘以 $r$。</p>
+<p>⚠️ <strong>陷阱2：強軸/弱軸 λc 混淆</strong><br />
+強軸用 $K_x = 1.8$，$r_x$；弱軸用 $K_y = 1.2$，$r_y$。需分別計算並取大值。</p>
+<p>⚠️ <strong>陷阱3：B1 公式中 M1/M2 的符號（最常錯！）</strong><br />
+本題兩軸端彎矩產生<strong>單曲率</strong>撓曲變形，$M_1/M_2$ 為<strong>負值</strong>（單曲率取「$-$」）。<br />
+正確代入：強軸 $M_1/M_2 = -1$，弱軸 $M_1/M_2 = -0.5$，使 $B_1 > 1$，須放大彎矩。<br />
+若誤判為雙曲率（正值），$B_1 < 1$ 取 $1.0$，反而低估了放大效應，得到偏不安全答案。</p>
+<p>⚠️ <strong>陷阱4：最終解的 $M_{wy}$ 是工作彎矩還是設計彎矩？</strong><br />
+題目問「弱軸尚可承受之最大彎矩 $M_{wy}$」，即<strong>工作彎矩</strong>，答案需除以 $r$，即 $M_{wy} = M_{uy}/r$。</p>
+</blockquote>
+<hr />
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：解題後，在每個卡住的知識點「卡關?」欄標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<p><strong>最終目標：</strong> 由工作載重換算設計載重 → 求 $\phi_cP_n$、$\phi_bM_n$ → 計算 $B_1$ → 代入互制方程式 → 解出最大工作彎矩 $M_{wy}$</p>
+<h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
+<p><strong>Step 2：設計載重換算</strong><br />
+$$\boxed{P_u} = r \cdot P_w, \qquad \boxed{M_{ux,0}} = r \cdot M_{wx}, \qquad \boxed{M_{uy,0}} = r \cdot M_{wy}$$</p>
+<p><strong>Step 3：控制軸細長比（強弱軸分別算，取大）</strong><br />
+$$\boxed{\lambda_{cx}} = \frac{K_x L}{\pi r_x}\sqrt{\frac{F_y}{E}}, \qquad \boxed{\lambda_{cy}} = \frac{K_y L}{\pi r_y}\sqrt{\frac{F_y}{E}} \quad \Rightarrow \quad \boxed{\lambda_c} = \max(\boxed{\lambda_{cx}}, \boxed{\lambda_{cy}})$$</p>
+<p><strong>Step 4：柱設計強度</strong><br />
+$$\boxed{F_{cr}} = \exp\!\left(-0.419\,\boxed{\lambda_c}^2\right) F_y, \qquad \boxed{\phi_c P_n} = 0.85 \times \boxed{F_{cr}} \times A$$</p>
+<p><strong>Step 5：撓曲設計強度（確認無 LTB）</strong><br />
+$$\boxed{L_p} = 1.76\,r_y\sqrt{\frac{E}{F_y}}, \qquad L_b < \boxed{L_p} \;\Rightarrow\; \boxed{\phi_b M_{nx}} = 0.9\,F_y\,Z_x,\quad \boxed{\phi_b M_{ny}} = 0.9\,F_y\,Z_y$$</p>
+<p><strong>Step 6：$B_1$ 彎矩放大係數（各軸）</strong><br />
+$$\boxed{P_{e1}} = \frac{\pi^2 E I}{(KL)^2}, \qquad \boxed{B_1} = \frac{0.64}{1 - \boxed{P_u}/\boxed{P_{e1}}}\!\left(1-\frac{M_1}{M_2}\right) + 0.32\frac{M_1}{M_2} \;\geq 1.0$$<br />
+$$\boxed{M_{ux}} = \boxed{B_{1x}} \cdot \boxed{M_{ux,0}}, \qquad \boxed{M_{uy}} = \boxed{B_{1y}} \cdot \boxed{M_{uy,0}}$$</p>
+<p><strong>Step 7：互制方程式（H1-1a），解 $M_{wy}$</strong><br />
+$$\frac{\boxed{P_u}}{\boxed{\phi_c P_n}} + \frac{8}{9}\!\left(\frac{\boxed{M_{ux}}}{\boxed{\phi_b M_{nx}}} + \frac{\boxed{M_{uy}}}{\boxed{\phi_b M_{ny}}}\right) \leq 1.0 \quad \Rightarrow \quad \boxed{M_{wy}} = \frac{\boxed{M_{uy}}}{r}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$P_w$</td>
+<td>150 tf</td>
+<td>工作軸壓力</td>
+</tr>
+<tr>
+<td>$M_{wx}$</td>
+<td>6 tf·m（兩端等值）</td>
+<td>工作強軸彎矩，<strong>單曲率</strong></td>
+</tr>
+<tr>
+<td>$M_{wy}$</td>
+<td>大端：$M_{wy}$，小端：$0.5M_{wy}$</td>
+<td>工作弱軸彎矩，<strong>單曲率</strong>（<strong>待求</strong>）</td>
+</tr>
+<tr>
+<td>$L$</td>
+<td>500 cm</td>
+<td>桿件長度</td>
+</tr>
+<tr>
+<td>斷面</td>
+<td>H 400×400×12×22</td>
+<td>—</td>
+</tr>
+<tr>
+<td>$K_x$</td>
+<td>1.8</td>
+<td>強軸有效長度係數</td>
+</tr>
+<tr>
+<td>$K_y$</td>
+<td>1.2</td>
+<td>弱軸有效長度係數</td>
+</tr>
+<tr>
+<td>$F_y$</td>
+<td>2.5 tf/cm²</td>
+<td>降伏應力</td>
+</tr>
+<tr>
+<td>$E$</td>
+<td>2100 tf/cm²</td>
+<td>彈性模數</td>
+</tr>
+<tr>
+<td>$r$</td>
+<td>1.6</td>
+<td>載重係數（題目直接給定）</td>
+</tr>
+<tr>
+<td>側向支撐</td>
+<td>兩端皆有</td>
+<td>—</td>
+</tr>
+<tr>
+<td>$A$</td>
+<td>218.7 cm²</td>
+<td>題目提供（查表）</td>
+</tr>
+<tr>
+<td>$r_x$</td>
+<td>17.56 cm</td>
+<td>題目提供（查表）</td>
+</tr>
+<tr>
+<td>$r_y$</td>
+<td>10.36 cm</td>
+<td>題目提供（查表）</td>
+</tr>
+<tr>
+<td>$Z_x$</td>
+<td>3,707 cm³</td>
+<td>題目提供（查表）</td>
+</tr>
+<tr>
+<td>$Z_y$</td>
+<td>1,773 cm³</td>
+<td>題目提供（查表）</td>
+</tr>
+<tr>
+<td>$F_{cr}$ 公式</td>
+<td>$\exp(-0.419\lambda_c^2) \cdot F_y$</td>
+<td>題目提供</td>
+</tr>
+<tr>
+<td>$B_1$ 公式</td>
+<td>題目提供</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 2：設計載重換算</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$P_u$</td>
+<td>$r \times P_w = 1.6 \times 150 = 240$ tf</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_{ux,0}$</td>
+<td>$r \times M_{wx} = 1.6 \times 6 = 9.6$ tf·m</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_{uy,0}$</td>
+<td>$r \times M_{wy} = 1.6\,M_{wy}$（含未知 $M_{wy}$）</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：控制軸細長比</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\lambda_{cx}$</td>
+<td>$(K_xL/\pi r_x)\sqrt{F_y/E} = 0.5627$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\lambda_{cy}$</td>
+<td>$(K_yL/\pi r_y)\sqrt{F_y/E} = 0.6358$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\lambda_c$（控制）</td>
+<td>$\max(0.5627,\,0.6358) = 0.6358$（弱軸控制）</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 4：柱設計強度</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$F_{cr}$</td>
+<td>$\exp(-0.419 \times 0.6358^2) \times 2.5 = 2.111$ tf/cm²</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\phi_cP_n$</td>
+<td>$0.85 \times 2.111 \times 218.7 = 392.4$ tf</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$P_u/\phi_cP_n$</td>
+<td>$240/392.4 = 0.612 \geq 0.2$ → H1-1a</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 5：撓曲設計強度</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L_p$</td>
+<td>$1.76 \times 10.36 \times \sqrt{2100/2.5} = 528.6$ cm</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$L_b$ vs $L_p$</td>
+<td>$500 < 528.6$ → 無 LTB，直取 $M_p$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\phi_bM_{nx}$</td>
+<td>$0.9 \times 2.5 \times 3707 = 8{,}340.8$ tf·cm</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\phi_bM_{ny}$</td>
+<td>$0.9 \times 2.5 \times 1773 = 3{,}989.3$ tf·cm</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 6：$B_1$ 彎矩放大係數</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$I_x = r_x^2 A$</td>
+<td>$17.56^2 \times 218.7 = 67{,}437$ cm⁴</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$P_{e1x}$</td>
+<td>$\pi^2 E I_x/(K_xL)^2 = 1{,}726$ tf</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$I_y = r_y^2 A$</td>
+<td>$10.36^2 \times 218.7 = 23{,}473$ cm⁴</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$P_{e1y}$</td>
+<td>$\pi^2 E I_y/(K_yL)^2 = 1{,}353$ tf</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_1/M_2$（強軸）</td>
+<td>$-1$（單曲率等值，負號）→ $B_{1x} = 1.167 > 1$ → 取 $1.167$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_1/M_2$（弱軸）</td>
+<td>$-0.5$（單曲率，負號）→ $B_{1y} = 1.007 > 1$ → 取 $1.007$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_{ux}$</td>
+<td>$1.167 \times 960 = 1{,}120.3$ tf·cm</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_{uy}$</td>
+<td>$1.007 \times 1.6\,M_{wy} \times 100 = 161.1\,M_{wy}$ tf·cm</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 7：互制方程式解 $M_{wy}$</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1-1a 代入</td>
+<td>$0.612 + \frac{8}{9}(0.1343 + 0.04039\,M_{wy}) \leq 1.0$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>解得</td>
+<td>$M_{wy} \leq 7.48$ tf·m $\approx$ <strong>7.5 tf·m</strong>（此即工作彎矩，已除以 $r$）</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">補強頁</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>載重係數 $r$ 作用對象</td>
+<td><strong>所有</strong>工作載重均需乘 $r$（包含兩軸彎矩），不只軸力</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>強弱軸 $\lambda_c$ 分別計算</td>
+<td>$K_x \neq K_y$、$r_x \neq r_y$，需各自算出後取較大者控制柱強度</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-column</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\exp(-0.419\lambda^2)$ 的等效形式</td>
+<td>等效於 $0.658^{\lambda^2}$（因 $\ln 0.658 \approx -0.419$）；本題公式直接給，直接代計算機</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-column</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">column-buckling-lambda-boundary</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$B_1$ 公式中 $M_1/M_2$ 符號</td>
+<td><strong>單曲率為「$-$」（負值）；雙曲率（S 形）為「$+$」（正值）</strong>；$\|M_1/M_2\| \leq 1$（大者放分母）；$B_1 < 1$ 時取 $B_1 = 1.0$</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">b1b2-amplification</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">b1-m1m2-sign-convention</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>H1-1a vs H1-1b 選擇門檻</td>
+<td>$P_u/\phi_cP_n \geq 0.2$ 用 H1-1a（含 8/9 係數）；$< 0.2$ 用 H1-1b</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">pm-interaction</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BEAM-COLUMN-INTERACTION</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>最終答案的單位還原</td>
+<td>題目問工作彎矩 $M_{wy}$；互制式解出的是設計彎矩 $M_{uy}$，須除以 $r$ 才是答案</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：斷面性質（題目提供）</h3>
+<table>
+<thead>
+<tr>
+<th>性質</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>斷面積 $A$</td>
+<td>218.7 cm²</td>
+</tr>
+<tr>
+<td>強軸迴轉半徑 $r_x$</td>
+<td>17.56 cm</td>
+</tr>
+<tr>
+<td>弱軸迴轉半徑 $r_y$</td>
+<td>10.36 cm</td>
+</tr>
+<tr>
+<td>強軸塑性斷面模數 $Z_x$</td>
+<td>3,707 cm³</td>
+</tr>
+<tr>
+<td>弱軸塑性斷面模數 $Z_y$</td>
+<td>1,773 cm³</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Step 2：計算設計載重</h3>
+<p>$$P_u = r \cdot P_w = 1.6 \times 150 = 240 \text{ tf}$$<br />
+$$M_{ux,0} = r \cdot M_{wx} = 1.6 \times 6 \times 100 = 960 \text{ tf·cm}$$（工作彎矩）<br />
+$$M_{uy,0} = r \cdot M_{wy} = 1.6 \times M_{wy} \times 100 \text{ tf·cm}$$</p>
+<hr />
+<h3>Step 3：計算細長比 $\lambda_c$，確認控制軸</h3>
+<p>$$\lambda_{cx} = \frac{K_x L}{\pi r_x}\sqrt{\frac{F_y}{E}} = \frac{1.8 \times 500}{\pi \times 17.56}\sqrt{\frac{2.5}{2100}} = \frac{900}{55.18} \times 0.03450 = 16.31 \times 0.03450 = 0.5627$$</p>
+<p>$$\lambda_{cy} = \frac{K_y L}{\pi r_y}\sqrt{\frac{F_y}{E}} = \frac{1.2 \times 500}{\pi \times 10.36}\sqrt{\frac{2.5}{2100}} = \frac{600}{32.55} \times 0.03450 = 18.43 \times 0.03450 = 0.6358$$</p>
+<p>$$\lambda_{cy} = 0.6358 > \lambda_{cx} = 0.5627 \quad \Rightarrow \quad \text{弱軸控制}$$</p>
+<hr />
+<h3>Step 4：計算柱設計強度 $\phi_c P_n$</h3>
+<p>$$F_{cr} = \exp(-0.419 \times \lambda_{cy}^2) \times F_y = \exp(-0.419 \times 0.6358^2) \times 2.5$$<br />
+$$= \exp(-0.419 \times 0.4042) \times 2.5 = \exp(-0.1694) \times 2.5 = 0.8445 \times 2.5 = 2.111 \text{ tf/cm}^2$$</p>
+<p>$$\phi_c P_n = 0.85 \times F_{cr} \times A = 0.85 \times 2.111 \times 218.7 = 0.85 \times 461.7 = \mathbf{392.4 \text{ tf}}$$</p>
+<p>$$\frac{P_u}{\phi_c P_n} = \frac{240}{392.4} = 0.612 \geq 0.2 \quad \Rightarrow \quad \text{用} \frac{8}{9} \text{互制方程式}$$</p>
+<hr />
+<h3>Step 5：計算設計撓曲強度 $\phi_b M_{nx}$，$\phi_b M_{ny}$</h3>
+<p>兩端側向支撐 → $L_b = 500$ cm</p>
+<p>計算 $L_p$（無 LTB 最大無支撐長度）：</p>
+<p>$$L_p = 1.76 \times r_y \times \sqrt{\frac{E}{F_y}} = 1.76 \times 10.36 \times \sqrt{\frac{2100}{2.5}} = 18.23 \times \sqrt{840} = 18.23 \times 28.98 = 528.6 \text{ cm}$$</p>
+<p>$$L_b = 500 \text{ cm} < L_p = 528.6 \text{ cm} \quad \Rightarrow \quad \text{無 LTB}$$</p>
+<p>$$M_{nx} = M_{px} = F_y \cdot Z_x = 2.5 \times 3707 = 9{,}267.5 \text{ tf·cm}$$<br />
+$$\phi_b M_{nx} = 0.9 \times 9{,}267.5 = \mathbf{8{,}340.8 \text{ tf·cm}}$$</p>
+<p>$$M_{ny} = M_{py} = F_y \cdot Z_y = 2.5 \times 1773 = 4{,}432.5 \text{ tf·cm}$$<br />
+$$\phi_b M_{ny} = 0.9 \times 4{,}432.5 = \mathbf{3{,}989.3 \text{ tf·cm}}$$</p>
+<hr />
+<h3>Step 6：計算 $B_1$ 彎矩放大係數</h3>
+<p><strong>計算彈性挫屈載重 $P_{e1}$（各軸）：</strong></p>
+<p>$$P_{e1x} = \frac{\pi^2 E I_x}{(K_x L)^2} = \frac{\pi^2 \times 2100 \times (r_x^2 A)}{(1.8 \times 500)^2}$$</p>
+<p>$I_x = r_x^2 \times A = 17.56^2 \times 218.7 = 308.35 \times 218.7 = 67,437 \text{ cm}^4$</p>
+<p>$$P_{e1x} = \frac{9.870 \times 2100 \times 67{,}437}{(900)^2} = \frac{1{,}398{,}650{,}490}{810{,}000} \approx 1{,}726 \text{ tf}$$</p>
+<p>$$P_{e1y} = \frac{\pi^2 E I_y}{(K_y L)^2}, \quad I_y = r_y^2 \times A = 10.36^2 \times 218.7 = 107.33 \times 218.7 = 23{,}473 \text{ cm}^4$$</p>
+<p>$$P_{e1y} = \frac{9.870 \times 2100 \times 23{,}473}{(600)^2} = \frac{486{,}800{,}910}{360{,}000} \approx 1{,}353 \text{ tf}$$</p>
+<p><strong>計算 $B_{1x}$（強軸，$M_1/M_2 = -1$，單曲率等值端彎矩）：</strong></p>
+<blockquote>
+<p>兩端彎矩大小相等，產生<strong>單曲率</strong>，故 $M_1/M_2 = -1$（負號）。</p>
+</blockquote>
+<p>$$B_{1x} = \frac{0.64}{1 - P_u/P_{e1x}}\left(1 - (-1)\right) + 0.32 \times (-1) = \frac{0.64}{1 - 240/1726} \times 2 - 0.32$$<br />
+$$= \frac{0.64}{0.8609} \times 2 - 0.32 = 0.7434 \times 2 - 0.32 = 1.4868 - 0.32 = \mathbf{1.167} > 1.0$$</p>
+<p>$$\Rightarrow B_{1x} = 1.167$$</p>
+<p><strong>計算 $B_{1y}$（弱軸，$M_1/M_2 = -0.5$，單曲率）：</strong></p>
+<blockquote>
+<p>一端 $M_{wy}$（大端），另一端 $0.5M_{wy}$（小端），同向彎曲產生<strong>單曲率</strong>，故 $M_1/M_2 = -0.5$（負號）。</p>
+</blockquote>
+<p>$$B_{1y} = \frac{0.64}{1 - 240/1353}\left(1 - (-0.5)\right) + 0.32 \times (-0.5)$$<br />
+$$= \frac{0.64}{0.8226} \times 1.5 - 0.16 = 0.7781 \times 1.5 - 0.16 = 1.1671 - 0.16 = \mathbf{1.007} > 1.0$$</p>
+<p>$$\Rightarrow B_{1y} = 1.007$$</p>
+<p><strong>放大後設計彎矩：</strong><br />
+$$M_{ux} = B_{1x} \times M_{ux,0} = 1.167 \times 960 = \mathbf{1{,}120.3 \text{ tf·cm}}$$<br />
+$$M_{uy} = B_{1y} \times 1.6 \times M_{wy} \times 100 = 1.007 \times 160\,M_{wy} = \mathbf{161.1\,M_{wy} \text{ tf·cm}}$$（$M_{wy}$ 單位 tf·m）</p>
+<hr />
+<h3>Step 7：代入互制方程式，求 $M_{wy}$</h3>
+<p>$$\frac{P_u}{\phi_c P_n} + \frac{8}{9}\left(\frac{M_{ux}}{\phi_b M_{nx}} + \frac{M_{uy}}{\phi_b M_{ny}}\right) \leq 1.0$$</p>
+<p>$$0.612 + \frac{8}{9}\left(\frac{1{,}120.3}{8{,}340.8} + \frac{161.1\,M_{wy}}{3{,}989.3}\right) \leq 1.0$$</p>
+<p>$$0.612 + \frac{8}{9}\left(0.1343 + 0.04039\,M_{wy}\right) \leq 1.0$$</p>
+<p>$$0.612 + 0.8889 \times (0.1343 + 0.04039\,M_{wy}) \leq 1.0$$</p>
+<p>$$0.612 + 0.1194 + 0.03590\,M_{wy} \leq 1.0$$</p>
+<p>$$0.7314 + 0.03590\,M_{wy} \leq 1.0$$</p>
+<p>$$0.03590\,M_{wy} \leq 0.2686$$</p>
+<p>$$\boxed{M_{wy} \leq \frac{0.2686}{0.03590} = 7.48 \text{ tf·m} \approx \mathbf{7.5 \text{ tf·m}}}$$</p>
+<hr />
+<h3>計算彙整</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>設計軸力 $P_u = r \cdot P_w$</td>
+<td>$1.6 \times 150 = 240$ tf</td>
+</tr>
+<tr>
+<td>弱軸細長比 $\lambda_{cy}$（控制）</td>
+<td>0.6358</td>
+</tr>
+<tr>
+<td>柱臨界應力 $F_{cr}$</td>
+<td>2.111 tf/cm²</td>
+</tr>
+<tr>
+<td>柱設計強度 $\phi_c P_n$</td>
+<td>392.4 tf</td>
+</tr>
+<tr>
+<td>$P_u / \phi_c P_n$</td>
+<td>0.612（≥ 0.2，用 8/9 方程式）</td>
+</tr>
+<tr>
+<td>強軸設計彎矩強度 $\phi_b M_{nx}$</td>
+<td>8,340.8 tf·cm（= $\phi_b M_{px}$，無 LTB）</td>
+</tr>
+<tr>
+<td>弱軸設計彎矩強度 $\phi_b M_{ny}$</td>
+<td>3,989.3 tf·cm</td>
+</tr>
+<tr>
+<td>$B_{1x}$，$B_{1y}$</td>
+<td>$B_{1x} = 1.167$，$B_{1y} = 1.007$（單曲率 $M_1/M_2$ 為負，計算值均 $> 1$，直接採用）</td>
+</tr>
+<tr>
+<td><strong>最大弱軸彎矩 $M_{wy}$</strong></td>
+<td><strong>≈ 7.5 tf·m</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<h3>載重係數 $r$ 的意義</h3>
+<p>本題的 $r = 1.6$ 是<strong>統一載重係數</strong>（相當於 LRFD 的 $\gamma = 1.6$），代表「工作載重 × 1.6 = 設計極限載重」。題目以工作載重表示（$P_w, M_{wx}$），計算時必須先乘以 $r$ 才能使用 LRFD 互制方程式。</p>
+<p><strong>最終答案 $M_{wy}$ 的定義：</strong> 由互制方程式求出的 $M_{wy}$ 是<strong>工作彎矩</strong>（以 tf·m 為單位），因為題目說「求其弱軸尚可承受之最大彎矩 $M_{wy}$」。在本題設定中，$M_{uy} = 1.6 M_{wy}$，算出的 $M_{wy}$ 就是工作彎矩，已是正確答案。</p>
+<h3>B1 放大係數與 Pe1 的物理意義</h3>
+<p>$P_{e1}$ 是 Euler 彈性挫屈載重（以 $KL$ 計算）。$B_1$ 是考慮二階效應（P-δ）的彎矩放大係數：</p>
+<p>$$B_1 = \frac{C_m}{1 - P_u/P_{e1}} \geq 1.0$$</p>
+<p>其中 $C_m = 0.6 - 0.4(M_1/M_2)$ 是等效均勻彎矩係數（來自 AISC）。</p>
+<p>本題公式中，$C_m = 0.64(1-M_1/M_2) + 0.32(M_1/M_2)$，整理得 $C_m = 0.64 - 0.32(M_1/M_2)$，其實等效於 $0.6 - 0.4(M_1/M_2)$ 的另一種表達。</p>
+<p>當 $C_m < 1 - P_u/P_{e1}$（即 $B_1 < 1$），取 $B_1 = 1.0$，意味著二階效應被端彎矩形態抵消，不需放大。</p>
+<h3>Lb 與 Lp 的比較</h3>
+<p>H400×400×12×22 是正方形翼板斷面（$b_f = d = 400$ mm），弱軸迴轉半徑大（$r_y = 10.36$ cm），$L_p$ 相當長（528.6 cm）。本題 $L = 500$ cm 恰好略小於 $L_p$，剛好在塑性範圍內。這是出題者刻意設計的——若 $L > L_p$ 則需進行 LTB 計算，大幅增加複雜度。</p>
+<h3>考場安全答法</h3>
+<ol>
+<li>$P_u = 1.6×150 = 240$ tf；$M_{ux,0} = 1.6×6×100 = 960$ tf·cm</li>
+<li>$\lambda_{cy} = (1.2×500)/(π×10.36)×\sqrt{2.5/2100} = 0.636$（弱軸控制）</li>
+<li>$F_{cr} = \exp(-0.419×0.636²)×2.5 = 2.111$ tf/cm²；$\phi_c P_n = 0.85×2.111×218.7 = 392.4$ tf</li>
+<li>$P_u/\phi_c P_n = 240/392.4 = 0.612 \geq 0.2$，用 8/9 方程式</li>
+<li>$L_b = 500 < L_p = 529$ cm → $\phi_b M_{nx} = 0.9×2.5×3707 = 8341$ tf·cm；$\phi_b M_{ny} = 0.9×2.5×1773 = 3989$ tf·cm</li>
+<li>
+<p><strong>兩軸均為單曲率</strong>：$M_1/M_2(x) = -1$，$M_1/M_2(y) = -0.5$<br />
+   → $B_{1x} = (0.64/0.8609)×2 - 0.32 = 1.167$；$B_{1y} = (0.64/0.8226)×1.5 - 0.16 = 1.007$<br />
+   → $M_{ux} = 1.167×960 = 1120.3$ tf·cm；$M_{uy} = 1.007×160\,M_{wy} = 161.1\,M_{wy}$ tf·cm</p>
+</li>
+<li>
+<p>$0.612 + (8/9)(1120.3/8341 + 161.1\,M_{wy}/3989) = 1.0$ → <strong>$M_{wy} \approx 7.5$ tf·m</strong></p>
+</li>
+</ol></main>
+<footer>來源：raw/solutions/SS-2020-3/SS-2020-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

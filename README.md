@@ -59,10 +59,12 @@ exam-wiki-SS/
 │   ├── lecture-*.html ← 單元觀念講義 + 同名 .pdf（unit-lecture skill 輸出）
 │   └── assets/katex/  ← 本機 KaTeX，供 lecture-*.html 離線渲染數學式（勿刪）
 │
-├── raw/               ← 原始資料（唯讀）
+├── raw/               ← 原始資料（預設唯讀；例外見 CLAUDE.md 規則 1）
 │   ├── exams/         ← 考卷 PDF（SS-YYYY_鋼結構設計.pdf）
-│   ├── json/          ← question_index.json、concepts.json
+│   ├── json/          ← question_index.json ✏️可改、concepts.json
 │   └── solutions/     ← 每題一個資料夾，含 .md + 截圖 + 補充筆記 PDF
+│       ├── SS-YYYY-N/ ← 🔒 證據，不可修改
+│       └── methods/   ← ✏️ 方法論，可修正公式（須驗算＋同步 wiki＋記 log）
 │
 └── wiki/              ← 知識庫（七層架構）
     ├── problems/      ← 所有題目頁

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-2018-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+pre{background:#eceff1;padding:12px 14px;border-radius:8px;overflow-x:auto;font-size:.88em;line-height:1.5}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;padding:10px 16px;border-radius:0 8px 8px 0}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SS-2018-3 題目解析</h1><a class="back" href="javascript:history.back()">&#8592; 返回講義</a></header>
+<main><h1>SS-2018-3 解析</h1>
+<h3>考題編號：SS-2018-3</h3>
+<p><strong>主分類：</strong> <code>SS-U1-4</code> 接合之分析與設計<br />
+<strong>副分類：</strong> <code>SS-U2-3</code>（涉及 SN 鋼材特性）<br />
+<strong>設計法：</strong> ASD<br />
+<strong>標籤：</strong> <code>填角銲</code> <code>梁柱接頭</code> <code>ASD</code> <code>銲道容許應力</code> <code>SN400B</code> <code>箱型柱</code> <code>H型梁</code> <code>梁翼彎矩</code> <code>梁腹彎矩</code> <code>組合應力</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p><strong>題目：</strong> 試以容許應力設計法（ASD）檢核圖中 SN400B 鋼箱型柱-H 型梁接頭之銲接尺寸。梁翼與梁腹負擔彎矩分別為 $M_f = 124.5$ kNm 與 $M_w = 25.5$ kNm。（30 分）</p>
+<p><strong>已知條件（題目給定）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>梁翼負擔彎矩</td>
+<td>$M_f = 124.5$ kNm</td>
+</tr>
+<tr>
+<td>梁腹負擔彎矩</td>
+<td>$M_w = 25.5$ kNm</td>
+</tr>
+<tr>
+<td>總彎矩</td>
+<td>$M = M_f + M_w = 150$ kNm</td>
+</tr>
+<tr>
+<td>設計剪力</td>
+<td>$Q = 100$ kN</td>
+</tr>
+<tr>
+<td>銲道容許應力</td>
+<td>$f_a = 90.5$ N/mm²</td>
+</tr>
+<tr>
+<td>梁腹銲喉斷面模數</td>
+<td>$S_w = \dfrac{2 \times 6/\sqrt{2} \times 388^2}{6} \times 10^{-3} = 212.9$ cm³</td>
+</tr>
+<tr>
+<td>銲道外側拉應力</td>
+<td>$\tau_{w1} = M_w/S_w = 119.8$ N/mm²</td>
+</tr>
+<tr>
+<td>鋼材</td>
+<td>SN400B（$F_y = 245$ N/mm²，$F_u = 400$ N/mm²）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>梁斷面（H 型，尺寸取自圖形）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>部位</th>
+<th>尺寸</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>總高度</td>
+<td>500 mm（含翼板）</td>
+</tr>
+<tr>
+<td>翼板寬度 $b_f$</td>
+<td>200 mm</td>
+</tr>
+<tr>
+<td>翼板厚度 $t_f$</td>
+<td>16 mm</td>
+</tr>
+<tr>
+<td>腹板厚度 $t_w$</td>
+<td>9 mm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>銲接配置（圖中所示）：</strong></p>
+<ul>
+<li>梁翼：完全熔透開槽銲（CJP groove weld，本解析判斷）</li>
+<li>梁腹：6 mm 填角銲（雙面），有效長度 388 mm</li>
+</ul>
+<p><img alt="SS-2018-3 題目附圖：SN400B 箱型柱配H型梁接頭，左側為柱立面顯示銲道位置與6mm標示及40mm距離，右側為梁H斷面尺寸(200×16翼板，9mm腹板，500mm總高)" src="../../raw/solutions/SS-2018-3/SS-2018-3-fig-1.png" /></p>
+<p><em>圖說：梁柱接頭圖中，柱為 SN400B 箱型斷面，梁為 SN400B H 型斷面（總高 500 mm，翼寬 200 mm，翼厚 16 mm，腹厚 9 mm）。腹板銲道有效長度 = 500 - 2×(40+16) = 388 mm（上下各留 56 mm）。$M = 150$ kNm，$Q = 100$ kN。</em></p>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心觀念：</strong> 梁柱接頭將梁端彎矩分為「梁翼負擔部分 $M_f$」與「梁腹負擔部分 $M_w$」，兩者分別由不同類型的銲道承擔。腹板銲道同時承受 $M_w$（產生彎曲應力）與 $Q$（產生剪應力），需以向量合成計算組合應力。</p>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>考核梁柱接頭彎矩分配（翼板 vs 腹板）的物理意義</li>
+<li>考核腹板填角銲在彎矩＋剪力作用下的組合應力計算</li>
+<li>考核翼板接合強度驗算</li>
+<li>$\tau_{w1} = 119.8 > f_a = 90.5$，引導學生計算所需銲道尺寸</li>
+</ol>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>確認腹板銲道有效長度（188 mm 起迄計算）</li>
+<li>計算腹板銲道組合應力（$\tau_{w1}$：彎矩，$\tau_{w2}$：剪力，向量合成）</li>
+<li>判定 6 mm 腹板銲道 → NG，求所需最小銲道尺寸</li>
+<li>驗算梁翼接合（CJP 銲道對應翼板應力）</li>
+</ol>
+<p><strong>關鍵陷阱：</strong></p>
+<table>
+<thead>
+<tr>
+<th>陷阱</th>
+<th>說明</th>
+<th>應對</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>❌ $\tau_{w1}$ 直接與 $f_a$ 比較即下結論</td>
+<td>腹板銲道尚有剪力 $Q$ 貢獻的 $\tau_{w2}$，需向量合成才是真實應力</td>
+<td>計算 $\tau_{w2}$ 後合成再比較</td>
+</tr>
+<tr>
+<td>❌ 銲喉面積計算錯誤</td>
+<td>填角銲有效喉厚 = $w/\sqrt{2} = 0.707w$，不是 $w$；且雙面銲需乘 2</td>
+<td>$A_w = 2 \times (w/\sqrt{2}) \times l_w$</td>
+</tr>
+<tr>
+<td>❌ 腹板銲道長度直接用 500 mm</td>
+<td>銲道需留開口或返銲空間（40 mm）及翼板高度（16 mm），有效長 = 388 mm</td>
+<td>按題目所給 $S_w$ 公式中的 388 mm</td>
+</tr>
+<tr>
+<td>❌ 梁翼用填角銲檢核</td>
+<td>此類矩接頭梁翼通常用 CJP（完全熔透），按基材強度驗算，不用填角銲公式</td>
+<td>確認接頭型式再選擇計算方法</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：解題後，在每個卡住的知識點「卡關?」欄標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<p><strong>最終目標：</strong> 梁腹 6 mm 填角銲組合應力 → 與容許應力比較 → NG → 求所需銲腳尺寸；梁翼 CJP 按基材強度驗算 → OK</p>
+<h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
+<p>$$\boxed{\tau_{w1}} = \frac{M_w}{S_w} \quad \text{（彎矩引起，水平方向）}$$</p>
+<p>$$\boxed{\tau_{w2}} = \frac{Q}{A_w} = \frac{Q}{2 \times 0.707w \times l_w} \quad \text{（剪力引起，垂直方向）}$$</p>
+<p>$$\boxed{\tau} = \sqrt{\tau_{w1}^2 + \tau_{w2}^2} \leq f_a \quad \text{（向量合成 vs 容許應力）}$$</p>
+<p>$$\boxed{w_{req}} = \frac{\sqrt{(M_w/S_{w0})^2 + (Q/A_{w0})^2}}{f_a} \quad \text{（反算所需銲腳尺寸）}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_f$</td>
+<td>124.5 kNm</td>
+<td>梁翼負擔彎矩</td>
+</tr>
+<tr>
+<td>$M_w$</td>
+<td>25.5 kNm</td>
+<td>梁腹負擔彎矩</td>
+</tr>
+<tr>
+<td>$Q$</td>
+<td>100 kN</td>
+<td>設計剪力</td>
+</tr>
+<tr>
+<td>$f_a$</td>
+<td>90.5 N/mm²</td>
+<td>填角銲容許應力（ASD，規範給定）</td>
+</tr>
+<tr>
+<td>$w$</td>
+<td>6 mm</td>
+<td>腹板填角銲銲腳尺寸（初始設計）</td>
+</tr>
+<tr>
+<td>$l_w$</td>
+<td>388 mm</td>
+<td>腹板銲道有效長度（題目 $S_w$ 公式中反推）</td>
+</tr>
+<tr>
+<td>$b_f$</td>
+<td>200 mm</td>
+<td>梁翼板寬度</td>
+</tr>
+<tr>
+<td>$t_f$</td>
+<td>16 mm</td>
+<td>梁翼板厚度</td>
+</tr>
+<tr>
+<td>$d$</td>
+<td>500 mm</td>
+<td>梁總高度</td>
+</tr>
+<tr>
+<td>$F_y$</td>
+<td>245 N/mm²</td>
+<td>SN400B 降伏強度</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：腹板銲道幾何</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>喉厚 $t$</td>
+<td>$6/\sqrt{2} = 4.243$ mm（填角銲有效喉厚）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$S_w$（6 mm）</td>
+<td>$2 \times 4.243 \times 388^2 / 6 = 212{,}900$ mm³（題目已給）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$A_w$（6 mm）</td>
+<td>$2 \times 4.243 \times 388 = 3{,}292$ mm²</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：腹板銲道應力計算與合成</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\tau_{w1}$</td>
+<td>$M_w / S_w = 25.5 \times 10^6 / 212{,}900 = 119.8$ N/mm²（水平）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\tau_{w2}$</td>
+<td>$Q / A_w = 100{,}000 / 3{,}292 = 30.4$ N/mm²（垂直）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\tau$（合成）</td>
+<td>$\sqrt{119.8^2 + 30.4^2} = 123.6$ N/mm² &gt; 90.5 → NG ✗</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：求所需銲腳尺寸</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$S_w(w)$</td>
+<td>$35{,}503\,w$ mm³（線性正比於 $w$）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$A_w(w)$</td>
+<td>$549.0\,w$ mm²（線性正比於 $w$）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$w_{req}$</td>
+<td>$741 / 90.5 = 8.19$ mm → 採用 9 mm</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>9 mm 驗算</td>
+<td>$\tau = 82.4$ N/mm² &lt; 90.5 → OK ✓</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 4：梁翼 CJP 銲道驗算</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>力偶臂</td>
+<td>$d - t_f = 500 - 16 = 484$ mm</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$F_f$</td>
+<td>$M_f / 484 = 124.5 \times 10^6 / 484 = 257{,}231$ N</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$A_f$</td>
+<td>$b_f \times t_f = 200 \times 16 = 3{,}200$ mm²</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\sigma_f$</td>
+<td>$257{,}231 / 3{,}200 = 80.4$ N/mm² &lt; $0.6 F_y = 147$ N/mm² → OK ✓</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">補強頁</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>填角銲有效喉厚</td>
+<td>喉厚 = $w/\sqrt{2} = 0.707w$；ASD 應力需對喉截面積計算，不是對銲腳面積</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>腹板彎矩與剪力應力方向正交</td>
+<td>$\tau_{w1}$（彎矩）水平，$\tau_{w2}$（剪力）垂直，兩者需向量合成才是最大合應力</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>梁翼用 CJP vs 梁腹用填角銲</td>
+<td>翼板力大且集中（拉/壓合力），需全滲透銲（CJP）按基材強度設計；腹板剪力傳遞用填角銲即可</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>腹板銲道有效長度推算</td>
+<td>總高 500 mm，扣兩側翼板（$2 \times 16$）及返銲空間（$2 \times 40$）= 388 mm；理解每端留 56 mm</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>ASD 填角銲容許應力來源</td>
+<td>$f_a = 90.5$ N/mm²（規範查表值），對應 SN400B + E70 銲條組合；不是自行計算</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>【梁腹銲道檢核】（6 mm 填角銲，雙面）</h3>
+<h4>Step 1：確認腹板銲道幾何</h4>
+<p>由題目 $S_w$ 公式反推：</p>
+<p>$$S_w = \frac{2 \times (6/\sqrt{2}) \times 388^2}{6} \times 10^{-3}$$</p>
+<p>可知腹板銲道有效長度 $l_w = 388$ mm（上下各留空 56 mm = 16 mm 翼板 + 40 mm 返銲空間）</p>
+<p>有效喉厚：$t = 6/\sqrt{2} = 4.243$ mm</p>
+<h4>Step 2：彎矩引起之銲道應力 $\tau_{w1}$（題目已給）</h4>
+<p>$$\tau_{w1} = \frac{M_w}{S_w} = \frac{25.5 \times 10^6}{212,900} = 119.8 \text{ N/mm}^2$$</p>
+<p>此為腹板銲道<strong>外側極端纖維</strong>的彎曲剪應力（水平向）。</p>
+<h4>Step 3：剪力引起之銲道應力 $\tau_{w2}$</h4>
+<p>腹板銲道截面積（雙面）：<br />
+$$A_w = 2 \times t \times l_w = 2 \times 4.243 \times 388 = 3{,}292 \text{ mm}^2$$</p>
+<p>剪力應力（垂直向）：<br />
+$$\tau_{w2} = \frac{Q}{A_w} = \frac{100{,}000}{3{,}292} = 30.4 \text{ N/mm}^2$$</p>
+<h4>Step 4：向量合成最大組合應力</h4>
+<p>$\tau_{w1}$（水平）與 $\tau_{w2}$（垂直）方向正交，向量合成：</p>
+<p>$$\tau = \sqrt{\tau_{w1}^2 + \tau_{w2}^2} = \sqrt{119.8^2 + 30.4^2} = \sqrt{14352 + 924} = \sqrt{15276}$$</p>
+<p>$$\boxed{\tau = 123.6 \text{ N/mm}^2}$$</p>
+<h4>Step 5：與容許應力比較</h4>
+<p>$$\tau = 123.6 \text{ N/mm}^2 > f_a = 90.5 \text{ N/mm}^2 \quad \Rightarrow \text{ NG} ✗$$</p>
+<p><strong>6 mm 腹板填角銲不符合 ASD 要求。</strong></p>
+<hr />
+<h4>Step 6：求所需腹板填角銲尺寸</h4>
+<p>設所需銲腳尺寸為 $w_{\text{req}}$，喉厚 = $0.707 w_{\text{req}}$</p>
+<p>$$S_w(w) = \frac{2 \times 0.707 w_{\text{req}} \times 388^2}{6} = 35{,}503 \, w_{\text{req}} \text{ mm}^3$$</p>
+<p>$$A_w(w) = 2 \times 0.707 w_{\text{req}} \times 388 = 549.0 \, w_{\text{req}} \text{ mm}^2$$</p>
+<p>組合應力：</p>
+<p>$$\tau(w) = \sqrt{\left(\frac{M_w}{S_w}\right)^2 + \left(\frac{Q}{A_w}\right)^2} = \sqrt{\left(\frac{718.3}{w_{\text{req}}}\right)^2 + \left(\frac{182.1}{w_{\text{req}}}\right)^2}$$</p>
+<p>$$= \frac{1}{w_{\text{req}}}\sqrt{718.3^2 + 182.1^2} = \frac{1}{w_{\text{req}}}\sqrt{515{,}995 + 33{,}160} = \frac{741}{w_{\text{req}}}$$</p>
+<p>令 $\tau = f_a = 90.5$：</p>
+<p>$$w_{\text{req}} = \frac{741}{90.5} = 8.19 \text{ mm} \quad \Rightarrow \text{採用 } \boxed{w = 9 \text{ mm}}$$</p>
+<p><strong>驗算 9 mm 填角銲：</strong></p>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>喉厚 $t$</td>
+<td>$9 \times 0.707 = 6.364$ mm</td>
+</tr>
+<tr>
+<td>$S_w$</td>
+<td>$2 \times 6.364 \times 388^2 / 6 = 319{,}404$ mm³</td>
+</tr>
+<tr>
+<td>$A_w$</td>
+<td>$2 \times 6.364 \times 388 = 4{,}938$ mm²</td>
+</tr>
+<tr>
+<td>$\tau_{w1} = M_w/S_w$</td>
+<td>$25.5 \times 10^6 / 319{,}404 = 79.8$ N/mm²</td>
+</tr>
+<tr>
+<td>$\tau_{w2} = Q/A_w$</td>
+<td>$100{,}000 / 4{,}938 = 20.3$ N/mm²</td>
+</tr>
+<tr>
+<td>$\tau = \sqrt{\tau_{w1}^2 + \tau_{w2}^2}$</td>
+<td>$\sqrt{79.8^2 + 20.3^2} = \sqrt{6368+412} = 82.4$ N/mm²</td>
+</tr>
+<tr>
+<td>判定</td>
+<td>$82.4 < 90.5$ → <strong>OK ✓</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>【梁翼銲道檢核】（CJP 完全熔透開槽銲）</h3>
+<h4>Step 1：梁翼力偶臂與翼板力</h4>
+<p>梁總高度 $d = 500$ mm（含翼板），翼板厚度 $t_f = 16$ mm</p>
+<p>$$\text{力偶臂} = d - t_f = 500 - 16 = 484 \text{ mm}$$</p>
+<p>$$F_f = \frac{M_f}{\text{力偶臂}} = \frac{124.5 \times 10^6}{484} = 257{,}231 \text{ N} = 257.2 \text{ kN}$$</p>
+<h4>Step 2：翼板應力計算</h4>
+<p>梁翼板截面積：<br />
+$$A_f = b_f \times t_f = 200 \times 16 = 3{,}200 \text{ mm}^2$$</p>
+<p>$$\sigma_f = \frac{F_f}{A_f} = \frac{257{,}231}{3{,}200} = 80.4 \text{ N/mm}^2$$</p>
+<h4>Step 3：與容許應力比較</h4>
+<p>對於 CJP 開槽銲，按基材強度設計：<br />
+$$f_{a,\text{tension}} = 0.6 F_y = 0.6 \times 245 = 147 \text{ N/mm}^2$$</p>
+<p>$$\sigma_f = 80.4 \text{ N/mm}^2 < 147 \text{ N/mm}^2 \quad \Rightarrow \boxed{\text{OK ✓}}$$</p>
+<hr />
+<h3>總結</h3>
+<table>
+<thead>
+<tr>
+<th>接合部位</th>
+<th>接合型式</th>
+<th>應力</th>
+<th>容許應力</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>梁腹（6 mm 填角銲）</td>
+<td>雙面填角</td>
+<td>123.6 N/mm²</td>
+<td>90.5 N/mm²</td>
+<td><strong>NG ✗</strong></td>
+</tr>
+<tr>
+<td>梁腹（9 mm 填角銲）</td>
+<td>雙面填角</td>
+<td>82.4 N/mm²</td>
+<td>90.5 N/mm²</td>
+<td><strong>OK ✓</strong></td>
+</tr>
+<tr>
+<td>梁翼（CJP 開槽銲）</td>
+<td>完全熔透</td>
+<td>80.4 N/mm²</td>
+<td>147 N/mm²</td>
+<td><strong>OK ✓</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>結論：梁腹填角銲需由 6 mm 加大至 9 mm，梁翼 CJP 開槽銲強度充足。</strong></p>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<h3>梁翼/梁腹彎矩分配的物理意義</h3>
+<p><strong>梁翼承擔彎矩 $M_f$（大部份）：</strong><br />
+翼板遠離中性軸，產生較大力偶臂，承擔大部分彎矩效率最高。翼板透過 CJP 銲道傳遞集中的拉/壓力至柱面（或柱的水平加勁板）。</p>
+<p><strong>梁腹承擔彎矩 $M_w$（小部份）＋剪力 $Q$（全部）：</strong><br />
+腹板靠近中性軸，傳遞彎矩效率低，但是傳遞剪力的主體。填角銲道需同時承受 $M_w$ 產生的水平分力與 $Q$ 產生的垂直分力。</p>
+<h3>腹板銲道有效長度計算（388 mm 的由來）</h3>
+<p>梁總高 500 mm，翼板 16 mm × 2 = 32 mm，淨腹板高 468 mm。</p>
+<p>腹板銲道兩端各留 40 mm（返銲空間或開口），但需另加翼板厚度 16 mm：<br />
+$$l_w = 500 - 2 \times (40 + 16) = 500 - 112 = 388 \text{ mm} ✓$$</p>
+<h3>容許應力 $f_a = 90.5$ N/mm² 的來源</h3>
+<p>對於 SN400B（$F_u = 400$ N/mm²）配合 E70（$F_{EXX} = 70 \text{ ksi} \approx 483$ N/mm²）填角銲：</p>
+<p>$$f_a = 0.3 F_{EXX} = 0.3 \times 483 = 144.9 \text{ N/mm}^2$$</p>
+<p>但採用日本 JIS 規範的填角銲容許應力（台灣建築鋼結構規範）：<br />
+$$f_a \approx 90.5 \text{ N/mm}^2$$（規範直接給定值，已含安全係數）</p>
+<p>此值約為 $0.6 F_y \times 0.5 / \sqrt{3}$（von Mises 容許剪應力），是常見考試給定值。</p>
+<h3>考場實務建議</h3>
+<ul>
+<li>本題已給 $S_w$ 與 $\tau_{w1}$，核心計算是 $\tau_{w2}$ 和向量合成（約 1 分鐘內可完成）</li>
+<li>發現 NG 後不要停止，需進一步計算所需銲道尺寸（題目要求「檢核銲接尺寸」，隱含需給出正確答案）</li>
+<li>翼板 CJP 銲道是「從梁翼設計」而非「從銲道設計」，切換思維模式</li>
+</ul></main>
+<footer>來源：raw/solutions/SS-2018-3/SS-2018-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

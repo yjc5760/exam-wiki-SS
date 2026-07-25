@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-2014-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+pre{background:#eceff1;padding:12px 14px;border-radius:8px;overflow-x:auto;font-size:.88em;line-height:1.5}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;padding:10px 16px;border-radius:0 8px 8px 0}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SS-2014-3 題目解析</h1><a class="back" href="javascript:history.back()">&#8592; 返回講義</a></header>
+<main><h1>考題編號：SS-2014-3</h1>
+<p><strong>主分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
+<strong>副分類：</strong> 無<br />
+<strong>設計法：</strong> LRFD<br />
+<strong>標籤：</strong> <code>梁桿件</code> <code>LTB側扭挫屈</code> <code>雙向彎曲</code> <code>非彈性LTB</code> <code>Cb係數</code> <code>弱軸彎曲</code> <code>雙向彎曲互制</code> <code>結實斷面</code> <code>使用性撓度</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>有一 ASTM A572 Gr.50 之 <strong>W21×93 簡支鋼梁</strong>，梁長 <strong>4 m</strong>，在梁兩端（一端鉸接支承、另一端滾支承）均有側向支撐，梁全長承受均佈載重造成的雙向彎矩：</p>
+<ul>
+<li>$M_{ux} = 400 \text{ kN-m}$（強軸，已含載重係數）</li>
+<li>$M_{uy} = 50 \text{ kN-m}$（弱軸，已含載重係數）</li>
+</ul>
+<p>兩彎矩均作用在梁之剪力中心，利用 LRFD 檢核此梁是否滿足設計要求。（25分）</p>
+<p><strong>給定資料：</strong></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>鋼材</td>
+<td>$F_y = 350$ MPa，$F_r = 78$ MPa</td>
+</tr>
+<tr>
+<td>$S_x$</td>
+<td>$3{,}146{,}316 \text{ mm}^3$</td>
+</tr>
+<tr>
+<td>$S_y$</td>
+<td>$362{,}154 \text{ mm}^3$</td>
+</tr>
+<tr>
+<td>$Z_x$</td>
+<td>$3{,}621{,}541 \text{ mm}^3$</td>
+</tr>
+<tr>
+<td>$Z_y$</td>
+<td>$568{,}631 \text{ mm}^3$</td>
+</tr>
+<tr>
+<td>$d$</td>
+<td>$548.6 \text{ mm}$</td>
+</tr>
+<tr>
+<td>$b_f$</td>
+<td>$214 \text{ mm}$</td>
+</tr>
+<tr>
+<td>$t_f$</td>
+<td>$23.6 \text{ mm}$</td>
+</tr>
+<tr>
+<td>$t_w$</td>
+<td>$14.7 \text{ mm}$</td>
+</tr>
+<tr>
+<td>$\lambda_p$（翼板）</td>
+<td>$9.19$</td>
+</tr>
+<tr>
+<td>$\lambda_r$（翼板）</td>
+<td>$22.3$</td>
+</tr>
+<tr>
+<td>$L_p$</td>
+<td>$2 \text{ m}$</td>
+</tr>
+<tr>
+<td>$L_r$</td>
+<td>$5.8 \text{ m}$</td>
+</tr>
+</tbody>
+</table>
+<p>公式：$C_b = \dfrac{12.5 M_{max}}{2.5M_{max} + 3M_A + 4M_B + 3M_C}$</p>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心觀念：</strong></p>
+<ul>
+<li><strong>雙向彎曲（Biaxial Bending）</strong>：強弱軸各有不同的強度計算邏輯，最終用互制公式疊加</li>
+<li><strong>非彈性 LTB（側扭挫屈）</strong>：$L_p < L_b < L_r$ 時，強度介於 $M_p$ 與 $M_r$ 之間，Cb 可提升</li>
+</ul>
+<p><strong>出題意圖：</strong></p>
+<ol>
+<li>測試 LTB 三段式（塑性、非彈性、彈性）的判斷與計算</li>
+<li>測試弱軸彎矩強度的特殊限制（$M_{ny} \leq 1.5 F_y S_y$）</li>
+<li>測試雙向彎矩互制公式的正確應用</li>
+</ol>
+<p><strong>陷阱：</strong></p>
+<ul>
+<li>⚠️ 弱軸強度上限：$Z_y/S_y = 1.57 > 1.5$，必須用 $1.5F_yS_y$ 而非 $F_yZ_y$</li>
+<li>⚠️ Cb 的計算：均布載重下矩形面積→拋物線，$C_b = 1.136$（非 1.0）</li>
+<li>⚠️ 無側向中間支撐：$L_b$ = 全梁長 = 4 m（不是一半）</li>
+</ul>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>作戰計畫：</strong></p>
+<pre><code>Step 1：局部挫屈確認（翼板、腹板寬厚比 → 確認結實斷面）
+Step 2：強軸 φbMnx 計算
+  ├─ 確定 Lb = 4 m，落在 Lp &lt; Lb &lt; Lr（非彈性 LTB）
+  ├─ 計算 Cb（均布荷載下，拋物線彎矩圖）
+  ├─ Mn = Cb[Mp - (Mp-Mr)(Lb-Lp)/(Lr-Lp)] ≤ Mp
+  └─ φbMnx = 0.9 × Mn
+Step 3：弱軸 φbMny 計算（注意上限！）
+  ├─ Mny = min(FyZy, 1.5FySy)
+  └─ 比較 Zy/Sy 是否 &gt; 1.5
+Step 4：雙向彎矩互制公式
+  └─ Mux/φbMnx + Muy/φbMny ≤ 1.0
+</code></pre>
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：解題後，在每個卡住的知識點「卡關?」欄標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<p><strong>最終目標：</strong> W21×93 雙向彎曲梁 → 強軸 LTB（非彈性，含 $C_b$）→ 弱軸強度（含上限）→ 互制公式 $\leq 1.0$</p>
+<h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
+<p>$$C_b = \frac{12.5M_{\max}}{2.5M_{\max} + 3M_A + 4M_B + 3M_C}$$</p>
+<p>$$\boxed{M_{nx}} = C_b\left[M_p - (M_p - M_r)\frac{L_b - L_p}{L_r - L_p}\right] \leq M_p \quad (L_p < L_b < L_r)$$</p>
+<p>$$\boxed{M_{ny}} = \min(F_y Z_y,\; 1.5 F_y S_y)$$</p>
+<p>$$\frac{M_{ux}}{\phi_b M_{nx}} + \frac{M_{uy}}{\phi_b M_{ny}} \leq 1.0$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$F_y$</td>
+<td>350 MPa</td>
+<td>鋼材降伏強度</td>
+</tr>
+<tr>
+<td>$F_r$</td>
+<td>78 MPa</td>
+<td>殘留應力</td>
+</tr>
+<tr>
+<td>$S_x$</td>
+<td>3,146,316 mm³</td>
+<td>強軸斷面模數</td>
+</tr>
+<tr>
+<td>$S_y$</td>
+<td>362,154 mm³</td>
+<td>弱軸斷面模數</td>
+</tr>
+<tr>
+<td>$Z_x$</td>
+<td>3,621,541 mm³</td>
+<td>強軸塑性斷面模數</td>
+</tr>
+<tr>
+<td>$Z_y$</td>
+<td>568,631 mm³</td>
+<td>弱軸塑性斷面模數</td>
+</tr>
+<tr>
+<td>$L_p$</td>
+<td>2 m</td>
+<td>塑性區界限長度</td>
+</tr>
+<tr>
+<td>$L_r$</td>
+<td>5.8 m</td>
+<td>彈性 LTB 界限長度</td>
+</tr>
+<tr>
+<td>$\lambda_p$（翼板）</td>
+<td>9.19</td>
+<td>結實斷面上限</td>
+</tr>
+<tr>
+<td>$M_{ux}$</td>
+<td>400 kN-m</td>
+<td>強軸設計彎矩（已含載重係數）</td>
+</tr>
+<tr>
+<td>$M_{uy}$</td>
+<td>50 kN-m</td>
+<td>弱軸設計彎矩（已含載重係數）</td>
+</tr>
+<tr>
+<td>$L_b$</td>
+<td>4 m（全梁，兩端支承）</td>
+<td>側向無支撐長度</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：斷面結實性確認</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\lambda_{翼板}$</td>
+<td>$b_f/(2t_f) = 214/(2 \times 23.6) = 4.53 < \lambda_p = 9.19$ ✓</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$h/t_w$</td>
+<td>$(d - 2t_f)/t_w = 501.4/14.7 = 34.1 < 89.8$ ✓</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：強軸 $\phi_b M_{nx}$（非彈性 LTB）</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LTB 區段判斷</td>
+<td>$L_p = 2 < L_b = 4 < L_r = 5.8$ → 非彈性 LTB</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$C_b$</td>
+<td>均布載重，拋物線彎矩圖：$M_A = M_C = 3/4 M_{\max}$，$M_B = M_{\max}$；$C_b = 1.136$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_p$</td>
+<td>$F_y Z_x = 350 \times 3{,}621{,}541 = 1267.5$ kN-m</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_r$</td>
+<td>$(F_y - F_r)S_x = 272 \times 3{,}146{,}316 = 855.8$ kN-m</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_{nx}$</td>
+<td>$1.136[1267.5 - 411.7 \times 2/3.8] = 1193.7$ kN-m $< M_p$ ✓</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\phi_b M_{nx}$</td>
+<td>$0.9 \times 1193.7 = 1074.3$ kN-m</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：弱軸 $\phi_b M_{ny}$（含上限）</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$Z_y/S_y$</td>
+<td>$568631/362154 = 1.57 > 1.5$ → 上限控制</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_{ny}$</td>
+<td>$\min(F_yZ_y,\;1.5F_yS_y) = 1.5 \times 350 \times 362154 = 190.1$ kN-m</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\phi_b M_{ny}$</td>
+<td>$0.9 \times 190.1 = 171.1$ kN-m</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 4：雙向彎矩互制公式</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>互制比</td>
+<td>$400/1074.3 + 50/171.1 = 0.372 + 0.292 = 0.664 \leq 1.0$ ✓</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">補強頁</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LTB 三段判斷</td>
+<td>先比較 $L_b$ 與 $L_p$、$L_r$；本題落非彈性段，$C_b$ 可提升強度但不超過 $M_p$</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">LATERAL-TORSIONAL-BUCKLING</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$C_b$ 的計算</td>
+<td>均布載重下彎矩圖為拋物線，四分點彎矩 $= 3/4 M_{\max}$；$C_b = 1.136 \neq 1.0$</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">cb-factor</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BENDING-MODIFICATION-FACTOR-CB</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>弱軸強度上限 $1.5 F_y S_y$</td>
+<td>I 型斷面弱軸 $Z_y/S_y$ 常 &gt; 1.5；直接用 $F_y Z_y$ 會高估強度（考試陷阱）</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_r = (F_y - F_r)S_x$</td>
+<td>$F_r$ 為殘留應力（題目給定 78 MPa）；忘記減 $F_r$ 會高估 $M_r$，低估 LTB 削減量</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">RESIDUAL-STRESS</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>雙向彎矩互制公式選擇</td>
+<td>無軸力時用 H1-2 線性公式，而非 H1-1a/H1-1b</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">pm-interaction</span></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：局部挫屈檢核</h3>
+<p><strong>翼板寬厚比：</strong></p>
+<p>$$\lambda = \frac{b_f}{2t_f} = \frac{214}{2 \times 23.6} = \frac{214}{47.2} = 4.53$$</p>
+<p>題目給定：$\lambda_p = 9.19$，$\lambda_r = 22.3$</p>
+<p>$$\lambda = 4.53 < \lambda_p = 9.19 \quad \Rightarrow \quad \textbf{結實斷面（翼板）✓}$$</p>
+<p><strong>腹板寬厚比：</strong></p>
+<p>$$h = d - 2t_f = 548.6 - 2(23.6) = 501.4 \text{ mm}$$</p>
+<p>$$\frac{h}{t_w} = \frac{501.4}{14.7} = 34.1$$</p>
+<p>$$\lambda_{p,\text{web}} = 3.76\sqrt{\frac{E}{F_y}} = 3.76\sqrt{\frac{200{,}000}{350}} = 3.76 \times 23.9 = 89.8$$</p>
+<p>$$34.1 < 89.8 \quad \Rightarrow \quad \textbf{結實斷面（腹板）✓}$$</p>
+<blockquote>
+<p>斷面為結實斷面（Compact Section），可達全塑性彎矩 $M_p$。</p>
+</blockquote>
+<hr />
+<h3>Step 2：強軸彎矩強度 $\phi_b M_{nx}$</h3>
+<p><img alt="SS-2014-3 LTB三區段理論：標稱彎矩強度Mn與無支撐長度Lb的三區段設計曲線，含塑性區、非彈性LTB區、彈性LTB區" src="../../raw/solutions/SS-2014-3/SS-2014-3-hand-1.png" /></p>
+<p><em>圖說：LTB 核心藍圖——三區段理論。橫軸為無支撐長度 $L_b$，縱軸為標稱彎矩強度 $M_n$。① 塑性區（$L_b \leq L_p$）：強度由材料塑性能力決定，梁能達全塑性彎矩 $M_p$。② 非彈性 LTB 區（$L_p < L_b \leq L_r$）：強度由材料塑性與幾何不穩定性共同決定，曲線線性下降（含 $C_b$ 修正）。③ 彈性 LTB 區（$L_b > L_r$）：強度純粹由幾何不穩定性決定，為典型的尤拉挫屈行為（$M_n = M_{cr}$）。本題 $L_b = 4$ m 落於第②區（非彈性 LTB）。</em></p>
+<h4>2a. 確定 LTB 範圍</h4>
+<p>無側向中間支撐，兩端支承處有側向支撐：</p>
+<p>$$L_b = 4 \text{ m}$$</p>
+<p>比較：$L_p = 2 \text{ m} < L_b = 4 \text{ m} < L_r = 5.8 \text{ m}$</p>
+<p>$$\Rightarrow \textbf{非彈性 LTB 控制}$$</p>
+<h4>2b. 計算 $C_b$（均布載重，拋物線彎矩圖）</h4>
+<p>均布載重下，彎矩圖為拋物線，$L_b = 4$ m（全梁），$M_{max} = M_{ux} = 400$ kN-m：</p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>相對位置</th>
+<th>彎矩</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_A$（$L/4$處）</td>
+<td>$x = 1$ m</td>
+<td>$M_A = \frac{3}{4}M_{max} = 300$ kN-m</td>
+</tr>
+<tr>
+<td>$M_B$（$L/2$處）</td>
+<td>$x = 2$ m</td>
+<td>$M_B = M_{max} = 400$ kN-m</td>
+</tr>
+<tr>
+<td>$M_C$（$3L/4$處）</td>
+<td>$x = 3$ m</td>
+<td>$M_C = \frac{3}{4}M_{max} = 300$ kN-m</td>
+</tr>
+</tbody>
+</table>
+<p><em>策略註解：均布載重下 $M(x) = 4M_{max} \cdot x(L-x)/L^2$，在四分點 $M = 3/4 \cdot M_{max}$</em></p>
+<p>$$C_b = \frac{12.5 \times 400}{2.5(400) + 3(300) + 4(400) + 3(300)} = \frac{5000}{1000 + 900 + 1600 + 900} = \frac{5000}{4400} = \boxed{1.136}$$</p>
+<h4>2c. 計算 $M_p$ 與 $M_r$</h4>
+<p>$$M_p = F_y Z_x = 350 \times 3{,}621{,}541 = 1{,}267{,}539{,}350 \text{ N-mm} = \boxed{1267.5 \text{ kN-m}}$$</p>
+<p>$$M_r = (F_y - F_r) S_x = (350 - 78) \times 3{,}146{,}316 = 272 \times 3{,}146{,}316 = 855{,}798{,}000 \text{ N-mm} = \boxed{855.8 \text{ kN-m}}$$</p>
+<p><em>策略註解：$F_r = 78$ MPa 為殘留應力，題目已給定，不可忘記</em></p>
+<h4>2d. 非彈性 LTB 標稱強度</h4>
+<p><img alt="SS-2014-3 非彈性LTB線性內插公式解析：公式各項目的物理意義標注圖，含天花板Mp、地板Mr、總墜距離、相對位置比例因子" src="../../raw/solutions/SS-2014-3/SS-2014-3-hand-2.png" /></p>
+<p><em>圖說：非彈性 LTB 線性內插公式的物理意義拆解。$M_n = C_b \left[ M_p - (M_p - M_r) \cdot \dfrac{L_b - L_p}{L_r - L_p} \right] \leq M_p$。各項含義：「天花板」= $M_p$，梁的塑性強度極限；「地板」= $M_r$，非彈性挫屈的強度起點；「總墜距離」= $M_p - M_r$，從塑性區到彈性區的強度縮幅；「相對位置」= $(L_b - L_p)/(L_r - L_p)$，梁的 $L_b$ 在 $L_p$ 與 $L_r$ 之間走了多遠的比例（0 到 1）。此公式本質是描述梁強度從「純材料」過渡到「材料＋幾何」行為的線性內插模型。$C_b$ 乘入後需以 $M_p$ 為上限截斷。</em></p>
+<p>$$M_n = C_b \left[ M_p - (M_p - M_r)\frac{L_b - L_p}{L_r - L_p} \right] \leq M_p$$</p>
+<p>$$M_n = 1.136 \times \left[ 1267.5 - (1267.5 - 855.8) \times \frac{4 - 2}{5.8 - 2} \right]$$</p>
+<p>$$= 1.136 \times \left[ 1267.5 - 411.7 \times \frac{2}{3.8} \right]$$</p>
+<p>$$= 1.136 \times \left[ 1267.5 - 216.7 \right]$$</p>
+<p>$$= 1.136 \times 1050.8 = 1193.7 \text{ kN-m}$$</p>
+<p><strong>上限檢核：</strong> $M_n = 1193.7 < M_p = 1267.5$ kN-m ✓（無需截斷）</p>
+<p>$$\boxed{\phi_b M_{nx} = 0.9 \times 1193.7 = \textbf{1074.3 kN-m}}$$</p>
+<hr />
+<h3>Step 3：弱軸彎矩強度 $\phi_b M_{ny}$</h3>
+<p>弱軸彎曲：I 型斷面弱軸無 LTB，僅考量斷面強度。</p>
+<p>$$M_{p,y} = F_y Z_y = 350 \times 568{,}631 = 199{,}021{,}000 \text{ N-mm} = 199.0 \text{ kN-m}$$</p>
+<blockquote>
+<p>⚠️ <strong>陷阱：弱軸強度上限</strong></p>
+<p>AISC-LRFD 規範對雙對稱 I 型斷面弱軸彎曲，設有上限：<br />
+$$M_{ny} \leq 1.5 \times F_y \times S_y$$</p>
+</blockquote>
+<p><strong>驗算形狀因數：</strong></p>
+<p>$$\frac{Z_y}{S_y} = \frac{568{,}631}{362{,}154} = 1.570 > 1.5$$</p>
+<p>由於 $Z_y > 1.5 S_y$，以上限值控制：</p>
+<p>$$M_{ny} = 1.5 F_y S_y = 1.5 \times 350 \times 362{,}154 = 190{,}131{,}000 \text{ N-mm} = 190.1 \text{ kN-m}$$</p>
+<p>$$\boxed{\phi_b M_{ny} = 0.9 \times 190.1 = \textbf{171.1 kN-m}}$$</p>
+<p><em>策略註解：$Z_y/S_y = 1.57 > 1.5$，這是 W 型寬翼鋼梁的常見情況，考試重要陷阱！</em></p>
+<hr />
+<h3>Step 4：雙向彎矩互制公式檢核</h3>
+<p>AISC-LRFD 規範對無軸力梁的雙向彎曲互制公式（H1-2）：</p>
+<p>$$\frac{M_{ux}}{\phi_b M_{nx}} + \frac{M_{uy}}{\phi_b M_{ny}} \leq 1.0$$</p>
+<p>代入數值：</p>
+<p>$$\frac{400}{1074.3} + \frac{50}{171.1} = 0.372 + 0.292 = \boxed{0.664}$$</p>
+<p>$$0.664 \leq 1.0 \quad \Rightarrow \quad \textbf{✅ 梁滿足設計要求}$$</p>
+<hr />
+<h3>補充：剪力強度確認</h3>
+<blockquote>
+<p>📝 <strong>考場策略說明：</strong> 本題未提供剪力強度公式，且核心考點明確落在 LTB、弱軸上限與雙向互制。對 W 型鋼受均布載重而言，<strong>彎矩幾乎必然先於剪力達到極限</strong>，剪力公式省略有其出題邏輯。</p>
+<p><strong>考場建議作法：</strong> 在總結處補一句「W 型斷面腹板充足，剪力強度安全無虞，省略詳細計算」，即可向閱卷委員展示你知道這個極限狀態的存在，同時不浪費時間。</p>
+</blockquote>
+<p>若需完整驗算（參考用），由彎矩反推均布載重：</p>
+<p>$$w_u = \frac{8 M_{ux}}{L^2} = \frac{8 \times 400}{4^2} = 200 \text{ kN/m}$$</p>
+<p>$$V_u = \frac{w_u L}{2} = \frac{200 \times 4}{2} = 400 \text{ kN}$$</p>
+<p>腹板寬厚比 $h/t_w = 34.1 < 2.46\sqrt{E/F_y} = 58.7$，屬非細長腹板，適用最基本的降伏公式：</p>
+<p>$$V_n = 0.6 F_y A_w = 0.6 \times 350 \times (548.6 \times 14.7) = 1{,}693 \text{ kN}$$</p>
+<p>$$\phi_v V_n = 0.9 \times 1{,}693 = 1{,}524 \text{ kN} \gg V_u = 400 \text{ kN} \quad \textbf{✓ 剪力利用率僅 26\%，無虞}$$</p>
+<hr />
+<h3>總結</h3>
+<table>
+<thead>
+<tr>
+<th>檢核項目</th>
+<th>需求</th>
+<th>強度</th>
+<th>利用率</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>斷面結實性</td>
+<td>翼板 λ=4.53</td>
+<td>λp=9.19</td>
+<td>—</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>強軸 LTB</td>
+<td>Mux=400 kN-m</td>
+<td>φbMnx=1074.3 kN-m</td>
+<td>37.2%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>弱軸強度</td>
+<td>Muy=50 kN-m</td>
+<td>φbMny=171.1 kN-m</td>
+<td>29.2%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>雙向互制</td>
+<td>0.664</td>
+<td>≤ 1.0</td>
+<td><strong>66.4%</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td>剪力</td>
+<td>Vu=400 kN</td>
+<td>φvVn=1524 kN</td>
+<td>26.2%</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>$$\boxed{\text{W21×93 梁滿足 LRFD 設計要求，互制比 = 0.664}}$$</p>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<p><strong>①「均佈的雙向彎矩」的解讀：</strong><br />
+題目說「梁全長承受均佈的雙向彎矩」，應解讀為均佈載重造成的最大彎矩（Mux=400 kN-m，Muy=50 kN-m），而非常數彎矩（constant moment）。簡支梁在簡支條件下不可能有常數彎矩（需要端力矩）。均布載重產生拋物線彎矩圖，$C_b = 1.136$。</p>
+<p>若誤解為常數彎矩（$C_b = 1.0$）：<br />
+$M_n = 1.0 \times [1267.5 - 411.7 \times 2/3.8] = 1050.8$ kN-m<br />
+$\phi_b M_{nx} = 0.9 \times 1050.8 = 945.7$ kN-m（偏保守）<br />
+互制比 = 400/945.7 + 50/171.1 = 0.423 + 0.292 = 0.715 &lt; 1.0（仍通過）</p>
+<p><strong>②弱軸 $1.5F_y S_y$ 上限的規範依據與物理原因：</strong></p>
+<p>規範出處：台灣《鋼結構設計規範─極限設計法》<strong>第 6.6 節「對弱軸彎曲之 I 型斷面與槽型斷面」</strong>（對應 AISC Chapter F, Section F6）。</p>
+<p>物理原因：I 型斷面繞弱軸彎曲時，兩片翼板幾乎承擔全部力矩。翼板的行為近似「兩塊獨立矩形板」，其形狀因數恰好為 1.5。若允許強度發展到 $F_y Z_y$，工作載重下翼板外緣將產生大範圍深度降伏，造成不可恢復的永久變形，故規範以 $1.5 F_y S_y$ 設定上限。</p>
+<p><strong>考場提醒：</strong> 即使題目未給此公式，$M_{ny} \leq 1.5 F_y S_y$ 屬於必須內化的規範常識——題目同時給出 $Z_y$ 和 $S_y$ 本身就是陷阱信號。$Z_y/S_y = 1.57 > 1.5$ 時若直接用 $F_y Z_y$，會高估弱軸強度，屬扣分項。（新版 AISC 360-10 起上限放寬為 $1.6 F_y S_y$，本題依 2014 年考試時點採 $1.5$）</p>
+<p><strong>③若 Lb &gt; Lr（彈性 LTB）時的計算變化：</strong><br />
+若 $L_b > L_r = 5.8$ m，則：$M_n = C_b \frac{\pi}{L_b}\sqrt{GJ \cdot EI_y + (E\pi/L_b)^2 I_y C_w} \leq M_p$<br />
+此時 $C_b$ 的效益更顯著，但需輸入 $GJ$ 和 $C_w$（題目未給），彈性 LTB 通常不是此題考點。</p>
+<p><strong>④實務上的側向支撐設計建議：</strong><br />
+本題梁因 $L_b = 4$ m = $2L_p$，LTB 已削減強度。若在梁中點加設側向支撐，則 $L_b$ 減半為 2 m = $L_p$，可達全塑性強度 $\phi_b M_p = 0.9 \times 1267.5 = 1140.8$ kN-m，設計利用率可由 37% 提升至梁的最大強度。</p>
+<hr /></main>
+<footer>來源：raw/solutions/SS-2014-3/SS-2014-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

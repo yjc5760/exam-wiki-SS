@@ -309,6 +309,36 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 再用 Edit 反覆把 `<!--APPEND-->` 換成「新內容 + `<!--APPEND-->`」逐節長出來。
 一次寫完容易中斷且難修。
 
+### 與同子項既有教材互連（必做，最容易漏）
+
+同一個子項往往已經有其他教材躺在 `study/`：
+
+| 檔案 | 是什麼 | 使用時機 |
+|------|--------|---------|
+| `study-XX-Un-m.html` | `study` 指令產的速查頁 | 考前總複習 |
+| `XX-Un-m_<單元名>.pdf` | 使用者自備的課堂 Keynote／投影片 | 課堂 |
+| `lecture-XX-Un-m.html` / `.pdf` | 本 skill 產出 | 練題前 |
+
+**三份教材如果彼此不連，使用者會忘記另外兩份存在。** 產出講義後一定要做雙向連結：
+
+1. **講義 → 其他教材**：在 `<nav>` 尾端加一組灰色連結（速查頁、Keynote、本頁 PDF）。
+   放在 `<nav>` 裡是刻意的 —— `build_pdf.py` 會把 `<nav>` 整段移除，
+   列印版不會出現連不到的本機連結。
+
+```html
+<span style="flex:1"></span>
+<a href="study-XX-Un-m.html" style="background:#eceff1;color:#455a64">📊 速查頁</a>
+<a href="XX-Un-m_<單元名>.pdf" target="_blank" style="background:#eceff1;color:#455a64">📄 Keynote</a>
+<a href="lecture-XX-Un-m.pdf" target="_blank" style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+```
+
+2. **速查頁 → 講義**：`study-XX-Un-m.html` 的 §1 標題右側通常已有一顆 Keynote 按鈕，
+   把它擴成三顆一組（紫色「觀念講義」→ HTML、淺紫「PDF」→ 列印版、藍色「Keynote」不動），
+   並在按鈕列下方加一行使用順序說明：**觀念講義（練題前）→ Keynote（課堂）→ 速查頁（考前）**。
+
+3. 先 `ls study/` 確認哪些檔案真的存在，**不要連到不存在的檔案**。
+   Keynote PDF 的檔名由使用者自訂，必須實際去看，不能用推測的。
+
 ### 題號連結
 
 寫完後把表格裡的題號轉成連結：
@@ -451,7 +481,9 @@ print('PDF ->', PDF)
    確認無缺漏、無誤植、考年正確。
 3. **數值核對**：把講義裡所有算出來的數字（範例、常數、交界點）用 python 重算一次。
 4. **交叉引用**：檢查文中「見 §x.y」的節號在改版後仍然存在。
-5. 用 `mcp__cowork__present_files` 交付 HTML 與 PDF。
+5. **教材互連**：講義 nav 的三個連結、速查頁的三顆按鈕都指向真實存在的檔案
+   （`ls study/` 逐一核對），且 PDF 版沒有殘留 nav。
+6. 用 `mcp__cowork__present_files` 交付 HTML 與 PDF。
 
 ---
 

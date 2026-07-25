@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-2016-2 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SS-2016-2 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SS-2016-2</h1>
+<p><strong>主分類：</strong> <code>SS-U2-3</code> 設計規範對施工之要求<br />
+<strong>副分類：</strong> 無<br />
+<strong>設計法：</strong> 概念題<br />
+<strong>標籤：</strong> <code>填角銲</code> <code>回銲</code> <code>end return</code> <code>銲接細節</code> <code>施工規範</code> <code>轉角銲</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p><strong>子問題：</strong></p>
+<ol>
+<li><strong>(一)</strong> 何謂回銲（圍繞轉角銲接，end return）？（10 分）</li>
+<li><strong>(二)</strong> 請舉例說明何時適用回銲？何時不適用回銲？（各舉一例）（15 分）</li>
+</ol>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心觀念：填角銲細節設計的安全考量</strong></p>
+<p>此題考查考生對銲接施工規範細節的掌握，特別是回銲（End Return）的設計用途與使用限制。回銲並非通用做法，需依照接合的受力特性與幾何條件判斷是否適用。</p>
+<p><strong>出題者測驗重點：</strong></p>
+<ul>
+<li>能否正確定義回銲的幾何描述與最小長度要求</li>
+<li>能否從「防止銲縫端部應力集中」的角度理解回銲的功用</li>
+<li>能否區分需要回銲（高應力端部）與不適用回銲（結構穿越面或拘束區域）的案例</li>
+</ul>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>步驟規劃：</strong></p>
+<ol>
+<li>定義回銲（幾何 + 最小長度 + 目的）</li>
+<li>舉正例：什麼接合形式適用 → 說明力學理由</li>
+<li>舉反例：什麼接合形式不適用 → 說明理由（幾何衝突或反效果）</li>
+</ol>
+<p><strong>關鍵陷阱：</strong></p>
+<blockquote>
+<p>⚠️ <strong>陷阱1：只定義形狀、忘記說最小長度</strong><br />
+回銲必須至少繞轉角延伸 <strong>$2w$</strong>（$w$ 為填角銲腳尺寸），此數值是規範明文規定，考場必答。</p>
+<p>⚠️ <strong>陷阱2：舉例僅列場合、未說明力學原因</strong><br />
+適用 / 不適用的理由需從「銲縫端部應力分佈」或「幾何限制」兩個角度解釋，才能得分。</p>
+<p>⚠️ <strong>陷阱3：混淆回銲與「環繞全周銲」（weld-all-around）</strong><br />
+全周銲是整個構材截面邊緣都銲，回銲僅是在端部繞轉角一小段距離，概念不同。</p>
+</blockquote>
+<hr />
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：解題後，在每個卡住的知識點「卡關?」欄標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<p><strong>最終目標：</strong> 定義回銲（End Return）的幾何與最小長度規定 → 舉例說明適用與不適用的場合及力學原因</p>
+<h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
+<p>本題為概念說明題，核心規定為：</p>
+<p>$$\ell_{\text{end return}} \geq 2w \quad (w = \text{填角銲腳尺寸})$$</p>
+<p>$$\text{有效銲長} = \text{總長} - 2w \quad \text{（主銲道兩端各扣）}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>子問題(一)</td>
+<td>定義回銲</td>
+<td>幾何描述 + 最小長度</td>
+</tr>
+<tr>
+<td>子問題(二)</td>
+<td>適用 / 不適用各舉一例</td>
+<td>需說明力學原因</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：回銲定義</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>幾何描述</td>
+<td>填角銲在端部繞過構材轉角繼續延伸 $\geq 2w$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>目的</td>
+<td>消除銲縫端部應力集中、防止剝離破壞</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>計入有效長度</td>
+<td>回銲段若 $\leq 4w$，全段不計入有效長度</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：適用回銲的場合</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>典型案例</td>
+<td>托架板（Bracket Plate）銲於 H 柱翼板</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>力學原因</td>
+<td>偏心力矩使銲縫端部受剝離力，回銲分散應力集中</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：不適用回銲的場合</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>典型案例</td>
+<td>間歇銲縫（Intermittent Fillet Welds）端部</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>不適用原因</td>
+<td>無轉角可繞，且強行施作會增加殘留應力</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>另一案例</td>
+<td>CJP 全滲透銲（全截面貫穿，無裸露端部邊緣）</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">補強頁</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>銲縫端部應力集中的原因</td>
+<td>幾何不連續處（銲道起終點），應力集中因子大，是疲勞裂縫萌生點</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>回銲 vs 環繞全周銲的差異</td>
+<td>全周銲（weld-all-around）繞整個截面；回銲只繞端部一小段 $\geq 2w$</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>最小長度規定 $2w$ 的意義</td>
+<td>規範明文規定，少於此長度的回銲不計入有效長度，且無法有效分散應力</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>間歇銲縫端部為何禁止回銲</td>
+<td>無構材轉角可繞，且局部加熱反而造成更大殘留應力和 HAZ 損傷</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>(一) 何謂回銲（End Return）</h3>
+<p><strong>定義：</strong><br />
+回銲（End Return，又稱圍繞轉角銲接）是指：當填角銲（Fillet Weld）在構材端部終止時，將銲道<strong>繞過構材的轉角</strong>繼續延伸一段距離，而非在轉角處突然停止。</p>
+<p><strong>幾何說明：</strong></p>
+<pre><code>        ┌──────────────────────────────┐
+        │   構材（如角鋼或翼板端部）      │
+        └──────────────────────────────┘
+        ↑                              ↑
+ 回銲（側面）                      回銲（側面）
+←──── 主要填角銲（沿構材縱向）────→
+</code></pre>
+<ul>
+<li><strong>主銲道</strong>：沿接合方向（縱向）施銲</li>
+<li><strong>回銲段</strong>：在主銲道兩端或單端，繞轉角繼續延伸 $\geq 2w$（$w$ = 填角銲腳尺寸）</li>
+</ul>
+<p><strong>最小長度規定：</strong></p>
+<p>依 AISC/CNS 規範，回銲長度不得小於：</p>
+<p>$$\ell_{\text{end return}} \geq 2w$$</p>
+<p>其中 $w$ 為填角銲腳尺寸（Fillet Weld Leg Size）。</p>
+<p><strong>目的（功能性說明）：</strong></p>
+<ol>
+<li>
+<p><strong>消除銲縫端部應力集中</strong>：填角銲端部（銲道起始或終止點）是幾何不連續處，應力集中因子大。回銲使端部應力平滑分散，避免裂縫自銲縫端部萌生。</p>
+</li>
+<li>
+<p><strong>防止銲縫端部剝離（Peeling/Tearing）</strong>：當接合承受使銲縫端部脫開的方向（如拉力導致的彎曲）時，回銲提供額外的抗剝離力。</p>
+</li>
+<li>
+<p><strong>增加有效銲縫長度</strong>：回銲段可計入有效長度，提升接合強度（計算時仍需扣除無效長度部分）。</p>
+</li>
+</ol>
+<hr />
+<h3>(二) 適用回銲 vs 不適用回銲（各舉一例）</h3>
+<h4>✅ 適用回銲：承拉懸臂托架（Bracket Plate）銲於柱翼板</h4>
+<p><strong>情境：</strong><br />
+一水平托架板（Bracket Plate）以填角銲銲接於 H 型柱翼板側面，承受垂直集中載重。</p>
+<p><strong>力學分析：</strong></p>
+<ul>
+<li>銲縫受到<strong>偏心力矩</strong>，使銲縫上端受到最大的剝離應力（向外撕開趨勢）</li>
+<li>若填角銲在托架板端部突然停止，應力集中於銲縫端點，有起裂風險</li>
+</ul>
+<p><strong>回銲的作用：</strong></p>
+<ul>
+<li>在托架板頂端（銲縫端部）繞過邊緣繼續延伸 $\geq 2w$</li>
+<li>端部剝離力由回銲段承擔，降低應力集中效應</li>
+<li>對於承受<strong>重複載重（疲勞）或地震荷載</strong>的情況尤其重要</li>
+</ul>
+<p>$$\text{適用回銲的判斷：} \quad \text{銲縫端部有較大的垂直（剝離）分力作用時}$$</p>
+<hr />
+<h4>❌ 不適用回銲：間歇銲縫（Intermittent Fillet Welds）的中間端部</h4>
+<p><strong>情境：</strong><br />
+梁腹板加勁肋（Stiffener）以間歇填角銲銲於腹板兩側，銲縫段之間留有間隔。</p>
+<p><strong>為何不適用：</strong></p>
+<ol>
+<li>
+<p><strong>幾何衝突</strong>：間歇銲縫的端部位於腹板中間區域，並無構材轉角供迴繞，回銲在物理上無法實施。</p>
+</li>
+<li>
+<p><strong>反效果疑慮</strong>：在間歇銲縫的端部強行施作回銲，反而會在腹板上形成不連續的局部加熱區，引發更大的殘留應力和熱影響區損傷。</p>
+</li>
+<li>
+<p><strong>規範明文排除</strong>：AISC 規範明確規定，間歇銲縫的端部不需要（也不允許）做回銲處理。</p>
+</li>
+</ol>
+<p>另一不適用回銲的常見例子：</p>
+<blockquote>
+<p><strong>CJP 全滲透銲（Complete Joint Penetration Weld）</strong>：全滲透銲已貫穿整個厚度，銲縫強度由截面決定，不存在端部「外露邊緣」需要回繞保護。</p>
+</blockquote>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<h3>回銲的有效長度計算</h3>
+<p>依規範，計算回銲長度時：</p>
+<ul>
+<li>銲道起點與端點各須扣除 $1w$（腳尺寸），以考慮端部效應</li>
+<li>主銲道：有效長度 = 總長 $- 2w$（兩端各扣）</li>
+<li>回銲段：若長度 $\leq 4w$，全段扣除不計入有效長度</li>
+</ul>
+<h3>其他常見需用回銲的場合</h3>
+<table>
+<thead>
+<tr>
+<th>接合類型</th>
+<th>回銲目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>角鋼連接至柱翼板（單邊）</td>
+<td>消除角鋼端部剝離力</td>
+</tr>
+<tr>
+<td>梁翼板對柱接合（摩擦型高拉力螺栓之補強銲）</td>
+<td>減少翼板端部應力集中</td>
+</tr>
+<tr>
+<td>承受反覆載重的懸臂梁根部</td>
+<td>疲勞強度考量</td>
+</tr>
+</tbody>
+</table>
+<h3>考場安全答法摘要</h3>
+<table>
+<thead>
+<tr>
+<th>子題</th>
+<th>核心答法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(一) 定義</td>
+<td>「填角銲在端部繞轉角繼續延伸，長度 $\geq 2w$」+ 圖示</td>
+</tr>
+<tr>
+<td>(一) 目的</td>
+<td>「消除銲縫端部應力集中，防止剝離破壞」</td>
+</tr>
+<tr>
+<td>(二) 適用</td>
+<td>「托架板/懸臂件銲於柱翼板，端部受剝離力 → 需回銲」</td>
+</tr>
+<tr>
+<td>(二) 不適用</td>
+<td>「間歇銲縫端部（無轉角供迴繞）或全滲透銲（無端部裸露邊）」</td>
+</tr>
+</tbody>
+</table></main>
+<footer>來源：raw/solutions/SS-2016-2/SS-2016-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

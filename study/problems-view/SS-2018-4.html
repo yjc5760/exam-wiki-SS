@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-2018-4 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SS-2018-4 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>SS-2018-4 解析</h1>
+<h3>考題編號：SS-2018-4</h3>
+<p><strong>主分類：</strong> <code>SS-U2-3</code> 設計規範對施工之要求<br />
+<strong>副分類：</strong> 無<br />
+<strong>設計法：</strong> 概念題<br />
+<strong>標籤：</strong> <code>防蝕塗裝</code> <code>不予塗裝</code> <code>高拉力螺栓</code> <code>摩擦接合</code> <code>現場銲接</code> <code>混凝土包覆</code> <code>施工規範</code> <code>箱型斷面密閉面</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p><strong>題目：</strong> 除施工程序書另有規定，建築鋼結構那些部位不予塗裝？（20 分）</p>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心觀念：</strong> 塗裝（防蝕）的目的是保護鋼材，但某些部位的塗裝反而有害——如高拉力螺栓摩阻接觸面塗裝後無法提供足夠摩擦力、現場銲接範圍塗裝會影響銲接品質、混凝土包覆面塗裝影響握裹力。規範要求這些部位不予塗裝。</p>
+<p><strong>出題者意圖：</strong> 考核學生對建築鋼結構施工規範（依 AISC 精神，參照台灣建築技術規則及鋼結構施工規範）中「塗裝排除部位」的系統性記憶與理解。</p>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>記憶框架（分五大類）：</strong></p>
+<ol>
+<li>接合相關：高拉力螺栓摩擦面、現場銲接部位附近</li>
+<li>混凝土相關：包覆範圍、底板下表面</li>
+<li>結構型式相關：密閉箱型斷面內部</li>
+<li>其他規範指定部位</li>
+</ol>
+<p><strong>關鍵陷阱：</strong></p>
+<table>
+<thead>
+<tr>
+<th>陷阱</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>❌ 認為所有螺栓接合面都不塗裝</td>
+<td>僅<strong>摩阻型（slip-critical）</strong>高拉力螺栓接合面不塗裝，承壓型可塗</td>
+</tr>
+<tr>
+<td>❌ 認為現場銲縫本身不塗</td>
+<td>是現場銲縫「附近一定範圍」（兩側各 50 mm 以上）不塗，不是僅銲縫線</td>
+</tr>
+<tr>
+<td>❌ 混凝土包覆面包括地下室外牆</td>
+<td>主要指結構性混凝土包覆（如包覆柱、複合樓板），防水用途的不在此列</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：解題後，在每個卡住的知識點「卡關?」欄標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<p><strong>最終目標：</strong> 列舉建築鋼結構「不予塗裝」的五大部位並說明各自理由（記憶題，無計算）</p>
+<h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
+<p>本題為規範記憶題，無計算公式。核心邏輯框架：</p>
+<p>$$\text{不予塗裝} \Leftarrow \begin{cases} \text{塗裝有害接合強度（摩擦面、現場銲接）} \\ \text{混凝土提供保護且塗裝降低握裹力} \\ \text{密閉空間無氧，塗裝危害施工安全} \end{cases}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>設計法</td>
+<td>ASD/規範概念</td>
+<td>本題依台灣建築鋼結構施工規範（AISC 精神）</td>
+</tr>
+<tr>
+<td>分值</td>
+<td>20 分</td>
+<td>預計 5 部位各 4 分（名稱 2 + 理由 2）</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：五大不予塗裝部位（逐條記憶）</strong></p>
+<table>
+<thead>
+<tr>
+<th>部位</th>
+<th>不塗裝理由</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 高拉力螺栓摩阻型接觸面</td>
+<td>塗裝降低摩擦係數 $\mu$（0.35→0.15），接合強度不足</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>② 現場銲接部位兩側各 50 mm</td>
+<td>油漆高溫分解產生氣孔、影響電弧穩定、有害氣體</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>③ 埋入混凝土或與混凝土接觸面</td>
+<td>混凝土鹼性保護鋼材；塗裝降低握裹力（bond strength）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>④ 柱腳底板底面（灌漿接觸面）</td>
+<td>塗裝降低砂漿與底板摩擦力，影響剪力傳遞</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>⑤ 完全密閉箱型斷面內部</td>
+<td>無氧環境腐蝕極慢；密閉空間塗裝揮發物危害作業安全</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">補強頁</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>摩阻型 vs 承壓型螺栓接合</td>
+<td>僅<strong>摩阻型（slip-critical）</strong>接觸面不塗裝；承壓型允許塗裝（因已滑移至螺桿承壓）</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>現場銲接保護範圍 50 mm</td>
+<td>是銲縫<strong>兩側各 50 mm</strong>，不是僅銲縫線本身；塗裝高溫分解的三種危害需說明清楚</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>混凝土鹼性保護機制</td>
+<td>pH &gt; 12 使鋼表面鈍化（passivation），本身防腐，塗裝反而是多餘且有害的</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>特殊例外：無機鋅粉底漆</td>
+<td>若試驗佐證滑移係數後，特殊塗料可用於摩阻面，但屬特例，考試以「不塗裝」為標準答案</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<p>本題為說明題，依「不予塗裝部位」逐類列舉說明。</p>
+<hr />
+<h3>(一) 高拉力螺栓摩阻型接合之接觸面</h3>
+<p><strong>規定：</strong> 高拉力螺栓採用<strong>摩阻型設計</strong>時，摩擦接觸面（faying surface）不得塗裝。</p>
+<p><strong>原因：</strong> 摩阻型接合的設計強度仰賴接觸面摩擦力，摩擦力大小取決於滑移係數（$\mu$）。若接觸面已塗裝（一般油漆），$\mu$ 大幅降低（從 $\mu \approx 0.35$ 降至 $\mu \approx 0.15$），導致接合設計強度不足。</p>
+<p><strong>範圍：</strong> 接觸面全範圍（含螺栓群覆蓋區域），不含其他外露面。</p>
+<blockquote>
+<p>⚠️ 例外：若施工程序書明訂採用特定摩擦係數（並有試驗佐證）的特殊塗料（如無機鋅粉底漆），且容許應力已相應調降，則可使用塗裝接觸面。</p>
+</blockquote>
+<hr />
+<h3>(二) 現場銲接部位及其鄰近範圍</h3>
+<p><strong>規定：</strong> 需進行現場銲接（field welding）的部位，銲道兩側各 <strong>50 mm 範圍</strong>內不得塗裝。</p>
+<p><strong>原因：</strong></p>
+<ol>
+<li>塗裝油漆（有機物）在銲接高溫下分解，產生有害氣體進入熔池，造成氣孔（porosity）等銲接缺陷</li>
+<li>揮發氣體影響電弧穩定性，降低銲接品質</li>
+<li>部分塗料含鋅，高溫下產生氧化鋅煙霧，危害作業人員健康</li>
+</ol>
+<p><strong>注意：</strong> 工廠銲接（shop weld）完成後的銲道周邊，若後續不進行現場銲接，可於工廠塗裝。</p>
+<hr />
+<h3>(三) 埋入混凝土或與混凝土接觸之鋼材面</h3>
+<p><strong>規定：</strong> 鋼材表面將埋入混凝土中或與混凝土接觸的部分不予塗裝。</p>
+<p><strong>原因：</strong></p>
+<ol>
+<li>混凝土提供鹼性環境（pH &gt; 12），本身對鋼材有鈍化保護作用，無需另行塗裝</li>
+<li>塗裝後會降低混凝土對鋼材的握裹力（bond strength），影響複合構件（如 SRC 柱）的力學行為</li>
+<li>含特定成分的塗料（如鉛系）可能對混凝土有不良影響</li>
+</ol>
+<p><strong>適用部位舉例：</strong> SRC（鋼骨鋼筋混凝土）結構中的鋼骨、複合樓板的鋼承板埋入部分、柱腳埋入基礎的部分。</p>
+<hr />
+<h3>(四) 底板（base plate）與灌漿接觸之下表面</h3>
+<p><strong>規定：</strong> 柱腳底板的<strong>底面</strong>（與無收縮砂漿接觸面）不予塗裝。</p>
+<p><strong>原因：</strong> 底板下方灌入無收縮砂漿（grout），塗裝後砂漿與底板的接觸面摩擦力降低，影響柱腳剪力傳遞與錨固穩定性。混凝土的鹼性環境亦可保護鋼材。</p>
+<hr />
+<h3>(五) 密閉箱型斷面之內部密閉面</h3>
+<p><strong>規定：</strong> 設計上完全密閉的箱型斷面（closed hollow section），其<strong>內側密閉空間</strong>不予塗裝。</p>
+<p><strong>原因：</strong> 若密閉空間施工完成後永遠不開啟，內部空氣不流通，氧氣量有限，腐蝕速度極慢，不需塗裝保護。若密封完整（無開口、無結露凝水），腐蝕問題可忽略。強行在密閉空間塗裝反而增加施工困難，且揮發氣體難以排除，造成健康安全隱患。</p>
+<blockquote>
+<p>⚠️ 前提：密閉必須確實，若有焊接開口或通氣孔則不適用此例外。</p>
+</blockquote>
+<hr />
+<h3>(六) 需後續安裝之接觸接合面（依施工需要）</h3>
+<p><strong>規定：</strong> 若兩構件間的接觸面將以承壓傳力（如端板承壓接合），且施工程序書指定不塗裝時，按程序書執行。</p>
+<hr />
+<h3>彙整表</h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>不予塗裝部位</th>
+<th>主要理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>高拉力螺栓摩阻型接合之接觸面</td>
+<td>塗裝降低摩擦係數，接合強度不足</td>
+</tr>
+<tr>
+<td>②</td>
+<td>現場銲接部位兩側各 50 mm 範圍</td>
+<td>塗裝引起銲接缺陷（氣孔、裂縫）</td>
+</tr>
+<tr>
+<td>③</td>
+<td>埋入混凝土或與混凝土接觸之鋼面</td>
+<td>混凝土保護鋼材；塗裝降低握裹力</td>
+</tr>
+<tr>
+<td>④</td>
+<td>柱腳底板底面（灌漿接觸面）</td>
+<td>塗裝降低砂漿接觸面摩擦力及握裹</td>
+</tr>
+<tr>
+<td>⑤</td>
+<td>完全密閉箱型斷面之內部</td>
+<td>密閉空間無氧，腐蝕極慢，塗裝危害施工安全</td>
+</tr>
+<tr>
+<td>⑥</td>
+<td>程序書特別指定之其他部位</td>
+<td>依專案需求</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<h3>摩阻型 vs 承壓型螺栓接合</h3>
+<table>
+<thead>
+<tr>
+<th>接合型式</th>
+<th>受力機制</th>
+<th>接觸面是否可塗裝</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>摩阻型（slip-critical）</td>
+<td>依靠摩擦傳力，不允許滑移</td>
+<td><strong>不可塗裝</strong>（或採特殊核可塗料）</td>
+</tr>
+<tr>
+<td>承壓型（bearing type）</td>
+<td>允許少量滑移，依螺桿承壓傳力</td>
+<td><strong>可塗裝</strong>（已滑移至承壓狀態）</td>
+</tr>
+</tbody>
+</table>
+<h3>現場銲接保護做法</h3>
+<p>工廠塗裝時，應在現場銲接部位預留<strong>遮蔽條（masking tape）</strong>，塗裝完成後撕除，保留 50 mm 未塗裝帶。施工精度要求高，通常在工廠即以畫線標示。</p>
+<h3>考試計分邏輯</h3>
+<p>本題 20 分，答對 <strong>5 個項目並說明原因</strong>即可拿滿分。每項約 4 分（項目名稱 2 分＋理由 2 分）。僅列名稱而無說明通常各扣 1 分。</p>
+<p>建議答題順序：先列出①②③④⑤，再逐一說明理由，條列清晰，閱卷老師容易給分。</p></main>
+<footer>來源：raw/solutions/SS-2018-4/SS-2018-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

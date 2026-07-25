@@ -192,6 +192,7 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-07-25 | 新增 `study/lecture-SS-U1-2.html` / `.pdf`；新增 `study/problems-view/`（raw/solutions 的 HTML 渲染層，題號連結改指此處） | 題號原本連到 `.md`，瀏覽器只顯示未渲染純文字；渲染層讓公式／表格／附圖可讀 |
 | 2026-07-25 | 新增 `study/lecture-SS-U1-3.html` / `.pdf`（梁柱桿件，30 頁）；`study/problems-view/` 補齊 SS-U1-3 全 12 題渲染頁；`study-SS-U1-3.html` 加入三顆教材互連按鈕 | 六子項中最後一個缺講義、且與 U1-1／U1-2 相依最深的單元 |
 | 2026-07-25 | 新增 `study/lecture-SS-U1-4.html` / `.pdf`（接合之分析與設計，33 頁）；`study/problems-view/` 補齊 SS-U1-4 全 26 題渲染頁；`study-SS-U1-4.html` 加入三顆教材互連按鈕 | SS 最大單元（26 題）補上「練題前建立物理直覺」的教材 |
+| 2026-07-26 | 新增 `study/lecture-SS-U2-3.html` / `.pdf`（設計規範對施工之要求，26 頁）；`study/problems-view/` 補齊該單元全 13 題（主 7 + 副 6）渲染頁；`study-SS-U2-3.html` 加入三顆教材互連按鈕 | 第二單元首份講義；本單元全為說明題，需要「三道防線（事前／事中／事後）」的答題骨架與機制解釋，而非條文背誦 |
 | 2026-07-25 | **規則 1 例外擴充**：`raw/` 唯讀的例外從「`question_index.json`」擴充為「`question_index.json` + `raw/solutions/methods/`」，並訂出三項修改條件（驗算／同步 wiki／記 log） | `methods/` 是 `wiki/methods/` 的 compile 來源，只改 wiki 副本會被 `compile-all` 蓋回；公式勘誤需能根治。個別題目解析 `raw/solutions/SS-YYYY-N/` 仍受完整保護 |
 
 ---

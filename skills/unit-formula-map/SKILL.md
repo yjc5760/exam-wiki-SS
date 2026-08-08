@@ -19,8 +19,8 @@ description: >
 本 skill 把某單元的主要公式逐條攤開，用**歷屆考卷原文**當證據判定，
 讓背誦資源能精準投放。
 
-**這不是公式速查表。** 知識庫裡通常已有 `study/study-XX-Un-m.html`（速查）
-與 `study/lecture-XX-Un-m.html`（觀念講義）；本 skill 是第三種用途 —— **背誦決策**。
+**這不是公式速查表。** 知識庫裡通常已有 `study/study-XX-Un-m.html`（**命題分析**：這個單元考什麼）
+與 `study/lecture-XX-Un-m.html`（觀念講義：為什麼成立）；本 skill 是第三種用途 —— **背誦決策**。
 三者並存，互不覆蓋。
 
 **檔名規則：** `study/formula-given-XX-Un-m.html` + `study/formula-given-XX-Un-m.pdf`

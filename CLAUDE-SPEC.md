@@ -34,15 +34,17 @@
 
 | 前綴 | 檔名 | 產生方式 | 定位 |
 |------|------|---------|------|
-| `study-` | `study/study-SS-UN.html`<br>`study/study-SS-UN-n.html` | `study` 指令 | **速查／複習頁**：公式速查、考題清單、統計圖表。考前總複習用 |
+| `study-` | `study/study-SS-UN.html`（單元層級）<br>`study/study-SS-UN-n.html`（子項層級） | 單元層級：`study` 指令<br>子項層級：`unit-exam-intel` skill | **命題分析**（子項層級）：出題頻率、考點結構、考點漂移、設計法走向、考題清單、命題風險。決定練題順序、考前押題用 |
 | `lecture-` | `study/lecture-SS-UN-n.html`<br>`study/lecture-SS-UN-n.pdf` | `unit-lecture` skill | **觀念講義**：物理原理、公式來源、圖解推導。第一次接觸該單元、練題**之前**用 |
+| `formula-given-` | `study/formula-given-SS-UN-n.html`<br>`study/formula-given-SS-UN-n.pdf` | `unit-formula-map` skill | **給／背分界**：逐條公式 × 逐年考卷證據，判斷哪些會印給你、哪些必須自己背。排讀書計畫時用 |
 
 - 兩者針對同一子項時**並存**，後者不可覆蓋前者。
 - 講義的 PDF 與 HTML **同名**，僅副檔名不同。
 - 共用資源放 `study/assets/`（目前有 `assets/katex/`，供 `lecture-*.html` 離線渲染數學式）。
   此目錄**必須進版控**，刪除會導致所有講義的數學式無法顯示。
 
-> **⚠️ 禁止：** 觀念講義不可命名為 `study-SS-UN-n.html`（會覆蓋速查頁）。
+> **⚠️ 禁止：** 觀念講義不可命名為 `study-SS-UN-n.html`（會覆蓋該子項的命題分析頁）。
+> 三份教材的檔名固定為 `lecture-`（觀念講義）／`formula-given-`（給／背分界）／`study-`（命題分析），不可互換。
 
 ### 1.3 互動圖（HTML）
 

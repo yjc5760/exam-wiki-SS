@@ -7,8 +7,9 @@ description: "為六科考試知識庫（exam-wiki-SS/RC/SA/SD/SM/MM）的某個
 
 為結構技師考試知識庫的**單一命題大綱單元**產生理解導向講義。
 
-**這不是速查表。** 知識庫裡通常已有 `study/study-XX-Un-m.html` 之類的速查／複習頁；
-本 skill 產出的是**練題之前**用來建立物理直覺的講義，兩者並存、不互相覆蓋。
+**這不是速查表。** 知識庫裡通常已有 `study/study-XX-Un-m.html`（**命題分析**：這個單元考什麼）
+與 `study/formula-given-XX-Un-m.html`（給／背分界：這條公式要不要背）；
+本 skill 產出的是**練題之前**用來建立物理直覺的講義，三者並存、不互相覆蓋。
 
 **檔名規則：** `study/lecture-XX-Un-m.html` + `study/lecture-XX-Un-m.pdf`（不要用 `study-` 前綴）
 
@@ -310,32 +311,46 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 
 同一個子項往往已經有其他教材躺在 `study/`：
 
-| 檔案 | 是什麼 | 使用時機 |
-|------|--------|---------|
-| `study-XX-Un-m.html` | `study` 指令產的速查頁 | 考前總複習 |
-| `XX-Un-m_<單元名>.pdf` | 使用者自備的課堂 Keynote／投影片 | 課堂 |
-| `lecture-XX-Un-m.html` / `.pdf` | 本 skill 產出 | 練題前 |
-| `formula-given-XX-Un-m.html` / `.pdf` | `unit-formula-map` skill 產出的「給／背分界」 | 排讀書計畫時 |
+同一個子項最多有三份教材躺在 `study/`，三者並存、互不覆蓋：
+
+| 檔案 | 回答什麼 | 使用時機 | 產出者 |
+|------|---------|---------|--------|
+| `lecture-XX-Un-m.html` / `.pdf` | **為什麼**成立（物理原理） | 第一次接觸該單元、練題前 | 本 skill |
+| `formula-given-XX-Un-m.html` / `.pdf` | 這條公式**要不要背** | 排讀書計畫、決定背誦優先序 | `unit-formula-map` |
+| `study-XX-Un-m.html` | 這個單元**考什麼**（命題事實） | 決定練題順序、考前押題 | `unit-exam-intel` |
+
+> ⚠️ `study-XX-Un-m.html` 的正式名稱是**「命題分析」**，不是「速查頁」。
+> 「速查頁」是 2026-08 以前那版七區段深度複習頁的舊名，該版已被 `unit-exam-intel`
+> 重構為只回答「考什麼」的命題情報頁，**全站不再使用「速查頁」這個詞**。
+>
+> ⚠️ **不要放 Keynote 或課堂投影片按鈕**（`XX-Un-m_<單元名>.pdf` 那類使用者自備的
+> 課堂 PDF）。使用者已明確要求移除 —— 它與上面三份教材的分工重疊，且檔名由使用者
+> 自訂、容易連到不存在的檔案。
 
 **這幾份教材如果彼此不連，使用者會忘記其他幾份存在。** 產出講義後一定要做雙向連結：
 
-1. **講義 → 其他教材**：在 `<nav>` 尾端加一組灰色連結（速查頁、Keynote、給背分界、本頁 PDF）。
+1. **講義 → 其他教材**：在 `<nav>` 尾端加一組連結，固定三顆。
    放在 `<nav>` 裡是刻意的 —— `build_pdf.py` 會把 `<nav>` 整段移除，
    列印版不會出現連不到的本機連結。
 
 ```html
 <span style="flex:1"></span>
-<a href="study-XX-Un-m.html" style="background:#eceff1;color:#455a64">📊 速查頁</a>
-<a href="XX-Un-m_<單元名>.pdf" target="_blank" style="background:#eceff1;color:#455a64">📄 Keynote</a>
-<a href="lecture-XX-Un-m.pdf" target="_blank" style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+<a href="study-XX-Un-m.html" title="命題分析：出題頻率、考點結構、考題清單、命題風險"
+   style="background:#e3f2fd;color:#1565c0">📊 命題分析</a>
+<a href="formula-given-XX-Un-m.html" title="哪些公式考卷會給、哪些必須自己背"
+   style="background:#ffebee;color:#c62828">🎯 給／背分界</a>
+<a href="lecture-XX-Un-m.pdf" target="_blank" title="本講義的列印版"
+   style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
 ```
 
-2. **速查頁 → 講義**：`study-XX-Un-m.html` 的 §1 標題右側通常已有一顆 Keynote 按鈕，
-   把它擴成三顆一組（紫色「觀念講義」→ HTML、淺紫「PDF」→ 列印版、藍色「Keynote」不動），
-   並在按鈕列下方加一行使用順序說明：**觀念講義（練題前）→ Keynote（課堂）→ 速查頁（考前）**。
+2. **命題分析頁 → 講義**：`study-XX-Un-m.html` 的按鈕列應有四顆
+   （觀念講義 📘 → HTML、講義 PDF 🖨️、給／背分界 🎯、分界 PDF 🖨️），
+   規格見 `unit-exam-intel` 的 SKILL.md Step 4-2。
+   按鈕列上方那塊 `.role` 黃底說明裡的使用順序，一律寫成：
+   **觀念講義（練題前）→ 給／背分界（決定背誦優先序）→ 命題分析（考前排練題順序）**。
 
-3. 先 `ls study/` 確認哪些檔案真的存在，**不要連到不存在的檔案**。
-   Keynote PDF 的檔名由使用者自訂，必須實際去看，不能用推測的。
+3. 先 `ls study/` 確認哪些檔案真的存在，**不要連到不存在的檔案**；
+   缺哪一份就不放哪一顆按鈕（例如該單元還沒做 `formula-given-` 就只放兩顆）。
 
 ### 題號連結：連到渲染頁面，不要連到 .md（必做）
 
@@ -607,8 +622,9 @@ print('PDF ->', PDF)
    確認無缺漏、無誤植、考年正確。
 3. **數值核對**：把講義裡所有算出來的數字（範例、常數、交界點）用 python 重算一次。
 4. **交叉引用**：檢查文中「見 §x.y」的節號在改版後仍然存在。
-5. **教材互連**：講義 nav 的連結、速查頁的按鈕都指向真實存在的檔案
-   （`ls study/` 逐一核對），且 PDF 版沒有殘留 nav。
+5. **教材互連**：講義 nav 的三顆按鈕、命題分析頁的按鈕都指向真實存在的檔案
+   （`ls study/` 逐一核對），nav 內**沒有** Keynote／課堂投影片按鈕，
+   全檔沒有「速查頁」字樣，且 PDF 版沒有殘留 nav。
 6. **題號連結渲染**：依 Step 7「題號連結」小節的驗證清單逐項核對
    （無 `@@MATH` 殘留、圖片路徑存在、無 `.md` 連結殘留）。
 7. 用 `mcp__cowork__present_files` 交付 HTML 與 PDF。

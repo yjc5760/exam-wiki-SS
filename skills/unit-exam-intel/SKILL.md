@@ -8,7 +8,7 @@ description: >
   下一次的命題風險排序。輸出單一自包含 HTML：study/study-XX-Un-m.html。
   當使用者說「做 XX-Un-m 的命題分析」、「這單元考什麼」、「這單元常考哪些考點」、
   「出題趨勢」、「考點漂移」、「哪些考點空窗很久」、「幫我押題」、「命題風險」、
-  「重做速查頁」、「unit-exam-intel」，或想知道某單元該先練哪些題時，必須使用此 skill。
+  「重做速查頁」（舊稱）、「unit-exam-intel」，或想知道某單元該先練哪些題時，必須使用此 skill。
   所有數字一律由 scripts/stats.py 從 question_index.json 算出，嚴禁手打或憑印象。
 ---
 
@@ -264,7 +264,7 @@ Step 2 的 3–6 群，每群一張可點擊的卡片（點了篩選下方清單
 若該科有 `study/problems-view/`，每頁 header 應有兩顆按鈕：
 
 ```html
-<a class="quick" href="../study-XX-Un-m.html">&#128269; Un-m 速查頁</a>
+<a class="quick" href="../study-XX-Un-m.html">&#128269; Un-m 命題分析</a>
 <a class="lect"  href="../lecture-XX-Un-m.html">&#128218; Un-m 單元名 講義</a>
 ```
 

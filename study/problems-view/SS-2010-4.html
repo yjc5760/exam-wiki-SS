@@ -41,7 +41,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <body>
 <header>
   <h1>SS-2010-4 題目解析</h1>
-  <a class="quick" href="../study-SS-U1-2.html" title="SS-U1-2 梁桿件 命題分析（速查頁）">&#128269; U1-2 速查頁</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義">&#128218; U1-2 梁桿件 講義</a>
+  <a class="quick" href="../study-SS-U1-2.html" title="SS-U1-2 梁桿件 命題分析">&#128269; U1-2 命題分析</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義">&#128218; U1-2 梁桿件 講義</a>
 </header>
 <main>
 <h1>考題編號：SS-2010-4</h1>
@@ -481,8 +481,8 @@ $$\boxed{\delta_L} = \frac{5 w_L L^4}{384 E \boxed{I_x}} \leq \frac{L}{360}$$</p
   if(!m||!UN[m[1]])return;
   var u=m[1],code=u.replace('SS-','');
   var q=document.querySelector('header .quick'),l=document.querySelector('header .lect');
-  if(q){q.href='../study-'+u+'.html';q.title=u+' '+UN[u]+' 命題分析（速查頁）';
-        q.innerHTML='\uD83D\uDD0D '+code+' 速查頁';}
+  if(q){q.href='../study-'+u+'.html';q.title=u+' '+UN[u]+' 命題分析';
+        q.innerHTML='\uD83D\uDD0D '+code+' 命題分析';}
   if(l){l.href='../lecture-'+u+'.html';l.title=u+' '+UN[u]+' 觀念講義';
         l.innerHTML='\uD83D\uDCDA '+code+' '+UN[u]+' 講義';}
 })();

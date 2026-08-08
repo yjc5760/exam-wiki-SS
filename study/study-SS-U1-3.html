@@ -3,330 +3,250 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SS-U1-3 梁柱桿件｜深度複習</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<title>SS-U1-3 梁柱桿件｜命題分析</title>
 <style>
-:root{--ac:#6a1b9a;--ac2:#f3e5f5;--A:#1565c0;--B:#6a1b9a;--D:#2e7d32;
---bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#78909c;--bd:#e0e6ea}
+:root{--ac:#1565c0;--ac2:#e3f2fd;--a:#f57c00;--l:#1565c0;--b:#c62828;--d:#2e7d32;
+--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#78909c;--bd:#e0e6ea;--warn:#c62828}
 *{box-sizing:border-box}body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
-header{background:linear-gradient(135deg,#4a148c,#7b1fa2);color:#fff;padding:28px 24px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2);color:#fff;padding:28px 24px}
 header h1{margin:0 0 6px;font-size:1.5em}header p{margin:0;opacity:.85;font-size:.92em}
 nav{position:sticky;top:0;z-index:9;background:#fff;border-bottom:2px solid var(--bd);padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px}
 nav a{text-decoration:none;color:var(--ac);font-size:.88em;padding:5px 10px;border-radius:16px;background:var(--ac2)}
 nav a:hover{background:var(--ac);color:#fff}
 main{max-width:1080px;margin:0 auto;padding:20px 16px 60px}
-section{margin-bottom:38px}
-h2{font-size:1.25em;border-left:5px solid var(--ac);padding-left:10px;margin:30px 0 14px}
+section{margin-bottom:34px}
+h2{font-size:1.25em;border-left:5px solid var(--ac);padding-left:10px;margin:26px 0 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+h3{font-size:1.05em;margin:30px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--ac2)}
+.role{background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:8px;padding:12px 16px;font-size:.88em;margin-bottom:6px}
+.role b{color:#e65100}
+.btnbar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.btnbar a{padding:5px 14px;border-radius:6px;font-size:.9em;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center}
 .kpi .n{font-size:1.9em;font-weight:700;color:var(--ac)}.kpi .l{font-size:.82em;color:var(--mut)}
-.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
 .cat{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:10px;padding:12px 14px;cursor:pointer;transition:.15s}
 .cat:hover{transform:translateY(-2px);box-shadow:0 3px 10px rgba(0,0,0,.1)}
-.cat h3{margin:0 0 4px;font-size:1em}.cat p{margin:0;font-size:.82em;color:var(--mut)}
+.cat h3{margin:0 0 4px;font-size:1em;border:none;padding:0}.cat p{margin:0;font-size:.82em;color:var(--mut)}
 .charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
 @media(max-width:760px){.charts{grid-template-columns:1fr}}
 .chartbox{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
 .chartbox h4{margin:0 0 8px;font-size:.95em;color:var(--mut)}
 canvas{width:100%;height:auto}
-.svgbox{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:16px;overflow-x:auto}
-.fcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
-.fcard{background:var(--card);border:1px solid var(--bd);border-top:5px solid;border-radius:10px;padding:14px 16px}
-.fcard h3{margin:0 0 8px;font-size:1em}
-.fcard .note{font-size:.82em;color:var(--mut);border-top:1px dashed var(--bd);margin-top:10px;padding-top:8px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:.9em}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:middle}
+th{background:var(--ac2)}
+td.num{text-align:center;font-variant-numeric:tabular-nums}
+.bar{display:inline-block;height:12px;width:12px;border-radius:3px;vertical-align:middle}
+.up{color:#2e7d32;font-weight:700}.down{color:var(--warn);font-weight:700}.flat{color:var(--mut);font-weight:700}
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .fbtn{border:1px solid var(--bd);background:#fff;border-radius:18px;padding:6px 14px;cursor:pointer;font-size:.88em;font-family:inherit}
 .fbtn.on{background:var(--ac);color:#fff;border-color:var(--ac)}
 .qrow{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:8px;padding:10px 14px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.qrow a{font-weight:700;text-decoration:none;color:var(--ac);min-width:88px}
+.qrow.sec{background:#fafafa;border-style:dashed}
+.qrow a{font-weight:700;text-decoration:none;color:var(--ac);min-width:92px}
 .qrow a:hover{text-decoration:underline}
 .qrow .sum{flex:1;min-width:200px;font-size:.92em}
 .qrow .tags{font-size:.75em;color:var(--mut)}
-.qrow .ico{font-size:.85em;white-space:nowrap}
-.traps{counter-reset:tr}
-.trap{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:12px 14px 12px 48px;margin-bottom:10px;position:relative}
-.trap::before{counter-increment:tr;content:counter(tr);position:absolute;left:12px;top:12px;width:26px;height:26px;border-radius:50%;background:#d32f2f;color:#fff;font-weight:700;text-align:center;line-height:26px;font-size:.85em}
-.trap b .pill{font-size:.72em;border-radius:10px;padding:1px 8px;color:#fff;margin-right:6px;vertical-align:middle}
-.calc{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:18px}
-.calc .row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px}
-.calc label{font-size:.85em;color:var(--mut);display:block}
-.calc input{width:110px;padding:6px;border:1px solid var(--bd);border-radius:6px;font-size:1em}
-.calc button{background:var(--ac);color:#fff;border:none;border-radius:6px;padding:8px 22px;font-size:.95em;cursor:pointer;font-family:inherit}
-.calc .out{margin-top:14px;background:var(--ac2);border-radius:8px;padding:12px 16px;font-size:.95em;display:none}
+.qrow .meta{font-size:.72em;white-space:nowrap;color:#fff;border-radius:10px;padding:1px 8px}
+.note{font-size:.85em;color:var(--mut);background:#fff;border:1px dashed var(--bd);border-radius:8px;padding:10px 14px;margin-top:12px}
+.risk-hi{background:#ffebee}.risk-md{background:#fff8e1}.risk-lo{background:#f1f8e9}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 </style>
 </head>
 <body>
 <header>
-<h1>SS-U1-3 梁柱桿件 — 深度複習</h1>
-<p>結構技師「鋼結構設計」子項複習頁｜資料來源：question_index.json（2002–2025，98 題）｜生成日期 2026-07-10</p>
+<h1>SS-U1-3 梁柱桿件 — 命題分析</h1>
+<p>結構技師「鋼結構設計」子項命題情報頁｜資料來源：raw/json/question_index.json（2002–2025，24 個考年、98 題）｜更新日期 2026-08-08</p>
 </header>
 <nav>
-<a href="#s1">① 命題分析</a><a href="#s2">② P–M 互制圖解</a><a href="#s3">③ 解題流程</a>
-<a href="#s4">④ 公式速查</a><a href="#s5">⑤ 考題清單</a><a href="#s6">⑥ 高頻陷阱</a><a href="#s7">⑦ 互制檢核器</a>
-
-  <a href="formula-given-SS-U1-3.html">▶ U1-3 給／背分界</a>
-  <a href="formula-given-SS-U2-3.html">▶ U2-3 給／背分界</a>
+<a href="#b1">出題概況</a><a href="#b2">考點結構</a><a href="#b3">考點漂移</a>
+<a href="#b4">ASD／LRFD</a><a href="#b5">考題清單</a><a href="#b6">命題風險</a>
 </nav>
 <main>
 
 <section id="s1">
-<h2 style="display:flex; justify-content:space-between; align-items:center;">
-  <span>① 命題分析</span>
-  <span style="display:inline-flex; gap:8px; align-items:center;">
-    <a href="lecture-SS-U1-3.html" style="background:#6a1b9a; color:#fff; padding:4px 14px; border-radius:6px; font-size:15px; font-weight:normal; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">觀念講義 📘</a>
-    <a href="lecture-SS-U1-3.pdf" target="_blank" style="background:#ce93d8; color:#4a148c; padding:4px 12px; border-radius:6px; font-size:15px; font-weight:normal; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">PDF 🖨️</a>
-    <a href="SS-U1-3_梁柱桿件.pdf" target="_blank" style="background:var(--ac); color:#fff; padding:4px 14px; border-radius:6px; font-size:15px; font-weight:normal; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">Keynote 📄</a>
-  </span>
-</h2>
-<p style="margin:-6px 0 14px; font-size:14px; color:#607d8b;">
-  使用順序：<b style="color:#6a1b9a;">觀念講義（練題前建立物理直覺）</b> →
-  <b style="color:#1565c0;">Keynote（課堂）</b> → <b>本速查頁（考前總複習）</b>
-</p>
-<div class="kpis">
-<div class="kpi"><div class="n">11</div><div class="l">主考點題數</div></div>
-<div class="kpi"><div class="n">11.2%</div><div class="l">佔全科比例（11/98）</div></div>
-<div class="kpi"><div class="n">11/11</div><div class="l">全數附 P-M 互動圖 📊</div></div>
-<div class="kpi"><div class="n">2/6</div><div class="l">近6年出題（2020–25）</div></div>
+<h2><span>命題分析</span></h2>
+
+<div class="role">
+📚 <b>本頁只回答一件事：這個子項「考什麼」。</b>
+原理與圖解看 <b>觀念講義</b>、公式要不要背看 <b>給／背分界</b>，本頁提供的是可從 <code>question_index.json</code> 重生的命題事實：頻率、結構、漂移、方法別、清單、風險。<br>
+建議順序：<b style="color:#6a1b9a;">觀念講義</b>（練題前建立直覺）→ <b style="color:var(--warn);">給／背分界</b>（決定記憶投資）→ <b>本頁</b>（決定練題順序與押題）。
 </div>
-<div class="cats">
-<div class="cat" style="border-left-color:var(--A)" onclick="filterQ('A')"><h3>🅰️ ASD 互制與 Cm（5題）</h3><p>fa/Fa＋放大係數 Cm/(1−fa/F'e)，2002–2019 常客</p></div>
-<div class="cat" style="border-left-color:var(--B)" onclick="filterQ('B')"><h3>🅱️ LRFD B1／B2 放大法（5題）</h3><p>二階效應、Mnt/Mlt、H1 互制公式</p></div>
-<div class="cat" style="border-left-color:var(--D)" onclick="filterQ('D')"><h3>📘 直接分析法（1題）</h3><p>二階分析、初始不完美、剛度修正（概念）</p></div>
+<div class="btnbar">
+  <a href="lecture-SS-U1-3.html" title="P-δ 與 P-Δ、放大係數推導、Cm 符號、B1／B2、P-M 互制的三個數字、精選 6 題" style="background:#6a1b9a;color:#fff;">觀念講義 📘</a>
+  <a href="lecture-SS-U1-3.pdf" target="_blank" style="background:#f3e5f5;color:#6a1b9a;border:1px solid #ce93d8;">講義 PDF 🖨️</a>
+  <a href="formula-given-SS-U1-3.html" title="40 條公式 × 24 年考卷證據：ASD 幾乎必給、LRFD 必漏一半" style="background:#c62828;color:#fff;">給／背分界 🎯</a>
+  <a href="formula-given-SS-U1-3.pdf" target="_blank" style="background:#ffebee;color:#c62828;border:1px solid #ef9a9a;">分界 PDF 🖨️</a>
+</div>
+
+<h3 id="b1">出題概況</h3>
+<div class="kpis">
+<div class="kpi"><div class="n">11</div><div class="l">主考點題數（另有 1 題副考點）</div></div>
+<div class="kpi"><div class="n">11.2%</div><div class="l">佔全科比例（11／98）</div></div>
+<div class="kpi"><div class="n">#4</div><div class="l">全科出題排名（U1-4 19 題在前）</div></div>
+<div class="kpi"><div class="n">2/6</div><div class="l">近 6 考年出題年數（2020–25 共 2 題）</div></div>
 </div>
 <div class="charts">
-<div class="chartbox"><h4>年度分布（依題型堆疊）</h4><canvas id="cvBar" width="520" height="260"></canvas></div>
-<div class="chartbox"><h4>題型比例</h4><canvas id="cvPie" width="520" height="260"></canvas></div>
+<div class="chartbox"><h4>年度分布（依題型堆疊，主考點 11 題）</h4><canvas id="cvBar" width="520" height="260"></canvas></div>
+<div class="chartbox"><h4>題型比例（主考點 11 題）</h4><canvas id="cvPie" width="520" height="260"></canvas></div>
 </div>
-</section>
+<div class="note">
+📌 <b>三個要記住的數字</b>：① 全科第四大單元（11.2%），但它是<b>唯一一個「一題吃三個單元」的子項</b>——強度側的 <code>φ<sub>c</sub>P<sub>n</sub></code> 來自 U1-1、<code>φ<sub>b</sub>M<sub>n</sub></code> 來自 U1-2，本單元只負責把需求側算大再送進互制式；
+② 24 個考年只有 11 年出現，空窗四段（<b>2005–2006、2009–2010、2015–2018、2023–2025</b>）——其中 2015–2018 連四年掛零後 2019 年就回歸，<b>空窗不代表退場</b>；目前 2023 起又空窗三年，是二十四年來第二長的一段；
+③ ASD 與 LRFD 的<b>分界極乾淨</b>：2008 年以前 5 題中 4 題是 ASD，2012 年以後 6 題中 5 題是 LRFD，唯一的例外是 2019-3 這記 ASD 回馬槍。
+</div>
 
-<section id="s2">
-<h2>② 圖解：P–M 互制曲線與二階效應</h2>
-<div class="svgbox">
-<svg viewBox="0 0 960 320" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
-<!-- PM interaction -->
-<g transform="translate(60,20)">
-<line x1="0" y1="250" x2="380" y2="250" stroke="#263238" stroke-width="1.5"/>
-<line x1="0" y1="250" x2="0" y2="0" stroke="#263238" stroke-width="1.5"/>
-<text x="360" y="268">M/φbMn</text><text x="-46" y="12">P/φcPn</text>
-<path d="M0,10 L96,58 L336,250" fill="none" stroke="#6a1b9a" stroke-width="3"/>
-<circle cx="96" cy="58" r="5" fill="#d32f2f"/>
-<text x="108" y="52" fill="#d32f2f">轉折點 Pu/φPn = 0.2</text>
-<text x="16" y="40" fill="#6a1b9a">H1-1a（軸力主控）</text>
-<text x="150" y="180" fill="#6a1b9a">H1-1b（彎矩主控）</text>
-<line x1="0" y1="58" x2="96" y2="58" stroke="#90a4ae" stroke-dasharray="4 4"/>
-<text x="-34" y="62" fill="#78909c">0.2</text>
-<text x="10" y="285" fill="#78909c">雙折線互制：兩式在 0.2 處相接</text>
-</g>
-<!-- P-delta -->
-<g transform="translate(560,10)" font-size="12">
-<text x="0" y="14" font-weight="bold" font-size="13">二階效應：P–δ 與 P–Δ</text>
-<!-- member curve -->
-<line x1="40" y1="40" x2="40" y2="240" stroke="#90a4ae" stroke-dasharray="3 3"/>
-<path d="M40,40 C80,110 80,170 40,240" fill="none" stroke="#6a1b9a" stroke-width="3"/>
-<line x1="40" y1="26" x2="40" y2="40" stroke="#d32f2f" stroke-width="2" marker-end="url(#arP)"/>
-<text x="16" y="20" fill="#d32f2f">P</text>
-<line x1="64" y1="140" x2="86" y2="140" stroke="#546e7a" marker-end="url(#arP)"/>
-<text x="90" y="144">δ（桿件內）→ B1</text>
-<!-- story drift -->
-<line x1="240" y1="240" x2="240" y2="60" stroke="#90a4ae" stroke-dasharray="3 3"/>
-<line x1="240" y1="240" x2="290" y2="60" stroke="#6a1b9a" stroke-width="3"/>
-<line x1="240" y1="240" x2="330" y2="240" stroke="#263238"/>
-<line x1="290" y1="60" x2="290" y2="46" stroke="#d32f2f" stroke-width="2"/>
-<line x1="240" y1="60" x2="290" y2="60" stroke="#546e7a" marker-end="url(#arP)"/>
-<text x="250" y="52">Δoh（層側移）→ B2</text>
-<line x1="200" y1="100" x2="238" y2="100" stroke="#f57c00" stroke-width="2" marker-end="url(#arP)"/>
-<text x="170" y="104" fill="#f57c00">H</text>
-<text x="0" y="278" fill="#78909c">B1 放大無側移彎矩 Mnt；B2 放大側移彎矩 Mlt</text>
-<defs><marker id="arP" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#546e7a"/></marker></defs>
-</g>
-</svg>
+<h3 id="b2">考點結構（點卡片可篩選下方考題清單）</h3>
+<div class="cats">
+<div class="cat" style="border-left-color:var(--a)" onclick="filterQ('A')"><h3>🅰️ ASD 互制三式（5 題）</h3><p>穩定式＋強度式擇大、<code>C<sub>m</sub></code> 與 <code>M<sub>1</sub>/M<sub>2</sub></code>、<code>F'<sub>e</sub></code> 放大、<code>F<sub>a</sub></code>／<code>F<sub>bx</sub></code></p></div>
+<div class="cat" style="border-left-color:var(--l)" onclick="filterQ('L')"><h3>🅱️ LRFD H1 互制檢核（3 題）</h3><p>0.2 分界、8/9 係數、雙軸彎矩、<code>φ<sub>c</sub>P<sub>n</sub></code>／<code>φ<sub>b</sub>M<sub>n</sub></code> 收帳</p></div>
+<div class="cat" style="border-left-color:var(--b)" onclick="filterQ('B')"><h3>🔺 二階效應放大（2 題）</h3><p><code>B<sub>1</sub></code>（P-δ）／<code>B<sub>2</sub></code>（P-Δ）、<code>M<sub>nt</sub></code>／<code>M<sub>lt</sub></code> 拆解、對位圖與層間穩定</p></div>
+<div class="cat" style="border-left-color:var(--d)" onclick="filterQ('D')"><h3>📘 規範層次的延伸（2 題）</h3><p>直接分析法 DM、假想水平力、剛度修正、強柱弱梁與 P-M 曲線</p></div>
 </div>
-</section>
 
-<section id="s3">
-<h2>③ 解題流程圖（LRFD B1/B2 標準流程）</h2>
-<div class="svgbox">
-<svg viewBox="0 0 960 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
-<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#546e7a"/></marker></defs>
-<rect x="20" y="20" width="200" height="52" rx="8" fill="#f3e5f5" stroke="#6a1b9a"/><text x="32" y="42">① 一階分析拆彎矩</text><text x="32" y="60">Mnt（無側移）、Mlt（側移）</text>
-<rect x="260" y="20" width="200" height="52" rx="8" fill="#f3e5f5" stroke="#6a1b9a"/><text x="272" y="42">② B1＝Cm/(1−Pu/Pe1)</text><text x="272" y="60">Pe1 用無側移 K≤1</text>
-<rect x="500" y="20" width="210" height="52" rx="8" fill="#f3e5f5" stroke="#6a1b9a"/><text x="512" y="42">③ B2（層觀念）</text><text x="512" y="60">Pe2 用側移 K≥1 或 Δoh 式</text>
-<rect x="750" y="20" width="190" height="52" rx="8" fill="#fff3e0" stroke="#f57c00"/><text x="762" y="42">④ Mu=B1·Mnt＋B2·Mlt</text><text x="762" y="60">（各軸分別放大）</text>
-<rect x="260" y="120" width="200" height="52" rx="8" fill="#e3f2fd" stroke="#1565c0"/><text x="272" y="142">⑤ φcPn（柱強度曲線）</text><text x="272" y="160">φbMn（LTB 檢核）</text>
-<polygon points="600,110 720,146 600,182 480,146" fill="#fffde7" stroke="#f9a825"/><text x="552" y="142">Pu/φcPn ≥ 0.2？</text>
-<rect x="500" y="210" width="430" height="40" rx="8" fill="#e8f5e9" stroke="#2e7d32"/><text x="514" y="235">是 → H1-1a：Pu/φPn ＋ (8/9)(Mux/φbMnx＋Muy/φbMny) ≤ 1.0</text>
-<rect x="30" y="210" width="430" height="40" rx="8" fill="#ffebee" stroke="#c62828"/><text x="44" y="235">否 → H1-1b：Pu/(2φPn) ＋ (Mux/φbMnx＋Muy/φbMny) ≤ 1.0</text>
-<line x1="220" y1="46" x2="260" y2="46" stroke="#546e7a" marker-end="url(#ar)"/>
-<line x1="460" y1="46" x2="500" y2="46" stroke="#546e7a" marker-end="url(#ar)"/>
-<line x1="710" y1="46" x2="750" y2="46" stroke="#546e7a" marker-end="url(#ar)"/>
-<line x1="840" y1="72" x2="620" y2="110" stroke="#546e7a" marker-end="url(#ar)"/>
-<line x1="360" y1="72" x2="360" y2="120" stroke="#546e7a" marker-end="url(#ar)"/>
-<line x1="460" y1="146" x2="480" y2="146" stroke="#546e7a" marker-end="url(#ar)"/>
-<line x1="640" y1="180" x2="680" y2="210" stroke="#546e7a" marker-end="url(#ar)"/><text x="668" y="200" fill="#2e7d32">是</text>
-<line x1="540" y1="176" x2="300" y2="210" stroke="#546e7a" marker-end="url(#ar)"/><text x="380" y="196" fill="#c62828">否</text>
-</svg>
+<h3 id="b3">考點漂移：前 5 題 vs. 後 6 題</h3>
+<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">把主考點 11 題依題號對切：前段 2003–2011（5 題）與後段 2012–2022（6 題）。</p>
+<table>
+<thead><tr><th>題型</th><th class="num">2003–2011</th><th class="num">2012–2022</th><th class="num">變化</th><th>解讀</th></tr></thead>
+<tbody>
+<tr><td><span class="bar" style="background:var(--a)"></span> ASD 互制三式</td><td class="num">4</td><td class="num">1</td><td class="num down">▼ −3</td><td>前段五題有<b>四題是 ASD</b>（2003-4、2004-4、2007-2、2008-4），2008 年之後只回來過一次（2019-3，且是 30 分大題）。ASD 主導期結束在 2008 年</td></tr>
+<tr><td><span class="bar" style="background:var(--l)"></span> LRFD H1 互制檢核</td><td class="num">0</td><td class="num">3</td><td class="num up">▲ +3</td><td>前段<b>一題都沒有</b>；後段 2012-3、2020-3、2022-1 三題題型高度一致（給軸力＋雙軸彎矩，檢核需求強度比），是目前的主戰場</td></tr>
+<tr><td><span class="bar" style="background:var(--b)"></span> 二階效應放大 B<sub>1</sub>／B<sub>2</sub></td><td class="num">0</td><td class="num">2</td><td class="num up">▲ +2</td><td>2013-4（無側撐剛架對位圖求 K 與層間穩定）與 2014-4（斜撐構架 B<sub>1</sub>／B<sub>2</sub>）<b>連續兩年出現後就沒再出過</b>，已空窗 11 年；這是唯一正面考「需求端怎麼被放大」的兩題</td></tr>
+<tr><td><span class="bar" style="background:var(--d)"></span> 規範層次的延伸</td><td class="num">1</td><td class="num">0</td><td class="num down">▼ −1</td><td>直接分析法只在 2011-1 出過一次（AISC 2010 Chapter C 剛上路那年），<b>已空窗 14 年</b>；同群的 2009-1 強柱弱梁是掛在 SD-U3-1 的副考點</td></tr>
+</tbody>
+</table>
+<div class="note">
+📌 <b>一句話</b>：這個單元的重心從「<b>ASD 三式代數字（穩定式與強度式各算一次取大）</b>」漂到「<b>LRFD 的需求端怎麼被二階效應放大</b>」。
+若依「歷史總題數」分配複習時間，會高估 ASD 的代數字練習、低估 <code>B<sub>1</sub></code>／<code>B<sub>2</sub></code> 這個空窗 11 年但<b>公式從來不印給你</b>的環節。
 </div>
-</section>
 
-<section id="s4">
-<h2>④ 核心公式速查</h2>
-<div class="fcards">
-<div class="fcard" style="border-top-color:var(--B)">
-<h3>🅱️ LRFD 互制公式（H1）</h3>
-$$\tfrac{P_u}{\phi P_n}\ge0.2:\;\; \tfrac{P_u}{\phi P_n}+\tfrac{8}{9}\!\left(\tfrac{M_{ux}}{\phi_bM_{nx}}+\tfrac{M_{uy}}{\phi_bM_{ny}}\right)\le1.0$$
-$$\tfrac{P_u}{\phi P_n}<0.2:\;\; \tfrac{P_u}{2\phi P_n}+\left(\tfrac{M_{ux}}{\phi_bM_{nx}}+\tfrac{M_{uy}}{\phi_bM_{ny}}\right)\le1.0$$
-<div class="note">φc=0.85、φb=0.90；φcPn 用「控制軸」挫屈強度；Mn 檢核 LTB。SS-2012-3、2014-4、2020-3、2022-1。</div>
+<h3 id="b4">設計法走向：全科分界最乾淨的一個單元</h3>
+<table>
+<thead><tr><th>期間</th><th class="num">LRFD</th><th class="num">ASD</th><th class="num">概念題</th><th class="num">小計</th><th>觀察</th></tr></thead>
+<tbody>
+<tr><td>2003–2011（前段）</td><td class="num">0</td><td class="num">4</td><td class="num">1</td><td class="num">5</td><td><b>LRFD 掛零</b>；四題 ASD 全是完整的互制式檢核，概念題那一題（2011-1）問的是規範改版</td></tr>
+<tr><td>2012–2022（後段）</td><td class="num">5</td><td class="num">1</td><td class="num">0</td><td class="num">6</td><td>反轉為 LRFD 主導；ASD 僅剩 2019-3，但配分 30 分、要求完整檢核，<b>不是象徵性出現</b></td></tr>
+<tr style="background:#fff8e1"><td><b>近 6 考年 2020–2025</b></td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">2</td><td>只有 2020-3 與 2022-1 兩題，全為 LRFD 雙軸彎矩互制；2023 起連三年沒有本單元的題</td></tr>
+</tbody>
+</table>
+<div class="note">
+📌 <b>對複習的直接影響</b>：① <b>ASD 不能跳過</b>——2019-3 證明它會回來，而且一回來就是 30 分；兩套的判別分界不同（LRFD 看 <code>P<sub>u</sub>/φ<sub>c</sub>P<sub>n</sub></code> 與 0.2，ASD 看 <code>f<sub>a</sub>/F<sub>a</sub></code> 與 0.15），混用是本單元最常見的失分方式；
+② 但兩套的<b>準備成本天差地遠</b>——六個 ASD 梁柱年（92、93、96、97、100、108）互制三式<b>全給</b>，而 LRFD 側則是「必漏一半」：111 年整題雙軸彎矩梁柱<b>零 P-M 互制式</b>、98 年要畫 P-M 曲線也零公式，最關鍵的是
+<code>M<sub>u</sub> = B<sub>1</sub>·M<sub>nt</sub> + B<sub>2</sub>·M<sub>lt</sub></code> <b>二十四年零次印出</b>——102 年考卷把 <code>B<sub>1</sub></code>、<code>B<sub>2</sub></code>、<code>M<sub>nt</sub></code>、<code>M<sub>lt</sub></code> 四個零件全給了，唯獨不給組合式。逐條見
+<a href="formula-given-SS-U1-3.html">給／背分界</a>。
 </div>
-<div class="fcard" style="border-top-color:var(--B)">
-<h3>🅱️ B1 放大（P–δ，桿件內）</h3>
-$$B_1=\dfrac{C_m}{1-P_u/P_{e1}}\ge1.0,\qquad P_{e1}=\dfrac{\pi^2EI}{(K_1L)^2}$$
-$$C_m=0.6-0.4\,(M_1/M_2)$$
-<div class="note">K1 用無側移（K≤1.0）；M1/M2：|M1|≤|M2|，雙曲率為正 → Cm 小；單曲率為負 → Cm 大。橫向載重時 Cm≈1.0（或 0.85）。</div>
-</div>
-<div class="fcard" style="border-top-color:var(--B)">
-<h3>🅱️ B2 放大（P–Δ，層側移）</h3>
-$$B_2=\dfrac{1}{1-\dfrac{\sum P_u\,\Delta_{oh}}{\sum H\,L}}\quad\text{或}\quad B_2=\dfrac{1}{1-\dfrac{\sum P_u}{\sum P_{e2}}}$$
-<div class="note">ΣPu＝該層全部柱軸力（含靠柱）；Pe2 用側移 K≥1.0。Mu=B1Mnt+B2Mlt。SS-2013-4、2014-4。</div>
-</div>
-<div class="fcard" style="border-top-color:var(--A)">
-<h3>🅰️ ASD 互制（穩定性）</h3>
-$$\dfrac{f_a}{F_a}+\dfrac{C_{mx}f_{bx}}{\left(1-\frac{f_a}{F'_{ex}}\right)F_{bx}}+\dfrac{C_{my}f_{by}}{\left(1-\frac{f_a}{F'_{ey}}\right)F_{by}}\le1.0$$
-$$F'_e=\dfrac{12\pi^2E}{23(KL_b/r_b)^2}$$
-<div class="note">fa/Fa＞0.15 才需放大項；另需檢核強度式 fa/0.6Fy＋fbx/Fbx＋fby/Fby ≤1.0（兩式都要）。SS-2003-4、2007-2、2019-3。</div>
-</div>
-<div class="fcard" style="border-top-color:var(--A)">
-<h3>🅰️ ASD 強度式（支承點）</h3>
-$$\dfrac{f_a}{0.6F_y}+\dfrac{f_{bx}}{F_{bx}}+\dfrac{f_{by}}{F_{by}}\le1.0$$
-<div class="note">於支承點（無側移量）檢核截面強度；fa/Fa≤0.15 時可直接用 fa/Fa+fbx/Fbx+fby/Fby≤1.0 單式。</div>
-</div>
-<div class="fcard" style="border-top-color:var(--D)">
-<h3>📘 直接分析法（DM）</h3>
-$$EI^*=0.8\,\tau_b\,EI,\qquad EA^*=0.8\,EA$$
-$$N_i=0.002\,Y_i\;\text{（虛擬側力）}$$
-<div class="note">嚴謹二階分析＋初始不完美（虛擬側力或直接建模）＋剛度折減 → 全構材 K=1.0 設計。與有效長度法之比較為概念考點。SS-2011-1。</div>
-</div>
-</div>
-</section>
 
-<section id="s5">
-<h2>⑤ 考題清單（11 題，全數附 P–M 互動圖，點題號開啟完整解析）</h2>
+<h3 id="b5">考題清單（主 11 ＋ 副 1 ＝ 12 題，點題號開啟解析）</h3>
 <div class="filters">
-<button class="fbtn on" onclick="filterQ('ALL',this)">全部（11）</button>
-<button class="fbtn" onclick="filterQ('A',this)">ASD 互制（5）</button>
-<button class="fbtn" onclick="filterQ('B',this)">LRFD B1/B2（5）</button>
-<button class="fbtn" onclick="filterQ('D',this)">直接分析法（1）</button>
+<button class="fbtn on" onclick="filterQ('ALL',this)">全部（12）</button>
+<button class="fbtn" onclick="filterQ('A',this)">ASD 互制三式（5）</button>
+<button class="fbtn" onclick="filterQ('L',this)">LRFD H1 互制（3）</button>
+<button class="fbtn" onclick="filterQ('B',this)">二階效應放大（2）</button>
+<button class="fbtn" onclick="filterQ('D',this)">規範層次延伸（2）</button>
+<button class="fbtn" onclick="filterQ('PRI',this)">僅主考點（11）</button>
+<button class="fbtn" onclick="filterQ('SEC',this)">僅副考點（1）</button>
 </div>
 <div id="qlist"></div>
+<div class="note">虛線灰底＝副考點（主考點在別的子項，但解題會用到 U1-3 的梁柱知識）。色籤為設計法：<b>LRFD／ASD／概念題</b>。📄 有解析、📊 有互動圖（本單元 11 題主考點<b>全數附 P–M 互動圖</b>）、✅ 已驗證。</div>
+
+<h3 id="b6">命題風險排序（下一次最可能考什麼）</h3>
+<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">依「歷史頻率 × 空窗年數 × 近年趨勢」排序。<b>這是推測而非預言</b>，用途是決定<b>練題順序</b>，不是拿來 all-in 單一考點。</p>
+<table>
+<thead><tr><th>風險</th><th>考點</th><th class="num">歷史題數</th><th>最後出現</th><th class="num">空窗</th><th>理由</th></tr></thead>
+<tbody>
+<tr class="risk-hi"><td><b>高</b></td><td>LRFD H1 雙軸彎矩互制檢核</td><td class="num">3</td><td>2022-1</td><td class="num">3 年</td><td>後段六題裡佔三題（2012-3、2020-3、2022-1），題型高度一致——給軸力＋雙軸彎矩，求需求強度比；且是唯一在近 6 考年出現過的題型（兩題都是）。<b>111 年整題零 P-M 互制式</b>，代表這條式子必須自己背得出來</td></tr>
+<tr class="risk-hi"><td><b>高</b></td><td>B<sub>1</sub>／B<sub>2</sub> 放大與 M<sub>nt</sub>／M<sub>lt</sub> 拆解</td><td class="num">2</td><td>2014-4</td><td class="num">11 年</td><td>2013-4、2014-4 連兩年出現後<b>空窗 11 年</b>，是本單元空窗最久的計算題型；風險高的關鍵在於 <code>M<sub>u</sub>=B<sub>1</sub>M<sub>nt</sub>+B<sub>2</sub>M<sub>lt</sub></code> <b>二十四年零次印出</b>——102 年四個零件全給、唯獨不給組合式，不背就算不出需求彎矩</td></tr>
+<tr class="risk-md"><td><b>中高</b></td><td>ASD 互制三式（C<sub>m</sub>／F'<sub>e</sub>／F<sub>a</sub>·F<sub>b</sub>）</td><td class="num">5</td><td>2019-3</td><td class="num">6 年</td><td>歷史最高頻（11 題佔 5 題），2008 年後只回來一次但一回來就是 30 分（2019-3）；好消息是六個 ASD 梁柱年互制三式<b>全給</b>，準備成本主要在流程熟練度而非背誦</td></tr>
+<tr class="risk-md"><td><b>中高</b></td><td>有效長度 K／對位圖併入梁柱層間穩定</td><td class="num">1</td><td>2013-4</td><td class="num">12 年</td><td>2013-4 是唯一一次把「對位圖求 K」與「梁柱二階穩定」綁在同一題；此考點在 U1-1 也長期空窗（最後計算型為 2013-2），<b>兩個單元同時空窗 12 年</b>，一旦回歸很可能就以梁柱形式出現</td></tr>
+<tr class="risk-lo"><td><b>中</b></td><td>強柱弱梁與 P-M 互制曲線的軸壓修正</td><td class="num">1</td><td>2009-1</td><td class="num">16 年</td><td>本單元唯一的副考點（主考點掛 SD-U3-1）；繪 P-M 互制曲線是 25 分題裡的 15 分，畫得出兩段折線就有分，但空窗 16 年且多半會以耐震題形式回歸，不必當本單元重點</td></tr>
+<tr class="risk-lo"><td><b>低</b></td><td>直接分析法 DM（AISC 2010 Chapter C）</td><td class="num">1</td><td>2011-1</td><td class="num">14 年</td><td>只在規範改版當年出過一次（2011-1，問二階分析、假想水平力、剛度修正、1.6 係數的來源），屬「新聞題」性質；空窗 14 年且國內規範未全面跟進，投報率最低</td></tr>
+</tbody>
+</table>
+<div class="note">
+📌 <b>若只剩三天</b>：第一天把 <b>LRFD H1 流程</b>走通（2012-3 → 2020-3 → 2022-1 三題套路相同，練到能默寫「0.2 分界 → 8/9 → 雙軸相加」）；
+第二天專攻 <b>B<sub>1</sub>／B<sub>2</sub></b>（2014-4 ＋ 2013-4），重點是把 <code>M<sub>u</sub>=B<sub>1</sub>M<sub>nt</sub>+B<sub>2</sub>M<sub>lt</sub></code> 與 <code>C<sub>m</sub></code> 的正負號背到不會猶豫——這是全單元最不給公式的一環；
+第三天走一次 <b>ASD 完整檢核</b>（2019-3 一題即可，公式考卷會給，練流程就好）。
+逐題練習順序見 <a href="lecture-SS-U1-3.html#s14">觀念講義 §14「精選 6 題」</a>。
+</div>
+
 </section>
 
-<section id="s6">
-<h2>⑥ 高頻陷阱 Top 8</h2>
-<div class="traps">
-<div class="trap"><b><span class="pill" style="background:var(--B)">H1</span>0.2 判別用錯式子</b><br>先算 Pu/φcPn 再選 H1-1a（≥0.2，彎矩項乘 8/9）或 H1-1b（＜0.2，軸力項除 2）；選錯式子整題偏掉。</div>
-<div class="trap"><b><span class="pill" style="background:var(--B)">Cm</span>M1/M2 正負號搞反</b><br>Cm=0.6−0.4(M1/M2)：雙曲率（同號端彎矩、反向轉動）取「正」→ Cm 小；單曲率取「負」→ Cm 大（最不利 1.0）。SS-2003-4、2004-4。</div>
-<div class="trap"><b><span class="pill" style="background:var(--B)">Pe1</span>B1 的 Pe1 誤用側移 K</b><br>B1 屬無側移之 P–δ 效應：Pe1 用 K≤1.0（常取 1.0）且用「彎曲平面內」之 KL/r；B2 的 Pe2 才用側移 K≥1.0。SS-2013-4。</div>
-<div class="trap"><b><span class="pill" style="background:var(--B)">B1</span>B1＜1 未取 1.0</b><br>B1 有下限 1.0；算出小於 1 表示無放大，直接取 1.0。</div>
-<div class="trap"><b><span class="pill" style="background:var(--A)">ASD</span>只檢核穩定式漏了強度式</b><br>ASD 梁柱須「穩定性式＋強度式」雙檢核；且 fa/Fa≤0.15 時才可用簡化單式。SS-2007-2、2019-3。</div>
-<div class="trap"><b><span class="pill" style="background:var(--A)">F'e</span>F'e 用錯彎曲平面</b><br>F'ex 用 (KLb/rb)x、F'ey 用 y 向長細比 —— 是「彎曲平面」的長細比，不是控制挫屈軸。</div>
-<div class="trap"><b><span class="pill" style="background:var(--B)">φPn</span>軸壓強度與放大用的軸混淆</b><br>φcPn 取強弱軸中「控制（較小）」者；但 B1 之 Pe1 必須用「彎矩作用平面內」的軸 —— 兩者常不同軸。SS-2012-3、2020-3。</div>
-<div class="trap"><b><span class="pill" style="background:var(--B)">Mnt/Mlt</span>重力彎矩全部乘 B2</b><br>只有「側移產生」的 Mlt 乘 B2；重力（無側移）彎矩 Mnt 乘 B1。斜撐構架 Mlt≈0 → 只有 B1。SS-2012-3、2014-4。</div>
-</div>
-</section>
-
-<section id="s7">
-<h2>⑦ 互動計算器：LRFD H1 互制檢核</h2>
-<div class="calc">
-<div class="row">
-<div><label>Pu（tf）</label><input id="iPu" type="number" value="100" step="1"></div>
-<div><label>φcPn（tf）</label><input id="iPn" type="number" value="300" step="1"></div>
-<div><label>Mux（tf·m）</label><input id="iMx" type="number" value="12" step="0.5"></div>
-<div><label>φbMnx（tf·m）</label><input id="iMnx" type="number" value="25" step="0.5"></div>
-<div><label>Muy（tf·m）</label><input id="iMy" type="number" value="0" step="0.5"></div>
-<div><label>φbMny（tf·m）</label><input id="iMny" type="number" value="12" step="0.5"></div>
-</div>
-<button onclick="calcH1()">檢核互制比</button>
-<div class="out" id="calcOut"></div>
-</div>
-</section>
-
-<footer>study SS-U1-3｜exam-wiki-SS 知識庫自動生成｜連結經 ../index.html markdown 渲染器開啟（KaTeX＋附圖＋P-M 互動圖）</footer>
+<footer>study SS-U1-3 命題分析｜exam-wiki-SS 知識庫｜統計基準 raw/json/question_index.json（98 題 / 24 考年）｜題號連結指向 study/problems-view/</footer>
 </main>
 
 <script>
-const CATC={A:'#1565c0',B:'#6a1b9a',D:'#2e7d32'};
-const CATN={A:'ASD 互制與Cm',B:'LRFD B1/B2',D:'直接分析法'};
+const CATC={A:'#f57c00',L:'#1565c0',B:'#c62828',D:'#2e7d32'};
+const CATN={A:'ASD 互制三式',L:'LRFD H1 互制',B:'二階效應放大',D:'規範層次延伸'};
+const MC={'LRFD':'#1565c0','ASD':'#f57c00','混合':'#6a1b9a','概念題':'#546e7a','塑性分析':'#00838f'};
+// [題號, 分群, 摘要, 標籤, 有viz, 設計法, 主(1)/副(0), 副考點的所屬單元]
 const Q=[
-["SS-2003-4","A","ASD 雙軸彎矩 P–M 互制與放大係數",["ASD","雙軸彎矩","Cm係數","放大係數"],1],
-["SS-2004-4","A","懸臂柱 45° 斜置構材 Cm 互制",["ASD","Cm係數","懸臂柱","45°斜置構材"],1],
-["SS-2007-2","A","雙軸彎矩＋LTB 之 ASD 互制檢核",["ASD","雙軸彎矩","LTB","F'e歐拉應力"],1],
-["SS-2008-4","A","偏心軸壓＋側向力 P–M 互制",["ASD","P-M互制","偏心軸壓","側向力"],1],
-["SS-2011-1","D","直接分析法與二階分析（概念）",["直接分析法","二階分析","初始不完美","剛度修正"],1],
-["SS-2012-3","B","斜撐構架 B1 放大雙軸互制",["P-M互制","雙軸彎矩","斜撐構架","B1放大法"],1],
-["SS-2013-4","B","無側撐剛架 B1／B2 與對位圖",["二階效應","B1B2放大法","對位圖","Mnt"],1],
-["SS-2014-4","B","B1、B2 放大法完整流程",["P-M互制","B1放大法","B2放大法","二階效應"],1],
-["SS-2019-3","A","偏心載重 ASD 互制（Cm、F'e）",["ASD","偏心載重","互制公式","Cm","F'e"],1],
-["SS-2020-3","B","雙軸彎曲 B1 放大 LRFD 互制",["P-M互制","雙軸彎矩","B1放大法","有效長度"],1],
-["SS-2022-1","B","箱形柱雙軸彎矩＋軸壓互制",["箱形柱","雙軸彎矩","軸壓","P-M互制"],1]
+["SS-2003-4","A","W12×170 雙軸彎矩梁柱的 ASD 穩定式與強度式",["雙軸彎矩","P-M互制","Cm係數","F'e歐拉應力","側移構架"],1,"ASD",1,""],
+["SS-2004-4","A","Cm 的意義與下限 0.4，及 45° 斜置懸臂柱驗算",["Cm係數","懸臂柱","弱軸彎曲","45°斜置構材","互制方程式"],1,"ASD",1,""],
+["SS-2007-2","A","兩端鉸接柱雙軸彎矩 ASD 驗算（含 LTB）",["雙軸彎矩","LTB側扭挫屈","Cm放大係數","F'e歐拉應力","彈性挫屈"],1,"ASD",1,""],
+["SS-2008-4","A","偏心軸壓＋中點側向力的 ASD 互制檢核",["P-M互制","偏心軸壓","側向力","Fa","Fbx","強度方程式"],1,"ASD",1,""],
+["SS-2011-1","D","直接分析法：二階分析、假想水平力與剛度修正",["直接分析法","二階分析","初始不完美","剛度修正","P-Δ效應","假想水平力"],1,"概念題",1,""],
+["SS-2012-3","L","斜撐構架柱雙軸彎矩 LRFD 需求強度比檢核",["P-M互制","雙軸彎矩","斜撐構架","B1放大法","固接柱"],1,"LRFD",1,""],
+["SS-2013-4","B","無側撐剛架對位圖求 K 與層間二階穩定",["二階效應","B1B2放大法","無側撐剛架","對位圖","Mnt","Mlt"],1,"LRFD",1,""],
+["SS-2014-4","B","斜撐構架 W14×90 的 B1／B2 放大與 H1 檢核",["P-M互制","B1放大法","B2放大法","二階效應","地震力組合"],1,"LRFD",1,""],
+["SS-2019-3","A","偏心工作載重 H 型鋼柱的 ASD 互制檢核（30 分）",["偏心載重","互制公式","Cm","F'e","LTB","Cb"],1,"ASD",1,""],
+["SS-2020-3","L","端點雙軸彎矩梁柱：Cm、B1 放大與 LRFD 互制",["P-M互制","雙軸彎矩","載重放大係數","B1放大法","LRFD互制方程式"],1,"LRFD",1,""],
+["SS-2022-1","L","BOX 800 箱形柱雙軸彎矩 P-M 互制與局部挫屈",["箱形柱","雙軸彎矩","整體挫屈","局部挫屈","有效長細比"],1,"LRFD",1,""],
+["SS-2009-1","D","強柱弱梁彎矩強度比與 P-M 互制曲線繪製",["強柱弱梁","梁柱彎矩強度比","容量設計","SMRF","P-M互制曲線"],0,"概念題",0,"SD-U3-1 耐震設計"]
 ];
 function renderQ(cat){
   const box=document.getElementById('qlist');box.innerHTML='';
-  Q.filter(q=>cat==='ALL'||q[1]===cat).forEach(q=>{
-    const d=document.createElement('div');d.className='qrow';d.style.borderLeftColor=CATC[q[1]];
-    d.innerHTML=`<a href="../index.html#md=raw/solutions/${q[0]}/${q[0]}.md&t=${q[0]}" target="_blank">${q[0]}</a>
+  const sel=Q.filter(q=>{
+    if(cat==='ALL')return true;
+    if(cat==='PRI')return q[6]===1;
+    if(cat==='SEC')return q[6]===0;
+    return q[1]===cat;});
+  sel.sort((a,b)=>a[0].localeCompare(b[0])).forEach(q=>{
+    const d=document.createElement('div');
+    d.className='qrow'+(q[6]?'':' sec');d.style.borderLeftColor=CATC[q[1]];
+    d.innerHTML=`<a href="problems-view/${q[0]}.html" target="_blank">${q[0]}</a>
+    <span class="meta" style="background:${MC[q[5]]}">${q[5]}</span>
+    ${q[6]?'':`<span class="meta" style="background:#90a4ae">副・${q[7]}</span>`}
     <span class="sum">${q[2]}</span><span class="tags">${q[3].join('・')}</span>
-    <span class="ico" title="解析/互動圖/驗證">📄${q[4]?' 📊':''} ✅</span>`;
+    <span class="ico" title="解析／互動圖／已驗證">📄${q[4]?' 📊':''} ✅</span>`;
     box.appendChild(d);});
 }
 function filterQ(cat,btn){renderQ(cat);
-  if(btn){document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
-  else{document.getElementById('s5').scrollIntoView({behavior:'smooth'});
-    document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
-    const idx={ALL:0,A:1,B:2,D:3}[cat];document.querySelectorAll('.fbtn')[idx].classList.add('on');}
+  const order=['ALL','A','L','B','D','PRI','SEC'];
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  const idx=order.indexOf(cat);if(idx>=0)document.querySelectorAll('.fbtn')[idx].classList.add('on');
+  if(!btn)document.getElementById('b5').scrollIntoView({behavior:'smooth'});
 }
 renderQ('ALL');
-const byYear={};Q.forEach(q=>{const y=q[0].split('-')[1];(byYear[y]=byYear[y]||{A:0,B:0,D:0})[q[1]]++;});
+// ---- charts: 主考點 11 題 ----
+const CK=['A','L','B','D'];
+const PQ=Q.filter(q=>q[6]===1);
+const byYear={};PQ.forEach(q=>{const y=q[0].split('-')[1];
+  if(!byYear[y]){byYear[y]={};CK.forEach(c=>byYear[y][c]=0);}
+  byYear[y][q[1]]++;});
 function drawBar(){
   const cv=document.getElementById('cvBar'),ctx=cv.getContext('2d');
   const years=Object.keys(byYear).sort(),W=cv.width,H=cv.height,bw=(W-60)/years.length;
   const max=Math.max(...years.map(y=>Object.values(byYear[y]).reduce((a,b)=>a+b,0)));
-  ctx.font='10px sans-serif';ctx.fillStyle='#78909c';
-  for(let i=0;i<=max;i++){const yy=H-30-(H-60)*i/max;ctx.fillText(i,8,yy+3);ctx.strokeStyle='#eceff1';ctx.beginPath();ctx.moveTo(24,yy);ctx.lineTo(W-10,yy);ctx.stroke();}
+  ctx.font='10px sans-serif';
+  for(let i=0;i<=max;i++){const yy=H-30-(H-60)*i/max;ctx.fillStyle='#78909c';ctx.fillText(i,8,yy+3);ctx.strokeStyle='#eceff1';ctx.beginPath();ctx.moveTo(24,yy);ctx.lineTo(W-10,yy);ctx.stroke();}
   years.forEach((y,i)=>{let acc=0;
-    ['A','B','D'].forEach(c=>{const v=byYear[y][c];if(!v)return;
+    CK.forEach(c=>{const v=byYear[y][c];if(!v)return;
       const h=(H-60)*v/max;ctx.fillStyle=CATC[c];
-      ctx.fillRect(30+i*bw,H-30-acc-h,bw*0.7,h);acc+=h;});
-    ctx.fillStyle='#78909c';ctx.save();ctx.translate(30+i*bw+bw*0.35,H-18);ctx.rotate(-0.7);ctx.fillText(y.slice(2),0,0);ctx.restore();});
+      ctx.fillRect(30+i*bw,H-30-acc-h,bw*0.5,h);acc+=h;});
+    ctx.fillStyle='#78909c';ctx.save();ctx.translate(30+i*bw+bw*0.25,H-18);ctx.rotate(-0.7);ctx.fillText(y.slice(2),0,0);ctx.restore();});
 }
 function drawPie(){
   const cv=document.getElementById('cvPie'),ctx=cv.getContext('2d');
-  const cnt={A:0,B:0,D:0};Q.forEach(q=>cnt[q[1]]++);
-  const tot=Q.length,cx=cv.width*0.32,cy=cv.height/2,r=Math.min(cx,cy)-16;let a=-Math.PI/2;
-  Object.keys(cnt).forEach(c=>{const frac=cnt[c]/tot,a2=a+frac*2*Math.PI;
+  const cnt={};CK.forEach(c=>cnt[c]=0);PQ.forEach(q=>cnt[q[1]]++);
+  const tot=PQ.length,cx=cv.width*0.28,cy=cv.height/2,r=Math.min(cx,cy)-16;let a=-Math.PI/2;
+  CK.forEach(c=>{if(!cnt[c])return;const frac=cnt[c]/tot,a2=a+frac*2*Math.PI;
     ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a,a2);ctx.closePath();ctx.fillStyle=CATC[c];ctx.fill();a=a2;});
-  ctx.font='12px sans-serif';let ly=50;
-  Object.keys(cnt).forEach(c=>{ctx.fillStyle=CATC[c];ctx.fillRect(cv.width*0.62,ly-9,12,12);
-    ctx.fillStyle='#263238';ctx.fillText(`${CATN[c]}：${cnt[c]} 題（${Math.round(cnt[c]/tot*100)}%）`,cv.width*0.62+18,ly);ly+=28;});
+  ctx.font='12px sans-serif';let ly=48;
+  CK.forEach(c=>{ctx.fillStyle=CATC[c];ctx.fillRect(cv.width*0.56,ly-9,12,12);
+    ctx.fillStyle='#263238';ctx.fillText(`${CATN[c]}：${cnt[c]} 題（${Math.round(cnt[c]/tot*100)}%）`,cv.width*0.56+18,ly);ly+=28;});
 }
 drawBar();drawPie();
-function calcH1(){
-  const Pu=+document.getElementById('iPu').value,Pn=+document.getElementById('iPn').value,
-        Mx=+document.getElementById('iMx').value,Mnx=+document.getElementById('iMnx').value,
-        My=+document.getElementById('iMy').value,Mny=+document.getElementById('iMny').value;
-  const pr=Pu/Pn,mterm=Mx/Mnx+(Mny>0?My/Mny:0);
-  let ratio,eq;
-  if(pr>=0.2){ratio=pr+8/9*mterm;eq='H1-1a（Pu/φPn ≥ 0.2）';}
-  else{ratio=pr/2+mterm;eq='H1-1b（Pu/φPn < 0.2）';}
-  const ok=ratio<=1.0;
-  const o=document.getElementById('calcOut');o.style.display='block';
-  o.innerHTML=`Pu/φcPn = <b>${pr.toFixed(3)}</b> → 採 ${eq}<br>
-  彎矩項合計 = ${mterm.toFixed(3)}<br>
-  互制比 = <b style="color:${ok?'#2e7d32':'#c62828'}">${ratio.toFixed(3)} ${ok?'≤ 1.0 ✔ OK':'> 1.0 ✘ NG'}</b>
-  ${ok?'（餘裕 '+((1-ratio)*100).toFixed(1)+'%）':'（超出 '+((ratio-1)*100).toFixed(1)+'%，需加大斷面或減 KL）'}`;
-}
 </script>
 </body>
 </html>

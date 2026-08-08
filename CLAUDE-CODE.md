@@ -333,15 +333,24 @@ SD-U3（耐震設計）：XX%
 
 **用途：** 彙整某單元／子項所有考題、重點公式、常見陷阱，產生帶圖表的互動 HTML 複習導覽頁面，存入 `study/` 目錄。
 
-> **與 `unit-lecture` skill 的分工（別搞混）**
-> | | `study` 指令（本節） | `unit-lecture` skill |
-> |---|---|---|
-> | 輸出 | `study/study-SS-UN-n.html` | `study/lecture-SS-UN-n.html` + `.pdf` |
-> | 內容 | 公式速查、考題清單、統計圖表 | 物理原理、公式來源、圖解、自我檢測、精選必練題 |
-> | 使用時機 | 考前總複習 | 第一次接觸該單元、**練題之前** |
+> ### ⚠️ 子項層級（`study SS-UN-n`）已改由 `unit-exam-intel` skill 負責
 >
-> 兩者**並存不覆蓋**。`unit-lecture` 是 skill 不是指令，不列入本文件的 16 個指令，
-> 觸發方式為「生成 SS-U1-2 講義」，說明見 `skills/README.md`。
+> 本節下方的「子項層級七區塊」是 2026-08 以前的舊規格，該版與 `lecture-`、
+> `formula-given-` 兩份教材大量重複，**已全數重構為只回答「這個單元考什麼」的
+> 命題情報頁**。做子項層級時請改用 `unit-exam-intel`（`skills/unit-exam-intel/SKILL.md`），
+> 不要照舊規格產頁。單元層級（`study SS-UN`）仍沿用本節規格。
+>
+> **正名：** `study-SS-UN-n.html` 的正式名稱是**「命題分析」**，不是「速查頁」。
+>
+> **三份教材的分工（並存不覆蓋）**
+> | | `lecture-` | `formula-given-` | `study-` |
+> |---|---|---|---|
+> | 回答 | **為什麼**成立 | 這條公式**要不要背** | 這個單元**考什麼** |
+> | 內容 | 物理原理、公式來源、圖解、自我檢測、精選必練題 | 30–40 條公式 × 逐年考卷證據 | 頻率、結構、漂移、清單、風險 |
+> | 使用時機 | 第一次接觸該單元、**練題之前** | 排讀書計畫、決定背誦優先序 | 決定練題順序、考前押題 |
+> | 產出者 | `unit-lecture` skill | `unit-formula-map` skill | `unit-exam-intel` skill |
+>
+> 三者都是 skill 不是指令，不列入本文件的 16 個指令，說明見 `skills/README.md`。
 
 **輸出格式：帶圖表的自含 HTML 檔案**（非純 Markdown，需使用 KaTeX 渲染公式）
 
@@ -359,7 +368,10 @@ SD-U3（耐震設計）：XX%
 ③ 考題清單（互動篩選）
   - 篩選按鈕（全部 + 各子項）
   - 每題顯示：題號/年度、題型摘要、關鍵 tags（前5個）、解析/互動圖/驗證狀態 icon
-  - 【重要】點擊題號或標題時，必須以 `<a href="../index.html#md=raw/solutions/SS-XXXX-N/SS-XXXX-N.md&t=SS-XXXX-N" target="_blank">` 格式連結至 markdown 渲染器，確保公式能透過 KaTeX 呈現，且相對路徑的附圖（png）與補充檔（pdf）皆可正常載入。
+  - 【重要】點擊題號時，一律以 `<a href="problems-view/SS-XXXX-N.html" target="_blank">` 連結至渲染層。
+    **禁止使用 `../index.html#md=raw/solutions/...` 這種舊式連結**（那是把 .md 丟給瀏覽器，
+    公式與附圖不會渲染，只會看到純文字）。`study/problems-view/` 是所有題目的 HTML 渲染層，
+    公式、表格、附圖都已正確呈現。
 
 ④ 核心公式速查（KaTeX 渲染）
   - 每個子項一張公式卡，含主要計算公式與注意事項

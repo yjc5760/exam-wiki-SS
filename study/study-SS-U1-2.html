@@ -3,355 +3,265 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SS-U1-2 梁桿件｜深度複習</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<title>SS-U1-2 梁桿件｜命題分析</title>
 <style>
-:root{--ac:#00695c;--ac2:#e0f2f1;--L:#00695c;--P:#e65100;--C:#6a1b9a;--S:#c62828;
---bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#78909c;--bd:#e0e6ea}
+:root{--ac:#1565c0;--ac2:#e3f2fd;--l:#1565c0;--s:#f57c00;--d:#2e7d32;--c:#8e24aa;--v:#c62828;
+--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#78909c;--bd:#e0e6ea;--warn:#c62828}
 *{box-sizing:border-box}body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
-header{background:linear-gradient(135deg,#004d40,#00897b);color:#fff;padding:28px 24px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2);color:#fff;padding:28px 24px}
 header h1{margin:0 0 6px;font-size:1.5em}header p{margin:0;opacity:.85;font-size:.92em}
 nav{position:sticky;top:0;z-index:9;background:#fff;border-bottom:2px solid var(--bd);padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px}
 nav a{text-decoration:none;color:var(--ac);font-size:.88em;padding:5px 10px;border-radius:16px;background:var(--ac2)}
 nav a:hover{background:var(--ac);color:#fff}
 main{max-width:1080px;margin:0 auto;padding:20px 16px 60px}
-section{margin-bottom:38px}
-h2{font-size:1.25em;border-left:5px solid var(--ac);padding-left:10px;margin:30px 0 14px}
+section{margin-bottom:34px}
+h2{font-size:1.25em;border-left:5px solid var(--ac);padding-left:10px;margin:26px 0 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+h3{font-size:1.05em;margin:30px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--ac2)}
+.role{background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:8px;padding:12px 16px;font-size:.88em;margin-bottom:6px}
+.role b{color:#e65100}
+.btnbar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.btnbar a{padding:5px 14px;border-radius:6px;font-size:.9em;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center}
 .kpi .n{font-size:1.9em;font-weight:700;color:var(--ac)}.kpi .l{font-size:.82em;color:var(--mut)}
 .cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
 .cat{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:10px;padding:12px 14px;cursor:pointer;transition:.15s}
 .cat:hover{transform:translateY(-2px);box-shadow:0 3px 10px rgba(0,0,0,.1)}
-.cat h3{margin:0 0 4px;font-size:1em}.cat p{margin:0;font-size:.82em;color:var(--mut)}
+.cat h3{margin:0 0 4px;font-size:1em;border:none;padding:0}.cat p{margin:0;font-size:.82em;color:var(--mut)}
 .charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
 @media(max-width:760px){.charts{grid-template-columns:1fr}}
 .chartbox{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
 .chartbox h4{margin:0 0 8px;font-size:.95em;color:var(--mut)}
 canvas{width:100%;height:auto}
-.svgbox{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:16px;overflow-x:auto}
-.fcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
-.fcard{background:var(--card);border:1px solid var(--bd);border-top:5px solid;border-radius:10px;padding:14px 16px}
-.fcard h3{margin:0 0 8px;font-size:1em}
-.fcard .note{font-size:.82em;color:var(--mut);border-top:1px dashed var(--bd);margin-top:10px;padding-top:8px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:.9em}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:middle}
+th{background:var(--ac2)}
+td.num{text-align:center;font-variant-numeric:tabular-nums}
+.bar{display:inline-block;height:12px;width:12px;border-radius:3px;vertical-align:middle}
+.up{color:#2e7d32;font-weight:700}.down{color:var(--warn);font-weight:700}.flat{color:var(--mut);font-weight:700}
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .fbtn{border:1px solid var(--bd);background:#fff;border-radius:18px;padding:6px 14px;cursor:pointer;font-size:.88em;font-family:inherit}
 .fbtn.on{background:var(--ac);color:#fff;border-color:var(--ac)}
 .qrow{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:8px;padding:10px 14px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.qrow a{font-weight:700;text-decoration:none;color:var(--ac);min-width:88px}
+.qrow.sec{background:#fafafa;border-style:dashed}
+.qrow a{font-weight:700;text-decoration:none;color:var(--ac);min-width:92px}
 .qrow a:hover{text-decoration:underline}
 .qrow .sum{flex:1;min-width:200px;font-size:.92em}
 .qrow .tags{font-size:.75em;color:var(--mut)}
-.qrow .ico{font-size:.85em;white-space:nowrap}
-.traps{counter-reset:tr}
-.trap{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:12px 14px 12px 48px;margin-bottom:10px;position:relative}
-.trap::before{counter-increment:tr;content:counter(tr);position:absolute;left:12px;top:12px;width:26px;height:26px;border-radius:50%;background:#d32f2f;color:#fff;font-weight:700;text-align:center;line-height:26px;font-size:.85em}
-.trap b .pill{font-size:.72em;border-radius:10px;padding:1px 8px;color:#fff;margin-right:6px;vertical-align:middle}
-.calc{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:18px}
-.calc .row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px}
-.calc label{font-size:.85em;color:var(--mut);display:block}
-.calc input{width:110px;padding:6px;border:1px solid var(--bd);border-radius:6px;font-size:1em}
-.calc button{background:var(--ac);color:#fff;border:none;border-radius:6px;padding:8px 22px;font-size:.95em;cursor:pointer;font-family:inherit}
-.calc .out{margin-top:14px;background:var(--ac2);border-radius:8px;padding:12px 16px;font-size:.95em;display:none}
+.qrow .meta{font-size:.72em;white-space:nowrap;color:#fff;border-radius:10px;padding:1px 8px}
+.note{font-size:.85em;color:var(--mut);background:#fff;border:1px dashed var(--bd);border-radius:8px;padding:10px 14px;margin-top:12px}
+.risk-hi{background:#ffebee}.risk-md{background:#fff8e1}.risk-lo{background:#f1f8e9}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 </style>
 </head>
 <body>
 <header>
-<h1>SS-U1-2 梁桿件 — 深度複習</h1>
-<p>結構技師「鋼結構設計」子項複習頁｜資料來源：question_index.json（2002–2025，98 題）｜生成日期 2026-07-10</p>
+<h1>SS-U1-2 梁桿件 — 命題分析</h1>
+<p>結構技師「鋼結構設計」子項命題情報頁｜資料來源：raw/json/question_index.json（2002–2025，24 個考年、98 題）｜更新日期 2026-08-08</p>
 </header>
 <nav>
-<a href="#s1">① 命題分析</a><a href="#s2">② Mn–Lb 圖解</a><a href="#s3">③ 解題流程</a>
-<a href="#s4">④ 公式速查</a><a href="#s5">⑤ 考題清單</a><a href="#s6">⑥ 高頻陷阱</a><a href="#s7">⑦ LTB 計算器</a>
+<a href="#b1">出題概況</a><a href="#b2">考點結構</a><a href="#b3">考點漂移</a>
+<a href="#b4">ASD／LRFD</a><a href="#b5">考題清單</a><a href="#b6">命題風險</a>
 </nav>
 <main>
 
 <section id="s1">
-<h2 style="display:flex; justify-content:space-between; align-items:center;">
-  <span>① 命題分析</span>
-  <span style="display:inline-flex; gap:8px; align-items:center;">
-    <a href="lecture-SS-U1-2.html" style="background:#6a1b9a; color:#fff; padding:4px 14px; border-radius:6px; font-size:15px; font-weight:normal; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">觀念講義 📘</a>
-    <a href="lecture-SS-U1-2.pdf" target="_blank" style="background:#ce93d8; color:#4a148c; padding:4px 12px; border-radius:6px; font-size:15px; font-weight:normal; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">PDF 🖨️</a>
-    <a href="formula-given-SS-U1-2.html" title="哪些公式考卷會給、哪些必須自己背" style="background:#c62828; color:#fff; padding:4px 14px; border-radius:6px; font-size:15px; font-weight:normal; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">給／背分界 🎯</a>
-    <a href="SS-U1-2_梁桿件.pdf" target="_blank" style="background:var(--ac); color:#fff; padding:4px 14px; border-radius:6px; font-size:15px; font-weight:normal; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">Keynote 📄</a>
-  </span>
-</h2>
-<p style="margin:-6px 0 14px; font-size:14px; color:#607d8b;">
-  使用順序：<b style="color:#6a1b9a;">觀念講義（練題前建立物理直覺）</b> →
-  <b style="color:#1565c0;">Keynote（課堂）</b> → <b>本速查頁（考前總複習）</b>
-</p>
-<div class="kpis">
-<div class="kpi"><div class="n">21</div><div class="l">主考點題數</div></div>
-<div class="kpi"><div class="n">21.4%</div><div class="l">佔全科比例（21/98）</div></div>
-<div class="kpi"><div class="n">#2</div><div class="l">全科出題排名</div></div>
-<div class="kpi"><div class="n">5/6</div><div class="l">近6年出題（2020–25）</div></div>
+<h2><span>命題分析</span></h2>
+
+<div class="role">
+📚 <b>本頁只回答一件事：這個子項「考什麼」。</b>
+原理與圖解看 <b>觀念講義</b>、公式要不要背看 <b>給／背分界</b>、本頁提供的是可從 <code>question_index.json</code> 重生的命題事實：頻率、結構、漂移、方法別、清單、風險。<br>
+建議順序：<b style="color:#6a1b9a;">觀念講義</b>（練題前建立直覺）→ <b style="color:var(--warn);">給／背分界</b>（決定記憶投資）→ <b>本頁</b>（決定練題順序與押題）。
 </div>
-<div class="cats">
-<div class="cat" style="border-left-color:var(--L)" onclick="filterQ('L')"><h3>🌀 LTB 側扭挫屈（12題）</h3><p>Lp／Lr／Cb、彈性與非彈性 LTB — 絕對主戰場</p></div>
-<div class="cat" style="border-left-color:var(--P)" onclick="filterQ('P')"><h3>📏 塑性彎矩與斷面分類（5題）</h3><p>Mp／My／形狀因子、寬厚比 λp／λr</p></div>
-<div class="cat" style="border-left-color:var(--C)" onclick="filterQ('C')"><h3>🧱 合成梁／SRC（2題）</h3><p>塑性應力分佈、PNA</p></div>
-<div class="cat" style="border-left-color:var(--S)" onclick="filterQ('S')"><h3>✂️ 板梁與剪力（2題）</h3><p>剪力挫屈、張力場、剪力流</p></div>
+<div class="btnbar">
+  <a href="lecture-SS-U1-2.html" title="Mp 從哪來、LTB 三區段、Cb 紅利、剪力與撓度、精選 5 題" style="background:#6a1b9a;color:#fff;">觀念講義 📘</a>
+  <a href="lecture-SS-U1-2.pdf" target="_blank" style="background:#f3e5f5;color:#6a1b9a;border:1px solid #ce93d8;">講義 PDF 🖨️</a>
+  <a href="formula-given-SS-U1-2.html" title="33 條公式 × 24 年考卷證據：LTB 長式子幾乎必給，Mp=FyZx 二十四年零次" style="background:#c62828;color:#fff;">給／背分界 🎯</a>
+  <a href="formula-given-SS-U1-2.pdf" target="_blank" style="background:#ffebee;color:#c62828;border:1px solid #ef9a9a;">分界 PDF 🖨️</a>
+</div>
+
+<h3 id="b1">出題概況</h3>
+<div class="kpis">
+<div class="kpi"><div class="n">21</div><div class="l">主考點題數（另有 4 題副考點）</div></div>
+<div class="kpi"><div class="n">21.4%</div><div class="l">佔全科比例（21／98）</div></div>
+<div class="kpi"><div class="n">#2</div><div class="l">全科出題排名（僅次於 U1-1 的 24 題）</div></div>
+<div class="kpi"><div class="n">4/6</div><div class="l">近 6 考年出題年數（2020–25 共 5 題）</div></div>
 </div>
 <div class="charts">
-<div class="chartbox"><h4>年度分布（依題型堆疊）</h4><canvas id="cvBar" width="520" height="260"></canvas></div>
-<div class="chartbox"><h4>題型比例</h4><canvas id="cvPie" width="520" height="260"></canvas></div>
+<div class="chartbox"><h4>年度分布（依題型堆疊，主考點 21 題）</h4><canvas id="cvBar" width="520" height="260"></canvas></div>
+<div class="chartbox"><h4>題型比例（主考點 21 題）</h4><canvas id="cvPie" width="520" height="260"></canvas></div>
 </div>
-</section>
+<div class="note">
+📌 <b>三個要記住的數字</b>：① 全科第二大單元（21.4%），與第一名 U1-1（24 題）只差三題；
+② <b>24 個考年裡 17 年出現過</b>，是全科出現率最高的單元——空窗只有 2003–2004 與 2017–2018 兩段各兩年，而且兩次都在隔年立刻回歸（2005、2019），<b>空窗不代表退場</b>；
+③ 21 題主考點裡 <b>11 題是 LTB 側扭挫屈</b>（52%）——這是全科集中度最高的單一考點，把 LTB 三區段練熟等於拿下本單元一半。
+</div>
 
-<section id="s2">
-<h2>② 圖解：Mn–Lb 設計曲線與斷面分類</h2>
-<div class="svgbox">
-<svg viewBox="0 0 960 320" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
-<!-- Mn-Lb curve -->
-<g transform="translate(50,20)">
-<line x1="0" y1="240" x2="500" y2="240" stroke="#263238" stroke-width="1.5"/>
-<line x1="0" y1="240" x2="0" y2="0" stroke="#263238" stroke-width="1.5"/>
-<text x="490" y="258">Lb</text><text x="-30" y="12">Mn</text>
-<!-- plateau -->
-<line x1="0" y1="40" x2="150" y2="40" stroke="#00695c" stroke-width="3"/>
-<!-- linear -->
-<line x1="150" y1="40" x2="330" y2="130" stroke="#e65100" stroke-width="3"/>
-<!-- elastic hyperbola -->
-<path d="M330,130 Q400,180 500,215" fill="none" stroke="#c62828" stroke-width="3"/>
-<line x1="150" y1="40" x2="150" y2="240" stroke="#90a4ae" stroke-dasharray="4 4"/>
-<line x1="330" y1="130" x2="330" y2="240" stroke="#90a4ae" stroke-dasharray="4 4"/>
-<line x1="0" y1="40" x2="150" y2="40" stroke="none"/>
-<text x="142" y="258" font-weight="bold">Lp</text><text x="322" y="258" font-weight="bold">Lr</text>
-<line x1="0" y1="130" x2="330" y2="130" stroke="#90a4ae" stroke-dasharray="4 4"/>
-<text x="-38" y="44" fill="#00695c" font-weight="bold">Mp</text>
-<text x="-38" y="134" fill="#e65100" font-weight="bold">Mr</text>
-<text x="30" y="28" fill="#00695c">塑性（全側撐）Mn=Mp</text>
-<text x="170" y="80" fill="#e65100">非彈性 LTB（直線內插×Cb）</text>
-<text x="350" y="120" fill="#c62828">彈性 LTB：Mn=Mcr</text>
-<text x="185" y="225" fill="#78909c">Mr=(Fy−Fr)Sx</text>
-</g>
-<!-- section classification -->
-<g transform="translate(620,20)" font-size="12">
-<text x="0" y="10" font-weight="bold" font-size="13">斷面分類（寬厚比 λ）</text>
-<rect x="0" y="24" width="300" height="52" rx="8" fill="#e0f2f1" stroke="#00695c"/>
-<text x="12" y="46">λ ≤ λp　結實 compact</text><text x="12" y="66">可達 Mp（塑性設計、耐震再加嚴 λpd）</text>
-<rect x="0" y="88" width="300" height="52" rx="8" fill="#fff3e0" stroke="#e65100"/>
-<text x="12" y="110">λp &lt; λ ≤ λr　非結實 noncompact</text><text x="12" y="130">Mp 與 Mr 之間內插（FLB/WLB）</text>
-<rect x="0" y="152" width="300" height="52" rx="8" fill="#ffebee" stroke="#c62828"/>
-<text x="12" y="174">λ &gt; λr　細長 slender</text><text x="12" y="194">彈性局部挫屈控制（Q 折減）</text>
-<text x="0" y="232" fill="#78909c">翼板懸伸 b=bf/2；腹板取 h/tw</text>
-<text x="0" y="250" fill="#78909c">Mn 取「LTB、FLB、WLB」三者最小</text>
-</g>
-</svg>
+<h3 id="b2">考點結構（點卡片可篩選下方考題清單）</h3>
+<div class="cats">
+<div class="cat" style="border-left-color:var(--l)" onclick="filterQ('L')"><h3>🌀 LTB 側扭挫屈三區段（11 題）</h3><p>Lp／Lr 判區、Cb 彎矩梯度、非彈性內插、X1／X2、ASD 的 L/rT 分段</p></div>
+<div class="cat" style="border-left-color:var(--s)" onclick="filterQ('S')"><h3>📏 斷面分類與塑性彎矩（6 題）</h3><p>λp／λr 寬厚比、Mp／My 形狀因子、等面積法求塑性中性軸、塑性分析崩塌機制</p></div>
+<div class="cat" style="border-left-color:var(--d)" onclick="filterQ('D')"><h3>📐 斷面選擇與使用性檢核（2 題）</h3><p>選最經濟斷面、L/360 撓度、強度＋剪力＋撓度三線並行</p></div>
+<div class="cat" style="border-left-color:var(--c)" onclick="filterQ('C')"><h3>🧱 合成梁與 SRC（2 題）</h3><p>塑性應力分佈法、PNA 塑性中性軸、有效版寬、完全合成</p></div>
+<div class="cat" style="border-left-color:var(--v)" onclick="filterQ('V')"><h3>✂️ 腹板剪力與剪力流（4 題）</h3><p>剪力挫屈、加勁板、張力場效應、VQ/I 剪力流、梁腹續接</p></div>
 </div>
-</section>
 
-<section id="s3">
-<h2>③ 解題流程圖</h2>
-<div class="svgbox">
-<svg viewBox="0 0 960 330" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
-<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#546e7a"/></marker></defs>
-<rect x="20" y="20" width="170" height="46" rx="8" fill="#e0f2f1" stroke="#00695c"/><text x="34" y="40">① 斷面分類</text><text x="34" y="58">寬厚比 λ vs λp、λr</text>
-<rect x="240" y="20" width="180" height="46" rx="8" fill="#e0f2f1" stroke="#00695c"/><text x="254" y="40">② 側撐長度 Lb</text><text x="254" y="58">計算 Lp、Lr</text>
-<polygon points="530,10 640,43 530,76 420,43" fill="#fffde7" stroke="#f9a825"/><text x="475" y="40">Lb 位於</text><text x="468" y="56">哪一區段？</text>
-<rect x="700,20" y="0" width="0" height="0"/>
-<rect x="690" y="0" width="250" height="40" rx="8" fill="#e0f2f1" stroke="#00695c"/><text x="702" y="17">Lb ≤ Lp：Mn = Mp = FyZx</text><text x="702" y="33">（結實＋全側撐）</text>
-<rect x="690" y="56" width="250" height="46" rx="8" fill="#fff3e0" stroke="#e65100"/><text x="702" y="74">Lp&lt;Lb≤Lr：非彈性 LTB</text><text x="702" y="92">Mn=Cb[Mp−(Mp−Mr)·(Lb−Lp)/(Lr−Lp)]≤Mp</text>
-<rect x="690" y="118" width="250" height="40" rx="8" fill="#ffebee" stroke="#c62828"/><text x="702" y="135">Lb &gt; Lr：彈性 LTB</text><text x="702" y="151">Mn = Mcr·Cb ≤ Mp</text>
-<line x1="190" y1="43" x2="240" y2="43" stroke="#546e7a" marker-end="url(#ar)"/>
-<line x1="420" y1="43" x2="420" y2="43" stroke="#546e7a"/>
-<line x1="640" y1="30" x2="690" y2="20" stroke="#546e7a" marker-end="url(#ar)"/>
-<line x1="640" y1="43" x2="690" y2="79" stroke="#546e7a" marker-end="url(#ar)"/>
-<line x1="640" y1="60" x2="690" y2="138" stroke="#546e7a" marker-end="url(#ar)"/>
-<rect x="20" y="120" width="400 " height="46" rx="8" fill="#ede7f6" stroke="#6a1b9a"/><text x="34" y="140">③ Cb 彎矩梯度係數（保守可取 1.0）</text><text x="34" y="158">Cb=12.5Mmax/(2.5Mmax+3MA+4MB+3MC)</text>
-<rect x="20" y="196" width="400" height="46" rx="8" fill="#ffebee" stroke="#c62828"/><text x="34" y="216">④ 剪力檢核：φvVn = 0.9×0.6 Fyw Aw Cv</text><text x="34" y="234">（h/tw 大時查 Cv；板梁考慮張力場）</text>
-<rect x="20" y="272" width="400" height="40" rx="8" fill="#e3f2fd" stroke="#1565c0"/><text x="34" y="290">⑤ 使用性：撓度 δ ≤ L/240、L/360…</text><text x="34" y="306">（用「服務載重」，非放大載重！）</text>
-<line x1="220" y1="66" x2="220" y2="120" stroke="#546e7a" marker-end="url(#ar)"/>
-<line x1="220" y1="166" x2="220" y2="196" stroke="#546e7a" marker-end="url(#ar)"/>
-<line x1="220" y1="242" x2="220" y2="272" stroke="#546e7a" marker-end="url(#ar)"/>
-</svg>
+<h3 id="b3">考點漂移：前 10 題 vs. 後 11 題</h3>
+<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">把主考點 21 題依題號對切：前段 2002–2011（10 題）與後段 2012–2025（11 題），題數接近，可直接比較結構變化。</p>
+<table>
+<thead><tr><th>題型</th><th class="num">2002–2011</th><th class="num">2012–2025</th><th class="num">變化</th><th>解讀</th></tr></thead>
+<tbody>
+<tr><td><span class="bar" style="background:var(--l)"></span> LTB 側扭挫屈三區段</td><td class="num">5</td><td class="num">6</td><td class="num flat">▲ +1</td><td>二十四年<b>從未中斷超過三年</b>的核心考點，且近年連三年出現（2021-3、2024-3、2025-3）。變的是包裝不是核心：由「求 φ<sub>b</sub>M<sub>n</sub>」（2007-3、2011-3）轉為「反求載重」（2008-3、2012-1）、「強弱軸對照」（2024-3）與「概念說明」（2016-4）</td></tr>
+<tr><td><span class="bar" style="background:var(--s)"></span> 斷面分類與塑性彎矩</td><td class="num">1</td><td class="num">3</td><td class="num up">▲ +2</td><td>前段只有 2009-3，後段 2016-1、2023-3、2025-1 三題；<b>2023 起連三年出現</b>（2023-3 非對稱斷面 M<sub>y</sub>／M<sub>p</sub>、2025-1 銲接組合斷面寬厚比），是本單元升溫最明顯的一群</td></tr>
+<tr><td><span class="bar" style="background:var(--v)"></span> 腹板剪力與剪力流</td><td class="num">2</td><td class="num">0</td><td class="num down">▼ −2</td><td>作為主考點僅 2002-1（弱軸剪力流）與 2006-4（板梁張力場），<b>已空窗 19 年</b>；後段只以副考點形式出現（2019-4 蓋板剪力流、2020-4 梁腹續接）</td></tr>
+<tr><td><span class="bar" style="background:var(--c)"></span> 合成梁與 SRC</td><td class="num">1</td><td class="num">1</td><td class="num flat">＝ 0</td><td>2005-2（SRC）與 2019-2（合成梁）相隔 14 年，兩題套路相同（塑性應力分佈找 PNA）；出現稀疏但每次都是完整 25 分計算題</td></tr>
+<tr><td><span class="bar" style="background:var(--d)"></span> 斷面選擇與使用性檢核</td><td class="num">1</td><td class="num">1</td><td class="num flat">＝ 0</td><td>2010-4 與 2015-1 各一題，<b>已空窗 10 年</b>；這類題要查表選斷面又要三線檢核，配分高但耗時，近年被拆成單一檢核的題型取代</td></tr>
+</tbody>
+</table>
+<div class="note">
+📌 <b>一句話</b>：這個單元的重心從「<b>把一根梁完整設計出來（選斷面＋剪力＋撓度）</b>」收斂到「<b>把斷面的本錢算清楚（λ 判結實、M<sub>p</sub>／M<sub>y</sub>、L<sub>b</sub> 判區）</b>」。
+若依「歷史總題數」平均分配複習時間，會高估板梁張力場（空窗 19 年）與整梁設計題（空窗 10 年），低估近三年連續出現的<b>斷面分類與塑性彎矩</b>。
 </div>
-</section>
 
-<section id="s4">
-<h2>④ 核心公式速查</h2>
-<div class="fcards">
-<div class="fcard" style="border-top-color:var(--P)">
-<h3>📏 塑性彎矩與形狀因子</h3>
-$$M_p=F_y Z,\qquad M_y=F_y S,\qquad f=\dfrac{Z}{S}=\dfrac{M_p}{M_y}$$
-<div class="note">Z＝塑性斷面模數（等面積軸）；H 型鋼強軸 f≈1.10–1.18、矩形 1.5、圓形 1.7。非對稱斷面：彈性中性軸過形心、塑性中性軸為等面積軸（SS-2023-3、2009-3）。</div>
+<h3 id="b4">設計法走向：LRFD 幾乎壟斷，但 ASD 的 Fb 分段仍有考</h3>
+<table>
+<thead><tr><th>期間</th><th class="num">LRFD</th><th class="num">ASD</th><th class="num">概念題</th><th class="num">小計</th><th>觀察</th></tr></thead>
+<tbody>
+<tr><td>2002–2011（前段）</td><td class="num">6</td><td class="num">2</td><td class="num">2</td><td class="num">10</td><td>ASD 兩題（2002-2 的 L<sub>c</sub>／L<sub>u</sub>、2008-1 的 F<sub>b</sub> 分段）都是<b>正面考 ASD 的判區邏輯</b>，不是順帶提及</td></tr>
+<tr><td>2012–2025（後段）</td><td class="num">9</td><td class="num">1</td><td class="num">1</td><td class="num">11</td><td>LRFD 佔 82%；ASD 僅存 2016-1（λ<sub>p</sub>／λ<sub>r</sub> 寬厚比表），且該題的表格由考卷提供</td></tr>
+<tr style="background:#fff8e1"><td><b>近 6 考年 2020–2025</b></td><td class="num">4</td><td class="num">0</td><td class="num">1</td><td class="num">5</td><td><b>ASD 已連續 6 個考年缺席</b>（最後一題為 2016-1）；五題裡四題是 LRFD 計算題</td></tr>
+</tbody>
+</table>
+<div class="note">
+📌 <b>對複習的直接影響</b>：本單元是六個子項中<b>最能安心把重心放在 LRFD 的一個</b>——ASD 自 2016-1 之後六個考年零出現，與 U1-3（ASD 梁柱互制式幾乎必給必考）恰成對比。
+但別把 ASD 完全丟掉：2002-2 與 2008-1 兩題的 <code>L<sub>c</sub></code>／<code>L<sub>u</sub></code>、<code>L/r<sub>T</sub></code> 分段其實就是 LRFD 的 <code>L<sub>p</sub></code>／<code>L<sub>r</sub></code> 換一套符號，讀懂一套等於兩套。
+另一個好消息：本單元的長式子<b>考卷通常會印給你</b>——<code>L<sub>p</sub></code>／<code>L<sub>r</sub></code> 十一年、<code>C<sub>b</sub></code> 十年、<code>M<sub>n</sub></code>／<code>M<sub>cr</sub></code> 七年；但 <code>M<sub>p</sub>=F<sub>y</sub>Z<sub>x</sub></code> 與 <code>M<sub>y</sub>=F<sub>y</sub>S<sub>x</sub></code> <b>24 年一次都沒印過</b>。逐條見
+<a href="formula-given-SS-U1-2.html">給／背分界</a>。
 </div>
-<div class="fcard" style="border-top-color:var(--L)">
-<h3>🌀 LTB 三區段（LRFD，φb=0.90）</h3>
-$$L_p=1.76\,r_y\sqrt{E/F_y}$$
-$$M_r=(F_y-F_r)S_x$$
-$$M_n=C_b\!\left[M_p-(M_p-M_r)\dfrac{L_b-L_p}{L_r-L_p}\right]\le M_p$$
-<div class="note">Fr：輥軋 0.7、銲接組合 1.16 tf/cm²。Lr 由 Mcr=Mr 反推（含 X1、X2 參數，SS-2011-3）。SS-2025-3 直接考 Mp/Mr/Lp/Lr 曲線。</div>
-</div>
-<div class="fcard" style="border-top-color:var(--L)">
-<h3>🌀 彈性 LTB（Lb＞Lr）</h3>
-$$M_{cr}=C_b\dfrac{\pi}{L_b}\sqrt{EI_yGJ+\left(\dfrac{\pi E}{L_b}\right)^2 I_yC_w}$$
-<div class="note">第一項 St.Venant 純扭、第二項翹曲扭轉（SS-2008-1 考兩者觀念）。Mn=Mcr≤Mp。</div>
-</div>
-<div class="fcard" style="border-top-color:var(--L)">
-<h3>🌀 Cb 彎矩梯度係數</h3>
-$$C_b=\dfrac{12.5M_{max}}{2.5M_{max}+3M_A+4M_B+3M_C}$$
-$$\text{或 }C_b=1.75+1.05\left(\tfrac{M_1}{M_2}\right)+0.3\left(\tfrac{M_1}{M_2}\right)^2\le2.3$$
-<div class="note">MA、MB、MC＝1/4、1/2、3/4 點彎矩；均勻彎矩 Cb=1.0（最不利）；懸臂自由端無側撐 Cb=1.0。M1/M2：雙曲率取正。</div>
-</div>
-<div class="fcard" style="border-top-color:var(--S)">
-<h3>✂️ 剪力強度</h3>
-$$\phi_vV_n=0.90\times0.6F_{yw}A_w C_v,\qquad A_w=d\,t_w$$
-<div class="note">h/tw ≤ 50√(2.5/Fy)（Cv=1，無挫屈）；超過則剪力挫屈折減；板梁可計張力場作用（SS-2006-4）。弱軸剪力由翼板承擔：Aw=2 bf tf（SS-2002-1）。</div>
-</div>
-<div class="fcard" style="border-top-color:var(--C)">
-<h3>🧱 合成梁（塑性應力分佈）</h3>
-$$C=\min\!\left(0.85f'_c\,b_e\,t_s,\;F_yA_s,\;\Sigma Q_n\right)$$
-$$M_n=C\cdot d_1+\ldots\;(\text{對 PNA 取矩})$$
-<div class="note">PNA 在版內／翼板／腹板三種情況；be 取有效寬度（L/4、梁間距…取小）。SS-2019-2、SS-2005-2（SRC 塑性應力分佈法同理）。</div>
-</div>
-<div class="fcard" style="border-top-color:var(--P)">
-<h3>📏 寬厚比限值（tf/cm² 制常用式）</h3>
-$$\text{翼板：}\lambda_p=\dfrac{17}{\sqrt{F_y}},\quad\lambda_r=\dfrac{25}{\sqrt{F_y-F_r}}$$
-$$\text{腹板：}\lambda_p=\dfrac{170}{\sqrt{F_y}},\quad\lambda_r=\dfrac{260}{\sqrt{F_y}}$$
-<div class="note">（我國規範 tf/cm² 單位型式）耐震設計另有更嚴之 λpd（SS-2021-3 耐震緊實斷面）。非結實斷面於 λp–λr 間內插求 Mn（SS-2012-1、2016-1）。</div>
-</div>
-<div class="fcard" style="border-top-color:var(--C)">
-<h3>🧱 使用性（撓度）</h3>
-$$\delta_{max}=\dfrac{5wL^4}{384EI}\;\text{（簡支均布）},\qquad \delta\le\dfrac{L}{240}\sim\dfrac{L}{360}$$
-<div class="note">用服務載重（未乘載重係數）；活載重限制常用 L/360。斷面選擇題常同時控制：強度＋剪力＋撓度（SS-2010-4、2015-1）。</div>
-</div>
-</div>
-</section>
 
-<section id="s5">
-<h2>⑤ 考題清單（21 題，點題號開啟完整解析）</h2>
+<h3 id="b5">考題清單（主 21 ＋ 副 4 ＝ 25 題，點題號開啟解析）</h3>
 <div class="filters">
-<button class="fbtn on" onclick="filterQ('ALL',this)">全部（21）</button>
-<button class="fbtn" onclick="filterQ('L',this)">LTB 側扭挫屈（12）</button>
-<button class="fbtn" onclick="filterQ('P',this)">塑性彎矩／斷面分類（5）</button>
+<button class="fbtn on" onclick="filterQ('ALL',this)">全部（25）</button>
+<button class="fbtn" onclick="filterQ('L',this)">LTB 三區段（11）</button>
+<button class="fbtn" onclick="filterQ('S',this)">斷面分類／Mp（6）</button>
+<button class="fbtn" onclick="filterQ('D',this)">斷面選擇／撓度（2）</button>
 <button class="fbtn" onclick="filterQ('C',this)">合成梁／SRC（2）</button>
-<button class="fbtn" onclick="filterQ('S',this)">板梁與剪力（2）</button>
+<button class="fbtn" onclick="filterQ('V',this)">腹板剪力／剪力流（4）</button>
+<button class="fbtn" onclick="filterQ('PRI',this)">僅主考點（21）</button>
+<button class="fbtn" onclick="filterQ('SEC',this)">僅副考點（4）</button>
 </div>
 <div id="qlist"></div>
+<div class="note">虛線灰底＝副考點（主考點在別的子項，但解題會用到 U1-2 的梁知識）。色籤為設計法：<b>LRFD／ASD／概念題／塑性分析</b>。📄 有解析、📊 有互動圖、✅ 已驗證。</div>
+
+<h3 id="b6">命題風險排序（下一次最可能考什麼）</h3>
+<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">依「歷史頻率 × 空窗年數 × 近年趨勢」排序。<b>這是推測而非預言</b>，用途是決定<b>練題順序</b>，不是拿來 all-in 單一考點。</p>
+<table>
+<thead><tr><th>風險</th><th>考點</th><th class="num">歷史題數</th><th>最後出現</th><th class="num">空窗</th><th>理由</th></tr></thead>
+<tbody>
+<tr class="risk-hi"><td><b>高</b></td><td>LTB 三區段：L<sub>b</sub> 判區 → C<sub>b</sub> → 非彈性內插</td><td class="num">11</td><td>2025-3</td><td class="num">0 年</td><td>全科集中度最高的單一考點（本單元 52%），二十四年<b>沒有中斷超過三年</b>，且 2021-3、2024-3、2025-3 近年三度出現；每次只換包裝（求 M<sub>n</sub>／反求載重／強弱軸對照／概念說明），核心流程不變</td></tr>
+<tr class="risk-hi"><td><b>高</b></td><td>斷面分類與 M<sub>p</sub>／M<sub>y</sub> 形狀因子</td><td class="num">6</td><td>2025-1</td><td class="num">0 年</td><td>本單元升溫最快的一群：前段僅 2009-3，後段 2016-1、2023-3、2025-1 <b>近三年連續出現</b>；另有 2005-4、2020-2 兩題以 U2-1 塑性分析的副考點身分考同一套塑性斷面模數，等於六題共用一個算法</td></tr>
+<tr class="risk-md"><td><b>中高</b></td><td>合成梁／SRC 塑性應力分佈（找 PNA）</td><td class="num">2</td><td>2019-2</td><td class="num">6 年</td><td>2005-2 與 2019-2 相隔 14 年、套路完全相同（比較鋼梁降伏力與混凝土壓力決定 PNA 位置）；出現稀疏但每次都是完整 25 分計算題，練一題可覆蓋兩題</td></tr>
+<tr class="risk-md"><td><b>中高</b></td><td>整梁設計：選斷面＋剪力＋L/360 撓度</td><td class="num">2</td><td>2015-1</td><td class="num">10 年</td><td>2010-4、2015-1 兩題，<b>已空窗 10 年</b>；這是唯一會同時考「強度、剪力、使用性」三條檢核線的題型，一旦回歸就是完整 30 分，且撓度公式（<code>5wL⁴/384EI</code>）屬於必須自己背的一類</td></tr>
+<tr class="risk-lo"><td><b>低</b></td><td>板梁剪力挫屈與張力場效應</td><td class="num">1</td><td>2006-4</td><td class="num">19 年</td><td>作為主考點僅 2006-4 一題（概念繪圖題），<b>空窗 19 年</b>；剪力流則在 2019-4（U1-4 蓋板斷續銲）以副考點形式延續，代表題材未死但已轉掛他處，投報率最低</td></tr>
+</tbody>
+</table>
+<div class="note">
+📌 <b>若只剩三天</b>：第一天全押 <b>LTB 三區段</b>（2007-3 走完整三區段 → 2012-1 加上非結實斷面的 FLB → 2024-3 做強弱軸對照，三題涵蓋 11 題裡的絕大多數變形）；
+第二天做<b>斷面分類與 M<sub>p</sub></b>（2023-3 等面積法 → 2025-1 寬厚比判定，順帶掃 2020-2 的塑性斷面模數）；
+第三天補<b>合成梁</b>（2019-2）與<b>整梁設計</b>（2015-1）各一題。
+逐題練習順序見 <a href="lecture-SS-U1-2.html#s14">觀念講義 §14「精選 5 題」</a>。
+</div>
+
 </section>
 
-<section id="s6">
-<h2>⑥ 高頻陷阱 Top 8</h2>
-<div class="traps">
-<div class="trap"><b><span class="pill" style="background:var(--L)">Cb</span>Cb 放大後忘記 Mn ≤ Mp 上限</b><br>非彈性 LTB 內插式乘 Cb 後常超過 Mp，必須截斷於 Mp；彈性段同樣 Mcr·Cb ≤ Mp。SS-2008-3、2024-3。</div>
-<div class="trap"><b><span class="pill" style="background:var(--L)">Mr</span>殘留應力 Fr 用錯或漏用</b><br>Mr=(Fy−Fr)Sx；輥軋 Fr=0.7、銲接組合 Fr=1.16 tf/cm²。銲接斷面題（SS-2025-1、2025-3）給 1.16 就是要你用。</div>
-<div class="trap"><b><span class="pill" style="background:var(--L)">Cb</span>均勻彎矩或懸臂誤取 Cb＞1</b><br>純彎（等端彎矩單曲率）Cb=1.0 為最不利；懸臂自由端無側撐 Cb=1.0。M1/M2 符號：雙曲率為正、單曲率為負。</div>
-<div class="trap"><b><span class="pill" style="background:var(--P)">寬厚比</span>翼板懸伸寬取整個 bf</b><br>H 型鋼翼板為懸伸肢，b=bf/2；腹板用淨深 h（扣圓角）。分類錯 → 全題走錯公式。SS-2016-1。</div>
-<div class="trap"><b><span class="pill" style="background:var(--P)">Z值</span>塑性中性軸誤用形心軸</b><br>非對稱斷面 PNA＝等面積軸 ≠ 形心軸；Z=ΣA·(至PNA距離)。My 才用彈性形心軸。SS-2023-3、2009-3。</div>
-<div class="trap"><b><span class="pill" style="background:var(--C)">撓度</span>使用性檢核誤用放大載重</b><br>撓度屬使用性極限狀態，用服務載重（1.0D+1.0L）；用 1.2D+1.6L 算撓度是常見扣分點。SS-2010-4、2015-1。</div>
-<div class="trap"><b><span class="pill" style="background:var(--S)">剪力</span>弱軸剪力仍用腹板面積</b><br>弱軸方向剪力流由「兩翼板」承擔，Aw=2bf·tf；剪力流方向與分佈要能手繪。SS-2002-1。</div>
-<div class="trap"><b><span class="pill" style="background:var(--C)">合成梁</span>PNA 位置未分況討論</b><br>先比較 0.85f'c·be·ts 與 FyAs 決定 PNA 在版內或鋼梁內，再對正確位置取矩；直接套公式易錯。SS-2019-2、2005-2。</div>
-</div>
-</section>
-
-<section id="s7">
-<h2>⑦ 互動計算器：LTB 公稱彎矩</h2>
-<div class="calc">
-<div class="row">
-<div><label>Mp（tf·m）</label><input id="iMp" type="number" value="30" step="1"></div>
-<div><label>Mr（tf·m）</label><input id="iMr" type="number" value="18" step="1"></div>
-<div><label>Lp（m）</label><input id="iLp" type="number" value="2.5" step="0.1"></div>
-<div><label>Lr（m）</label><input id="iLr" type="number" value="8" step="0.1"></div>
-<div><label>Lb（m）</label><input id="iLb" type="number" value="5" step="0.1"></div>
-<div><label>Cb</label><input id="iCb" type="number" value="1.0" step="0.05"></div>
-</div>
-<button onclick="calcLTB()">計算 Mn 與 φbMn</button>
-<div class="out" id="calcOut"></div>
-</div>
-</section>
-
-<footer>study SS-U1-2｜exam-wiki-SS 知識庫自動生成｜連結經 ../index.html markdown 渲染器開啟（KaTeX＋附圖）</footer>
+<footer>study SS-U1-2 命題分析｜exam-wiki-SS 知識庫｜統計基準 raw/json/question_index.json（98 題 / 24 考年）｜題號連結指向 study/problems-view/</footer>
 </main>
 
 <script>
-const CATC={L:'#00695c',P:'#e65100',C:'#6a1b9a',S:'#c62828'};
-const CATN={L:'LTB側扭挫屈',P:'塑性彎矩/斷面分類',C:'合成梁/SRC',S:'板梁與剪力'};
+const CATC={L:'#1565c0',S:'#f57c00',D:'#2e7d32',C:'#8e24aa',V:'#c62828'};
+const CATN={L:'LTB 三區段',S:'斷面分類／Mp',D:'斷面選擇／撓度',C:'合成梁／SRC',V:'腹板剪力／剪力流'};
+const MC={'LRFD':'#1565c0','ASD':'#f57c00','混合':'#6a1b9a','概念題':'#546e7a','塑性分析':'#00838f'};
+// [題號, 分群, 摘要, 標籤, 有viz, 設計法, 主(1)/副(0), 副考點的所屬單元]
 const Q=[
-["SS-2002-1","S","剪力流與弱軸剪力翼板承剪（概念）",["剪力流","弱軸剪力","翼板承剪","概念題"],0],
-["SS-2002-2","L","移動集中載重下容許應力法 LTB 檢核",["ASD","LTB","移動集中載重","Lc"],0],
-["SS-2005-2","C","SRC 合成斷面塑性應力分佈法求 Mn",["SRC","塑性應力分佈","塑性中性軸","Mn"],0],
-["SS-2006-4","S","板梁剪力挫屈與張力場效應",["板梁","剪力挫屈","張力場","加勁板"],0],
-["SS-2007-3","L","彈性／非彈性 LTB 與 Cb 係數",["LTB","非彈性LTB","彈性LTB","Cb"],0],
-["SS-2008-1","L","ASD 容許撓曲應力（St.Venant＋翹曲扭轉）",["ASD","LTB","St.Venant扭轉","翹曲扭轉"],0],
-["SS-2008-3","L","Cb 彎矩梯度與塑性彎矩",["LTB","Cb彎矩梯度","塑性彎矩","結實斷面"],0],
-["SS-2009-3","P","塑性力矩、形狀因子與剪力強度",["塑性力矩","降伏力矩","形狀因子","Vn"],0],
-["SS-2010-4","P","全側撐斷面選擇＋使用性撓度",["斷面選擇","使用性撓度","全側撐","塑性力矩"],0],
-["SS-2011-3","L","端彎矩 Cb 與 X1X2 參數非彈性 LTB",["LTB","Cb","端彎矩","X1X2參數"],0],
-["SS-2012-1","L","非結實斷面 FLB＋LTB 混合檢核",["非彈性LTB","非結實斷面","FLB","Cb"],0],
-["SS-2014-3","L","雙向彎曲＋非彈性 LTB",["LTB","Cb","雙向彎曲","弱軸彎曲"],0],
-["SS-2015-1","L","斷面選擇：LTB、剪力、撓度全檢核",["LTB","剪力強度","使用性撓度","斷面選擇"],1],
-["SS-2016-1","P","寬厚比與結實／非結實斷面判別",["寬厚比","結實斷面","非結實斷面","局部挫屈"],0],
-["SS-2016-4","L","LTB 整體挫屈檢核",["LTB","整體挫屈","撓曲構材"],0],
-["SS-2019-2","C","合成梁 PNA 與正彎矩強度",["合成梁","混凝土版","PNA","正彎矩強度"],0],
-["SS-2021-3","L","耐震緊實斷面與 LTB 斷面選擇",["耐震緊實斷面","LTB","斷面選擇","形狀因子"],0],
-["SS-2023-3","P","非對稱斷面 My／Mp 與塑性中性軸（概念）",["非對稱斷面","降伏彎矩","塑性中性軸","概念題"],0],
-["SS-2024-3","L","強弱軸比較與 Cb 非彈性 LTB",["LTB","Cb","強弱軸比較","弱軸彎曲"],0],
-["SS-2025-1","P","銲接組合結實斷面 φbMn",["結實斷面","塑性彎矩","寬厚比","銲接組合斷面"],0],
-["SS-2025-3","L","Mp／Mr／Lp／Lr LTB 設計曲線",["LTB","塑性彎矩Mp","Mr","Lp","Lr"],1]
+["SS-2002-1","V","弱軸剪力流分布、殘留應力影響與銲條乾燥",["剪力流","弱軸剪力","翼板承剪","殘留應力"],0,"概念題",1,""],
+["SS-2002-2","L","移動集中載重下 ASD 的 Lc／Lu 判區與容許彎矩",["ASD","LTB側扭挫屈","移動集中載重","Lc","Lu"],0,"ASD",1,""],
+["SS-2005-2","C","SRC 梁以塑性應力分佈法求公稱彎矩強度",["SRC鋼骨鋼筋混凝土","塑性應力分佈法","塑性中性軸","合成斷面"],0,"LRFD",1,""],
+["SS-2006-4","V","板梁剪力挫屈成因、加勁板與張力場效應",["板梁","剪力挫屈","張力場效應","加勁板","後挫屈強度"],0,"概念題",1,""],
+["SS-2007-3","L","各種無支撐長度下的 φbMn（LTB 三區段全掃）",["LTB側扭挫屈","彈性LTB","非彈性LTB","X1X2參數","Lp","Lr"],0,"LRFD",1,""],
+["SS-2008-1","L","ASD 的 Fb 公式如何依 L/rT 分段選取",["ASD","容許撓曲應力","St.Venant扭轉","翹曲扭轉","Fb公式選取"],0,"ASD",1,""],
+["SS-2008-3","L","三分點側撐簡支梁反求容許均佈載重",["LTB側扭挫屈","Cb彎矩梯度","塑性彎矩","結實斷面","均佈載重"],0,"LRFD",1,""],
+["SS-2009-3","S","Mp／My 形狀因子、Vn 與弱軸 λc 三小題",["斷面性質","塑性力矩","形狀因子","剪力強度","λc"],0,"LRFD",1,""],
+["SS-2010-4","D","樓版鋼梁選最經濟斷面並檢核 L/360 撓度",["斷面選擇","使用性撓度","全側撐","撓度檢核","L360"],0,"LRFD",1,""],
+["SS-2011-3","L","單端彎矩梁求 Mn 並判斷是否落在彈性 LTB",["LTB側扭挫屈","非彈性LTB","Cb係數","端彎矩","X1X2參數"],0,"LRFD",1,""],
+["SS-2012-1","L","非結實斷面 LTB＋翼板局部挫屈反求最大活載重",["LTB側扭挫屈","非結實斷面","翼板局部挫屈FLB","Fr殘留應力"],0,"LRFD",1,""],
+["SS-2014-3","L","雙向彎曲互制檢核（強軸＋弱軸同時作用）",["LTB側扭挫屈","雙向彎曲","弱軸彎曲","雙向彎曲互制"],0,"LRFD",1,""],
+["SS-2015-1","D","三分點集中力梁：LTB、剪力、撓度三線全檢核",["撓曲構材","LTB側扭挫屈","剪力強度","使用性撓度","圖表判讀"],1,"LRFD",1,""],
+["SS-2016-1","S","以 λp／λr 寬厚比判定斷面為結實或非結實",["寬厚比","結實斷面","非結實斷面","局部挫屈","λp","λr"],0,"ASD",1,""],
+["SS-2016-4","L","LTB 的定義與強弱軸為何只有強軸要考慮",["LTB側扭挫屈","整體挫屈","撓曲構材"],0,"LRFD",1,""],
+["SS-2019-2","C","合成梁依塑性應力分布求正彎矩設計強度",["合成梁","混凝土版","PNA","有效寬度","完全合成"],0,"LRFD",1,""],
+["SS-2021-3","L","耐震緊實斷面梁 Lb=12 m 的 LTB 斷面選擇",["耐震緊實斷面","LTB側扭挫屈","斷面選擇","SN耐震鋼材","SM490"],0,"LRFD",1,""],
+["SS-2023-3","S","非對稱斷面求降伏彎矩與塑性彎矩（等面積法）",["非對稱斷面","降伏彎矩","塑性中性軸","形狀因子","等面積法"],0,"概念題",1,""],
+["SS-2024-3","L","同一斷面強軸 vs 弱軸彎曲的 LTB 對照",["LTB側扭挫屈","Cb係數","強弱軸比較","弱軸彎曲","SN490B"],0,"LRFD",1,""],
+["SS-2025-1","S","銲接組合 H 梁的寬厚比判定與 φbMn",["結實斷面","寬厚比","銲接組合斷面","殘留應力","完全側向支撐"],0,"LRFD",1,""],
+["SS-2025-3","L","熱軋 H 梁 Lb=3 m 的 Lp／Lr 分區與 φbMn",["LTB側扭挫屈","塑性彎矩Mp","彈性限制彎矩Mr","Lp","Lr","熱軋斷面"],1,"LRFD",1,""],
+["SS-2005-4","S","propped cantilever T 型梁崩塌機制求 wu",["塑性分析","崩塌機制","塑性鉸","T型斷面","虛功法"],1,"塑性分析",0,"U2-1 塑性分析"],
+["SS-2019-4","V","蓋板斷續銲：由剪力流求所需銲道長度",["斷續銲接","蓋板","組合斷面","剪力流","水平剪力"],0,"LRFD",0,"U1-4 接合"],
+["SS-2020-2","S","非對稱 H 梁塑性分析求極限均佈載重",["塑性分析","塑性鉸","虛功法","非對稱H型鋼","塑性斷面模數"],0,"塑性分析",0,"U2-1 塑性分析"],
+["SS-2020-4","V","梁腹板四鈑續接：螺栓尺寸與續接鈑厚設計",["腹板續接","四鈑接合","A490螺栓","容許剪應力"],0,"ASD",0,"U1-4 接合"]
 ];
 function renderQ(cat){
   const box=document.getElementById('qlist');box.innerHTML='';
-  Q.filter(q=>cat==='ALL'||q[1]===cat).forEach(q=>{
-    const d=document.createElement('div');d.className='qrow';d.style.borderLeftColor=CATC[q[1]];
-    d.innerHTML=`<a href="../index.html#md=raw/solutions/${q[0]}/${q[0]}.md&t=${q[0]}" target="_blank">${q[0]}</a>
+  const sel=Q.filter(q=>{
+    if(cat==='ALL')return true;
+    if(cat==='PRI')return q[6]===1;
+    if(cat==='SEC')return q[6]===0;
+    return q[1]===cat;});
+  sel.sort((a,b)=>a[0].localeCompare(b[0])).forEach(q=>{
+    const d=document.createElement('div');
+    d.className='qrow'+(q[6]?'':' sec');d.style.borderLeftColor=CATC[q[1]];
+    d.innerHTML=`<a href="problems-view/${q[0]}.html" target="_blank">${q[0]}</a>
+    <span class="meta" style="background:${MC[q[5]]}">${q[5]}</span>
+    ${q[6]?'':`<span class="meta" style="background:#90a4ae">副・${q[7]}</span>`}
     <span class="sum">${q[2]}</span><span class="tags">${q[3].join('・')}</span>
-    <span class="ico" title="解析/互動圖/驗證">📄${q[4]?' 📊':''} ✅</span>`;
+    <span class="ico" title="解析／互動圖／已驗證">📄${q[4]?' 📊':''} ✅</span>`;
     box.appendChild(d);});
 }
 function filterQ(cat,btn){renderQ(cat);
-  if(btn){document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
-  else{document.getElementById('s5').scrollIntoView({behavior:'smooth'});
-    document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
-    const idx={ALL:0,L:1,P:2,C:3,S:4}[cat];document.querySelectorAll('.fbtn')[idx].classList.add('on');}
+  const order=['ALL','L','S','D','C','V','PRI','SEC'];
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  const idx=order.indexOf(cat);if(idx>=0)document.querySelectorAll('.fbtn')[idx].classList.add('on');
+  if(!btn)document.getElementById('b5').scrollIntoView({behavior:'smooth'});
 }
 renderQ('ALL');
-const byYear={};Q.forEach(q=>{const y=q[0].split('-')[1];(byYear[y]=byYear[y]||{L:0,P:0,C:0,S:0})[q[1]]++;});
+// ---- charts: 主考點 21 題 ----
+const CK=['L','S','D','C','V'];
+const PQ=Q.filter(q=>q[6]===1);
+const byYear={};PQ.forEach(q=>{const y=q[0].split('-')[1];
+  if(!byYear[y]){byYear[y]={};CK.forEach(c=>byYear[y][c]=0);}
+  byYear[y][q[1]]++;});
 function drawBar(){
   const cv=document.getElementById('cvBar'),ctx=cv.getContext('2d');
   const years=Object.keys(byYear).sort(),W=cv.width,H=cv.height,bw=(W-60)/years.length;
   const max=Math.max(...years.map(y=>Object.values(byYear[y]).reduce((a,b)=>a+b,0)));
-  ctx.font='10px sans-serif';ctx.fillStyle='#78909c';
-  for(let i=0;i<=max;i++){const yy=H-30-(H-60)*i/max;ctx.fillText(i,8,yy+3);ctx.strokeStyle='#eceff1';ctx.beginPath();ctx.moveTo(24,yy);ctx.lineTo(W-10,yy);ctx.stroke();}
+  ctx.font='10px sans-serif';
+  for(let i=0;i<=max;i++){const yy=H-30-(H-60)*i/max;ctx.fillStyle='#78909c';ctx.fillText(i,8,yy+3);ctx.strokeStyle='#eceff1';ctx.beginPath();ctx.moveTo(24,yy);ctx.lineTo(W-10,yy);ctx.stroke();}
   years.forEach((y,i)=>{let acc=0;
-    ['L','P','C','S'].forEach(c=>{const v=byYear[y][c];if(!v)return;
+    CK.forEach(c=>{const v=byYear[y][c];if(!v)return;
       const h=(H-60)*v/max;ctx.fillStyle=CATC[c];
       ctx.fillRect(30+i*bw,H-30-acc-h,bw*0.7,h);acc+=h;});
     ctx.fillStyle='#78909c';ctx.save();ctx.translate(30+i*bw+bw*0.35,H-18);ctx.rotate(-0.7);ctx.fillText(y.slice(2),0,0);ctx.restore();});
 }
 function drawPie(){
   const cv=document.getElementById('cvPie'),ctx=cv.getContext('2d');
-  const cnt={L:0,P:0,C:0,S:0};Q.forEach(q=>cnt[q[1]]++);
-  const tot=Q.length,cx=cv.width*0.32,cy=cv.height/2,r=Math.min(cx,cy)-16;let a=-Math.PI/2;
-  Object.keys(cnt).forEach(c=>{const frac=cnt[c]/tot,a2=a+frac*2*Math.PI;
+  const cnt={};CK.forEach(c=>cnt[c]=0);PQ.forEach(q=>cnt[q[1]]++);
+  const tot=PQ.length,cx=cv.width*0.26,cy=cv.height/2,r=Math.min(cx,cy)-16;let a=-Math.PI/2;
+  CK.forEach(c=>{const frac=cnt[c]/tot,a2=a+frac*2*Math.PI;
     ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a,a2);ctx.closePath();ctx.fillStyle=CATC[c];ctx.fill();a=a2;});
   ctx.font='12px sans-serif';let ly=40;
-  Object.keys(cnt).forEach(c=>{ctx.fillStyle=CATC[c];ctx.fillRect(cv.width*0.62,ly-9,12,12);
-    ctx.fillStyle='#263238';ctx.fillText(`${CATN[c]}：${cnt[c]} 題（${Math.round(cnt[c]/tot*100)}%）`,cv.width*0.62+18,ly);ly+=26;});
+  CK.forEach(c=>{ctx.fillStyle=CATC[c];ctx.fillRect(cv.width*0.54,ly-9,12,12);
+    ctx.fillStyle='#263238';ctx.fillText(`${CATN[c]}：${cnt[c]} 題（${Math.round(cnt[c]/tot*100)}%）`,cv.width*0.54+18,ly);ly+=26;});
 }
 drawBar();drawPie();
-function calcLTB(){
-  const Mp=+document.getElementById('iMp').value,Mr=+document.getElementById('iMr').value,
-        Lp=+document.getElementById('iLp').value,Lr=+document.getElementById('iLr').value,
-        Lb=+document.getElementById('iLb').value,Cb=+document.getElementById('iCb').value;
-  let Mn,zone;
-  if(Lb<=Lp){Mn=Mp;zone='塑性區（Lb ≤ Lp）：Mn = Mp';}
-  else if(Lb<=Lr){
-    const raw=Cb*(Mp-(Mp-Mr)*(Lb-Lp)/(Lr-Lp));
-    Mn=Math.min(raw,Mp);
-    zone=`非彈性 LTB（Lp < Lb ≤ Lr）：內插值 ${raw.toFixed(2)}${raw>Mp?' → 取上限 Mp':''}`;
-  }else{
-    const Mcr=Cb*Mr*Lr/Lb; // 近似示意：彈性段以 Mr·Lr/Lb 雙曲遞減示意
-    Mn=Math.min(Mcr,Mp);
-    zone=`彈性 LTB（Lb > Lr）：近似 Mcr ≈ Cb·Mr·Lr/Lb = ${Mcr.toFixed(2)}（實際請用 Mcr 全式）`;
-  }
-  const o=document.getElementById('calcOut');o.style.display='block';
-  o.innerHTML=`${zone}<br><b>Mn = ${Mn.toFixed(2)} tf·m，φbMn = 0.90 × Mn = ${(0.9*Mn).toFixed(2)} tf·m</b>`;
-}
 </script>
 </body>
 </html>

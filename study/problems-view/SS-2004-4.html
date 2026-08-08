@@ -14,7 +14,7 @@ body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans
   background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
 header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
 header h1{margin:0;font-size:1.15em}
-header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+header .lect{display:inline-block;margin-top:10px;margin-left:8px;font-size:.82em;color:#4a148c;background:#f3e5f5;border:1px solid #ce93d8;padding:5px 14px;border-radius:16px;text-decoration:none}header .lect:hover{background:#fff;color:#4a148c}header .quick{display:inline-block;margin-top:10px;font-size:.82em;color:#0d47a1;background:#e3f2fd;border:1px solid #90caf9;padding:5px 14px;border-radius:16px;text-decoration:none}header .quick:hover{background:#fff;color:#0d47a1}header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
   padding:4px 12px;border-radius:14px;text-decoration:none}
 main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
 h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
@@ -28,7 +28,7 @@ blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;paddin
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>SS-2004-4 題目解析</h1><a class="back" href="javascript:history.back()">&#8592; 返回講義</a></header>
+<header><h1>SS-2004-4 題目解析</h1><a class="quick" href="../study-SS-U1-3.html" title="SS-U1-3 梁柱桿件 命題分析（速查頁）">&#128269; U1-3 速查頁</a><a class="lect" href="../lecture-SS-U1-3.html" title="SS-U1-3 梁柱桿件 觀念講義">&#128218; U1-3 梁柱桿件 講義</a></header>
 <main><h1>考題編號：SS-2004-4</h1>
 <p><strong>主分類：</strong> <code>SS-U1-3</code> 梁柱桿件<br />
 <strong>副分類：</strong> （無）<br />
@@ -535,4 +535,20 @@ $$\frac{f_a}{F_a} = \frac{0.02396}{0.527} = 0.0455 < 0.15$$</p>
 <li><strong>減小作用荷載或增設斜撐</strong>：使構材軸線更接近垂直，減少橫向分量</li>
 </ol></main>
 <footer>來源：raw/solutions/SS-2004-4/SS-2004-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+<script>
+/* 跟隨來源單元：若由 study-/lecture-/formula-given-SS-Un-m.html 點入，
+   兩顆按鈕改指向「來源那個單元」；直接開檔或來源不明時，維持本題主分類單元。 */
+(function(){
+  var UN={'SS-U1-1':'拉力及壓力桿件','SS-U1-2':'梁桿件','SS-U1-3':'梁柱桿件',
+          'SS-U1-4':'接合之分析與設計','SS-U2-3':'設計規範對施工之要求'};
+  var m=(document.referrer||'').match(/(?:study|lecture|formula-given)-(SS-U\d-\d)\.html/);
+  if(!m||!UN[m[1]])return;
+  var u=m[1],code=u.replace('SS-','');
+  var q=document.querySelector('header .quick'),l=document.querySelector('header .lect');
+  if(q){q.href='../study-'+u+'.html';q.title=u+' '+UN[u]+' 命題分析（速查頁）';
+        q.innerHTML='\uD83D\uDD0D '+code+' 速查頁';}
+  if(l){l.href='../lecture-'+u+'.html';l.title=u+' '+UN[u]+' 觀念講義';
+        l.innerHTML='\uD83D\uDCDA '+code+' '+UN[u]+' 講義';}
+})();
+</script>
 </body></html>

@@ -1733,7 +1733,7 @@
       "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
-      "designMethod": "LRFD",
+      "designMethod": "概念題",
       "verificationStatus": "verified",
       "tags": [
         "整體挫屈",
@@ -1754,7 +1754,7 @@
       "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
-      "designMethod": "LRFD",
+      "designMethod": "概念題",
       "verificationStatus": "verified",
       "tags": [
         "高拉力螺栓",
@@ -1793,7 +1793,7 @@
       "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
-      "designMethod": "LRFD",
+      "designMethod": "概念題",
       "verificationStatus": "verified",
       "tags": [
         "板梁",
@@ -1812,7 +1812,7 @@
       "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
-      "designMethod": "LRFD",
+      "designMethod": "概念題",
       "verificationStatus": "verified",
       "tags": [
         "箱型柱",

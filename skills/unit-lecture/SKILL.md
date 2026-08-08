@@ -1,13 +1,6 @@
 ---
-name: unit-lecture
-description: >
-  為六科考試知識庫（exam-wiki-SS/RC/SA/SD/SM/MM）的某個命題大綱單元產生
-  「理解導向」觀念講義，輸出 HTML + 可列印 PDF。
-  當使用者說「生成 XX-Un-m 講義」、「幫我做這單元的觀念講義」、
-  「我要在練這單元考題前先懂原理」、「不要死記公式的講義」、「unit-lecture」，
-  或指名某科某單元要講義／教材／原理說明時，必須使用此 skill。
-  內容以物理直覺與圖解為主軸，每條規範公式都追溯來源，
-  並在最後精選最具代表性的 N 題供時間有限者練習。
+name: "unit-lecture"
+description: "為六科考試知識庫（exam-wiki-SS/RC/SA/SD/SM/MM）的某個命題大綱單元產生「理解導向」觀念講義，輸出 HTML + 可列印 PDF。當使用者說「生成 XX-Un-m 講義」、「幫我做這單元的觀念講義」、「我要在練這單元考題前先懂原理」、「不要死記公式的講義」、「unit-lecture」，或指名某科某單元要講義／教材／原理說明時，必須使用此 skill。內容以物理直覺與圖解為主軸，每條規範公式都追溯來源，並在最後精選最具代表性的 N 題供時間有限者練習。"
 ---
 
 # unit-lecture — 單元觀念講義產生器
@@ -26,14 +19,18 @@ description: >
 | 代號 | 科目 | 資料夾 |
 |------|------|--------|
 | SS | 鋼結構設計 | `exam-wiki-SS` |
-| RC | 鋼筋混凝土設計 | `exam-wiki-RC` |
-| SA | 結構分析 | `exam-wiki-SA` |
-| SD | 結構動力學／耐震設計 | `exam-wiki-SD` |
-| SM | 材料力學 | `exam-wiki-SM` |
-| MM | 工程數學／力學 | `exam-wiki-MM` |
+| RC | 鋼筋混凝土設計與預力混凝土設計 | `exam-wiki-RC` |
+| SA | 結構學 | `exam-wiki-SA` |
+| SD | 結構動力分析與耐震設計 | `exam-wiki-SD` |
+| SM | 土壤力學與基礎設計 | `exam-wiki-SM` |
+| MM | 材料力學 | `exam-wiki-MM` |
+
+> 科目全名一律以 `raw/json/syllabus_taxonomy.json` 為準，**不要憑記憶填**。
+> 這張表曾把 SM 誤寫成「材料力學」、MM 誤寫成「工程數學／力學」——
+> 實際上 SM 是土壤力學與基礎設計、MM 才是材料力學，兩者互換會導向錯誤的資料夾。
 
 六科資料夾結構相同。單元代號格式 `XX-Un-m`（U＝單元號、m＝子項號），
-可在該科 `CLAUDE.md` 的「命題大綱分類」表查到。
+可在該科 `CLAUDE.md` 的「命題大綱分類」表或 `syllabus_taxonomy.json` 查到。
 
 ---
 
@@ -43,7 +40,7 @@ description: >
 2. 讀 `CLAUDE.md` 確認單元代號與名稱。
 3. 確認 `wiki/topics/XX-Un-m.md` 存在（該單元的題目清單）。
 
-**立刻用 TaskCreate 建立任務清單**（採集 → 撰寫 → HTML → PDF → 精選題 → 驗證）。
+**立刻用 TaskCreate 建立任務清單**（採集 → 撰寫 → HTML → 題號連結渲染 → PDF → 精選題 → 驗證）。
 
 ---
 
@@ -215,7 +212,7 @@ print('\n未涵蓋且出現 >=2 次的標籤：',
 - 標籤語彙有同義詞（如「對位圖 / nomograph」）與符號標籤（如 `λc`、`Fcr`），
   raw 覆蓋率會低估。**改以「考點群」報告涵蓋度**，並誠實列出未涵蓋的群。
 
-**每題要寫出：** 題號（連到 `../wiki/problems/`）、考年、**為什麼選它**、讀本講義哪幾節、
+**每題要寫出：** 題號（連到渲染頁面，見 Step 7「題號連結」）、考年、**為什麼選它**、讀本講義哪幾節、
 **做完要能回答的問題**。最後附「練這幾題的正確方法」與 1–2 題候補。
 
 ---
@@ -318,10 +315,11 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 | `study-XX-Un-m.html` | `study` 指令產的速查頁 | 考前總複習 |
 | `XX-Un-m_<單元名>.pdf` | 使用者自備的課堂 Keynote／投影片 | 課堂 |
 | `lecture-XX-Un-m.html` / `.pdf` | 本 skill 產出 | 練題前 |
+| `formula-given-XX-Un-m.html` / `.pdf` | `unit-formula-map` skill 產出的「給／背分界」 | 排讀書計畫時 |
 
-**三份教材如果彼此不連，使用者會忘記另外兩份存在。** 產出講義後一定要做雙向連結：
+**這幾份教材如果彼此不連，使用者會忘記其他幾份存在。** 產出講義後一定要做雙向連結：
 
-1. **講義 → 其他教材**：在 `<nav>` 尾端加一組灰色連結（速查頁、Keynote、本頁 PDF）。
+1. **講義 → 其他教材**：在 `<nav>` 尾端加一組灰色連結（速查頁、Keynote、給背分界、本頁 PDF）。
    放在 `<nav>` 裡是刻意的 —— `build_pdf.py` 會把 `<nav>` 整段移除，
    列印版不會出現連不到的本機連結。
 
@@ -339,17 +337,145 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 3. 先 `ls study/` 確認哪些檔案真的存在，**不要連到不存在的檔案**。
    Keynote PDF 的檔名由使用者自訂，必須實際去看，不能用推測的。
 
-### 題號連結
+### 題號連結：連到渲染頁面，不要連到 .md（必做）
 
-寫完後把表格裡的題號轉成連結：
+**不要**把題號連到 `../wiki/problems/XX-YYYY-N.md` 或直接連到 `raw/solutions/.../*.md`。
+使用者點開 `.md` 只會看到瀏覽器顯示的純文字（或觸發下載），公式、表格、圖片全部沒有渲染，體驗很差。
+
+**也不要**以 `wiki/problems/` 作為內容來源 —— 它是 `ingest` 壓縮過的精簡版（通常只有原始解析的 1/2～1/3 長度），
+而且**不含圖片**（圖片檔實際只放在 `raw/solutions/XX-YYYY-N/` 底下）。
+`raw/solutions/XX-YYYY-N/XX-YYYY-N.md` 才是 CLAUDE.md 定義的「解題內容唯一來源」，內容最完整、圖片同資料夾可直接取用。
+
+**正確做法：** 為每個被講義引用的題號，從 `raw/solutions/` 產生一份獨立的渲染 HTML
+（`study/problems-view/XX-YYYY-N.html`），再把講義裡的題號連到那份渲染頁（新分頁開啟）。
+這份 HTML 不是知識庫正本，只是顯示層，可重複產生、不影響 `raw/` 或 `wiki/`。
+
+**Step A — 先確認 markdown 套件、蒐集本講義引用到的所有題號：**
+
+```bash
+pip install markdown --break-system-packages -q
+```
+
+```bash
+cd <REPO> && grep -oP 'XX-[0-9]{4}-[0-9]+(?=\.md)' study/lecture-XX-Un-m.html | sort -u > /tmp/ids.txt
+cat /tmp/ids.txt   # 檢查有沒有漏題、有沒有多餘題號
+```
+
+**Step B — `render_problems.py`（渲染 raw/solutions → study/problems-view/，六科通用，只需改 `REPO`）：**
+
+```python
+# 用法: python3 render_problems.py <REPO> <ids_file>
+import re, os, sys
+import markdown
+
+REPO, IDS_FILE = sys.argv[1], sys.argv[2]
+OUT_DIR = os.path.join(REPO, "study", "problems-view")
+os.makedirs(OUT_DIR, exist_ok=True)
+
+TEMPLATE = """<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{qid} — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\\\(',right:'\\\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>{qid} 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main>{body}</main>
+<footer>來源：raw/solutions/{qid}/{qid}.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>"""
+
+def convert(qid):
+    src = os.path.join(REPO, "raw", "solutions", qid, f"{qid}.md")
+    if not os.path.exists(src):
+        print("MISSING", qid); return
+    text = open(src, encoding="utf-8").read()
+
+    # 保護 $$...$$ 與 $...$，避免被 markdown 誤處理
+    stash_list = []
+    def stash(m):
+        stash_list.append(m.group(0)); return f"@@MATH{len(stash_list)-1}@@"
+    text = re.sub(r"\$\$.+?\$\$", stash, text, flags=re.S)
+    text = re.sub(r"(?<!\$)\$(?!\$).+?(?<!\$)\$(?!\$)", stash, text, flags=re.S)
+
+    # 圖片：裸檔名（無 /）代表跟 .md 同資料夾，換算成相對 study/problems-view/ 的路徑；
+    # 已經帶路徑（含 /）的連結視為已經正確，不要再加前綴（避免重複拼接）
+    text = re.sub(r"\]\(([^/)]+\.(?:png|jpg|jpeg))\)",
+                  lambda m: f"](../../raw/solutions/{qid}/{m.group(1)})", text)
+
+    # 逐行檢查：緊接在段落後、沒有空行分隔的清單，補一個空行，
+    # 否則 python-markdown／CommonMark 不會把它辨識成清單
+    lines = text.split("\n"); fixed = []
+    for line in lines:
+        is_li = re.match(r"^\s*([-*+]|\d+\.)\s", line)
+        prev = fixed[-1] if fixed else ""
+        prev_is_li = re.match(r"^\s*([-*+]|\d+\.)\s", prev)
+        if is_li and prev.strip() and not prev_is_li:
+            fixed.append("")
+        fixed.append(line)
+    text = "\n".join(fixed)
+
+    body = markdown.markdown(text, extensions=["tables", "fenced_code", "sane_lists", "nl2br"])
+    body = re.sub(r"@@MATH(\d+)@@", lambda m: stash_list[int(m.group(1))], body)
+
+    # [[wiki-link]] 在渲染頁沒有連結目標（連到 wiki/concepts、wiki/methods），
+    # 顯示成一個小標籤即可，不要留原始雙中括號
+    body = re.sub(r"\[\[([^\]]+)\]\]",
+        r'<span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;'
+        r'font-size:.88em;font-weight:600">\1</span>', body)
+
+    out = TEMPLATE.format(qid=qid, body=body)
+    open(os.path.join(OUT_DIR, f"{qid}.html"), "w", encoding="utf-8").write(out)
+    print("OK", qid)
+
+for qid in [l.strip() for l in open(sys.argv[2]) if l.strip()]:
+    convert(qid)
+```
+
+跑法：`python3 render_problems.py <REPO> /tmp/ids.txt`
+
+**Step C — 把講義裡的題號連結改指到渲染頁：**
 
 ```python
 import re
+path = '<REPO>/study/lecture-XX-Un-m.html'
 s = open(path, encoding='utf-8').read()
-s, n = re.subn(r'<td>(XX-\d{4}-\d)</td>',
-    lambda m: f'<td><a class="qlink" href="../wiki/problems/{m.group(1)}.md">{m.group(1)}</a></td>', s)
+s, n = re.subn(r'href="\.\./wiki/problems/(XX-\d{4}-\d+)\.md"',
+    r'href="problems-view/\1.html" target="_blank"', s)
+print('replaced', n)
 open(path, 'w', encoding='utf-8').write(s)
 ```
+
+若題號是新產生（第一次寫連結，講義裡原本只有純文字題號），直接輸出：
+`<a class="qlink" href="problems-view/{qid}.html" target="_blank">{qid}</a>`。
+
+**驗證（不可省）：**
+
+- 每個渲染出的 `.html` 都要有對得上的 `<img` 數量（用 `raw/solutions/<id>/` 底下 `*.png` 數量核對），
+  沒有圖片的題目 0 張是正常的，不算錯誤。
+- `grep -l "@@MATH" study/problems-view/*.html` 應該**沒有輸出**（代表數學式全部還原）。
+- 抽 2–3 題檢查圖片路徑真實存在（`test -f <算出來的絕對路徑>`）。
+- 講義裡不應該再有任何 `href=".*\.md"` 殘留：`grep -c '\.md"' study/lecture-XX-Un-m.html` 應為 0。
 
 ---
 
@@ -481,9 +607,11 @@ print('PDF ->', PDF)
    確認無缺漏、無誤植、考年正確。
 3. **數值核對**：把講義裡所有算出來的數字（範例、常數、交界點）用 python 重算一次。
 4. **交叉引用**：檢查文中「見 §x.y」的節號在改版後仍然存在。
-5. **教材互連**：講義 nav 的三個連結、速查頁的三顆按鈕都指向真實存在的檔案
+5. **教材互連**：講義 nav 的連結、速查頁的按鈕都指向真實存在的檔案
    （`ls study/` 逐一核對），且 PDF 版沒有殘留 nav。
-6. 用 `mcp__cowork__present_files` 交付 HTML 與 PDF。
+6. **題號連結渲染**：依 Step 7「題號連結」小節的驗證清單逐項核對
+   （無 `@@MATH` 殘留、圖片路徑存在、無 `.md` 連結殘留）。
+7. 用 `mcp__cowork__present_files` 交付 HTML 與 PDF。
 
 ---
 
@@ -498,6 +626,10 @@ print('PDF ->', PDF)
 | 5 | bash 逾時 | 單次上限 45 秒。npm 與 pip 分開執行，不要串在一起 |
 | 6 | 流程圖文字跑出方框 | 中文字寬≈font-size，先估寬再設 viewBox；文字寧可分行 |
 | 7 | 掛載資料夾內 `rm` 失敗（Operation not permitted） | 別在掛載點做 npm 的清除；暫存一律用 `/tmp` |
+| 8 | 題號連到 `wiki/problems/*.md` 或 `raw/solutions/*.md`，使用者點開只看到未渲染純文字 | 改產生 `study/problems-view/*.html`（見 Step 7「題號連結」），連結指向渲染頁並 `target="_blank"` |
+| 9 | 渲染題目頁圖片破圖或路徑重複拼接（如 `.../SS-2002-3/../../raw/solutions/SS-2002-3/...`） | `wiki/problems/*.md` 本身不含圖片、且部分連結已帶相對路徑；一律以 `raw/solutions/<id>/<id>.md` 為來源，圖片路徑替換只處理「裸檔名（無 `/`）」，已帶路徑的連結不要重複加前綴 |
+| 10 | markdown 清單沒被辨識、擠在同一段落裡 | 原始 `.md` 常見「一行敘述後緊接 `- 項目`、中間沒空行」，python-markdown 需要空行才辨識清單起點；轉換前先逐行掃描補空行 |
+| 11 | 科目代號對到錯的資料夾（SM/MM 互換） | 舊版適用科目表把 SM 寫成材料力學、MM 寫成工程數學。一律查 `raw/json/syllabus_taxonomy.json` |
 
 ---
 
@@ -506,3 +638,4 @@ print('PDF ->', PDF)
 1. 一句話交代成果與檔案位置，**不要複述講義內容**。
 2. 主動指出這份講義**沒涵蓋**什麼、以及你認為還可以再加強的地方 —— 誠實的自我批評比推銷有價值。
 3. 詢問是否要對同科其他單元或其他科目比照辦理。
+

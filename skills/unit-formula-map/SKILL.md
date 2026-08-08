@@ -258,7 +258,35 @@ KaTeX auto-render 只設定了 `$$…$$`（顯示）與 `\(…\)`（行內）。
 
 ### 導覽列
 
-放 `lecture-XX-Un-m.html`、`study-XX-Un-m.html` 的互連按鈕，以及 `🖨️ 本頁 PDF`。
+順序固定：**頁內錨點 → 同單元的另兩份教材 → 其他單元的給／背分界 → 本頁 PDF**。
+
+```html
+<nav>
+  <a href="#how">判定方法</a>
+  <a href="#cards">公式清單</a>        <!-- 全為說明題的單元寫「規定清單」 -->
+  <a href="#matrix">逐年證據表</a>
+  <a href="#strategy">背誦策略</a>
+  <a href="lecture-XX-Un-m.html">▶ Un-m 觀念講義</a>
+  <a href="study-XX-Un-m.html">▶ Un-m 命題分析</a>
+  <!-- 其他已有 formula-given 的單元，逐一列出，標籤一律「▶ Un-m 給／背分界」 -->
+  <a href="formula-given-XX-Un-k.html">▶ Un-k 給／背分界</a>
+  <a href="formula-given-XX-Un-m.pdf" target="_blank"
+     style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+</nav>
+```
+
+**三條硬規則**（都是實際踩過的）：
+
+- `study-XX-Un-m.html` 的按鈕一律寫 **「▶ Un-m 命題分析」**。
+  不要寫「深度複習」或「速查頁」——那是 2026-08 以前那版七區段舊頁的名稱，該版已被
+  `unit-exam-intel` 重構為只回答「這個單元考什麼」的命題情報頁。
+- 指向**其他單元**的 `formula-given-` 按鈕，標籤必須完整寫成 **「▶ Un-m 給／背分界」**，
+  不可只寫「▶ Un-m」——只寫代號時使用者看不出這顆按鈕會去哪一種頁面。
+- **`🖨️ 本頁 PDF` 一定放最後一顆。** 新增其他單元的按鈕時要插在它前面；
+  過去多次批次追加時直接 append 到 `</nav>` 前，造成 PDF 按鈕卡在中間、
+  後面又冒出幾顆同類按鈕。
+
+新增一個單元的 `formula-given-` 頁時，**其他單元的既有頁面也要補上指向新頁的按鈕**（雙向互連）。
 
 ---
 

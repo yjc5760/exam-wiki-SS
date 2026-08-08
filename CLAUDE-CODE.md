@@ -329,7 +329,7 @@ SD-U3（耐震設計）：XX%
 
 **觸發語句：**
 - `study SS-U2`（單元層級，Cowork 直接執行）
-- `study SS-U1-2`（子項層級深度複習，Cowork 直接執行）
+- `study SS-U1-2`（子項層級**命題分析**，改用 `unit-exam-intel` skill）
 
 **用途：** 彙整某單元／子項所有考題、重點公式、常見陷阱，產生帶圖表的互動 HTML 複習導覽頁面，存入 `study/` 目錄。
 

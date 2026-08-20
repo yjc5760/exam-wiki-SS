@@ -212,6 +212,7 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-08-09 | 修正 `study/formula-given-SS-U1-3.html`「P-M 互制圖的三個折點座標」的 `eq`：`(1/9, 0.2)` → **`(0.9, 0.2)`**（`.pdf` 尚未重新產生，仍含舊值） | 該條目自身的 `meta` 推導本來就是對的（`Pu/φcPn=0.2` 代入 H1-1a 得 `x=9/8×0.8=0.9`、代入 H1-1b 得 `x=1−0.1=0.9`），`1/9` 顯係誤把 H1-1a 的係數 `8/9` 寫成折點座標。由建置 U1-3 記憶片時交叉驗算發現 |
 | 2026-08-07 | 修正 `skills/unit-lecture/SKILL.md` 適用科目表：SM 由「材料力學」改為「土壤力學與基礎設計」、MM 由「工程數學／力學」改為「材料力學」、RC/SA/SD 補為命題大綱全名；並同步專案版與已安裝版（專案版原本落後，缺 `problems-view` 渲染整節） | SM 與 MM 的科目名互換會導向錯誤的資料夾；六科名稱應以 `raw/json/syllabus_taxonomy.json` 為唯一依據 |
 | 2026-07-25 | **規則 1 例外擴充**：`raw/` 唯讀的例外從「`question_index.json`」擴充為「`question_index.json` + `raw/solutions/methods/`」，並訂出三項修改條件（驗算／同步 wiki／記 log） | `methods/` 是 `wiki/methods/` 的 compile 來源，只改 wiki 副本會被 `compile-all` 蓋回；公式勘誤需能根治。個別題目解析 `raw/solutions/SS-YYYY-N/` 仍受完整保護 |
+| 2026-08-20 | 新增 `skills/subject-frequency-map.skill`（六科通用「全科出題頻率熱圖」產生器，附 `scripts/build_frequency.py`）；產生 `study/frequency-SS.html` | `unit-exam-intel` 一次只看一個子項，看不到整科全貌，無法回答「整科該從哪裡開始讀」。本頁把 98 題攤在 7 子項 × 24 考年的格子上，只談頻率與時間分配（押題仍看各子項命題分析頁的「命題風險排序」）。全流程無人工判斷步驟，題庫更新後可無腦重跑。同輪由對帳揪出 8 題 `primaryTopicId` 指向他科 taxonomy（`SD-U3-1` × 5、`MM-U1-1` × 3），未畫進熱圖，待修 |
 
 ---
 

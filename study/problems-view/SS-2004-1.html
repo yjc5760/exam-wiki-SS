@@ -31,142 +31,61 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>主分類：</strong> <code>SS-U2-3</code> 設計規範對施工之要求<br />
 <strong>副分類：</strong> （無）<br />
 <strong>設計法：</strong> 概念題<br />
-<strong>標籤：</strong> <code>高強度螺栓</code> <code>施工規定</code> <code>摩阻型接合</code> <code>螺栓重複使用</code> <code>板面密接</code> <code>孔位校正</code></p>
+<strong>標籤：</strong> <code>高強度螺栓</code> <code>施工規範</code> <code>摩阻型接合</code> <code>螺栓重複使用</code> <code>板面密接</code> <code>墊片</code> <code>孔位校正</code> <code>沖梢</code> <code>鉸孔</code></p>
 <hr />
-<h2>1. 原始題目重述</h2>
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>請簡要說明高強度螺栓於施工作業時，遇到下列情況，如何處理？</p>
 <p><strong>(一)</strong> 當以高強度螺栓接合之板面無法平整密接時，如何預先處理？（9 分）</p>
 <p><strong>(二)</strong> 當螺栓安裝時，如不能以手將螺栓穿入孔內時，如何校正？（9 分）</p>
 <p><strong>(三)</strong> 已使用過之高強度螺栓，若重新拆卸後是否可以重覆使用，其原因何在？（7 分）</p>
+<p>（本題無附圖。）</p>
 <hr />
-<h2>2. 考題核心精神與出題者意圖</h2>
-<p>本題測驗<strong>高強度螺栓摩阻型（Friction Type）接合</strong>在實際施工中的操作規定與工程判斷。出題者以「三種施工困境」考驗考生：</p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題三個子題<strong>全部可以直接對應到「鋼構造建築物鋼結構施工規範」第五章「高強度螺栓接合」的條文</strong>，是一題徹頭徹尾的規範記憶題。出題者以三種施工困境考驗考生是否讀過規範原文：</p>
 <ol>
-<li>板面不平整（Faying surface不密合）→ 影響夾緊力與摩擦係數</li>
-<li>螺栓無法徒手穿孔（孔位偏差）→ 孔位校正方法與限制</li>
-<li>螺栓重複使用（Bolt reuse）→ 扭力係數K值失效問題</li>
+<li><strong>板面不平整（faying surface 不密接）</strong> → 夾緊力無法正確建立於接觸面</li>
+<li><strong>螺栓無法徒手穿孔（孔位偏差）</strong> → 校正手段有先後順序與明確禁止事項</li>
+<li><strong>螺栓重複使用（bolt reuse）</strong> → 規範直接寫「不得再使用」，關鍵在「<strong>為什麼</strong>」</li>
 </ol>
-<p>核心觀念：高強度螺栓的設計強度建立在「充分夾緊力（pretension）＋乾淨接觸面（faying surface）」的基礎上，任何破壞此基礎的情況均不可接受。</p>
+<p><strong>核心觀念：</strong> 高強度螺栓（尤其摩阻型）的設計強度建立在</p>
+<p>$$R_n \propto \mu \cdot T_b \cdot n_s$$</p>
+<p>——<strong>摩擦係數 $\mu$（接觸面狀態）× 預拉力 $T_b$（鎖緊品質）× 剪力面數 $n_s$</strong>。三個子題正好各打掉這個式子的一個變數：板面有縫 → $T_b$ 沒有真正壓在接觸面上；孔位偏差強行敲入 → 孔壁受損、$T_b$ 失準；螺栓重複使用 → $T_b$ 不可控。</p>
+<p><strong>答題要訣：</strong> 每一小題都要「<strong>規範怎麼規定（含數字）＋ 為什麼這樣規定（力學理由）</strong>」兩段都寫。只寫其一，最多一半分數。</p>
 <hr />
-<h2>3. 詳細解答</h2>
-<h3>3.1 板面無法平整密接（9 分）</h3>
-<p><strong>問題本質：</strong> 摩阻型接合的設計強度來自板面之間的摩擦力，板面若有間隙（gap），鎖緊螺栓時板材彎曲，夾緊力（pretension）無法正確建立於接觸面上，導致實際夾緊力低於設計值。</p>
-<p><strong>處理方法：</strong></p>
-<p><strong>① 判斷間隙大小：</strong></p>
-<table>
-<thead>
-<tr>
-<th>間隙大小</th>
-<th>處理方式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>≤ 2 mm（約 1/16 英吋）</td>
-<td>一般可不處理，直接鎖緊</td>
-</tr>
-<tr>
-<td>2 mm ＜ 間隙 ≤ 6 mm</td>
-<td>填入塞板（shim / filler plate）以補平</td>
-</tr>
-<tr>
-<td>＞ 6 mm</td>
-<td>需修整板材或重新製作，不可僅塞板處理</td>
-</tr>
-</tbody>
-</table>
-<p><strong>② 塞板（Shim）使用規定：</strong></p>
-<ul>
-<li>塞板材料應與母材相同或相容，並做相同的表面處理（清潔摩擦面，達規定之滑動係數）</li>
-<li>塞板厚度不可超過接合設計所允許之值</li>
-<li>使用超過 6 mm 厚之單一塞板時，接合設計強度須酌予折減（因增加板件翹曲風險）</li>
-<li>塞板本身亦需以螺栓貫通（不可懸空）</li>
-</ul>
-<p><strong>③ 表面處理原則：</strong></p>
-<ul>
-<li>填角銲縫、油漆、氧化皮（mill scale）、鐵鏽、油脂等均可能影響摩擦係數</li>
-<li>接觸面（faying surface）須依規範清潔至規定的表面類別（Class A、Class B 等）</li>
-</ul>
-<p><strong>結論：</strong> 應先查明間隙成因（製作誤差或設計問題），採用適當厚度塞板補平，並確保塞板接觸面符合設計滑動係數要求。</p>
-<hr />
-<h3>3.2 螺栓無法以手穿入孔內（9 分）</h3>
-<p><strong>問題本質：</strong> 若孔位偏差超出允許範圍，強行穿入會使孔壁承受額外剪力，或造成板件局部破壞。常見成因為：孔位放樣誤差、構件製作尺寸偏差、或現場組立時構件扭轉。</p>
-<p><strong>處理方法：</strong></p>
-<p><strong>① 首先確認孔位偏差量：</strong></p>
-<table>
-<thead>
-<tr>
-<th>偏差量</th>
-<th>允許使用之校正方式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>≤ 2 mm（約 1/16"）</td>
-<td>使用<strong>螺旋撬棒（drift pin）</strong>緩慢撐開，引導螺栓就位</td>
-</tr>
-<tr>
-<td>2 mm ～ 5 mm</td>
-<td>用<strong>鉸孔（reaming）</strong>擴大孔徑，使孔位對齊後穿入</td>
-</tr>
-<tr>
-<td>＞ 5 mm</td>
-<td><strong>不可使用鉸孔</strong>；需回廠重製或更換構件，並查明偏差原因</td>
-</tr>
-</tbody>
-</table>
-<p><strong>② 螺旋撬棒（Drift Pin）使用規定：</strong></p>
-<ul>
-<li>撬棒直徑須小於螺栓孔直徑（不可大於孔徑），且須使用專用工具</li>
-<li><strong>禁止使用螺栓本身當撬棒</strong>，因為這會損傷螺栓的螺紋（thread）及螺栓頭下的承壓面</li>
-<li>使用撬棒後，孔壁可能已有局部塑性變形，須確認孔徑仍在規定範圍內</li>
-</ul>
-<p><strong>③ 鉸孔（Reaming）規定：</strong></p>
-<ul>
-<li>鉸孔後之最終孔徑不可超過螺栓直徑 + 3 mm（標準孔的最大允許孔徑）</li>
-<li>鉸孔時須將板件疊合後一次鉸孔（不可分件鉸孔再疊合）</li>
-<li>鉸孔後產生的鐵屑須清除乾淨，鉸孔位置若影響淨面積須重新驗算構件強度</li>
-</ul>
-<p><strong>④ 絕對禁止事項：</strong></p>
-<ul>
-<li>禁止以氣割（flame cutting）、氣焊（torch）擴孔</li>
-<li>禁止強行用力敲打螺栓入孔</li>
-<li>以上方式會損傷孔壁、改變板材冶金性質，嚴重危害接合強度</li>
-</ul>
-<p><strong>結論：</strong> 偏差在允許範圍內以撬棒導引；偏差較大時以鉸孔校正；偏差過大時需重新製作。嚴禁以氣割擴孔或強行敲打。</p>
-<hr />
-<h3>3.3 已使用過之高強度螺栓可否重複使用（7 分）</h3>
-<p><strong>答：一般情況下，高強度螺栓重新拆卸後不應重複使用。</strong></p>
-<p><strong>原因：</strong></p>
-<p><strong>① 鎖緊係數 K 值（Turn-of-nut 扭力係數）改變：</strong></p>
-<p>高強度螺栓在初次鎖緊（pretension）時，螺紋已產生塑性硬化（strain hardening）及表面微觀損傷。在原始狀態下，製造廠依據特定的螺牙潤滑條件和螺紋狀態標定扭力係數 K：</p>
-<p>$$T = K \cdot d \cdot F_i$$</p>
-<p>其中 $T$ 為施加扭矩、$d$ 為螺栓直徑、$F_i$ 為設計預張力。</p>
-<p>第二次鎖緊時，螺牙已有一定磨損及塑性變形，K 值已非原廠標定值，無法確保相同扭矩能建立正確的夾緊力，可能導致<strong>夾緊力不足或超過規定值（超張）</strong>。</p>
-<p><strong>② 「轉動角度法（Turn-of-Nut Method）」之問題：</strong></p>
-<p>即使不用扭矩法而改用旋轉角度法，二次鎖緊時的轉角控制是依據「彈性從緊到位再多轉 XX°」，而螺栓已有先前的塑性伸長量，起始點難以判定，轉角法同樣失準。</p>
-<p><strong>③ 過度疲勞與延性降低：</strong></p>
-<p>高強度螺栓（如 A325、A490）在初次施加大夾緊力時，螺桿承受拉伸塑性應變。拆卸後再使用，則螺桿已在預張力狀態下累積疲勞損傷，延性降低，容易在第二次鎖緊時斷裂。</p>
-<p><strong>④ 螺紋損傷：</strong></p>
-<p>拆卸過程中若使用工具旋轉，螺紋可能有微觀損傷（galling），影響後續鎖緊的穩定性。</p>
-<p><strong>例外（僅適用特定情況）：</strong></p>
-<p>A325 螺栓（非 A490）若可驗證下列條件，<strong>可有限次數重複使用</strong>：</p>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>步驟規劃：</strong></p>
 <ol>
-<li>螺栓外觀無損傷，螺紋無嚴重磨損</li>
-<li>採用「直接張力指示器（DTI, Direct Tension Indicator）」量測夾緊力，確保預張力足夠</li>
-<li>重複使用次數不超過規範規定（台灣規範一般不允許，AISC 規範在特定條件下允許一次）</li>
+<li>(一) 先講「間隙為什麼有害」→ 再給規範門檻（1 mm）與處理方式（墊片）→ 補墊片之材質與表面處理要求</li>
+<li>(二) 依規範的<strong>先後順序</strong>答：① 沖梢校正（附鐵鎚重量限制）→ ② 鉸孔（附擴孔上限）→ ③ 絕對禁止事項</li>
+<li>(三) 先給結論「不得再使用」→ 再給規範解說的力學理由（預拉力已超過降伏拉力 → 永久變形）→ 補扭矩法／轉角法為何同時失準</li>
 </ol>
-<p><strong>A490 螺栓：絕對不可重複使用</strong>，因其強度更高、延性更低，一旦再次鎖緊極易在預張力超過降伏強度後發生脆性斷裂。</p>
-<p><strong>結論（考場簡答）：</strong> 高強度螺栓拆卸後原則上<strong>不可重複使用</strong>。原因為：扭力係數 K 值改變導致夾緊力不可控、螺紋已產生塑性損傷降低延性，且再次鎖緊時可能因超應力而發生脆斷，尤其 A490 螺栓嚴禁重複使用。</p>
+<p><strong>關鍵陷阱：</strong></p>
+<blockquote>
+<p>⚠️ <strong>陷阱 1：把門檻數字寫成「約 2 mm、6 mm」之類的印象值</strong><br />
+國內施工規範 §5.2 的門檻只有<strong>一個數字</strong>：板厚差（間隙）<strong>&lt; 1 mm 不必處理；≧ 1 mm 加墊片</strong>。不要自行發明三段式門檻。</p>
+<p>⚠️ <strong>陷阱 2：只寫「用鉸孔擴大」而漏掉沖梢與上限</strong><br />
+規範 §5.3.1 的順序是<strong>先沖梢、後鉸孔</strong>，且兩者都有限制：沖梢<strong>不得使用 2.5 kg 以上之鐵鎚</strong>；鉸孔後之<strong>孔徑不得大於設計孔徑 2 mm</strong>。這兩個數字是本小題的得分點。</p>
+<p>⚠️ <strong>陷阱 3：把「不可重複使用」的理由寫成「疲勞」</strong><br />
+鎖緊是<strong>單調靜力</strong>加載，不是反覆載重，談不上疲勞。規範解說的理由是：<strong>預拉力已超過降伏拉力，拆卸後螺栓已產生永久（塑性）變形</strong>，再鎖時塑性變形量加大、殘餘延性不足 ⇒ 安全度不足。扭矩係數 $K$ 改變是<strong>次要</strong>理由，不是主因。</p>
+<p>⚠️ <strong>陷阱 4：拿 AISC／RCSC 的「A325 有條件可再用」當主答案</strong><br />
+國內規範寫得比 AISC 更絕對：「<strong>已使用過之螺栓或帶有傷痕銹蝕者，不得再使用</strong>」，沒有分 A325／A490，也沒有附條件。考場一律以國內規範作答，AISC 差異可放在最後一句補充。</p>
+</blockquote>
+<hr />
 <h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
 <blockquote>
 <p>複習提示：解題後，在每個卡住的知識點「卡關?」欄標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
 </blockquote>
-<p><strong>最終目標：</strong> 說明高強度螺栓施工三種情境（板面不密接 / 孔位偏差 / 螺栓重複使用）的處理規定與工程依據</p>
-<h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
-<p>本題為概念題；核心公式為扭力係數，用於解釋為何重複使用失效：</p>
-<p>$$\text{夾緊力條件} = \text{正確預張力} + \text{密合接觸面（faying surface）}$$</p>
-<p>$$\boxed{T} = K \cdot d \cdot F_i \quad \text{（重複使用時 }K\text{ 值改變，夾緊力失控）}$$</p>
+<p><strong>最終目標：</strong> 說明高強度螺栓施工三種情境（板面不密接／孔位偏差／螺栓重複使用）的<strong>規範處理規定（含數字）</strong>與<strong>工程依據</strong></p>
+<h3>主要公式（概念題，用於解釋「為什麼」）</h3>
+<p>摩阻型接合的強度來源：</p>
+<p>$$R_n = \mu \cdot T_b \cdot n_s \qquad (\mu = \text{滑動係數},\ T_b = \text{預拉力},\ n_s = \text{剪力面數})$$</p>
+<p>扭矩法建立預拉力：</p>
+<p>$$T = K \cdot d \cdot \boxed{T_b} \qquad (K = \text{扭矩係數},\ d = \text{螺栓標稱直徑})$$</p>
+<p>規範預拉力水準：</p>
+<p>$$T_b \;=\; 0.7 \,F_u^{b} A_t \qquad (A_t = \text{螺紋處有效抗拉面積} \approx 0.75 A_b)$$</p>
+<blockquote>
+<p>三個子題正是「$\mu$ 被破壞」「$T_b$ 沒作用在接觸面上」「$T_b$ 不可控」三種失效。</p>
+</blockquote>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -179,109 +98,129 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>螺栓類型</td>
-<td>高強度螺栓（A325 / A490）</td>
+<td>高強度螺栓（國內為 F10T／S10T；美規 A325／A490）</td>
 <td>摩阻型接合</td>
 </tr>
 <tr>
 <td>情境</td>
 <td>三種施工困境</td>
-<td>板面不密接 / 孔位偏差 / 重複使用</td>
+<td>板面不密接（9 分）／孔位偏差（9 分）／重複使用（7 分）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+<td>每小題皆需「規定 + 理由」兩段</td>
 </tr>
 </tbody>
 </table>
 <h3>L2：需知識點推導</h3>
-<p><strong>Step 1：板面間隙判斷與處理</strong></p>
+<p><strong>Step 1：板面不密接（規範 §5.2）</strong></p>
 <table>
 <thead>
 <tr>
-<th>符號</th>
-<th>公式 / 來源</th>
+<th>項目</th>
+<th>規定／來源</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>間隙 ≤ 2 mm</td>
-<td>可直接鎖緊</td>
+<td>判定門檻</td>
+<td>板厚差（間隙）<strong>&lt; 1 mm</strong> → 不必處理</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>2 mm &lt; 間隙 ≤ 6 mm</td>
-<td>填入塞板（shim plate）</td>
+<td>處理方式</td>
+<td>板厚差 <strong>≧ 1 mm</strong> → <strong>加墊片（填隙板 filler／shim）</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>間隙 &gt; 6 mm</td>
-<td>需修整或重製，不可僅塞板</td>
+<td>鎖固前清理</td>
+<td>鎖螺栓前應將構件表面之<strong>鐵銹、鱗片、黑皮、污泥、油垢及螺栓孔毛邊徹底清除</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>塞板規定</td>
-<td>材質同母材，接觸面達同等滑動係數</td>
+<td>墊片要求</td>
+<td>材質與母材相同或相容，<strong>接觸面須做與母材同等之表面處理</strong>以達規定滑動係數</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>力學理由</td>
+<td>板面有縫時，鎖緊的力被拿去把板壓彎，<strong>沒有真正變成接觸面上的夾緊力</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Step 2：孔位偏差校正</strong></p>
+<p><strong>Step 2：孔位偏差、螺栓無法以手穿入（規範 §5.3.1）</strong></p>
 <table>
 <thead>
 <tr>
-<th>符號</th>
-<th>公式 / 來源</th>
+<th style="text-align: center;">順序</th>
+<th>規定／來源</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>偏差 ≤ 2 mm</td>
-<td>螺旋撬棒（drift pin）引導就位</td>
+<td style="text-align: center;">①</td>
+<td>先用<strong>沖梢（drift pin）</strong>穿過校正，惟<strong>不得使用 2.5 kg 以上之鐵鎚</strong>敲擊</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>偏差 2～5 mm</td>
-<td>鉸孔（reaming）後穿入</td>
+<td style="text-align: center;">②</td>
+<td>沖梢仍無法就位者，以<strong>鉸孔（reaming）</strong>方式擴孔；<strong>擴孔後之孔徑不得大於設計孔徑 2 mm</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>偏差 &gt; 5 mm</td>
-<td>禁止鉸孔，需回廠重製</td>
+<td style="text-align: center;">③</td>
+<td>超出上限者 → 該孔不得使用，須檢討補救（增設螺栓、更換板件或退廠重製），並重新驗算淨斷面</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>鉸孔限制</td>
-<td>最終孔徑 ≤ d + 3 mm；疊合後一次鉸</td>
+<td style="text-align: center;">✗</td>
+<td><strong>嚴禁</strong>以氣體切割（氣割）擴孔、<strong>嚴禁</strong>以重鎚強行敲入螺栓、<strong>嚴禁</strong>以螺栓本身充當沖梢</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Step 3：螺栓重複使用</strong></p>
+<p><strong>Step 3：螺栓重複使用（規範 §5.3.1 及其解說）</strong></p>
 <table>
 <thead>
 <tr>
-<th>符號</th>
-<th>公式 / 來源</th>
+<th>項目</th>
+<th>規定／來源</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>$K$ 值改變</td>
-<td>初次鎖緊後螺牙塑性硬化，K 偏移，扭矩法失準</td>
+<td>規範結論</td>
+<td>「<strong>已使用過之螺栓或帶有傷痕銹蝕者，不得再使用</strong>」——不分等級、不附條件</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>旋轉角度法失準</td>
-<td>二次鎖緊起始點難以判定</td>
+<td>主因（規範解說）</td>
+<td><strong>預拉力已超過降伏拉力</strong>，拆卸後螺栓產生<strong>永久（塑性）變形</strong>；再鎖時塑性變形量加大，<strong>安全度不足</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>A490 規定</td>
-<td>絕對禁止（高強度低延性，易脆斷）</td>
+<td>次因①</td>
+<td>螺紋潤滑膜與表面狀態已改變 ⇒ <strong>扭矩係數 $K$ 偏移</strong>，扭矩法無法建立正確 $T_b$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>A325 規定</td>
-<td>台灣規範禁止；AISC 特定條件有限次可用</td>
+<td>次因②</td>
+<td>轉角法以「密貼點」為起算基準，螺栓已有塑性伸長 ⇒ <strong>起算點失真</strong>，轉角法同樣失準</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>次因③</td>
+<td>拆裝造成螺紋咬損（galling）、鏽蝕，摩擦條件不可控</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>鎖緊法對照</td>
+<td>扭矩法容許誤差 <strong>±10%</strong>（§5.4.1）；轉角法依螺栓長度採 <strong>1/3～2/3 迴轉</strong>（§5.4.2）</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -299,44 +238,257 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>摩阻型接合強度原理</td>
-<td>強度 = 預張力 × 摩擦係數，任一不足即失效</td>
+<td>強度 $= \mu \cdot T_b \cdot n_s$，$\mu$ 與 $T_b$ 任一不足即失效；三個子題各打掉一個變數</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BOLTED-CONNECTION-DESIGN</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>為什麼是 1 mm 而不是 0</td>
+<td>鋼板本身有軋延厚度公差與平整度公差，要求絕對密貼不可行；1 mm 以內的縫在鎖緊時可由板件彈性變形吸收，不致實質削減夾緊力</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>扭力係數 K 的物理意義</td>
-<td>K 反映螺牙潤滑與接觸狀態，一次塑性變形後無法復原</td>
+<td>擴孔上限 2 mm 的意義</td>
+<td>國內標準孔為 $d + 1.5$ mm；擴孔再放寬 2 mm 後仍在超大孔的量級內，超過即形同改變孔型，承壓面積與滑動行為都改變，必須重新設計</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>faying surface 接觸面分類</td>
-<td>Class A/B 對應不同滑動係數，直接影響設計強度</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>台灣規範 vs. AISC 差異</td>
-<td>台灣較保守（禁重複使用）；AISC 允許 A325 有限次</td>
+<td>預拉力已達降伏之含意</td>
+<td>$T_b = 0.7F_u^b A_t$，對 F10T（$F_u^b = 1000$ MPa、降伏比約 0.9）而言，$0.7F_u^b$ 已接近降伏強度 ⇒ 鎖緊本身即是<strong>設計上刻意讓螺栓進入降伏邊緣</strong>的動作，這正是「拆了就不能再用」的根本原因</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>氣割擴孔的危害</td>
-<td>改變孔壁冶金性質，嚴重削弱承壓與疲勞強度</td>
+<td>高溫改變孔壁冶金組織與硬度、產生缺口與微裂，嚴重削弱承壓與疲勞強度，且孔形不規則無法量測</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>國內規範 vs. AISC/RCSC</td>
+<td>國內：一律不得再使用。AISC/RCSC：Group A（A325）<strong>非鍍鋅</strong>且未經完全預拉者可再用，Group B（A490）與鍍鋅螺栓一律不得再用。考場以國內規範為準</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2>4. 關鍵爭議點與進階探討</h2>
-<h3>4.1 台灣規範 vs. AISC 規範之差異</h3>
-<p>台灣鋼結構 ASD 規範對螺栓重複使用的規定較保守，一般直接禁止重複使用。AISC（RCSC）規範允許 A325 螺栓在受控條件下有限次重複使用，但需使用 DTI 驗證夾緊力。考試應以台灣規範為準，明確指出「不可重複使用」。</p>
-<h3>4.2 間隙判斷的實務要點</h3>
-<p>現場板面不密接的最常見成因是<strong>製造公差累積</strong>及<strong>構件運輸變形</strong>。結構工程師在設計審查時應要求製造廠在出廠前進行預組裝（shop fitting），以確認接合板件可密接。</p>
-<h3>4.3 塞板的強度折減</h3>
-<p>使用塞板（特別是厚塞板）時，AISC 規範要求在 3 片板件疊加且塞板厚度超過一定值時，折減螺栓剪力強度（通常折減 15-20%）。這體現了多層板件接合時板件的不同步滑動效應。</p></main>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<blockquote>
+<p>本題為說明題，依三個子題逐一闡述「規範怎麼規定 → 為什麼」。</p>
+</blockquote>
+<h3>(一) 板面無法平整密接時之預先處理（9 分）</h3>
+<h4>1. 問題本質（先講為什麼）</h4>
+<p>摩阻型接合的設計強度來自接觸面（faying surface）之間的摩擦力：</p>
+<p>$$R_n = \mu \cdot T_b \cdot n_s$$</p>
+<p>板面若有間隙，鎖緊螺栓時螺栓的夾緊力<strong>先被用來把板件壓彎（彈性變形做功）</strong>，真正壓在接觸面上的正向力隨之減少；同時板件被壓彎後螺栓承受附加彎曲與槓桿力（prying），預拉力也不再是設計值。結果是 $\mu$ 沒變、$n_s$ 沒變，但 <strong>$T_b$ 的有效值大幅下降</strong>，接合強度不足。</p>
+<h4>2. 規範規定（鋼構造建築物鋼結構施工規範 §5.2）</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">板厚差（間隙）</th>
+<th>處理方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>&lt; 1 mm</strong></td>
+<td><strong>不必處理</strong>，可直接鎖緊（由板件彈性變形吸收）</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>≧ 1 mm</strong></td>
+<td><strong>加墊片（填隙板 filler／shim）</strong>填平後再鎖緊</td>
+</tr>
+</tbody>
+</table>
+<p>同節並規定：<strong>接合部於鎖螺栓前，應將構件表面之鐵銹、鱗片、黑皮、污泥、油垢及螺栓孔之毛邊徹底清除。</strong></p>
+<h4>3. 墊片（填隙板）之使用要求</h4>
+<ul>
+<li><strong>材質</strong>與母材相同或相容</li>
+<li><strong>接觸面須做與母材同等之表面處理</strong>（噴砂、除銹皮），以達設計所要求之滑動係數；墊片若未處理，等於在接合面中間夾入一片低摩擦介面，是最常見的實務錯誤</li>
+<li>墊片應<strong>被螺栓貫穿</strong>，不可懸空或僅局部塞入</li>
+<li>墊片厚度較大時，多層板件間滑動不同步，接合設計強度應依規範／設計者要求酌予折減</li>
+<li>墊片尺寸應足以涵蓋整個接觸面，邊緣不得形成新的間隙</li>
+</ul>
+<h4>4. 追根究柢的處理</h4>
+<p>間隙的成因多為<strong>製作公差累積</strong>、<strong>構件運輸與吊裝變形</strong>或<strong>設計未考慮偏心</strong>。除了塞墊片，應同時：</p>
+<ul>
+<li>查明成因，必要時回廠矯正（不可用火焰硬拗）</li>
+<li>要求製造廠<strong>出廠前預組裝（shop fitting）</strong>，確認接合板件可密接</li>
+<li>若間隙過大已非墊片可補（板件明顯翹曲、錯位），應<strong>更換或重製構件</strong>，不得以增加墊片層數硬解</li>
+</ul>
+<p><strong>結論：</strong> 板厚差小於 1 mm 者不必處理；達 1 mm 以上者以墊片填平，墊片材質與<strong>表面處理須與母材相同</strong>，並於鎖固前徹底清除鏽皮、油污與孔緣毛邊；同時追查間隙成因，過大者退廠矯正。</p>
+<hr />
+<h3>(二) 螺栓不能以手穿入孔內時之校正（9 分）</h3>
+<h4>1. 問題本質</h4>
+<p>螺栓孔為標準孔（國內摩阻型高強度螺栓標準孔徑約 $d + 1.5$ mm），本就只留極小裕度。若製作放樣誤差、構件尺寸偏差或現場組立扭轉造成孔位不對齊，強行敲入會使<strong>孔壁塑性變形、板件局部受損、螺栓螺紋咬傷</strong>，並使該螺栓的預拉力無法正確建立。</p>
+<h4>2. 規範規定之校正順序（施工規範 §5.3.1）</h4>
+<p><strong>① 第一手段：沖梢（Drift Pin）校正</strong></p>
+<ul>
+<li>以<strong>沖梢</strong>穿過孔位，藉錐度將板件推正、孔位對齊，再穿入螺栓</li>
+<li><strong>不得使用 2.5 kg 以上之鐵鎚</strong>敲擊——限制敲擊能量，避免孔壁被打壞、板件被打彎</li>
+<li>沖梢直徑須小於孔徑；<strong>不得以螺栓本身充當沖梢</strong>（會傷及螺紋與螺栓頭下之承壓面）</li>
+</ul>
+<p><strong>② 第二手段：鉸孔（Reaming）擴孔</strong></p>
+<ul>
+<li>沖梢仍無法就位者，改以<strong>鉸孔</strong>方式擴大孔徑</li>
+<li><strong>擴孔後之孔徑不得大於設計孔徑 2 mm</strong>（規範明文上限）</li>
+<li>應將板件<strong>疊合後一次鉸孔</strong>（不可分件鉸孔再疊合，否則孔仍不同心）</li>
+<li>鉸孔產生之鐵屑、毛邊須<strong>徹底清除</strong>，以免影響接觸面密貼與滑動係數</li>
+<li>鉸孔削弱淨斷面時，須<strong>重新驗算構件與接合板之淨斷面強度</strong></li>
+</ul>
+<p><strong>③ 超出上限之處理</strong></p>
+<ul>
+<li>擴孔後仍不足或已超過 $+2$ mm 上限者，該孔<strong>不得使用</strong>；應檢討補救（另位增設螺栓、更換連接板、退廠重製），並重新設計驗算</li>
+<li>同時追查偏差成因（放樣、製作、組立），避免同批構件重複發生</li>
+</ul>
+<h4>3. 絕對禁止事項</h4>
+<table>
+<thead>
+<tr>
+<th>禁止行為</th>
+<th>危害</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>以氣體切割（氣割／火焰）擴孔</strong></td>
+<td>高溫改變孔壁冶金組織、產生硬脆層與微裂，孔形不規則無法量測，嚴重削弱承壓與疲勞強度</td>
+</tr>
+<tr>
+<td><strong>以 2.5 kg 以上鐵鎚或重鎚強行敲入螺栓</strong></td>
+<td>孔壁塑性變形、板件局部挫曲、螺栓螺紋與頭下承壓面受損</td>
+</tr>
+<tr>
+<td><strong>以螺栓充當沖梢</strong></td>
+<td>螺紋咬損，該螺栓無法再建立正確預拉力（且依規範已不得再使用）</td>
+</tr>
+<tr>
+<td><strong>鉸孔後未清屑即鎖固</strong></td>
+<td>鐵屑夾在接觸面之間，滑動係數不可控</td>
+</tr>
+</tbody>
+</table>
+<p><strong>結論：</strong> 先以沖梢校正（禁用 2.5 kg 以上鐵鎚）；仍不能穿入者以鉸孔擴孔，<strong>擴孔後孔徑不得大於設計孔徑 2 mm</strong>，並須疊合後一次鉸孔、清除鐵屑、驗算淨斷面；超過上限者該孔不得使用，須另行檢討補救。<strong>嚴禁氣割擴孔或以重鎚強行敲入。</strong></p>
+<hr />
+<h3>(三) 已使用過之高強度螺栓可否重複使用（7 分）</h3>
+<h4>1. 結論（先寫，最重要）</h4>
+<p><strong>依鋼構造建築物鋼結構施工規範 §5.3.1：「已使用過之螺栓或帶有傷痕銹蝕者，不得再使用。」</strong></p>
+<p>規範採<strong>絕對禁止</strong>，不分螺栓等級、不附條件。</p>
+<h4>2. 主要原因：預拉力已使螺栓進入降伏（規範解說之理由）</h4>
+<p>高強度螺栓的規範預拉力為</p>
+<p>$$T_b = 0.7\,F_u^{b} A_t$$</p>
+<p>對 F10T（$F_u^b = 1000$ MPa，降伏比約 0.9）而言，$0.7F_u^b = 700$ MPa 已相當接近降伏強度；若採<strong>轉角法</strong>鎖緊，更是刻意讓螺栓進入<strong>塑性區</strong>以確保預拉力充足。因此：</p>
+<ul>
+<li>螺栓在第一次鎖緊時<strong>預拉力已超過降伏拉力</strong>，螺桿產生<strong>永久（塑性）伸長</strong></li>
+<li>拆卸後該塑性伸長不會回復，<strong>殘餘延性已被消耗</strong></li>
+<li>再次鎖緊時，塑性變形量在既有變形上繼續累加，<strong>安全度（延性餘裕）不足</strong>，嚴重時在鎖緊過程中即發生<strong>斷裂</strong></li>
+</ul>
+<blockquote>
+<p>這是規範解說寫出來的<strong>主因</strong>，答題時務必放在第一位。注意：這是<strong>單調靜力加載造成的塑性耗損</strong>，不是疲勞。</p>
+</blockquote>
+<h4>3. 次要原因</h4>
+<p><strong>① 扭矩係數 $K$ 已改變 ⇒ 扭矩法失準</strong></p>
+<p>$$T = K \cdot d \cdot T_b$$</p>
+<p>$K$ 反映螺紋與承壓面的潤滑與表面狀態，係由製造廠對<strong>出廠原狀</strong>標定。首次鎖緊後潤滑膜被擠出、螺紋表面產生微觀損傷與加工硬化，$K$ 已非原標定值 ⇒ 同樣的扭矩會建立出<strong>過小（夾緊力不足）或過大（超張斷裂）</strong>的預拉力，無法控制。</p>
+<p><strong>② 轉角法同樣失準</strong></p>
+<p>轉角法是「自密貼（snug-tight）點再轉 1/3～2/3 迴轉」（§5.4.2），其前提是螺栓處於<strong>彈性起始狀態</strong>。已使用過的螺栓帶有先前的塑性伸長，密貼點對應的應力狀態已改變，<strong>轉角與預拉力的對應關係失效</strong>。</p>
+<p><strong>③ 螺紋與表面損傷</strong></p>
+<p>拆裝過程可能造成螺紋咬損（galling）、鏽蝕、傷痕；規範對「帶有傷痕銹蝕者」同樣直接禁止。</p>
+<h4>4. 例外與國際規範差異（補充，非主答案）</h4>
+<table>
+<thead>
+<tr>
+<th>規範</th>
+<th>規定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>國內施工規範 §5.3.1</strong></td>
+<td><strong>已使用過或帶有傷痕銹蝕者，一律不得再使用</strong></td>
+</tr>
+<tr>
+<td>AISC/RCSC</td>
+<td>Group A（A325）<strong>非鍍鋅</strong>、且<strong>未曾完全預拉</strong>者（例如僅暫時安裝、密貼鎖固）可視情況再用；<strong>Group B（A490）與鍍鋅螺栓一律不得再用</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>兩者的差別在於「是否曾<strong>完全預拉</strong>」。國內規範選擇不區分，避免現場無法查證。</p>
+</blockquote>
+<p><strong>結論（考場簡答）：</strong> 高強度螺栓拆卸後<strong>不得重複使用</strong>。主要原因是<strong>鎖緊時的預拉力已超過降伏拉力，螺栓已產生永久塑性伸長、殘餘延性被消耗</strong>，再鎖時塑性變形累加而安全度不足；此外扭矩係數 $K$ 已改變使扭矩法失準、轉角法的起算基準亦已失真，且螺紋可能已有咬損或鏽蝕。規範對「已使用過或帶有傷痕銹蝕者」採絕對禁止。</p>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<h3>5.1 三個子題其實是同一條式子的三個變數</h3>
+<p>$$R_n = \mu \cdot T_b \cdot n_s$$</p>
+<table>
+<thead>
+<tr>
+<th>子題</th>
+<th>被破壞的變數</th>
+<th>機制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(一) 板面不密接</td>
+<td>$T_b$ <strong>的作用位置</strong></td>
+<td>夾緊力被拿去壓彎板件，沒有壓在接觸面上</td>
+</tr>
+<tr>
+<td>(二) 孔位偏差強行敲入</td>
+<td>$T_b$ <strong>的建立品質</strong></td>
+<td>孔壁與螺紋受損，預拉力無法正確建立；另使承壓面積失真</td>
+</tr>
+<tr>
+<td>(三) 螺栓重複使用</td>
+<td>$T_b$ <strong>的可控性</strong></td>
+<td>塑性已耗損、$K$ 已偏移，鎖緊法與預拉力的對應關係全部失效</td>
+</tr>
+</tbody>
+</table>
+<p>把這張表寫在答案最前面，三小題的邏輯即一目了然，也最容易讓閱卷者看見「這位考生懂原理」。</p>
+<h3>5.2 為什麼國內規範的門檻比實務印象嚴格？</h3>
+<p>國內規範（§5.2「&lt; 1 mm 不必處理」、§5.3.1「擴孔不得大於設計孔徑 2 mm」）都比坊間流傳的「2 mm／6 mm」寬鬆值嚴格得多。原因是國內採<strong>表列容許應力</strong>體系，設計端已假定接觸面達到規定滑動係數且螺栓達到規定預拉力，<strong>施工端沒有留給現場折減的空間</strong>——現場一旦放寬，設計強度即失去依據。作答時直接引規範數字，比引用印象值安全。</p>
+<h3>5.3 摩阻型 vs. 承壓型：三個子題的嚴重性不同</h3>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>摩阻型</th>
+<th>承壓型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>板面不密接</td>
+<td><strong>致命</strong>（強度全靠夾緊力）</td>
+<td>影響較小（滑動後由螺桿承壓傳力），但仍須密接以免板件受彎</td>
+</tr>
+<tr>
+<td>孔位偏差擴孔</td>
+<td>影響滑動面積與孔型分類，須依孔型調降容許剪應力</td>
+<td>直接影響承壓面積與端距，須重新驗算</td>
+</tr>
+<tr>
+<td>螺栓重複使用</td>
+<td><strong>致命</strong>（$T_b$ 即強度本身）</td>
+<td>仍不得再使用（延性不足、可能脆斷）</td>
+</tr>
+</tbody>
+</table>
+<h3>5.4 現場查驗要點（實務延伸）</h3>
+<ul>
+<li>鎖固前：接觸面清潔度、墊片是否同等處理、孔緣毛邊是否清除</li>
+<li>鎖固中：<strong>分二階段</strong>（先初鎖至密貼，再全數依序終鎖），由接合中心向外依序施作，避免先鎖的螺栓被後鎖者鬆弛</li>
+<li>鎖固後：扭矩法以扭力扳手抽驗（容許誤差 <strong>±10%</strong>）；轉角法檢查標記線之轉角是否落在 <strong>1/3～2/3 迴轉</strong>範圍</li>
+<li>螺栓尾端露出長度、墊圈方向（倒角朝螺栓頭側）</li>
+</ul>
+<hr />
+<p><em>修正日期：2026-08-22 —— 回查「鋼構造建築物鋼結構施工規範」第五章高強度螺栓接合原文後全面改寫。主要更正：①(一) 板面間隙門檻由「≤2 mm／2–6 mm／&gt;6 mm」三段式改為規範 §5.2 之「板厚差 &lt; 1 mm 不必處理、≧ 1 mm 加墊片」；②(二) 校正手段改為 §5.3.1 之「先沖梢（不得使用 2.5 kg 以上鐵鎚）、後鉸孔（擴孔後孔徑不得大於設計孔徑 2 mm）」，刪除原「≤2 mm／2–5 mm／&gt;5 mm」與「孔徑 ≤ d+3 mm」等無依據數值；③(三) 主因由「K 值改變 + 疲勞損傷」改為 §5.3.1 解說之「預拉力已超過降伏拉力、拆後產生永久變形」，並刪除「A325 可有限次重複使用」之敘述（國內規範不分等級一律禁止），AISC/RCSC 差異改列補充；④ 轉角法補入 §5.4.2 之 1/3～2/3 迴轉與 §5.4.1 扭矩法 ±10%；⑤ 章節編號改為符合 CLAUDE-SPEC 之 §1～§5 結構。詳見 <code>wiki/log.md</code> 2026-08-22 第五批。</em></p></main>
 <footer>來源：raw/solutions/SS-2004-1/SS-2004-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 study-/lecture-/formula-given-SS-Un-m.html 點入，

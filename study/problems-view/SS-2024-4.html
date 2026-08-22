@@ -31,10 +31,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>主分類：</strong> <code>SS-U1-4</code> 接合之分析與設計<br />
 <strong>副分類：</strong> <code>SD-U3-1</code> 結構耐震設計；<code>SS-U2-3</code> 設計規範對施工之要求<br />
 <strong>設計法：</strong> 概念題<br />
-<strong>標籤：</strong> <code>梁柱接頭</code> <code>電熱熔渣銲</code> <code>翼板銲接</code> <code>層狀撕裂</code> <code>HAZ脆化</code> <code>破壞模式</code> <code>NDT檢測</code> <code>SN耐震鋼材</code></p>
+<strong>標籤：</strong> <code>梁柱接頭</code> <code>電熱熔渣銲</code> <code>內橫隔板</code> <code>翼板銲接</code> <code>層狀撕裂</code> <code>HAZ脆化</code> <code>破壞模式</code> <code>NDT檢測</code> <code>SN耐震鋼材</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>典型國內梁柱接頭：H 型鋼梁 + 箱型（方管）鋼柱，接頭包含：</p>
+<p><strong>題目：</strong> 下圖為國內典型梁柱接頭型式，梁為 H 型鋼斷面，柱為箱型鋼斷面，試申論說明該類梁柱接頭內各式銲接及其相鄰母材可能產生之潛在破壞模式為何？其對應之預防方法與檢測方式為何？（25 分）</p>
+<p>圖中標示之接合共三類：</p>
 <table>
 <thead>
 <tr>
@@ -46,36 +47,41 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td><strong>電熱熔渣銲</strong>（Electroslag Welding, ESW）</td>
-<td>梁腹板剪力板（shear tab）與箱型柱面</td>
+<td><strong>箱型柱內橫隔板（Internal Diaphragm）與柱壁</strong>——對應上、下梁翼板高程各一片，圖中以水平虛線繪於柱內，每片隔板之左右兩端各一處引線</td>
 <td>工廠</td>
 </tr>
 <tr>
-<td><strong>上翼板完全滲透銲</strong>（CJP Butt Weld）</td>
-<td>梁上翼板↔箱型柱面</td>
+<td><strong>上翼板完全滲透銲</strong>（CJP Groove Weld）</td>
+<td>梁上翼板 ↔ 箱型柱面</td>
 <td>工地</td>
 </tr>
 <tr>
-<td><strong>下翼板完全滲透銲</strong>（CJP Butt Weld）</td>
-<td>梁下翼板↔箱型柱面</td>
+<td><strong>下翼板完全滲透銲</strong>（CJP Groove Weld）</td>
+<td>梁下翼板 ↔ 箱型柱面</td>
 <td>工地</td>
 </tr>
 <tr>
 <td><strong>高拉力螺栓</strong>（HTB）</td>
-<td>腹板剪力板（Web Plate）與梁腹板</td>
-<td>工地</td>
+<td>剪力板（Shear Tab）↔ 梁腹板</td>
+<td>工地（剪力板與柱面之銲接於工廠完成）</td>
 </tr>
 </tbody>
 </table>
-<p><strong>子問題：</strong> 針對各式銲接及其相鄰母材，說明其<strong>潛在破壞模式</strong>、<strong>預防方法</strong>與<strong>檢測方式</strong>。</p>
-<p><img alt="SS-2024-4 題目附圖：H型鋼梁與箱型柱梁柱接頭詳圖，標示電熱熔渣銲（ESW）、上下翼板工地銲接（CJP）、腹板螺栓工地安裝位置" src="../../raw/solutions/SS-2024-4/SS-2024-4-fig-1.png" /></p>
-<p><em>圖說：接頭立面示意圖。左側箱型柱（虛線輪廓為柱壁）與右側 H 型鋼梁相接。柱側面標示兩處「電熱熔渣銲」（腹板剪力板與柱面之工廠銲接，大熱輸入製程）。梁上下翼板標示「翼板工地銲接」（CJP），腹板區域標示「螺栓工地安裝」（HTB）。傳力路徑：梁彎矩→翼板 CJP 傳遞軸力→柱橫隔板；梁剪力→腹板螺栓→剪力板→ESW→柱面。</em></p>
+<p><img alt="SS-2024-4 題目附圖：H 型鋼梁與箱型柱梁柱接頭詳圖；柱內兩道水平虛線為內橫隔板，其與柱壁交會之兩端以「電熱熔渣銲」引線標示；梁上、下翼板與柱面交會處標示「上翼板工地銲接」「下翼板工地銲接」（CJP）；腹板側虛線矩形內繪一排螺栓孔，標示「螺栓工地安裝」" src="../../raw/solutions/SS-2024-4/SS-2024-4-fig-1.png" /></p>
+<p><em>圖說：接頭立面示意圖。左側為箱型柱（外緣實線為近側柱壁，內部虛線表示遠側柱壁與柱內構件），右側為 H 型鋼梁，兩者均以折斷符號表示延續。</em></p>
+<ul>
+<li><em>柱內於</em><em>上、下梁翼板高程各繪一道水平虛線</em><em>，即</em><em>內橫隔板（Internal Diaphragm）</em><em>。兩處「電熱熔渣銲」引線分別指向該隔板</em><em>與左右柱壁交會之兩端</em><em>——這正是國內箱型柱最典型的工廠銲接：隔板先置入，最後一片柱壁（封閉板）合攏後，以 </em><em>ESW 自柱外一道成形</em><em>將隔板端部銲住。</em></li>
+<li><em>梁上、下翼板與柱面交會處標示「上翼板工地銲接」「下翼板工地銲接」，為</em><em>工地 CJP 開槽銲</em><em>。</em></li>
+<li><em>梁腹板側之虛線矩形內繪一排圓孔，標示「螺栓工地安裝」，即</em><em>剪力板（Shear Tab）以高拉力螺栓與梁腹板接合</em><em>；剪力板本身與柱面之銲接屬工廠銲接（圖中未另標註銲接符號）。</em></li>
+<li><strong><em>傳力路徑：</em>* 梁彎矩 → 上、下翼板 CJP 傳為拉／壓力 → 柱壁 → </strong>內橫隔板（由 ESW 銲住）*<em>把該集中力導入柱之另一側，避免柱壁局部彎曲；梁剪力 → 腹板 HTB → 剪力板 → 剪力板與柱面之銲道 → 柱壁。</em></li>
+</ul>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：梁柱接頭各部位的破壞機制與耐震設計要求</strong></p>
 <p>本題要求考生對四種接合方式各自的破壞模式有系統性認識。1994 年北嶺地震（Northridge）後，梁柱接頭脆性斷裂成為耐震設計的核心課題，此題正是直接測驗這段歷史教訓轉化成的規範要求。</p>
 <p><strong>出題者測驗重點：</strong></p>
 <ul>
-<li><strong>ESW 的特殊問題</strong>：大熱輸入導致 HAZ 晶粒粗大脆化，此特性是 ESW 獨有的</li>
+<li><strong>ESW 的特殊問題</strong>：大熱輸入導致 HAZ 晶粒粗大脆化，此特性是 ESW 獨有的；且它銲的是<strong>內橫隔板↔柱壁</strong>，正落在梁翼板拉力傳入柱身的力流主幹上，一旦脆斷，翼板 CJP 再好也沒有用</li>
 <li><strong>翼板 CJP 的北嶺教訓</strong>：背銲鋼條（weld backing）是根部裂縫起始源，應移除或修磨</li>
 <li><strong>層狀撕裂 ≠ 銲道裂縫</strong>：層狀撕裂發生在母材板厚方向，需 Z 向鋼材（SN-C 類型）解決</li>
 <li><strong>NDT 選擇邏輯</strong>：UT 適合面狀缺陷（LOF、裂縫），RT 適合體積型（孔穴），MT/PT 只能表面</li>
@@ -83,10 +89,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>作戰計畫：</strong> 以「銲接/接合種類」為主軸，每種各答「破壞模式 → 預防方法 → 檢測方式」三段，最後以彙整表收尾：</p>
-<pre><code>① ESW（電熱熔渣銲）→ HAZ 脆化、未熔合
-② CJP 翼板銲 → 脆性斷裂（根部裂縫）、層狀撕裂
-③ HTB 腹板螺栓 → 滑動、疲勞剪斷
-④ 整體 → Panel Zone 剪切、容量設計
+<pre><code>① ESW（內橫隔板↔柱壁，工廠）→ HAZ 晶粒粗大脆化、未熔合
+② CJP 翼板銲（工地）→ 脆性斷裂（背銲條根部裂縫）
+③ 相鄰母材（柱壁）→ 層狀撕裂（板厚 Z 向）
+④ HTB 腹板螺栓 → 滑動、螺栓剪斷
+⑤ 整體 → Panel Zone 剪切、容量設計
 </code></pre>
 <p><strong>陷阱分析：</strong></p>
 <table>
@@ -99,7 +106,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </thead>
 <tbody>
 <tr>
-<td>❶ 忽略 ESW 的 HAZ 問題</td>
+<td>❶ <strong>看錯 ESW 的位置</strong></td>
+<td>圖中 ESW 引線指的是<strong>柱內橫隔板與柱壁</strong>（虛線水平板兩端），<strong>不是</strong>剪力板與柱面。位置判錯，後面的「力流為何關鍵」「為什麼柱壁母材會層狀撕裂」全部會寫偏</td>
+<td>先讀圖：虛線 = 柱內看不見的構件；兩道虛線恰在上、下翼板高程 ⇒ 內橫隔板</td>
+</tr>
+<tr>
+<td>❶′ 忽略 ESW 的 HAZ 問題</td>
 <td>考生常只回答翼板銲接，忽略 ESW 的特殊脆化問題</td>
 <td>ESW 是本題獨特考點，須另闢一節說明</td>
 </tr>
@@ -154,7 +166,7 @@ $$\sum M_{pc} \geq \sum (1.1 R_y M_p)_{beam}$$</p>
 <tr>
 <td>接合 ①</td>
 <td>ESW（電熱熔渣銲）</td>
-<td>工廠，剪力板↔柱面</td>
+<td><strong>工廠，內橫隔板↔柱壁</strong>（上、下翼板高程各一片）</td>
 </tr>
 <tr>
 <td>接合 ②</td>
@@ -174,7 +186,7 @@ $$\sum M_{pc} \geq \sum (1.1 R_y M_p)_{beam}$$</p>
 </tbody>
 </table>
 <h3>L2：需知識點推導（各接合系統回答架構）</h3>
-<p><strong>① ESW（電熱熔渣銲）</strong></p>
+<p><strong>① ESW（電熱熔渣銲，內橫隔板↔柱壁）</strong></p>
 <table>
 <thead>
 <tr>
@@ -191,12 +203,12 @@ $$\sum M_{pc} \geq \sum (1.1 R_y M_p)_{beam}$$</p>
 </tr>
 <tr>
 <td>預防方法</td>
-<td>焊後熱處理（PWHT）、限制熱輸入、改用 SAW 或 SMAW</td>
+<td>限制熱輸入與道間溫度、選用<strong>正常化處理鋼材或 SN 耐震鋼材</strong>、必要時改以多道次 FCAW／SMAW 或改採外隔板（External Diaphragm）型式</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>檢測方式</td>
-<td>超音波檢測（UT）為主（面狀缺陷）、VT 輔助</td>
+<td>超音波檢測（UT）為主（面狀缺陷）、VT 輔助；柱壁外表面補 MT</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -268,7 +280,7 @@ $$\sum M_{pc} \geq \sum (1.1 R_y M_p)_{beam}$$</p>
 <tbody>
 <tr>
 <td>ESW 大熱輸入 → HAZ 脆化</td>
-<td>ESW 單道完成厚板，熱輸入極高，HAZ 晶粒粗大，是 ESW 獨特缺點</td>
+<td>ESW 單道完成厚板，熱輸入極高，HAZ 晶粒粗大，是 ESW 獨特缺點；國內箱型柱以 ESW 銲<strong>內橫隔板↔柱壁</strong>，該處正是梁翼板力流進入柱身的主幹</td>
 <td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SEISMIC-STEEL-SN</span></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -299,15 +311,24 @@ $$\sum M_{pc} \geq \sum (1.1 R_y M_p)_{beam}$$</p>
 </tbody>
 </table>
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Calculation)</h2>
-<h3>一、電熱熔渣銲（ESW）相關破壞模式</h3>
-<h4>1.1 破壞模式：ESW 熱影響區（HAZ）脆化</h4>
-<p><strong>機制：</strong> ESW 為大熱輸入（high heat input）製程，冷卻速率極慢，HAZ 晶粒粗大，低溫衝擊韌性（CVN 值）大幅降低，在地震或低溫工況下可能發生脆性破壞。</p>
-<p><strong>預防方法：</strong> 採用正規化處理（normalize）的鋼材使 HAZ 晶粒細化；採用 SN 耐震鋼材（CVN ≥ 27 J at 0°C）；限制 ESW 僅用於腹板剪力板，避免用於翼板主要受力銲道；考慮以多道次 FCAW/SMAW 取代 ESW，降低熱輸入。</p>
-<p><strong>檢測方式：</strong> UT（超音波檢測）銲後全長掃描；MT（磁粒探傷）表面及次表面缺陷；施工前 HAZ 衝擊試驗確認母材韌性。</p>
-<h4>1.2 破壞模式：ESW 銲道未熔合（Lack of Fusion）</h4>
-<p><strong>機制：</strong> 高熱輸入下若電極行進速率不當，可能形成銲道與母材間的未熔合（LOF）缺陷，成為疲勞裂縫起始點。</p>
-<p><strong>預防方法：</strong> 嚴格施工程序控制（WPS 銲接程序書）；銲工資格驗證（PQR）。</p>
-<p><strong>檢測方式：</strong> UT 是主要檢測手段（LOF 對 RT 不敏感）；TOFD 適用厚板。</p>
+<h3>一、電熱熔渣銲（ESW，內橫隔板↔柱壁）相關破壞模式</h3>
+<blockquote>
+<p><strong>先定位：</strong> 箱型柱在梁翼板高程須設<strong>內橫隔板</strong>，把梁翼板傳來的集中拉／壓力導入柱之另一側，避免柱壁單獨受面外彎曲。製造時三面柱壁先組立、隔板置入，最後一片柱壁合攏後<strong>無法自內部施銲</strong>，故國內慣以 <strong>ESW 自柱外一道成形</strong>把隔板端部銲住（圖中兩處引線即指此）。此銲道位於力流主幹上，且<strong>完工後被封在柱內、無法目視、修補極困難</strong>——這正是本題把它單獨標出來的理由。</p>
+</blockquote>
+<h4>1.1 破壞模式：ESW 熱影響區（HAZ）晶粒粗大脆化</h4>
+<p><strong>機制：</strong> ESW 為大熱輸入（high heat input）製程，一道成形厚銲、冷卻速率極慢，HAZ 沃斯田鐵晶粒粗大化，低溫衝擊韌性（CVN）大幅降低。地震時該處承受高應變速率之反覆拉力，可能在柱壁／隔板交會處發生<strong>脆性破壞</strong>，使梁翼板力流中斷。</p>
+<p><strong>預防方法：</strong></p>
+<ol>
+<li>選用<strong>正常化（normalizing）處理或 TMCP 鋼材</strong>，抑制 HAZ 晶粒粗大化</li>
+<li>採用 <strong>SN 耐震鋼材（B／C 類具 CVN 保證）</strong>，並要求銲材之低溫衝擊值</li>
+<li><strong>限制單位長度熱輸入與道間溫度</strong>（依 WPS／PQR 訂定上限）</li>
+<li>必要時改以<strong>多道次 FCAW／SMAW</strong> 取代 ESW，或改採<strong>外隔板（External Diaphragm）／貫通式隔板（Through Diaphragm）</strong>型式，把銲道移到可檢查、可修補的位置</li>
+</ol>
+<p><strong>檢測方式：</strong> ESW 銲後以 <strong>UT 全長掃描</strong>（自柱壁外側入射）；柱壁外表面補 <strong>MT</strong> 查表面／近表面裂縫；施工前以衝擊試驗（Charpy）確認母材與銲材韌性，並以 PQR 驗證熱輸入上限下之 HAZ 韌性。</p>
+<h4>1.2 破壞模式：ESW 銲道未熔合（Lack of Fusion）／夾渣</h4>
+<p><strong>機制：</strong> ESW 靠熔渣電阻發熱，若熔渣深度、電極行進速率或水冷銅模貼合不當，易在銲道與柱壁／隔板界面形成<strong>未熔合（LOF）</strong>或捲入熔渣，成為地震下裂縫的起始點。此類缺陷為<strong>面狀</strong>且位於柱內，目視完全看不到。</p>
+<p><strong>預防方法：</strong> 嚴格依合格之 <strong>WPS</strong>（銲接程序規範書）與 <strong>PQR</strong> 施工；銲工資格檢定；施銲前確認隔板與柱壁之組立間隙與水冷銅模密合；全程監控電流、電壓與行進速率。</p>
+<p><strong>檢測方式：</strong> <strong>UT 為主要檢測手段</strong>（LOF 為面狀缺陷，RT 不敏感，且柱壁厚、幾何封閉，RT 亦不可行）；厚板可採 TOFD 提升定量精度。</p>
 <hr />
 <h3>二、翼板完全滲透銲（CJP）相關破壞模式</h3>
 <h4>2.1 破壞模式：翼板 CJP 銲道脆性斷裂</h4>
@@ -326,10 +347,45 @@ $$\sum M_{pc} \geq \sum (1.1 R_y M_p)_{beam}$$</p>
 <p><strong>檢測方式：</strong> 扭矩扳手抽驗（初鎖後 10% 抽查）；DTI 墊片目視確認。</p>
 <hr />
 <h3>四、梁柱接頭整體注意事項</h3>
-<p><strong>節點域（Panel Zone）剪切：</strong> 箱型柱內對應梁翼板位置須設橫隔板（diaphragm），否則柱壁在翼板力傳遞時發生局部彎曲或剪切降伏。預防：工廠施工後以 UT 確認隔板銲道。</p>
+<p><strong>節點域（Panel Zone）剪切與柱壁局部變形：</strong> 箱型柱在梁翼板高程須設<strong>內橫隔板</strong>，否則柱壁在翼板集中力作用下發生面外局部彎曲，接頭剛度與強度大幅下降。隔板本身之厚度不得小於梁翼板厚度，且<strong>其與柱壁之 ESW 銲道須以 UT 全檢</strong>——隔板再厚，銲道脆斷一樣失效。節點域剪力不足時另加厚柱壁或於柱內加設補強板。</p>
 <p><strong>容量設計原則：</strong> 接頭銲接設計力應以梁塑性彎矩 $M_{p,beam}$（乘以材料過強係數 $R_y$）計算。使用 SN 鋼材可控制 $R_y$（降伏比上限 $\leq 0.80$），避免材料過強導致接頭超強。</p>
 <hr />
-<h2>5. 結果彙整與驗算 (Summary &amp; Verification)</h2>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<h3>5.1 內隔板三種型式與 ESW 的關係（本題最容易被忽略的一層）</h3>
+<table>
+<thead>
+<tr>
+<th>隔板型式</th>
+<th>作法</th>
+<th>與 ESW 的關係</th>
+<th>優劣</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>內隔板（Internal Diaphragm）</strong></td>
+<td>隔板置於柱內，最後一片柱壁合攏後自外部銲</td>
+<td><strong>必須用 ESW</strong>（或深槽 CJP）一道成形，因內部無法施銲</td>
+<td>外觀平整；但銲道封在柱內、熱輸入大、無法目視、修補困難 ⇒ <strong>本題圖示型式</strong></td>
+</tr>
+<tr>
+<td><strong>貫通式隔板（Through Diaphragm）</strong></td>
+<td>柱在梁翼板高程斷開，隔板貫穿後上下柱各以 CJP 接回</td>
+<td>不需 ESW</td>
+<td>力流最直接、品質最可靠；但柱身多兩道 CJP，製作成本高</td>
+</tr>
+<tr>
+<td><strong>外隔板（External Diaphragm）</strong></td>
+<td>隔板做在柱外，環繞柱身</td>
+<td>不需 ESW</td>
+<td>銲道全部可目視、可檢測；但外露、占空間</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>答題時若能點出「<strong>因為是內隔板，才不得不用 ESW；ESW 的所有問題都源自這個施工限制</strong>」，即掌握本題的申論骨幹。</p>
+</blockquote>
+<h3>5.2 結果彙整表</h3>
 <table>
 <thead>
 <tr>
@@ -341,10 +397,10 @@ $$\sum M_{pc} \geq \sum (1.1 R_y M_p)_{beam}$$</p>
 </thead>
 <tbody>
 <tr>
-<td>ESW（電熱熔渣）</td>
-<td>HAZ 脆化、未熔合</td>
-<td>低熱輸入替代、SN 鋼材、WPS 控制</td>
-<td>UT、MT</td>
+<td>ESW（電熱熔渣）<br><strong>內橫隔板↔柱壁</strong>（工廠）</td>
+<td>HAZ 晶粒粗大脆化、未熔合／夾渣</td>
+<td>正常化／SN 鋼材、限制熱輸入與道間溫度、WPS/PQR 控制、必要時改多道次銲或外隔板型式</td>
+<td>UT（全長）、MT（柱壁外表面）</td>
 </tr>
 <tr>
 <td>翼板 CJP</td>
@@ -371,7 +427,9 @@ $$\sum M_{pc} \geq \sum (1.1 R_y M_p)_{beam}$$</p>
 <li><strong>降伏比 $F_y/F_u \leq 0.80$</strong> — 避免材料過強導致容量設計失效</li>
 <li><strong>CVN 低溫衝擊韌性</strong> — 確保 HAZ 及銲道在低溫/地震高應變速率下不脆斷</li>
 <li><strong>C 型特有：Z 向延伸率 ≥ 25%</strong> — 防止厚板接頭層狀撕裂</li>
-</ol></main>
+</ol>
+<hr />
+<p><em>修正日期：2026-08-22 —— 依考卷原圖重判 ESW 之位置。原解析將「電熱熔渣銲」判為「梁腹板剪力板與箱型柱面」，惟圖中兩處 ESW 引線指向的是</em><em>柱內兩道水平虛線（內橫隔板）與柱壁交會的兩端</em><em>；連帶更正 §1 題目重述與圖說、§2、§3 陷阱、§3.5 L1/L2/L3、§4 第一節與第四節、§5 彙整表，並新增 §5.1 內隔板／貫通式隔板／外隔板之對照。詳見 <code>wiki/log.md</code> 2026-08-22 第五批。</em></p></main>
 <footer>來源：raw/solutions/SS-2024-4/SS-2024-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 study-/lecture-/formula-given-SS-Un-m.html 點入，

@@ -27,15 +27,15 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2019-1 題目解析</h1><a class="quick" href="../study-SS-U2-3.html" title="SS-U2-3 設計規範對施工之要求 命題分析">&#128269; U2-3 命題分析</a><a class="lect" href="../lecture-SS-U2-3.html" title="SS-U2-3 設計規範對施工之要求 觀念講義">&#128218; U2-3 設計規範對施工之要求 講義</a></header>
-<main><h1>SS-2019-1 解析</h1>
-<h3>考題編號：SS-2019-1</h3>
+<main><h1>考題編號：SS-2019-1</h1>
 <p><strong>主分類：</strong> <code>SS-U2-3</code> 設計規範對施工之要求<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> 概念題<br />
-<strong>標籤：</strong> <code>防蝕</code> <code>塗裝</code> <code>熱浸鍍鋅</code> <code>金屬噴塗</code> <code>施工注意事項</code> <code>腐蝕機制</code> <code>表面處理</code></p>
+<strong>標籤：</strong> <code>防蝕</code> <code>塗裝</code> <code>熱浸鍍鋅</code> <code>金屬噴塗</code> <code>施工注意事項</code> <code>腐蝕機制</code> <code>表面處理</code> <code>犧牲陽極</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>題目：</strong> 試述三種鋼結構常用的防蝕方法，並說明其施工之注意事項。（20 分）</p>
+<p>（本題無附圖。）</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 鋼材腐蝕是電化學反應（鐵與水、氧接觸形成原電池），防蝕的核心策略是「隔絕」（物理屏障）或「改變電位」（犧牲陽極/陰極保護）。施工注意事項側重「防蝕效果的前提條件」。</p>
@@ -115,19 +115,19 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tr>
 <td>塗裝（油漆）</td>
 <td>物理屏障</td>
-<td>表面處理達 Sa 2.5；環境濕度 ≤ 85%；每層充分乾燥再塗下層</td>
+<td>表面處理達 Sa 2½；環境限制（見下）；每層充分乾燥再塗下層</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>熱浸鍍鋅</td>
 <td>屏障 + 犧牲陽極</td>
-<td>密閉構件預留排氣孔；高強螺栓酸洗注意氫脆</td>
+<td>密閉構件預留排氣孔；高強度鋼件酸洗注意氫脆</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>金屬噴塗</td>
 <td>屏障 + 犧牲陽極</td>
-<td>表面處理達 Sa 3；噴後 4 小時內封孔（多孔性塗層）</td>
+<td>表面處理達 Sa 3；噴塗後儘速（一般 4 小時內）封孔</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -145,20 +145,52 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>塗裝</td>
-<td>Sa 2.5，$R_z = 40\sim70\,\mu\text{m}$</td>
-<td>不予塗裝部位（5 大類）</td>
+<td><strong>Sa 2½</strong>（徹底噴砂，95% 氧化層與鏽除去）；粗糙度依施工規範 §7.2.3 一般為 <strong>25～75 μm</strong></td>
+<td>不予塗裝之五部位（見 <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SS-2018-4</span>）；環境四項限制</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>熱浸鍍鋅</td>
-<td>酸洗（鹽酸/硫酸）</td>
-<td>浸槽尺寸限制構件大小；450°C 可能翹曲</td>
+<td>脫脂 → 酸洗（鹽酸／硫酸）→ 助鍍</td>
+<td>鍍槽尺寸限制構件大小；約 450 °C 可能翹曲；密閉斷面須留排氣孔</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>金屬噴塗</td>
-<td>Sa 3，$R_z \geq 60\,\mu\text{m}$</td>
-<td>處理後 4h 內噴塗；採十字交叉噴法</td>
+<td><strong>Sa 3</strong>（絕對徹底噴砂，氧化層、鏽與異物全部除去），粗糙度取規範範圍之上緣</td>
+<td>表面處理後儘速噴塗（一般 4 h 內）以免再氧化；十字交叉噴法；噴後封孔</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：塗裝作業之環境限制（施工規範 §7.4.4，四項任一成立即不得塗裝）</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">#</th>
+<th>條件</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">①</td>
+<td>溫度在 <strong>5 °C 以下</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">②</td>
+<td>相對濕度在 <strong>85% 以上</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">③</td>
+<td>鋼材表面溫度<strong>未高於露點 3 °C 以上</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">④</td>
+<td>鋼材表面溫度在 <strong>50 °C 以上</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -200,7 +232,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>表面處理等級比較</td>
-<td>Sa 3（白金屬）&gt; Sa 2.5（近白金屬）&gt; Sa 2（商業清潔）；金屬噴塗要求最高是因為附著機制純靠機械咬合</td>
+<td>依施工規範 §7.2.2：<strong>Sa 3</strong>「絕對徹底噴砂處理，所有氧化層、鐵鏽及異物徹底除去」＞ <strong>Sa 2½</strong>「徹底噴砂處理，經處理後 95% 之氧化層、鐵鏽及異物均去除」＞ Sa 2（商業級）。金屬噴塗要求最高，是因為附著機制純靠<strong>機械咬合</strong></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -221,11 +253,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </ul>
 <p><strong>施工注意事項：</strong></p>
 <ol>
-<li><strong>表面處理（最關鍵）：</strong> 施工前必須清除油脂、鏽蝕、舊漆等污染物。噴砂清潔等級應達 Sa 2.5（近白金屬，ISO 8501-1），表面粗糙度（anchor profile）$R_z = 40 \sim 70\,\mu\text{m}$，以確保底漆附著力</li>
-<li><strong>環境條件：</strong> 施工時相對濕度 ≤ 85%，鋼材表面溫度需高於露點至少 3°C，避免塗料未乾即受潮</li>
-<li><strong>塗層乾燥：</strong> 每道塗層需充分乾燥（依塗料規格），方可施塗下一層，防止層間附著不良或起泡</li>
-<li><strong>塗厚管制：</strong> 以乾膜厚度計（DFT gauge）量測，確保達到設計膜厚（一般底漆乾膜 ≥ 50 µm）</li>
-<li><strong>不予塗裝部位：</strong> 高拉力螺栓摩阻接合面、現場銲接兩側各 50 mm、埋入混凝土部分等不予塗裝（詳見 SS-2018-4）</li>
+<li><strong>表面處理（最關鍵）：</strong> 施工前必須清除油脂、鏽蝕、黑皮（軋延氧化層）、舊漆等污染物。噴砂清潔等級一般要求達 <strong>Sa 2½</strong>（徹底噴砂處理，經處理後 95% 之氧化層、鐵鏽及異物均去除，ISO 8501-1）；<strong>表面粗糙度平均值依施工規範 §7.2.3 一般應在 $25 \sim 75\,\mu\text{m}$ 之間</strong>，或依所用油漆特性另定，以確保底漆之機械附著力</li>
+<li><strong>環境條件（施工規範 §7.4.4，任一成立即不得塗裝）：</strong> ① 溫度 <strong>≤ 5 °C</strong> ② 相對濕度 <strong>≥ 85%</strong> ③ 鋼材表面溫度<strong>未高於露點 3 °C 以上</strong> ④ 鋼材表面溫度 <strong>≥ 50 °C</strong></li>
+<li><strong>塗層乾燥：</strong> 每道塗層需充分乾燥（依塗料規格之乾燥時間與再塗間隔），方可施塗下一層，防止層間附著不良或起泡</li>
+<li><strong>塗厚管制：</strong> 以乾膜厚度計（DFT gauge）量測，確保達到設計膜厚，並注意最大膜厚上限（過厚易龜裂剝離）</li>
+<li><strong>不予塗裝部位（施工規範 §7.4.5）：</strong> ① 工地銲接部位及其<strong>相鄰接兩側各 100 mm</strong> ② 摩阻式高強度螺栓接合面 ③ 埋件（惟距混凝土表面 100 mm 深度內仍須塗裝）④ 軸件、滾輪等密著接觸面或迴轉面 ⑤ 密閉空間之內露面（詳見 <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SS-2018-4</span>）</li>
 </ol>
 <hr />
 <h3>方法二：熱浸鍍鋅（Hot-Dip Galvanizing）</h3>
@@ -241,7 +273,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <li><strong>設計限制：</strong> 鋼構件尺寸受鍍鋅槽大小限制；封閉空間（如密閉箱型斷面）需預留排氣孔，避免鍍鋅時氣體膨脹造成開裂</li>
 <li><strong>熱影響：</strong> 450°C 高溫可能使薄板構件發生翹曲或殘留應力重新分布，設計時應注意構件剛性</li>
 <li><strong>銲接部位：</strong> 銲道附近的助焊劑、焊濺物需事先清除，否則影響鍍鋅附著品質；現場銲接後的修補採富鋅塗料（zinc-rich paint）補塗</li>
-<li><strong>高強度鋼注意：</strong> 高強度螺栓（SAE 1030 等）酸洗時可能發生氫脆（hydrogen embrittlement），須特別管控酸洗時間與溫度，或採烘烤去氫處理</li>
+<li><strong>高強度鋼件注意：</strong> 高強度螺栓、彈簧鋼等<strong>高強度鋼件</strong>（抗拉強度愈高愈敏感）酸洗時，氫原子滲入鋼中可能造成<strong>氫脆（hydrogen embrittlement）</strong>，須管控酸洗時間與溫度，或於鍍後儘速施以<strong>烘烤去氫（baking）</strong>處理；F10T／A490 級高強度螺栓一般<strong>不建議</strong>採熱浸鍍鋅</li>
 </ol>
 <hr />
 <h3>方法三：金屬噴塗防蝕（Thermal Spraying / Metallizing）</h3>
@@ -250,9 +282,9 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>金屬噴塗較熱浸鍍鋅優點：可現場施工、構件尺寸不受限，適用於大型橋梁主梁、海上結構等。</p>
 <p><strong>施工注意事項：</strong></p>
 <ol>
-<li><strong>表面處理：</strong> 表面粗糙度要求更高，通常需達 Sa 3（白金屬），粗糙度 $R_z \geq 60\,\mu\text{m}$，以確保噴塗粒子與基材的機械嵌合（金屬噴塗層與基材的附著力依靠機械咬合，非化學鍵結）</li>
+<li><strong>表面處理：</strong> 清潔與粗糙度要求皆較油漆嚴格，通常需達 <strong>Sa 3</strong>（絕對徹底噴砂處理，所有氧化層、鐵鏽及異物徹底除去），粗糙度取施工規範 §7.2.3 所定 $25\sim75\,\mu\text{m}$ 範圍之<strong>上緣</strong>（一般 $\ge 60\,\mu\text{m}$，並依噴塗材料規格另定），以確保噴塗粒子與基材的機械嵌合（金屬噴塗層與基材之附著力依靠<strong>機械咬合</strong>，非化學鍵結，故對粗糙度特別敏感）</li>
 <li><strong>噴塗後封孔：</strong> 噴塗層天生多孔，需在噴塗完成後 4 小時內塗佈封孔底漆（seal coat），填充孔隙，防止腐蝕介質滲入</li>
-<li><strong>環境與時效：</strong> 表面處理後應在 4 小時內噴塗（避免再氧化）；相對濕度 ≤ 85%，雨天或強風不宜施工</li>
+<li><strong>環境與時效：</strong> 表面處理後應儘速（一般 4 小時內）噴塗，避免基材再氧化；環境限制比照塗裝（溫度 &gt; 5 °C、相對濕度 &lt; 85%、鋼材表面溫度高於露點 3 °C 以上），雨天或強風不宜施工</li>
 <li><strong>塗層厚度：</strong> 鋅噴塗常用 100 ~ 150 µm，鋁噴塗 80 ~ 120 µm；以渦流測厚儀量測，分區均勻噴塗</li>
 <li><strong>重疊施工：</strong> 採用十字交叉噴塗方式（兩個方向各噴一遍），確保塗層均勻無遺漏</li>
 </ol>
@@ -276,30 +308,33 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>施工場合</td>
-<td>工廠/現場均可</td>
-<td>工廠（受槽大小限制）</td>
-<td>工廠/現場均可</td>
+<td>工廠／現場均可</td>
+<td>工廠（受鍍槽大小限制）</td>
+<td>工廠／現場均可</td>
 </tr>
 <tr>
 <td>耐久性</td>
 <td>中（需定期維護）</td>
-<td>高（25~50 年）</td>
-<td>高（20~40 年）</td>
+<td>高</td>
+<td>高</td>
 </tr>
 <tr>
 <td>表面處理等級</td>
-<td>Sa 2.5</td>
-<td>酸洗</td>
-<td>Sa 3（最嚴格）</td>
+<td><strong>Sa 2½</strong></td>
+<td>脫脂 + 酸洗 + 助鍍</td>
+<td><strong>Sa 3</strong>（最嚴格）</td>
 </tr>
 <tr>
 <td>最重要施工注意</td>
-<td>表面處理徹底 + 每層乾燥</td>
-<td>設計排氣孔 + 高強螺栓氫脆</td>
-<td>噴後4小時內封孔</td>
+<td>表面處理徹底 + 環境四項限制 + 每層乾燥</td>
+<td>密閉斷面留排氣孔 + 高強度鋼件氫脆</td>
+<td>噴塗後儘速封孔（多孔性塗層）</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p>耐久年限受環境腐蝕等級（ISO 12944 C1～CX）、膜厚與維護頻率影響甚大，作答時宜以「鍍鋅／金屬噴塗之耐久性明顯高於一般油漆系統，且局部破損仍有犧牲陽極保護」定性表述，避免直接寫死年數。</p>
+</blockquote>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>考試計分建議</h3>
@@ -316,7 +351,9 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <li>外加電流法（Impressed Current）：適用地下管線、海洋平台</li>
 <li>犧牲陽極法（Sacrificial Anode）：鋅塊/鎂塊做犧牲陽極，適用海洋結構</li>
 </ul>
-<p>建築鋼結構較少使用，故考試較不常考，但可作為補充說明。</p></main>
+<p>建築鋼結構較少使用，故考試較不常考，但可作為補充說明。</p>
+<hr />
+<p><em>修正日期：2026-08-22 —— 回查「鋼構造建築物鋼結構施工規範」第七章原文後修訂。主要更正：① 標題格式改為 <code># 考題編號：SS-2019-1</code>（原為「# SS-2019-1 解析」+「### 考題編號」，不符 CLAUDE-SPEC）；② 塗裝環境限制補齊 §7.4.4 之四項（≤5 °C、≥85% RH、未高於露點 3 °C、≥50 °C），原僅列濕度與露點；③ 表面粗糙度由「Sa 2.5 → $R_z$ 40～70 μm、Sa 3 → $R_z \ge 60$ μm」改為引規範 §7.2.3 之「一般 25～75 μm」並註明依油漆特性另定；④ 表面處理等級用語改為規範用語 Sa 2½／Sa 3 並附定義；⑤ 交叉引用之「不予塗裝部位」由「現場銲接兩側各 50 mm」更正為 §7.4.5 之五項與 </em><em>100 mm</em><em>；⑥「高強度螺栓（SAE 1030 等）」改為「高強度鋼件」並補去氫烘烤與 F10T／A490 不宜鍍鋅之說明；⑦ 耐久年限由寫死年數改為定性表述。詳見 <code>wiki/log.md</code> 2026-08-22 第五批。</em></p></main>
 <footer>來源：raw/solutions/SS-2019-1/SS-2019-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 study-/lecture-/formula-given-SS-Un-m.html 點入，

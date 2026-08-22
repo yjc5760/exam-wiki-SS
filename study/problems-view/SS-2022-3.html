@@ -31,7 +31,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>主分類：</strong> <code>SS-U2-3</code> 設計規範對施工之要求<br />
 <strong>副分類：</strong> <code>SD-U3-1</code> 結構耐震設計<br />
 <strong>設計法：</strong> 概念題<br />
-<strong>標籤：</strong> <code>施工規範</code> <code>NDT</code> <code>非破壞檢測</code> <code>韌性抗彎構架</code> <code>耐震設計</code> <code>梁柱接頭</code> <code>全滲透銲</code> <code>超音波檢測</code> <code>磁粒檢測</code> <code>銲接品管</code></p>
+<strong>標籤：</strong> <code>施工規範</code> <code>NDT</code> <code>非破壞檢測</code> <code>韌性抗彎構架</code> <code>耐震設計</code> <code>梁柱接頭</code> <code>全滲透銲</code> <code>電熱熔渣銲</code> <code>內橫隔板</code> <code>超音波檢測</code> <code>磁粒檢測</code> <code>銲接品管</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>試說明<strong>韌性抗彎鋼構架</strong>的重要銲接部位與所需實施的<strong>非破壞檢驗方法</strong>。（25 分）</p>
@@ -56,7 +56,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>答題架構：</strong></p>
 <ol>
 <li>韌性抗彎構架的設計原則（容量設計 → 確定塑化位置）</li>
-<li>重要銲接部位（至少 4-5 處，含位置說明）</li>
+<li>重要銲接部位（至少 4-5 處，含位置說明）——<strong>國內作答務必包含「箱型柱內橫隔板之 ESW」</strong></li>
 <li>各部位對應 NDT 方法及選擇理由</li>
 </ol>
 <p><strong>關鍵陷阱：</strong></p>
@@ -120,38 +120,52 @@ VT（目視）是<strong>所有銲道完工後的基本要求</strong>，但無�
 </thead>
 <tbody>
 <tr>
-<td>梁翼板 CJP 對接銲</td>
+<td>梁翼板對柱 CJP 對接銲</td>
 <td>完全滲透銲</td>
 <td>UT（100%）</td>
-<td>面狀缺陷（LOF/裂縫）用 UT ⚠ 最重要</td>
+<td>面狀缺陷（LOF／裂縫）用 UT ⚠ 最重要</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>腹板剪力板 ESW</td>
-<td>電熱熔渣銲</td>
+<td><strong>箱型柱內橫隔板 ↔ 柱壁</strong>（國內最常見）</td>
+<td><strong>電熱熔渣銲 ESW</strong></td>
 <td>UT + VT</td>
-<td>ESW 大熱輸入，LOF 風險高</td>
+<td>位於梁翼板力流主幹上；ESW 大熱輸入 → HAZ 晶粒粗大脆化、LOF 風險高；且封在柱內無法目視、修補困難</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>柱底板銲縫</td>
+<td>H 型柱連續板（Continuity Plate）↔ 柱翼板／腹板</td>
+<td>CJP 或填角銲</td>
+<td>UT（CJP 時 100%）／MT</td>
+<td>傳遞翼板集中力，防柱翼板局部彎曲</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>柱接合（Column Splice）</td>
 <td>CJP</td>
-<td>UT + VT</td>
-<td>重要傳力路徑</td>
+<td>UT（100%）+ VT</td>
+<td>柱身力流不得中斷</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>腹板角銲</td>
+<td>柱底板銲道</td>
+<td>CJP 或大尺寸填角銲</td>
+<td>UT／MT + VT</td>
+<td>全棟力流最終傳遞點</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>剪力板／梁腹板填角銲</td>
 <td>填角銲</td>
-<td>VT（基本）</td>
-<td>剪力路徑，UT 難施作</td>
+<td>MT 或 VT（基本）</td>
+<td>剪力路徑；填角銲幾何不規則，UT 難施作</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>銲縫趾部</td>
-<td>任何銲縫端部</td>
-<td>MT/PT（選查）</td>
-<td>表面裂縫，MT 適合鐵磁材料</td>
+<td>銲道趾部與端部</td>
+<td>任何銲道</td>
+<td>MT／PT（選查）</td>
+<td>表面裂縫，鐵磁材料以 MT 最靈敏</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -191,6 +205,12 @@ VT（目視）是<strong>所有銲道完工後的基本要求</strong>，但無�
 <td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SEISMIC-STEEL-SN</span></td>
 <td style="text-align: center;"></td>
 </tr>
+<tr>
+<td><strong>國內 ESW 用在哪裡</strong></td>
+<td>箱型柱之<strong>內橫隔板與柱壁</strong>：隔板置入後最後一片柱壁合攏，內部無法施銲，故以 ESW 自柱外一道成形。<strong>不是</strong>用來銲剪力板</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SS-2024-4</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SEISMIC-STEEL-SN</span></td>
+<td style="text-align: center;"></td>
+</tr>
 </tbody>
 </table>
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
@@ -202,7 +222,7 @@ VT（目視）是<strong>所有銲道完工後的基本要求</strong>，但無�
 <li>因此，梁端接頭銲道品質直接決定整個構架的耐震韌性</li>
 </ul>
 <p><strong>銲接品管的位階：</strong><br />
-梁端翼板全滲透銲道→Panel Zone→柱銜接點（自上而下依重要性排列，均需嚴格NDT）</p>
+梁端翼板全滲透銲道 ≒ <strong>箱型柱內橫隔板 ESW</strong>（同屬力流主幹）→ Panel Zone → 柱接合 → 剪力板／腹板（自上而下依重要性排列，均需嚴格 NDT）</p>
 <hr />
 <h3>二、韌性抗彎構架之重要銲接部位</h3>
 <h4>部位①：梁翼板對柱全滲透對接銲（最關鍵）</h4>
@@ -220,8 +240,26 @@ VT（目視）是<strong>所有銲道完工後的基本要求</strong>，但無�
 <li>補充：銲後 VT 目視作為基本確認</li>
 </ul>
 <hr />
+<h4>部位①′：箱型柱內橫隔板與柱壁之電熱熔渣銲（ESW）——國內構架最關鍵的工廠銲道</h4>
+<p><strong>位置：</strong> 國內韌性抗彎構架多採<strong>箱型柱</strong>。柱在梁翼板高程須設<strong>內橫隔板（Internal Diaphragm）</strong>，把梁翼板傳來的集中拉／壓力導入柱之另一側。製造時三面柱壁先組立、隔板置入，最後一片柱壁合攏後<strong>無法自柱內施銲</strong>，故國內慣以 <strong>ESW（電熱熔渣銲）自柱外一道成形</strong>銲住隔板端部。</p>
+<p><strong>重要性：</strong> ★★★★★（與梁翼板 CJP 同級）</p>
+<ul>
+<li>此銲道位於「梁翼板 → 柱壁 → 內隔板 → 柱另一側」的<strong>力流主幹</strong>上；隔板銲道一旦脆斷，翼板 CJP 銲得再好，力也傳不下去</li>
+<li><strong>ESW 為大熱輸入製程</strong>，冷卻極慢 → HAZ 晶粒粗大、CVN 韌性大幅下降，是耐震接頭最典型的脆化來源</li>
+<li>完工後<strong>封在柱內、無法目視、修補極為困難</strong></li>
+</ul>
+<p><strong>NDT 要求：</strong></p>
+<ul>
+<li><strong>UT 全長掃描</strong>（自柱壁外側入射）為主</li>
+<li>柱壁外表面補 <strong>MT</strong> 查表面／近表面裂縫；<strong>VT</strong> 為基本</li>
+<li>理由：ESW 之典型缺陷為<strong>未熔合（LOF）與夾渣</strong>，屬面狀缺陷，RT 不敏感；且柱壁厚、幾何封閉，RT 在此完全不可行</li>
+</ul>
+<blockquote>
+<p>補充：若改採<strong>貫通式隔板（Through Diaphragm）</strong>或<strong>外隔板（External Diaphragm）</strong>，即不需 ESW，銲道也回到可目視、可修補的位置——這是設計端可以降低此風險的作法。</p>
+</blockquote>
+<hr />
 <h4>部位②：連續板（垂直加勁板）銲道</h4>
-<p><strong>位置：</strong> 對應梁翼板位置，在柱腹板兩側設置的<strong>連續板（Continuity Plate）</strong>與柱翼板、柱腹板的連接銲道</p>
+<p><strong>位置：</strong> 採 <strong>H 型柱</strong>時，對應梁翼板位置在柱腹板兩側設置的<strong>連續板（Continuity Plate）</strong>與柱翼板、柱腹板的連接銲道（其功能與箱型柱之內橫隔板相同）</p>
 <p><strong>重要性：</strong> ★★★★</p>
 <ul>
 <li>連續板用於傳遞梁翼板傳來的集中力至柱腹板，防止柱翼板局部彎曲</li>
@@ -305,11 +343,18 @@ VT（目視）是<strong>所有銲道完工後的基本要求</strong>，但無�
 <td>內部面積型缺陷，UT 最靈敏</td>
 </tr>
 <tr>
-<td>連續板銲道</td>
+<td><strong>箱型柱內橫隔板↔柱壁</strong></td>
+<td><strong>ESW 電熱熔渣銲</strong></td>
+<td><strong>UT 全長</strong></td>
+<td>MT（柱壁外表面）、VT</td>
+<td>位於力流主幹；大熱輸入 → HAZ 脆化＋LOF；封在柱內無法目視，RT 不可行</td>
+</tr>
+<tr>
+<td>連續板銲道（H 型柱）</td>
 <td>角銲或 CJP</td>
 <td><strong>MT</strong></td>
-<td>UT（若CJP）</td>
-<td>表面/近表面裂縫，MT 效率高</td>
+<td>UT（若 CJP）</td>
+<td>表面／近表面裂縫，MT 效率高</td>
 </tr>
 <tr>
 <td>面板區加厚板銲道</td>
@@ -380,7 +425,13 @@ VT（目視）是<strong>所有銲道完工後的基本要求</strong>，但無�
 <li>列出並說明 4-5 個重要銲接部位（含位置）：12-15 分</li>
 <li>各部位 NDT 方法及選擇理由：8-10 分</li>
 </ul>
-<p>關鍵必寫：「梁翼板對柱全滲透對接銲 → UT 100% 全數檢測」，這是最核心的答案。</p></main>
+<p><strong>關鍵必寫兩條：</strong></p>
+<ol>
+<li>「<strong>梁翼板對柱全滲透對接銲 → UT 100% 全數檢測</strong>」——最核心的答案</li>
+<li>「<strong>箱型柱內橫隔板與柱壁之電熱熔渣銲（ESW）→ UT 全長掃描</strong>」——國內接頭型式的特有考點，且與同單元 <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SS-2024-4</span>（113 年）直接相通；能寫出「ESW 是因為內隔板無法自柱內施銲才不得不用，其大熱輸入正是 HAZ 脆化的根源」，即掌握本題最高階的得分點</li>
+</ol>
+<hr />
+<p><em>修正日期：2026-08-22 —— 與同批 SS-2024-4 一併更正 ESW 之適用部位。原解析 §3.5 L2 將電熱熔渣銲列為「腹板剪力板 ESW」，實則國內箱型柱之 ESW 用於</em><em>內橫隔板與柱壁</em><em>之工廠銲接（剪力板與柱面為填角銲／CJP）。除更正該列外，另新增 §4「部位①′ 箱型柱內橫隔板 ESW」一節、擴充 §3.5 L2 重要部位表與 §4 三 NDT 總表、於 L3 補「國內 ESW 用在哪裡」一則，並於 §5 考場建議補列第二條必寫要點。詳見 <code>wiki/log.md</code> 2026-08-22 第五批。</em></p></main>
 <footer>來源：raw/solutions/SS-2022-3/SS-2022-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 study-/lecture-/formula-given-SS-Un-m.html 點入，

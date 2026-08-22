@@ -25,8 +25,9 @@
 
 <div class="legend">
   <div class="legend-item"><div class="legend-swatch" style="background:#1565c0;"></div>彈性 Euler 段（1/λ²）</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:#d32f2f;height:3px;"></div>非彈性段（0.486/λ²）</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#d32f2f;height:3px;"></div>非彈性段（0.485/λ²）</div>
   <div class="legend-item"><div class="legend-swatch" style="background:#388e3c;height:3px;"></div>壓潰段（Fcr/Fy=1）</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#f57c00;height:3px;"></div>強度平台段（Fcr/Fy=0.5）</div>
   <div class="legend-item"><div class="legend-swatch" style="background:#aaa;height:1px;border-top:1px dashed #aaa;"></div>無殘留應力理想曲線</div>
 </div>
 
@@ -34,16 +35,22 @@
   <b>轉折點座標：</b>
   <table>
     <tr><th>點</th><th>λ</th><th>Fcr/Fy</th><th>說明</th></tr>
-    <tr><td><b>A</b></td><td>0.697</td><td>1.000</td><td>壓潰→非彈性分界</td></tr>
-    <tr><td><b>B</b></td><td>1.414</td><td>0.243</td><td>非彈性段下端（跳躍前）</td></tr>
-    <tr><td><b>B'</b></td><td>1.414</td><td>0.500</td><td>彈性 Euler 起點（跳躍後）</td></tr>
+    <tr><td><b>A</b></td><td>0.697</td><td>1.000</td><td>壓潰段 → 非彈性段</td></tr>
+    <tr><td><b>B</b></td><td>0.985</td><td>0.500</td><td>非彈性段 → 強度平台段</td></tr>
+    <tr><td><b>C</b></td><td>1.414</td><td>0.500</td><td>平台段 → 彈性 Euler 段</td></tr>
   </table>
   <br>
-  ⚠️ <b>塊狀殘留應力特徵：</b>在 λ = √2 ≈ 1.414 處存在<b>不連續跳躍</b>（0.243 → 0.500），
-  此為翼板外側矩形塊同時降伏所致。
+  <b>塊狀殘留應力的特徵＝「強度平台」，不是「跳躍」：</b>
+  非彈性分支 0.485/λ² 只在 Fcr ≥ 0.5Fy（λ ≤ 0.985）成立，彈性分支 1/λ² 只在 Fcr ≤ 0.5Fy（λ ≥ 1.414）成立；
+  中間 0.985 &lt; λ &lt; 1.414 兩者皆不成立，強度被鎖在比例限 Fcr = Fp = 0.5Fy，形成一段水平平台。
+  <br>
+  （柱強度曲線必須隨 λ 單調不遞增——若畫成 λ=√2 處由 0.243 跳到 0.500，等於「柱做長反而變強」，物理上不可能。）
   <br><br>
-  <b>斷面參數：</b> Ix = 66,600 cm⁴ | Ie（外翼板降伏後）= 32,337 cm⁴ | Ie/Ix = 0.486<br>
-  外側降伏區：2 翼板 × 2 側 × (113.5 mm × 21 mm)，降伏觸發應力 = 0.5Fy
+  <b>四段方程式：</b>
+  Fcr/Fy = 1.0（λ ≤ 0.697）｜0.485/λ²（0.697 ≤ λ ≤ 0.985）｜0.5（0.985 ≤ λ ≤ 1.414）｜1/λ²（λ ≥ 1.414）
+  <br><br>
+  <b>斷面參數：</b> Ix = 66,600 cm⁴ | Ie（外翼板降伏後）= 32,330 cm⁴ | Ie/Ix = 0.485<br>
+  外側降伏區：2 翼板 × 2 側 × (113.5 mm × 21 mm)，降伏觸發應力 = 0.5Fy（中央 173 mm 與腹板為 +0.4Fy 拉，全程彈性）
 </div>
 
 <script>
@@ -109,9 +116,10 @@ ctx.stroke();
 ctx.setLineDash([]);
 
 // ===== 具殘留應力曲線 =====
-const Ie_Ix = 0.486;
-const lam1 = Math.sqrt(Ie_Ix);   // 0.697  壓潰→非彈性
-const lam2 = Math.sqrt(2);        // 1.414  非彈性→彈性
+const Ie_Ix = 0.485;
+const lam1 = Math.sqrt(Ie_Ix);          // 0.697  壓潰 → 非彈性
+const lam2 = Math.sqrt(Ie_Ix / 0.5);    // 0.985  非彈性 → 平台
+const lam3 = Math.sqrt(2);              // 1.414  平台 → 彈性 Euler
 
 // 壓潰段（綠色）
 ctx.strokeStyle = '#388e3c'; ctx.lineWidth = 2.5;
@@ -120,31 +128,41 @@ ctx.moveTo(tx(0), ty(1.0));
 ctx.lineTo(tx(lam1), ty(1.0));
 ctx.stroke();
 
-// 非彈性段（紅色）
+// 非彈性段（紅色）：λ1 → λ2
 ctx.strokeStyle = '#d32f2f'; ctx.lineWidth = 2.5;
 ctx.beginPath();
 ctx.moveTo(tx(lam1), ty(1.0));
-for (let lam = lam1; lam <= lam2; lam += 0.01) {
+for (let lam = lam1; lam <= lam2; lam += 0.005) {
   ctx.lineTo(tx(lam), ty(Ie_Ix / (lam * lam)));
 }
+ctx.lineTo(tx(lam2), ty(0.5));
 ctx.stroke();
 
-// 跳躍連接線（垂直虛線紅）
-ctx.strokeStyle = '#d32f2f'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]);
+// 強度平台段（橘色）：λ2 → λ3，Fcr/Fy = 0.5
+ctx.strokeStyle = '#f57c00'; ctx.lineWidth = 2.5;
 ctx.beginPath();
-ctx.moveTo(tx(lam2), ty(Ie_Ix / (lam2 * lam2)));
-ctx.lineTo(tx(lam2), ty(1 / (lam2 * lam2)));
+ctx.moveTo(tx(lam2), ty(0.5));
+ctx.lineTo(tx(lam3), ty(0.5));
 ctx.stroke();
-ctx.setLineDash([]);
 
 // 彈性 Euler 段（藍色）
 ctx.strokeStyle = '#1565c0'; ctx.lineWidth = 2.5;
 ctx.beginPath();
-ctx.moveTo(tx(lam2), ty(1 / (lam2 * lam2)));
-for (let lam = lam2; lam <= 2.4; lam += 0.02) {
+ctx.moveTo(tx(lam3), ty(0.5));
+for (let lam = lam3; lam <= 2.4; lam += 0.02) {
   ctx.lineTo(tx(lam), ty(1 / (lam * lam)));
 }
 ctx.stroke();
+
+// 非彈性分支若外延（僅示意其不適用），灰色細虛線
+ctx.strokeStyle = '#cfcfcf'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+ctx.beginPath();
+ctx.moveTo(tx(lam2), ty(Ie_Ix / (lam2 * lam2)));
+for (let lam = lam2; lam <= 1.9; lam += 0.01) {
+  ctx.lineTo(tx(lam), ty(Ie_Ix / (lam * lam)));
+}
+ctx.stroke();
+ctx.setLineDash([]);
 
 // ===== 關鍵點標記 =====
 function dot(lam, fcr, color) {
@@ -161,32 +179,31 @@ function label(text, lam, fcr, dx, dy, color) {
   ctx.fillText(text, tx(lam) + dx, ty(fcr) + dy);
 }
 
-// 點 A (0.697, 1.0)
 dot(lam1, 1.0, '#388e3c');
-label('A (0.697, 1.000)', lam1, 1.0, 6, -4, '#1a5e20');
+label('A (0.697, 1.000)', lam1, 1.0, 6, -6, '#1a5e20');
 
-// 點 B (1.414, 0.243) - 非彈性下端
-dot(lam2, Ie_Ix / (lam2 * lam2), '#d32f2f');
-label('B (1.414, 0.243)', lam2, Ie_Ix / (lam2 * lam2), 6, 12, '#b71c1c');
+dot(lam2, 0.5, '#f57c00');
+label('B (0.985, 0.500)', lam2, 0.5, -100, -10, '#e65100');
 
-// 點 B' (1.414, 0.500) - 彈性起點
-dot(lam2, 1 / (lam2 * lam2), '#1565c0');
-label("B' (1.414, 0.500)", lam2, 1 / (lam2 * lam2), 6, -10, '#0d47a1');
+dot(lam3, 0.5, '#1565c0');
+label("C (1.414, 0.500)", lam3, 0.5, 8, 16, '#0d47a1');
 
 // 公式標籤
 ctx.font = 'italic 11px Arial'; ctx.textAlign = 'left';
 ctx.fillStyle = '#388e3c';
 ctx.fillText('Fcr/Fy = 1.0', tx(0.15), ty(1.0) - 8);
 ctx.fillStyle = '#d32f2f';
-ctx.fillText('Fcr/Fy = 0.486/λ²', tx(0.78), ty(0.75));
+ctx.fillText('Fcr/Fy = 0.485/λ²', tx(0.62), ty(0.80));
+ctx.fillStyle = '#f57c00';
+ctx.fillText('Fcr/Fy = 0.5（平台）', tx(0.99), ty(0.60));
 ctx.fillStyle = '#1565c0';
-ctx.fillText('Fcr/Fy = 1/λ²', tx(1.6), ty(0.38));
+ctx.fillText('Fcr/Fy = 1/λ²', tx(1.72), ty(0.30));
 ctx.fillStyle = '#aaa';
 ctx.fillText('（無殘留應力 理想曲線）', tx(0.5), ty(0.92));
 
 // 標題
 ctx.fillStyle = '#222'; ctx.font = 'bold 12px Arial'; ctx.textAlign = 'center';
-ctx.fillText('具塊狀殘留應力（0.5Fy）之柱強度曲線 — 強軸挫屈', W / 2, mt - 10);
+ctx.fillText('具塊狀殘留應力（0.5Fy）之柱強度曲線 — 強軸挫屈（四段，連續）', W / 2, mt - 10);
 </script>
 </body>
 </html>

@@ -29,12 +29,13 @@ blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;paddin
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2018-3 題目解析</h1><a class="quick" href="../study-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 命題分析">&#128269; U1-4 命題分析</a><a class="lect" href="../lecture-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 觀念講義">&#128218; U1-4 接合之分析與設計 講義</a></header>
-<main><h1>SS-2018-3 解析</h1>
+<main>
+<h1>SS-2018-3 解析</h1>
 <h3>考題編號：SS-2018-3</h3>
 <p><strong>主分類：</strong> <code>SS-U1-4</code> 接合之分析與設計<br />
 <strong>副分類：</strong> <code>SS-U2-3</code>（涉及 SN 鋼材特性）<br />
 <strong>設計法：</strong> ASD<br />
-<strong>標籤：</strong> <code>填角銲</code> <code>梁柱接頭</code> <code>ASD</code> <code>銲道容許應力</code> <code>SN400B</code> <code>箱型柱</code> <code>H型梁</code> <code>梁翼彎矩</code> <code>梁腹彎矩</code> <code>組合應力</code></p>
+<strong>標籤：</strong> <code>填角銲</code> <code>梁柱接頭</code> <code>ASD</code> <code>銲道容許應力</code> <code>SN400B</code> <code>箱型柱</code> <code>H型梁</code> <code>梁翼彎矩</code> <code>梁腹彎矩</code> <code>組合應力</code> <code>翼板填角銲</code> <code>方向性強度</code> <code>日本AIJ容許應力</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>題目：</strong> 試以容許應力設計法（ASD）檢核圖中 SN400B 鋼箱型柱-H 型梁接頭之銲接尺寸。梁翼與梁腹負擔彎矩分別為 $M_f = 124.5$ kNm 與 $M_w = 25.5$ kNm。（30 分）</p>
@@ -77,7 +78,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>鋼材</td>
-<td>SN400B（$F_y = 245$ N/mm²，$F_u = 400$ N/mm²）</td>
+<td>SN400B（JIS G3136：$F_y \ge 235$ N/mm²、$F_u = 400\text{–}510$ N/mm²；基準強度 $F = 235$ N/mm²）</td>
 </tr>
 </tbody>
 </table>
@@ -108,32 +109,31 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 </tbody>
 </table>
-<p><strong>銲接配置（圖中所示）：</strong></p>
-<ul>
-<li>梁翼：完全熔透開槽銲（CJP groove weld，本解析判斷）</li>
-<li>梁腹：6 mm 填角銲（雙面），有效長度 388 mm</li>
-</ul>
+<p><strong>銲接配置（2026-08-22 以 300 dpi 影像重新判讀原始試卷確認）：</strong><br />
+- 梁上翼板：<strong>6 mm 填角銲</strong>（圖中三角形銲接符號 + 「6」）<br />
+- 梁腹板：<strong>6 mm 填角銲</strong>（雙面），有效長度 388 mm<br />
+- 梁下翼板：<strong>6 mm 填角銲</strong><br />
+- 柱為箱型斷面，於梁翼板高度處設內橫隔板（圖中柱內水平線）</p>
+<blockquote>
+<p>⚠️ <strong>重大更正</strong>：舊版解析將梁翼板判為「完全熔透開槽銲（CJP）」並以母材強度 $0.6F_y$ 檢核，得「OK」。經重新判讀，<strong>圖中三處銲接符號皆為填角銲、皆標註 6 mm</strong>（上翼板、腹板、下翼板各一），故梁翼板必須以<strong>填角銲喉面積</strong>檢核。更正後梁翼板銲道亦為 <strong>NG</strong>（見 §4）。</p>
+</blockquote>
 <p><img alt="SS-2018-3 題目附圖：SN400B 箱型柱配H型梁接頭，左側為柱立面顯示銲道位置與6mm標示及40mm距離，右側為梁H斷面尺寸(200×16翼板，9mm腹板，500mm總高)" src="../../raw/solutions/SS-2018-3/SS-2018-3-fig-1.png" /></p>
-<p><em>圖說：梁柱接頭圖中，柱為 SN400B 箱型斷面，梁為 SN400B H 型斷面（總高 500 mm，翼寬 200 mm，翼厚 16 mm，腹厚 9 mm）。腹板銲道有效長度 = 500 - 2×(40+16) = 388 mm（上下各留 56 mm）。$M = 150$ kNm，$Q = 100$ kN。</em></p>
+<p><em>圖說：梁柱接頭圖。柱為 SN400B 箱型斷面（於梁翼板高度處設內橫隔板，圖中柱內兩條水平線）；梁為 SN400B H 型斷面（總高 500 mm、翼寬 200 mm、翼厚 16 mm、腹厚 9 mm）。圖中共三個銲接符號，</em><em>皆為填角銲且皆標註「6」（mm）</em><em>：上翼板一處、腹板中央一處、下翼板一處。腹板銲道上端另標「40」（mm），為腹板端部之扇形開孔（scallop）尺寸，故腹板銲道有效長度 $= 500 - 2\times(16+40) = 388$ mm（上下各扣 56 mm），與題目所給 $S_w$ 公式中的 388 mm 相符。作用力：$M = 150$ kN·m（順時針箭頭）、$Q = 100$ kN（向下箭頭）。右側為梁斷面尺寸圖，單位 mm。</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 梁柱接頭將梁端彎矩分為「梁翼負擔部分 $M_f$」與「梁腹負擔部分 $M_w$」，兩者分別由不同類型的銲道承擔。腹板銲道同時承受 $M_w$（產生彎曲應力）與 $Q$（產生剪應力），需以向量合成計算組合應力。</p>
-<p><strong>出題者意圖：</strong></p>
-<ol>
-<li>考核梁柱接頭彎矩分配（翼板 vs 腹板）的物理意義</li>
-<li>考核腹板填角銲在彎矩＋剪力作用下的組合應力計算</li>
-<li>考核翼板接合強度驗算</li>
-<li>$\tau_{w1} = 119.8 > f_a = 90.5$，引導學生計算所需銲道尺寸</li>
-</ol>
+<p><strong>出題者意圖：</strong><br />
+1. 考核梁柱接頭彎矩分配（翼板 vs 腹板）的物理意義<br />
+2. 考核腹板填角銲在彎矩＋剪力作用下的組合應力計算<br />
+3. 考核翼板填角銲之強度驗算（由 $M_f$ 反算翼板拉／壓力偶）<br />
+4. $\tau_{w1} = 119.8 &gt; f_a = 90.5$，引導學生計算所需銲道尺寸</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong></p>
-<ol>
-<li>確認腹板銲道有效長度（188 mm 起迄計算）</li>
-<li>計算腹板銲道組合應力（$\tau_{w1}$：彎矩，$\tau_{w2}$：剪力，向量合成）</li>
-<li>判定 6 mm 腹板銲道 → NG，求所需最小銲道尺寸</li>
-<li>驗算梁翼接合（CJP 銲道對應翼板應力）</li>
-</ol>
+<p><strong>作戰計畫：</strong><br />
+1. 確認腹板銲道有效長度（188 mm 起迄計算）<br />
+2. 計算腹板銲道組合應力（$\tau_{w1}$：彎矩，$\tau_{w2}$：剪力，向量合成）<br />
+3. 判定 6 mm 腹板銲道 → NG，求所需最小銲道尺寸<br />
+4. 驗算梁翼接合（CJP 銲道對應翼板應力）</p>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -160,9 +160,14 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <td>按題目所給 $S_w$ 公式中的 388 mm</td>
 </tr>
 <tr>
-<td>❌ 梁翼用填角銲檢核</td>
-<td>此類矩接頭梁翼通常用 CJP（完全熔透），按基材強度驗算，不用填角銲公式</td>
-<td>確認接頭型式再選擇計算方法</td>
+<td>❌ 憑「彎矩接頭應為 CJP」的印象跳過翼板填角銲計算</td>
+<td>本題圖面明確標示三處<strong>皆為 6 mm 填角銲</strong>；實務上彎矩接頭梁翼多採 CJP，但<strong>考試須依圖作答</strong></td>
+<td>先數銲接符號、確認型式，再選公式；並可在答案中評論「實務建議改為 CJP」</td>
+</tr>
+<tr>
+<td>❌ 誤用 $F_y = 245$ N/mm²</td>
+<td>245 是 <strong>SM400A/B</strong>（$t \le 16$ mm）之值；<strong>SN400B 為 235</strong> N/mm²</td>
+<td>由題目 $f_a = 90.5$ 反推 $F = 90.5 \times 1.5\sqrt{3} = 235$ N/mm² 可自我驗證</td>
 </tr>
 </tbody>
 </table>
@@ -171,7 +176,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <blockquote>
 <p>複習提示：解題後，在每個卡住的知識點「卡關?」欄標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
 </blockquote>
-<p><strong>最終目標：</strong> 梁腹 6 mm 填角銲組合應力 → 與容許應力比較 → NG → 求所需銲腳尺寸；梁翼 CJP 按基材強度驗算 → OK</p>
+<p><strong>最終目標：</strong> 梁腹 6 mm 填角銲組合應力 → 與容許應力比較 → NG → 求所需銲腳尺寸；梁翼 6 mm 填角銲亦以喉面積檢核 → NG → 求所需銲腳尺寸</p>
 <h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
 <p>$$\boxed{\tau_{w1}} = \frac{M_w}{S_w} \quad \text{（彎矩引起，水平方向）}$$</p>
 <p>$$\boxed{\tau_{w2}} = \frac{Q}{A_w} = \frac{Q}{2 \times 0.707w \times l_w} \quad \text{（剪力引起，垂直方向）}$$</p>
@@ -234,8 +239,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>$F_y$</td>
-<td>245 N/mm²</td>
-<td>SN400B 降伏強度</td>
+<td>235 N/mm²</td>
+<td>SN400B 降伏強度（JIS G3136）；基準強度 $F = 235$ N/mm²</td>
 </tr>
 </tbody>
 </table>
@@ -326,7 +331,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 </tbody>
 </table>
-<p><strong>Step 4：梁翼 CJP 銲道驗算</strong></p>
+<p><strong>Step 4：梁翼 6 mm 填角銲驗算</strong></p>
 <table>
 <thead>
 <tr>
@@ -347,13 +352,28 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>$A_f$</td>
-<td>$b_f \times t_f = 200 \times 16 = 3{,}200$ mm²</td>
+<td>銲道有效長 $L_f$</td>
+<td>$2 b_f = 400$ mm（翼板上、下表面各一道；保守略去兩側端邊）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>$\sigma_f$</td>
-<td>$257{,}231 / 3{,}200 = 80.4$ N/mm² &lt; $0.6 F_y = 147$ N/mm² → OK ✓</td>
+<td>喉面積</td>
+<td>$0.707 \times 6 \times 400 = 1{,}697$ mm²</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\tau_f$</td>
+<td>$257{,}231 / 1{,}697 = 151.6$ N/mm² &gt; $f_a = 90.5$ → <strong>NG ✗</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$w_{req}$</td>
+<td>$6 \times 151.6/90.5 = 10.05$ mm → 採用 <strong>10 mm</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>母材檢核</td>
+<td>$\sigma_f = 257{,}231/(200\times16) = 80.4$ N/mm² &lt; $0.6F_y = 141$ N/mm² → OK ✓</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -382,8 +402,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>梁翼用 CJP vs 梁腹用填角銲</td>
-<td>翼板力大且集中（拉/壓合力），需全滲透銲（CJP）按基材強度設計；腹板剪力傳遞用填角銲即可</td>
+<td>梁翼 CJP vs 填角銲</td>
+<td><strong>實務</strong>上彎矩接頭梁翼多用 CJP（按母材強度設計）；<strong>本題圖面為 6 mm 填角銲</strong>，須按喉面積設計。兩者判準完全不同，務必先看銲接符號</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -394,8 +414,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>ASD 填角銲容許應力來源</td>
-<td>$f_a = 90.5$ N/mm²（規範查表值），對應 SN400B + E70 銲條組合；不是自行計算</td>
+<td>$f_a = 90.5$ N/mm² 之出處</td>
+<td><strong>日本 AIJ 鋼構造設計規準之長期許容剪應力</strong> $f_s = F/(1.5\sqrt{3})$，$F = 235$ N/mm²（SN400B 基準強度）⇒ $235/2.598 = 90.5$ ✓。<strong>不是</strong>台灣規範值——台灣 ASD 表 10.2-5 為 $0.3F_{EXX} = 144.8$ N/mm²（見 §5、§6）</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -422,7 +442,7 @@ $$\tau_{w2} = \frac{Q}{A_w} = \frac{100{,}000}{3{,}292} = 30.4 \text{ N/mm}^2$$<
 <p>$$\tau = \sqrt{\tau_{w1}^2 + \tau_{w2}^2} = \sqrt{119.8^2 + 30.4^2} = \sqrt{14352 + 924} = \sqrt{15276}$$</p>
 <p>$$\boxed{\tau = 123.6 \text{ N/mm}^2}$$</p>
 <h4>Step 5：與容許應力比較</h4>
-<p>$$\tau = 123.6 \text{ N/mm}^2 > f_a = 90.5 \text{ N/mm}^2 \quad \Rightarrow \text{ NG} ✗$$</p>
+<p>$$\tau = 123.6 \text{ N/mm}^2 &gt; f_a = 90.5 \text{ N/mm}^2 \quad \Rightarrow \text{ NG} ✗$$</p>
 <p><strong>6 mm 腹板填角銲不符合 ASD 要求。</strong></p>
 <hr />
 <h4>Step 6：求所需腹板填角銲尺寸</h4>
@@ -469,84 +489,381 @@ $$\tau_{w2} = \frac{Q}{A_w} = \frac{100{,}000}{3{,}292} = 30.4 \text{ N/mm}^2$$<
 </tr>
 <tr>
 <td>判定</td>
-<td>$82.4 < 90.5$ → <strong>OK ✓</strong></td>
+<td>$82.4 &lt; 90.5$ → <strong>OK ✓</strong></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h3>【梁翼銲道檢核】（CJP 完全熔透開槽銲）</h3>
+<h3>【梁翼銲道檢核】（6 mm 填角銲 —— 已更正，非 CJP）</h3>
 <h4>Step 1：梁翼力偶臂與翼板力</h4>
 <p>梁總高度 $d = 500$ mm（含翼板），翼板厚度 $t_f = 16$ mm</p>
 <p>$$\text{力偶臂} = d - t_f = 500 - 16 = 484 \text{ mm}$$</p>
 <p>$$F_f = \frac{M_f}{\text{力偶臂}} = \frac{124.5 \times 10^6}{484} = 257{,}231 \text{ N} = 257.2 \text{ kN}$$</p>
-<h4>Step 2：翼板應力計算</h4>
-<p>梁翼板截面積：<br />
-$$A_f = b_f \times t_f = 200 \times 16 = 3{,}200 \text{ mm}^2$$</p>
-<p>$$\sigma_f = \frac{F_f}{A_f} = \frac{257{,}231}{3{,}200} = 80.4 \text{ N/mm}^2$$</p>
-<h4>Step 3：與容許應力比較</h4>
-<p>對於 CJP 開槽銲，按基材強度設計：<br />
-$$f_{a,\text{tension}} = 0.6 F_y = 0.6 \times 245 = 147 \text{ N/mm}^2$$</p>
-<p>$$\sigma_f = 80.4 \text{ N/mm}^2 < 147 \text{ N/mm}^2 \quad \Rightarrow \boxed{\text{OK ✓}}$$</p>
+<h4>Step 2：翼板填角銲之有效銲長與喉面積</h4>
+<p>翼板端面頂住柱面，填角銲沿翼板<strong>上表面與下表面</strong>各一道：</p>
+<p>$$L_f = 2 b_f = 2 \times 200 = 400 \text{ mm} \qquad(\text{保守取法，略去兩側端邊 } 2t_f)$$</p>
+<p>$$A_{wf} = 0.707 w \times L_f = 0.707 \times 6 \times 400 = 1{,}697 \text{ mm}^2$$</p>
+<h4>Step 3：翼板銲道應力與判定</h4>
+<p>$$\tau_f = \frac{F_f}{A_{wf}} = \frac{257{,}231}{1{,}697} = \boxed{151.6 \text{ N/mm}^2} &gt; f_a = 90.5 \text{ N/mm}^2 \;\Rightarrow\; \textbf{NG} ✗$$</p>
+<h4>Step 4：所需翼板銲腳尺寸</h4>
+<p>$$w_{req} = 6 \times \frac{151.6}{90.5} = 10.05 \text{ mm} \;\Rightarrow\; \text{採用} \boxed{w = 10 \text{ mm}}$$</p>
+<p><strong>最大銲腳尺寸檢核</strong>（沿 16 mm 板緣）：$w \le t_f - 2 = 14$ mm ✓</p>
+<p><strong>若改採較寬鬆之有效長度</strong> $L_f = 2b_f + 2t_f = 432$ mm：</p>
+<p>$$\tau_f = \frac{257{,}231}{0.707 \times 6 \times 432} = 140.3 \text{ N/mm}^2 &gt; 90.5 \;\Rightarrow\; \text{仍 NG}，\quad w_{req} = 9.30 \text{ mm} \to 10 \text{ mm}$$</p>
+<p>兩種取法均為 NG 且均需 10 mm，結論不受有效長度取法影響。</p>
+<h4>Step 5：翼板母材檢核（不控制）</h4>
+<p>$$\sigma_f = \frac{F_f}{b_f t_f} = \frac{257{,}231}{200 \times 16} = 80.4 \text{ N/mm}^2 &lt; 0.6F_y = 0.6 \times 235 = 141 \text{ N/mm}^2 \;\checkmark$$</p>
+<p>母材有餘裕 —— <strong>不足的是銲道，不是翼板</strong>。這也說明：若把翼板改為 CJP 開槽銲（銲道強度等同母材），則此接頭即可成立，這正是實務上彎矩接頭梁翼採 CJP 的原因。</p>
 <hr />
 <h3>總結</h3>
 <table>
 <thead>
 <tr>
 <th>接合部位</th>
-<th>接合型式</th>
+<th>圖示型式</th>
 <th>應力</th>
 <th>容許應力</th>
+<th>判定</th>
+<th>所需尺寸</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>梁腹（6 mm 填角銲，雙面）</td>
+<td>填角銲</td>
+<td>123.6 N/mm²</td>
+<td>90.5 N/mm²</td>
+<td><strong>NG ✗</strong></td>
+<td>≥ 8.19 → <strong>9 mm</strong></td>
+</tr>
+<tr>
+<td>梁翼（6 mm 填角銲）</td>
+<td>填角銲</td>
+<td>151.6 N/mm²</td>
+<td>90.5 N/mm²</td>
+<td><strong>NG ✗</strong></td>
+<td>≥ 10.05 → <strong>10 mm</strong></td>
+</tr>
+<tr>
+<td>梁翼母材（參考）</td>
+<td>—</td>
+<td>80.4 N/mm²</td>
+<td>141 N/mm²</td>
+<td>OK ✓</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>結論：圖示之 6 mm 填角銲尺寸不足。</strong></p>
+<ul>
+<li>梁腹填角銲須由 6 mm 加大至 <strong>9 mm</strong></li>
+<li>梁翼填角銲須由 6 mm 加大至 <strong>10 mm</strong>（或改為完全熔透開槽銲 CJP，此時由母材控制，80.4 &lt; 141 N/mm² 即 OK）</li>
+</ul>
+<p>實務建議：彎矩接頭之梁翼板應採 <strong>CJP 開槽銲</strong>（配合箱型柱內橫隔板），梁腹板以填角銲或剪力板螺栓接合傳遞剪力，此為台灣與日本規範對抗彎接頭之標準做法。</p>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<h3>爭議一（本次最重要更正）：梁翼是 CJP 還是填角銲？</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>舊版解析</th>
+<th>本版（依圖面）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>判定</td>
+<td>CJP 完全熔透開槽銲（「本解析判斷」）</td>
+<td><strong>6 mm 填角銲</strong>（圖中三處銲接符號皆為填角三角形 + 「6」）</td>
+</tr>
+<tr>
+<td>檢核對象</td>
+<td>翼板母材斷面 $200 \times 16 = 3200$ mm²</td>
+<td>銲道喉面積 $0.707(6)(400) = 1697$ mm²</td>
+</tr>
+<tr>
+<td>應力</td>
+<td>80.4 N/mm²</td>
+<td><strong>151.6 N/mm²</strong></td>
+</tr>
+<tr>
+<td>容許</td>
+<td>$0.6F_y = 147$（用錯 $F_y=245$；應為 141）</td>
+<td>$f_a = 90.5$</td>
+</tr>
+<tr>
+<td>判定</td>
+<td>OK ✓</td>
+<td><strong>NG ✗，需 10 mm</strong></td>
+</tr>
+</tbody>
+</table>
+<p>判定依據：以 300 dpi 放大原始試卷後，柱右側自上而下共三個銲接符號，箭頭分別指向上翼板／腹板中央／下翼板，<strong>三者皆為填角銲符號並標註數字 6</strong>。題目要求「檢核圖中……接頭之銲接尺寸」，正是要考生發現圖示尺寸不足。</p>
+<h3>爭議二：$f_a = 90.5$ N/mm² 的真正出處（舊版說明錯誤）</h3>
+<p>舊版寫「約為 $0.6F_y \times 0.5/\sqrt{3}$」——代入得 $0.6(245)(0.5)/1.732 = 42.4$ N/mm²，與 90.5 相差甚遠，該式不成立。</p>
+<p><strong>正確出處：日本 AIJ「鋼構造設計規準」之填角銲長期許容剪應力</strong></p>
+<p>$$f_s = \frac{F}{1.5\sqrt{3}}$$</p>
+<p>其中 $F$ 為鋼材基準強度。SN400B 之 $F = 235$ N/mm²：</p>
+<p>$$f_s = \frac{235}{1.5 \times 1.7321} = \frac{235}{2.598} = \boxed{90.5 \text{ N/mm}^2} \;\checkmark$$</p>
+<p><strong>反向自我驗證</strong>：$F = f_a \times 1.5\sqrt{3} = 90.5 \times 2.598 = 235.1$ N/mm² —— 恰為 SN400B 之基準強度。此同時證明本題 $F_y$ 應取 <strong>235</strong>（非 245）。</p>
+<p>$1.5\sqrt{3}$ 之組成：$\sqrt{3}$ 為 von Mises 由拉力轉剪力之係數，$1.5$ 為長期（常時）容許應力之安全係數。短期（地震／風）容許應力則為 $F/\sqrt{3} = 135.7$ N/mm²（1.5 倍）。</p>
+<h3>爭議三：若依台灣 ASD 規範，6 mm 腹板銲道反而合格！</h3>
+<p>台灣「鋼構造建築物鋼結構設計技術規範」（99 年）<strong>容許應力設計法第十章表 10.2-5</strong>：填角銲之容許剪應力 $= 0.3 \times$ 銲材標稱拉應力強度。</p>
+<p>E70 銲條：$F_{EXX} = 70$ ksi $= 482.6$ N/mm²</p>
+<p>$$f_{a,\text{TW}} = 0.3 \times 482.6 = \boxed{144.8 \text{ N/mm}^2}$$</p>
+<table>
+<thead>
+<tr>
+<th>部位</th>
+<th>應力</th>
+<th>日本 $f_a = 90.5$</th>
+<th>台灣 $f_a = 144.8$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>梁腹 6 mm</td>
+<td>123.6</td>
+<td><strong>NG</strong>（1.37 倍）</td>
+<td><strong>OK</strong>（0.85 倍）</td>
+</tr>
+<tr>
+<td>梁翼 6 mm</td>
+<td>151.6</td>
+<td><strong>NG</strong>（1.68 倍）</td>
+<td><strong>NG</strong>（1.05 倍，僅超 5%）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>這是本題最值得注意的規範差異</strong>：同一組銲道，依日本 AIJ 判 NG、依台灣規範腹板判 OK。差異達 <strong>1.60 倍</strong>（144.8/90.5），源自兩套體系的基準完全不同：<br />
+- 日本：以<strong>母材基準強度</strong> $F$ 除以 $1.5\sqrt{3}$<br />
+- 台灣／AISC：以<strong>銲材強度</strong> $F_{EXX}$ 乘 0.3</p>
+<p>本題既然直接給定 $f_a = 90.5$ N/mm²，作答<strong>必須用 90.5</strong>；但答案中指出此差異可展現對規範體系的理解。</p>
+</blockquote>
+<h3>爭議四：$\tau_{w1}$ 與 $\tau_{w2}$ 之方向確為正交</h3>
+<p>腹板銲道為兩條<strong>鉛垂</strong>線（腹板兩側各一）：</p>
+<table>
+<thead>
+<tr>
+<th>來源</th>
+<th>銲道上之力方向</th>
+<th>相對銲道軸</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_w$（繞水平軸之彎矩）</td>
+<td>沿梁軸方向（水平，垂直柱面）</td>
+<td><strong>橫向</strong>（$\theta = 90°$）</td>
+</tr>
+<tr>
+<td>$Q$（鉛垂剪力）</td>
+<td>鉛垂</td>
+<td><strong>縱向</strong>（$\theta = 0°$）</td>
+</tr>
+</tbody>
+</table>
+<p>兩者正交 ⇒ $\tau = \sqrt{\tau_{w1}^2 + \tau_{w2}^2}$ 成立 ✓。題目稱 $\tau_{w1}$ 為「銲道外側<strong>拉</strong>應力」是就腹板受彎之物理而言；台灣／AISC 對填角銲一律以「喉面上之剪應力」處理，不區分拉／剪，故合成方式不變。</p>
+<h3>爭議五：腹板銲道有效長度 388 mm</h3>
+<p>$$l_w = d - 2t_f - 2 \times 40 = 500 - 32 - 80 = 388 \text{ mm} \;\checkmark$$</p>
+<p>即 $500 - 2 \times (16 + 40) = 388$ mm。圖中「40」為腹板端部扇形開孔（scallop／cope）尺寸，用以避開翼板銲道之銲接可及性與熱影響區。此值與題目所給 $S_w$ 公式中的 $388^2$ 完全一致，可作為圖面判讀的交叉驗核。</p>
+<h3>考場實務建議</h3>
+<ul>
+<li>題目已給 $S_w$ 與 $\tau_{w1}$，核心是補上 $\tau_{w2}$ 並向量合成（1 分鐘可完成）</li>
+<li><strong>不要因為「彎矩接頭應該是 CJP」的印象而跳過翼板填角銲的計算</strong>——本題 30 分中，翼板部分至少佔一半</li>
+<li>發現 NG 後務必反算所需尺寸（題目說「檢核銲接尺寸」，隱含要給出可行尺寸）</li>
+<li>建議在答案末段加一句：「實務上梁翼宜改為 CJP 開槽銲」，可加分</li>
+</ul>
+<hr />
+<h2>6. 依最新規範（AISC 360-16／-22）對照</h2>
+<blockquote>
+<p><strong>本題主答案所依規範</strong>：題目直接給定 $f_a = 90.5$ N/mm²（日本 AIJ 體系），故主答案依此值。以下對照台灣 2010 容許應力設計法與 AISC 360-16／-22。</p>
+</blockquote>
+<h3>6.1 三套規範之填角銲容許／設計剪應力</h3>
+<table>
+<thead>
+<tr>
+<th>體系</th>
+<th>公式</th>
+<th>E70 + SN400B 之值</th>
+<th>相對</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日本 AIJ（本題給定）</td>
+<td>$F/(1.5\sqrt{3})$，$F = 235$</td>
+<td><strong>90.5 N/mm²</strong></td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>台灣 2010 ASD 表 10.2-5</td>
+<td>$0.3 F_{EXX}$</td>
+<td><strong>144.8 N/mm²</strong></td>
+<td>1.60</td>
+</tr>
+<tr>
+<td>AISC 360-16／-22 ASD</td>
+<td>$0.60F_{EXX}/\Omega$，$\Omega = 2.00$</td>
+<td><strong>144.8 N/mm²</strong></td>
+<td>1.60</td>
+</tr>
+<tr>
+<td>AISC 360-16／-22 LRFD</td>
+<td>$\phi \times 0.60F_{EXX}$，$\phi = 0.75$</td>
+<td>217.2 N/mm²（需因數化載重）</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>台灣 ASD 與 AISC 360 ASD 完全相同</strong>：$0.3F_{EXX} \equiv 0.60F_{EXX}/2.00$。這是理解「$0.3$」由來的關鍵恆等式。</p>
+<h3>6.2 AISC 360-16 新增之方向性強度：兩處銲道均變為合格</h3>
+<p>AISC 360-16 §J2.4(a)（-22 移至 §J2.4b）：</p>
+<p>$$F_{nw} = 0.60F_{EXX}\left(1.00 + 0.50\sin^{1.5}\theta\right)$$</p>
+<table>
+<thead>
+<tr>
+<th>部位</th>
+<th>合力與銲軸夾角 $\theta$</th>
+<th>方向性係數</th>
+<th>ASD 許可應力</th>
+<th>實際應力</th>
 <th>判定</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>梁腹（6 mm 填角銲）</td>
-<td>雙面填角</td>
-<td>123.6 N/mm²</td>
-<td>90.5 N/mm²</td>
-<td><strong>NG ✗</strong></td>
-</tr>
-<tr>
-<td>梁腹（9 mm 填角銲）</td>
-<td>雙面填角</td>
-<td>82.4 N/mm²</td>
-<td>90.5 N/mm²</td>
+<td>梁腹 6 mm</td>
+<td>$\arctan(119.8/30.4) = 75.8°$</td>
+<td>1.477</td>
+<td>$144.8 \times 1.477 = 213.9$</td>
+<td>123.6</td>
 <td><strong>OK ✓</strong></td>
 </tr>
 <tr>
-<td>梁翼（CJP 開槽銲）</td>
-<td>完全熔透</td>
-<td>80.4 N/mm²</td>
-<td>147 N/mm²</td>
+<td>梁翼 6 mm</td>
+<td>$90°$（純橫向拉）</td>
+<td>1.500</td>
+<td>$144.8 \times 1.500 = 217.2$</td>
+<td>151.6</td>
 <td><strong>OK ✓</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>結論：梁腹填角銲需由 6 mm 加大至 9 mm，梁翼 CJP 開槽銲強度充足。</strong></p>
+<p>$$\Rightarrow \boxed{\text{依 AISC 360-16／-22，圖示之 6 mm 填角銲於兩處均合格}}$$</p>
+<p><strong>規範間差距總覽</strong>（同一組 6 mm 銲道）：</p>
+<table>
+<thead>
+<tr>
+<th>判準</th>
+<th>梁腹</th>
+<th>梁翼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日本 AIJ（$f_a = 90.5$，本題主答案）</td>
+<td>NG（需 9 mm）</td>
+<td>NG（需 10 mm）</td>
+</tr>
+<tr>
+<td>台灣 2010 ASD（144.8）</td>
+<td>OK</td>
+<td>NG（需 6.3 mm ≈ 7 mm）</td>
+</tr>
+<tr>
+<td>AISC 360-16 ASD + 方向性（213.9 / 217.2）</td>
+<td>OK</td>
+<td>OK</td>
+</tr>
+</tbody>
+</table>
+<p>同一接頭在三套規範下得到三種結論，是本題最具教育價值之處：<strong>「銲道尺寸夠不夠」在很大程度上是規範體系的問題，而非物理的問題</strong>。</p>
+<h3>6.3 箱型柱—H 梁接頭之其他規範要求</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>台灣 2010</th>
+<th>AISC 360-16／-22 + AISC 341-16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>柱內橫隔板</td>
+<td>§10.1.2、§13（耐震）</td>
+<td>§J10、AISC 341 §E3（韌性接頭）</td>
+</tr>
+<tr>
+<td>腹板扇形開孔</td>
+<td>施工規範；本題 40 mm</td>
+<td>AISC 341 §I2.4 對開孔幾何有規定（避免脆性破壞）</td>
+</tr>
+<tr>
+<td>抗彎接頭型式</td>
+<td>§13.6 要求梁翼採 CJP</td>
+<td>AISC 341 §E3.6b 要求預審合格接頭（Prequalified，AISC 358）</td>
+</tr>
+<tr>
+<td>銲材韌性</td>
+<td>SN 鋼材＋低溫衝擊值</td>
+<td>AISC 341 §A3.4b：需求 CVN 20 ft-lb @ −20 °F（Demand Critical）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>若本接頭位於耐震抗彎構架，AISC 341-16 與台灣規範第十三章都會<strong>要求梁翼採 CJP 且為 Demand Critical 銲道</strong>，6 mm 填角銲在任何規範下都不被允許——這是超越純強度計算的層次。</p>
+</blockquote>
+<h3>6.4 對照總表</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>本題主答案（$f_a = 90.5$，日本 AIJ）</th>
+<th>台灣 2010 ASD</th>
+<th>AISC 360-16／-22</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>容許剪應力</td>
+<td>90.5 N/mm²</td>
+<td>144.8 N/mm²</td>
+<td>144.8 N/mm²（ASD）；+方向性最高 217.2</td>
+</tr>
+<tr>
+<td>梁腹 6 mm（123.6）</td>
+<td><strong>NG，需 9 mm</strong></td>
+<td>OK</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>梁翼 6 mm（151.6）</td>
+<td><strong>NG，需 10 mm</strong></td>
+<td>NG，需 7 mm</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>$F_y$（SN400B）</td>
+<td>235 N/mm²</td>
+<td>235 N/mm²</td>
+<td>—</td>
+</tr>
+<tr>
+<td>方向性強度</td>
+<td>✗</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
-<h3>梁翼/梁腹彎矩分配的物理意義</h3>
-<p><strong>梁翼承擔彎矩 $M_f$（大部份）：</strong><br />
-翼板遠離中性軸，產生較大力偶臂，承擔大部分彎矩效率最高。翼板透過 CJP 銲道傳遞集中的拉/壓力至柱面（或柱的水平加勁板）。</p>
-<p><strong>梁腹承擔彎矩 $M_w$（小部份）＋剪力 $Q$（全部）：</strong><br />
-腹板靠近中性軸，傳遞彎矩效率低，但是傳遞剪力的主體。填角銲道需同時承受 $M_w$ 產生的水平分力與 $Q$ 產生的垂直分力。</p>
-<h3>腹板銲道有效長度計算（388 mm 的由來）</h3>
-<p>梁總高 500 mm，翼板 16 mm × 2 = 32 mm，淨腹板高 468 mm。</p>
-<p>腹板銲道兩端各留 40 mm（返銲空間或開口），但需另加翼板厚度 16 mm：<br />
-$$l_w = 500 - 2 \times (40 + 16) = 500 - 112 = 388 \text{ mm} ✓$$</p>
-<h3>容許應力 $f_a = 90.5$ N/mm² 的來源</h3>
-<p>對於 SN400B（$F_u = 400$ N/mm²）配合 E70（$F_{EXX} = 70 \text{ ksi} \approx 483$ N/mm²）填角銲：</p>
-<p>$$f_a = 0.3 F_{EXX} = 0.3 \times 483 = 144.9 \text{ N/mm}^2$$</p>
-<p>但採用日本 JIS 規範的填角銲容許應力（台灣建築鋼結構規範）：<br />
-$$f_a \approx 90.5 \text{ N/mm}^2$$（規範直接給定值，已含安全係數）</p>
-<p>此值約為 $0.6 F_y \times 0.5 / \sqrt{3}$（von Mises 容許剪應力），是常見考試給定值。</p>
-<h3>考場實務建議</h3>
-<ul>
-<li>本題已給 $S_w$ 與 $\tau_{w1}$，核心計算是 $\tau_{w2}$ 和向量合成（約 1 分鐘內可完成）</li>
-<li>發現 NG 後不要停止，需進一步計算所需銲道尺寸（題目要求「檢核銲接尺寸」，隱含需給出正確答案）</li>
-<li>翼板 CJP 銲道是「從梁翼設計」而非「從銲道設計」，切換思維模式</li>
-</ul></main>
+<p><em>修正日期：2026-08-22</em><br />
+<em>本次修正內容：①以 300 dpi 影像重新判讀試卷附圖，確認</em><em>三處銲接符號皆為 6 mm 填角銲</em><em>，更正舊版「梁翼為 CJP 完全熔透銲」之誤判；梁翼改以銲道喉面積檢核，應力由 80.4 → </em><em>151.6 N/mm²</em><em>，判定由 OK → </em><em>NG（需 10 mm）</em><em>；②更正 SN400B 之 $F_y$：245 → </em><em>235 N/mm²</em><em>（245 為 SM400A/B 之值），$0.6F_y$ 由 147 → 141 N/mm²；③更正 $f_a = 90.5$ N/mm² 之出處：舊版「$0.6F_y \times 0.5/\sqrt{3}$」（代入得 42.4，與 90.5 不符）改為正確之日本 AIJ 長期許容剪應力 $F/(1.5\sqrt{3})$，$F = 235$（並以反推 235.1 自我驗證）；④新增「若依台灣 ASD 規範 $0.3F_{EXX} = 144.8$ N/mm²，6 mm 腹板銲反而合格」之規範差異討論；⑤補充腹板銲道 388 mm 之扇形開孔來源、$\tau_{w1}/\tau_{w2}$ 正交性論證、最大銲腳尺寸檢核；⑥新增 §6 依最新規範對照（含方向性強度使兩處銲道皆合格、AISC 341 耐震要求）。梁腹之 123.6 N/mm² 與所需 9 mm 經獨立重算確認無誤。</em><br />
+<em>驗證狀態：unverified</em></p>
+</main>
 <footer>來源：raw/solutions/SS-2018-3/SS-2018-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 study-/lecture-/formula-given-SS-Un-m.html 點入，

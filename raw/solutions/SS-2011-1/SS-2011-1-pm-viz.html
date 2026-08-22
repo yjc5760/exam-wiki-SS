@@ -29,15 +29,15 @@
     <span class="tag">P-Δ 效應</span>
     <span class="tag">P-δ 效應</span>
     <span class="tag">初始不完美</span>
-    <span class="tag">剛度折減 τ_a</span>
+    <span class="tag">勁度折減 0.8τ_b</span>
     <span class="tag">ASD 1.6 倍</span>
     <br><br>
     <table>
       <tr><th>子題</th><th>核心概念</th><th>關鍵公式/數值</th></tr>
       <tr><td>(一)</td><td>二階 vs 一階分析</td><td>P-Δ（整體側移）+ P-δ（構件撓曲）</td></tr>
-      <tr><td>(二)</td><td>初始不完美模擬</td><td>等效假想水平力 N_i = 0.002α·P_r</td></tr>
-      <tr><td>(三)</td><td>剛度折減條件</td><td>τ_a：αP_r/P_y ≥ 0.5 時需折減</td></tr>
-      <tr><td>(四)</td><td>ASD 1.6 倍係數</td><td>LRFD: 1.2D+1.6L → ASD: D+L → 比值≈1.6</td></tr>
+      <tr><td>(二)</td><td>初始不完美模擬</td><td>等效假想水平力 N_i = 0.002α·Y_i（Y_i 為該層重力載重）</td></tr>
+      <tr><td>(三)</td><td>剛度折減條件</td><td>一律 0.8；αP_r/P_y &gt; 0.5 時再乘 τ_b</td></tr>
+      <tr><td>(四)</td><td>ASD 1.6 倍係數</td><td>α = 1.6（載重係數，不是 Ω）；(1.2D+1.6L)/(D+L) 之上限</td></tr>
     </table>
     <div style="margin-top:10px;color:#555">
       ※ 本題為純概念說明題，無 P-M 數值計算。圖示說明直接分析法（DAM）與傳統有效長度法（ELM）的主要差異。

@@ -35,12 +35,12 @@
     </table>
     <div style="margin-top:10px">
       <b>穩定式 + 強度式（fa/Fa > 0.15）</b><br>
-      互制比 = <span class="ratio-value">1.127</span>
+      互制比 = <span class="ratio-value">1.140</span>
       &nbsp;<span class="status">N.G. ❌</span>
     </div>
-    <div class="note">穩定式 = 0.431 + 0.383 + 0.313 = 1.127 &gt; 1.0（N.G.）<br>強度式 = 0.376 + 0.436 + 0.329 = 1.141 &gt; 1.0（N.G.）<br>側移框架 Cm = 0.85，W12×170 承載力不足</div>
+    <div class="note">穩定式 = 0.431 + 0.090 + 0.074 = 0.595 ≤ 1.0（OK；Cm = 0.2）<br>強度式 = 0.376 + 0.436 + 0.328 = 1.140 &gt; 1.0（N.G. ← 控制）<br>有側撐（無側移）＋雙曲率 ⇒ Cm = 0.2；W12×170 由強度式控制而不足</div>
   </div>
-  <div class="note">※ 本題屬側移構架，Cm 取 0.85（AISC ASD 規定）</div>
+  <div class="note">※ 柱頂水平滾支承＋柱底鉸接 ⇒ 無側移（題給 K = 1.0 為旁證）；兩端力偶同轉向 ⇒ 雙曲率 M1/M2 = +1；台灣 ASD 規範與 AISC ASD-89 §H1 皆無 Cm ≥ 0.4 下限</div>
 </div>
 <script>
 const canvas = document.getElementById('chart');
@@ -92,7 +92,7 @@ ctx.fillStyle = '#e74c3c'; ctx.fill();
 ctx.strokeStyle = 'white'; ctx.lineWidth = 2; ctx.stroke();
 ctx.fillStyle = '#2c3e50'; ctx.font = '12px Arial';
 ctx.fillText(`設計點 (0.764, 0.431)`, dpX+12, dpY-10);
-ctx.fillText(`互制比 = 1.127`, dpX+12, dpY+6);
+ctx.fillText(`互制比 = 1.140`, dpX+12, dpY+6);
 
 // Axes
 ctx.strokeStyle = '#2c3e50'; ctx.lineWidth = 2;

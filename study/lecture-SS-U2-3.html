@@ -133,7 +133,7 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
   <text x="34" y="214" font-size="14" fill="#263238">螺栓預拉力 = 規範表列值 Tb</text>
   <text x="34" y="234" font-size="12.5" fill="#607d8b">拆下來再鎖，還是同一個 Tb</text>
   <rect x="480" y="192" width="400" height="52" rx="7" fill="#fff5f5" stroke="#ef9a9a"/>
-  <text x="494" y="214" font-size="14" fill="#263238">鎖過一次已塑性伸長，扭力係數 K 已改變</text>
+  <text x="494" y="214" font-size="14" fill="#263238">鎖過一次預拉力已超過降伏，永久伸長</text>
   <text x="494" y="234" font-size="12.5" fill="#607d8b">二次鎖緊夾緊力不可控 → 禁止重複使用</text>
 
   <rect x="20" y="252" width="400" height="52" rx="7" fill="#f1f8e9" stroke="#a5d6a7"/>
@@ -213,7 +213,7 @@ U2-3 幾乎全是說明題。閱卷者要看的不是你背了多少條文，而
 <thead><tr><th>考點群</th><th>主要在問什麼</th><th>相關題</th></tr></thead>
 <tbody>
 <tr><td><b>G1 銲接冶金與熱</b></td><td>銲條乾燥、預熱、氫致冷裂、HAZ 脆化、層狀撕裂</td><td>SS-2002-1、SS-2024-4</td></tr>
-<tr><td><b>G2 銲接細節規定</b></td><td>開槽形式、銲腳尺寸、回銲 2w、有效銲喉、銲接方法選用</td><td>SS-2016-2、SS-2009-4、SS-2023-4</td></tr>
+<tr><td><b>G2 銲接細節規定</b></td><td>開槽形式、銲腳尺寸、回銲 2w～4w、有效銲喉、銲接方法選用</td><td>SS-2016-2、SS-2009-4、SS-2023-4</td></tr>
 <tr><td><b>G3 瑕疵辨識與 NDT</b></td><td>五種 NDT 原理與限制、缺陷 × 方法配對、CJP 100% UT</td><td>SS-2021-1、SS-2022-3、SS-2009-4</td></tr>
 <tr><td><b>G4 高拉力螺栓施工</b></td><td>預拉力如何建立、板面密接、孔位校正、重複使用、混合接合</td><td>SS-2004-1、SS-2021-4、SS-2009-4</td></tr>
 <tr><td><b>G5 防蝕與塗裝</b></td><td>銹蝕等級、三種防蝕法、表面處理等級、不予塗裝部位</td><td>SS-2010-2、SS-2019-1、SS-2018-4</td></tr>
@@ -599,7 +599,7 @@ $$L_{min} \ge 4w \quad \text{且} \quad L_{min} \ge 38\ \text{mm}$$
 <div class="fig">
 <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg">
   <text x="220" y="24" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#b71c1c">沒有回銲：銲道在轉角突然停止</text>
-  <text x="660" y="24" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#1b5e20">有回銲：繞過轉角續銲 ≥ 2w</text>
+  <text x="660" y="24" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#1b5e20">有回銲：繞過轉角續銲 2w ≤ ℓ ≤ 4w</text>
   <line x1="440" y1="12" x2="440" y2="286" stroke="#b0bec5" stroke-width="2" stroke-dasharray="6,5"/>
 
   <rect x="70" y="70" width="42" height="170" fill="#cfd8dc" stroke="#455a64" stroke-width="1.6"/>
@@ -621,13 +621,13 @@ $$L_{min} \ge 4w \quad \text{且} \quad L_{min} \ge 38\ \text{mm}$$
   <line x1="552" y1="200" x2="600" y2="200" stroke="#2e7d32" stroke-width="6"/>
   <path d="M552 88 L600 88" stroke="#2e7d32" stroke-width="1.6" fill="none"/>
   <path d="M552 84 L552 92 M600 84 L600 92" stroke="#2e7d32" stroke-width="1.6" fill="none"/>
-  <text x="576" y="78" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1b5e20">≥ 2w</text>
+  <text x="576" y="78" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1b5e20">2w ～ 4w</text>
   <text x="612" y="116" font-size="12" fill="#1b5e20">回銲段承擔端部剝離力</text>
 
   <rect x="70" y="272" width="740" height="1" fill="none"/>
   <defs><marker id="arR2" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#c62828"/></marker></defs>
 </svg>
-<div class="cap">回銲的唯一目的：把銲道端點的應力尖峰搬離幾何不連續處。最小長度 ≥ 2w 是規範明文，考場必寫。</div>
+<div class="cap">回銲的目的：把銲道端點的應力尖峰與起弧／收弧缺陷搬離受力斷面。施工規範 §4.1.5(9) 明訂長度<b>不得小於銲接尺寸之二倍、不得超過四倍</b>（\(2w \le \ell \le 4w\)）——<b>上下限都是明文，兩個都要寫</b>。</div>
 </div>
 
 <div class="grid2">
@@ -638,17 +638,29 @@ $$L_{min} \ge 4w \quad \text{且} \quad L_{min} \ge 38\ \text{mm}$$
 </div>
 <div class="comp">
 <b>❌ 不適用回銲</b><br>
-<b>① 間歇銲縫的中間端部</b>：位在腹板中央，根本沒有轉角可繞；硬做只會多一個局部熱源、多一段殘留應力與 HAZ。<br>
-<b>② CJP 全滲透銲</b>：已貫穿全厚度，沒有裸露端部邊緣需要保護。
+<b>① 接合之外伸肢需要保持轉動撓性者</b>（主答案）：例如簡支梁的<b>雙角鋼／頂角鋼剪力接合</b>，
+外伸肢必須能隨梁端轉動而張開。回銲會把端部焊死 → 設計上假設的鉸接變成半剛接 →
+產生未計入的端彎矩 → <b>回銲段自己先被拉裂</b>。規範把繞角銲長度上限訂為 \(4w\)，
+講的就是這件事。<br>
+<b>② 搭接接頭中，一板件伸出另一板件邊緣且該邊緣受計算拉應力者</b>：填角銲須在距該自由邊
+一段距離處終止，不得繞至該邊緣，以免在受拉自由邊製造缺口與殘留拉應力。<br>
+<b>③ 施工上做不到者</b>：規範原文寫「<b>在施工可能範圍下</b>」——例如斷續銲各段的端部位在
+腹板中段、根本沒有轉角可繞，或與其他構件干涉銲槍伸不進去。注意這是「做不到」，
+與①②的「不該做」性質不同。
 </div>
 </div>
 
 <div class="trap">
 <b>陷阱 ×2（<a class="qlink" href="problems-view/SS-2016-2.html" target="_blank">SS-2016-2</a> 標準扣分點）</b><br>
-① <b>只畫形狀、不寫 \(\ell \ge 2w\)</b> → 定義題直接掉一半分。<br>
+① <b>只寫 \(\ell \ge 2w\)、漏掉上限 \(\ell \le 4w\)</b> → 規範是同一句話裡的兩個界限，
+只寫一半就是只拿一半分；而且上限正是子題(二)「何時不適用」的答案來源。<br>
 ② <b>把回銲和「環繞全周銲（weld-all-around）」混為一談</b> → 全周銲是沿整個截面邊緣繞一圈；
 回銲只在端部繞轉角延伸一小段。兩者目的與範圍完全不同。<br>
-補充：計算有效長度時，主銲道兩端各扣 \(1w\)；回銲段若長度 \(\le 4w\)，全段不計入有效長度。
+③ <b>以為回銲不計入有效長度</b> → 恰好相反。施工規範 §4.1.5(1)～(3) 明定
+<b>填角銲之有效銲道長度為「包括端彎（繞角銲）在內」的全部填角銲道</b>，國內<b>不作</b>
+「兩端各扣 \(1w\)」之扣除（那是 IS／BS 等其他規範體系的作法）。<br>
+④ <b>把兩個 \(4w\) 搞混</b> → §4.1.5(6) 的 \(4w\) 是「依強度計算之<b>最小</b>有效長度」（下限，
+不足者不予採計）；§4.1.5(9) 的 \(4w\) 是「繞角銲長度<b>上限</b>」。數字相同、方向相反。
 </div>
 
 <h3>2.4 開槽銲與銲接方法：選錯製程等於選錯風險</h3>
@@ -674,7 +686,7 @@ T 形接頭的立板只有一個面朝外，本來就開不出 V。
 <tr><td><b>SAW</b></td><td>Submerged Arc Welding（<b>潛弧銲</b>）</td><td>高</td><td>工廠厚板長直銲道（箱型柱翼腹板）</td><td>熔劑靠重力覆蓋，<b>不能仰銲、垂直銲</b></td></tr>
 <tr><td><b>GMAW</b></td><td>Gas Metal Arc Welding（MIG／MAG）</td><td>中</td><td>薄板、工廠半自動</td><td>戶外風大時保護氣被吹散</td></tr>
 <tr><td><b>FCAW</b></td><td>Flux-Cored Arc Welding（藥芯銲線）</td><td>中～高</td><td>工地梁柱接合</td><td>自保護型可露天；需清渣</td></tr>
-<tr><td><b>ESW</b></td><td>Electroslag Welding（<b>電熱熔渣銲</b>）</td><td><b>極高</b></td><td>工廠一道成形的厚銲（剪力板接箱型柱面）</td><td><b>大熱輸入 → HAZ 晶粒粗大脆化</b>、未熔合風險高</td></tr>
+<tr><td><b>ESW</b></td><td>Electroslag Welding（<b>電熱熔渣銲</b>）</td><td><b>極高</b></td><td>工廠一道成形的厚銲（<b>箱型柱內橫隔板接柱壁</b>）</td><td><b>大熱輸入 → HAZ 晶粒粗大脆化</b>、未熔合風險高</td></tr>
 </tbody>
 </table>
 
@@ -687,7 +699,7 @@ AWS D1.8（耐震補充規範）對 ESW 另有特殊要求。檢測以 <b>UT</b>
 
 <div class="box">
 <b>§2 因果鏈</b><br>
-幾何不連續 → 應力集中 → 疲勞裂縫萌生點 → 規範用「回銲 2w、最小長度 4w 且 ≥38 mm、
+幾何不連續 → 應力集中 → 疲勞裂縫萌生點 → 規範用「回銲 2w～4w、最小長度 4w 且 ≥40 mm、
 最大銲腳 t−2 mm、移除背銲鋼條」把不連續處挪開或磨平 → 應力尖峰下降 → 接合壽命回到設計假設。
 </div>
 </section>
@@ -840,19 +852,19 @@ NDT 這一塊看似要背五種方法 × 六種缺陷 = 三十個組合，其實
 <tr><td><b>夾渣</b></td><td>Slag Inclusion</td><td>體積型</td><td>多道銲清渣不徹底</td><td><b>RT</b>（UT 次之）</td></tr>
 <tr><td><b>氣孔</b></td><td>Porosity</td><td>體積型</td><td>水分、油污、保護氣不足</td><td><b>RT</b></td></tr>
 <tr><td><b>咬邊</b></td><td>Undercut</td><td>表面幾何</td><td>電流過大、運行角度不當</td><td><b>VT</b>（量深度）</td></tr>
-<tr><td><b>搭疊</b></td><td>Overlap</td><td>表面幾何</td><td>電流過小、速度太慢</td><td><b>VT</b></td></tr>
+<tr><td><b>重疊</b>（搭疊）</td><td>Overlap</td><td>表面幾何</td><td>電流過小、速度太慢、母材有鏽皮油污</td><td><b>VT</b>（規範零容忍）</td></tr>
 </tbody>
 </table>
 
 <div class="box">
-<b><a class="qlink" href="problems-view/SS-2021-1.html" target="_blank">SS-2021-1</a> 的四點答案（T 型填角銲截面）</b>
+<b><a class="qlink" href="problems-view/SS-2021-1.html" target="_blank">SS-2021-1</a> 的四點答案（T 型填角銲截面）</b><br><span style="color:#b71c1c">四處<b>全部是表面或自表面起始的缺陷</b>，圖中沒有任何圓形空洞或內部夾雜；四小題答案用掉 VT×2、MT、UT，<b>RT 一次都沒用到</b>——這正是題幹「填角銲」三個字的意義。</span>
 <table style="margin-top:8px">
 <thead><tr><th>標號</th><th>位置</th><th>名稱</th><th>NDT</th><th>一句話理由</th></tr></thead>
 <tbody>
-<tr><td>a</td><td>銲趾表面斜裂紋</td><td><b>銲趾裂縫</b></td><td>MT</td><td>表面開口 + 鋼是鐵磁性 → MT 最靈敏</td></tr>
-<tr><td>b</td><td>銲道內部不規則區</td><td><b>夾渣</b></td><td>RT</td><td>內部體積型 → 底片呈不規則暗區</td></tr>
-<tr><td>c</td><td>銲根低端凹槽</td><td><b>咬邊</b></td><td>VT</td><td>表面幾何缺陷，肉眼可量深度</td></tr>
-<tr><td>d</td><td>HAZ 圓形空洞</td><td><b>氣孔</b></td><td>RT</td><td>球形體積型 → UT 反射面小，RT 較適合</td></tr>
+<tr><td>a</td><td>上銲趾處<b>母材被熔蝕出凹口</b>（缺料）</td><td><b>咬邊 Undercut</b></td><td>VT</td><td>表面幾何缺陷，須以銲道量規<b>量深度</b>才能判合格；MT/PT 只給指示、量不出深度</td></tr>
+<tr><td>b</td><td>銲材內、<b>自銲面開口並分岔</b>的鋸齒線</td><td><b>銲道裂縫 Crack</b></td><td>MT</td><td>表面／近表面裂縫，鋼為鐵磁性 → MT 最靈敏，磁粉沿裂縫排成線狀指示</td></tr>
+<tr><td>c</td><td>下銲趾處銲材<b>翻捲平舖於母材上、未熔合</b>（多料）</td><td><b>重疊 Overlap</b></td><td>VT</td><td>外觀即可判定；規範對重疊採「不得存在」的零容忍，判定有即鏟除重銲</td></tr>
+<tr><td>d</td><td>銲趾正下方、<b>往母材板厚方向</b>延伸的鋸齒線</td><td><b>母材／HAZ 裂縫（層狀撕裂）</b></td><td>UT</td><td>裂縫在母材內，表面只看得到一小段；<b>UT 是唯一能定量深度與範圍</b>的方法</td></tr>
 </tbody>
 </table>
 </div>
@@ -956,9 +968,9 @@ $$T = K d F_i = 0.13 \times 0.022\ \text{m} \times 176\ \text{kN} \approx 0.50\ 
   <text x="146" y="118" text-anchor="middle" font-size="12" fill="#c62828">間隙 → 鎖緊時板材彎曲</text>
   <text x="146" y="136" text-anchor="middle" font-size="12" fill="#c62828">夾緊力沒落在接觸面上</text>
   <rect x="40" y="150" width="212" height="112" rx="7" fill="#ffebee" stroke="#ef9a9a"/>
-  <text x="54" y="174" font-size="12.5" fill="#263238">≤ 2 mm：可直接鎖緊</text>
-  <text x="54" y="198" font-size="12.5" fill="#263238">2 ~ 6 mm：填塞板（shim）</text>
-  <text x="54" y="222" font-size="12.5" fill="#263238">&gt; 6 mm：修整或重製</text>
+  <text x="54" y="174" font-size="12.5" fill="#263238">板厚差 &lt; 1 mm：不必處理</text>
+  <text x="54" y="198" font-size="12.5" fill="#263238">板厚差 ≥ 1 mm：加墊片（shim）</text>
+  <text x="54" y="222" font-size="11.8" fill="#607d8b">（規範 §5.2 只有這一個門檻）</text>
   <text x="54" y="248" font-size="11.8" fill="#b71c1c">塞板須同材質、同表面處理</text>
   <rect x="40" y="274" width="212" height="106" rx="7" fill="#fafafa" stroke="#cfd8dc"/>
   <text x="146" y="296" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#37474f">關鍵字</text>
@@ -972,11 +984,11 @@ $$T = K d F_i = 0.13 \times 0.022\ \text{m} \times 176\ \text{kN} \approx 0.50\ 
   <circle cx="410" cy="85" r="9" fill="#fff" stroke="#455a64"/>
   <text x="440" y="120" text-anchor="middle" font-size="12" fill="#e65100">上下孔不同心，螺栓穿不過去</text>
   <rect x="330" y="134" width="212" height="128" rx="7" fill="#fff3e0" stroke="#ffb74d"/>
-  <text x="344" y="158" font-size="12.5" fill="#263238">≤ 2 mm：撬棒（drift pin）導引</text>
-  <text x="344" y="182" font-size="12.5" fill="#263238">2 ~ 5 mm：鉸孔（reaming）</text>
-  <text x="344" y="206" font-size="12.5" fill="#263238">&gt; 5 mm：回廠重製</text>
-  <text x="344" y="232" font-size="11.8" fill="#b71c1c">鉸孔後孔徑 ≤ d + 3 mm</text>
-  <text x="344" y="252" font-size="11.8" fill="#b71c1c">且須疊合後一次鉸孔</text>
+  <text x="344" y="158" font-size="12.5" fill="#263238">① 先用沖梢（drift pin）校正</text>
+  <text x="344" y="180" font-size="11.8" fill="#b71c1c">　不得使用 2.5 kg 以上之鐵鎚</text>
+  <text x="344" y="204" font-size="12.5" fill="#263238">② 仍不行 → 鉸孔（reaming）</text>
+  <text x="344" y="226" font-size="11.8" fill="#b71c1c">　擴孔後孔徑 ≤ 設計孔徑 + 2 mm</text>
+  <text x="344" y="248" font-size="11.8" fill="#b71c1c">　且須疊合後一次鉸孔、清屑</text>
   <rect x="330" y="274" width="212" height="106" rx="7" fill="#ffcdd2" stroke="#e57373"/>
   <text x="440" y="296" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#b71c1c">絕對禁止</text>
   <text x="440" y="320" text-anchor="middle" font-size="12" fill="#b71c1c">氣割 / 氣焊擴孔</text>
@@ -984,8 +996,8 @@ $$T = K d F_i = 0.13 \times 0.022\ \text{m} \times 176\ \text{kN} \approx 0.50\ 
   <text x="440" y="362" text-anchor="middle" font-size="12" fill="#b71c1c">用螺栓本身當撬棒</text>
 
   <rect x="620" y="52" width="212" height="60" rx="6" fill="#f3e5f5" stroke="#ce93d8"/>
-  <text x="726" y="76" text-anchor="middle" font-size="12.5" fill="#4a148c">第一次鎖緊：拉到約 0.85 Fy</text>
-  <text x="726" y="98" text-anchor="middle" font-size="12.5" fill="#4a148c">螺紋已塑性硬化 + 微觀損傷</text>
+  <text x="726" y="76" text-anchor="middle" font-size="12.5" fill="#4a148c">第一次鎖緊：預拉力已超過降伏拉力</text>
+  <text x="726" y="98" text-anchor="middle" font-size="12.5" fill="#4a148c">螺栓已產生永久（塑性）伸長</text>
   <path d="M726 116 L726 138" stroke="#6a1b9a" stroke-width="2.5" marker-end="url(#arP)" fill="none"/>
   <rect x="620" y="142" width="212" height="120" rx="7" fill="#ede7f6" stroke="#b39ddb"/>
   <text x="634" y="166" font-size="12.5" fill="#263238">扭力係數 K 已非原廠值</text>
@@ -994,9 +1006,9 @@ $$T = K d F_i = 0.13 \times 0.022\ \text{m} \times 176\ \text{kN} \approx 0.50\ 
   <text x="634" y="238" font-size="12.5" fill="#263238">→ 轉角法起始點也失準</text>
   <rect x="620" y="274" width="212" height="106" rx="7" fill="#ffcdd2" stroke="#e57373"/>
   <text x="726" y="298" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#b71c1c">結論</text>
-  <text x="726" y="322" text-anchor="middle" font-size="12" fill="#b71c1c">原則上不可重複使用</text>
-  <text x="726" y="344" text-anchor="middle" font-size="12" fill="#b71c1c">A490 絕對禁止</text>
-  <text x="726" y="366" text-anchor="middle" font-size="11.5" fill="#c62828">（延性更低，易脆斷）</text>
+  <text x="726" y="322" text-anchor="middle" font-size="12" fill="#b71c1c">規範 §5.3.1：已使用過之螺栓</text>
+  <text x="726" y="344" text-anchor="middle" font-size="12" fill="#b71c1c">或帶有傷痕銹蝕者，不得再使用</text>
+  <text x="726" y="366" text-anchor="middle" font-size="11.5" fill="#c62828">（不分等級、不附條件）</text>
 
   <defs><marker id="arP" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#6a1b9a"/></marker></defs>
 </svg>
@@ -1007,7 +1019,7 @@ $$T = K d F_i = 0.13 \times 0.022\ \text{m} \times 176\ \text{kN} \approx 0.50\ 
 <b>為什麼「用螺栓本身當撬棒」被特別點名禁止？</b><br>
 撬棒要承受橫向撬動的巨大力量。高強度螺栓的螺紋牙尖與頭部下方的承壓面都是精密面，
 一旦被撬變形，第一，\(K\) 值再也不準；第二，螺紋牙根的刮傷（galling）是應力集中源，
-在 0.85\(F_y\) 的持續拉力下就是疲勞裂縫的溫床。<b>撬棒必須是專用工具，直徑小於孔徑。</b>
+在接近降伏的持續預拉力下就是裂縫的溫床。<b>撬棒必須是專用工具，直徑小於孔徑。</b>
 </div>
 
 <h3>4.3 摩阻型螺栓與銲接不可共同承力（<a class="qlink" href="problems-view/SS-2021-4.html" target="_blank">SS-2021-4</a>）</h3>
@@ -1210,36 +1222,37 @@ D 級銹蝕若只用手工工具清理，塗裝一定失效——而現場最常
   <rect x="30" y="102" width="140" height="60" rx="5" fill="#cfd8dc" stroke="#455a64" stroke-width="1.4"/>
   <path d="M100 102 L100 162" stroke="#e65100" stroke-width="6" fill="none"/>
   <rect x="76" y="102" width="48" height="60" fill="none" stroke="#c62828" stroke-width="2" stroke-dasharray="5,3"/>
-  <text x="100" y="180" text-anchor="middle" font-size="10.5" fill="#c62828">各 50 mm</text>
-  <text x="190" y="124" font-size="13.5" font-weight="bold" fill="#b71c1c">② 現場銲接部位，銲道兩側各 50 mm 範圍</text>
+  <text x="100" y="180" text-anchor="middle" font-size="10.5" fill="#c62828">各 100 mm</text>
+  <text x="190" y="124" font-size="13.5" font-weight="bold" fill="#b71c1c">② 工地銲接部位，及其相鄰接兩側各 100 mm 範圍內之區域</text>
   <text x="190" y="146" font-size="12.3" font-weight="bold" fill="#37474f">理由：油漆高溫分解 → 氣孔等缺陷、電弧不穩、鋅煙危害人員。</text>
 
   <rect x="30" y="190" width="140" height="60" rx="5" fill="#a1887f" stroke="#5d4037" stroke-width="1.4"/>
   <rect x="76" y="190" width="48" height="60" fill="#cfd8dc" stroke="#455a64" stroke-width="1.4"/>
   <text x="100" y="268" text-anchor="middle" font-size="10.5" fill="#5d4037">鋼骨埋入混凝土</text>
-  <text x="190" y="212" font-size="13.5" font-weight="bold" fill="#b71c1c">③ 埋入混凝土或與混凝土接觸之鋼材面</text>
-  <text x="190" y="234" font-size="12.3" fill="#37474f">理由：混凝土 pH &gt; 12 已使鋼表面鈍化；塗裝反而降低握裹力（SRC、鋼承板）。</text>
+  <text x="190" y="212" font-size="13.5" font-weight="bold" fill="#b71c1c">③ 埋件（將埋入混凝土內之埋件及構件）</text>
+  <text x="190" y="232" font-size="12.3" fill="#37474f">理由：混凝土 pH &gt; 12 已使鋼表面鈍化；塗裝反而降低握裹力（SRC、鋼承板）。</text>
+  <text x="190" y="250" font-size="12.3" font-weight="bold" fill="#c62828">但書：距混凝土表面 100 mm 深度內仍須塗裝（表層會碳化、開裂進水）。</text>
 
   <rect x="34" y="292" width="132" height="14" fill="#cfd8dc" stroke="#455a64" stroke-width="1.4"/>
   <rect x="30" y="306" width="140" height="16" fill="#8d6e63" stroke="#4e342e" stroke-width="1.4"/>
   <rect x="70" y="270" width="60" height="22" fill="#b0bec5" stroke="#455a64" stroke-width="1.4"/>
-  <text x="100" y="338" text-anchor="middle" font-size="10.5" fill="#4e342e">底板 / 無收縮砂漿</text>
-  <text x="190" y="298" font-size="13.5" font-weight="bold" fill="#b71c1c">④ 柱腳底板之底面（與灌漿砂漿接觸面）</text>
-  <text x="190" y="320" font-size="12.3" fill="#37474f">理由：塗裝降低底板與砂漿的接觸摩擦，影響柱腳剪力傳遞與錨固。</text>
+  <text x="100" y="338" text-anchor="middle" font-size="10.5" fill="#4e342e">支承滾軸 / 密著接觸面</text>
+  <text x="190" y="298" font-size="13.5" font-weight="bold" fill="#b71c1c">④ 軸件、滾輪等密著接觸面或迴轉面</text>
+  <text x="190" y="320" font-size="12.3" fill="#37474f">理由：機件功能面，塗膜妨礙轉動與精確密貼，且易被碾壓剝落。</text>
 
   <rect x="600" y="256" width="120" height="86" fill="#eceff1" stroke="#455a64" stroke-width="2"/>
   <rect x="614" y="270" width="92" height="58" fill="#fff" stroke="#90a4ae" stroke-dasharray="4,3"/>
   <text x="660" y="304" text-anchor="middle" font-size="11" fill="#546e7a">密閉內部</text>
-  <text x="190" y="360" font-size="13.5" font-weight="bold" fill="#b71c1c">⑤ 完全密閉之箱型斷面內側</text>
+  <text x="190" y="360" font-size="13.5" font-weight="bold" fill="#b71c1c">⑤ 密閉空間之內露面</text>
   <text x="190" y="380" font-size="12.3" fill="#37474f">理由：密閉無氧、腐蝕極慢；且密閉空間塗裝揮發物難排除，有工安風險。</text>
 </svg>
-<div class="cap">五個不予塗裝的部位。答題順序建議先列①～⑤再逐一說理由，閱卷者容易給分（每項約 4 分：名稱 2 分 + 理由 2 分）。</div>
+<div class="cap">施工規範 §7.4.5 明列的五個不予塗裝部位（題幹「除施工程序書另有規定」即引自此條）。答題順序建議先列①～⑤再逐一說理由，閱卷者容易給分（每項約 4 分：名稱 2 分 + 理由 2 分）。<b>兩個 100 mm 都要寫出來。</b>柱腳底板底面（與無收縮砂漿接觸面）、須做 UT 之掃查面等，屬實務常見另行指定者，可列在五項之後加分。</div>
 </div>
 
 <div class="trap">
 <b>陷阱 ×3</b><br>
 ① <b>「所有螺栓接合面都不塗裝」是錯的</b>：只有<b>摩阻型</b>不塗；承壓型靠螺桿剪切與板件承壓傳力，可以塗裝。<br>
-② <b>「只有銲縫線本身不塗」是錯的</b>：是銲道<b>兩側各 50 mm</b> 的帶狀範圍。工廠塗裝時要貼遮蔽條預留。<br>
+② <b>「只有銲縫線本身不塗」是錯的</b>：是工地銲接部位<b>相鄰接兩側各 100 mm</b> 的帶狀範圍（AISC 360 §M3.5 為 2 in.≈50 mm，是<b>美規</b>值，國內考試寫 100 mm）。工廠塗裝時要貼遮蔽條預留。<br>④ <b>漏掉「軸件、滾輪等密著接觸面或迴轉面」</b>：這一項最常被漏，它與結構接合無關，是機件功能面。<br>⑤ <b>埋件漏掉但書</b>：距混凝土表面 <b>100 mm 深度內仍須塗裝</b>。<br>
 ③ <b>例外：無機鋅粉底漆</b>。若有試驗佐證滑動係數並據以調整設計值，摩阻面是可以用特定塗料的。
 但考試以「不予塗裝」為標準答案，例外當作補充寫在最後。
 </div>
@@ -1349,7 +1362,7 @@ D 級銹蝕若只用手工工具清理，塗裝一定失效——而現場最常
   <text x="308" y="90" font-size="11.5" fill="#c62828">風險：根部未熔合、脆斷、層狀撕裂　檢測：UT 100%</text>
 
   <path d="M212 190 L300 150" stroke="#4a148c" stroke-width="1.6" fill="none"/>
-  <text x="308" y="146" font-size="12.5" font-weight="bold" fill="#4a148c">② 剪力板 ESW（工廠銲）</text>
+  <text x="308" y="146" font-size="12.5" font-weight="bold" fill="#4a148c">② 內橫隔板 ESW（工廠銲）</text>
   <text x="308" y="164" font-size="11.5" fill="#6a1b9a">風險：大熱輸入 → HAZ 晶粒粗大脆化、未熔合　檢測：UT + VT</text>
 
   <path d="M256 214 L300 244" stroke="#e65100" stroke-width="1.6" fill="none"/>
@@ -1372,7 +1385,8 @@ D 級銹蝕若只用手工工具清理，塗裝一定失效——而現場最常
 <tr><td><b>梁翼板對柱</b>（最關鍵）</td><td>CJP 全滲透對接銲</td><td><b>UT 100% 全數</b> + VT</td><td>最怕未熔合／未滲透，都是面積型 → UT 最靈敏；RT 對裂縫靈敏度差且防護困難</td></tr>
 <tr><td>連續板（Continuity Plate）</td><td>填角銲或 CJP</td><td>MT（若為 CJP 則加 UT）</td><td>角銲重點在表面／近表面裂縫，MT 效率最高</td></tr>
 <tr><td>面板區加厚板（Doubler）</td><td>填角銲</td><td>UT 或 MT</td><td>長銲道內部用 UT，表面完工後 MT 複查</td></tr>
-<tr><td>腹板剪力板</td><td>填角銲 / ESW</td><td>MT 或 VT（ESW 則 UT）</td><td>填角銲幾何不規則，UT 難施作；ESW 因熱輸入大必須 UT</td></tr>
+<tr><td><b>箱型柱內橫隔板 ↔ 柱壁</b></td><td><b>ESW 電熱熔渣銲</b></td><td><b>UT 全長</b> + VT（柱壁外表面補 MT）</td><td>位於梁翼板力流主幹上；大熱輸入 → HAZ 晶粒粗大脆化，且典型缺陷是未熔合（面狀）→ 必須 UT；銲道封在柱內，RT 不可行、目視也看不到</td></tr>
+<tr><td>腹板剪力板 ↔ 梁腹板／柱面</td><td>高拉力螺栓（工地）／填角銲（工廠）</td><td>MT 或 VT</td><td>填角銲幾何不規則，UT 難施作；螺栓端以扭矩抽查／DTI 驗證</td></tr>
 <tr><td>柱續接（Column Splice）</td><td>CJP</td><td><b>UT 100%</b></td><td>與梁翼板 CJP 同理，且該處應保持彈性不得斷裂</td></tr>
 <tr><td>柱底板銲道</td><td>CJP 或大尺寸填角銲</td><td>UT 或 MT</td><td>依銲接型式選擇；力流的最終傳遞點</td></tr>
 <tr><td><b>所有銲道</b></td><td>—</td><td><b>VT 全數（基線）</b></td><td>最低要求，不能被任何方法取代</td></tr>
@@ -1546,10 +1560,10 @@ SS-2024-4 就是典型：不能只答檢測方法，要能從破壞模式一路�
 <tr><td>T-14</td><td>填角銲送 RT</td><td>可以照，只是麻煩</td><td>三角形斷面厚度連續變化，底片濃度不均，實務上不做。<b>填角銲以 MT／UT 為主</b></td><td>SS-2021-1</td></tr>
 <tr><td>T-15</td><td>耐震梁柱 CJP 的 UT 比例</td><td>寫「抽驗 20%」</td><td><b>100% 全數檢測，不得抽驗</b>（AISC 341 / Northridge 後的強制要求）</td><td>SS-2022-3</td></tr>
 <tr><td>T-16</td><td>「所有螺栓接合面都不塗裝」</td><td>螺栓＝不塗裝</td><td>只有<b>摩阻型</b>接觸面不塗；<b>承壓型可以塗裝</b>（靠螺桿剪切與板件承壓傳力）</td><td>SS-2018-4</td></tr>
-<tr><td>T-17</td><td>現場銲接不塗裝範圍</td><td>只有銲縫線本身</td><td>是銲道<b>兩側各 50 mm</b> 的帶狀範圍；工廠塗裝需以遮蔽條預留</td><td>SS-2018-4</td></tr>
-<tr><td>T-18</td><td>螺栓拆下來能不能再用</td><td>外觀完好就可以</td><td>原則<b>不可</b>：K 值已改變、已有塑性伸長，扭矩法與轉角法雙雙失準。<b>A490 絕對禁止</b>；台灣規範較 AISC 保守</td><td>SS-2004-1</td></tr>
-<tr><td>T-19</td><td>板面有間隙怎麼辦</td><td>用力鎖就密合了</td><td>≤2 mm 可鎖；2～6 mm 填<b>塞板（同材質、同表面處理）</b>；&gt;6 mm 修整重製。厚塞板還需折減強度</td><td>SS-2004-1</td></tr>
-<tr><td>T-20</td><td>螺栓穿不進孔</td><td>敲進去 / 氣割擴孔</td><td>≤2 mm 用<b>專用撬棒</b>（不可用螺栓本身）；2～5 mm <b>疊合後一次鉸孔</b>且孔徑 ≤ d+3 mm；&gt;5 mm 回廠重製。<b>嚴禁氣割擴孔與強行敲打</b></td><td>SS-2004-1</td></tr>
+<tr><td>T-17</td><td>現場銲接不塗裝範圍</td><td>只有銲縫線本身</td><td>是工地銲接部位<b>相鄰接兩側各 100 mm</b> 的帶狀範圍（規範 §7.4.5；AISC 為 50 mm）；工廠塗裝需以遮蔽條預留</td><td>SS-2018-4</td></tr>
+<tr><td>T-18</td><td>螺栓拆下來能不能再用</td><td>外觀完好就可以</td><td>規範 §5.3.1：<b>已使用過之螺栓或帶有傷痕銹蝕者，不得再使用</b>。主因是<b>預拉力已超過降伏拉力、拆後產生永久變形</b>，再鎖時塑性變形累加、安全度不足；次因才是 K 值改變使扭矩法失準、轉角法起算點失真。國內不分等級一律禁止，較 AISC/RCSC 保守</td><td>SS-2004-1</td></tr>
+<tr><td>T-19</td><td>板面有間隙怎麼辦</td><td>用力鎖就密合了</td><td>規範 §5.2：板厚差 <b>&lt; 1 mm 不必處理</b>；<b>≥ 1 mm 加墊片</b>（同材質、同表面處理，且須被螺栓貫穿）。鎖固前並須清除鐵銹、鱗片、黑皮、污泥、油垢與孔緣毛邊</td><td>SS-2004-1</td></tr>
+<tr><td>T-20</td><td>螺栓穿不進孔</td><td>敲進去 / 氣割擴孔</td><td>規範 §5.3.1：先用<b>沖梢</b>校正，<b>不得使用 2.5 kg 以上之鐵鎚</b>；仍不行則<b>鉸孔</b>，<b>擴孔後孔徑不得大於設計孔徑 2 mm</b>，且須疊合後一次鉸孔、清除鐵屑。<b>嚴禁氣割擴孔、強行敲打、以螺栓充當沖梢</b></td><td>SS-2004-1</td></tr>
 <tr><td>T-21</td><td>摩阻螺栓 + 銲接一起用</td><td>強度可以相加</td><td>不可（新設接合）。理由是<b>荷重–變形不相容</b>：兩者達極限所需變形量差距大，不會同時出力。例外：改建工程，既有螺栓承既有載重、新銲道承附加載重</td><td>SS-2021-4</td></tr>
 <tr><td>T-22</td><td>SIS 銹蝕等級方向</td><td>以為 A 最嚴重</td><td><b>A 最輕（氧化皮完整）→ D 最重（全面坑蝕）</b>。等級的用途是<b>決定表面準備等級</b></td><td>SS-2010-2</td></tr>
 <tr><td>T-23</td><td>熱浸鍍鋅的原理</td><td>只寫「鋅層隔絕」</td><td>必須兩個機制：物理屏蔽 <b>+ 犧牲陽極</b>（\(E_{Zn}=-0.76\) V < \(E_{Fe}=-0.44\) V）。後者才是與油漆的本質差異</td><td>SS-2010-2</td></tr>

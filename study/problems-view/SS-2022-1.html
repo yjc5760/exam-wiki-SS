@@ -29,60 +29,55 @@ blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;paddin
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2022-1 題目解析</h1><a class="quick" href="../study-SS-U1-3.html" title="SS-U1-3 梁柱桿件 命題分析">&#128269; U1-3 命題分析</a><a class="lect" href="../lecture-SS-U1-3.html" title="SS-U1-3 梁柱桿件 觀念講義">&#128218; U1-3 梁柱桿件 講義</a></header>
-<main><h1>考題編號：SS-2022-1</h1>
+<main>
+<h1>考題編號：SS-2022-1</h1>
 <p><strong>主分類：</strong> <code>SS-U1-3</code> 梁柱桿件<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> LRFD<br />
-<strong>標籤：</strong> <code>梁柱桿件</code> <code>箱形柱</code> <code>雙軸彎矩</code> <code>軸壓</code> <code>剪力強度</code> <code>P-M互制</code> <code>局部挫屈</code> <code>整體挫屈</code> <code>有效長細比</code></p>
+<strong>標籤：</strong> <code>梁柱桿件</code> <code>箱形柱</code> <code>雙軸彎矩</code> <code>軸壓</code> <code>剪力強度</code> <code>P-M互制</code> <code>局部挫屈</code> <code>整體挫屈</code> <code>有效長細比</code> <code>閉口斷面</code> <code>全滲透銲組合斷面</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>已知鋼柱斷面為 <strong>BOX 800×800×32(mm)</strong>，受壓有效長細比 $(KL/r)_{\text{eff}} = 30.54$，且設計配置有<strong>充分的側向支撐與束制</strong>。</p>
-<p><strong>材料：</strong></p>
-<ul>
-<li>$F_y = 3.3 \text{ tf/cm}^2$，$E = 2040 \text{ tf/cm}^2$</li>
-</ul>
-<p><strong>係數化設計載重（LRFD）：</strong></p>
-<ul>
-<li>$P_{u1} = -1119 \text{ tf}$（軸壓，取 $|P_u| = 1119 \text{ tf}$）</li>
-<li>$M_{u2} = -179 \text{ tf·m}$（繞軸 2 彎矩，取 $|M_{u2}| = 179 \text{ tf·m}$）</li>
-<li>$M_{u3} = -19.4 \text{ tf·m}$（繞軸 3 彎矩，取 $|M_{u3}| = 19.4 \text{ tf·m}$）</li>
-<li>$V_{u2} = -86.77 \text{ tf}$（軸 2 方向剪力，取 $|V_{u2}| = 86.77 \text{ tf}$）</li>
-<li>$V_{u3} = -9.14 \text{ tf}$（軸 3 方向剪力，取 $|V_{u3}| = 9.14 \text{ tf}$）</li>
-</ul>
+<p><strong>材料：</strong><br />
+- $F_y = 3.3 \text{ tf/cm}^2$，$E = 2040 \text{ tf/cm}^2$</p>
+<p><strong>係數化設計載重（LRFD）：</strong><br />
+- $P_{u1} = -1119 \text{ tf}$（軸壓，取 $|P_u| = 1119 \text{ tf}$）<br />
+- $M_{u2} = -179 \text{ tf·m}$（繞軸 2 彎矩，取 $|M_{u2}| = 179 \text{ tf·m}$）<br />
+- $M_{u3} = -19.4 \text{ tf·m}$（繞軸 3 彎矩，取 $|M_{u3}| = 19.4 \text{ tf·m}$）<br />
+- $V_{u2} = -86.77 \text{ tf}$（軸 2 方向剪力，取 $|V_{u2}| = 86.77 \text{ tf}$）<br />
+- $V_{u3} = -9.14 \text{ tf}$（軸 3 方向剪力，取 $|V_{u3}| = 9.14 \text{ tf}$）</p>
 <p><strong>題目參考公式：</strong><br />
 $$\lambda_p = \frac{50}{\sqrt{F_y}} \quad \text{（箱形柱翼板受壓，}F_y\text{ 單位 tf/cm}^2\text{）}$$</p>
 <p>$$\frac{h}{t_w} \leq 50\sqrt{\frac{k_v}{F_y}} \;（k_v=5，\text{腹板未加勁}）\Rightarrow V_n = 0.6F_y A_w$$</p>
-<p>$$\lambda_c = \frac{KL/r}{\pi}\sqrt{\frac{F_y}{E}}, \quad \lambda_c \leq 1.5: F_{cr} = 0.658^{\lambda_c^2}F_y, \quad \lambda_c > 1.5: F_{cr} = \frac{0.877}{\lambda_c^2}F_y$$</p>
+<p>$$\lambda_c = \frac{KL/r}{\pi}\sqrt{\frac{F_y}{E}}, \quad \lambda_c \leq 1.5: F_{cr} = 0.658^{\lambda_c^2}F_y, \quad \lambda_c &gt; 1.5: F_{cr} = \frac{0.877}{\lambda_c^2}F_y$$</p>
 <p>試依 LRFD 法分析與檢核鋼柱之設計強度是否適足。（25 分）</p>
+<blockquote>
+<p><strong>原卷卷首註記（逐字）</strong>：「題目所列之計算公式僅供參考應自負確認與勘誤責任，另視設計需求可自行假設適用的條件等」——即公式表本身可能有誤，考生須自行判斷。<br />
+原卷之 $\lambda_p = 50/\sqrt{F_y}$ 明列適用於「<strong>全滲透銲組合箱形柱等厚度之翼板受彎曲或壓力</strong>」，正合本題斷面。</p>
+</blockquote>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：梁柱桿件三重檢核——壓力、彎曲、剪力均需分別計算，最後用 P-M 互制公式整合</strong></p>
-<p>本題是梁柱（Beam-Column）設計的完整流程題：</p>
-<ol>
-<li><strong>斷面性質計算</strong>：箱形閉口斷面（BOX）的 A、I、S、Z 計算</li>
-<li><strong>局部挫屈</strong>：箱形柱板件的 b/t 限值</li>
-<li><strong>整體挫屈強度</strong> $\phi_c P_n$：用 $\lambda_c$ → $F_{cr}$ → $P_n$</li>
-<li><strong>彎曲強度</strong> $\phi_b M_n$：充分支撐無 LTB，取 $\phi_b M_p$</li>
-<li><strong>剪力強度</strong> $\phi_v V_n$</li>
-<li><strong>P-M 互制公式</strong>（AISC H1-1a）整合雙軸彎矩+軸壓</li>
-</ol>
-<p><strong>出題者測驗重點：</strong></p>
-<ul>
-<li>能正確計算閉口箱形截面的斷面性質（不同於 I 形斷面）</li>
-<li>能對照 $P_u/\phi_c P_n$ 大小，選擇正確的互制公式（H1-1a vs H1-1b）</li>
-<li>理解「有充分側向支撐」→ 不需計算 LTB，直接用 $\phi_b M_p$</li>
-</ul>
+<p>本題是梁柱（Beam-Column）設計的完整流程題：<br />
+1. <strong>斷面性質計算</strong>：箱形閉口斷面（BOX）的 A、I、S、Z 計算<br />
+2. <strong>局部挫屈</strong>：箱形柱板件的 b/t 限值<br />
+3. <strong>整體挫屈強度</strong> $\phi_c P_n$：用 $\lambda_c$ → $F_{cr}$ → $P_n$<br />
+4. <strong>彎曲強度</strong> $\phi_b M_n$：充分支撐無 LTB，取 $\phi_b M_p$<br />
+5. <strong>剪力強度</strong> $\phi_v V_n$<br />
+6. <strong>P-M 互制公式</strong>（AISC H1-1a）整合雙軸彎矩+軸壓</p>
+<p><strong>出題者測驗重點：</strong><br />
+- 能正確計算閉口箱形截面的斷面性質（不同於 I 形斷面）<br />
+- 能對照 $P_u/\phi_c P_n$ 大小，選擇正確的互制公式（H1-1a vs H1-1b）<br />
+- 理解「有充分側向支撐」→ 不需計算 LTB，直接用 $\phi_b M_p$</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong></p>
-<ol>
-<li>計算 BOX 800×800×32 斷面性質（A、I、S、Z）</li>
-<li>局部挫屈 b/t 檢核</li>
-<li>計算 $\phi_c P_n$（柱強度）</li>
-<li>計算 $\phi_b M_n$（彎曲強度，充分支撐直接取 $\phi_b M_p$）</li>
-<li>計算 $\phi_v V_n$（剪力強度）</li>
-<li>P-M 互制公式（AISC H1-1a or H1-1b）</li>
-</ol>
+<p><strong>作戰計畫：</strong><br />
+1. 計算 BOX 800×800×32 斷面性質（A、I、S、Z）<br />
+2. 局部挫屈 b/t 檢核<br />
+3. 計算 $\phi_c P_n$（柱強度）<br />
+4. 計算 $\phi_b M_n$（彎曲強度，充分支撐直接取 $\phi_b M_p$）<br />
+5. 計算 $\phi_v V_n$（剪力強度）<br />
+6. P-M 互制公式（AISC H1-1a or H1-1b）</p>
 <p><strong>關鍵陷阱：</strong></p>
 <blockquote>
 <p>⚠️ <strong>陷阱1：BOX 斷面的清淨寬度</strong><br />
@@ -107,14 +102,14 @@ $$\boxed{I} = \frac{b_o^4 - \boxed{b_i}^4}{12}, \quad \boxed{Z} = \frac{b_o^3 - 
 <p><strong>Step 2：局部挫屈</strong><br />
 $$\frac{\boxed{b_i}}{t} \leq \frac{50}{\sqrt{F_y}} \quad \checkmark$$</p>
 <p><strong>Step 3：壓力強度</strong><br />
-$$\boxed{\lambda_c} = \frac{(KL/r)_\text{eff}}{\pi}\sqrt{\frac{F_y}{E}}, \quad \boxed{F_{cr}} = 0.658^{\boxed{\lambda_c}^2} F_y$$<br />
+$$\boxed{\lambda_c} = \frac{(KL/r)<em cr="cr">\text{eff}}{\pi}\sqrt{\frac{F_y}{E}}, \quad \boxed{F</em> F_y$$}} = 0.658^{\boxed{\lambda_c}^2<br />
 $$\boxed{\phi_c P_n} = 0.85 \times \boxed{F_{cr}} \times \boxed{A}$$</p>
 <p><strong>Step 4：彎曲強度（充分支撐，直取 $M_p$）</strong><br />
 $$\boxed{\phi_b M_n} = 0.9 \, F_y \, \boxed{Z}$$</p>
 <p><strong>Step 5：剪力強度</strong><br />
 $$\boxed{A_w} = 2 \times b_i \times t, \quad \boxed{\phi_v V_n} = 0.9 \times 0.6 F_y \times \boxed{A_w}$$</p>
 <p><strong>Step 6：P-M 互制（H1-1a，因 $P_u/\phi_cP_n \geq 0.2$）</strong><br />
-$$\frac{P_u}{\boxed{\phi_c P_n}} + \frac{8}{9}\!\left(\frac{M_{u2}}{\boxed{\phi_b M_n}} + \frac{M_{u3}}{\boxed{\phi_b M_n}}\right) \leq 1.0 \quad \checkmark$$</p>
+$$\frac{P_u}{\boxed{\phi_c P_n}} + \frac{8}{9}!\left(\frac{M_{u2}}{\boxed{\phi_b M_n}} + \frac{M_{u3}}{\boxed{\phi_b M_n}}\right) \leq 1.0 \quad \checkmark$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -266,18 +261,28 @@ $$\frac{P_u}{\boxed{\phi_c P_n}} + \frac{8}{9}\!\left(\frac{M_{u2}}{\boxed{\phi_
 </thead>
 <tbody>
 <tr>
-<td>$b/t$</td>
+<td>$b/t$（淨寬）</td>
 <td>$b_i / t = 73.6 / 3.2 = 23.0$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
+<td>$b/t$（外緣寬，較嚴）</td>
+<td>$b_o/t = 80/3.2 = 25.0$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
 <td>$\lambda_p$</td>
-<td>$50/\sqrt{F_y} = 50/\sqrt{3.3} = 27.5$</td>
+<td>$50/\sqrt{F_y} = 50/\sqrt{3.3} = 27.52$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>結論</td>
-<td>$23.0 < 27.5$ → 結實斷面，局部挫屈不控制</td>
+<td><strong>兩種取法（23.0 與 25.0）皆 $&lt; 27.52$</strong> → 結實斷面，判定不受定義影響 ✓</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$KL/r \leq 200$</td>
+<td>$30.54 \ll 200$ ✓（規範對受壓構材之細長比上限）</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -424,37 +429,37 @@ $$\frac{P_u}{\boxed{\phi_c P_n}} + \frac{8}{9}\!\left(\frac{M_{u2}}{\boxed{\phi_
 <tr>
 <td>BOX 斷面 $Z$ 公式</td>
 <td>$(b_o^3 - b_i^3)/4$（與 I 形 $b_f t_f(H-t_f) + t_w h_w^2/4$ 完全不同）</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
+<td style="text-align: center;">[[plastic-zx]]</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$\phi_c = 0.85$（非 0.9）</td>
 <td>壓力桿件折減係數比彎曲桿件小，因柱破壞更突然</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-column</span></td>
+<td style="text-align: center;">[[lrfd-column]]</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$0.658^{\lambda_c^2}$ 計算</td>
 <td>用 $e^{\lambda_c^2 \ln(0.658)}$ 展開計算，不能直接用計算機的次方鍵犯錯</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-column</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">column-buckling-lambda-boundary</span></td>
+<td style="text-align: center;">[[lrfd-column]] · [[column-buckling-lambda-boundary]]</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$A_w$ 取兩片腹板</td>
 <td>箱形柱受 $V_2$ 時只有<strong>平行</strong>於剪力方向的兩片板承剪，非四片全算</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SHEAR-BUCKLING-WEB</span></td>
+<td style="text-align: center;">[[SHEAR-BUCKLING-WEB]]</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>H1-1a vs H1-1b 門檻</td>
-<td>$P_u/\phi_cP_n \geq 0.2$ 用 H1-1a；$< 0.2$ 用 H1-1b（8/9 係數位置不同）</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">pm-interaction</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BEAM-COLUMN-INTERACTION</span></td>
+<td>$P_u/\phi_cP_n \geq 0.2$ 用 H1-1a；$&lt; 0.2$ 用 H1-1b（8/9 係數位置不同）</td>
+<td style="text-align: center;">[[pm-interaction]] · [[BEAM-COLUMN-INTERACTION]]</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>充分側向支撐的意義</td>
-<td>$L_b < L_p$ → 無 LTB → 不需計算 $C_b$、$L_p$、$L_r$，直接取 $\phi_bM_p$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">LATERAL-TORSIONAL-BUCKLING</span></td>
+<td>$L_b &lt; L_p$ → 無 LTB → 不需計算 $C_b$、$L_p$、$L_r$，直接取 $\phi_bM_p$</td>
+<td style="text-align: center;">[[ltb-3zone]] · [[LATERAL-TORSIONAL-BUCKLING]]</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -468,12 +473,10 @@ $$\frac{P_u}{\boxed{\phi_c P_n}} + \frac{8}{9}\!\left(\frac{M_{u2}}{\boxed{\phi_
 <hr />
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <h3>一、斷面基本性質（BOX 800×800×32）</h3>
-<p><strong>幾何定義：</strong></p>
-<ul>
-<li>外廓尺寸：$b_o = H_o = 80 \text{ cm}$（正方形）</li>
-<li>板厚：$t = 3.2 \text{ cm}$</li>
-<li>內部清淨尺寸：$b_i = H_i = 80 - 2 \times 3.2 = 73.6 \text{ cm}$</li>
-</ul>
+<p><strong>幾何定義：</strong><br />
+- 外廓尺寸：$b_o = H_o = 80 \text{ cm}$（正方形）<br />
+- 板厚：$t = 3.2 \text{ cm}$<br />
+- 內部清淨尺寸：$b_i = H_i = 80 - 2 \times 3.2 = 73.6 \text{ cm}$</p>
 <p><strong>斷面積：</strong><br />
 $$A = b_o^2 - b_i^2 = 80^2 - 73.6^2 = 6400 - 5416.96 = \boxed{983.04 \text{ cm}^2}$$</p>
 <p><strong>慣性矩（對形心軸，兩軸相同）：</strong><br />
@@ -481,20 +484,31 @@ $$I = \frac{b_o^4 - b_i^4}{12} = \frac{80^4 - 73.6^4}{12} = \frac{40{,}960{,}000
 <p>其中：$80^4 = 40{,}960{,}000 \text{ cm}^4$；$73.6^4 = (73.6^2)^2 = 5416.96^2 = 29{,}343{,}456 \text{ cm}^4$</p>
 <p><strong>彈性斷面模數：</strong><br />
 $$S = \frac{I}{b_o/2} = \frac{968{,}045}{40} = 24{,}201 \text{ cm}^3$$</p>
-<p><strong>塑性斷面模數（正方形箱形斷面）：</strong><br />
+<p><strong>塑性斷面模數：</strong></p>
+<p>一般矩形箱形斷面（外 $b_o \times h_o$、壁厚 $t$）：<br />
+$$Z = \frac{b_o h_o^2 - b_i h_i^2}{4}$$</p>
+<p>本題為<strong>正方形</strong>（$b_o = h_o$、$b_i = h_i$），故可化簡為：<br />
 $$Z = \frac{b_o^3 - b_i^3}{4} = \frac{80^3 - 73.6^3}{4} = \frac{512{,}000 - 398{,}688}{4} = \frac{113{,}312}{4} = \boxed{28{,}328 \text{ cm}^3}$$</p>
 <p>其中：$73.6^3 = 73.6 \times 5416.96 = 398{,}688 \text{ cm}^3$</p>
+<blockquote>
+<p>⚠️ $Z = (b_o^3-b_i^3)/4$ <strong>僅適用正方形箱形</strong>；矩形箱形必須用上面的一般式，否則會錯。</p>
+</blockquote>
+<p><strong>形狀因數驗算：</strong> $Z/S = 28{,}328/24{,}201 = \mathbf{1.170}$ —— 箱形斷面理論值約 $1.12\sim1.20$，落在合理範圍 ✓（若 $Z$ 算錯，此比值會立刻異常）</p>
 <p><strong>迴轉半徑：</strong><br />
 $$r = \sqrt{\frac{I}{A}} = \sqrt{\frac{968{,}045}{983.04}} = \sqrt{984.7} = 31.38 \text{ cm}$$</p>
 <p>驗證：$KL = (KL/r)_\text{eff} \times r = 30.54 \times 31.38 = 958.5 \text{ cm} \approx 9.59 \text{ m}$（合理）</p>
 <hr />
 <h3>二、局部挫屈檢核（板件 b/t 限值）</h3>
-<p><strong>箱形柱板件有效寬厚比：</strong><br />
-$$\frac{b}{t} = \frac{b_i}{t} = \frac{73.6}{3.2} = 23.0$$</p>
-<p><strong>規範限值（題目提供公式）：</strong><br />
-$$\lambda_p = \frac{50}{\sqrt{F_y}} = \frac{50}{\sqrt{3.3}} = \frac{50}{1.817} = 27.5$$</p>
+<p><strong>箱形柱板件寬厚比：</strong><br />
+$$\frac{b}{t} = \frac{b_i}{t} = \frac{73.6}{3.2} = 23.0 \quad(\text{淨寬定義})$$</p>
+<p>$$\frac{b_o}{t} = \frac{80}{3.2} = 25.0 \quad(\text{外緣寬定義，較保守})$$</p>
+<p><strong>規範限值（題目提供公式，適用「全滲透銲組合箱形柱等厚度之翼板」）：</strong><br />
+$$\lambda_p = \frac{50}{\sqrt{F_y}} = \frac{50}{\sqrt{3.3}} = \frac{50}{1.8166} = 27.52$$</p>
 <p><strong>判斷：</strong><br />
-$$\frac{b}{t} = 23.0 < \lambda_p = 27.5 \quad \Rightarrow \text{結實斷面（Compact），局部挫屈不控制} \checkmark$$</p>
+$$23.0 &lt; 27.52 \ \checkmark \qquad\text{且}\qquad 25.0 &lt; 27.52 \ \checkmark$$</p>
+<p>$$\Rightarrow \text{結實斷面（Compact），局部挫屈不控制；}\textbf{兩種寬度定義皆通過，判定穩健}$$</p>
+<p><strong>細長比上限檢核：</strong><br />
+$$\frac{KL}{r} = 30.54 \ll 200 \quad \checkmark \quad(\text{規範對受壓構材之上限})$$</p>
 <hr />
 <h3>三、壓力強度 $\phi_c P_n$</h3>
 <p><strong>計算 $\lambda_c$（受壓柱細長參數）：</strong><br />
@@ -583,29 +597,219 @@ $$0.433 + \frac{8}{9}\left[\frac{179}{841.3} + \frac{19.4}{841.3}\right] = 0.433
 <h3>為什麼箱形柱 $\phi_c = 0.85$ 而非 $\phi_b = 0.9$？</h3>
 <p>LRFD 規範對<strong>壓力桿件</strong>採用 $\phi_c = 0.85$（對應 ASD 的安全係數約 1.76-1.92），比<strong>彎曲桿件</strong>的 $\phi_b = 0.9$ 更保守。原因：柱強度受初始彎曲、殘留應力、端部條件等缺陷影響比梁更顯著，且柱破壞往往更突然（挫屈屬失穩破壞）。</p>
 <h3>充分側向支撐的意義</h3>
-<p>題目明確指出「設計配置有充分的側向支撐與束制」，這讓我們可以：</p>
-<ol>
-<li><strong>跳過 LTB 計算</strong>：$L_b < L_p$，$C_b$ 不需要計算</li>
-<li><strong>直接用 $M_p$</strong>：彎曲強度控制在全斷面塑性化</li>
-</ol>
+<p>題目明確指出「設計配置有充分的側向支撐與束制」，這讓我們可以：<br />
+1. <strong>跳過 LTB 計算</strong>：$L_b &lt; L_p$，$C_b$ 不需要計算<br />
+2. <strong>直接用 $M_p$</strong>：彎曲強度控制在全斷面塑性化</p>
 <p>若無充分支撐，需額外計算 $L_p = 80r_y/\sqrt{F_{yf}}$ 判斷 LTB 區間，增加計算量。</p>
 <h3>箱形斷面的閉口截面優勢</h3>
-<p>與 I 形斷面相比，箱形閉口截面：</p>
-<ul>
-<li><strong>扭轉剛度極大</strong>（St. Venant 扭轉常數 $J$ 大得多）</li>
-<li><strong>抗 LTB 能力強</strong></li>
-<li><strong>雙軸彎曲性質對稱</strong>（適合受雙軸彎矩的柱）</li>
-</ul>
+<p>與 I 形斷面相比，箱形閉口截面：<br />
+- <strong>扭轉剛度極大</strong>（St. Venant 扭轉常數 $J$ 大得多）<br />
+- <strong>抗 LTB 能力強</strong><br />
+- <strong>雙軸彎曲性質對稱</strong>（適合受雙軸彎矩的柱）</p>
 <p>這也解釋了為何本題 P-M 互制比值只有 64.3%，剪力利用率更是低至 10%——箱形斷面效率非常高。</p>
 <h3>考場答題建議</h3>
 <p>計算流程記憶順序：</p>
-<pre><code>① 斷面性質 A, I, S, Z
-② 局部挫屈 b/t ≤ λp = 50/√Fy？ → 結實
-③ λc → Fcr → Pn → φcPn
-④ 有充分支撐 → φbMn = φbMp = 0.9FyZ（兩軸）
-⑤ h/tw 判斷 → Vn = 0.6FyAw → φvVn
+<pre><code>① 斷面性質 A, I, S, Z（閉口式：外減內）
+② 局部挫屈 b/t ≤ λp = 50/√Fy？ → 結實；順手驗 KL/r ≤ 200
+③ λc → Fcr → Pn → φcPn（φc = 0.85）
+④ 有充分支撐 → φbMn = φbMp = 0.9FyZ（正方形兩軸相同）
+⑤ h/tw 判斷 → Vn = 0.6FyAw（Aw = 2ht，只算平行剪力的兩片板）→ φvVn
 ⑥ Pu/(φcPn) vs 0.2 → 選 H1-1a 或 H1-1b → 代入驗算
-</code></pre></main>
+⑦ 別忘了剪力也要各自檢核（本題只有 10% 與 1%，寫一行即可）
+</code></pre>
+<h3>本題三個「送分」條件</h3>
+<p>原卷把三件事直接告訴考生，等於免掉最花時間的三段計算：</p>
+<table>
+<thead>
+<tr>
+<th>原卷用語</th>
+<th>免掉什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>「受壓有效長細比 $(KL/r)_{eff}$ 為 30.54」</td>
+<td>不用求 $K$、不用查對位圖、$r$ 只用來反推 $KL$（驗算合理性用）</td>
+</tr>
+<tr>
+<td>「設計配置有<strong>充分的側向支撐與束制</strong>」</td>
+<td>免除 LTB：不用算 $L_p$、$L_r$、$C_b$，直接 $M_n = M_p$</td>
+</tr>
+<tr>
+<td>「$P_{u1}$、$M_{u2}$、$M_{u3}$、$V_{u2}$、$V_{u3}$ 為<strong>載重組合後經分析的係數化載重</strong>」</td>
+<td>免除載重組合與二階分析：不用算 $B_1$、$B_2$（值已含二階效應）</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ 因此本題<strong>不需要</strong> $B_1$／$B_2$——載重已是「分析後」的二階值。若還去乘 $B_1$ 會重複計入。</p>
+<hr />
+<h2>6. 依最新規範（AISC 360-16／-22）對照</h2>
+<blockquote>
+<p><strong>主答依據</strong>：內政部「鋼構造建築物鋼結構設計技術規範」<strong>極限設計法（民國 99 年／2010 修正版）</strong>——本題（111 年／2022）明示「試依極限強度設計（LRFD）法」，且原卷公式表之 $\lambda_p = 50/\sqrt{F_y}$、$50\sqrt{k_v/F_y}$、$\exp(-0.419\lambda_c^2)$ 均為台灣 2010 規範形式。以 AISC 360-16 為基礎之修訂版<strong>尚未發布</strong>，故僅列為對照。</p>
+</blockquote>
+<h3>6.1 令人意外的結論：本題各項界限值幾乎完全相同</h3>
+<p>把三組界限逐一換算（$E = 2040$、$F_y = 3.3$ tf/cm²）：</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th style="text-align: center;">台灣 2010（原卷公式）</th>
+<th style="text-align: center;">AISC 360-16</th>
+<th style="text-align: center;">差異</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>柱曲線（非彈性）</td>
+<td style="text-align: center;">$\exp(-0.419\lambda_c^2)F_y = 3.0953$</td>
+<td style="text-align: center;">$0.658^{F_y/F_e}F_y = 3.0955$</td>
+<td style="text-align: center;"><strong>0.006%（同一式）</strong></td>
+</tr>
+<tr>
+<td>箱形翼板結實界限</td>
+<td style="text-align: center;">$50/\sqrt{F_y} = \mathbf{27.52}$</td>
+<td style="text-align: center;">$1.12\sqrt{E/F_y} = \mathbf{27.85}$（§F7 Table B4.1b）</td>
+<td style="text-align: center;">+1.2%</td>
+</tr>
+<tr>
+<td>剪力不折減界限</td>
+<td style="text-align: center;">$50\sqrt{k_v/F_y} = \mathbf{61.55}$</td>
+<td style="text-align: center;">$1.10\sqrt{k_vE/F_y} = \mathbf{61.16}$（§G2.1）</td>
+<td style="text-align: center;">−0.6%</td>
+</tr>
+<tr>
+<td>箱形壁受純壓之 $\lambda_r$</td>
+<td style="text-align: center;">$60/\sqrt{F_y} = 33.0$</td>
+<td style="text-align: center;">$1.40\sqrt{E/F_y} = 34.81$</td>
+<td style="text-align: center;">+5.5%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>$\lambda_c = (KL/r\pi)\sqrt{F_y/E}$ 與 $F_y/F_e$ 恆等</strong>：<br />
+$$\frac{F_y}{F_e} = \frac{F_y}{\pi^2E/(KL/r)^2} = \left(\frac{KL}{r\pi}\right)^2\frac{F_y}{E} = \lambda_c^2$$<br />
+且 $\ln 0.658 = -0.4187 \approx -0.419$。⇒ <strong>兩規範的柱曲線是同一條曲線</strong>，只是寫法不同。</p>
+<h3>6.2 唯一的實質差異：$\phi_c = 0.85$ vs $0.90$</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th style="text-align: center;">台灣 2010</th>
+<th style="text-align: center;">AISC 360-16／-22</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\phi_c$（受壓）</td>
+<td style="text-align: center;"><strong>0.85</strong></td>
+<td style="text-align: center;"><strong>0.90</strong></td>
+</tr>
+<tr>
+<td>$\phi_b$（撓曲）</td>
+<td style="text-align: center;">0.90</td>
+<td style="text-align: center;">0.90（同）</td>
+</tr>
+<tr>
+<td>$\phi_v$（剪力）</td>
+<td style="text-align: center;">0.90</td>
+<td style="text-align: center;">$h/t_w \leq 2.24\sqrt{E/F_y} = 55.7$ 時 <strong>1.00</strong>；否則 0.90</td>
+</tr>
+</tbody>
+</table>
+<p>$$\phi_cP_n = 0.90 \times 3043 = \mathbf{2738.7\ \text{tf}} \quad (\text{台灣 } 0.85 \to 2586.5\ \text{tf}，+5.9\%)$$</p>
+<p>$$\frac{P_u}{\phi_cP_n} = \frac{1119}{2738.7} = 0.4086 \geq 0.2 \Rightarrow \textbf{H1-1a}$$</p>
+<p>$$0.4086 + \frac{8}{9}!\left(\frac{179}{841.3} + \frac{19.4}{841.3}\right) = 0.4086 + 0.2096 = \mathbf{0.618} \leq 1.0 \quad \checkmark$$</p>
+<p>剪力（$h/t_w = 23.0 \leq 55.7$ ⇒ $\phi_v = 1.00$、$C_{v2} = 1.0$）：<br />
+$$\phi_vV_n = 1.00 \times 0.6 \times 3.3 \times 471.04 = \mathbf{932.7\ \text{tf}} \quad(\text{台灣 } 839.4\ \text{tf}，+11.1\%)$$<br />
+$$\frac{V_{u2}}{\phi_vV_n} = \frac{86.77}{932.7} = 9.3\%$$</p>
+<h3>6.3 箱形斷面在 AISC 360-16 的專屬條文</h3>
+<p>AISC 360-16 把箱形（矩形 HSS 與組合箱形）斷面獨立為 <strong>§F7</strong>，本題相關的三項：</p>
+<table>
+<thead>
+<tr>
+<th>極限狀態</th>
+<th>條文</th>
+<th>本題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>降伏</td>
+<td>F7.1：$M_n = M_p = F_yZ$</td>
+<td>934.8 tf·m（控制）</td>
+</tr>
+<tr>
+<td>翼板局部挫屈</td>
+<td>F7.2：結實時不折減</td>
+<td>$b/t = 23.0 &lt; 27.85$ ✓ 不折減</td>
+</tr>
+<tr>
+<td>腹板局部挫屈</td>
+<td>F7.3：結實時不折減</td>
+<td>同上 ✓</td>
+</tr>
+</tbody>
+</table>
+<p>另 §F7 對<strong>組合箱形斷面</strong>要求 $M_n$ 不得超過…（本題結實，不觸及）。台灣 2010 未把箱形獨立成節，散見於各章的寬厚比表。</p>
+<h3>6.4 對照結論</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th style="text-align: center;">台灣 2010（主答）</th>
+<th style="text-align: center;">AISC 360-16／-22</th>
+<th style="text-align: center;">差異</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$F_{cr}$</td>
+<td style="text-align: center;">3.095 tf/cm²</td>
+<td style="text-align: center;">3.095 tf/cm²</td>
+<td style="text-align: center;"><strong>0%</strong></td>
+</tr>
+<tr>
+<td>$\phi_cP_n$</td>
+<td style="text-align: center;">2,586 tf</td>
+<td style="text-align: center;">2,739 tf</td>
+<td style="text-align: center;">+5.9%</td>
+</tr>
+<tr>
+<td>$\phi_bM_n$（兩軸）</td>
+<td style="text-align: center;">841.3 tf·m</td>
+<td style="text-align: center;">841.3 tf·m</td>
+<td style="text-align: center;"><strong>0%</strong></td>
+</tr>
+<tr>
+<td>$\phi_vV_n$</td>
+<td style="text-align: center;">839.4 tf</td>
+<td style="text-align: center;">932.7 tf</td>
+<td style="text-align: center;">+11.1%</td>
+</tr>
+<tr>
+<td><strong>P-M 互制比</strong></td>
+<td style="text-align: center;"><strong>0.642</strong></td>
+<td style="text-align: center;"><strong>0.618</strong></td>
+<td style="text-align: center;">−3.7%</td>
+</tr>
+<tr>
+<td>剪力利用率</td>
+<td style="text-align: center;">10.3%</td>
+<td style="text-align: center;">9.3%</td>
+<td style="text-align: center;">−1.0 pt</td>
+</tr>
+<tr>
+<td><strong>判定</strong></td>
+<td style="text-align: center;"><strong>✅ 適足</strong></td>
+<td style="text-align: center;"><strong>✅ 適足</strong></td>
+<td style="text-align: center;"><strong>結論一致</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>兩規範的判定與數值都非常接近</strong>（互制比差 3.7%），差異全部來自折減係數（$\phi_c$、$\phi_v$），<strong>強度公式本身完全相同</strong>。這使本題成為「規範改版對答案影響最小」的典型——與 SS-2011-3（分區翻轉）恰成對比。</p>
+<hr />
+<p><em>修正日期：2026-08-22（本題原解析之斷面性質、$\lambda_c$、$F_{cr}$、$\phi_cP_n$、$\phi_bM_p$、$A_w$、$\phi_vV_n$ 與互制比 0.642 經程式獨立重算</em><em>全部正確</em><em>，主答未變動。補強項目：①局部挫屈同時列出「淨寬 23.0」與「外緣寬 25.0」兩種定義並確認皆通過（判定穩健）；②補 $KL/r \leq 200$ 之細長比上限檢核；③$Z$ 補上矩形箱形之一般式 $\left(b_oh_o^2 - b_ih_i^2\right)/4$ 並註明 $(b_o^3-b_i^3)/4$ 僅適用正方形，另加形狀因數 $Z/S = 1.170$ 之合理性驗算；④新增「三個送分條件」說明（尤其：載重已是分析後之二階值，</em><em>不可再乘 $B_1$／$B_2$</em><em>）；⑤新增 §6 最新規範對照——證明兩規範柱曲線為</em><em>同一條</em><em>（$\lambda_c^2 \equiv F_y/F_e$、$\ln0.658 = -0.419$）、界限值差異均 &lt; 1.2%，唯一實質差異是 $\phi_c$ 0.85→0.90 與 $\phi_v$ 0.90→1.00，互制比 0.642 → 0.618）</em><br />
+<em>驗證狀態：unverified</em></p>
+</main>
 <footer>來源：raw/solutions/SS-2022-1/SS-2022-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 study-/lecture-/formula-given-SS-Un-m.html 點入，

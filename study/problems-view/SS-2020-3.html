@@ -51,6 +51,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><img alt="SS-2020-3 題目附圖：H400×400×12×22 梁柱，上圖強軸方向（Mwx 兩端，Pw 對壓，500cm），下圖弱軸方向（Mwy 一端，0.5Mwy 另一端，Pw 對壓，500cm），兩端皆有側向支撐" src="../../raw/solutions/SS-2020-3/SS-2020-3-fig-1.png" /></p>
 <p><em>圖說：強軸（上圖）：桿件承受等值端彎矩 $M_{wx}$（兩端大小相等、方向使桿件呈單曲率），軸壓力 $P_w$ 由兩端對向施加，桿長 500cm；弱軸（下圖）：兩端分別施加 $M_{wy}$（大端）和 $0.5M_{wy}$（小端），同向（單曲率），軸壓力 $P_w$ 相同。桿件兩端均設有側向支撐。</em></p>
 <hr />
+<p><img alt="SS-2020-3 兩格載重重繪：強軸兩端等值 Mwx 反轉向、弱軸一端 Mwy 另一端 0.5Mwy，兩軸皆為單曲率變形，兩端設側向支撐" src="../../raw/solutions/SS-2020-3/figs/SS-2020-3-fig-1-loading.svg" /></p>
+<p><em>圖 1　兩軸端彎矩的轉向與曲率。兩端力偶反轉向 ⇒ 內力彎矩沿全長同號 ⇒ 單曲率 ⇒ $M_1/M_2$ 取負；這張圖攔的是把單曲率誤判成雙曲率而讓 $B_1$ 掉到下限、低估放大量。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：LRFD 梁柱互制方程式 + B1 放大係數 + 載重係數轉換</strong></p>
 <p>本題三層考核：</p>
@@ -629,6 +631,8 @@ $$\boxed{\phi_b M_{ny} = 0.9 \times 4{,}401.0 = 3{,}960.9 \text{ tf·cm}}$$</p>
 <p>⚠️ 上限只把 $M_{ny}$ 壓低 0.7%，但這是規範 6.6 節的明文；漏檢即扣分。物理上，I 型斷面繞弱軸彎曲時兩片翼板近似「兩塊獨立矩形板」（形狀因數恰為 1.5），若放行到 $F_yZ_y$ 會在工作載重下產生大範圍永久變形。</p>
 </blockquote>
 <hr />
+<p><img alt="SS-2020-3 長條圖：FyZy = 4,432.0、台灣 1.5FySy = 4,401.0（控制）、AISC 1.6FySy = 4,694.4 tf·cm 三者比較" src="../../raw/solutions/SS-2020-3/figs/SS-2020-3-fig-2-mny-limit.svg" /></p>
+<p><em>圖 2　弱軸撓曲強度由上限控制。$Z_y/S_y = 1.511$ 只略大於 1.5，上限僅壓低 0.7%；這張圖攔的是漏檢規範 6.6 節的 $1.5F_yS_y$ 上限而直接用 $F_yZ_y$。</em></p>
 <h3>Step 6：計算 $B_1$ 彎矩放大係數</h3>
 <p><strong>先確認 $M_{lt} = 0$：</strong> 本題只有端彎矩、無側向載重，故沒有側移彎矩</p>
 <p>$$M_u = B_1 M_{nt} + B_2 M_{lt} = B_1 M_{nt} + 0 \quad \Rightarrow \quad \text{只需 } B_1$$</p>
@@ -647,6 +651,8 @@ $$= 0.73003 \times 1.5 - 0.16 = 1.09505 - 0.16 = 0.935 &lt; 1.0 \quad \Rightarro
 $$M_{ux} = B_{1x} \times M_{ux,0} = 1.017 \times 960 = \boxed{976.7 \text{ tf·cm}}$$<br />
 $$M_{uy} = B_{1y} \times 1.6\,M_{wy} \times 100 = 1.0 \times 160\,M_{wy} = \boxed{160\,M_{wy} \text{ tf·cm}}\quad(M_{wy}\text{ 單位 tf·m})$$</p>
 <hr />
+<p><img alt="SS-2020-3 曲線圖：B1 隨 Pu/Pe1 變化，台灣 (8.2-3) 與 AISC Cm/(1−p) 各繪 M1/M2 = −1 與 −0.5 兩條，並標出下限 1.0、本題兩點，以及改用題給 K 時 Pu/Pe1 右移的位置" src="../../raw/solutions/SS-2020-3/figs/SS-2020-3-fig-3-b1-curve.svg" /></p>
+<p><em>圖 3　$B_1$ 兩式對照與下限。弱軸原始值 0.935 低於 1，必須取下限；虛線標出改用題給 $K$ 會把 $P_u/P_{e1}$ 右推到哪裡——這張圖攔的是 $P_{e1}$ 誤用側移 $K$ 而把側移柔度重複計入 P-δ。</em></p>
 <h3>Step 7：代入互制方程式，求 $M_{wy}$</h3>
 <p>$$\frac{P_u}{\phi_c P_n} + \frac{8}{9}\left(\frac{M_{ux}}{\phi_b M_{nx}} + \frac{M_{uy}}{\phi_b M_{ny}}\right) \leq 1.0$$</p>
 <p>$$0.6118 + \frac{8}{9}\left(\frac{976.7}{8{,}339.9} + \frac{160\,M_{wy}}{3{,}960.9}\right) \leq 1.0$$</p>
@@ -659,6 +665,8 @@ $$M_{uy} = B_{1y} \times 1.6\,M_{wy} \times 100 = 1.0 \times 160\,M_{wy} = \boxe
 $$M_{uy} = 1.6 \times 7.91 \times 100 = 1{,}266\ \text{tf·cm}, \quad \frac{1266}{3960.9} = 0.3196$$<br />
 $$0.6118 + \frac{8}{9}(0.11711 + 0.3196) = 0.6118 + 0.3882 = 1.000 \ \checkmark$$</p>
 <hr />
+<p><img alt="SS-2020-3 兩格圖：左為 H1-1a 三項堆疊（軸壓 0.612＋強軸 0.104＋弱軸 0.284 = 1.000），右為四種算法的 Mwy 答案區間 7.43～7.91 tf·m" src="../../raw/solutions/SS-2020-3/figs/SS-2020-3-fig-4-interaction.svg" /></p>
+<p><em>圖 4　互制方程式的求解與取捨。左格顯示 $M_{wy} = 7.91$ 時恰好用滿 1.0，右格把四種 $K$／$B_1$ 組合攤開；這張圖攔的是忘記把 $M_{uy}$ 除回 $r = 1.6$ 才是題目要的工作彎矩。</em></p>
 <h3>計算彙整</h3>
 <table>
 <thead>

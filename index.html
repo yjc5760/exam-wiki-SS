@@ -284,7 +284,7 @@
     const done=Q.filter(q=>prog[q.id]===1).length, rev=Q.filter(q=>prog[q.id]===2).length;
     const years=[...new Set(Q.map(q=>q.year))];
     document.getElementById('stats').innerHTML=`
-      <div class="stat"><div class="n">${Q.length}</div><div class="l">已收錄題目（全部 verified ✅）</div></div>
+      <div class="stat"><div class="n">${Q.length}</div><div class="l">已收錄題目（全部待重新驗算 ⚠️）</div></div>
       <div class="stat"><div class="n">${Math.min(...years)}–${Math.max(...years)}</div><div class="l">收錄年份（共 ${years.length} 年）</div></div>
       <div class="stat"><div class="n">${Q.filter(q=>q.viz.length).length}</div><div class="l">附互動圖題數</div></div>
       <div class="stat"><div class="n">${done} / ${Q.length}</div><div class="l">已練習${rev?`（另有 ${rev} 題需複習）`:''}

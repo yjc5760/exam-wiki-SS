@@ -312,6 +312,8 @@ $$\boxed{\alpha} = \frac{P_u}{P_a} \xrightarrow{L \gg D} \frac{1.6L}{L} = 1.6$$<
 <p>此效應影響構材本身的彎矩分布。</p>
 <p><strong>策略註解：</strong> 二階分析的本質是「在每個迭代步驟中更新幾何構形」，使平衡方程式反映真實的幾何非線性。一階分析只是二階分析的線性近似。</p>
 <hr />
+<p><img alt="SS-2011-1 兩格對照：左為 P-Δ 層間側移效應（柱底固接、柱頂側移 Δ，附加彎矩 P·Δ），右為 P-δ 構材撓曲效應（兩端不動、中段外凸 δ，附加彎矩 P·δ）" src="../../raw/solutions/SS-2011-1/figs/SS-2011-1-fig-1-p-delta.svg" /></p>
+<p><em>圖 1　二階分析要同時涵蓋的兩種效應。左圖的變形量是「層」的、右圖是「構材」的；這張圖攔的是子題(一) 只寫 P-Δ 而漏掉 P-δ。</em></p>
 <h3>(二) 模擬起始不完美（Initial Imperfections）的兩種方式</h3>
 <p>AISC 2010 Chapter C 允許以下兩種方式模擬結構的初始幾何不完美：</p>
 <p><strong>方法一：直接偏移法（Direct Geometric Imperfection）</strong><br />
@@ -328,6 +330,8 @@ $$\boxed{\alpha} = \frac{P_u}{P_a} \xrightarrow{L \gg D} \frac{1.6L}{L} = 1.6$$<
 <p><strong>物理意義：</strong> 0.002 係數對應於柱初始傾斜 $1/500$（即 $\Delta_0/L = 1/500$）的等效水平力比例。</p>
 <p><strong>策略註解：</strong> 兩種方法在物理上是等效的，實務上多採用假想水平力法，因為不需要修改結構幾何。</p>
 <hr />
+<p><img alt="SS-2011-1 兩格對照：左為直接把節點座標偏移 Δ0 = L/500，右為幾何維持完美但施加等效假想水平力 Ni = 0.002·α·Yi" src="../../raw/solutions/SS-2011-1/figs/SS-2011-1-fig-2-imperfection.svg" /></p>
+<p><em>圖 2　起始不完美的兩種等效模擬。$0.002$ 就是 $\Delta_0/L = 1/500$ 這個同一個數；這張圖攔的是把 $N_i$ 寫成 $0.002P_r$（$Y_i$ 是該層重力載重，不是構材需求軸力）。</em></p>
 <h3>(三) 剛度修正（Adjustments to Stiffness）</h3>
 <p><strong>為何需要剛度修正？</strong></p>
 <p>鋼結構在軸壓作用下，材料在到達彈性挫屈載重之前，因<strong>殘留應力</strong>的存在會提前進入局部降伏，導致有效剛度降低。若分析中仍使用彈性剛度 $EI$，將<strong>高估結構的抵抗側移能力</strong>，導致不安全的設計結果。</p>
@@ -372,6 +376,8 @@ $$EA^</em> = 0.8\,EA \quad \text{（軸向勁度）}$$</p>
 <p><strong>實用替代規定（AISC 360-10 §C2.3(4)／360-16 §C2.3(c)）</strong>：允許<strong>一律取 $\tau_b = 1.0$</strong>，但須在所有載重組合中<strong>額外</strong>施加 $N_i = 0.001Y_i$ 的假想水平力（與模擬初始不完美的 $0.002\alpha Y_i$ 相加）。此法免除逐構材迭代 $\tau_b$ 的麻煩，是實務常用做法。</p>
 </blockquote>
 <hr />
+<p><img alt="SS-2011-1 勁度折減曲線：橫軸 αPr/Py，τb 在 0.5 以前為 1.0、之後依 4x(1−x) 降至 0；另繪 0.8τb 的彎曲勁度倍率與定值 0.8 的軸向勁度倍率" src="../../raw/solutions/SS-2011-1/figs/SS-2011-1-fig-3-taub.svg" /></p>
+<p><em>圖 3　兩個折減層次的分工。$0.8$ 是無條件的水平線、$\tau_b$ 才是超過 $\alpha P_r/P_y = 0.5$ 才轉折的曲線；這張圖攔的是「只有非彈性時才折減」這個常見誤答。</em></p>
 <h3>(四) ASD 載重中係數 1.6 的推導</h3>
 <p><strong>問題核心：</strong> 直接分析法是基於 LRFD 載重組合開發的，ASD 設計載重為服務載重（未因數化），需要乘以 1.6 才能進行二階分析。</p>
 <p><strong>推導過程：</strong></p>
@@ -404,6 +410,8 @@ $$EA^</em> = 0.8\,EA \quad \text{（軸向勁度）}$$</p>
 </ol>
 <p>換言之：<strong>1.5 是「典型」比值，1.6 是「上限」比值，規範選了較保守的 1.6。</strong> 考場作答寫「取 $L \gg D$ 之上限 1.6，較典型值 1.5 保守」即完整。</p>
 <hr />
+<p><img alt="SS-2011-1 曲線圖：(1.2D+1.6L)/(D+L) 隨 L/D 由下界 1.2 單調升至上界 1.6，並標出 L/D = 3 時為 1.50（AISC 標定值）" src="../../raw/solutions/SS-2011-1/figs/SS-2011-1-fig-4-alpha.svg" /></p>
+<p><em>圖 4　$\alpha = 1.6$ 的由來與界線。比值區間 $1.2\sim1.6$、規範取上界；這張圖攔的是把 $\alpha = 1.6$ 誤稱為安全係數 $\Omega_c = 1.67$（兩者數值接近純屬巧合）。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>直接分析法 vs. 有效長度法（ELM）的根本差異</h3>
 <table>

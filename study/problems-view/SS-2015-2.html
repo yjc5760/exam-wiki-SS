@@ -59,6 +59,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 1. 求此拉力桿的<strong>設計強度</strong>（20 分）<br />
 2. 若連接板強度足夠，求設計<strong>填角銲銲腳長度</strong> $w$（10 分）</p>
 <hr />
+<p><img alt="SS-2015-2 接合詳圖向量重繪：雙槽鋼腹板上 2 縱排×2 橫列共 4 個螺栓孔，自槽鋼自由端起 5 cm 至第一排、10 cm 至第二排、再 7 cm 至連接板邊緣虛線；橫向 gauge 10 cm；連接板厚 1.6 cm、與柱之填角銲有效長 35 cm；拉力 T 與銲軸夾 53.13 度" src="../../raw/solutions/SS-2015-2/figs/SS-2015-2-fig-1-connection.svg" /></p>
+<p><em>圖 1　接合詳圖重繪。圖中「7 cm」量到的是連接板邊緣的虛線而非槽鋼端緣；這張圖攔的是把自由端判在 7 cm 那側，該誤判會讓塊狀剪力的拉力面整個放錯位置。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：拉力桿件三重極限狀態 × 接合反算設計</strong></p>
 <p>拉力桿件設計必須同時評估三個互相競爭的破壞模式，取最脆弱者（最小值）為設計強度。第二小題再以此強度「反推」銲腳尺寸，測驗完整的接合設計流程。</p>
@@ -619,6 +621,8 @@ $$\phi_t P_n = 0.75 \times F_u \times (2 A_e) = 0.75 \times 4.6 \times (2 \times
   槽鋼自由端            最遠一排螺栓
   （剪力面長 5+10 = 15 cm）
 </code></pre>
+<p><img alt="SS-2015-2 兩格對照：左為正解，剪力面自自由端量 15 cm、拉力面通過最遠一排螺栓且寬度等於 gauge 10 cm；右為舊版誤讀，把拉力面放在 7 cm 側且完全未用到橫向間距" src="../../raw/solutions/SS-2015-2/figs/SS-2015-2-fig-2-block-shear.svg" /></p>
+<p><em>圖 2　塊狀剪力破壞塊的幾何。剪力面切 1 整孔加 1 半孔（扣 $1.5d_h$）、拉力面寬度就是橫向間距 $g$；這張圖攔的是自由端判錯與拉力面寬度誤取 $e_2$，兩者一起發生時破壞機構的物理圖像完全不同。</em></p>
 <p><strong>剪力全／淨面積（2 個剪力面）：</strong></p>
 <p>每個剪力面長度 $= e_1 + s = 5 + 10 = 15$ cm。剪力面通過第 1 孔（<strong>整孔</strong>）與第 2 孔（<strong>僅半孔</strong>，因剪力面終止於該孔心）：</p>
 <p>$$A_{gv} = 2 \times 15 \times t_w = 2 \times 15 \times 0.6 = \boxed{18.0 \text{ cm}^2}$$</p>
@@ -641,6 +645,8 @@ $$\phi R_n = 2 \times 41.73 = \boxed{83.5 \text{ tf}}$$</p>
 <p>策略註解：條件二（剪力斷裂 + 張力降伏）中，剪力面用 $F_u \times A_{nv}$（淨面積、斷裂），張力面用 $F_y \times A_{gt}$（全面積、降伏）。切記「<strong>0.6 跟著剪力走</strong>」，是哪種破壞（斷裂 or 降伏）就配對應的面積；最後<strong>務必再與上限取小</strong>。</p>
 </blockquote>
 <hr />
+<p><img alt="SS-2015-2 兩格長條圖：左為 GSY 188.4、NSF 137.3、BSR 83.5 tf 與接合端補充檢核（螺栓雙剪 99.0、孔壁承壓 85.5）；右為 BSR 內部之式二 56.77 與上限 55.64 tf 的比較" src="../../raw/solutions/SS-2015-2/figs/SS-2015-2-fig-3-limit-states.svg" /></p>
+<p><em>圖 3　三種極限狀態取最小，而 BSR 內部還要再與上限取小。右格顯示式二算出的 56.77 大於上限 55.64，故本題由上限控制；這張圖攔的是漏掉「兩條件式皆受上限拘束」這一句。</em></p>
 <h4>三種極限狀態比較</h4>
 <table>
 <thead>
@@ -710,6 +716,8 @@ $$\phi R_n = (0.75)(0.6 F_{EXX})(0.707w)(L_{total})$$</p>
 <p><strong>解 $w$：</strong><br />
 $$109.13\,w \geq 83.46 \text{ tf}$$<br />
 $$w \geq \frac{83.46}{109.13} = 0.765 \text{ cm} = 7.65 \text{ mm}$$</p>
+<p><img alt="SS-2015-2 長條圖：強度需求 7.65 mm、規範最小銲腳 6 mm、AISC 方向性強度下之需求 5.63 mm、選用值 8 mm" src="../../raw/solutions/SS-2015-2/figs/SS-2015-2-fig-4-weld.svg" /></p>
+<p><em>圖 4　銲腳尺寸的三個門檻。本題強度需求 7.65 mm 大於規範最小值 6 mm ⇒ 由強度控制；這張圖攔的是查錯表 10.2-4（$12 &lt; t \leq 19$ mm 為 6 mm，不是 8 mm）而把控制理由說成「規範最小值」。</em></p>
 <p><strong>最小／最大銲腳尺寸確認：</strong></p>
 <table>
 <thead>

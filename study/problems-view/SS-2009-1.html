@@ -405,6 +405,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 1. <strong>材料超強</strong>：鋼材實際降伏強度普遍高於標稱值（$F_{y,actual} &gt; F_y$）；<br />
 2. <strong>應變硬化</strong>：塑鉸轉動後應力進入硬化段，超過降伏強度。</p>
 <p>我國規範以<strong>單一定值 1.25</strong> 涵蓋這兩項；AISC 341 則拆成 $1.1 \times R_y$（$1.1$ 為應變硬化、$R_y$ 為材料超強，依鋼種 1.1～1.5）。</p>
+<p><img alt="SS-2009-1 梁柱接頭示意：灰虛線框標出柱側 Σ 的範圍（接頭上、下兩柱段），紅虛線框標出梁側 Σ 的範圍（左、右兩梁），塑鉸標於梁端；右側列出我國 (13.6-3) 不等式" src="../../raw/solutions/SS-2009-1/figs/SS-2009-1-fig-1-scwb.svg" /></p>
+<p><em>圖 1　不等式兩側各自加總的範圍。1.25 乘在被高估的一方＝梁側，柱側則要扣掉軸壓已佔用的應力容量；這張圖攔的是 $\sum$ 範圍取錯（柱是上下、梁是左右）與把 1.25 除到柱側。</em></p>
 <h4>1.4 計算流程</h4>
 <pre><code>① 柱側：對接頭上、下兩柱段各算 Zc(Fyc − Puc/Ag)，相加
 ② 梁側：對接頭左、右兩梁各算 Zb·Fyb，相加後乘 1.25
@@ -445,6 +447,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </table>
 <p>強柱弱梁的本質是<strong>容量設計（Capacity Design）</strong>：先指定「哪裡該壞」（梁端），再把不該壞的構件（柱）設計成強度大於「該壞處的實際最大強度」。</p>
 <hr />
+<p><img alt="SS-2009-1 兩格構架對照：左為梁機構，塑鉸 8 處分散於各層梁端與柱腳；右為柱／側移機構，塑鉸僅 4 處集中於最下層柱之上下端，形成軟層" src="../../raw/solutions/SS-2009-1/figs/SS-2009-1-fig-2-mechanism.svg" /></p>
+<p><em>圖 2　強柱弱梁要換到的東西。兩格的頂層側移量相同，差別只在側移由幾層分攤；這張圖攔的是把強柱弱梁當成條文背誦，而說不出「為什麼柱端出鉸就是軟層崩塌」。</em></p>
 <h3>二、P-M 交互作用曲線圖</h3>
 <h4>2.1 LRFD 交互作用方程式</h4>
 <p>鋼柱在軸壓力 $P_u$ 與單軸彎矩 $M_u$ 共同作用下，依規範：</p>
@@ -497,6 +501,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>未正規化時：$\dfrac{dP}{dM}\Big|<em BC="BC">{AB} = -\dfrac{8}{9}\dfrac{\phi_cP_n}{\phi_bM_n}$、$\dfrac{dP}{dM}\Big|</em>$} = -2\dfrac{\phi_cP_n}{\phi_bM_n</p>
 <p><strong>幾何直觀：</strong> 從 A 走到 B，$\bar M$ 增加 0.9 而 $\bar P$ 只降 0.8（走得「橫」）；從 B 走到 C，$\bar M$ 只增加 0.1 而 $\bar P$ 又降 0.2（走得「直」）。<strong>低軸力段幾乎已達純彎強度，再減軸力也換不到多少彎矩容量。</strong></p>
 <h4>2.4 P-M 交互作用曲線圖</h4>
+<p><img alt="SS-2009-1 正規化 P-M 折線：A(0,1)、B(0.9,0.2)、C(1,0)，AB 段斜率 −8/9 較平、BC 段斜率 −2 較陡，安全域在折線左下" src="../../raw/solutions/SS-2009-1/figs/SS-2009-1-fig-3-pm.svg" /></p>
+<p><em>圖 3　兩段折線的斜率大小關係。三個控制點由 8/9 與 1/2 兩係數算出（兩式在 $\bar P = 0.2$ 處皆得 0.9，故折線連續）；這張圖攔的是把 AB 與 BC 的陡平寫反。</em></p>
 <pre><code> Pu/φcPn
    1.0 ┤● A（純軸壓，Mu = 0）
        │ ╲

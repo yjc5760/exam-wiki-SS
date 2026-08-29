@@ -76,6 +76,8 @@ $P$ 施加於托架板右端，距柱翼板（銲道左端）之水平距離：$
 <p>📊 <strong>互動圖請參閱：</strong> <code>SS-2017-4-connection-viz.html</code></p>
 </blockquote>
 <hr />
+<p><img alt="SS-2017-4 U 形銲道群向量重繪：左垂直銲道 80 cm、上下水平銲道各 40 cm，形心位於距柱面 10 cm、距底端 40 cm；載重 P 距柱面 90 cm，偏心距 e = 80 cm；並標出尺寸線上的圓點只是分段記號而非形心" src="../../raw/solutions/SS-2017-4/figs/SS-2017-4-fig-1-weld-group.svg" /></p>
+<p><em>圖 1　銲道群幾何與形心。$\bar{x} = b^2/(2b+d) = 10$ cm 是算出來的，偏心距必須從形心量起；這張圖攔的是把尺寸線上的圓點當成形心（若真如此則反解得 $b = 109.3$ cm，與圖上長度比嚴重不符）。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：偏心銲縫群的彈性向量法（Elastic Vector Method）</strong></p>
 <p>此題考查偏心荷載下銲縫群的分析——P 在銲道群形心的<strong>右方</strong>，產生扭轉力矩，使各處銲道受到「直接剪力」與「扭矩剪力」的疊加。關鍵是找到臨界點（合成應力最大的銲道位置）並設定強度條件。</p>
@@ -483,6 +485,8 @@ $$f_{\text{res}} = \sqrt{\left(f_{tx}\right)^2 + \left(f_v^{\text{direct}} + f_{
 <p>$$f_y^{\text{total}} = -0.00625P - 0.01216P = -0.01841P \quad \text{（向下）}$$</p>
 <p>$$f_{\text{res}} = P\sqrt{0.01621^2 + 0.01841^2} = P\sqrt{0.000263 + 0.000339} = P\sqrt{0.000602} = 0.02454P$$</p>
 <hr />
+<p><img alt="SS-2017-4 四個角點的向量疊加圖：每點畫出直接剪力（向下）、扭矩剪力（垂直於半徑）與兩者的合成，右端上下兩點合力 0.02454P 為臨界、左端兩點僅 0.01636P" src="../../raw/solutions/SS-2017-4/figs/SS-2017-4-fig-2-vector.svg" /></p>
+<p><em>圖 2　彈性向量法的疊加。右端兩點的扭矩剪力有向下分量、與直接剪力同向相加；左端兩點則相消——這張圖攔的是「離形心最遠就是臨界點」這個直覺，臨界點必須看向量和而不是看距離。</em></p>
 <h3>Step 6：求最大荷載 $P_u$</h3>
 <p><strong>E70XX 銲道標稱強度：</strong></p>
 <p>$$F_{EXX} = 70 \text{ ksi} \times 0.07031 \text{ tf/cm}^2\text{/ksi} = 4.922 \text{ tf/cm}^2$$</p>
@@ -583,6 +587,8 @@ $$f_{\text{res}} = \sqrt{\left(f_{tx}\right)^2 + \left(f_v^{\text{direct}} + f_{
 <h3>交叉驗核二：$J_w$ 之兩條路徑</h3>
 <p>$$J_w = \sum_i \int r^2 dL \;=\; 73{,}333 + 50{,}667 + 73{,}333 = 197{,}333$$</p>
 <p>$$J_w = I_x + I_y = \underbrace{\left[2(40)(40^2) + \tfrac{80^3}{12}\right]}<em 26_="26{,">{170{,}667} + \underbrace{\left[80(10^2) + 2\left(\tfrac{40^3}{12} + 40(20-10)^2\right)\right]}</em>333 \;\checkmark$$}667} = 197{,</p>
+<p><img alt="SS-2017-4 長條圖：彈性向量法 90.3 tf、加 AISC 方向性強度 119.6 tf、瞬心法 159.7 tf 三者比較" src="../../raw/solutions/SS-2017-4/figs/SS-2017-4-fig-3-method-compare.svg" /></p>
+<p><em>圖 3　三種分析法的強度差距。填角銲的基本強度式（$0.6F_{EXX}$、$\phi = 0.75$）新舊規範從未改變，故彈性向量法同值；這張圖攔的是以為「換新規範答案就會變」——真正變的是分析方法，不是強度式。</em></p>
 <h3>與瞬心法（AISC Table 8-4／8-8）的差異</h3>
 <p>AISC 手冊提供「瞬心法（Instantaneous Center Method）」，考慮銲道之非線性荷重—變形關係與方向性強度，比彈性向量法給出顯著更高（較不保守）的強度（量化結果見 §6）。考試若無特別說明，用彈性向量法為標準解法。</p>
 <h3>銲道有效喉厚 $t_e$ vs 銲腳尺寸 $w$</h3>

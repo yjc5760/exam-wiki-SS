@@ -479,6 +479,8 @@ $$\boxed{t} \ge \max\left(\frac{V_{\text{des}}}{2 h_{pl}(0.4F_y)},\ \frac{M_{\te
 <p><strong>螺栓縱座標（以鈑中高為原點）：</strong> $y = \pm 4,\ \pm 12,\ \pm 20$ cm</p>
 <p>$$\sum y^2 = 2\left(4^2 + 12^2 + 20^2\right) = 2(16 + 144 + 400) = \boxed{1{,}120 \text{ cm}^2}$$</p>
 <hr />
+<p><img alt="SS-2020-4 腹板續接正視重繪：續接鈑高 48 cm、寬 18 cm，螺栓 2 縱列×6 橫排，左列 6 支接左段梁、右列 6 支接右段梁，每列距續接中心線 5 cm，沿梁高間距 5@8 cm、上下邊距各 4 cm" src="../../raw/solutions/SS-2020-4/figs/SS-2020-4-fig-1-splice.svg" /></p>
+<p><em>圖 1　螺栓配置。鈑上雖有 12 支，但每一縱列的 6 支只負責一端梁，故設計螺栓數 $n = 6$；這張圖同時攔下「2 列 × 3 排」的誤讀，以及忽略該列距續接中心線 $e = 5$ cm 所生的附加彎矩。</em></p>
 <h3>Step 4：腹板續接鈑所承受之作用力</h3>
 <p>四鈑續接之力量分配原則：</p>
 <p>$$\underbrace{\text{翼板鈑}}<em _text_承擔="\text{承擔">{\text{承擔 } M(1 - I_w/I_x)} \qquad\qquad \underbrace{\text{腹板鈑}}</em>$$} M \cdot I_w/I_x \;+\; V \;+\; V!\cdot!e</p>
@@ -492,6 +494,8 @@ $$\boxed{t} \ge \max\left(\frac{V_{\text{des}}}{2 h_{pl}(0.4F_y)},\ \frac{M_{\te
 <p>📌 兩項之相對量級值得記住：<strong>腹板分擔彎矩（947）是偏心彎矩（350）的 2.7 倍</strong>。舊版解析兩者都漏掉，只用 $V/n$，故嚴重低估。</p>
 </blockquote>
 <hr />
+<p><img alt="SS-2020-4 長條圖：腹板依剛度分擔之彎矩 947 tf·cm、螺栓列偏心彎矩 350 tf·cm、螺栓群總彎矩 1,297 tf·cm" src="../../raw/solutions/SS-2020-4/figs/SS-2020-4-fig-2-moment-share.svg" /></p>
+<p><em>圖 2　腹板續接鈑到底承受哪些作用力。腹板分擔彎矩是偏心彎矩的 2.7 倍，兩者都不可略；這張圖攔的是只用 $V/n$——舊版把這兩項全漏掉了。</em></p>
 <h3>Step 5：最不利螺栓之合力與螺栓尺寸</h3>
 <p><strong>直接剪力（均勻分配，鉛垂）：</strong><br />
 $$f_v = \frac{V_{\text{des}}}{n} = \frac{70}{6} = 11.67 \text{ tf}$$</p>
@@ -538,6 +542,8 @@ $$\text{容量} = 2 \times 4.909 \times 2.8 = 27.49 \text{ tf} \;&gt;\; 25.93 \t
 </table>
 <p>$$\boxed{\text{選用 D25（}\phi 25\text{ mm）A490 螺栓，每側 6 支，雙剪}}$$</p>
 <hr />
+<p><img alt="SS-2020-4 偏心螺栓群向量圖：6 支螺栓各畫出均勻的直接剪力 11.67 tf（鉛垂）與隨 y 線性變化的彎矩剪力（水平），最外排合力 25.93 tf 為最不利" src="../../raw/solutions/SS-2020-4/figs/SS-2020-4-fig-3-bolt-force.svg" /></p>
+<p><em>圖 3　直接剪力均勻、彎矩剪力線性，兩者正交疊加。ASD 是逐支檢核最不利螺栓；這張圖攔的是把總力除以螺栓數（得 11.67 tf，低估 55%，螺栓會由 D25 誤選為 M20）。</em></p>
 <h3>Step 6：腹板續接鈑厚度</h3>
 <p>腹板鈑為<strong>兩片</strong>（腹板兩側各一），高 $h_{pl} = 48$ cm，須同時滿足剪力與彎矩：</p>
 <p><strong>(a) 剪力控制（$F_v = 0.4F_y = 1.0$ tf/cm²）</strong></p>
@@ -573,6 +579,8 @@ $$\text{容量} = 2 \times 4.909 \times 2.8 = 27.49 \text{ tf} \;&gt;\; 25.93 \t
 <p>$$\boxed{\text{腹板續接鈑厚度 } t = 12 \text{ mm（兩片，各 } 48 \times 18 \times 12 \text{ mm）}}$$</p>
 <p><em>（組合應力參考：$\sqrt{f_b^2 + 3f_v^2} = \sqrt{1.408^2 + 3(0.608)^2} = 1.758$ tf/cm²，略高於 $0.6F_y = 1.5$。台灣 ASD 對續接鈑並未要求此 von Mises 型檢核；若設計者自願採用，則需 $t \ge 1.406$ cm ⇒ </em><em>16 mm</em><em>。詳 §5。）</em></p>
 <hr />
+<p><img alt="SS-2020-4 長條圖：鈑厚之剪力控制值 0.729 cm、彎矩控制值 1.126 cm（控制）、選用 12 mm" src="../../raw/solutions/SS-2020-4/figs/SS-2020-4-fig-4-plate.svg" /></p>
+<p><em>圖 4　鈑厚由剪力與彎矩雙重控制，本題由彎矩控制（比剪力大 54%）；這張圖攔的是只算剪力就選 8 mm。鈑件不符結實斷面之肢材定義，故彎曲用 $0.6F_y$ 而非 $0.66F_y$。</em></p>
 <h3>計算彙整</h3>
 <table>
 <thead>

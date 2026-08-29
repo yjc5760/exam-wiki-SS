@@ -510,6 +510,8 @@ $$23.0 &lt; 27.52 \ \checkmark \qquad\text{且}\qquad 25.0 &lt; 27.52 \ \checkma
 <p><strong>細長比上限檢核：</strong><br />
 $$\frac{KL}{r} = 30.54 \ll 200 \quad \checkmark \quad(\text{規範對受壓構材之上限})$$</p>
 <hr />
+<p><img alt="SS-2022-1 兩格圖：左為 BOX 800×800×32 斷面（外廓 80、板厚 3.2、清淨寬 73.6 cm）與 A、I、Z；右為 bi/t = 23.0、bo/t = 25.0 對台灣 λp = 27.52 與 AISC 27.85 的長條比較" src="../../raw/solutions/SS-2022-1/figs/SS-2022-1-fig-1-section.svg" /></p>
+<p><em>圖 1　閉口箱形的斷面性質與局部挫屈。清淨寬要扣兩側板厚；這張圖攔的是只扣一次（$b/t$ 會由 23.0 變成 24.0），並顯示兩種寬度定義都通過、判定不受定義左右。</em></p>
 <h3>三、壓力強度 $\phi_c P_n$</h3>
 <p><strong>計算 $\lambda_c$（受壓柱細長參數）：</strong><br />
 $$\lambda_c = \frac{(KL/r)_\text{eff}}{\pi} \sqrt{\frac{F_y}{E}} = \frac{30.54}{\pi} \sqrt{\frac{3.3}{2040}} = 9.721 \times \sqrt{0.001618} = 9.721 \times 0.04022 = 0.391$$</p>
@@ -536,6 +538,8 @@ $$\frac{h}{t_w} = \frac{73.6}{3.2} = 23.0$$</p>
 <p>$$\boxed{\phi_v V_n = 0.9 \times 932.5 = 839.3 \text{ tf}}$$</p>
 <p>（正方形斷面兩方向剪力強度相同）</p>
 <hr />
+<p><img alt="SS-2022-1 兩格對照：左為正解，只有與剪力方向平行的兩片板承剪，Aw = 471.04 cm²；右為誤解，四片全算 Aw = 942.08 cm²" src="../../raw/solutions/SS-2022-1/figs/SS-2022-1-fig-2-shear-area.svg" /></p>
+<p><em>圖 2　剪力有效面積的認定。與剪力方向垂直的上下兩片板不提供剪力抵抗；這張圖攔的是 $A_w$ 取四片而把剪力強度高估一倍。</em></p>
 <h3>六、P-M 互制公式（AISC H1）</h3>
 <p><strong>先判斷互制公式：</strong><br />
 $$\frac{P_u}{\phi_c P_n} = \frac{1119}{2586} = 0.433 \geq 0.2 \quad \Rightarrow \text{使用 H1-1a}$$</p>
@@ -545,6 +549,8 @@ $$\frac{P_u}{\phi_c P_n} + \frac{8}{9}\left[\frac{M_{u2}}{\phi_b M_{n2}} + \frac
 $$0.433 + \frac{8}{9}\left[\frac{179}{841.3} + \frac{19.4}{841.3}\right] = 0.433 + \frac{8}{9}\left[0.2127 + 0.0231\right]$$</p>
 <p>$$= 0.433 + \frac{8}{9} \times 0.2358 = 0.433 + 0.2096 = \boxed{0.643 \leq 1.0 \quad \checkmark \text{ OK}}$$</p>
 <hr />
+<p><img alt="SS-2022-1 正規化 P-M 折線與需求點：折線 A(0,1)–B(0.9,0.2)–C(1,0)，本題需求點 (0.236, 0.433) 落在折點上方，H1-1a = 0.642" src="../../raw/solutions/SS-2022-1/figs/SS-2022-1-fig-3-pm.svg" /></p>
+<p><em>圖 3　需求點落在折線的哪一段。$P_u/\phi_cP_n = 0.433 \geq 0.2$ ⇒ 在折點上方、用 H1-1a；這張圖攔的是互制式選錯（H1-1a 與 H1-1b 的 8/9 係數位置不同），並提醒本題載重已含二階效應、不可再乘 $B_1$／$B_2$。</em></p>
 <h3>七、剪力需求檢核</h3>
 <p>$$\frac{V_{u2}}{\phi_v V_n} = \frac{86.77}{839.3} = 0.103 \quad (10.3\%) \leq 1.0 \quad \checkmark$$</p>
 <p>$$\frac{V_{u3}}{\phi_v V_n} = \frac{9.14}{839.3} = 0.011 \quad (1.1\%) \leq 1.0 \quad \checkmark$$</p>

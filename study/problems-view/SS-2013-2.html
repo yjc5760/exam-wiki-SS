@@ -122,7 +122,9 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tbody>
 </table>
 <p><img alt="SS-2013-2 題目附圖：單層門型剛架，柱 AB 底端 A 為鉸支承、頂端 B 與梁 BC 剛接；柱 CD 底端 D 為鉸支承、頂端 C 與梁 BC 以鉸接（圖上畫小圓圈）連接，故 CD 兩端皆鉸為靠桿；梁 BC 承受向下均佈載重 w；右側附 AISC 對位圖兩張（左為「側位移束制」K=0.5~1.0，右為「側位移不束制」K=1.0~20.0）" src="../../raw/solutions/SS-2013-2/SS-2013-2-fig-1.png" /></p>
-<p><em>圖說：跨度 $L$ ×柱高 $L$ 之單層門型剛架。</em><em>A 與 D 皆為鉸支承（三角形符號）</em><em>；</em><em>B 為剛接節點</em><em>（梁柱剛性連接）；</em><em>C 為鉸接</em><em>（圖上以小圓圈標示梁 BC 與柱 CD 之間為鉸），因此柱 CD 上下兩端皆為鉸接、無法提供任何側向抵抗，即題目所稱之「靠桿（leaning column）」。梁 BC 頂部承受向下均佈載重 $w$。圖右為 AISC Alignment Chart 兩張：左圖標題「側位移束制」（$G_A$ 0～50、$K$ 0.5～1.0、$G_B$ 0～50），右圖標題「側位移不束制」（$G_A$ 0～100、$K$ 1.0～20.0、$G_B$ 0～100）。本題整層可側移，且僅 AB 具側向抵抗能力，故</em><em>查右圖（側位移不束制）</em><em>。</em></p>
+<p><em>圖說：跨度 $L$ ×柱高 $L$ 之單層門型剛架。</em><em>A 與 D 皆為鉸支承（三角形符號）</em><em>；</em><em>B 為剛接節點</em><em>（梁柱剛性連接）；</em><em>C 為鉸接</em><em>（圖上以小圓圈標示梁 BC 與柱 CD 之間為鉸），因此柱 CD 上下兩端皆為鉸接、無法提供任何側向抵抗，即題目所稱之「靠桿（leaning column）」。梁 BC 頂部承受向下均佈載重 $w$。圖右為 AISC Alignment Chart 兩張：左圖標題「側位移束制」（$G_A$ 0～50、$K$ 0.5～1.0、$G_B$ 0～50），右圖標題「側位移不束制」（$G_A$ 0～100、$K$ 1.0～20.0、$G_B$ 0～100）。本題整層可側移，且僅 AB 具側向抵抗能力，故</em><em>查右圖（側位移不束制）</em><em>。</em></p><p><img alt="SS-2013-2 圖 2：左格為題目圖 2 的向量重繪——單層門型剛架，柱 AB 底端 A 與柱 CD 底端 D 皆為鉸支承，節點 B 為剛接（實心點）、節點 C 為鉸接（空心圓圈），梁 BC 承受向下均佈載重 w，L = 600 cm，G_A = 10、G_B = I_c/I_b = 0.221；右格為側移挫屈模態——柱 AB 以單曲率彎曲（A 端 M = 0）並提供整層唯一的側向勁度，柱 CD 全程保持直線（M = 0）、只隨側移剛體傾斜，故 ΣP 含兩根柱（= wL）而 ΣP_eK 只含 AB（= 575.6 tf）" src="../../raw/solutions/SS-2013-2/figs/SS-2013-2-fig-2-leaning-column.svg" /></p>
+<p><em>圖 2　把「靠桿」畫出來：CD 兩端皆鉸 ⇒ 二力構件 ⇒ 挫屈時保持直線、零側向勁度。圖上 AB 的彎曲程度由 §1 給定的 $I_c$、$I_b$ 以傾角變位法算出（$\theta_B = \psi\,I_c/(I_c+I_b)$），改變 $I_c/I_b$ 圖形會跟著變。<strong>攔錯：</strong>把 CD 讀成「底端鉸接的一般柱」而去查它的 $K_{CD}$，使 $\sum P_{eK}$ 多算一根。</em></p>
+
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：靠桿（leaning column）把自己的重力載重「寄生」到有側向抵抗能力的柱上，必須用 LeMessurier 修正 $K$ 值。</strong></p>
@@ -663,7 +665,9 @@ $\Rightarrow$ 整層側向抵抗<strong>只有柱 AB</strong>（透過 B 點剛�
 </tr>
 </tbody>
 </table>
-<p>若更進一步把 $G_A$ 也誤取 1（誤判 A 為固接），$K_{AB}$ 掉到 1.21、$P_{eK,AB}$ 升到 1,150 tf，$w_{cr}$ 會衝到約 287 tf/m，<strong>高估約 3 倍</strong>。</p>
+<p>若更進一步把 $G_A$ 也誤取 1（誤判 A 為固接），$K_{AB}$ 掉到 1.21、$P_{eK,AB}$ 升到 1,150 tf，$w_{cr}$ 會衝到約 287 tf/m，<strong>高估約 3 倍</strong>。</p><p><img alt="SS-2013-2 圖 3：四種讀法之挫屈載重 w_cr 長條比較。誤判②（CD 當一般柱且 A 誤判為固接）287 tf/m（100%）、誤判①（CD 當一般柱）192 tf/m（67%，d = 0.80 m）、正解（CD 為靠桿）96.0 tf/m（33%，d = 0.40 m）、§5.5 梁遠端鉸接勁度折減 89.3 tf/m（31%，d = 0.37 m）；每列左側附該讀法對應的側移模態迷你示意圖，差別只在柱 CD 彎或不彎" src="../../raw/solutions/SS-2013-2/figs/SS-2013-2-fig-3-magnitude.svg" /></p>
+<p><em>圖 3　同一個結構、四種讀法的挫屈載重量級。<strong>攔錯：</strong>算出 $w_{cr}$ 落在 190～290 tf/m 卻沒察覺——那正是把靠桿的容量也算進 $\sum P_{eK}$ 的徵兆；正解只有 96.0 tf/m。</em></p>
+
 <p><strong>錯在哪：</strong> C 點是鉸，梁 BC 對柱 CD 頂端的轉動<strong>沒有任何拘束</strong>，$G_C$ 根本無意義；CD 挫屈時只會隨 AB 一起平移（剛體傾斜），不會自己彎曲。它對整層穩定的貢獻是<strong>負的</strong>（送重量、不送勁度）。</p>
 <h3>5.2 LeMessurier 公式的兩種等價寫法</h3>
 <p>考卷給的形式：</p>
@@ -736,6 +740,7 @@ $\Rightarrow$ 整層側向抵抗<strong>只有柱 AB</strong>（透過 B 點剛�
 <p>差異約 7%，方向偏保守。考卷未提示此修正、且明確要求「使用 AISC Alignment Chart」，<strong>考場以未修正的 $G_B = 0.221$ 作答為準</strong>，此節僅供理解答案的保守方向。</p>
 <p><em>解析完成時間：2026-04-23</em><br />
 <em>修正日期：2026-08-22（依考卷原文改正「柱 CD 為靠桿」之判讀與 LeMessurier 公式用法）</em><br />
+<em>圖解補繪：2026-08-29（向量圖，腳本 <code>gen_SS-2013-2.py</code>，可重跑）</em><br />
 <em>驗證狀態：unverified</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2013-2/SS-2013-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>

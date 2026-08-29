@@ -42,6 +42,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </blockquote>
 <p><img alt="SS-2013-4 題目附圖：水平梁 A—B—D 位於上方，A、D 為滾支承，B 點下方連一根長度 L 的柱 BC，C 為鉸支承；水平力 H 作用於 A，垂直力 P 作用於 B；AB = BD = 1.5L" src="../../raw/solutions/SS-2013-4/SS-2013-4-fig-1.png" /></p>
 <p><em>圖說（依原卷圖 4 目視判讀）：</em><em>上方</em><em>為連續水平梁 </em><em>A—B—D</em><em>，$AB = BD = 1.5L$（全長 $3L$），各段 $EI$ 相同。</em><em>A 端與 D 端均為滾支承</em><em>（三角形＋滾輪＋斜線地面符號）——只提供</em><em>垂直</em><em>支承，水平方向</em><em>可自由平移</em><em>。</em><em>B 點</em><em>為梁與柱之剛性交會點。自 B 往</em><em>下</em><em>接一根長度 $L$、剛度 $EI$ 之柱 </em><em>BC</em><em>，柱底 </em><em>C 為鉸支承</em><em>（三角形＋斜線地面，無滾輪）——同時束制水平與垂直。</em><em>水平力 $H$ 作用於 A 點</em><em>（向右），</em><em>垂直軸壓力 $P$ 作用於 B 點</em><em>（向下，即柱頂）。</em></p>
+<p><img alt="SS-2013-4 題目幾何向量重繪：上方連續梁 A—B—D 兩端為滾支承，B 點下方接單一柱 BC，柱底 C 為鉸支承；H 作用於 A、P 作用於柱頂 B" src="../../raw/solutions/SS-2013-4/figs/SS-2013-4-fig-1-frame.svg" /></p>
+<p><em>圖 1　題目幾何重繪。A、D 是梁端的滾支承而非柱頂節點——全結構只有柱 BC 一根，這張圖攔的是「單層兩跨、三根柱」的誤讀，該誤讀會同時把 $\sum P_{eK}$ 膨脹 2.7 倍、把 $M_{lt}$ 錯分成 $HL/3$。</em></p>
 <p><strong>⚠️ 幾何判讀重點（本題最易誤讀之處）：</strong></p>
 <table>
 <thead>
@@ -531,11 +533,15 @@ $$\sum P_u = P$$</p>
 <p><strong>對照</strong>：若誤判為三根柱平均分擔，會得 $M_{lt} = HL/3$，<strong>低估 3 倍</strong>。</p>
 </blockquote>
 <hr />
+<p><img alt="SS-2013-4 三聯圖：左為加虛擬水平支撐後只施重力 P 的無側移狀態（θB = 0、Mnt = 0），中為只施水平力 H 的側移狀態（柱雙曲率變形、VBC = H），右為柱 BC 的 Mlt 彎矩圖（頂端 HL 線性降至底端 0）" src="../../raw/solutions/SS-2013-4/figs/SS-2013-4-fig-2-nt-lt.svg" /></p>
+<p><em>圖 2　$M_{nt}$ 與 $M_{lt}$ 的分離。側移狀態的柱頂轉角由「梁兩段各提供 $3EI/1.5L$、柱遠端鉸接」的節點平衡解出，不是描摹；這張圖攔的是把層剪力誤分給三根柱而得 $M_{lt} = HL/3$。</em></p>
 <h3>六、$B_2$（側移放大係數）</h3>
 <p>$$B_2 = \frac{1}{1 - \dfrac{\sum P_u}{\sum P_{eK}}} = \frac{1}{1 - \dfrac{P}{2.88\,EI/L^2}} = \frac{1}{1 - \dfrac{P L^2}{2.88\,EI}}$$</p>
 <p>$$\boxed{B_2 = \frac{2.88\,EI}{2.88\,EI - P L^2}}$$</p>
 <p><strong>適用範圍檢核：</strong> 須 $\sum P_u &lt; \sum P_{eK}$，即 $P &lt; 2.88\,EI/L^2$；否則該層已達側移挫屈（$B_2 \to \infty$）。實務並要求 $B_2 \leq 1.5\sim2.5$。</p>
 <hr />
+<p><img alt="SS-2013-4 B2 放大曲線：橫軸為無因次軸壓 PL²/EI，縱軸為 B2，台灣 2010 之漸近線在 2.88、AISC 360-16 側移法在 1.46" src="../../raw/solutions/SS-2013-4/figs/SS-2013-4-fig-3-b2-curve.svg" /></p>
+<p><em>圖 3　$B_2$ 的漸近行為。垂直漸近線就是該層的側移挫屈載重，$\sum P_{eK}$ 取錯會整條右移；這張圖攔的是忽略 $\sum P_u &lt; \sum P_{eK}$ 適用範圍、以及誤把 A、D 當柱而用 $7.72EI/L^2$。</em></p>
 <h3>七、$B_1$（構材撓曲放大係數）</h3>
 <p><strong>$P_{e1}$（用無側移 $K$）：</strong> 規範明定 $B_1$ 之 $P_{e1}$ 取彎曲平面上 $K \leq 1.0$：</p>
 <p>$$P_{e1} = \frac{\pi^2 EI}{(1.0\,L)^2} = \frac{9.87\,EI}{L^2}$$</p>

@@ -97,7 +97,7 @@ footer{margin-top:48px;font-size:13px;color:var(--muted);border-top:1px solid va
 </table>
 <p>前面四個單元算的是理想的鋼；但工地做出來的鋼，有熱影響區、氫致冷裂、殘留應力，還有油污和腐蝕。所以每一條施工規範都在回答同一個問題：</p>
 <div class="key"><b>每一條施工規範都在問</b>這道工序讓實物偏離設計假設多少？用什麼手段把偏離量壓回容許範圍？</div>
-<figure><img src="handout/img/s02.jpg" alt="設計假設與施工實況對照"><figcaption><span>左欄藍：設計端理想的鋼；右欄紅：工地端真的鋼（HAZ、夾雜、殘留應力）</span><span class="ts">影片 0:40</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s02.jpg" alt="設計假設與施工實況對照"><figcaption><span>左欄藍：設計端理想的鋼；右欄紅：工地端真的鋼（HAZ、夾雜、殘留應力）</span><span class="ts">影片 0:40</span></figcaption></figure>
 </section>
 
 <!-- c1 -->
@@ -110,7 +110,7 @@ footer{margin-top:48px;font-size:13px;color:var(--muted);border-top:1px solid va
 <tr><td>② 事中</td><td>管過程</td><td>預熱和層間溫度、銲腳尺寸（\(w_{min}\)～\(w_{max}\)）、回銲（\(2w\)～\(4w\)）、不准塗裝的部位（摩阻面、銲道旁）</td></tr>
 <tr><td>③ 事後</td><td>管驗收</td><td>VT 目視；MT、PT 查表面；UT、RT 查內部（CJP：100% UT）</td></tr>
 </table>
-<figure><img src="handout/img/s04.jpg" alt="三道防線"><figcaption><span>三欄匯成「偏離量被壓回設計容許範圍」</span><span class="ts">影片 1:24</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s04.jpg" alt="三道防線"><figcaption><span>三欄匯成「偏離量被壓回設計容許範圍」</span><span class="ts">影片 1:24</span></figcaption></figure>
 <div class="key"><b>閱卷給分：名稱一半、理由一半</b>施工說明題先寫物理機制，再切成事前、事中、事後三格，每一格寫出它擋掉哪一種偏離。</div>
 </section>
 
@@ -126,7 +126,7 @@ $$t_e = w\sin 45^\circ = \frac{w}{\sqrt2} = 0.707\,w$$
 <h3>0.6：von Mises 準則</h3>
 <p>純剪降伏等於 \(F_y/\sqrt3\)：</p>
 $$\tau_y = \frac{F_y}{\sqrt3} = 0.577F_y \;\rightarrow\; 0.6F_y$$
-<figure><img src="handout/img/s06.jpg" alt="填角銲強度"><figcaption><span>銲喉 \(t_e\)（橙線）為最短破壞面；右下為 E70、\(w=8\) mm 代入</span><span class="ts">影片 2:09</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s06.jpg" alt="填角銲強度"><figcaption><span>銲喉 \(t_e\)（橙線）為最短破壞面；右下為 E70、\(w=8\) mm 代入</span><span class="ts">影片 2:09</span></figcaption></figure>
 <p>代入 E70 銲條（\(F_{EXX}=490\) MPa）、銲腳 8 mm：</p>
 $$0.75\times0.6\times490\times0.707\times8 = 1247\ \text{N/mm} \approx 1.25\ \text{kN/mm}$$
 <div class="ok"><b>考場基準</b>每公釐銲長大約 1.25 kN。記住這個基準，就能檢查量級有沒有算錯。</div>
@@ -136,7 +136,7 @@ $$0.75\times0.6\times490\times0.707\times8 = 1247\ \text{N/mm} \approx 1.25\ \te
 <section id="c3">
 <h2><span class="no">第 4 章</span>機制一：熱影響區 HAZ <button class="seek" data-t="129.73">▶ 2:09</button></h2>
 <p>接下來六條物理機制。第一，熱影響區 HAZ。銲接是局部熔化再急速抽冷，銲道旁沒熔化、卻被熱改變組織的那一圈，就是熱影響區。最靠近熔合線的<b>過熱區晶粒粗大、韌性最低</b>，破壞幾乎都從這裡起裂。</p>
-<figure><img src="handout/img/s07.jpg" alt="熱影響區"><figcaption><span>左：銲著金屬／過熱粗晶區／細晶區／部分變態區；右：韌性谷底＝起裂點</span><span class="ts">影片 2:40</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s07.jpg" alt="熱影響區"><figcaption><span>左：銲著金屬／過熱粗晶區／細晶區／部分變態區；右：韌性谷底＝起裂點</span><span class="ts">影片 2:40</span></figcaption></figure>
 <div class="warn"><b>換銲材救不了 HAZ</b>只能靠溫度管制；所以 SN490B 要求 \(\text{CVN}(0^\circ\text{C}) \ge 27\ \text{J}\)。</div>
 </section>
 
@@ -156,7 +156,7 @@ $$0.75\times0.6\times490\times0.707\times8 = 1247\ \text{N/mm} \approx 1.25\ \te
 <tr><th>預熱溫度</th><td>10°C</td><td>65°C</td><td>110°C</td><td>150°C</td></tr>
 </table>
 <p>層間溫度不超過 350°C。</p>
-<figure><img src="handout/img/s09.jpg" alt="氫致冷裂三要素與預熱"><figcaption><span>三圓交集＝HIC；右：預熱三條作用＋板厚四格溫度</span><span class="ts">影片 3:25</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s09.jpg" alt="氫致冷裂三要素與預熱"><figcaption><span>三圓交集＝HIC；右：預熱三條作用＋板厚四格溫度</span><span class="ts">影片 3:25</span></figcaption></figure>
 <h3>低氫銲條的雙溫陷阱</h3>
 <table>
 <tr><th>步驟</th><th>溫度</th><th>目的</th></tr>
@@ -164,14 +164,14 @@ $$0.75\times0.6\times490\times0.707\times8 = 1247\ \text{N/mm} \approx 1.25\ \te
 <tr><td>保溫筒</td><td>100～150°C</td><td>隨身攜帶，防止再吸濕</td></tr>
 </table>
 <div class="warn"><b>兩個溫度都要寫</b>只寫一個扣一半。</div>
-<figure><img src="handout/img/s10.jpg" alt="雙溫陷阱"><figcaption><span>烘乾（橙）與保溫筒（藍）兩個溫度</span><span class="ts">影片 3:41</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s10.jpg" alt="雙溫陷阱"><figcaption><span>烘乾（橙）與保溫筒（藍）兩個溫度</span><span class="ts">影片 3:41</span></figcaption></figure>
 </section>
 
 <!-- c5 -->
 <section id="c5">
 <h2><span class="no">第 6 章</span>機制三：層狀撕裂 <button class="seek" data-t="221.75">▶ 3:41</button></h2>
 <p>第三，層狀撕裂。鋼板是軋出來的，夾雜物被壓成平行板面的弱面，所以<b>板厚方向，也就是 Z 向最弱</b>。T 型接頭的銲道收縮把板往 Z 向拉開，就沿著弱面撕成階梯狀。</p>
-<figure><img src="handout/img/s12.jpg" alt="層狀撕裂"><figcaption><span>左：T 型接頭 Z 向拉力與階梯狀撕裂；右：對策選項 ✗／✓</span><span class="ts">影片 4:24</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s12.jpg" alt="層狀撕裂"><figcaption><span>左：T 型接頭 Z 向拉力與階梯狀撕裂；右：對策選項 ✗／✓</span><span class="ts">影片 4:24</span></figcaption></figure>
 <div class="warn"><b>撕裂在母材，不在銲道</b>換高強度銲條沒用；加大銲腳反而拘束更高；加強 UT 只能事後發現。</div>
 <div class="key"><b>唯一有效的是換鋼材</b>用 SN-C 級，Z 向斷面收縮率至少 25%。箱型柱橫隔板這類接合，板厚 40 mm 以上就要用 C 級。</div>
 </section>
@@ -186,12 +186,12 @@ $$0.75\times0.6\times490\times0.707\times8 = 1247\ \text{N/mm} \approx 1.25\ \te
 <tr><td>上限 \(w_{max}\)</td><td>熔蝕板緣</td><td>板厚 6 mm 以上，\(w_{max} = t - 2\ \text{mm}\)</td></tr>
 </table>
 <p>例如板厚 12 mm，銲腳介於 5～10 mm：\(5 \le w \le 10\ \text{mm}\)。</p>
-<figure><img src="handout/img/s13.jpg" alt="銲腳上下限"><figcaption><span>左：下限防急冷（最小銲腳表）；右：上限 \(w=t\) 熔掉板緣 ✗、\(w=t-2\) 留住板緣 ✓</span><span class="ts">影片 4:48</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s13.jpg" alt="銲腳上下限"><figcaption><span>左：下限防急冷（最小銲腳表）；右：上限 \(w=t\) 熔掉板緣 ✗、\(w=t-2\) 留住板緣 ✓</span><span class="ts">影片 4:48</span></figcaption></figure>
 <p>回銲是在端部轉角多銲一段，把應力尖峰和起弧缺陷移開：</p>
 $$2w \le \ell \le 4w \qquad (w = 8\ \text{mm} \rightarrow \ell = 16\text{～}32\ \text{mm})$$
 <p>上下限都要寫。</p>
 <div class="warn"><b>最容易漏的是例外</b>簡支梁雙角鋼的外伸肢要能轉動，<b>嚴禁回銲</b>，否則鉸接被焊死，端部受彎而拉裂。</div>
-<figure><img src="handout/img/s14.jpg" alt="回銲"><figcaption><span>左：主銲道端部回銲（橙段）；右紅框：需能轉動者嚴禁回銲</span><span class="ts">影片 5:09</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s14.jpg" alt="回銲"><figcaption><span>左：主銲道端部回銲（橙段）；右紅框：需能轉動者嚴禁回銲</span><span class="ts">影片 5:09</span></figcaption></figure>
 </section>
 
 <!-- c7 -->
@@ -203,7 +203,7 @@ $$2w \le \ell \le 4w \qquad (w = 8\ \text{mm} \rightarrow \ell = 16\text{～}32\
 <tr><td>表面</td><td><b>MT 磁粉</b>：靈敏度最高；不鏽鋼改用 PT</td><td><b>VT 目視</b>：所有銲道的基線</td></tr>
 <tr><td>內部</td><td><b>UT 超音波</b></td><td><b>RT 放射線</b></td></tr>
 </table>
-<figure><img src="handout/img/s16.jpg" alt="非破壞檢測矩陣"><figcaption><span>2×2 矩陣：位置（表面／內部）×形狀（扁平／圓胖）</span><span class="ts">影片 5:49</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s16.jpg" alt="非破壞檢測矩陣"><figcaption><span>2×2 矩陣：位置（表面／內部）×形狀（扁平／圓胖）</span><span class="ts">影片 5:49</span></figcaption></figure>
 <div class="key"><b>CJP 與耐震接頭 → 100% UT</b>全滲透銲和耐震接頭最怕內部未熔合，所以規範要求百分之百 UT，不是抽驗。</div>
 </section>
 
@@ -214,11 +214,11 @@ $$2w \le \ell \le 4w \qquad (w = 8\ \text{mm} \rightarrow \ell = 16\text{～}32\
 <p>以 A325 M22 為例（\(A_s = 303\ \text{mm}^2\)）：</p>
 $$T_b = 0.7F_uA_s = 175\ \text{kN},\qquad F_yA_s = 200\ \text{kN},\qquad T_b \approx 0.88\,F_yA_s$$
 <p>\(T_b\) 剛好踩在塑性平台上。多轉一點角度，軸力增加有限，不會拉斷，<b>這就是轉角法成立的理由</b>。</p>
-<figure><img src="handout/img/s17.jpg" alt="螺栓軸力伸長曲線"><figcaption><span>軸力–伸長曲線：\(F_yA_s\)（藍虛線）、\(T_b\)（橙虛線）、塑性平台＝轉角法操作區</span><span class="ts">影片 6:14</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s17.jpg" alt="螺栓軸力伸長曲線"><figcaption><span>軸力–伸長曲線：\(F_yA_s\)（藍虛線）、\(T_b\)（橙虛線）、塑性平台＝轉角法操作區</span><span class="ts">影片 6:14</span></figcaption></figure>
 <h3>螺栓不能重複使用</h3>
 <p>第一次鎖固已產生永久塑性伸長；再用一次，扭矩係數 K 值失準，轉角法也沒有彈性段可走，可能直接拉斷。</p>
 <div class="warn"><b>二次夾緊力不可控</b>摩擦力假設就失效。</div>
-<figure><img src="handout/img/s18.jpg" alt="螺栓不能重複使用"><figcaption><span>第一次鎖固 → 永久塑性伸長 → K 值、轉角起算點失準</span><span class="ts">影片 6:33</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s18.jpg" alt="螺栓不能重複使用"><figcaption><span>第一次鎖固 → 永久塑性伸長 → K 值、轉角起算點失準</span><span class="ts">影片 6:33</span></figcaption></figure>
 <h3>摩阻面</h3>
 <p>摩阻型強度直接正比於滑動係數 \(\mu\)：</p>
 $$\phi R_n = \phi\,\mu\,D_u\,h_{sc}\,T_b\,n_s \;\propto\; \mu$$
@@ -229,7 +229,7 @@ $$\phi R_n = \phi\,\mu\,D_u\,h_{sc}\,T_b\,n_s \;\propto\; \mu$$
 <tr><td>塗了漆（禁用）</td><td>≈ 0.15</td><td>29.7 kN（不到一半）</td></tr>
 </table>
 <p style="font-size:14px;color:var(--muted)">黑板註：\(T_b = 175\) kN、\(D_u = 1.13\)、標準孔 \(h_{sc} = 1.0\)、單剪面、\(\phi = 1.0\)。</p>
-<figure><img src="handout/img/s19.jpg" alt="摩阻面滑動係數"><figcaption><span>三條長條比較 Class B／Class A／塗裝面</span><span class="ts">影片 7:01</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s19.jpg" alt="摩阻面滑動係數"><figcaption><span>三條長條比較 Class B／Class A／塗裝面</span><span class="ts">影片 7:01</span></figcaption></figure>
 <div class="warn"><b>摩阻面嚴禁塗裝</b>誤塗要噴砂重做。工地銲接處兩側各 100 mm 也不塗裝。</div>
 </section>
 
@@ -242,7 +242,7 @@ $$\phi R_n = \phi\,\mu\,D_u\,h_{sc}\,T_b\,n_s \;\propto\; \mu$$
 <tr><td>油漆</td><td>純物理屏障</td><td>鏽往塗層下方鑽，保護歸零</td></tr>
 <tr><td>熱浸鍍鋅</td><td>屏障＋犧牲陽極：鋅 −0.76 V 比鐵 −0.44 V 更負，鋅先溶解</td><td>就算劃傷，保護半徑內的鋼也不生鏽</td></tr>
 </table>
-<figure><img src="handout/img/s20.jpg" alt="防蝕"><figcaption><span>左：電位階梯 Cu／Fe／Zn；右：油漆劃傷 vs 鍍鋅劃傷</span><span class="ts">影片 7:24</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s20.jpg" alt="防蝕"><figcaption><span>左：電位階梯 Cu／Fe／Zn；右：油漆劃傷 vs 鍍鋅劃傷</span><span class="ts">影片 7:24</span></figcaption></figure>
 </section>
 
 <!-- c10 -->
@@ -252,11 +252,11 @@ $$\phi R_n = \phi\,\mu\,D_u\,h_{sc}\,T_b\,n_s \;\propto\; \mu$$
 $$t_z \ge \frac{d_z + w_z}{90}$$
 <p>90 是寬厚比門檻：節點域要靠剪力降伏耗能，太薄會先剪力挫屈，迴圈捏縮不耗能。例如：</p>
 $$\frac{583 + 379}{90} = 10.7\ \text{mm},\qquad t_w = 13\ \text{mm} &gt; 10.7\ \ \text{OK}$$
-<figure><img src="handout/img/s21.jpg" alt="節點域"><figcaption><span>紫框為節點域 \(t_z\)，\(d_z\)、\(w_z\) 標示</span><span class="ts">影片 7:49</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s21.jpg" alt="節點域"><figcaption><span>紫框為節點域 \(t_z\)，\(d_z\)、\(w_z\) 標示</span><span class="ts">影片 7:49</span></figcaption></figure>
 <h3>連強度上限都要管</h3>
 <p>最違反直覺的是：耐震構材連強度上限都要管。梁的實際 \(F_y\) 太高，梁不肯降伏，塑鉸被推到柱和接頭銲道，變成脆性破壞。</p>
 <div class="key"><b>SN 鋼材同時管三件事</b>\(F_y\) 上限、降伏比 \(F_y/F_u \le 0.80\)，和 CVN 韌性。</div>
-<figure><img src="handout/img/s22.jpg" alt="材料變強結構反而變脆"><figcaption><span>左：塑鉸在梁端（綠）；中：梁 \(F_y\) 過高，塑鉸推到柱（紅）；右：YR 0.66 vs 0.95</span><span class="ts">影片 8:10</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s22.jpg" alt="材料變強結構反而變脆"><figcaption><span>左：塑鉸在梁端（綠）；中：梁 \(F_y\) 過高，塑鉸推到柱（紅）；右：YR 0.66 vs 0.95</span><span class="ts">影片 8:10</span></figcaption></figure>
 </section>
 
 <!-- c11 -->
@@ -269,9 +269,9 @@ $$\frac{583 + 379}{90} = 10.7\ \text{mm},\qquad t_w = 13\ \text{mm} &gt; 10.7\ \
 <tr><td>② 帶入物理機制</td><td>見本講義第 4–11 章的六條機制</td></tr>
 <tr><td>③ 檢查數字和上下限</td><td>雙溫、\(2w\)～\(4w\)、27 J、100 mm</td></tr>
 </table>
-<figure><img src="handout/img/s23.jpg" alt="考場三步法"><figcaption><span>底部四個要檢查的數字</span><span class="ts">影片 8:32</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s23.jpg" alt="考場三步法"><figcaption><span>底部四個要檢查的數字</span><span class="ts">影片 8:32</span></figcaption></figure>
 <div class="key"><b>整理</b>設計算的是理想的鋼，規範管的是真的鋼；每一條規範都在把偏離量壓回容許範圍，手段只有三道防線。<br><b>每寫一個做法，就寫出它擋掉哪一種偏離。</b></div>
-<figure><img src="handout/img/s24.jpg" alt="整理"><figcaption><span>三點整理</span><span class="ts">影片 8:49</span></figcaption></figure>
+<figure><img src="img/SS-U2-3/s24.jpg" alt="整理"><figcaption><span>三點整理</span><span class="ts">影片 8:49</span></figcaption></figure>
 </section>
 
 <footer>

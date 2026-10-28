@@ -110,7 +110,7 @@ def f101():
         o=[R(cx-w/2,cy-h/2,w,h,fill,stroke,1.8,10)]
         n=len(lines); y0=cy-h/2+24
         o.append(T(cx,y0,title,13.5,tc,'middle','700'))
-        for i,l in enumerate(lines): o.append(T(cx,y0+20+i*18,l,12,INK,'middle'))
+        for i,l in enumerate(lines): o.append(T(cx,y0+20+i*19,l,12,INK,'middle'))
         return ''.join(o)
     def dia(cx,cy,w,h,title,sub=None,fill='#fff9c4',stroke=ORG):
         o=[P([(cx,cy-h/2),(cx+w/2,cy),(cx,cy+h/2),(cx-w/2,cy)],fill,stroke,1.8)]
@@ -125,7 +125,7 @@ def f101():
     b.append(ar([(440,61),(440,88)]))
     b.append(dia(440,130,400,84,'外力通過緊結物群形心？','（托架／牛腿／偏心 = 否）'))
     b.append(ar([(240,130),(140,130),(140,246)],'否',(190,121),RED))
-    b.append(box(140,300,240,104,'彈性向量法（§6）',['① 形心（銲道長度加權）','② I_{p}（螺栓 cm²／銲道 cm³）','③ M = P·e（e 到形心）','④ 向量相加找臨界點'],LORG,ORG,'#e65100'))
+    b.append(box(140,300,240,110,'彈性向量法（§6）',['① 形心（銲道長度加權）','② I_{p}（螺栓 cm²／銲道 cm³）','③ M = P·e（e 到形心）','④ 向量相加找臨界點'],LORG,ORG,'#e65100'))
     b.append(ar([(440,172),(440,258)],'是',(456,220),GREEN))
     b.append(dia(440,300,300,80,'緊結物是螺栓還是銲道？'))
     b.append(ar([(260,300),(288,300)]))

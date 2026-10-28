@@ -180,7 +180,7 @@ def f52():
     for d,lab in [(0,'1.00'),(45,'1.30'),(90,'1.50')]:
         v=1+0.5*math.sin(math.radians(d))**1.5
         b.append(C(X(d),Y(v),5,BLUE,'#fff',1.5)); b.append(T(X(d)+(8 if d==0 else -8),Y(v)-8,lab,12.5,BLUE,'start' if d==0 else 'end','700'))
-        b.append(T(X(52),Y(1.18),'被放棄的紅利',13,GREEN,'middle','700'))
+    b.append(T(X(52),Y(1.18),'被放棄的紅利',13,GREEN,'middle','700'))
     # sketches
     sx=600
     b.append(T(sx,40,'θ = 0°：縱向銲（平行受力）',12.5,INK,weight='700'))

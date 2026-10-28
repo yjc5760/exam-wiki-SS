@@ -13,6 +13,13 @@ description: "為六科考試知識庫（exam-wiki-SS/RC/SA/SD/SM/MM）的某個
 
 **檔名規則：** `study/lecture-XX-Un-m.html` + `study/lecture-XX-Un-m.pdf`（不要用 `study-` 前綴）
 
+**兩種模式：**
+
+| 模式 | 觸發 | 走哪些步驟 |
+|------|------|-----------|
+| **新建** | 該單元還沒有 `lecture-XX-Un-m.html` | Step 0 → 9 全部 |
+| **改版** | 講義已存在，使用者說「優化」「圖再精準」「更新講義」「同步勘誤」 | Step 10（以 Step 1、4、5、8、9 為子步驟） |
+
 ---
 
 ## 適用科目
@@ -41,7 +48,9 @@ description: "為六科考試知識庫（exam-wiki-SS/RC/SA/SD/SM/MM）的某個
 2. 讀 `CLAUDE.md` 確認單元代號與名稱。
 3. 確認 `wiki/topics/XX-Un-m.md` 存在（該單元的題目清單）。
 
-**立刻用 TaskCreate 建立任務清單**（採集 → 撰寫 → HTML → 題號連結渲染 → PDF → 精選題 → 驗證）。
+**立刻用 TaskCreate 建立任務清單**（採集 → 撰寫 → 數值重算＋程式繪圖 → HTML → 題號連結渲染 → PDF → 精選題 → 驗證 → log）。
+
+若 `study/lecture-XX-Un-m.html` 已存在，改走 **Step 10（改版模式）**。
 
 ---
 
@@ -75,6 +84,20 @@ for d in ['concepts', 'methods', 'code-ref', 'diagnosis', 'failure-modes', 'mate
 接著**讀取**與本單元標籤對應的 `wiki/concepts/`、`wiki/code-ref/`、`wiki/methods/`、
 `wiki/diagnosis/`、`wiki/traps/` 頁面（一次用 `for f in ...; do cat $f; done` 批次讀，省來回）。
 `code-ref/` 特別重要 —— 它記錄規範常數的推導來源，是「不死記公式」的主要彈藥。
+
+**再查勘誤紀錄（必做）**：題解正本會被勘誤，講義若沿用舊解就會把已修正的錯誤繼續教下去
+（2026-10 改版時 SS-U1-1、SS-U1-3、SA-U1-3、SD-U2-2 都查出講義落後於題解勘誤，
+例如講義仍以 SS-2025-2 已被勘誤的錯解當範例、仍寫 SA-2022-3 已刪除的「b 點內鉸」）：
+
+```bash
+cd <REPO>
+# 本單元題號清單（gather.py 的輸出）存成 /tmp/ids.txt 後：
+grep -n -F -f /tmp/ids.txt wiki/log.md | grep -i -E '勘誤|FIX|修正|更正' | tail -40
+for id in $(cat /tmp/ids.txt); do grep -l -E '修正日期|勘誤|依最新規範' raw/solutions/$id/$id.md 2>/dev/null; done
+```
+
+被勘誤過的題目，一律以 `raw/solutions/` 現行正本的數值與結論為準，並讀該題「依最新規範對照」一節。
+講義引用任何題目的數字、幾何、答案時，**回正本抄，不要憑印象**。
 
 > **原則：先採集完再寫作。** 不要邊查邊寫，會寫成拼貼。
 
@@ -151,27 +174,110 @@ for d in ['concepts', 'methods', 'code-ref', 'diagnosis', 'failure-modes', 'mate
 
 11. **口吻**：對著一個有基礎、時間不夠的考生說話。不客套、不重複、不寫「總而言之」。
 
+12. **規範要寫版本。** 引用係數、條文時寫明出自哪一版（台灣現行規範／AISC 360-05／-16／-22／ACI 318-19…）。
+    題目寫「我國規範」就以台灣規範為主答，國外規範放「版本提醒」框。
+    2026-08〜10 的勘誤一再遇到版本混用：摩阻型 φ＝1.0／0.85＋h_sc 是 AISC 360-05 的寫法、
+    強柱弱梁台灣 (13.6-3) 梁側乘 1.25 而 AISC 341 是 1.1R_y＋M_uv、ASD 的 C_m 沒有 0.4 下限。
+
+13. **查不到出處的規定就刪。** 寫進講義的每一條規定都要能指到規範條文或 `wiki/code-ref/`。
+    SS-U1-3 曾寫了一條不存在的「ΣP_u/ΣP_e2 ≤ 0.6（B₂ ≤ 2.5）」，散布在 7 處。
+
+14. **關於考古題的敘述一律由 `question_index.json` 算出。** 「近 6 年出過 4 次」「從沒有連續兩年出過」
+    「本單元 25 題」這類句子要用腳本數，不要憑印象（SA-U1-3、SM-U1-3 都查出與題庫不符）。
+
 ---
 
-## Step 5：SVG 圖解模式庫
+## Step 5：SVG 圖解——一律由程式依數值繪製
 
-全部用**內嵌 SVG**（不要外部圖檔，PDF 才能一起帶走）。四種夠用：
+全部用**內嵌 SVG**（不要外部圖檔，PDF 才能一起帶走），而且**不可手寫座標**。
+
+> **為什麼這條是硬規則**：2026-10 五科（SS／SD／SM／SA／RC）講義全面改版時，逐張檢查舊的手繪圖，
+> 查出的不只是美觀問題，而是**會教錯觀念的錯**：標記點不在曲線上（SS-U1-4 U 曲線）、
+> 節點域兩側翼板力方向畫反而互相抵消（SS-U1-4）、RBS 畫在立面（應在平面）、
+> 塊狀剪力的剪力面沒穿過孔（SS-U1-1、U1-4）、穩定平衡的球懸在谷底曲線下方（SS-U1-1）、
+> 影響線正負畫反（SA-U1-3）、2-DOF 振態 −0.414 畫成 −1（SD-U1-1）、
+> 零空氣孔隙曲線與夯實曲線交叉兩次（SM-U1-1）、理論曲線畫在規範直線下方（SS-U1-2）。
+> 這些錯的共同成因只有一個：**座標是目測填的**。由公式算出座標，這類錯就不會發生；
+> 若圖畫錯，代表數字錯，回頭查數字即可。
+
+### 5.1 四種圖型（不變）
 
 | 模式 | 用途 | 要點 |
 |------|------|------|
 | **左右對照圖** | §0 的核心對立、兩種設計法、兩種破壞模式 | 中線分隔，兩側結構完全鏡像，底部各寫一行結論 |
 | **狀態序列圖** | 漸進的物理過程（逐步降伏、三種平衡、載重歷程） | 3 格並排，每格下方一行說明，用顏色標示嚴重度遞增 |
-| **函數曲線圖** | 規範曲線 vs 理想曲線、分段公式的交界 | 畫座標軸與刻度，理想曲線用虛線、規範曲線用粗實線，**標出交界點座標** |
-| **決策流程圖** | 解題流程 | 必須有菱形判斷節點與分支箭頭；矩形內寫該步驟的關鍵公式 |
+| **函數曲線圖** | 規範曲線 vs 理想曲線、分段公式的交界 | 座標軸與刻度，理想曲線用虛線、規範曲線用粗實線，**標出交界點座標** |
+| **決策流程圖** | 解題流程 | 菱形判斷節點、每條分支都有「是／否」標籤、**沒有死路**、最後匯流到同一個收尾框 |
 
-**SVG 硬規則（踩過的坑）：**
+### 5.2 程式繪圖的做法
 
-- **SVG `<text>` 裡不可以放 `\(...\)` 數學式** —— KaTeX 的 auto-render 不處理 SVG 文字節點，
-  會原樣顯示反斜線。SVG 內一律用純文字（`Fy`、`λc`、`P·δ`、`KL/r`）。
-- 中文字寬約等於 font-size，**估算文字寬度 = 字數 × font-size**，據此設 viewBox 寬度，
-  否則文字會被切掉或壓到別的元素。
-- 方框內的文字寧可分兩行，不要靠加寬方框解決。
-- 每張圖下方一定要有 `<div class="cap">` 說明「這張圖在說什麼」，不是只寫圖號。
+1. **繪圖函式庫**：優先沿用 `struct-diagram` skill 的 `scripts/structdraw.py`
+   （數學座標 y 向上、`_{下標}` `^{上標}` 數學字串、六科統一色票；SD-U1-2 已這樣用）。
+   該科已有講義用的 `svglib.py`／`lib.py` 時沿用同一份，**不要每份講義各寫一套**。
+2. **數值先行**：把本講義所有手算範例寫成 `calcs.py`（或圖腳本內的函式）重算一次，
+   **圖上的每個數字、每個座標都從這裡取**，並以 `assert` 對帳講義內文的數字。
+   需要彎矩圖、變形曲線、振態時，用小型求解器實算（純 Python 平面剛架勁度法、
+   特徵值、級數解），不要畫「看起來像」的曲線。
+3. **曲線一律取點**：由公式取 100–200 點畫折線，不用貝茲曲線。
+   標記點（交界點、範例答案點）用**同一個函式**算座標，才保證落在曲線上。
+4. **物理方向先寫出來再畫**：力、反力、剪力流、轉向、影響線正負、振態符號——
+   先在腳本裡寫出平衡式或符號約定，箭頭方向由正負號決定。
+   成對的力（翼板力偶、節點域、摩擦）特別要確認是「同向疊加」還是「相對抵消」。
+5. **視圖要選對**：平面／立面／斷面各自看得到什麼不同；特徵只在某個視圖看得到時
+   （RBS 削翼板寬度、ESW 在內橫隔板與柱壁交會處），就畫在那個視圖並在圖上註明。
+6. **用範例的實際尺寸**：有手算範例的單元，圖就畫那個範例（如 L125×125×12、
+   H400×200），圖上寫比例尺（「1 cm = 8 px」）；向量圖多個向量用同一比例尺。
+7. **可重跑**：HTML 內每張圖以 `<!--FIG:id-->`（或 `data-fig="id"`）標記，
+   腳本只替換標記後的 `<svg>…</svg>`，找不到或重複時直接報錯。
+   重跑兩次結果應逐位元相同。
+8. **腳本存放**：`<REPO>/scripts/lecture-figs/XX-Un-m/`（`gen_figs.py`＋必要的 `calcs.py`），
+   與講義一起版控。各科既有位置（`study/figs-src/`、`scripts/gen_lecture_*`）沿用即可，不必搬。
+9. **每張圖說寫出「這張圖攔的錯」**：除了說明圖在講什麼，點出讀者最容易畫錯／想錯的那一點。
+
+### 5.3 SVG 硬規則（踩過的坑）
+
+- **SVG `<text>` 裡不可以放 `\(...\)` 數學式**——KaTeX auto-render 不處理 SVG 文字節點。
+  SVG 內用純文字＋`<tspan>` 下標（`F<tspan dy="4" font-size="70%">y</tspan>`，之後要把 dy 歸零）。
+- **marker、gradient、clipPath 的 id 加上圖號前綴**（`f61-arrow`），整頁 id 不可重複；
+  不同圖共用同名 id 時，後面的圖會套到前面圖的箭頭顏色。
+- **缺字**：`⅔` 等分數字元、`✔ ✘ ✗` 在常用中文字型與襯線字型都缺字；`x̄`、`ȳ` 用組合字元
+  （U+0304）時要用**直立**襯線字型，不要用斜體（橫線會偏位），也不要用 `text-decoration:overline`（橫線離字太遠）。
+- 中文字寬約等於 font-size：**估算文字寬度 = 字數 × font-size**，據此配置位置；
+  方框內文字寧可分兩行，不要靠加寬方框解決。
+- 靠左／靠右對齊的長標籤會超出畫布，而 viewBox 不會報錯——一律用 5.4 的腳本檢查。
+- 每張圖下方一定要有 `<div class="cap">`，不是只寫圖號。
+
+### 5.4 圖的驗證（每張圖都做，不可只看 PDF）
+
+在**瀏覽器**裡逐張檢查（雲端容器有預裝 Chromium／Playwright）：
+
+```python
+# figcheck.py — 用法: python3 figcheck.py <lecture.html> <shots_dir>
+import sys, asyncio, json
+from playwright.async_api import async_playwright
+JS = """() => [...document.querySelectorAll('.fig>svg')].map((svg,i)=>{
+  const vb=svg.viewBox.baseVal, bb=[...svg.querySelectorAll('text')].map(t=>{const b=t.getBBox();return [b.x,b.y,b.width,b.height,t.textContent]});
+  const out=bb.filter(b=>b[0]<vb.x-1||b[1]<vb.y-1||b[0]+b[2]>vb.x+vb.width+1||b[1]+b[3]>vb.y+vb.height+1).map(b=>b[4]);
+  const ov=[];for(let a=0;a<bb.length;a++)for(let c=a+1;c<bb.length;c++){const A=bb[a],B=bb[c];
+    const w=Math.min(A[0]+A[2],B[0]+B[2])-Math.max(A[0],B[0]),h=Math.min(A[1]+A[3],B[1]+B[3])-Math.max(A[1],B[1]);
+    if(w>2&&h>2)ov.push(A[4]+' × '+B[4]);}
+  return {i,out,ov};})"""
+async def main(src, d):
+    async with async_playwright() as p:
+        b = await p.chromium.launch(); pg = await b.new_page(viewport={'width':1000,'height':900}, device_scale_factor=1.3)
+        await pg.goto('file://' + src); await pg.wait_for_timeout(1500)
+        print('katex 式數', await pg.evaluate("document.querySelectorAll('.katex').length"),
+              '｜錯誤', await pg.evaluate("document.querySelectorAll('.katex-error').length"))
+        for r in await pg.evaluate(JS):
+            if r['out'] or r['ov']: print('圖', r['i'], '出界:', r['out'], '重疊:', r['ov'])
+        for i, e in enumerate(await pg.query_selector_all('.fig')): await e.screenshot(path=f'{d}/fig{i:02d}.png')
+        await b.close()
+asyncio.run(main(sys.argv[1], sys.argv[2]))
+```
+
+1. 出界、重疊清單應為空（線條壓字等腳本抓不到的，靠截圖目視）。
+2. **用 Read 逐張看截圖**，看的不是美觀而是物理：方向、正負、交點位置、視圖、比例。
+3. KaTeX 錯誤數必須是 0。
 
 ---
 
@@ -245,6 +351,16 @@ cp /tmp/v/node_modules/katex/dist/fonts/*.woff2 $D/fonts/     # 只複製 woff2�
 
 行內數學一律用 `\( ... \)`，展示式用 `$$ ... $$`（**不要**用單 `$`，會誤判貨幣符號）。
 
+**KaTeX 寫法地雷（都會變成紅字錯誤或吃掉內容）：**
+
+| 寫法 | 結果 | 改成 |
+|------|------|------|
+| `\text{tf·m}` | `·` 在 text mode 轉成 `\cdotp` → 紅字錯誤 | `\text{tf}\cdot\text{m}` |
+| `96%`（在數學式內） | `%` 是 TeX 註解，後面整段消失 | `96\%` |
+| `\((<C_c\)` 這類 `<` 緊接字母 | 被 HTML 當成標籤，吃掉整段 | `&lt;` 或 `\lt`，並在 `<` 後加空格 |
+
+驗收時以瀏覽器數 `.katex-error`，必須為 0（Step 5.4 的腳本會印出）。
+
 ### 版面 CSS（house style，沿用以維持六科一致）
 
 ```css
@@ -280,7 +396,7 @@ border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
 .comp{background:var(--comp2);border:1px solid #ef9a9a;border-left:5px solid var(--comp);
 border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
 .fig{background:#fff;border:1px solid var(--bd);border-radius:11px;padding:16px 14px 10px;margin:20px 0;overflow-x:auto}
-.fig svg{display:block;margin:0 auto;max-width:100%;height:auto}
+.fig>svg{display:block;margin:0 auto;max-width:100%;height:auto}
 .fig .cap{font-size:.85em;color:var(--mut);text-align:center;margin-top:10px;line-height:1.6}
 table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9em;background:#fff}
 th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
@@ -297,6 +413,11 @@ details p{border-left:3px solid #e0e0e0;padding-left:12px;margin:8px 0;color:#37
 .katex-display{margin:14px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-top:1px solid var(--bd)}
 ```
+
+> ⚠️ 一定是 `.fig>svg`（子選擇器），**不可寫成 `.fig svg`**：後者會把圖說裡 KaTeX 根號的 SVG
+> 也變成 `display:block`，根號整個消失（SS-U1-2、U1-3 與 SD 三份講義都中過）。
+> 若另外寫了 `svg text{font-family:…}`，要改成 `svg text:not([font-family])`，
+> 否則會蓋掉 SVG 內指定的數學字型。
 
 用途約定：`.why` 紫＝為什麼／物理直覺；`.trap` 橘＝陷阱；`.lead` 藍＝該節主張；
 `.box` 白＝手算範例；`.tens`/`.comp` 綠/紅＝成對概念的兩側。
@@ -496,10 +617,65 @@ open(path, 'w', encoding='utf-8').write(s)
 
 ## Step 8：產出 PDF
 
-**沙盒沒有 Chromium，playwright 的瀏覽器也下載不到。**
-可行路徑只有一條：**MathJax 把 TeX 轉成內嵌 SVG → WeasyPrint 排版**。
+**預設用 headless Chromium 列印**（2026-10 起五科講義的 PDF 都是這樣產的）：
+KaTeX 直接在瀏覽器裡渲染，與 HTML 版一模一樣，不必另外轉數學式。
+雲端容器預裝 Chromium／Playwright（`PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers`，不要 `playwright install`）。
+HTML 必須放在 `study/` 底下（或連同 `study/assets/katex/` 一起複製過去）才載得到 KaTeX。
 
-### 8.1 環境（分開執行，單次 bash 上限 45 秒）
+### 8.1 `build_pdf.py`（Chromium）
+
+```python
+# 用法: python3 build_pdf.py <study/lecture-XX-Un-m.html> <out.pdf> "<頁尾文字>"
+import sys, re, os, asyncio
+from playwright.async_api import async_playwright
+SRC, PDF, FOOT = sys.argv[1], sys.argv[2], sys.argv[3]
+doc = open(SRC, encoding="utf-8").read()
+doc = re.sub(r"<nav>.*?</nav>", "", doc, flags=re.S)          # 列印版不放本機連結
+doc = (doc.replace("<details>", '<div class="det">').replace("</details>", "</div>")
+          .replace("<summary>", '<p class="sum">').replace("</summary>", "</p>"))   # 摺疊答案攤平
+doc = doc.replace("</head>", """<style>
+@page{size:A4;margin:14mm 13mm 16mm 13mm}
+html,body{background:#fff!important;font-family:"Microsoft JhengHei","Noto Sans CJK TC",sans-serif;font-size:10.2pt;line-height:1.62}
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+main{max-width:none;padding:0}
+header{padding:20px 22px}header h1{font-size:19pt}header .sub{font-size:10pt}header .meta{font-size:8.5pt}
+section{margin-bottom:20px}
+h2{font-size:14pt;margin:20px 0 10px;break-after:avoid}h3{font-size:11.6pt;margin:15px 0 6px;break-after:avoid}
+h4{font-size:10.6pt;break-after:avoid}
+table{font-size:8.9pt}th,td{padding:4px 6px}tr{break-inside:avoid}
+.fig,.why,.trap,.tens,.comp,.box,.lead{break-inside:avoid}
+.fig{padding:10px 8px 6px;margin:12px 0}.fig .cap{font-size:8.6pt}
+.why,.trap,.tens,.comp,.lead{padding:9px 13px;margin:11px 0;font-size:9.8pt}
+.det{background:#fff;border:1px solid #dfe6ea;border-radius:8px;padding:8px 12px;margin:8px 0;break-inside:avoid}
+.sum{font-weight:600;color:#1565c0;margin:0 0 4px}
+.det p{border-left:3px solid #e0e0e0;padding-left:10px;color:#455a64;font-size:9.6pt}
+footer{font-size:8.5pt;padding:14px}
+</style></head>""")
+tmp = os.path.join(os.path.dirname(os.path.abspath(SRC)), "_print_tmp.html")
+open(tmp, "w", encoding="utf-8").write(doc)
+async def main():
+    async with async_playwright() as p:
+        b = await p.chromium.launch(); pg = await b.new_page()
+        await pg.goto("file://" + tmp)
+        await pg.wait_for_function("document.querySelectorAll('.katex').length > 20", timeout=30000)
+        await pg.wait_for_timeout(800)
+        await pg.pdf(path=PDF, format="A4", print_background=True, display_header_footer=True,
+                     header_template="<span></span>",
+                     footer_template=f'<div style="width:100%;text-align:center;font-size:8px;color:#78909c">{FOOT}　<span class="pageNumber"></span> / <span class="totalPages"></span></div>',
+                     margin=dict(top="14mm", bottom="16mm", left="13mm", right="13mm"))
+        await b.close()
+asyncio.run(main()); os.remove(tmp); print("PDF ->", PDF)
+```
+
+**PDF 一定要跟著 HTML 重出。** 改版時最常漏的就是這一步（SS-U1-4、SD-U1-1、SD-U2-2 都曾留下舊圖版 PDF），
+而講義 nav 的「🖨️ 本頁 PDF」與命題分析頁都連到它——舊 PDF 等於把已修正的錯誤繼續發出去。
+真的無法重出時，在 `wiki/log.md` 與交付訊息都寫明「PDF 未更新」。
+
+### 8.2 備援：MathJax → WeasyPrint（環境沒有 Chromium 時）
+
+舊流程（2026-07 首批講義所用），僅在沒有 Chromium 的環境使用：MathJax 把 TeX 轉成內嵌 SVG → WeasyPrint 排版。
+
+#### 8.2.1 環境（分開執行，單次 bash 上限 45 秒）
 
 ```bash
 # 一定要裝在 /tmp，不要裝在掛載資料夾 —— 掛載點會漏檔（version.js、*.d.ts 掉失）
@@ -509,7 +685,7 @@ mkdir -p /tmp/v && cd /tmp/v && npm install mathjax-full@3.2.2 --no-audit --no-f
 pip install weasyprint --break-system-packages -q     # 約 40 秒
 ```
 
-### 8.2 `tex2svg.js`
+#### 8.2.2 `tex2svg.js`
 
 ```javascript
 const fs = require('fs');
@@ -532,7 +708,7 @@ console.log('converted ' + out.length);
 
 `fontCache:'local'` 讓每個 SVG 自帶字形定義 —— WeasyPrint 不支援跨元素的全域字形快取。
 
-### 8.3 `build_pdf.py`
+#### 8.2.3 `build_pdf.py`
 
 ```python
 #!/usr/bin/env python3
@@ -611,23 +787,50 @@ print('PDF ->', PDF)
 
 沙盒已內建 Noto Sans/Serif CJK，中文可正常輸出。
 
+
 ---
 
 ## Step 9：驗證（不可略過）
 
-1. **抽頁目視檢查**：`pdftoppm -png -r 68 -f <n> -l <n> out.pdf chk/p`，
-   然後用 Read 工具看圖。**至少檢查：首頁、每張 SVG 所在頁、流程圖頁、最後一頁。**
-   要看的是：SVG 文字有沒有溢出方框、數學式有沒有變成黑方框、表格有沒有被切爛。
-2. **題號核對**：用腳本比對講義中出現的題號與 `question_index.json` 的該單元清單，
+1. **圖的驗證**：依 Step 5.4 在瀏覽器逐張截圖目視，出界／重疊清單為空、KaTeX 錯誤 0。
+2. **PDF 抽頁目視**：`pdftoppm -png -r 68 -f <n> -l <n> out.pdf chk/p`，
+   然後用 Read 工具看圖。**至少檢查：首頁、流程圖頁、最後一頁、任一張跨頁風險大的圖。**
+   要看的是：圖有沒有被切到兩頁、數學式有沒有變成黑方框、表格有沒有被切爛。
+3. **題號核對**：用腳本比對講義中出現的題號與 `question_index.json` 的該單元清單，
    確認無缺漏、無誤植、考年正確。
-3. **數值核對**：把講義裡所有算出來的數字（範例、常數、交界點）用 python 重算一次。
-4. **交叉引用**：檢查文中「見 §x.y」的節號在改版後仍然存在。
-5. **教材互連**：講義 nav 的三顆按鈕、命題分析頁的按鈕都指向真實存在的檔案
+4. **數值核對**：講義裡所有算出來的數字（範例、常數、交界點）都由 `calcs.py` 重算並 `assert`；
+   圖上的數字與內文必須來自同一次計算。2026-10 改版就靠這一步抓到 SS-U1-3 範例 C 的算術錯誤
+   （B₂ = 1/(1−0.296) 寫成 1.799，正解 1.420）。
+5. **交叉引用**：檢查文中「見 §x.y」的節號在改版後仍然存在。
+6. **教材互連**：講義 nav 的三顆按鈕、命題分析頁的按鈕都指向真實存在的檔案
    （`ls study/` 逐一核對），nav 內**沒有** Keynote／課堂投影片按鈕，
    全檔沒有「速查頁」字樣，且 PDF 版沒有殘留 nav。
-6. **題號連結渲染**：依 Step 7「題號連結」小節的驗證清單逐項核對
+7. **題號連結渲染**：依 Step 7「題號連結」小節的驗證清單逐項核對
    （無 `@@MATH` 殘留、圖片路徑存在、無 `.md` 連結殘留）。
-7. 用 `mcp__cowork__present_files` 交付 HTML 與 PDF。
+8. **寫 log**：在 `<REPO>/wiki/log.md` 追加一筆（只可 append），寫明**改了什麼、為什麼錯、怎麼驗證的**、
+   腳本位置、PDF 是否已重出、有哪些「觀察到但未改動、待使用者決定」的事項（例如題解正本與規範不符）。
+   講義 footer 加一行改版日期與摘要。
+9. **交付**：把講義直接寫進該科資料夾；回覆中列出**所有動到的檔案路徑**，git commit 由使用者自己做。
+
+---
+
+## Step 10：改版模式（講義已存在）
+
+2026-10 五科講義改版的共同流程，照這個順序做：
+
+1. **截圖盤點**：用 Step 5.4 的腳本把現有每張圖截下來，逐張用 Read 看，
+   列出**錯誤清單**——分清「會教錯觀念的錯」（方向、正負、交點、視圖、比例、與內文數字不符）
+   和「版面問題」（重疊、出界）。只有版面問題的圖可以微調，有觀念錯的一律重繪。
+   沒有錯的圖（純文字對照圖等）保留不動，在 log 寫明保留哪幾張。
+2. **內容對帳**：依 Step 1「再查勘誤紀錄」比對講義與 `raw/solutions/` 現行正本；
+   依 Step 4 第 12–14 條檢查規範版本、查無出處的規定、考古題敘述。
+   改動內文時同步所有出現處（流程圖、陷阱表、自我檢測、精選題說明常重複同一句）。
+3. **重繪與新增**：依 Step 5.2 用程式產生，HTML 內加 `<!--FIG:id-->` 標記後就地替換。
+   內文有講但沒有圖、而一張圖能說清楚的地方（分段公式的轉折、範例的幾何、載重—位移關係）可以新增圖，
+   圖號依節次編，新增圖在 log 列出。
+4. **備份**：改動前留 `.bak`（確認 `.gitignore` 已排除），或確認 git 有乾淨的上一版。
+5. **CSS 檢查**：`.fig svg` → `.fig>svg`（見 Step 7）。
+6. **PDF 重出**（Step 8），**驗證**（Step 9），**寫 log 與交付**（Step 9 第 8–9 項）。
 
 ---
 
@@ -646,12 +849,23 @@ print('PDF ->', PDF)
 | 9 | 渲染題目頁圖片破圖或路徑重複拼接（如 `.../SS-2002-3/../../raw/solutions/SS-2002-3/...`） | `wiki/problems/*.md` 本身不含圖片、且部分連結已帶相對路徑；一律以 `raw/solutions/<id>/<id>.md` 為來源，圖片路徑替換只處理「裸檔名（無 `/`）」，已帶路徑的連結不要重複加前綴 |
 | 10 | markdown 清單沒被辨識、擠在同一段落裡 | 原始 `.md` 常見「一行敘述後緊接 `- 項目`、中間沒空行」，python-markdown 需要空行才辨識清單起點；轉換前先逐行掃描補空行 |
 | 11 | 科目代號對到錯的資料夾（SM/MM 互換） | 舊版適用科目表把 SM 寫成材料力學、MM 寫成工程數學。一律查 `raw/json/syllabus_taxonomy.json` |
+| 12 | 曲線上的標記點不在曲線上、曲線形狀與公式不符 | 手描貝茲線或目測座標。曲線與標記點用同一個函式取點（Step 5.2） |
+| 13 | 受力圖成對的力方向畫反（例：節點域兩側翼板力相對 → 互相抵消、不產生剪力） | 先寫平衡式與符號約定，再由正負號決定箭頭；分清對稱載重與側移載重 |
+| 14 | 特徵畫在看不到它的視圖（RBS 畫在立面、ESW 位置指錯） | 先決定平面／立面／斷面，在圖上標註視圖名稱 |
+| 15 | 圖說裡的 KaTeX 根號消失 | CSS 寫成 `.fig svg` 套到 KaTeX 的 SVG。改 `.fig>svg` |
+| 16 | 數學式變紅字（`\text{tf·m}`）、`%` 後內容消失、`<` 吃掉整段 | 見 Step 7「KaTeX 寫法地雷」表 |
+| 17 | 不同圖的箭頭顏色互相污染 | marker id 重複。每張圖的 id 加圖號前綴 |
+| 18 | `⅔`、`✔`、`✘` 顯示成方框；`x̄` 的橫線偏到旁邊 | 缺字或斜體組合字元。避開這些字元；`x̄` 用直立襯線字型 |
+| 19 | 講義仍教題解已勘誤前的錯解 | 寫作前查 `wiki/log.md` 勘誤紀錄與 `raw/solutions/` 修正日期（Step 1） |
+| 20 | 講義出現規範查不到的條文、或混用不同版本的係數 | Step 4 第 12、13 條：寫版本、查無出處就刪 |
+| 21 | HTML 已改版，PDF 還是舊圖 | PDF 一定跟著重出（Step 8.1）；做不到就在 log 與交付訊息寫明 |
+| 22 | 流程圖有死路、分支沒標籤、兩支箭頭打進同一個菱形頂點 | 先排節點座標格線再連線；每條分支標「是／否」並匯流到收尾框 |
 
 ---
 
 ## 產出後
 
-1. 一句話交代成果與檔案位置，**不要複述講義內容**。
+1. 一句話交代成果與檔案位置，**不要複述講義內容**；列出動到的檔案路徑，commit 留給使用者。
 2. 主動指出這份講義**沒涵蓋**什麼、以及你認為還可以再加強的地方 —— 誠實的自我批評比推銷有價值。
 3. 詢問是否要對同科其他單元或其他科目比照辦理。
 

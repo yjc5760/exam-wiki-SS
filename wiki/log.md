@@ -1591,3 +1591,29 @@ LATERAL-TORSIONAL-BUCKLING.md：`[[PLASTIC-MOMENT-MP]]` → `[塑性彎矩 Mp](P
 **觀察（未改動，待使用者決定）**：`SS-2021-4.md` §5 引用的條文「新設接合中摩阻型螺栓不得與銲道共同分擔載重」與 AISC 1989 ASD §J1.9（容許摩阻型螺栓與銲道共同承力）方向相反，建議下次勘誤該題時回查國內規範原文。
 
 **原始碼**：`study/figs-src/lecture-SS-U2-3/`（figlib.py、figs.py；build.py 為一次性遷移紀錄）。
+
+---
+
+## 2026-10-28　unit-lecture skill 更新：回寫 2026-10 五科講義改版經驗
+
+**來源**：SS（U1-1〜U1-4、U2-3）、SD（U1-1〜U1-3、U2-2、U3-2）、SM（U1-1、U1-3、U1-5、U2-3、U3-1）、SA（U1-2、U1-3、U2-1、U2-3、U2-4）、RC（U1-1、U1-2、U2-1、U3-3、U4-1）各科 `wiki/log.md` 的講義改版紀錄。
+
+**改了什麼**（`skills/unit-lecture/SKILL.md`，並重新打包 `skills/unit-lecture.skill`）：
+- 新增「改版模式」（Step 10）：截圖盤點 → 勘誤對帳 → 程式重繪 → PDF 重出 → log。
+- Step 5 改寫：SVG 一律由程式依數值繪製（沿用 struct-diagram 的 structdraw.py、calcs.py assert、曲線取點、`<!--FIG:id-->` 可重跑）；新增 figcheck.py（文字出界／重疊、KaTeX 錯誤數、逐張截圖）。
+- Step 1 新增勘誤查核；Step 4 新增第 12–14 條（規範寫版本、查無出處就刪、考古題敘述由索引算）。
+- Step 7：CSS `.fig svg` → `.fig>svg`；新增 KaTeX 寫法地雷表（`\text{tf·m}`、`%`、`<`）。
+- Step 8：預設改為 Chromium 列印（取自 SS-U1-3 的 build_pdf.py），WeasyPrint 降為備援；明定 PDF 必須跟著重出。
+- Step 9：加入圖的瀏覽器驗證、log 與交付規範；已知地雷由 11 條增為 22 條。
+
+**順帶修正**：figcheck.py 試跑時抓到 `lecture-SS-U1-4.html` 圖 5-2 的「被放棄的紅利」標籤被迴圈重複疊畫 3 次（縮排錯誤），以及圖 10-1 彈性向量法框內行距過密；已修正並回寫 `figs_b.py`／`figs_d.py`。
+
+**待使用者處理**：已安裝版 skill 需在審核卡片按儲存才會生效（`lecture-SS-U1-4.pdf` 已於同日更新重出）。
+
+---
+
+## 2026-10-28　lecture-SS-U1-4.pdf 重新產生
+
+- PDF 以 headless Chromium 依新版 `unit-lecture` Step 8.1 重出（38 頁，原 07-25 舊圖版 33 頁），圖 0-1〜10-1 全為 10-23／10-28 程式繪製版。
+- 重出前以 figcheck.py 檢查：KaTeX 555 式、錯誤 1 → 0。錯誤為舊版即有的 §5 因果鏈 `\(t_e = 0.707w\））` 把收尾 `\)` 打成全形「）」，導致後半段數學式整段變紅字；已改正。
+- 抽頁目視：38 頁縮圖逐頁檢查，無圖跨頁截斷、無 KaTeX 黑框／紅字。

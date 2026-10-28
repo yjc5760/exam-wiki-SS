@@ -66,7 +66,8 @@
 **特色：**
 - 每個規範常數都追溯來源（如 `0.6` ← von Mises 的 `1/√3`）
 - 以「破壞有沒有預警」統一解釋所有 φ 值與安全係數的差異
-- 全內嵌 SVG 圖解 + 本機 KaTeX（`study/assets/katex/`，離線可讀）
+- 全內嵌 SVG 圖解，**一律由程式依範例數值繪製**（腳本存 `scripts/lecture-figs/`，可重跑）+ 本機 KaTeX（`study/assets/katex/`，離線可讀）
+- 兩種模式：新建講義／改版既有講義（Step 10：截圖盤點 → 勘誤對帳 → 重繪 → PDF 重出 → log）
 - 精選題附覆蓋率分析，並**誠實列出未涵蓋的考點群**
 - PDF 走 MathJax→SVG + WeasyPrint（沙盒無 Chromium，此為唯一可行路徑）
 

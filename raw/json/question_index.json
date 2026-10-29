@@ -335,7 +335,8 @@
         "有效淨面積",
         "剪力斷裂",
         "承壓",
-        "A572"
+        "A572",
+        "銷孔尺寸規定"
       ],
       "hasHandwritten": false,
       "hasSolution": true

@@ -255,6 +255,7 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-10-23 | `study/lecture-SS-U1-2.html`／`.pdf` 圖解重繪（7 張依數值產生，新增圖 1-2），原始碼 `study/figs-src/gen_lecture-SS-U1-2_figs.py` | 修正舊圖 3-2 理論彈性曲線畫在直線下方、圖 3-1 翹曲項反比次數誤寫、§3.4 重複乘 Cb、圖 10-1 決策樹死路等問題；更新 PDF（40 頁） |
 | 2026-10-23 | `study/lecture-SS-U1-3.html`／`.pdf` 圖解重繪＋內文同步 08-22 勘誤（10 張重繪＋新增圖 3-2、8-1），原始碼 `study/figs-src/lecture-SS-U1-3/` | 修正 Dm 貝茲線失真、H1-1a/b 兩段斜率顛倒、範例 C 算術錯誤（B₂ 1.799→1.420、Mu 54.49→48.82 tf·m）、刪除不存在的 B₂≤2.5 規定，更新 PDF（35 頁） |
 | 2026-10-23 | `study/lecture-SS-U1-4.html` 圖解改版（12 張依數值重繪＋新增圖 4-2、5-2、8-1），原始碼 `study/figs-src/lecture-SS-U1-4/` | 修正圖 3-2 標記點偏離曲線、圖 7-2 右梁翼板力方向相反、圖 7-3 RBS 誤畫於立面、圖 3-3 剪力面未穿孔；補註版本規範差異；PDF 待產 |
+| 2026-10-30 | 新增五個單元總覽 `study/unit-SS-U1-1〜U2-3.html`／`.pdf`（命題分析＋公式給／背＋逐題公式表合一頁），資料檔 `study/data/unit-SS-*.json`；由 SA 導入 `scripts/build_unit_page.py`／`unit_page_template.html`（SS 版加 `giveCol:false`、`showDesignMethod`）；舊 `study-`／`formula-given-` 改為轉址頁，lecture 按鈕、problems-view 88 頁、`build_frequency.py` v1.2 與 `frequency-SS.html` 同步 | 兩頁內容分屬「考什麼」與「要不要背」卻要來回切；合併後「考了卻沒給」改由逐題公式標籤推出，逐題核對題解時更正了多處舊年份證據（見 log 2026-10-30） |
 ---
 
 ## 目前收錄狀況

@@ -26,7 +26,7 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>SS-2024-4 題目解析</h1><a class="quick" href="../study-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 命題分析">&#128269; U1-4 命題分析</a><a class="lect" href="../lecture-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 觀念講義">&#128218; U1-4 接合之分析與設計 講義</a></header>
+<header><h1>SS-2024-4 題目解析</h1><a class="quick" href="../unit-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 單元總覽">&#128269; U1-4 單元總覽</a><a class="lect" href="../lecture-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 觀念講義">&#128218; U1-4 接合之分析與設計 講義</a></header>
 <main><h1>考題編號：SS-2024-4</h1>
 <p><strong>主分類：</strong> <code>SS-U1-4</code> 接合之分析與設計<br />
 <strong>副分類：</strong> <code>SD-U3-1</code> 結構耐震設計；<code>SS-U2-3</code> 設計規範對施工之要求<br />
@@ -432,17 +432,17 @@ $$\sum M_{pc} \geq \sum (1.1 R_y M_p)_{beam}$$</p>
 <p><em>修正日期：2026-08-22 —— 依考卷原圖重判 ESW 之位置。原解析將「電熱熔渣銲」判為「梁腹板剪力板與箱型柱面」，惟圖中兩處 ESW 引線指向的是</em><em>柱內兩道水平虛線（內橫隔板）與柱壁交會的兩端</em><em>；連帶更正 §1 題目重述與圖說、§2、§3 陷阱、§3.5 L1/L2/L3、§4 第一節與第四節、§5 彙整表，並新增 §5.1 內隔板／貫通式隔板／外隔板之對照。詳見 <code>wiki/log.md</code> 2026-08-22 第五批。</em></p></main>
 <footer>來源：raw/solutions/SS-2024-4/SS-2024-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：若由 study-/lecture-/formula-given-SS-Un-m.html 點入，
+/* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，
    兩顆按鈕改指向「來源那個單元」；直接開檔或來源不明時，維持本題主分類單元。 */
 (function(){
   var UN={'SS-U1-1':'拉力及壓力桿件','SS-U1-2':'梁桿件','SS-U1-3':'梁柱桿件',
           'SS-U1-4':'接合之分析與設計','SS-U2-3':'設計規範對施工之要求'};
-  var m=(document.referrer||'').match(/(?:study|lecture|formula-given)-(SS-U\d-\d)\.html/);
+  var m=(document.referrer||'').match(/(?:unit|study|lecture|formula-given)-(SS-U\d-\d)\.html/);
   if(!m||!UN[m[1]])return;
   var u=m[1],code=u.replace('SS-','');
   var q=document.querySelector('header .quick'),l=document.querySelector('header .lect');
-  if(q){q.href='../study-'+u+'.html';q.title=u+' '+UN[u]+' 命題分析';
-        q.innerHTML='\uD83D\uDD0D '+code+' 命題分析';}
+  if(q){q.href='../unit-'+u+'.html';q.title=u+' '+UN[u]+' 單元總覽';
+        q.innerHTML='\uD83D\uDD0D '+code+' 單元總覽';}
   if(l){l.href='../lecture-'+u+'.html';l.title=u+' '+UN[u]+' 觀念講義';
         l.innerHTML='\uD83D\uDCDA '+code+' '+UN[u]+' 講義';}
 })();

@@ -41,7 +41,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <body>
 <header>
   <h1>SS-2024-3 題目解析</h1>
-  <a class="quick" href="../study-SS-U1-2.html" title="SS-U1-2 梁桿件 命題分析">&#128269; U1-2 命題分析</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義">&#128218; U1-2 梁桿件 講義</a>
+  <a class="quick" href="../unit-SS-U1-2.html" title="SS-U1-2 梁桿件 單元總覽">&#128269; U1-2 單元總覽</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義">&#128218; U1-2 梁桿件 講義</a>
 </header>
 <main>
 <h1>考題編號：SS-2024-3</h1>
@@ -421,17 +421,17 @@ $$= 2(14.6 + 54 \times 23.5^2) + \frac{1.1 \times 45.2^3}{12} = 68{,}138\text{ c
 </main>
 <footer>來源：raw/solutions/SS-2024-3/SS-2024-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：若由 study-/lecture-/formula-given-SS-Un-m.html 點入，
+/* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，
    兩顆按鈕改指向「來源那個單元」；直接開檔或來源不明時，維持本題主分類單元。 */
 (function(){
   var UN={'SS-U1-1':'拉力及壓力桿件','SS-U1-2':'梁桿件','SS-U1-3':'梁柱桿件',
           'SS-U1-4':'接合之分析與設計','SS-U2-3':'設計規範對施工之要求'};
-  var m=(document.referrer||'').match(/(?:study|lecture|formula-given)-(SS-U\d-\d)\.html/);
+  var m=(document.referrer||'').match(/(?:unit|study|lecture|formula-given)-(SS-U\d-\d)\.html/);
   if(!m||!UN[m[1]])return;
   var u=m[1],code=u.replace('SS-','');
   var q=document.querySelector('header .quick'),l=document.querySelector('header .lect');
-  if(q){q.href='../study-'+u+'.html';q.title=u+' '+UN[u]+' 命題分析';
-        q.innerHTML='\uD83D\uDD0D '+code+' 命題分析';}
+  if(q){q.href='../unit-'+u+'.html';q.title=u+' '+UN[u]+' 單元總覽';
+        q.innerHTML='\uD83D\uDD0D '+code+' 單元總覽';}
   if(l){l.href='../lecture-'+u+'.html';l.title=u+' '+UN[u]+' 觀念講義';
         l.innerHTML='\uD83D\uDCDA '+code+' '+UN[u]+' 講義';}
 })();

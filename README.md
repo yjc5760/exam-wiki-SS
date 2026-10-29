@@ -29,7 +29,7 @@
 |----------|-------|
 | **視覺化瀏覽整個知識庫** | **雙擊 `index.html`**（題庫搜尋篩選、考點統計、進度追蹤、指令速查） |
 | 特定題目的解析 | `raw/solutions/SS-YYYY-N/SS-YYYY-N.md` |
-| 子項深度複習講義（速查型） | `study/study-SS-UN-n.html`（說 `study SS-UN-n` 生成） |
+| 子項單元總覽（考什麼＋公式給／背＋逐題公式表） | `study/unit-SS-UN-n.html`（由 `study/data/unit-SS-UN-n.json` 經 `python scripts/build_unit_page.py SS-UN-n` 產生；舊 `study-`／`formula-given-` 為轉址頁） |
 | **單元觀念講義（練題前建立原理直覺）** | `study/lecture-SS-UN-n.html` + `.pdf`（說「生成 SS-UN-n 講義」生成） |
 | wiki 題目頁（含標籤/圖形） | `wiki/problems/SS-YYYY-N.md` |
 | 依年份瀏覽所有題目 | `wiki/by-year.md` |

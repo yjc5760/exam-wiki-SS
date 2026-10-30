@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-2010-1 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{color:#fff;margin:0;font-size:1.15em}
+header .lect{display:inline-block;margin-top:10px;margin-left:8px;font-size:.82em;color:#4a148c;background:#f3e5f5;border:1px solid #ce93d8;padding:5px 14px;border-radius:16px;text-decoration:none}header .lect:hover{background:#fff;color:#4a148c}header .quick{display:inline-block;margin-top:10px;font-size:.82em;color:#0d47a1;background:#e3f2fd;border:1px solid #90caf9;padding:5px 14px;border-radius:16px;text-decoration:none}header .quick:hover{background:#fff;color:#0d47a1}header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SS-2010-1 題目解析</h1><a class="quick" href="../frequency-SS.html#s-rank" title="SS-U2-1 塑性分析與設計 尚無單元總覽，改連全科出題頻率排名">&#128269; U2-1 全科頻率排名</a><a class="lect" href="../../index.html" title="SS-U2-1 塑性分析與設計 尚無觀念講義，改連題庫儀表板">&#128218; 題庫儀表板</a></header>
+<main><h1>考題編號：SS-2010-1</h1>
+<p><strong>主分類：</strong> <code>SS-U2-1</code> 塑性分析與設計<br />
+<strong>副分類：</strong> 無<br />
+<strong>設計法：</strong> 概念題（材料力學）<br />
+<strong>標籤：</strong> <code>斷面性質</code> <code>降伏力矩</code> <code>塑性力矩</code> <code>十字形斷面</code> <code>平行軸定理</code> <code>塑性中性軸</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>有一斷面如圖一所示，使用 SS540 鋼料（降伏強度 $F_y = 4.0\ \text{tf/cm}^2$），求此斷面強軸之：</p>
+<ol>
+<li>降伏力矩 $M_y$（tf-cm）</li>
+<li>塑性力矩 $M_p$（tf-cm）</li>
+</ol>
+<p><img alt="十字形斷面（單位 cm）：總高 8cm、總寬 6cm，中央豎板 2cm 寬貫通，上下翼板 6cm 寬、各 2cm 高，上下端各有 2cm×2cm 突出" src="../../raw/solutions/SS-2010-1/SS-2010-1-fig-1.png" /></p>
+<p><em>圖說：十字形（+）對稱斷面。水平方向分三等份 2-2-2（總寬 6 cm），垂直方向分四等份 2-2-2-2（總高 8 cm）。填充區域為：底部中央 2×2、下寬段 6×2、上寬段 6×2、頂部中央 2×2，構成上下左右均對稱之十字形。</em></p>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心觀念：非標準斷面的 $M_y$ 與 $M_p$ 計算——分塊法（Decomposition Method）</strong></p>
+<p>本題考驗考生對非標準（非 H 型鋼）斷面的斷面性質計算能力，核心工具是「平行軸定理」（計算 $I_x$）與「一次面積矩法」（計算 $Z_x$）。十字形斷面的特點是形狀因子遠大於 H 型鋼，直觀地展示了斷面形狀對塑性儲備的影響。</p>
+<p><strong>出題者測驗重點：</strong></p>
+<ul>
+<li><strong>分塊法</strong>：十字形斷面需分解為若干矩形，分別計算 $I_x$、$Z_x$，再加總</li>
+<li><strong>形心不在幾何中心的判斷</strong>：此題因對稱，形心確實在幾何中心，但考生仍需驗算</li>
+<li><strong>$Z_x$ = PNA 以上（下）各件對 PNA 的一次面積矩之和</strong>：PNA 在面積等分處（對稱斷面 = 形心）</li>
+<li><strong>形狀因子 1.80</strong>：遠大於 H 型鋼（1.12～1.15），說明十字形斷面面積集中在遠離形心處，塑性儲備豐富</li>
+</ul>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>作戰計畫：</strong></p>
+<pre><code>前置：分解斷面為四個矩形，記錄各構件 (寬b, 高h, 面積Ai, 形心高ȳi)
+
+Step 1  驗算形心（對稱斷面 → ȳ = 4 cm），確認 c = 4 cm
+
+Step 2  計算 Ix：
+        各構件 Ixi = bi hi³/12 + Ai di²（di = ȳi - 4）
+        Ix = ΣIxi
+
+Step 3  計算 My：
+        Sx = Ix / c
+        My = Fy × Sx
+
+Step 4  確定 PNA（面積等分點）：
+        A/2 = 16 cm²，從底部累積面積確定 PNA 高度
+
+Step 5  計算 Zx：
+        Zx = Σ(Ai × ēi)，PNA 以上及以下各件之一次面積矩合計
+
+Step 6  計算 Mp = Fy × Zx
+</code></pre>
+<p><strong>陷阱分析：</strong></p>
+<table>
+<thead>
+<tr>
+<th>陷阱</th>
+<th>說明</th>
+<th>對策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>❶ 翼板形心距算錯</td>
+<td>構件①形心在 $y=1$（非 $y=0$），構件②形心在 $y=3$，以此類推</td>
+<td>各構件形心在其自身高度的中點</td>
+</tr>
+<tr>
+<td>❷ $I_x$ 漏算自身慣性矩</td>
+<td>除了 $A_i d_i^2$（平行軸）還要加 $b_i h_i^3/12$（自身）</td>
+<td>用平行軸定理完整公式 $I_{xi} = b_i h_i^3/12 + A_i d_i^2$</td>
+</tr>
+<tr>
+<td>❸ $Z_x$ 的 $\bar{e}_i$ 定義</td>
+<td>$\bar{e}_i$ 是各構件形心到 PNA 的距離，非到斷面頂/底</td>
+<td>PNA 在 $y = 4$ cm，故 $\bar{e}_i = |\bar{y}_i - 4|$</td>
+</tr>
+<tr>
+<td>❹ 形狀因子誤算</td>
+<td>$f = Z_x/S_x = 48/(80/3) = 1.80$，不是整數要注意分數計算</td>
+<td>建議保留分數：$S_x = 80/3$，$f = 48 \times 3/80 = 1.80$</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：解題後，在每個卡住的知識點「卡關?」欄標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<p><strong>最終目標：</strong> 計算十字形斷面強軸降伏力矩 $M_y$ 與塑性力矩 $M_p$（形狀因子 1.80）</p>
+<h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
+<p>$$\boxed{I_x} = \sum\left(\frac{b_i h_i^3}{12} + A_i d_i^2\right)$$<br />
+$$\boxed{S_x} = \frac{\boxed{I_x}}{c}, \quad \boxed{M_y} = F_y \cdot \boxed{S_x}$$<br />
+$$\boxed{Z_x} = 2\sum_{上半} A_i \bar{e}_i, \quad \boxed{M_p} = F_y \cdot \boxed{Z_x}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>斷面形狀</td>
+<td>十字形（+）</td>
+<td>總高 8 cm，總寬 6 cm</td>
+</tr>
+<tr>
+<td>上下寬段</td>
+<td>6 cm × 2 cm（各一）</td>
+<td>$y$ = 2～4 及 4～6 cm</td>
+</tr>
+<tr>
+<td>頂底窄段</td>
+<td>2 cm × 2 cm（各一）</td>
+<td>$y$ = 0～2 及 6～8 cm</td>
+</tr>
+<tr>
+<td>$F_y$</td>
+<td>4.0 tf/cm²</td>
+<td>SS540 鋼料</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：斷面分解與形心</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A$</td>
+<td>$4 + 12 + 12 + 4 = 32$ cm²</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\bar{y}$</td>
+<td>4 cm（上下對稱，形心在幾何中心）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$c$</td>
+<td>4 cm（最外纖維至形心距離）</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：強軸慣性矩 $I_x$ 與 $M_y$</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$d_i$</td>
+<td>各構件形心至形心的距離：①$-3$、②$-1$、③$+1$、④$+3$ cm</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$I_x$</td>
+<td>$\sum(b_i h_i^3/12 + A_i d_i^2) = 8/3 + 104 = 320/3 \approx 106.7$ cm⁴</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$S_x$</td>
+<td>$I_x / c = (320/3)/4 = 80/3 \approx 26.67$ cm³</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_y$</td>
+<td>$F_y \times S_x = 4.0 \times 80/3 \approx 106.7$ tf-cm</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：塑性斷面模數 $Z_x$ 與 $M_p$</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PNA 位置</td>
+<td>$A/2 = 16$ cm²；從底部累積至 $y = 4$ cm（①4 + ②12 = 16）→ PNA 在 $y = 4$ cm</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\bar{e}_i$</td>
+<td>各構件形心至 PNA 距離：①④各 3 cm，②③各 1 cm</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$Z_x$</td>
+<td>$(4\times3 + 12\times1)\times 2 = 48$ cm³</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_p$</td>
+<td>$F_y \times Z_x = 4.0 \times 48 = 192$ tf-cm</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">補強頁</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平行軸定理完整公式</td>
+<td>$I_{x,i} = b_i h_i^3/12 + A_i d_i^2$；漏掉自身慣性矩 $b_i h_i^3/12$ 是常見錯誤</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$Z_x$ 的 $\bar{e}_i$ 定義</td>
+<td>$\bar{e}_i$ 是各構件形心到 <strong>PNA</strong> 的距離，非到斷面頂/底</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>PNA 的確定方法</td>
+<td>PNA 位於面積等分處；對稱斷面 PNA = 形心；從底部累積面積找 $A/2$ 點</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>各構件形心高度</td>
+<td>構件①形心在 $y = 1$ cm（非 $y = 0$），構件②在 $y = 3$ cm，以此類推</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>形狀因子 1.80 意義</td>
+<td>十字形面積集中在寬段（遠離形心），塑性儲備比 H 型鋼（1.12）大；矩形為 1.50</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Calculation)</h2>
+<h3>斷面幾何分解</h3>
+<p>以斷面底部為原點，$y$ 軸向上。斷面分解為四個矩形構件：</p>
+<table>
+<thead>
+<tr>
+<th>構件</th>
+<th>位置（$y$ 範圍）</th>
+<th>寬 $b_i$（cm）</th>
+<th>高 $h_i$（cm）</th>
+<th>面積 $A_i$（cm²）</th>
+<th>形心高 $\bar{y}_i$（cm）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 底部中央突出</td>
+<td>0～2</td>
+<td>2</td>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+</tr>
+<tr>
+<td>② 下寬段</td>
+<td>2～4</td>
+<td>6</td>
+<td>2</td>
+<td>12</td>
+<td>3</td>
+</tr>
+<tr>
+<td>③ 上寬段</td>
+<td>4～6</td>
+<td>6</td>
+<td>2</td>
+<td>12</td>
+<td>5</td>
+</tr>
+<tr>
+<td>④ 頂部中央突出</td>
+<td>6～8</td>
+<td>2</td>
+<td>2</td>
+<td>4</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>$$A = 4 + 12 + 12 + 4 = 32\ \text{cm}^2$$</p>
+<p>形心位置：因斷面上下對稱，$\bar{y} = 4\ \text{cm}$，$c = 4\ \text{cm}$（最外纖維至形心距離）。</p>
+<hr />
+<h3>一、強軸慣性矩 $I_x$ 與 $M_y$</h3>
+<h4>Step 1：$I_x$（平行軸定理）</h4>
+<p>$d_i = \bar{y}_i - 4$（各構件形心至全斷面形心之距離）：</p>
+<table>
+<thead>
+<tr>
+<th>構件</th>
+<th>$b_i h_i^3/12$（cm⁴）</th>
+<th>$d_i$（cm）</th>
+<th>$A_i d_i^2$（cm⁴）</th>
+<th>$I_{x,i}$（cm⁴）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>$2 \times 8/12 = 4/3$</td>
+<td>$-3$</td>
+<td>$4 \times 9 = 36$</td>
+<td>$37.33$</td>
+</tr>
+<tr>
+<td>②</td>
+<td>$6 \times 8/12 = 4$</td>
+<td>$-1$</td>
+<td>$12 \times 1 = 12$</td>
+<td>$16.00$</td>
+</tr>
+<tr>
+<td>③</td>
+<td>$6 \times 8/12 = 4$</td>
+<td>$+1$</td>
+<td>$12 \times 1 = 12$</td>
+<td>$16.00$</td>
+</tr>
+<tr>
+<td>④</td>
+<td>$2 \times 8/12 = 4/3$</td>
+<td>$+3$</td>
+<td>$4 \times 9 = 36$</td>
+<td>$37.33$</td>
+</tr>
+</tbody>
+</table>
+<p>$$I_x = \frac{4}{3} + 36 + 4 + 12 + 4 + 12 + \frac{4}{3} + 36 = \frac{8}{3} + 104 = \frac{320}{3} \approx 106.7\ \text{cm}^4$$</p>
+<h4>Step 2：$M_y$</h4>
+<p>$$S_x = \frac{I_x}{c} = \frac{320/3}{4} = \frac{80}{3} \approx 26.67\ \text{cm}^3$$</p>
+<p>$$\boxed{M_y = F_y \cdot S_x = 4.0 \times \frac{80}{3} = \frac{320}{3} \approx 106.7\ \text{tf-cm}}$$</p>
+<hr />
+<h3>二、塑性力矩 $M_p$</h3>
+<h4>Step 3：確定 PNA</h4>
+<p>PNA 位於面積平分處：$A/2 = 16\ \text{cm}^2$</p>
+<p>從底部往上累積：構件① = 4 cm²；構件①+② = 16 cm²，<strong>PNA 在 $y = 4\ \text{cm}$</strong>（與形心重合，對稱斷面必然如此）。</p>
+<h4>Step 4：$Z_x$（PNA 以上各件一次面積矩 × 2）</h4>
+<p>$\bar{e}_i = |\bar{y}_i - 4|$（各構件形心至 PNA 距離）：</p>
+<table>
+<thead>
+<tr>
+<th>構件</th>
+<th>$A_i$（cm²）</th>
+<th>$\bar{e}_i$（cm）</th>
+<th>$A_i \bar{e}_i$（cm³）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>4</td>
+<td>3</td>
+<td>12</td>
+</tr>
+<tr>
+<td>②</td>
+<td>12</td>
+<td>1</td>
+<td>12</td>
+</tr>
+<tr>
+<td>③</td>
+<td>12</td>
+<td>1</td>
+<td>12</td>
+</tr>
+<tr>
+<td>④</td>
+<td>4</td>
+<td>3</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>$$Q_{上} = Q_{下} = 4 \times 3 + 12 \times 1 = 24\ \text{cm}^3$$</p>
+<p>$$Z_x = Q_{上} + Q_{下} = 24 + 24 = 48\ \text{cm}^3$$</p>
+<h4>Step 5：$M_p$</h4>
+<p>$$\boxed{M_p = F_y \cdot Z_x = 4.0 \times 48 = 192\ \text{tf-cm}}$$</p>
+<h4>Step 6：形狀因子（供參）</h4>
+<p>$$f = \frac{M_p}{M_y} = \frac{Z_x}{S_x} = \frac{48}{80/3} = \frac{48 \times 3}{80} = \frac{144}{80} = 1.80$$</p>
+<hr />
+<h2>5. 結果彙整與驗算 (Summary &amp; Verification)</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>計算結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全斷面積 $A$</td>
+<td>$32\ \text{cm}^2$</td>
+</tr>
+<tr>
+<td>強軸慣性矩 $I_x$</td>
+<td>$\dfrac{320}{3} \approx 106.7\ \text{cm}^4$</td>
+</tr>
+<tr>
+<td>斷面模數 $S_x$</td>
+<td>$\dfrac{80}{3} \approx 26.67\ \text{cm}^3$</td>
+</tr>
+<tr>
+<td><strong>降伏力矩 $M_y$</strong></td>
+<td>$\mathbf{\dfrac{320}{3} \approx 106.7\ \text{tf-cm}}$</td>
+</tr>
+<tr>
+<td>塑性斷面模數 $Z_x$</td>
+<td>$48\ \text{cm}^3$</td>
+</tr>
+<tr>
+<td><strong>塑性力矩 $M_p$</strong></td>
+<td><strong>$192\ \text{tf-cm}$</strong></td>
+</tr>
+<tr>
+<td>形狀因子 $f = M_p/M_y$</td>
+<td>$1.80$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>觀念精析：</strong></p>
+<p>十字形斷面的形狀因子 1.80 遠大於 H 型鋼（1.12～1.15）和矩形（1.50），原因在於十字形斷面的面積集中在「翼板」（遠離形心的寬段），這些面積在塑性計算中力臂大（貢獻大），但在彈性計算中因慣性矩公式的距離平方效應，其相對貢獻反而因為寬度增加而提升有限。換言之，十字形斷面在塑性狀態下能充分發揮材料強度，有較大的韌性儲備。</p>
+<p>PNA 與中性軸重合（$y = 4$ cm）是因為斷面上下對稱：全面積 32 cm²，從底部累積到 $y = 4$ cm 時恰好累積了 16 cm²（構件①的 4 cm² + 構件②的 12 cm²），確認 PNA 在 $y = 4$ cm。</p>
+</main>
+<footer>來源：raw/solutions/SS-2010-1/SS-2010-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+<script>
+/* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，
+   兩顆按鈕改指向「來源那個單元」；直接開檔或來源不明時，維持本題主分類單元。 */
+(function(){
+  var UN={'SS-U1-1':'拉力及壓力桿件','SS-U1-2':'梁桿件','SS-U1-3':'梁柱桿件',
+          'SS-U1-4':'接合之分析與設計','SS-U2-3':'設計規範對施工之要求'};
+  var m=(document.referrer||'').match(/(?:unit|study|lecture|formula-given)-(SS-U\d-\d)\.html/);
+  if(!m||!UN[m[1]])return;
+  var u=m[1],code=u.replace('SS-','');
+  var q=document.querySelector('header .quick'),l=document.querySelector('header .lect');
+  if(q){q.href='../unit-'+u+'.html';q.title=u+' '+UN[u]+' 單元總覽';
+        q.innerHTML='\uD83D\uDD0D '+code+' 單元總覽';}
+  if(l){l.href='../lecture-'+u+'.html';l.title=u+' '+UN[u]+' 觀念講義';
+        l.innerHTML='\uD83D\uDCDA '+code+' '+UN[u]+' 講義';}
+})();
+</script>
+</body></html>

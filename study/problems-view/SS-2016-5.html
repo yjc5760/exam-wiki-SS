@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-2016-5 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{color:#fff;margin:0;font-size:1.15em}
+header .lect{display:inline-block;margin-top:10px;margin-left:8px;font-size:.82em;color:#4a148c;background:#f3e5f5;border:1px solid #ce93d8;padding:5px 14px;border-radius:16px;text-decoration:none}header .lect:hover{background:#fff;color:#4a148c}header .quick{display:inline-block;margin-top:10px;font-size:.82em;color:#0d47a1;background:#e3f2fd;border:1px solid #90caf9;padding:5px 14px;border-radius:16px;text-decoration:none}header .quick:hover{background:#fff;color:#0d47a1}header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SS-2016-5 題目解析</h1><a class="quick" href="../frequency-SS.html#s-rank" title="SS-U2-2 鋼結構材料特性 尚無單元總覽，改連全科出題頻率排名">&#128269; U2-2 全科頻率排名</a><a class="lect" href="../../index.html" title="SS-U2-2 鋼結構材料特性 尚無觀念講義，改連題庫儀表板">&#128218; 題庫儀表板</a></header>
+<main><h1>考題編號：SS-2016-5</h1>
+<p><strong>主分類：</strong> <code>SS-U2-2</code> 鋼結構材料特性<br />
+<strong>副分類：</strong> 無<br />
+<strong>設計法：</strong> 概念題<br />
+<strong>標籤：</strong> <code>降伏比</code> <code>SN490B</code> <code>SN490C</code> <code>Charpy衝擊值</code> <code>韌性</code> <code>鋼材材料</code> <code>建築結構用鋼</code> <code>耐震設計</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p><strong>子問題：</strong></p>
+<ol>
+<li><strong>(一)</strong> 何謂降伏比？（5 分）</li>
+<li><strong>(二)</strong> SN490B 與 SN490C 的降伏比規定為何？（5 分）</li>
+<li><strong>(三)</strong> Charpy 衝擊值高低所代表的意義為何？SN490B 與 SN490C 衝擊值的相關規定為何？（5 分）</li>
+</ol>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心觀念：SN 系列建築結構用鋼的韌性要求與耐震設計</strong></p>
+<p>此題考查考生對建築結構用鋼（SN 系列）的材料特性規定，特別是降伏比（Yield Ratio）和夏比衝擊試驗（Charpy Impact Test）的意義。SN 系列鋼材的特殊要求是為了確保在<strong>地震耗能</strong>時能可靠地形成塑性鉸，避免脆性破壞。</p>
+<p><strong>出題者測驗重點：</strong></p>
+<ul>
+<li>降伏比的定義與工程意義（安全裕度 + 塑性延展能力）</li>
+<li>SN490B vs SN490C 的差異（B 只管下限；C 管上下限，適用塑性鉸設計）</li>
+<li>Charpy 衝擊值的物理意義（韌性 / 脆性轉換溫度）</li>
+<li>B 與 C 的 Charpy 規定差異（C 要求更嚴格）</li>
+</ul>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>步驟規劃：</strong></p>
+<ol>
+<li>定義降伏比（公式 + 物理意義）</li>
+<li>說明 SN490B、SN490C 降伏比規定的具體數值</li>
+<li>解釋 Charpy 衝擊值的意義（韌性指標）</li>
+<li>比較 B 與 C 的 Charpy 規定差異</li>
+</ol>
+<p><strong>關鍵陷阱：</strong></p>
+<blockquote>
+<p>⚠️ <strong>陷阱1：SN490B 與 SN490C 的核心差異</strong><br />
+SN490B 只規定<strong>下限降伏強度</strong>（避免太軟），SN490C 同時規定<strong>上限與下限</strong>（避免強度過高導致塑性鉸形成在非預期位置）。此差異關係到耐震設計中的「強柱弱梁」概念。</p>
+<p>⚠️ <strong>陷阱2：混淆降伏比的分子分母</strong><br />
+降伏比 = $F_y/F_u$（降伏強度除以拉伸強度），<strong>不是</strong> $F_u/F_y$。降伏比越小 → 延性越好 → 越安全。</p>
+<p>⚠️ <strong>陷阱3：Charpy 的「溫度」要求</strong><br />
+SN490B 要求在 $0°C$ 下的衝擊值，SN490C 要求更嚴格（或須達較高衝擊值）。若未提到溫度條件，僅說數值是不完整的。</p>
+</blockquote>
+<hr />
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：解題後，在每個卡住的知識點「卡關?」欄標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<p><strong>最終目標：</strong> 定義降伏比 → 比較 SN490B/C 的降伏比與 Charpy 規定差異 → 說明其耐震設計意義</p>
+<h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
+<p>$$\boxed{\text{降伏比}} = \frac{F_y}{F_u}$$</p>
+<p>$$\text{SN490B：} F_y \geq 325\text{ MPa},\quad \boxed{F_y/F_u} \leq 0.80,\quad \text{Charpy at } 0°C \geq 27\text{ J}$$</p>
+<p>$$\text{SN490C：} 325 \leq F_y \leq 445\text{ MPa},\quad \boxed{F_y/F_u} \leq 0.80,\quad \text{Charpy at } 0°C \geq 47\text{ J}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>鋼種</td>
+<td>SN490B、SN490C</td>
+<td>JIS G 3136（CNS 15011）建築結構用鋼</td>
+</tr>
+<tr>
+<td>強度等級</td>
+<td>$F_u \geq 490\sim610$ MPa</td>
+<td>490 代表極限拉伸強度等級</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：降伏比定義</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>降伏比</td>
+<td>$F_y / F_u$（降伏強度 ÷ 極限強度）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>安全裕度</td>
+<td>$1 - F_y/F_u$：降伏後到破斷的強度儲備</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>延性指標</td>
+<td>降伏比低 → 塑性平台長 → 地震耗能好</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：SN490B 與 SN490C 降伏比規定</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SN490B 下限</td>
+<td>$F_y \geq 325$ MPa（只管下限）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>SN490C 上下限</td>
+<td>$325 \leq F_y \leq 445$ MPa（同時管制）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>降伏比上限</td>
+<td>兩者均 $\leq 0.80$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>C 管制上限原因</td>
+<td>確保塑性鉸形成位置可預測（強柱弱梁設計）</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：Charpy 衝擊值規定</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Charpy 意義</td>
+<td>試樣吸收的衝擊能（J）→ 韌性指標</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>DBTT</td>
+<td>韌脆轉換溫度：低溫下衝擊值急降</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>SN490B 要求</td>
+<td>$0°C$，平均 $\geq 27$ J</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>SN490C 要求</td>
+<td>$0°C$，平均 $\geq 47$ J（更嚴格）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>C 更嚴原因</td>
+<td>用於塑性鉸區域 + 全斷面銲接（需 Z 向韌性）</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">補強頁</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>降伏比與延性的關係</td>
+<td>降伏比低 → 降伏後塑性流動平台長 → 形成塑性鉸後不立即破斷</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">RESIDUAL-STRESS</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>SN490B vs C 的核心差異</td>
+<td>B 只管下限（保強度）；C 管上下限（保塑性鉸可預測性）</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>強柱弱梁機制</td>
+<td>梁實際強度若遠超設計值（無上限），柱設計餘量可能不足，塑性鉸跑到柱</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Charpy 試驗溫度的意義</td>
+<td>規定溫度（$0°C$）代表設計使用環境；低於此溫易脆裂</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Z 向性質（層狀撕裂）</td>
+<td>全斷面銲接收縮力垂直於板面，需驗證 Z 向韌性；SN490C 要求全截面 Charpy</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>降伏比分子分母不可倒</td>
+<td>$F_y/F_u$（非 $F_u/F_y$）；越小代表延性越好，不是越大越好</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>(一) 何謂降伏比（Yield Ratio / Yield-to-Tensile Strength Ratio）</h3>
+<p><strong>定義：</strong></p>
+<p>$$\text{降伏比} = \frac{F_y}{F_u}$$</p>
+<p>其中：</p>
+<ul>
+<li>$F_y$（Yield Strength）：材料的降伏強度（設計彈性工作上限）</li>
+<li>$F_u$（Tensile Strength）：材料的極限拉伸強度（破斷前最高承載力）</li>
+</ul>
+<p><strong>物理意義（三層面）：</strong></p>
+<ol>
+<li>
+<p><strong>安全裕度指標（Safety Margin）</strong>：<br />
+   降伏比越小，代表從初始降伏（$F_y$）到最終破斷（$F_u$）之間有較大的「強度儲備」。<br />
+   $$\text{安全裕度} \propto 1 - \frac{F_y}{F_u} = 1 - \text{降伏比}$$</p>
+</li>
+<li>
+<p><strong>延展性（Ductility）指標</strong>：<br />
+   降伏比低的鋼材具有較長的塑性流動平台，截面在降伏後能發展較大的塑性應變而不立即破斷，有利於地震能量的吸收（塑性耗能）。</p>
+</li>
+<li>
+<p><strong>塑性重分配能力</strong>：<br />
+   連續梁或不靜定結構在地震下需要形成多個塑性鉸（Plastic Hinge），降伏比低確保先降伏的構件不會立即破斷，讓後續構件依序降伏，實現「有序破壞」。</p>
+</li>
+</ol>
+<p>$$\boxed{\text{降伏比低} \Rightarrow \text{延性好} \Rightarrow \text{耐震能力強}}$$</p>
+<hr />
+<h3>(二) SN490B 與 SN490C 的降伏比規定</h3>
+<p>SN（Steel New）系列為日本 JIS G 3136（臺灣對應 CNS 15011）之建築結構用鋼，其 490 代表極限抗拉強度等級（$F_u \geq 490 \sim 610$ MPa）。</p>
+<table>
+<thead>
+<tr>
+<th>規格</th>
+<th>降伏強度 $F_y$ 規定</th>
+<th>降伏比上限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SN490B</strong></td>
+<td>僅規定<strong>下限</strong>：$F_y \geq 325$ MPa</td>
+<td>$F_y/F_u \leq 0.80$</td>
+</tr>
+<tr>
+<td><strong>SN490C</strong></td>
+<td>規定<strong>上限 + 下限</strong>：$325 \leq F_y \leq 445$ MPa</td>
+<td>$F_y/F_u \leq 0.80$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>兩者的關鍵差異：</strong></p>
+<ul>
+<li>
+<p><strong>SN490B</strong>：僅要求降伏強度不太低（下限），確保強度足夠；但不管上限，可能有批次強度過高的情況。降伏比上限 $\leq 0.80$，保有一定韌性。</p>
+</li>
+<li>
+<p><strong>SN490C</strong>：同時管制降伏強度的<strong>上限</strong>（不超過 445 MPa）。這是為了耐震設計中<strong>強柱弱梁</strong>機制的需要：梁的實際強度若遠超設計值，柱的設計餘量可能不足，塑性鉸可能形成在柱（危險）而非梁（設計目標）。SN490C 的上限管制保證了梁構件強度的可預測性。降伏比上限同樣為 $F_y/F_u \leq 0.80$。</p>
+</li>
+</ul>
+<p>$$\boxed{SN490B：F_y \geq 325 \text{ MPa},\quad F_y/F_u \leq 0.80}$$<br />
+$$\boxed{SN490C：325 \leq F_y \leq 445 \text{ MPa},\quad F_y/F_u \leq 0.80}$$</p>
+<hr />
+<h3>(三) Charpy 衝擊值的意義及 SN490B / SN490C 的規定</h3>
+<h4>Charpy 衝擊值的意義</h4>
+<p>夏比衝擊試驗（Charpy V-notch Impact Test）量測材料在<strong>特定溫度下</strong>試樣吸收的衝擊能量（單位：Joule, J），反映材料抵抗<strong>脆性斷裂</strong>的能力。</p>
+<table>
+<thead>
+<tr>
+<th>Charpy 值</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>高（$\geq 27$ J）</strong></td>
+<td>材料韌性好（ductile），能在脆性斷裂前大量吸收能量，不易發生突然脆裂</td>
+</tr>
+<tr>
+<td><strong>低（$&lt; 27$ J）</strong></td>
+<td>材料脆性傾向高，特別在低溫下容易發生脆性破壞（Brittle Fracture），斷裂前幾乎無塑性變形</td>
+</tr>
+</tbody>
+</table>
+<p><strong>溫度敏感性（DBTT）：</strong><br />
+鋼材的衝擊吸收能量隨溫度降低而急遽下降，此轉換溫度稱為<strong>韌脆轉換溫度（Ductile-Brittle Transition Temperature, DBTT）</strong>。施工或使用在低溫環境（如冬季施工、冷藏設施）時，Charpy 要求特別重要。</p>
+<h4>SN490B 與 SN490C 的 Charpy 規定</h4>
+<p>依 JIS G 3136 / CNS 15011（建築結構用鋼）：</p>
+<table>
+<thead>
+<tr>
+<th>規格</th>
+<th>試驗溫度</th>
+<th>衝擊值要求（縱向試片）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SN490B</strong></td>
+<td>$0°C$</td>
+<td>平均值 $\geq 27$ J（3 片試驗平均值）</td>
+</tr>
+<tr>
+<td><strong>SN490C</strong></td>
+<td>$0°C$</td>
+<td>平均值 $\geq 47$ J（3 片試驗平均值）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>差異說明：</strong></p>
+<ul>
+<li>
+<p><strong>SN490C 要求更高</strong>（$\geq 47$ J vs SN490B 的 $\geq 27$ J）：因為 SN490C 用於<strong>重要耐震接合</strong>（如梁柱接頭、塑性鉸區域），需要更高韌性以防止在地震反覆載重下發生脆性破壞。</p>
+</li>
+<li>
+<p>SN490C 同時需提供<strong>全截面 Charpy 試驗</strong>（含板厚方向，即 Z 方向性質），確保層狀撕裂（Lamellar Tearing）不發生——這是 B 不要求的。</p>
+</li>
+</ul>
+<p>$$\boxed{SN490B：0°C，\bar{v} \geq 27 \text{ J}}$$<br />
+$$\boxed{SN490C：0°C，\bar{v} \geq 47 \text{ J}（更嚴格，用於耐震接合）}$$</p>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<h3>SN490B vs SN490C 的適用場合</h3>
+<table>
+<thead>
+<tr>
+<th>場合</th>
+<th>推薦等級</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一般梁柱（非塑性鉸區）</td>
+<td>SN490B</td>
+<td>基本強度保證即可</td>
+</tr>
+<tr>
+<td>塑性鉸區（梁端）</td>
+<td><strong>SN490C</strong></td>
+<td>需上限管制 + 更高韌性，確保耐震行為可預測</td>
+</tr>
+<tr>
+<td>重要焊接接合（厚板）</td>
+<td>SN490C</td>
+<td>需 Z 方向韌性，防止層狀撕裂</td>
+</tr>
+</tbody>
+</table>
+<h3>降伏比對設計的影響</h3>
+<p>LRFD 設計中，有效 $M_p$ 的計算用 $F_y$，但接合設計（螺栓、銲縫）需用到 $F_u$（較高值）。若降伏比過高（$F_y \approx F_u$），塑性鉸承受最大彎矩時，接合幾乎沒有延性儲備，可能在達到 $M_p$ 之前就因接合破壞而脆性失敗。</p>
+<h3>考場安全答法</h3>
+<table>
+<thead>
+<tr>
+<th>子題</th>
+<th>核心答法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(一)</td>
+<td>「$F_y/F_u$，代表強度安全裕度及延性，比值越小延性越好」</td>
+</tr>
+<tr>
+<td>(二)</td>
+<td>「B 和 C 均 ≤ 0.80；B 僅下限，C 有上下限（確保強度可預測，用於耐震設計）」</td>
+</tr>
+<tr>
+<td>(三)</td>
+<td>「高 Charpy = 韌性好、不易脆裂；B 要求 0°C 時 ≥ 27 J，C 更嚴格 ≥ 47 J」</td>
+</tr>
+</tbody>
+</table>
+</main>
+<footer>來源：raw/solutions/SS-2016-5/SS-2016-5.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+<script>
+/* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，
+   兩顆按鈕改指向「來源那個單元」；直接開檔或來源不明時，維持本題主分類單元。 */
+(function(){
+  var UN={'SS-U1-1':'拉力及壓力桿件','SS-U1-2':'梁桿件','SS-U1-3':'梁柱桿件',
+          'SS-U1-4':'接合之分析與設計','SS-U2-3':'設計規範對施工之要求'};
+  var m=(document.referrer||'').match(/(?:unit|study|lecture|formula-given)-(SS-U\d-\d)\.html/);
+  if(!m||!UN[m[1]])return;
+  var u=m[1],code=u.replace('SS-','');
+  var q=document.querySelector('header .quick'),l=document.querySelector('header .lect');
+  if(q){q.href='../unit-'+u+'.html';q.title=u+' '+UN[u]+' 單元總覽';
+        q.innerHTML='\uD83D\uDD0D '+code+' 單元總覽';}
+  if(l){l.href='../lecture-'+u+'.html';l.title=u+' '+UN[u]+' 觀念講義';
+        l.innerHTML='\uD83D\uDCDA '+code+' '+UN[u]+' 講義';}
+})();
+</script>
+</body></html>

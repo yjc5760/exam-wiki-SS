@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS-2006-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{color:#fff;margin:0;font-size:1.15em}
+header .lect{display:inline-block;margin-top:10px;margin-left:8px;font-size:.82em;color:#4a148c;background:#f3e5f5;border:1px solid #ce93d8;padding:5px 14px;border-radius:16px;text-decoration:none}header .lect:hover{background:#fff;color:#4a148c}header .quick{display:inline-block;margin-top:10px;font-size:.82em;color:#0d47a1;background:#e3f2fd;border:1px solid #90caf9;padding:5px 14px;border-radius:16px;text-decoration:none}header .quick:hover{background:#fff;color:#0d47a1}header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SS-2006-3 題目解析</h1><a class="quick" href="../unit-SS-U1-2.html" title="SS-U1-2 梁桿件 單元總覽">&#128269; U1-2 單元總覽</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義">&#128218; U1-2 梁桿件 講義</a></header>
+<main><h1>考題編號：SS-2006-3</h1>
+<p><strong>主分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
+<strong>副分類：</strong> <code>SS-U2-1</code> 塑性分析與設計<br />
+<strong>設計法：</strong> LRFD<br />
+<strong>標籤：</strong> <code>斷面性質</code> <code>慣性矩</code> <code>迴轉半徑</code> <code>塑性斷面模數</code> <code>平行軸定理</code> <code>H型鋼</code> <code>塑性彎矩</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>有一 H 型鋼梁，斷面標示為 <strong>H 600 × 300 × 12 × 20（mm）</strong>，試求出：（每小題 5 分，共 20 分）</p>
+<ul>
+<li><strong>(一)</strong> 斷面強軸之慣性矩 $I_x = ?\ \text{mm}^4$</li>
+<li><strong>(二)</strong> 斷面弱軸之迴轉半徑 $r_y = ?\ \text{mm}$</li>
+<li><strong>(三)</strong> 斷面強軸之塑性斷面模數 $Z_x = ?\ \text{mm}^3$</li>
+<li><strong>(四)</strong> 斷面強軸之塑性彎矩強度 $M_p = ?\ \text{tf-cm}$（若鋼材降伏應力 $F_y = 3.5\ \text{tf/cm}^2$）</li>
+</ul>
+<blockquote>
+<p>本題為純計算題，無題目附圖，斷面幾何由標示數字完整描述。</p>
+</blockquote>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題測驗 H 型鋼斷面性質的計算能力，是結構工程師基本功。出題意圖：</p>
+<ol>
+<li>考察<strong>平行軸定理</strong>的正確應用（$I_x$ 計算）</li>
+<li>考察<strong>強弱軸</strong>慣性矩的概念區分（$r_y$ vs $r_x$）</li>
+<li>考察<strong>塑性斷面模數</strong> $Z_x$ 的定義（與彈性模數 $S_x$ 的差異）</li>
+<li>考察<strong>單位換算</strong>能力（mm³ → cm³，配合 $F_y$ 單位）</li>
+</ol>
+<hr />
+<h2>3. 斷面幾何確認</h2>
+<p>斷面標示 <strong>H 600 × 300 × 12 × 20</strong> 的讀法：</p>
+<p>$$H\ [\text{全高}] \times [\text{翼板寬}] \times [\text{腹板厚}] \times [\text{翼板厚}]\ (\text{mm})$$</p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>意義</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$H$</td>
+<td>斷面全高</td>
+<td>600 mm</td>
+</tr>
+<tr>
+<td>$b_f$</td>
+<td>翼板寬</td>
+<td>300 mm</td>
+</tr>
+<tr>
+<td>$t_w$</td>
+<td>腹板厚</td>
+<td>12 mm</td>
+</tr>
+<tr>
+<td>$t_f$</td>
+<td>翼板厚</td>
+<td>20 mm</td>
+</tr>
+<tr>
+<td>$h_w = H - 2t_f$</td>
+<td>腹板清淨高</td>
+<td>$600 - 2 \times 20 = 560$ mm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>斷面面積：</strong></p>
+<p>$$A = 2 \times b_f t_f + h_w t_w = 2 \times (300 \times 20) + (560 \times 12) = 12{,}000 + 6{,}720 = 18{,}720\ \text{mm}^2$$</p>
+<hr />
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：解題後，在每個卡住的知識點「卡關?」欄標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<p><strong>最終目標：</strong> 由 H 600×300×12×20（mm）計算 $I_x$、$r_y$、$Z_x$、$M_p$</p>
+<h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
+<p>$$\boxed{I_x} = 2\left[\frac{1}{12}b_f t_f^3 + b_f t_f d^2\right] + \frac{1}{12}t_w h_w^3$$</p>
+<p>$$\boxed{I_y} = 2 \cdot \frac{1}{12}t_f b_f^3 + \frac{1}{12}h_w t_w^3$$</p>
+<p>$$\boxed{r_y} = \sqrt{\frac{\boxed{I_y}}{A}}$$</p>
+<p>$$\boxed{Z_x} = b_f t_f(H - t_f) + t_w \cdot \frac{h_w^2}{4}$$</p>
+<p>$$\boxed{M_p} = F_y \cdot \boxed{Z_x}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$H$</td>
+<td>600 mm</td>
+<td>斷面全高</td>
+</tr>
+<tr>
+<td>$b_f$</td>
+<td>300 mm</td>
+<td>翼板寬</td>
+</tr>
+<tr>
+<td>$t_w$</td>
+<td>12 mm</td>
+<td>腹板厚</td>
+</tr>
+<tr>
+<td>$t_f$</td>
+<td>20 mm</td>
+<td>翼板厚</td>
+</tr>
+<tr>
+<td>$F_y$</td>
+<td>3.5 tf/cm²</td>
+<td>降伏應力</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：斷面幾何衍生量</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$h_w$</td>
+<td>$H - 2t_f = 600 - 40 = 560$ mm（腹板淨高）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$d$（翼板形心距強軸）</td>
+<td>$H/2 - t_f/2 = 300 - 10 = 290$ mm</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$A$</td>
+<td>$2b_f t_f + h_w t_w = 12000 + 6720 = 18720$ mm²</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：強軸慣性矩 $I_x$（平行軸定理）</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$I_{x,\ \text{flange}}$（各）</td>
+<td>$\frac{1}{12}b_f t_f^3 + b_f t_f d^2 = 200000 + 504600000$ mm⁴</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$I_{x,\ \text{web}}$</td>
+<td>$\frac{1}{12}t_w h_w^3 = 175616000$ mm⁴</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$I_x$</td>
+<td>$2 \times 504800000 + 175616000 \approx 1.185 \times 10^9$ mm⁴</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：弱軸迴轉半徑 $r_y$</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$I_{y,\ \text{flange}}$（各）</td>
+<td>$\frac{1}{12}t_f b_f^3 = 45000000$ mm⁴（注意 $b_f$ 在三次方）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$I_y$</td>
+<td>$2 \times 45000000 + \text{腹板項（可忽略）} \approx 90 \times 10^6$ mm⁴</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$r_y$</td>
+<td>$\sqrt{I_y/A} = \sqrt{90080640/18720} \approx 69.4$ mm</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 4：塑性斷面模數 $Z_x$ 與塑性彎矩 $M_p$</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式 / 來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$Z_x$</td>
+<td>$b_f t_f(H-t_f) + t_w h_w^2/4 = 3480000 + 940800 = 4420800$ mm³</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>單位換算</td>
+<td>$4420800$ mm³ $= 4420.8$ cm³（$1$ cm³ $= 10^3$ mm³）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_p$</td>
+<td>$F_y \times Z_x = 3.5 \times 4420.8 = 15472.8$ tf·cm</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">補強頁</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平行軸定理 $I = I_0 + Ad^2$</td>
+<td>翼板形心距 $d = H/2 - t_f/2$，不是 $H/2$；算錯 $d$ 是最常見失誤</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$I_y$ 翼板公式的三次方</td>
+<td>弱軸方向翼板長邊是 $b_f$，故 $I_{y,f} = \frac{1}{12}t_f b_f^3$（$b_f$ 在三次方）</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$Z_x$ vs $S_x$ 定義差異</td>
+<td>$S_x = I_x/(H/2)$（彈性）；$Z_x = \sum A_i \bar{y}_i$（塑性）；形狀因子 $f = Z_x/S_x \approx 1.12$</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>單位換算 mm³ → cm³</td>
+<td>$1$ cm $= 10$ mm，$1$ cm³ $= 10^3$ mm³（<strong>非</strong> $10^6$），用 $F_y$ (tf/cm²) 時必須換算</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 詳細計算過程</h2>
+<h3>(一) 斷面強軸慣性矩 $I_x$</h3>
+<p>採<strong>組件疊加法 + 平行軸定理</strong>：</p>
+<p>$$I_x = I_{x,\text{flanges}} + I_{x,\text{web}}$$</p>
+<p><strong>翼板（上下各一，對中性軸距離 $d$）：</strong></p>
+<p>$$d = \frac{H}{2} - \frac{t_f}{2} = 300 - 10 = 290\ \text{mm}$$</p>
+<p>$$I_{x,\text{flange（各）}} = \frac{1}{12} b_f t_f^3 + b_f t_f \cdot d^2$$</p>
+<p>$$= \frac{1}{12}(300)(20)^3 + (300)(20)(290)^2$$</p>
+<p>$$= 200{,}000 + 504{,}600{,}000 = 504{,}800{,}000\ \text{mm}^4$$</p>
+<p>$$I_{x,\text{flanges}} = 2 \times 504{,}800{,}000 = 1{,}009{,}600{,}000\ \text{mm}^4$$</p>
+<p><strong>腹板（通過中性軸）：</strong></p>
+<p>$$I_{x,\text{web}} = \frac{1}{12} t_w h_w^3 = \frac{1}{12}(12)(560)^3 = 175{,}616{,}000\ \text{mm}^4$$</p>
+<p><strong>合計：</strong></p>
+<p>$$\boxed{I_x = 1{,}009{,}600{,}000 + 175{,}616{,}000 = 1{,}185{,}216{,}000\ \text{mm}^4 \approx 1.185 \times 10^9\ \text{mm}^4}$$</p>
+<hr />
+<h3>(二) 斷面弱軸迴轉半徑 $r_y$</h3>
+<p>先求弱軸慣性矩 $I_y$：</p>
+<p>$$I_{y,\text{flange（各）}} = \frac{1}{12} t_f b_f^3 = \frac{1}{12}(20)(300)^3 = 45{,}000{,}000\ \text{mm}^4$$</p>
+<p>$$I_{y,\text{flanges}} = 2 \times 45{,}000{,}000 = 90{,}000{,}000\ \text{mm}^4$$</p>
+<p>$$I_{y,\text{web}} = \frac{1}{12} h_w t_w^3 = \frac{1}{12}(560)(12)^3 = 80{,}640\ \text{mm}^4 \quad \text{（極小）}$$</p>
+<p>$$I_y = 90{,}000{,}000 + 80{,}640 = 90{,}080{,}640\ \text{mm}^4$$</p>
+<p>$$r_y = \sqrt{\frac{I_y}{A}} = \sqrt{\frac{90{,}080{,}640}{18{,}720}} = \sqrt{4{,}812} \approx \boxed{69.4\ \text{mm}}$$</p>
+<hr />
+<h3>(三) 斷面強軸塑性斷面模數 $Z_x$</h3>
+<p>$$Z_x = b_f t_f (H - t_f) + t_w \cdot \frac{h_w^2}{4}$$</p>
+<p>$$= (300)(20)(600 - 20) + (12)\frac{(560)^2}{4}$$</p>
+<p>$$= 3{,}480{,}000 + 940{,}800$$</p>
+<p>$$\boxed{Z_x = 4{,}420{,}800\ \text{mm}^3 \approx 4.421 \times 10^6\ \text{mm}^3}$$</p>
+<hr />
+<h3>(四) 斷面強軸塑性彎矩強度 $M_p$</h3>
+<p>$$Z_x = 4{,}420{,}800\ \text{mm}^3 = 4{,}420.8\ \text{cm}^3$$</p>
+<p>$$M_p = 3.5\ \frac{\text{tf}}{\text{cm}^2} \times 4{,}420.8\ \text{cm}^3$$</p>
+<p>$$\boxed{M_p = 15{,}472.8\ \text{tf-cm} \approx 154.7\ \text{tf-m}}$$</p>
+<hr />
+<h2>5. 答案彙整</h2>
+<table>
+<thead>
+<tr>
+<th>小題</th>
+<th>計算項目</th>
+<th>答案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(一)</td>
+<td>強軸慣性矩 $I_x$</td>
+<td>$\mathbf{1{,}185{,}216{,}000\ \text{mm}^4}$ $(\approx 1.185 \times 10^9\ \text{mm}^4)$</td>
+</tr>
+<tr>
+<td>(二)</td>
+<td>弱軸迴轉半徑 $r_y$</td>
+<td>$\mathbf{69.4\ \text{mm}}$</td>
+</tr>
+<tr>
+<td>(三)</td>
+<td>強軸塑性斷面模數 $Z_x$</td>
+<td>$\mathbf{4{,}420{,}800\ \text{mm}^3}$ $(\approx 4.421 \times 10^6\ \text{mm}^3)$</td>
+</tr>
+<tr>
+<td>(四)</td>
+<td>強軸塑性彎矩強度 $M_p$</td>
+<td>$\mathbf{15{,}472.8\ \text{tf-cm}}$</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. 涉及陷阱</h2>
+<ol>
+<li><strong>$h_w$ 的定義</strong>：腹板清淨高 $h_w = H - 2t_f = 560\ \text{mm}$，不是全高 600 mm。平行軸定理中翼板形心距 $d = H/2 - t_f/2 = 290\ \text{mm}$，也非 300 mm。</li>
+<li><strong>$Z_x$ 公式的推導</strong>：考試常需從定義推導，公式 $Z_x = b_f t_f (H-t_f) + t_w h_w^2/4$ 要會導出。</li>
+<li><strong>單位換算</strong>：$F_y$ 給 tf/cm²，$Z_x$ 算出 mm³，必須換成 cm³ 再相乘。$1\ \text{cm}^3 = 10^3\ \text{mm}^3$（不是 $10^6$）。</li>
+<li><strong>$I_y$ 計算時翼板公式</strong>：弱軸方向，翼板的長邊是 $b_f$（翼板寬），故 $I_{y,\text{flange}} = \frac{1}{12} t_f b_f^3$（注意 $b_f$ 在三次方處），不要與 $I_x$ 的公式混淆。</li>
+</ol>
+<hr />
+<h2>7. 進階探討</h2>
+<p><strong>形狀因子的工程意義：</strong></p>
+<p>$$f = \frac{Z_x}{S_x} = \frac{M_p}{M_y} = 1.119$$</p>
+<p>H 型鋼的形狀因子約 1.10~1.15，表示斷面從初始降伏（$M_y$）到完全塑化（$M_p$）尚有約 10~15% 的強度儲備。相比矩形斷面（$f=1.5$），H 型鋼的塑性強度儲備較小，但材料利用率高（大部分材料在翼板，距中性軸遠，$S_x$ 本來就接近 $Z_x$）。</p>
+<p><strong>$I_x$ 分配比例：</strong></p>
+<p>$$\frac{I_{x,\text{flanges}}}{I_x} = \frac{1{,}009{,}600{,}000}{1{,}185{,}216{,}000} = 85.2\%$$</p>
+<p>超過 85% 的強軸慣性矩由翼板貢獻（主要是平行軸項），腹板只貢獻 14.8%。這正說明 H 型鋼「材料效率高」的設計哲學：用薄腹板抵抗剪力，厚翼板遠離中性軸提供彎曲剛度。</p>
+</main>
+<footer>來源：raw/solutions/SS-2006-3/SS-2006-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+<script>
+/* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，
+   兩顆按鈕改指向「來源那個單元」；直接開檔或來源不明時，維持本題主分類單元。 */
+(function(){
+  var UN={'SS-U1-1':'拉力及壓力桿件','SS-U1-2':'梁桿件','SS-U1-3':'梁柱桿件',
+          'SS-U1-4':'接合之分析與設計','SS-U2-3':'設計規範對施工之要求'};
+  var m=(document.referrer||'').match(/(?:unit|study|lecture|formula-given)-(SS-U\d-\d)\.html/);
+  if(!m||!UN[m[1]])return;
+  var u=m[1],code=u.replace('SS-','');
+  var q=document.querySelector('header .quick'),l=document.querySelector('header .lect');
+  if(q){q.href='../unit-'+u+'.html';q.title=u+' '+UN[u]+' 單元總覽';
+        q.innerHTML='\uD83D\uDD0D '+code+' 單元總覽';}
+  if(l){l.href='../lecture-'+u+'.html';l.title=u+' '+UN[u]+' 觀念講義';
+        l.innerHTML='\uD83D\uDCDA '+code+' '+UN[u]+' 講義';}
+})();
+</script>
+</body></html>

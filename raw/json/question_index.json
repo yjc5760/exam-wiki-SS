@@ -3,7 +3,7 @@
   "tagSystem": {
     "primaryTopicId": "命題大綱主分類（依 syllabus_taxonomy.json，格式：XX-Un-m）",
     "secondaryTopicIds": "命題大綱副分類（跨主題時使用）",
-    "designMethod": "設計法：LRFD / ASD / 概念題 / 混合",
+    "designMethod": "設計法：LRFD / ASD / 概念題 / 混合 / 塑性分析",
     "tags": "自由標籤，描述核心考點、概念、陷阱類型"
   },
   "questions": [
@@ -176,7 +176,6 @@
       "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [
-        "SD-U3-1",
         "SS-U2-3"
       ],
       "designMethod": "概念題",
@@ -245,10 +244,10 @@
     {
       "moduleId": "SS-2023-3",
       "year": 112,
-      "primaryTopicId": "SS-U1-2",
-      "primaryTopicName": "梁桿件",
+      "primaryTopicId": "SS-U2-1",
+      "primaryTopicName": "塑性分析與設計",
       "secondaryTopicIds": [
-        "SS-U2-1"
+        "SS-U1-2"
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
@@ -346,9 +345,7 @@
       "year": 111,
       "primaryTopicId": "SS-U2-3",
       "primaryTopicName": "設計規範對施工之要求",
-      "secondaryTopicIds": [
-        "SD-U3-1"
-      ],
+      "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "tags": [
@@ -371,11 +368,9 @@
     {
       "moduleId": "SS-2022-4",
       "year": 111,
-      "primaryTopicId": "SD-U3-1",
-      "primaryTopicName": "結構耐震設計",
-      "secondaryTopicIds": [
-        "SS-U2-2"
-      ],
+      "primaryTopicId": "SS-U2-2",
+      "primaryTopicName": "鋼結構材料特性",
+      "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "tags": [
@@ -420,20 +415,22 @@
     {
       "moduleId": "SS-2021-2",
       "year": 110,
-      "primaryTopicId": "SS-U1-4",
-      "primaryTopicName": "接合之分析與設計",
-      "secondaryTopicIds": [],
+      "primaryTopicId": "SS-U1-1",
+      "primaryTopicName": "拉力及壓力桿件",
+      "secondaryTopicIds": [
+        "SS-U1-4"
+      ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
       "tags": [
-        "接合設計",
-        "填角銲",
+        "拉力桿件",
         "塊狀剪力",
-        "高拉力螺栓",
-        "搭接接合",
-        "剪力破壞",
-        "拉力破壞",
-        "0.6Fy"
+        "銲接拉力接合",
+        "填角銲",
+        "疊接",
+        "斷裂模式",
+        "0.6Fy意義",
+        "剪力降伏"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -443,9 +440,7 @@
       "year": 110,
       "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
-      "secondaryTopicIds": [
-        "SD-U3-1"
-      ],
+      "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
       "tags": [
@@ -487,11 +482,9 @@
     {
       "moduleId": "SS-2020-1",
       "year": 109,
-      "primaryTopicId": "SD-U3-1",
-      "primaryTopicName": "結構耐震設計",
-      "secondaryTopicIds": [
-        "SS-U1-4"
-      ],
+      "primaryTopicId": "SS-U1-4",
+      "primaryTopicName": "接合之分析與設計",
+      "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "tags": [
@@ -776,7 +769,9 @@
       "year": 106,
       "primaryTopicId": "SS-U2-2",
       "primaryTopicName": "鋼結構材料特性",
-      "secondaryTopicIds": [],
+      "secondaryTopicIds": [
+        "SS-U2-3"
+      ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "tags": [
@@ -798,7 +793,7 @@
       "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
-      "designMethod": "LRFD",
+      "designMethod": "概念題",
       "verificationStatus": "unverified",
       "tags": [
         "接合設計",
@@ -863,7 +858,9 @@
       "year": 105,
       "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
-      "secondaryTopicIds": [],
+      "secondaryTopicIds": [
+        "SS-U1-1"
+      ],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
       "tags": [
@@ -926,7 +923,7 @@
       "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [],
-      "designMethod": "LRFD",
+      "designMethod": "概念題",
       "verificationStatus": "unverified",
       "tags": [
         "梁桿件",
@@ -1006,7 +1003,7 @@
         "孔壁承壓",
         "錯列淨斷面"
       ],
-      "hasHandwritten": false,
+      "hasHandwritten": true,
       "hasSolution": true
     },
     {
@@ -1070,7 +1067,7 @@
         "非彈性挫屈",
         "彈性挫屈"
       ],
-      "hasHandwritten": false,
+      "hasHandwritten": true,
       "hasViz": true,
       "hasSolution": true
     },
@@ -1080,7 +1077,7 @@
       "primaryTopicId": "SS-U2-2",
       "primaryTopicName": "鋼結構材料特性",
       "secondaryTopicIds": [
-        "SD-U3-1"
+        "SS-U1-4"
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
@@ -1118,7 +1115,7 @@
         "題意判讀",
         "規範版本差異"
       ],
-      "hasHandwritten": false,
+      "hasHandwritten": true,
       "hasViz": false,
       "hasSolution": true
     },
@@ -1127,9 +1124,7 @@
       "year": 103,
       "primaryTopicId": "SS-U1-3",
       "primaryTopicName": "梁柱桿件",
-      "secondaryTopicIds": [
-        "SD-U3-1"
-      ],
+      "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
       "tags": [
@@ -1148,10 +1143,10 @@
     {
       "moduleId": "SS-2013-1",
       "year": 102,
-      "primaryTopicId": "MM-U1-1",
-      "primaryTopicName": "斷面性質計算",
+      "primaryTopicId": "SS-U2-1",
+      "primaryTopicName": "塑性分析與設計",
       "secondaryTopicIds": [],
-      "designMethod": "LRFD",
+      "designMethod": "概念題",
       "verificationStatus": "unverified",
       "tags": [
         "空心圓管斷面",
@@ -1195,7 +1190,7 @@
       "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [],
-      "designMethod": "LRFD",
+      "designMethod": "混合",
       "verificationStatus": "unverified",
       "tags": [
         "壓力桿件",
@@ -1262,11 +1257,9 @@
     {
       "moduleId": "SS-2012-2",
       "year": 101,
-      "primaryTopicId": "SD-U3-1",
-      "primaryTopicName": "結構耐震設計(含RC結構與鋼結構)",
-      "secondaryTopicIds": [
-        "SS-U1-4"
-      ],
+      "primaryTopicId": "SS-U1-4",
+      "primaryTopicName": "接合之分析與設計",
+      "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "tags": [
@@ -1425,8 +1418,8 @@
     {
       "moduleId": "SS-2010-1",
       "year": 99,
-      "primaryTopicId": "MM-U1-1",
-      "primaryTopicName": "斷面性質計算",
+      "primaryTopicId": "SS-U2-1",
+      "primaryTopicName": "塑性分析與設計",
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
@@ -1516,11 +1509,9 @@
     {
       "moduleId": "SS-2009-1",
       "year": 98,
-      "primaryTopicId": "SD-U3-1",
-      "primaryTopicName": "結構耐震設計",
-      "secondaryTopicIds": [
-        "SS-U1-3"
-      ],
+      "primaryTopicId": "SS-U1-3",
+      "primaryTopicName": "梁柱桿件",
+      "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "tags": [
@@ -1541,10 +1532,10 @@
     {
       "moduleId": "SS-2009-2",
       "year": 98,
-      "primaryTopicId": "SD-U3-1",
-      "primaryTopicName": "結構耐震設計",
+      "primaryTopicId": "SS-U1-4",
+      "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [
-        "SS-U2-3"
+        "SS-U2-2"
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
@@ -1569,7 +1560,8 @@
       "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
       "secondaryTopicIds": [
-        "SS-U1-1"
+        "SS-U1-1",
+        "SS-U2-1"
       ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
@@ -1806,7 +1798,9 @@
       "year": 95,
       "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
-      "secondaryTopicIds": [],
+      "secondaryTopicIds": [
+        "SS-U1-2"
+      ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "tags": [
@@ -1827,7 +1821,9 @@
       "year": 95,
       "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
-      "secondaryTopicIds": [],
+      "secondaryTopicIds": [
+        "SS-U2-3"
+      ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "tags": [
@@ -1844,9 +1840,11 @@
     {
       "moduleId": "SS-2006-3",
       "year": 95,
-      "primaryTopicId": "MM-U1-1",
-      "primaryTopicName": "斷面性質計算",
-      "secondaryTopicIds": [],
+      "primaryTopicId": "SS-U1-2",
+      "primaryTopicName": "梁桿件",
+      "secondaryTopicIds": [
+        "SS-U2-1"
+      ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
       "tags": [
@@ -2085,7 +2083,8 @@
       "primaryTopicId": "SS-U1-1",
       "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [
-        "SS-U1-4"
+        "SS-U1-4",
+        "SS-U1-2"
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
@@ -2133,10 +2132,10 @@
     {
       "moduleId": "SS-2003-3",
       "year": 92,
-      "primaryTopicId": "SS-U1-4",
-      "primaryTopicName": "接合之分析與設計",
+      "primaryTopicId": "SS-U1-1",
+      "primaryTopicName": "拉力及壓力桿件",
       "secondaryTopicIds": [
-        "SS-U1-1"
+        "SS-U1-4"
       ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",

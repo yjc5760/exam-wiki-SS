@@ -117,7 +117,8 @@ $$L_{w,min} = 4w \quad \text{（或至少 38 mm）}$$
 | [SS-2007-1](../problems/SS-2007-1.md) | ASD | 偏心填角銲、不等肢角鋼 |
 | [SS-2005-3](../problems/SS-2005-3.md) | LRFD | 偏心接合、牛腿接合、銲接群分析 |
 | [SS-2004-3](../problems/SS-2004-3.md) | LRFD | 偏心接合、彈性向量法 |
-| [SS-2003-3](../problems/SS-2003-3.md) | LRFD | WT斷面、剪力遲滯、銲接拉力接合 |
+| [SS-2024-2](../problems/SS-2024-2.md) | LRFD | 圓管縱向填角銲尺寸設計 |
+| [SS-2021-2](../problems/SS-2021-2.md) | LRFD | 填角銲疊接之拉力斷裂與塊狀剪力 |
 
 ---
 

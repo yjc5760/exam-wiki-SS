@@ -141,12 +141,9 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | SS-U2-2 | 鋼結構材料特性 |
 | SS-U2-3 | 設計規範對施工之要求 |
 
-### 其他相關單元
+### 分類原則
 
-| topicId | 命題大綱子項 |
-|---------|------------|
-| MM-U1-1 | 斷面性質計算（材力） |
-| SD-U3-1 | 結構耐震設計 |
+> `primaryTopicId`、`secondaryTopicIds` **只能填 SS 子項**，不引用其他科（MM、SD 等）的單元。題目涉及耐震設計或材力斷面性質時，歸到對應的 SS 子項（例：耐震接頭 → SS-U1-4、強柱弱梁 P-M → SS-U1-3、SN 鋼材／降伏比 → SS-U2-2、My／Mp 形狀因子 → SS-U2-1）。
 
 ---
 
@@ -239,7 +236,7 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-08-09 | 修正 `study/formula-given-SS-U1-3.html`「P-M 互制圖的三個折點座標」的 `eq`：`(1/9, 0.2)` → **`(0.9, 0.2)`**（`.pdf` 尚未重新產生，仍含舊值） | 該條目自身的 `meta` 推導本來就是對的（`Pu/φcPn=0.2` 代入 H1-1a 得 `x=9/8×0.8=0.9`、代入 H1-1b 得 `x=1−0.1=0.9`），`1/9` 顯係誤把 H1-1a 的係數 `8/9` 寫成折點座標。由建置 U1-3 記憶片時交叉驗算發現 |
 | 2026-08-07 | 修正 `skills/unit-lecture/SKILL.md` 適用科目表：SM 由「材料力學」改為「土壤力學與基礎設計」、MM 由「工程數學／力學」改為「材料力學」、RC/SA/SD 補為命題大綱全名；並同步專案版與已安裝版（專案版原本落後，缺 `problems-view` 渲染整節） | SM 與 MM 的科目名互換會導向錯誤的資料夾；六科名稱應以 `raw/json/syllabus_taxonomy.json` 為唯一依據 |
 | 2026-07-25 | **規則 1 例外擴充**：`raw/` 唯讀的例外從「`question_index.json`」擴充為「`question_index.json` + `raw/solutions/methods/`」，並訂出三項修改條件（驗算／同步 wiki／記 log） | `methods/` 是 `wiki/methods/` 的 compile 來源，只改 wiki 副本會被 `compile-all` 蓋回；公式勘誤需能根治。個別題目解析 `raw/solutions/SS-YYYY-N/` 仍受完整保護 |
-| 2026-08-20 | 新增 `skills/subject-frequency-map.skill`（六科通用「全科出題頻率熱圖」產生器，附 `scripts/build_frequency.py`）；產生 `study/frequency-SS.html` | `unit-exam-intel` 一次只看一個子項，看不到整科全貌，無法回答「整科該從哪裡開始讀」。本頁把 98 題攤在 7 子項 × 24 考年的格子上，只談頻率與時間分配（押題仍看各子項命題分析頁的「命題風險排序」）。全流程無人工判斷步驟，題庫更新後可無腦重跑。同輪由對帳揪出 8 題 `primaryTopicId` 指向他科 taxonomy（`SD-U3-1` × 5、`MM-U1-1` × 3），未畫進熱圖，待修 |
+| 2026-08-20 | 新增 `skills/subject-frequency-map.skill`（六科通用「全科出題頻率熱圖」產生器，附 `scripts/build_frequency.py`）；產生 `study/frequency-SS.html` | `unit-exam-intel` 一次只看一個子項，看不到整科全貌，無法回答「整科該從哪裡開始讀」。本頁把 98 題攤在 7 子項 × 24 考年的格子上，只談頻率與時間分配（押題仍看各子項命題分析頁的「命題風險排序」）。全流程無人工判斷步驟，題庫更新後可無腦重跑。同輪由對帳揪出 8 題 `primaryTopicId` 指向他科 taxonomy（`SD-U3-1` × 5、`MM-U1-1` × 3），未畫進熱圖；2026-10-30 已改列 SS 子項（見 wiki/log.md TAXONOMY-FIX） |
 | 2026-08-22 | **七題解析勘誤**（SS-2005-1／SS-2013-2／SS-2013-3／SS-2015-3／SS-2018-2／SS-2024-1／SS-2025-2）並依現行規範重新驗算；同步 `-column-curve-viz.html`、`wiki/problems/`、`study/problems-view/`、`question_index.json` tags、`study/study-SS-U1-1.html`、`dashboard-data.js` | 三題觀念錯誤改變答案：SS-2013-2 把考卷原文「柱 CD 為**靠桿**」讀成「鉸接」且未用考卷給的萊梅厥公式（w 由 287 更正為 **96.0 tf/m**、d 由 1.20 更正為 **0.40 m**）；SS-2024-1 把塊狀殘餘應力的「**強度平台段**」誤畫成「λ=√2 處不連續跳躍」，違反柱強度曲線隨 λ 單調不遞增（補 λ₂=0.985 轉折點，改為四段連續）；SS-2025-2 對板類三面圍焊誤用 `U=1−x̄/l` 並取 x̄=L/2，應依規範 §4.3 板類縱向銲之 `l/w` 階梯值且 `l ≥ w`（**L_max=3 cm、P_max 由 6.15 更正為 9.00 tf**）。另四題為判讀／漏檢核：SS-2013-3 圖 3 兩平面邊界相反（強軸 A 鉸-C 固接可滑動、弱軸 A 固接）；SS-2005-1 漏算螺栓剪力 71.8 tf（與控制值僅差 4.8%）；SS-2018-2 漏做局部挫屈 b/t 且把 φc=0.90 標為「誤」；SS-2015-3 把「固接\*-鉸接」誤述為懸臂柱。規範層面：台灣現行仍為 99 年版（φc=0.85），各題已增列 AISC 360-16／-22 對照 |
 | 2026-08-22 | **全庫 98 題 `verificationStatus` 重置為 `unverified`**；同步 `wiki/problems/`（98 檔）、`wiki/index.md`（77 列＋計數）、`wiki/by-year.md`（98 列）、`index.html` 儀表板標題、`study/study-SS-U1-1〜U2-3.html`（5 檔徽章與圖例） | 同日七題勘誤中抽查 7 題即有 3 題存在改變答案的觀念錯誤（43%），`verified` 標記已失去可信度，由使用者決定全庫重置、逐題重新驗算。⚠️ 連帶效果：規則 5 使 `ingest` 目前對所有題目皆被擋下（`wiki/problems/` 98 頁仍保留），重驗通過後改回 `verified` 即恢復 |
 | 2026-08-22 | **規則 1 增訂第三項例外：`raw/solutions/SS-YYYY-N/SS-YYYY-N.md` 允許「解析勘誤」**（附四項條件：回考卷原文逐頁目視判讀／數值獨立重算／同步全部下游／記 log；並明定 `raw/exams/`、使用者截圖與補充 PDF 仍完整受保護，勘誤後須退回 `unverified`）；規則 2 補上與新例外的界線。另**修復 `wiki/log.md` 的 Big5 編碼殘留**（byte 16728–17259，嚴格 Big5 解碼零損失轉 UTF-8，還原 8 處誤寫的反引號，原始位元組存於 `wiki/log.md.big5.bak`） | 舊條文「個別題目解析不在例外內」曾使 2026-07-30 的 VERIFY 查出 `SS-2013-2.md` 量級筆誤卻不敢修，該檔後續又被查出高估 3 倍的觀念錯誤——規則不該讓已知錯誤留在正本裡。改為「可勘誤但條件嚴格」，把保護對象從「檔案」精確化為「可追溯性與證據」 |

@@ -82,7 +82,7 @@
   "number": 1,
   "primaryTopicId": "SS-U1-2",     // 對應 syllabus_taxonomy.json 的子項 ID
   "secondaryTopicIds": ["SS-U2-2"],// 跨考點時填寫（必為陣列）
-  "designMethod": "LRFD",          // LRFD / ASD / SD（耐震）/ MM（材力）/ N/A
+  "designMethod": "LRFD",          // LRFD / ASD / 概念題 / 混合 / 塑性分析
   "hasSolution": true,             // 只要有 .md 就是 true
   "verificationStatus": "verified",// unverified / needs-review / verified
   "hasHandwritten": false,         // 有無 -hand-*.png

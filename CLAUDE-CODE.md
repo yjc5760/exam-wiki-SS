@@ -245,7 +245,7 @@ solutions/ 已有解析但未驗證：[列出題號]
      取檔名中 moduleId 與 -viz.html 之間的字段（如 pm、sfd-bmd）
    - pdf 補充筆記：掃描 raw/solutions/SS-XXXX-N/ 下所有 *.pdf，取原始檔名（含副檔名）存入陣列；
      無 PDF 的題目寫入空陣列 []
-3. 讀取 `raw/json/syllabus_taxonomy.json`，提取出 `subject.id === "SS"`, `"SD"`, `"MM"` 的分類樹，並自動轉換成 `window.SS_TOPICS` 與 `window.SS_UNITS` 寫入 `dashboard-data.js` 中。
+3. 讀取 `raw/json/syllabus_taxonomy.json`，只提取 `subject.id === "SS"` 的分類樹（不放其他科代號；題目分類一律只用 SS 子項），並自動轉換成 `window.SS_TOPICS` 與 `window.SS_UNITS` 寫入 `dashboard-data.js` 中。
 4. 在 wiki/log.md 追加紀錄
 注意：index.html 本身不需改動；僅當需求變更時才修改 UI。
 ```

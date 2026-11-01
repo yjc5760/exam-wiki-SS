@@ -48,10 +48,10 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>主分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> LRFD<br />
-<strong>標籤：</strong> <code>梁桿件</code> <code>LRFD</code> <code>LTB側扭挫屈</code> <code>Cb彎矩梯度</code> <code>塑性彎矩</code> <code>結實斷面</code> <code>Lp Lr</code> <code>X1 X2</code> <code>均佈載重</code></p>
+<strong>標籤：</strong> <code>梁桿件</code> <code>LRFD</code> <code>LTB側扭挫屈</code> <code>Cb彎矩梯度</code> <code>塑性彎矩</code> <code>結實斷面</code> <code>X1X2參數</code> <code>均佈載重</code> <code>部分跨載重</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>簡支 W 型鋼梁，全長 $L = 18$ m，在 A、B、C、D 四點有側向束制（間距 $L/3 = 6$ m），承受均佈設計載重 $w$（t/m）。以 LRFD 求解容許標稱外載重 $w_{n,cr}$。</p>
+<p>圖 2 為一鋼梁，假設鋼梁在 A、B、C、D 四點側向均有側撐補強，且此梁<strong>兩側</strong>承受均佈載重 $w$，如圖所示。採用 H 型鋼，鋼梁長度 $L$ 為 18 m，試以極限設計法（LRFD）求解此鋼梁所能承受之容許標稱外載重 $w_{n,cr}$。（25 分）</p>
 <p><strong>斷面參數：</strong></p>
 <table>
 <thead>
@@ -108,18 +108,16 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tbody>
 </table>
 <p><strong>材料特性：</strong> $F_y = 3.5$ t/cm²，$E = 2100$ t/cm²，$G = 840$ t/cm²</p>
-<p><img alt="SS-2008-3 題目附圖：簡支鋼梁立面圖與斷面圖，全跨均佈載重w，A、B、C、D四點側向束制，Lb=6m" src="../../raw/solutions/SS-2008-3/SS-2008-3-fig-1.png" /></p>
-<p><em>圖說：簡支梁總長L=18m，A為左支承，D為右支承，側向束制分別在A、B、C、D（間距L/3=6m）。均佈載重w（t/m）作用於全跨。H型鋼斷面（強軸撓曲），強軸側撐示意圖見底部視圖。</em></p>
+<p><img alt="SS-2008-3 題目附圖：簡支鋼梁，均佈載重 w 只作用於 AB、CD 兩段（兩側各 L/3），BC 段無載重；A、B、C、D 四點側撐，Lb=6m" src="../../raw/solutions/SS-2008-3/SS-2008-3-fig-1.png" /></p>
+<p><em>圖說（依考卷原圖 450 dpi 目視判讀）：簡支梁 A（滾支）至 D（鉸支），全長 18 m，分三等分 $L/3 = 6$ m。<strong>均佈載重 $w$ 只畫在 A–B 與 C–D 兩段</strong>（題文「此梁兩側承受均佈載重」），<strong>B–C 段沒有載重</strong>。下方平面圖 A、B、C、D 四點皆有側撐 → 各段 $L_b = 6$ m。</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心考點：</strong> LRFD 梁桿件設計三段式 LTB 流程：</p>
-<ol>
-<li>確認結實斷面（排除局部挫屈）</li>
-<li>計算 $L_p$、$L_r$，判斷控制極限狀態</li>
-<li>對各無束制段計算 $C_b$，求 $\phi_b M_n$</li>
-<li>以最大彎矩對應設計強度求解 $w_{n,cr}$</li>
-</ol>
-<p><strong>出題者意圖：</strong> 測試能否正確計算 $L_r$（含 $X_1$、$X_2$），並辨別不同段的 $C_b$，最終以中間段控制設計。</p>
+<p><strong>核心考點：</strong> LRFD 梁桿件設計三段式 LTB 流程：<br />
+1. 確認結實斷面（排除局部挫屈）<br />
+2. 計算 $L_p$、$L_r$，判斷控制極限狀態<br />
+3. 對各無束制段計算 $C_b$，求 $\phi_b M_n$<br />
+4. 以最大彎矩對應設計強度求解 $w_{n,cr}$</p>
+<p><strong>出題者意圖：</strong> 載重只放在兩側，讓中間 BC 段成為<strong>均勻彎矩段</strong>（$C_b = 1.0$，最不利），且 $L_b = 6$ m 恰好略大於 $L_r$ → 彈性 LTB 控制。測的是讀圖、彎矩圖與 $C_b$ 的判斷。</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>解題順序：</strong></p>
@@ -147,17 +145,22 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tr>
 <td>② Mn 的上限</td>
 <td>忘記 $M_n \leq M_p$</td>
-<td>即使 $C_b \times M_{cr} > M_p$，仍要以 $M_p$ 為上限</td>
+<td>即使 $C_b \times M_{cr} &gt; M_p$，仍要以 $M_p$ 為上限</td>
 </tr>
 <tr>
-<td>③ 控制段</td>
-<td>誤以為 AB 或 CD 控制</td>
-<td>BC 段彎矩需求最大（含跨中最大彎矩），為控制段</td>
+<td>③ 載重範圍</td>
+<td>把 $w$ 當成全跨</td>
+<td>圖上 $w$ 只在 AB、CD 兩段；BC 段無載重 → BC 段彎矩為常數 $18w$</td>
 </tr>
 <tr>
-<td>④ Lr 的計算</td>
+<td>④ 均勻彎矩的 $C_b$</td>
+<td>把 $M_1/M_2 = +1$ 代入 1.75 式得 3.10</td>
+<td>均勻彎矩是<strong>單曲率</strong>，$M_1/M_2 = -1$ → $C_b = 1.75 - 1.05 + 0.3 = 1.0$（四分點式同為 1.0）</td>
+</tr>
+<tr>
+<td>⑤ Lr 的計算</td>
 <td>跳過 X1、X2 直接查表</td>
-<td>題目給了斷面參數，需完整計算 X1、X2 後求 Lr</td>
+<td>題目給了斷面參數，需完整計算 X1、X2 後求 Lr；題目未給 $F_r$，熱軋取 0.69 t/cm²（10 ksi）</td>
 </tr>
 </tbody>
 </table>
@@ -166,12 +169,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <blockquote>
 <p>複習提示：解題後，在每個卡住的知識點「卡關?」欄標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
 </blockquote>
-<p><strong>最終目標：</strong> 驗結實斷面 → 算 $L_p, X_1, X_2, L_r$ → 判斷各段 LTB 區段 → 各段 $C_b$ → $\phi_b M_n$ → BC 段（含最大彎矩）控制 → 求 $w_{n,cr} \approx 2.50$ t/m</p>
+<p><strong>最終目標：</strong> 驗結實斷面 → 算 $L_p, X_1, X_2, L_r$ → 判斷各段 LTB 區段 → 各段 $C_b$ → $\phi_b M_n$ → BC 段（均勻彎矩 $18w$、$C_b = 1$、彈性 LTB）控制 → 求 $w_{n,cr} = 3.73$ t/m</p>
 <h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
 <p>$$\boxed{M_p} = F_y Z_x, \quad \phi_b M_p = 0.9 M_p$$</p>
 <p>$$\boxed{L_p} = \frac{80 r_y}{\sqrt{F_y}}, \quad \boxed{X_1} = \frac{\pi}{S_x}\sqrt{\frac{EGJA}{2}}, \quad \boxed{X_2} = \frac{4C_w}{I_y}\left(\frac{S_x}{GJ}\right)^2$$</p>
 <p>$$\boxed{L_r} = \frac{r_y X_1}{F_y - F_r}\sqrt{1 + \sqrt{1 + X_2(F_y-F_r)^2}}$$</p>
-<p>$$\boxed{M_n} = C_b \cdot M_{cr}(C_b=1) \leq M_p \quad \Rightarrow \quad w_{n,cr} = \frac{\phi_b M_n}{M_u/w}$$</p>
+<p>$$\boxed{M_n} = C_b \cdot M_{cr}(C_b=1) \leq M_p \quad \Rightarrow \quad w_{n,cr} = \frac{\phi_b M_n}{18}\quad(M_{max} = M_B = M_C = 18w)$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -262,12 +265,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>$\lambda_{p,f} = 17/\sqrt{F_y}$</td>
-<td>$9.09$ → $\lambda_f < \lambda_{p,f}$ ✓</td>
+<td>$9.09$ → $\lambda_f &lt; \lambda_{p,f}$ ✓</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$\lambda_w = h/t_w$</td>
-<td>$38.31 < \lambda_{p,w} = 90.87$ ✓ 結實腹板</td>
+<td>$38.31 &lt; \lambda_{p,w} = 90.87$ ✓ 結實腹板</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -321,12 +324,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>$L_r$</td>
-<td>代入公式 $= 579$ cm；$L_b = 600 > L_r$ → 彈性 LTB</td>
+<td>代入公式 $= 579$ cm；$L_b = 600 &gt; L_r$ → 彈性 LTB</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Step 4：各段 $C_b$ 與 $M_n$</strong></p>
+<p><strong>Step 4：彎矩圖、各段 $C_b$ 與 $M_n$</strong></p>
 <table>
 <thead>
 <tr>
@@ -337,23 +340,28 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </thead>
 <tbody>
 <tr>
-<td>$M_{cr}(C_b=1)$</td>
-<td>彈性 LTB 公式，$L_b/r_y = 129.03$ → $7469$ t·cm</td>
+<td>反力</td>
+<td>總載重 $12w$，對稱 → $R_A = R_D = 6w$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>$C_b$（AB/CD 段）</td>
-<td>$1.75 + 1.05(0) = 1.75$；$1.75 \times 7469 > M_p$ → $M_n = M_p$</td>
+<td>$M_B = M_C$</td>
+<td>$6w \times 6 - w \times 6^2/2 = 18w$；BC 段無載重 → <strong>常數 $18w$</strong></td>
+<td style="text-align: center;">⚠</td>
+</tr>
+<tr>
+<td>$M_{cr}(C_b=1)$</td>
+<td>彈性 LTB 公式，$L_b/r_y = 129.03$ → $7{,}465$ t·cm</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$C_b$（BC 段）</td>
-<td>計算值 3.10 &gt; 2.3 → 取 $C_b = 2.3$；$M_n = M_p$</td>
-<td style="text-align: center;"></td>
+<td>均勻彎矩、單曲率 → <strong>1.0</strong> → $M_n = 74.65$ t·m</td>
+<td style="text-align: center;">⚠</td>
 </tr>
 <tr>
-<td>$\phi_b M_n$</td>
-<td>$0.9 \times 11242 = 10118$ t·cm = 101.18 t·m（各段相同）</td>
+<td>$C_b$（AB／CD 段）</td>
+<td>四分點 $7.875w, 13.5w, 16.875w$，$M_{max} = 18w$ → 1.30；$M_n = 96.9$ t·m</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -370,12 +378,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>控制段</td>
-<td>BC 段；最大彎矩 $M_u = 40.5w$（跨中值）</td>
+<td>BC 段（需求 $18w$ 與 AB、CD 相同，但強度最低）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$w_{n,cr}$</td>
-<td>$101.18/40.5 = 2.498 \approx 2.50$ t/m</td>
+<td>$\phi_bM_n/18 = 0.9 \times 74.65/18 = 3.73$ t/m</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -393,7 +401,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>LTB 三段判斷</td>
-<td>$L_b \leq L_p$：塑性；$L_p < L_b \leq L_r$：非彈性；$L_b > L_r$：彈性</td>
+<td>$L_b \leq L_p$：塑性；$L_p &lt; L_b \leq L_r$：非彈性；$L_b &gt; L_r$：彈性</td>
 <td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">LATERAL-TORSIONAL-BUCKLING</span></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -404,14 +412,14 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>$C_b$ 上限 2.3</td>
-<td>ASD 舊版 $C_b$ 公式有 2.3 上限（非均勻彎矩不能無限提升）</td>
+<td>$C_b$ 的 $M_1/M_2$ 正負號</td>
+<td>雙曲率（反向彎）為正、單曲率為負；均勻彎矩 $M_1/M_2 = -1$ → $C_b = 1.0$</td>
 <td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">cb-factor</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BENDING-MODIFICATION-FACTOR-CB</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>$C_b \times M_{cr} > M_p$</td>
-<td>彈性 LTB 範圍內，$C_b$ 足夠大時 $M_n$ 仍可取 $M_p$</td>
+<td>讀載重範圍</td>
+<td>均佈載重箭頭畫到哪裡，彎矩圖就長什麼樣；部分跨載重常製造均勻彎矩段</td>
 <td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -435,12 +443,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>翼板寬厚比：</strong></p>
 <p>$$\lambda_f = \frac{b_f}{2t_f} = \frac{21.22}{2 \times 2.12} = 5.00$$</p>
 <p>$$\lambda_{p,f} = \frac{17}{\sqrt{F_y}} = \frac{17}{\sqrt{3.5}} = \frac{17}{1.871} = 9.09$$</p>
-<p>$\lambda_f = 5.00 < \lambda_{p,f} = 9.09$ ✅ 結實翼板</p>
+<p>$\lambda_f = 5.00 &lt; \lambda_{p,f} = 9.09$ ✅ 結實翼板</p>
 <p><strong>腹板寬厚比（純彎曲，$f_a = 0$）：</strong></p>
 <p>$$h = d - 2t_f = 54.43 - 2(2.12) = 50.19 \text{ cm}$$</p>
 <p>$$\lambda_w = \frac{h}{t_w} = \frac{50.19}{1.31} = 38.31$$</p>
 <p>$$\lambda_{p,w} = \frac{170}{\sqrt{F_y}} = \frac{170}{\sqrt{3.5}} = \frac{170}{1.871} = 90.87$$</p>
-<p>$\lambda_w = 38.31 < \lambda_{p,w} = 90.87$ ✅ 結實腹板</p>
+<p>$\lambda_w = 38.31 &lt; \lambda_{p,w} = 90.87$ ✅ 結實腹板</p>
 <blockquote>
 <p><strong>結論：結實斷面（Compact Section）</strong>，塑性彎矩 $M_p$ 為斷面最大撓曲強度。</p>
 </blockquote>
@@ -481,9 +489,9 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>各無束制段之 $L_b$（A-B、B-C、C-D）均為：</p>
 <p>$$L_b = L/3 = 18/3 = 6 \text{ m} = 600 \text{ cm}$$</p>
 <p><strong>比較：</strong></p>
-<p>$$L_p = 199 \text{ cm} < L_r = 579 \text{ cm} < L_b = 600 \text{ cm}$$</p>
+<p>$$L_p = 199 \text{ cm} &lt; L_r = 579 \text{ cm} &lt; L_b = 600 \text{ cm}$$</p>
 <blockquote>
-<p><strong>$L_b > L_r$ → 彈性 LTB 控制！</strong></p>
+<p><strong>$L_b &gt; L_r$ → 彈性 LTB 控制！</strong></p>
 </blockquote>
 <p>使用彈性 LTB 公式（LRFD）：</p>
 <p>$$M_n = \frac{C_b S_x X_1 \sqrt{2}}{L_b/r_y}\sqrt{1 + \frac{X_1^2 X_2}{2(L_b/r_y)^2}} \leq M_p$$</p>
@@ -494,134 +502,175 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$S_x X_1 \sqrt{2} = 2802 \times 177.4 \times 1.4142 = 703{,}022 \text{ t·cm}$$</p>
 <p>$$M_{cr}(C_b=1) = \frac{703{,}022}{129.03} \times 1.3704 = 5{,}449 \times 1.3704 = \mathbf{7{,}469 \text{ t·cm}}$$</p>
 <hr />
-<h3>Step 6：各無束制段之 $C_b$ 與 $M_n$</h3>
-<p><strong>彎矩分布（簡支梁，均佈載重 $w$）：</strong></p>
-<p>$$M(x) = \frac{wL}{2} \cdot x - \frac{w}{2}x^2 \quad (w \text{ 單位 t/m，} x \text{ 單位 m，} M \text{ 單位 t·m})$$</p>
-<p>關鍵點彎矩（以 w 表示）：</p>
+<h3>Step 6：彎矩圖與各段 $C_b$、$M_n$</h3>
+<p><strong>載重與反力（依原圖：$w$ 只作用於 AB、CD）：</strong></p>
+<p>$$R_A = R_D = \frac{w \times 6 + w \times 6}{2} = 6w$$</p>
+<p>$$M(x) = 6w\,x - \frac{w x^2}{2}\quad(0 \le x \le 6),\qquad M = 18w\quad(6 \le x \le 12)$$</p>
 <table>
 <thead>
 <tr>
 <th>位置</th>
-<th>$x$ (m)</th>
-<th>$M$ (t·m)</th>
+<th style="text-align: center;">$x$ (m)</th>
+<th style="text-align: center;">$M$ (t·m)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>A</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td>AB 四分點</td>
+<td style="text-align: center;">1.5 / 3.0 / 4.5</td>
+<td style="text-align: center;">$7.875w$ / $13.5w$ / $16.875w$</td>
 </tr>
 <tr>
 <td>B</td>
-<td>6</td>
-<td>$9 \times 6 \cdot w - 18w = 36w$</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">$18w$（AB 段在 B 點斜率 $6w - 6w = 0$）</td>
 </tr>
 <tr>
-<td>跨中</td>
-<td>9</td>
-<td>$81w - 40.5w = 40.5w$（最大值）</td>
+<td>B–C</td>
+<td style="text-align: center;">6～12</td>
+<td style="text-align: center;"><strong>$18w$（常數）</strong></td>
 </tr>
 <tr>
 <td>C</td>
-<td>12</td>
-<td>$36w$（對稱）</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">$18w$</td>
 </tr>
 <tr>
 <td>D</td>
-<td>18</td>
-<td>0</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">0</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p><strong>段 A-B（$x$ = 0 到 6 m）：</strong></p>
-<p>$$C_b = 1.75 + 1.05\frac{M_A}{M_B} + 0.3\left(\frac{M_A}{M_B}\right)^2$$</p>
-<ul>
-<li>$M_A = 0$（支承），$M_B = 36w$（較大端）</li>
-<li>$M_A/M_B = 0$</li>
-</ul>
-<p>$$C_b = 1.75 + 1.05(0) + 0.3(0)^2 = \mathbf{1.75}$$</p>
-<p>$$M_n = 1.75 \times 7{,}469 = 13{,}071 \text{ t·cm} > M_p = 11{,}242 \text{ t·cm}$$</p>
-<p>$$\Rightarrow M_n = M_p = 11{,}242 \text{ t·cm} = 112.42 \text{ t·m}$$</p>
+<p><strong>段 B-C（均勻彎矩，控制段）：</strong></p>
+<p>均勻彎矩使受壓翼板全段受同樣大的壓力，是 LTB 最不利的情形。以 1.75 式計算時，兩端彎矩同向使梁<strong>單曲率</strong>彎曲，$M_1/M_2 = -1$：</p>
+<p>$$C_b = 1.75 + 1.05(-1) + 0.3(-1)^2 = 1.0$$</p>
+<p>（四分點式：$12.5 \times 18w/(2.5 \times 18w + 3 \times 18w + 4 \times 18w + 3 \times 18w) = 1.0$，相同。）</p>
+<p>$$M_n = 1.0 \times 7{,}465 = 7{,}465\ \text{t·cm} &lt; M_p = 11{,}242\ \text{t·cm}$$</p>
+<p>$$\phi_bM_n = 0.9 \times 74.65 = 67.18\ \text{t·m}$$</p>
 <hr />
-<p><strong>段 B-C（$x$ = 6 到 12 m，含跨中最大彎矩）：</strong></p>
-<ul>
-<li>$M_B = 36w$，$M_C = 36w$（雙端相等）</li>
-<li>$M_A/M_B = 36w/36w = 1.0$</li>
-</ul>
-<p>$$C_b = 1.75 + 1.05(1.0) + 0.3(1.0)^2 = 3.10 > 2.3 \Rightarrow C_b = \mathbf{2.3}$$</p>
-<p>$$M_n = 2.3 \times 7{,}469 = 17{,}179 \text{ t·cm} > M_p \Rightarrow M_n = M_p = 11{,}242 \text{ t·cm}$$</p>
-<hr />
-<p><strong>段 C-D（$x$ = 12 到 18 m）：對稱於 A-B</strong></p>
-<p>$$C_b = \mathbf{1.75} \Rightarrow M_n = M_p = 11{,}242 \text{ t·cm}$$</p>
-<hr />
-<p><strong>統整：三段之設計強度均相同</strong></p>
-<p>$$\phi_b M_n = 0.9 \times 11{,}242 = 10{,}118 \text{ t·cm} = \mathbf{101.18 \text{ t·m}}$$</p>
-<blockquote>
-<p><strong>策略註解：</strong> 即使 $L_b > L_r$（彈性 LTB 範圍），各段 $C_b$ 均足夠大，使 $C_b \times M_{cr} > M_p$，故 $M_n$ 仍以 $M_p$ 控制。本題的關鍵在於 $L_r = 579$ cm 僅略小於 $L_b = 600$ cm，$C_b$ 的提升效果足以補償。</p>
-</blockquote>
+<p><strong>段 A-B（C-D 對稱）：</strong></p>
+<p>四分點式 $C_b = \dfrac{12.5 \times 18}{2.5 \times 18 + 3 \times 7.875 + 4 \times 13.5 + 3 \times 16.875} = 1.30$（若用 1.75 式，$M_A = 0$ → 1.75）</p>
+<p>$$M_n = \min(1.30 \times 74.65,\ M_p) = 96.9\ \text{t·m}\ \ (\text{1.75 式則達 } M_p = 112.4)$$</p>
 <hr />
 <h3>Step 7：求解 $w_{n,cr}$</h3>
-<p>各段最大彎矩需求：</p>
 <table>
 <thead>
 <tr>
 <th>無束制段</th>
-<th>最大彎矩需求 $M_u$</th>
-<th>$\phi_b M_n$</th>
-<th>對應 $w$</th>
+<th style="text-align: center;">最大彎矩需求</th>
+<th style="text-align: center;">$\phi_b M_n$ (t·m)</th>
+<th style="text-align: center;">對應 $w$ (t/m)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>A-B</td>
-<td>$36w$ (t·m)</td>
-<td>101.18 t·m</td>
-<td>$w \leq 2.811$ t/m</td>
+<td style="text-align: center;">$18w$</td>
+<td style="text-align: center;">87.3</td>
+<td style="text-align: center;">4.85</td>
 </tr>
 <tr>
 <td><strong>B-C</strong></td>
-<td><strong>$40.5w$ (t·m)</strong></td>
-<td><strong>101.18 t·m</strong></td>
-<td><strong>$w \leq 2.498$ t/m ← 控制</strong></td>
+<td style="text-align: center;"><strong>$18w$</strong></td>
+<td style="text-align: center;"><strong>67.18</strong></td>
+<td style="text-align: center;"><strong>3.73 ← 控制</strong></td>
 </tr>
 <tr>
 <td>C-D</td>
-<td>$36w$ (t·m)</td>
-<td>101.18 t·m</td>
-<td>$w \leq 2.811$ t/m</td>
+<td style="text-align: center;">$18w$</td>
+<td style="text-align: center;">87.3</td>
+<td style="text-align: center;">4.85</td>
 </tr>
 </tbody>
 </table>
-<p><strong>控制段為 B-C（含最大彎矩 40.5w）：</strong></p>
-<p>$$40.5 \cdot w_{n,cr} = 101.18 \text{ t·m}$$</p>
-<p>$$\boxed{w_{n,cr} = \frac{101.18}{40.5} \approx 2.498 \text{ t/m} \approx 2.50 \text{ t/m}}$$</p>
+<p>$$18\,w_{n,cr} = 67.18\ \Rightarrow\ \boxed{w_{n,cr} = 3.73\ \text{t/m}}$$</p>
+<p>（不乘 $\phi_b$ 的標稱值：$w = 74.65/18 = 4.15$ t/m。）</p>
+<p><strong>雙路徑驗算：</strong> 直接以 AISC 彈性 LTB 式 $M_{cr} = \dfrac{\pi}{L_b}\sqrt{EI_yGJ + \left(\dfrac{\pi E}{L_b}\right)^2I_yC_w}$ 計算：$\dfrac{\pi}{600}\sqrt{2100 \times 3388 \times 840 \times 181 + (\pi \times 2100/600)^2 \times 3388 \times 2{,}317{,}464} = 7{,}462$ t·cm ✔，與 $X_1$、$X_2$ 式（7,465）相同。</p>
 <hr />
 <h3>Step 8：剪力驗核（確認不控制）</h3>
-<p>最大設計剪力（在支承 A 或 D）：</p>
-<p>$$V_u = w_{n,cr} \times \frac{L}{2} = 2.50 \times 9 = 22.5 \text{ t}$$</p>
-<p>$$A_w = h \cdot t_w = 50.19 \times 1.31 = 65.75 \text{ cm}^2$$</p>
-<p>$$\phi_v V_n = 1.0 \times 0.6 F_y A_w = 1.0 \times 0.6 \times 3.5 \times 65.75 = 138.1 \text{ t}$$</p>
-<p>$$22.5 \text{ t} \ll 138.1 \text{ t} \quad \checkmark \text{（剪力不控制）}$$</p>
+<p>$$V_u = 6w = 6 \times 3.73 = 22.4\ \text{t},\qquad \phi_vV_n = 0.9 \times 0.6 \times 3.5 \times (54.43 \times 1.31) = 134.7\ \text{t}\quad\checkmark$$</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
-<h3>為何 Lb 略超過 Lr 但仍能達到 Mp？</h3>
-<p>$L_r = 579$ cm 是「$C_b = 1$（均勻彎矩）條件下，彈性 LTB 開始的長度」。當 $L_b$ 略超過 $L_r$ 但 $C_b$ 顯著大於 1 時：</p>
-<p>$$C_b \times M_{cr}(C_b=1) > M_p \quad \Rightarrow \quad M_n = M_p$$</p>
-<p>物理意義：不均勻彎矩（梯度）提升了對側向扭轉的抵抗，使彈性 LTB 強度超過了斷面塑性化能力，因此「有效地」讓斷面能達到 $M_p$。</p>
-<h3>本題 Cb 計算的精確性問題</h3>
-<p>本題使用的 Cb 公式為：</p>
-<p>$$C_b = 1.75 + 1.05\frac{M_A}{M_B} + 0.3\left(\frac{M_A}{M_B}\right)^2$$</p>
-<p>此公式只考慮<strong>兩端彎矩的比值</strong>，未直接考慮段內的彎矩分布。現代 AISC 360 改用四分點公式：</p>
-<p>$$C_b = \frac{12.5 M_{max}}{2.5 M_{max} + 3M_A + 4M_B + 3M_C}$$</p>
-<p>此處 $M_A$、$M_B$、$M_C$ 為段內 1/4、1/2、3/4 點之彎矩。考場使用題目所提供的公式（1.75 公式）即可。</p>
+<h3>舊版解析的兩處錯誤</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>舊解</th>
+<th>正確</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>載重範圍</td>
+<td>全跨均佈，跨中 $40.5w$</td>
+<td>只在 AB、CD；BC 段常數 $18w$</td>
+</tr>
+<tr>
+<td>BC 段 $C_b$</td>
+<td>$M_1/M_2 = +1$ → 3.10 → 取 2.3 → $M_n = M_p$</td>
+<td>單曲率 $M_1/M_2 = -1$ → <strong>1.0</strong> → 彈性 $M_{cr}$</td>
+</tr>
+<tr>
+<td>$w_{n,cr}$</td>
+<td>2.50 t/m</td>
+<td><strong>3.73 t/m</strong></td>
+</tr>
+</tbody>
+</table>
+<p>第二個錯誤即使載重判讀正確也會出現：「兩端彎矩相等」在 1.75 式中代 $+1$ 會得到最大 $C_b$，但兩端彎矩相等且同號正是<strong>均勻彎矩、單曲率</strong>，應代 $-1$。記法：單曲率（中段沒有反曲點）$M_1/M_2 &lt; 0$，$C_b$ 偏小；雙曲率（中段有反曲點）$M_1/M_2 &gt; 0$，$C_b$ 偏大。</p>
+<h3>題目未給 $F_r$</h3>
+<p>本解取熱軋型鋼 $F_r = 0.69$ t/cm²（10 ksi），$L_r = 579$ cm，$L_b = 600$ cm 剛好落在彈性段。若取 1.16 t/cm²（銲接組合），$L_r = 656$ cm，BC 段改為非彈性 $M_n = 71.4$ t·m，$w_{n,cr} = 3.57$ t/m，差約 4%。</p>
 <h3>$X_1$、$X_2$ 的物理意義</h3>
 <ul>
 <li>$X_1$：代表截面抵抗 <strong>St. Venant 扭轉</strong>與彎矩慣性矩的綜合指標，$X_1$ 越大，翹曲行為越顯著</li>
 <li>$X_2$：代表截面<strong>翹曲剛度</strong>（$C_w$）相對於扭轉剛度（$GJ$）的比值，$X_2$ 越大，翹曲扭轉在 LTB 中的貢獻越大</li>
 </ul>
 <p>$L_r$ 正是利用 $X_1$、$X_2$ 求得的彈性 LTB 開始點（$C_b = 1$，$F_b = F_y - F_r$）。</p>
+<hr />
+<h2>6. 依最新規範（AISC 360-16／-22）對照</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">考卷（LRFD 1993 系）</th>
+<th style="text-align: left;">AISC 360-16／-22</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$L_p$</td>
+<td style="text-align: left;">$80r_y/\sqrt{F_y}$ = 199 cm</td>
+<td style="text-align: left;">$1.76r_y\sqrt{E/F_y}$ = 200 cm</td>
+</tr>
+<tr>
+<td style="text-align: left;">$L_r$</td>
+<td style="text-align: left;">$X_1$、$X_2$ 式，$F_L = F_y - F_r$</td>
+<td style="text-align: left;">$1.95r_{ts}\dfrac{E}{0.7F_y}\sqrt{\dfrac{Jc}{S_xh_o} + \sqrt{\left(\dfrac{Jc}{S_xh_o}\right)^2 + 6.76\left(\dfrac{0.7F_y}{E}\right)^2}}$，以 $0.7F_y$ 取代 $F_y - F_r$</td>
+</tr>
+<tr>
+<td style="text-align: left;">均勻彎矩 $C_b$</td>
+<td style="text-align: left;">1.0</td>
+<td style="text-align: left;">1.0（四分點式）</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\phi_b$</td>
+<td style="text-align: left;">0.9</td>
+<td style="text-align: left;">0.9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本題以 360-16 估算：</strong> $r_{ts} = \sqrt{\sqrt{I_yC_w}/S_x} = 5.62$ cm、$h_o = 52.31$ cm → $L_r = 631$ cm，$L_b = 600$ cm 改落在<strong>非彈性</strong>段：$M_n = 112.42 - (112.42 - 68.65) \times \dfrac{600 - 200.5}{631 - 200.5} = 71.8$ t·m，$w_{n,cr} = 3.59$ t/m，與考卷版（3.73）相差約 4%。差異來自新版以 $0.7F_y$ 取代 $F_y - F_r$。</p>
+<hr />
+<p><em>修正日期：2026-11-01（依考卷原圖：均佈載重 $w$ 只作用於 AB、CD 兩段，原解誤作全跨，致跨中彎矩 $40.5w$；更正 BC 段為常數 $18w$。另更正均勻彎矩段 $C_b$ 之正負號（原解代 $M_1/M_2 = +1$ 得 3.10，應為單曲率 $-1$ → 1.0）。BC 段 $L_b = 6$ m $&gt; L_r = 5.79$ m 彈性 LTB 控制，$w_{n,cr}$ 由 2.50 更正為 <strong>3.73 t/m</strong>（標稱 4.15）；新增雙路徑驗算、$F_r$ 敏感度與 §6 對照）</em><br />
+<em>驗證狀態：unverified</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2008-3/SS-2008-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

@@ -723,6 +723,7 @@ def build_html(subject, subj_name, A, today, script_rel):
 {CSS}
 </head>
 <body>
+<style>@media print{{#start-backlink{{display:none}}}}</style><div id="start-backlink" style="font:14px/1.6 'Noto Sans TC',system-ui,sans-serif;padding:8px 16px;background:#2f4a5e;color:#fff"><a href="../start.html" style="color:#fff;text-decoration:none">← 從這裡開始（SS 學習路徑）</a></div>
 <header>
 <h1>{subject} {subj_name} — 全科出題頻率熱圖</h1>
 <p>{span(years)}，{year_desc}｜資料來源：raw/json/question_index.json｜更新日期 {today}</p>

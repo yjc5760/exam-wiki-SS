@@ -85,6 +85,7 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 </style>
 </head>
 <body>
+<style>@media print{#start-backlink{display:none}}</style><div id="start-backlink" style="font:14px/1.6 'Noto Sans TC',system-ui,sans-serif;padding:8px 16px;background:#2f4a5e;color:#fff"><a href="../start.html" style="color:#fff;text-decoration:none">← 從這裡開始（SS 學習路徑）</a></div>
 
 <header>
   <h1>SS-U1-2 梁桿件 — 觀念講義</h1>
@@ -1565,12 +1566,12 @@ $$V_n = 0.6F_{yw}A_w\left[C_v + \frac{1-C_v}{1.15\sqrt{1+(a/h)^2}}\right]$$
 <tbody>
 <tr><td><a class="qlink" href="problems-view/SS-2002-1.html" target="_blank">SS-2002-1</a></td><td>91</td><td>概念</td><td>剪力流 \(q=VQ/I\)、弱軸剪力由翼板承擔、殘留應力、銲接氫致裂縫</td><td>§6, §8.1</td><td>弱軸剪力公式與腹板承剪完全不同</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2002-2.html" target="_blank">SS-2002-2</a></td><td>91</td><td>ASD</td><td>\(L_c/L_u/F_b\) 系統、移動集中載重最不利位置、自重疊加、容許彎矩</td><td>§5, §7</td><td>自重產生的 \(wL^2/8\) 不可漏；移動載重在跨中最不利</td></tr>
-<tr><td><a class="qlink" href="problems-view/SS-2005-2.html" target="_blank">SS-2005-2</a></td><td>94</td><td>LRFD</td><td>SRC 包覆型斷面、塑性應力分佈法、PNA 定位、公稱彎矩強度</td><td>§9.2, §1.2</td><td>先判斷 PNA 在鋼骨內還是混凝土內</td></tr><tr><td><a class="qlink" href="problems-view/SS-2006-3.html" target="_blank">SS-2006-3</a></td><td>95</td><td>LRFD</td><td>H600×300×12×20 斷面性質：\(I_x\)、\(r_y\)、\(Z_x\)、\(M_p\)</td><td>§1</td><td>\(Z_x\) 用半面積一次矩；\(M_p=F_yZ_x\) 考卷從不印</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2005-2.html" target="_blank">SS-2005-2</a></td><td>94</td><td>LRFD</td><td>SRC 包覆型斷面、塑性應力分佈法、PNA 定位、公稱彎矩強度</td><td>§9.2, §1.2</td><td>先判斷 PNA 在鋼骨內還是混凝土內；\(0.85f'_c = 0.1785\) tf/cm²（單位別錯 10 倍）</td></tr><tr><td><a class="qlink" href="problems-view/SS-2006-3.html" target="_blank">SS-2006-3</a></td><td>95</td><td>LRFD</td><td>H600×300×12×20 斷面性質：\(I_x\)、\(r_y\)、\(Z_x\)、\(M_p\)</td><td>§1</td><td>\(Z_x\) 用半面積一次矩；\(M_p=F_yZ_x\) 考卷從不印</td></tr>
 
 <tr><td><a class="qlink" href="problems-view/SS-2006-4.html" target="_blank">SS-2006-4</a></td><td>95</td><td>概念</td><td>板梁腹板剪力挫屈、張力場效應、加勁板設計、後挫屈強度</td><td>§9.3, §6.2</td><td>端部面板不得用張力場</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2007-3.html" target="_blank">SS-2007-3</a></td><td>96</td><td>LRFD</td><td>LTB 三區段完整計算、\(X_1/X_2\) 推導、\(L_p/L_r\)、\(C_b\)、\(\phi_bM_n\)</td><td>§3 全, §4</td><td>本單元最標準的完整題型</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2008-1.html" target="_blank">SS-2008-1</a></td><td>97</td><td>ASD</td><td>St. Venant 扭轉 vs 翹曲扭轉的角色、\(F_b\) 公式選取、觀念辨析</td><td>§3.1, §5.2</td><td>兩式取<b>大</b>（同一機制的兩種保守估計）</td></tr>
-<tr><td><a class="qlink" href="problems-view/SS-2008-3.html" target="_blank">SS-2008-3</a></td><td>97</td><td>LRFD</td><td>多側撐段各自算 \(C_b\)、找控制段、結實斷面、均佈載重</td><td>§4.3</td><td>控制段未必是彎矩最大的那段</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2008-3.html" target="_blank">SS-2008-3</a></td><td>97</td><td>LRFD</td><td>多側撐段各自算 \(C_b\)、找控制段、結實斷面、只作用於兩側的均佈載重</td><td>§4.3</td><td>載重只在兩側 → 中段為均勻彎矩、\(C_b = 1.0\)（單曲率 \(M_1/M_2 = -1\)），最不利</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2009-3.html" target="_blank">SS-2009-3</a></td><td>98</td><td>LRFD</td><td>斷面性質、\(M_p/M_y\) 與形狀因子、剪力強度 \(V_n\)、弱軸挫屈 \(\lambda_c\)、平行軸定理</td><td>§1, §6</td><td>一題同時考彎矩、剪力、挫屈三件事</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2010-4.html" target="_blank">SS-2010-4</a></td><td>99</td><td>LRFD</td><td>斷面選擇（設計型）、使用性撓度 \(L/360\)、全側撐、樓版載重</td><td>§7, §3.4</td><td>撓度用服務載重；先強度選斷面再驗撓度</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2011-3.html" target="_blank">SS-2011-3</a></td><td>100</td><td>LRFD</td><td>非彈性 LTB 完整流程、端彎矩下的 \(C_b\)、\(X_1/X_2\)、\(L_p/L_r\)、結實斷面</td><td>§3, §4</td><td>覆蓋率最高的單一題目</td></tr>
@@ -1582,7 +1583,7 @@ $$V_n = 0.6F_{yw}A_w\left[C_v + \frac{1-C_v}{1.15\sqrt{1+(a/h)^2}}\right]$$
 <tr><td><a class="qlink" href="problems-view/SS-2019-2.html" target="_blank">SS-2019-2</a></td><td>108</td><td>LRFD</td><td>合成梁完全合成、有效寬度、PNA、塑性應力分布、正彎矩 \(M_n\)</td><td>§9.2</td><td>\(b_{\text{eff}}\) 是兩側之和；先比 \(C_c\) 與 \(C_s\)</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2021-3.html" target="_blank">SS-2021-3</a></td><td>110</td><td>LRFD</td><td><b>耐震</b>緊實斷面 \(\lambda_{pd}\)、SN 鋼材、LTB、形狀因子、斷面選擇</td><td>§2.2, §3</td><td>耐震用更嚴的 \(\lambda_{pd}\)，不是一般 \(\lambda_p\)</td></tr>
 
-<tr><td><a class="qlink" href="problems-view/SS-2024-3.html" target="_blank">SS-2024-3</a></td><td>113</td><td>LRFD</td><td>非彈性 LTB、\(C_b\)、強弱軸比較、弱軸彎曲、SN490B、\(M_p\)</td><td>§3, §8</td><td>強弱軸都要算完才能下結論</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2024-3.html" target="_blank">SS-2024-3</a></td><td>113</td><td>LRFD</td><td>外伸梁（\(M_u\) 在中間支承）、非彈性 LTB、\(C_b\)、強弱軸比較、弱軸彎曲、SN490B、\(M_p\)</td><td>§3, §8</td><td>強弱軸都要算完才能下結論</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2025-1.html" target="_blank">SS-2025-1</a></td><td>114</td><td>LRFD</td><td><b>銲接組合斷面</b>自建斷面性質、寬厚比、殘留應力、完全側撐 → \(M_p\)</td><td>§1, §2, §3.3</td><td>銲接 \(F_r=1.16\)；\(F_r\) 不影響 \(M_p\)</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2025-3.html" target="_blank">SS-2025-3</a></td><td>114</td><td>LRFD</td><td>LTB 三區段、\(M_p\) 與 \(M_r\)、\(L_p/L_r\)、熱軋斷面殘留應力、\(\phi_bM_n\)</td><td>§3 全</td><td>熱軋 \(F_r=0.7\)；\(S_x\) 的 \(c\) 用全深一半</td></tr>
 </tbody>
@@ -1593,7 +1594,7 @@ $$V_n = 0.6F_{yw}A_w\left[C_v + \frac{1-C_v}{1.15\sqrt{1+(a/h)^2}}\right]$$
 <table>
 <thead><tr><th style="width:11%">題號</th><th style="width:6%">考年</th><th style="width:16%">主分類</th><th style="width:40%">與本單元的交集</th><th>讀本講義</th></tr></thead>
 <tbody>
-<tr><td><a class="qlink" href="problems-view/SS-2003-1.html" target="_blank">SS-2003-1</a></td><td>92</td><td>拉力及壓力桿件</td><td>子題(二)：梁無承壓加勁板時的<b>腹板承壓降伏</b>發生條件與檢核</td><td>§6</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2003-1.html" target="_blank">SS-2003-1</a></td><td>92</td><td>拉力及壓力桿件</td><td>子題(二)：梁支承處<b>腹板局部降伏</b>的改善措施；子題(四)：依局部挫屈特性的四種斷面</td><td>§6</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2005-4.html" target="_blank">SS-2005-4</a></td><td>94</td><td>塑性分析與設計</td><td>固端梁崩塌機構、塑性鉸、T 形斷面 \(Z_x\)、虛功法</td><td>§9.1, §1.2</td></tr><tr><td><a class="qlink" href="problems-view/SS-2006-1.html" target="_blank">SS-2006-1</a></td><td>95</td><td>拉力及壓力桿件</td><td>結實斷面與局部挫屈的關係、LTB 成因與主要參數（概念）</td><td>§2, §3.1</td></tr>
 
 <tr><td><a class="qlink" href="problems-view/SS-2019-4.html" target="_blank">SS-2019-4</a></td><td>108</td><td>接合之分析與設計</td><td>蓋板組合斷面的<b>剪力流</b> \(q=VQ/I\) → 斷續填角銲間距</td><td>§6, §1</td></tr>

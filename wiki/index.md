@@ -59,9 +59,9 @@
 | ⚠️ [SS-2007-4](problems/SS-2007-4.md) | 96年 | LRFD | 有效長度、K係數、對位圖、nomograph |
 | ⚠️ [SS-2006-1](problems/SS-2006-1.md) | 95年 | 概念題 | 整體挫屈、局部挫屈、結實斷面、LTB側扭挫屈 |
 | ⚠️ [SS-2005-1](problems/SS-2005-1.md) | 94年 | LRFD | 剪力遲滯、U值、淨斷面斷裂、塊狀剪力 |
-| ⚠️ [SS-2003-1](problems/SS-2003-1.md) | 92年 | 概念題 | 塊狀剪力、block shear、腹板承壓降伏、web yielding |
-| ⚠️ [SS-2003-2](problems/SS-2003-2.md) | 92年 | LRFD | SRC複合柱、包覆型複合柱、有效降伏強度Fmy、修正彈性模數Em |
-| ⚠️ [SS-2003-3](problems/SS-2003-3.md) | 92年 | LRFD | 剪力遲滯、螺栓接合、塊狀剪力、WT斷面 |
+| ⚠️ [SS-2003-1](problems/SS-2003-1.md) | 92年 | 概念題 | 塊狀剪力、腹板局部降伏改善、受拉安全係數、局部挫屈斷面分類、Cc |
+| ⚠️ [SS-2003-2](problems/SS-2003-2.md) | 92年 | LRFD | SRC複合柱、包覆型複合柱、有效降伏強度Fmy、修正彈性模數Em、rm下限 |
+| ⚠️ [SS-2003-3](problems/SS-2003-3.md) | 92年 | LRFD | 雙角鋼、雙剪、剪力遲滯、拉剪互制 |
 | ⚠️ [SS-2002-3](problems/SS-2002-3.md) | 91年 | 混合 | 有效長度、K值、端部條件、中間側向支撐 |
 | *副分類：[SS-2019-3](problems/SS-2019-3.md)、[SS-2016-1](problems/SS-2016-1.md)、[SS-2012-3](problems/SS-2012-3.md)、[SS-2009-3](problems/SS-2009-3.md)、[SS-2007-1](problems/SS-2007-1.md)、[SS-2004-2](problems/SS-2004-2.md)、[SS-2002-1](problems/SS-2002-1.md)* | | | |
 ---

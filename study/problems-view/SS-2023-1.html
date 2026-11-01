@@ -48,7 +48,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> 概念題（含計算）<br />
-<strong>標籤：</strong> <code>有效長度</code> <code>K係數</code> <code>對位圖</code> <code>查圖法</code> <code>nomograph</code> <code>側移構架</code> <code>G值</code> <code>不規則框架</code> <code>固接</code> <code>鉸接</code></p>
+<strong>標籤：</strong> <code>有效長度</code> <code>K係數</code> <code>對位圖</code> <code>查圖法</code> <code>nomograph</code> <code>側移構架</code> <code>G值</code> <code>不規則框架</code> <code>固接</code> <code>鉸接</code> <code>對位圖方程式</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>計算精確的有效長度係數，在鋼結構設計中相當重要。請用<strong>查圖的方法</strong>，試求下圖結構各柱子之有效長度係數（$K$）。鉸接（hinge）時，$G$ 可用 10；固接（fixed）時，$G$ 可用 1。（25 分）</p>
@@ -86,21 +86,17 @@ $$G = \frac{\sum (I_c/L_c)}{\sum (I_b/L_b)}$$</p>
 <li>固接（Fixed）：$G = 1$（規範簡化值，代表梁剛度遠大於柱）</li>
 <li>鉸接（Hinge）：$G = 10$（規範簡化值，代表幾乎無束制）</li>
 </ul>
-<p><strong>出題者測驗重點：</strong></p>
-<ol>
-<li>能正確計算各節點 G 值（分清哪些柱、哪些梁連接到此節點）</li>
-<li>能識別本題為<strong>側移構架（Sway Frame）</strong>，需用右側圖（K &gt; 1）</li>
-<li>能處理不規則框架（柱長度相同但 I 值不同、部分柱在中途終止）</li>
-</ol>
+<p><strong>出題者測驗重點：</strong><br />
+1. 能正確計算各節點 G 值（分清哪些柱、哪些梁連接到此節點）<br />
+2. 能識別本題為<strong>側移構架（Sway Frame）</strong>，需用右側圖（K &gt; 1）<br />
+3. 能處理不規則框架（柱長度相同但 I 值不同、部分柱在中途終止）</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫（每根柱需算兩端 G，共查一次圖）：</strong></p>
-<ol>
-<li>明確各柱長度（均為 4m = 400 cm）與 I 值</li>
-<li>計算各節點 G 值（分清各節點連接哪些柱、哪些梁）</li>
-<li>對每根柱，以兩端 G 值查對位圖讀取 K</li>
-<li>列表彙整</li>
-</ol>
+<p><strong>作戰計畫（每根柱需算兩端 G，共查一次圖）：</strong><br />
+1. 明確各柱長度（均為 4m = 400 cm）與 I 值<br />
+2. 計算各節點 G 值（分清各節點連接哪些柱、哪些梁）<br />
+3. 對每根柱，以兩端 G 值查對位圖讀取 K<br />
+4. 列表彙整</p>
 <p><strong>關鍵陷阱：</strong></p>
 <blockquote>
 <p>⚠️ <strong>陷阱1：本題為側移構架（Sway Frame），K &gt; 1</strong><br />
@@ -251,8 +247,8 @@ CF 頂端 F 只與梁 EF 相連，且 F 點上方無柱（第二層右側無柱�
 </tr>
 <tr>
 <td>H</td>
-<td>$7.5/(17+58.33)$</td>
-<td>0.10 ⚠ 常見卡關</td>
+<td>$7.5/58.33$（H 只接梁 GH；梁 EF 在下一層，不屬於 H）</td>
+<td>0.13 ⚠ 常見卡關</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -273,35 +269,35 @@ CF 頂端 F 只與梁 EF 相連，且 F 點上方無柱（第二層右側無柱�
 <td>AD</td>
 <td>1</td>
 <td>0.81</td>
-<td>≈ 1.3</td>
+<td>1.29</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>BE</td>
 <td>1</td>
 <td>0.63</td>
-<td>≈ 1.3</td>
+<td>1.26</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>CF</td>
 <td>10</td>
 <td>2.35</td>
-<td>≈ 2.3</td>
-<td style="text-align: center;"></td>
+<td>2.17</td>
+<td style="text-align: center;">⚠</td>
 </tr>
 <tr>
 <td>DG</td>
 <td>0.81</td>
 <td>0.13</td>
-<td>≈ 1.2</td>
+<td>1.15</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>EH</td>
 <td>0.63</td>
-<td>0.10</td>
-<td>≈ 1.2</td>
+<td>0.13</td>
+<td>1.12</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -457,41 +453,84 @@ CF 頂端 F 只與梁 EF 相連，且 F 點上方無柱（第二層右側無柱�
 <td>AD</td>
 <td>1.0（固接）</td>
 <td>0.81（節點D）</td>
-<td>≈ <strong>1.20</strong></td>
+<td><strong>1.29</strong></td>
 </tr>
 <tr>
 <td>BE</td>
 <td>1.0（固接）</td>
 <td>0.63（節點E）</td>
-<td>≈ <strong>1.17</strong></td>
+<td><strong>1.26</strong></td>
 </tr>
 <tr>
 <td>CF</td>
 <td>10（鉸接）</td>
 <td>2.35（節點F）</td>
-<td>≈ <strong>2.50</strong></td>
+<td><strong>2.17</strong></td>
 </tr>
 <tr>
 <td>DG</td>
 <td>0.81（節點D）</td>
 <td>0.13（節點G）</td>
-<td>≈ <strong>1.12</strong></td>
+<td><strong>1.15</strong></td>
 </tr>
 <tr>
 <td>EH</td>
 <td>0.63（節點E）</td>
 <td>0.13（節點H）</td>
-<td>≈ <strong>1.10</strong></td>
+<td><strong>1.12</strong></td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <p>📌 <strong>查圖說明：</strong><br />
-對位圖中，$G$ 軸從下（0）到上（∞），K 軸在中間。對 AD 柱，連接左軸 $G=1.0$ 與右軸 $G=0.81$ 的直線，與中間 K 軸的交點約在 $K=1.20$。CF 柱兩端 G 值皆較大（10 和 2.35），直線交 K 軸約於 $K=2.50$，反映鉸接底部束制差、K 值明顯偏大。</p>
+對位圖中，$G$ 軸從下（0）到上（∞），K 軸在中間。考場查圖；上表 K 以對位圖本身的方程式 $\dfrac{G_AG_B(\pi/K)^2-36}{6(G_A+G_B)} = \dfrac{\pi/K}{\tan(\pi/K)}$ 精確求解，查圖讀值落在 ±0.05 內即可。</p>
+<p><strong>查圖自我檢查：</strong> CF 柱兩端 $G = 10$ 與 2.35，若讀成 2.5，代表頂端 $G_F$ 要大到約 4.5，與 2.35 不符；AD、BE 底端固接 $G = 1$、頂端 0.6～0.8，K 應在 1.25～1.30，讀成 1.2 以下偏小（不保守）。</p>
 </blockquote>
 <hr />
 <h3>四、結果彙整</h3>
-<p>$$\boxed{K_{AD} \approx 1.20, \quad K_{BE} \approx 1.17, \quad K_{CF} \approx 2.50, \quad K_{DG} \approx 1.12, \quad K_{EH} \approx 1.10}$$</p>
+<p>$$\boxed{K_{AD} = 1.29, \quad K_{BE} = 1.26, \quad K_{CF} = 2.17, \quad K_{DG} = 1.15, \quad K_{EH} = 1.12}$$</p>
+<table>
+<thead>
+<tr>
+<th>柱</th>
+<th style="text-align: center;">K</th>
+<th style="text-align: center;">L (m)</th>
+<th style="text-align: center;">KL (m)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AD</td>
+<td style="text-align: center;">1.29</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5.16</td>
+</tr>
+<tr>
+<td>BE</td>
+<td style="text-align: center;">1.26</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5.04</td>
+</tr>
+<tr>
+<td>CF</td>
+<td style="text-align: center;">2.17</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><strong>8.68</strong></td>
+</tr>
+<tr>
+<td>DG</td>
+<td style="text-align: center;">1.15</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4.61</td>
+</tr>
+<tr>
+<td>EH</td>
+<td style="text-align: center;">1.12</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4.49</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>G 值的物理意義</h3>
@@ -503,18 +542,47 @@ CF 頂端 F 只與梁 EF 相連，且 F 點上方無柱（第二層右側無柱�
 <li>G = ∞：梁無束制力（完全鉸接極限）</li>
 </ul>
 <p>規範取固接 $G=1$（而非 0），是因實際固接底板（base plate）仍有微小轉動；鉸接取 $G=10$（而非 ∞）是因實際鉸接仍有些微摩擦束制。</p>
-<h3>CF 柱 K ≈ 2.5 的工程解讀</h3>
-<p>CF 柱底為鉸接（$G=10$），頂端束制也相對弱（$G_F=2.35$，因梁 EF 的 $I/L$ 較小），導致 K 值高達約 2.5。實務上這表示：</p>
-<p>$$KL = 2.5 \times 4\text{ m} = 10\text{ m}$$</p>
-<p>等效挫屈長度高達 10m，但物理長度只有 4m。設計時必須使用較大的截面，或在 F 點增設水平束制（如與右側牆面連接）來降低 K 值。</p>
+<h3>CF 柱 K ≈ 2.2 的工程解讀</h3>
+<p>CF 柱底為鉸接（$G=10$），頂端束制也相對弱（$G_F=2.35$，因梁 EF 的 $I/L$ 較小），導致 K 值高達 2.17。實務上這表示：</p>
+<p>$$KL = 2.17 \times 4\text{ m} = 8.7\text{ m}$$</p>
+<p>等效挫屈長度約 8.7 m，但物理長度只有 4m。設計時必須使用較大的截面，或在 F 點增設水平束制（如與右側牆面連接）來降低 K 值。</p>
 <h3>對位圖的適用限制</h3>
-<p>AISC 對位圖基於以下假設：</p>
-<ol>
-<li>所有梁柱連接為剛接</li>
-<li>所有柱同時達到挫屈</li>
-<li>梁的兩端轉角相等（遠端為固接時須修正）</li>
-</ol>
+<p>AISC 對位圖基於以下假設：<br />
+1. 所有梁柱連接為剛接<br />
+2. 所有柱同時達到挫屈<br />
+3. 梁的兩端轉角相等（遠端為固接時須修正）</p>
 <p>本題的框架幾何不規則（右側只有一層），理論上對位圖的精確度稍有降低，但考場上查圖結果已是最佳近似解。</p>
+<hr />
+<h2>6. 依最新規範（AISC 360-16／-22）對照</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">考卷（有效長度法）</th>
+<th style="text-align: left;">AISC 360-16／-22</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">對位圖</td>
+<td style="text-align: left;">查圖求 K</td>
+<td style="text-align: left;">附錄 7 有效長度法；解說 C-A-7 附相同對位圖與方程式</td>
+</tr>
+<tr>
+<td style="text-align: left;">支承 G 值</td>
+<td style="text-align: left;">鉸 10、固 1</td>
+<td style="text-align: left;">解說相同建議</td>
+</tr>
+<tr>
+<td style="text-align: left;">主流方法</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">第 C 章直接分析法：構材取 $K = 1$，以二階分析＋剛度折減處理穩定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>修正日期：2026-11-01（G 值無誤，惟 L2 表 $G_H$ 誤算為 0.10（誤將梁 EF 計入），更正為 0.13；原解對位圖讀值偏差，以對位圖方程式精確解更正：AD 1.20 → <strong>1.29</strong>、BE 1.17 → <strong>1.26</strong>、CF 2.50 → <strong>2.17</strong>、DG 1.12 → <strong>1.15</strong>、EH 1.10 → <strong>1.12</strong>；新增查圖自我檢查、KL 彙整與 §6 對照）</em><br />
+<em>驗證狀態：unverified</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2023-1/SS-2023-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

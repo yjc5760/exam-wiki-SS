@@ -140,7 +140,8 @@
         "U值",
         "半圓管",
         "淨截面斷裂",
-        "銲道設計"
+        "銲道設計",
+        "開槽淨面積"
       ],
       "verificationStatus": "unverified",
       "hasHandwritten": false,
@@ -164,7 +165,8 @@
         "弱軸彎曲",
         "SN490B",
         "結實斷面",
-        "塑性彎矩"
+        "塑性彎矩",
+        "外伸梁"
       ],
       "hasHandwritten": false,
       "hasViz": false,
@@ -213,7 +215,8 @@
         "G值",
         "不規則框架",
         "固接",
-        "鉸接"
+        "鉸接",
+        "對位圖方程式"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -430,7 +433,8 @@
         "疊接",
         "斷裂模式",
         "0.6Fy意義",
-        "剪力降伏"
+        "剪力降伏",
+        "節點板塊狀剪力"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -452,7 +456,8 @@
         "形狀因子",
         "側向支撐",
         "SN耐震鋼材",
-        "SM490"
+        "SM490",
+        "塑性機構"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -911,7 +916,9 @@
         "拉力桿件",
         "殘留應力",
         "柱強度曲線",
-        "切線模數"
+        "切線模數",
+        "塊狀殘留應力",
+        "強度平台段"
       ],
       "hasHandwritten": false,
       "hasSolution": true,
@@ -1362,7 +1369,8 @@
         "側移構架",
         "整體挫屈",
         "K值修正",
-        "系統挫屈載重"
+        "系統挫屈載重",
+        "柱頂鉸接"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -1410,7 +1418,8 @@
         "τ_a折減",
         "ASD",
         "G值邊界條件",
-        "遠端修正因子"
+        "遠端修正因子",
+        "鉸支端"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -1477,7 +1486,8 @@
         "長柱",
         "有效長度",
         "迴轉半徑",
-        "Cc判斷"
+        "Cc判斷",
+        "平行軸定理"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -1670,7 +1680,8 @@
         "塑性彎矩",
         "結實斷面",
         "X1X2參數",
-        "均佈載重"
+        "均佈載重",
+        "部分跨載重"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -1788,7 +1799,8 @@
         "G值",
         "多層框架",
         "鉸接",
-        "固接"
+        "固接",
+        "對位圖方程式"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -1938,7 +1950,8 @@
         "公稱彎矩強度",
         "塑性中性軸",
         "降伏力",
-        "合成斷面"
+        "合成斷面",
+        "單位換算"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -2093,13 +2106,13 @@
         "block shear",
         "腹板承壓降伏",
         "web yielding",
-        "複合柱",
-        "有效降伏應力",
-        "Fmy",
-        "Em",
-        "殘留應力",
         "Cc臨界細長比",
-        "ASD"
+        "ASD",
+        "受拉構材安全係數",
+        "局部挫屈",
+        "斷面分類",
+        "結實斷面",
+        "承壓加勁板"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -2118,13 +2131,15 @@
         "有效降伏強度Fmy",
         "修正彈性模數Em",
         "整體挫屈",
-        "彈性挫屈",
+        "非彈性挫屈",
         "λc",
         "Fcr",
         "φcPn",
         "H型鋼",
         "A572",
-        "SD420"
+        "SD420",
+        "rm下限",
+        "0.3倍全厚"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -2145,11 +2160,14 @@
         "U值",
         "螺栓接合",
         "A325X",
-        "塊狀剪力",
         "淨斷面斷裂",
         "WT斷面",
         "承壓型螺栓",
-        "有效淨面積"
+        "有效淨面積",
+        "雙角鋼",
+        "雙剪",
+        "拉剪互制",
+        "螺栓數量設計"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -2254,7 +2272,8 @@
         "λc",
         "Fcr",
         "φcPn",
-        "非彈性挫屈"
+        "非彈性挫屈",
+        "側撐位置判讀"
       ],
       "hasHandwritten": false,
       "hasSolution": true

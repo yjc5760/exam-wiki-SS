@@ -99,6 +99,7 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:28px;border-t
 </style>
 </head>
 <body>
+<style>@media print{#start-backlink{display:none}}</style><div id="start-backlink" style="font:14px/1.6 'Noto Sans TC',system-ui,sans-serif;padding:8px 16px;background:#2f4a5e;color:#fff"><a href="../start.html" style="color:#fff;text-decoration:none">← 從這裡開始（SS 學習路徑）</a></div>
 <header>
 <h1>SS-U1-1 拉力及壓力桿件　上冊：拉力篇</h1>
 <p class="sub">不背公式，背「圖」與「道理」：每一條公式都從向量圖和第一性原理推出來，考場上忘了也能在草稿紙上重建。</p>
@@ -603,7 +604,7 @@ $$A_n=\Big[\,b_g-\sum d+\sum\frac{s^2}{4g}\,\Big]\,t,\qquad d=d_b+0.3\ \text{cm}
 
 <div class="trap"><b>先看題目給的是「螺栓」還是「孔」</b><br>
 ・給螺栓直徑 \(d_b\)：扣 \(d_b+0.3\) cm（M20 → 2.3 cm）。<br>
-・直接給孔徑 \(d_h\)：只要再加孔緣損傷，扣 \(d_h+0.15\)～\(0.2\) cm（各題慣例略不同，例如 <a href="problems-view/SS-2003-3.html">SS-2003-3</a> 用「孔徑 + 2 mm」）。<br>
+・直接給孔徑 \(d_h\)：只要再加孔緣損傷，扣 \(d_h+0.15\)～\(0.2\) cm（各題慣例略不同）。若題目已寫明「計算時必須扣除之螺栓孔徑」，就直接用，例如 <a href="problems-view/SS-2003-3.html">SS-2003-3</a> 指定扣 22 mm，不要再加。<br>
 ・題目寫明「扣除寬」或「計算用孔徑」：<b>照題目，不要再加</b>。</div>
 
 <h3 class="t">3.2　錯列螺栓：斜線要「補」回多少　<span class="tg half">別賭</span></h3>
@@ -1039,7 +1040,7 @@ LRFD／ASD \(=30.1/21.3=1.41\)，<b>小於 1.5</b>：因為 LRFD 由上限式（
 <tr><th style="width:15%">題號</th><th>考什麼</th><th style="width:32%">練完要會的動作</th><th style="width:10%">章</th></tr>
 <tr><td><a href="problems-view/SS-2025-2.html">SS-2025-2</a></td><td>ASD 板類縱向銲，\(U=f(l/w)\)，求板寬上限；<b>整卷零公式</b></td><td>不看公式寫出 \(0.6F_y\)、\(0.5F_u\) 與 \(l/w\) 表；看出 \(l\ge w\) 是答案</td><td>2、4</td></tr>
 <tr><td><a href="problems-view/SS-2005-1.html">SS-2005-1</a></td><td>螺栓接合單角鋼，5 個極限狀態取小</td><td>畫三條塊體路徑；螺栓剪力只比控制值高 5%，不能漏</td><td>2～5</td></tr>
-<tr><td><a href="problems-view/SS-2024-2.html">SS-2024-2</a></td><td>圓管縱向填角銲的剪力遲滯</td><td>半圓管 \(\bar x=D/\pi\)；\(L\) 是銲長不是周長</td><td>4</td></tr>
+<tr><td><a href="problems-view/SS-2024-2.html">SS-2024-2</a></td><td>圓管縱向填角銲的剪力遲滯</td><td>半圓管 \(\bar x=D/\pi\)；\(L\) 是銲長不是周長；開槽要扣（\(A_n=73.8\) cm²）</td><td>4</td></tr>
 <tr><td><a href="problems-view/SS-2015-2.html">SS-2015-2</a></td><td>雙槽鋼拉桿：錯列淨斷面＋塊狀剪力（上限式控制）</td><td>判對自由邊；橫斷面切幾個孔；兩式取小</td><td>3、5</td></tr>
 <tr><td><a href="problems-view/SS-2021-2.html">SS-2021-2</a></td><td>說明題：拉力斷裂與塊剪模式、0.6\(F_y\) 的意義、上限的理由</td><td>用 von Mises 講 0.6；用「哪個面先斷」講兩式與上限</td><td>5</td></tr>
 </table>

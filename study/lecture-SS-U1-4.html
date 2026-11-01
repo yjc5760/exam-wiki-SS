@@ -65,6 +65,7 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 </style>
 </head>
 <body>
+<style>@media print{#start-backlink{display:none}}</style><div id="start-backlink" style="font:14px/1.6 'Noto Sans TC',system-ui,sans-serif;padding:8px 16px;background:#2f4a5e;color:#fff"><a href="../start.html" style="color:#fff;text-decoration:none">← 從這裡開始（SS 學習路徑）</a></div>
 
 <header>
   <h1>SS-U1-4　接合之分析與設計 — 觀念講義</h1>
@@ -206,14 +207,15 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 <tr><td>1</td><td>銲喉剪斷</td><td>填角銲 45° 最小斷面（有效喉）</td><td>銲材：\(0.6F_{EXX}\times 0.707w\times L\)</td></tr>
 <tr><td>2</td><td>母材熔合線剪斷</td><td>銲道與母材的交界</td><td>母材：\(0.6F_u \times t \times L\)</td></tr>
 <tr><td>3</td><td>HAZ 脆裂／層狀撕裂</td><td>熱影響區、母材厚度方向</td><td>韌性問題，非強度公式可涵蓋（§9）</td></tr>
-<tr><td>4</td><td>母材淨斷面</td><td>銲接接合仍要驗，但 \(A_n = A_g\)（無孔）</td><td>\(F_u A_e = F_u\,U A_g\)</td></tr>
+<tr><td>4</td><td>母材淨斷面</td><td>銲接接合仍要驗；無孔時 \(A_n = A_g\)，管材開槽時扣槽寬</td><td>\(F_u A_e = F_u\,U A_n\)</td></tr>
 </tbody>
 </table>
 
 <div class="trap">
-<b>陷阱：銲接接合就不用算淨斷面了？</b>錯。銲接沒有孔，所以 \(A_n = A_g\)，
-但<b>剪力遲滯照樣存在</b>（只連一肢就是只連一肢，跟用什麼接沒關係），所以 \(A_e = U A_g\) 仍需計算。
-出自 <a class="qlink" href="problems-view/SS-2024-2.html" target="_blank">SS-2024-2</a>（圓管以縱向填角銲連接）。
+<b>陷阱：銲接接合就不用算淨斷面了？</b>錯。銲接沒有螺栓孔，一般 \(A_n = A_g\)，
+但<b>剪力遲滯照樣存在</b>（只連一肢就是只連一肢，跟用什麼接沒關係），所以 \(A_e = U A_n\) 仍需計算。
+<b>例外：開槽管。</b>圓管、方管開槽讓連接板插入時，槽端斷面少了槽寬 × 管厚，\(A_n\) 要扣。
+<a class="qlink" href="problems-view/SS-2024-2.html" target="_blank">SS-2024-2</a> 的圓管有 4 道 22 mm 寬的槽：\(A_n = 82.6 - 4\times2.2\times1.0 = 73.8\) cm²，忽略它會把 \(\phi_tT_n\) 由 117.0 t 高估成 130.9 t（2026-11-01 勘誤）。
 </div>
 
 <h3>1.3 為什麼還有一條「最小接合強度」規定</h3>
@@ -1263,7 +1265,7 @@ $$s \leq 24\times 1.2 = 28.8\ \text{cm} \quad\Rightarrow\quad \boxed{s = 28\ \te
 <table>
 <thead><tr><th>題號</th><th>考年</th><th>主分類</th><th>接合部分考什麼</th><th>本講義章節</th></tr></thead>
 <tbody>
-<tr><td><a class="qlink" href="problems-view/SS-2003-1.html" target="_blank">SS-2003-1</a></td><td>92</td><td>拉壓桿件</td><td>塊狀剪力、腹板承壓降伏（web yielding）</td><td>§3.3、§1.2</td></tr><tr><td><a class="qlink" href="problems-view/SS-2003-3.html" target="_blank">SS-2003-3</a></td><td>92</td><td>拉壓桿件</td><td>WT 斷面螺栓接合：剪力遲滯 U、淨斷面斷裂、塊狀剪力、承壓型螺栓</td><td>§3、§4.3</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2003-1.html" target="_blank">SS-2003-1</a></td><td>92</td><td>拉壓桿件</td><td>塊狀剪力、腹板承壓降伏（web yielding）</td><td>§3.3、§1.2</td></tr><tr><td><a class="qlink" href="problems-view/SS-2003-3.html" target="_blank">SS-2003-3</a></td><td>92</td><td>拉壓桿件</td><td>雙角鋼夾 WT 腹板的雙剪螺栓數量；WT 與柱 8 栓的承壓型螺栓拉剪互制</td><td>§3、§4.3</td></tr>
 
 <tr><td><a class="qlink" href="problems-view/SS-2005-1.html" target="_blank">SS-2005-1</a></td><td>94</td><td>拉壓桿件</td><td>等肢角鋼三種破壞模式並列、U 值、有效淨面積</td><td>§3</td></tr><tr><td><a class="qlink" href="problems-view/SS-2014-2.html" target="_blank">SS-2014-2</a></td><td>103</td><td>鋼材特性</td><td>SN490B vs A572 Gr.50 的材料差異如何影響梁柱接頭（降伏比、Z 向性能、層狀撕裂）</td><td>§7.4、§9.3</td></tr>
 
@@ -1272,7 +1274,7 @@ $$s \leq 24\times 1.2 = 28.8\ \text{cm} \quad\Rightarrow\quad \boxed{s = 28\ \te
 
 
 <tr><td><a class="qlink" href="problems-view/SS-2022-2.html" target="_blank">SS-2022-2</a></td><td>111</td><td>拉壓桿件</td><td>插銷（鉸接）接合、有效淨面積、剪力斷裂、承壓</td><td>§3、§4.3</td></tr>
-<tr><td><a class="qlink" href="problems-view/SS-2024-2.html" target="_blank">SS-2024-2</a></td><td>113</td><td>拉壓桿件</td><td>圓管 HSS 縱向填角銲、U 值、<b>銲接接合的 \(A_n = A_g\)</b></td><td>§3.2、§1.2</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2024-2.html" target="_blank">SS-2024-2</a></td><td>113</td><td>拉壓桿件</td><td>圓管 HSS 縱向填角銲、U 值、<b>開槽圓管要扣槽寬</b>（\(A_n = A_g - 4\times2.2\times1.0\)）</td><td>§3.2、§1.2</td></tr>
 </tbody>
 </table>
 
@@ -1302,12 +1304,12 @@ $$s \leq 24\times 1.2 = 28.8\ \text{cm} \quad\Rightarrow\quad \boxed{s = 28\ \te
 <tbody>
 <tr><td>1</td><td>任何接合題</td><td>算完緊結物就交卷</td><td><b>母材端三項（GSY／NSF／BSR）永遠要驗</b>，設計強度取全部最小值</td><td>通則</td></tr>
 <tr><td>2</td><td>「續接」二字</td><td>只用題目給的 \(V_w\)、\(M_w\) 設計</td><td>先算「構材強度之一半」，與題目內力<b>取大者</b>為設計力</td><td>SS-2020-4</td></tr>
-<tr><td>3</td><td>塊狀剪力兩條式子</td><td>兩式相加，或取大值</td><td><b>取 min</b>。兩式是同一破壞的兩條路徑，不是兩個抗力來源</td><td>SS-2021-2、SS-2003-3</td></tr>
+<tr><td>3</td><td>塊狀剪力兩條式子</td><td>兩式相加，或取大值</td><td><b>取 min</b>。兩式是同一破壞的兩條路徑，不是兩個抗力來源</td><td>SS-2021-2</td></tr>
 <tr><td>4</td><td>塊狀剪力的拉力項</td><td>拉力面也乘 0.6，或用 \(F_y\)</td><td>拉力面<b>一律 \(F_uA_{nt}\)</b>（不乘 0.6、用淨面積、用 \(F_u\)）</td><td>SS-2021-2</td></tr>
 <tr><td>5</td><td>剪力面的 \(A_{gv}\) / \(A_{nv}\)</td><td>兩式都用同一個面積</td><td>式A 用<b>淨</b>面積 \(A_{nv}\)（斷裂）、式B 用<b>毛</b>面積 \(A_{gv}\)（降伏）</td><td>§3.3</td></tr>
 <tr><td>6</td><td>計算 \(U = 1-\bar x/L\)</td><td>\(L\) 用構材全長；\(\bar x\) 量到螺栓群</td><td>\(L\) = 最外兩排螺栓中心距（銲縫則為銲縫長）；\(\bar x\) = <b>形心到連接面</b></td><td>SS-2007-1</td></tr>
 <tr><td>7</td><td>算出 \(U > 1\)</td><td>照抄結果</td><td>\(U\) 上限為 <b>1.0</b></td><td>§3.2</td></tr>
-<tr><td>8</td><td><b>銲接</b>拉力構材的淨斷面</td><td>「沒有孔，所以不用驗淨斷面」</td><td>\(A_n = A_g\)（不扣孔），但 <b>\(A_e = U A_g\) 仍要算</b>（剪力遲滯照樣存在）</td><td>SS-2024-2</td></tr>
+<tr><td>8</td><td><b>銲接</b>拉力構材的淨斷面</td><td>「沒有孔，所以不用驗淨斷面」</td><td>銲接本身不扣孔，但 <b>\(A_e = U A_n\) 仍要算</b>（剪力遲滯照樣存在）；圓管、方管若<b>開槽</b>讓連接板插入，\(A_n\) 要扣槽寬 × 管厚</td><td>SS-2024-2</td></tr>
 <tr><td>9</td><td>填角銲</td><td>用銲腳 \(w\) 當承力厚度</td><td>承力斷面是<b>有效喉厚 \(t_e = 0.707w\)</b>，兩者差 29%</td><td>SS-2023-4</td></tr>
 <tr><td>10</td><td>CJP 全滲透銲</td><td>用 \(0.6F_{EXX}\times\) 板厚算</td><td>CJP 的強度由<b>母材</b>控制（銲材與母材同強或更強）</td><td>SS-2012-4</td></tr>
 <tr><td>11</td><td>偏心<b>銲縫</b>的 \(I_p\)</td><td>單位寫 cm⁴（照螺栓群或面積公式）</td><td>線圖法 → <b>cm³</b>；\(t_e\) 是最後才乘進去比較強度</td><td>SS-2017-4</td></tr>

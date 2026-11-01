@@ -1,0 +1,274 @@
+{
+ "SS-2002-1": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": ""
+ },
+ "SS-2002-2": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": ""
+ },
+ "SS-2002-3": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "L1 看圖",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2003-1": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "L1 讀題",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2003-2": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "規範條文漏用",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2003-3": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "L1 讀題",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2005-2": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "單位換算",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2006-1": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": ""
+ },
+ "SS-2006-3": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": ""
+ },
+ "SS-2006-4": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": ""
+ },
+ "SS-2007-3": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": ""
+ },
+ "SS-2007-4": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "查圖誤差",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2008-2": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": ""
+ },
+ "SS-2008-3": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "L1 看圖",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2009-3": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": ""
+ },
+ "SS-2010-3": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "L1 看圖",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2011-2": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "L1 看圖",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2011-4": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "L1 看圖",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2012-1": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": ""
+ },
+ "SS-2014-1": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": ""
+ },
+ "SS-2016-1": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": ""
+ },
+ "SS-2016-3": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "分歧-觀念作圖",
+  "source": "觀念模型",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2016-4": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": ""
+ },
+ "SS-2017-3": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": ""
+ },
+ "SS-2019-2": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": ""
+ },
+ "SS-2021-2": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "分歧-觀念作圖",
+  "source": "L1 看圖",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2021-3": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "觀念模型",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2023-1": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "查圖誤差",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2023-2": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": ""
+ },
+ "SS-2024-2": {
+  "date": "2026-10-31",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "L1 看圖",
+  "report": "wiki/queries/盲解比對-SS-U1-1-2026-10-31.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2024-3": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "L1 看圖",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": "",
+  "fixed": "2026-11-01"
+ },
+ "SS-2025-3": {
+  "date": "2026-11-01",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-U1-2-2026-11-01.md",
+  "human": ""
+ }
+}

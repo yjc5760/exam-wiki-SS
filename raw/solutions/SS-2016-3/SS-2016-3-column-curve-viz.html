@@ -18,7 +18,7 @@
 </head>
 <body>
 <h2>SS-2016-3：F<sub>cr</sub> vs L/r 柱強度曲線（強軸，K = 1）</h2>
-<p class="sub">F<sub>y</sub> = 2.5 tf/cm² ｜ E = 2040 tf/cm² ｜ 殘留壓應力 F<sub>rc</sub> = F<sub>y</sub>/4 = 0.625 tf/cm²</p>
+<p class="sub">F<sub>y</sub> = 2.5 tf/cm² ｜ E = 2040 tf/cm² ｜ 殘留應力 ±F<sub>y</sub>/4（矩形板兩側 b/3 壓、中間 b/3 拉）｜2026-11-01 勘誤：塊狀殘留應力 → 平台</p>
 <canvas id="chart" width="580" height="420"></canvas>
 <div class="legend">
   <div class="legend-item"><div class="legend-line" style="background:#c62828;border-top:2px dashed #c62828;"></div><span>Euler 彈性曲線（參考）</span></div>
@@ -27,12 +27,13 @@
 </div>
 <div class="info-box">
   <b>關鍵轉折點：</b><br>
-  比例限 F<sub>PL</sub> = 3F<sub>y</sub>/4 = <b>1.875 tf/cm²</b>（翼板尖端殘留壓應力作用下，外壓達此值時開始降伏）<br>
-  彈性-非彈性轉折細長比 (L/r)<sub>trans</sub> = π√(4E/3F<sub>y</sub>) = <b>103.6</b><br><br>
-  <b>三個區域：</b><br>
-  ① L/r ≤ 103.6：非彈性挫屈（切線模數），F<sub>cr</sub> = F<sub>y</sub>·F<sub>e</sub>/(F<sub>e</sub>+F<sub>rc</sub>)，曲線在 Euler 之下<br>
-  ② L/r > 103.6：彈性 Euler 挫屈，F<sub>cr</sub> = π²E/(L/r)²<br>
-  ③ 極短柱（L/r→0）：F<sub>cr</sub> 趨近 F<sub>y</sub>（塑性降伏控制）
+  比例限 F<sub>PL</sub> = 3F<sub>y</sub>/4 = <b>1.875 tf/cm²</b>（兩側 b/3 同時整塊降伏）<br>
+  兩側降伏後強軸只剩中間 b/3 彈性：I<sub>e</sub>/I = (1/3)³ = <b>1/27</b><br><br>
+  <b>四段：</b><br>
+  ① L/r ≥ 103.6：彈性 Euler，F<sub>cr</sub> = π²E/(L/r)²<br>
+  ② 19.9 ≤ L/r ≤ 103.6：<b>平台</b> F<sub>cr</sub> = 1.875（一過比例限勁度驟降，立即挫屈）<br>
+  ③ 18.0 ≤ L/r &lt; 19.9：F<sub>cr</sub> = π²E/[27(L/r)²]<br>
+  ④ L/r &lt; 18.0：全斷面降伏 F<sub>cr</sub> = 2.29（以外力增量計；若取 F<sub>y</sub> = 2.5，差額來自題目殘留應力不自相平衡）
 </div>
 <div class="tooltip" id="tooltip"></div>
 
@@ -63,13 +64,17 @@ function xToPixel(x) { return PAD_L + (x - xMin) / (xMax - xMin) * CW; }
 function yToPixel(y) { return PAD_T + CH - (y - yMin) / (yMax - yMin) * CH; }
 
 function Fe(lr) { return lr === 0 ? 999 : PI2E / (lr * lr); }
+const FMAX = FPL + (Fy + Frc - FPL) / 3;        // 2.2917
+const LR_P = LR_TRANS / Math.sqrt(27);           // 19.94
+const LR_Y = Math.sqrt(PI2E / (27 * FMAX));      // 18.04
 function Fcr_inelastic(lr) {
-  const fe = Fe(lr);
-  return Fy * fe / (fe + Frc);
+  if (lr >= LR_P) return FPL;
+  if (lr >= LR_Y) return Fe(lr) / 27;
+  return FMAX;
 }
 function Fcr_elastic(lr) { return Fe(lr); }
 function Fcr(lr) {
-  if (lr === 0) return Fy;
+  if (lr === 0) return FMAX;
   return lr <= LR_TRANS ? Fcr_inelastic(lr) : Fcr_elastic(lr);
 }
 
@@ -159,7 +164,7 @@ function drawFPLLine() {
   ctx.moveTo(PAD_L, yToPixel(FPL)); ctx.lineTo(xToPixel(LR_TRANS), yToPixel(FPL));
   ctx.stroke(); ctx.setLineDash([]);
   ctx.fillStyle = '#ff8f00'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
-  ctx.fillText('FPL = 3Fy/4 = 1.875', PAD_L + 4, yToPixel(FPL) - 4);
+  ctx.fillText('FPL = 3Fy/4 = 1.875', xToPixel(30), yToPixel(FPL) - 6);
 }
 
 // Draw actual column curve (blue)
@@ -167,8 +172,8 @@ function drawColumnCurve() {
   ctx.strokeStyle = '#1565c0'; ctx.lineWidth = 2.5; ctx.setLineDash([]);
   ctx.beginPath();
   // Flat Fy section for short columns (very short)
-  ctx.moveTo(xToPixel(0), yToPixel(Fy));
-  for (let lr = 0; lr <= LR_TRANS; lr += 0.5) {
+  ctx.moveTo(xToPixel(0), yToPixel(FMAX));
+  for (let lr = 0; lr <= LR_TRANS; lr += 0.1) {
     ctx.lineTo(xToPixel(lr), yToPixel(Fcr_inelastic(lr)));
   }
   // Elastic section
@@ -208,7 +213,8 @@ function drawTransitionPoint() {
 // Draw key points on curve
 function drawKeyPoints() {
   const pts = [
-    { lr: 0, fcr: Fy, label: `Fy = ${Fy}` },
+    { lr: 0, fcr: FMAX, label: 'Fmax' },
+    { lr: LR_P, fcr: FPL, label: 'p' },
     { lr: 80, fcr: Fcr(80) },
     { lr: 150, fcr: Fcr(150) },
   ];
@@ -218,7 +224,7 @@ function drawKeyPoints() {
     ctx.beginPath(); ctx.arc(px, py, 4, 0, Math.PI * 2); ctx.fill();
     if (p.label) {
       ctx.fillStyle = '#1565c0'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
-      ctx.fillText(`(${p.lr}, ${p.fcr.toFixed(2)})`, px + 6, py - 4);
+      ctx.fillText(`(${p.lr.toFixed(1)}, ${p.fcr.toFixed(p.label === 'p' ? 3 : 2)})`, px + 6, p.label === 'p' ? py + 14 : py - 4);
     }
   }
 }
@@ -235,7 +241,7 @@ function drawRegionLabels() {
   ctx.font = '12px sans-serif'; ctx.textAlign = 'center';
   ctx.fillStyle = '#1565c0';
   ctx.fillText('非彈性挫屈區', xToPixel(LR_TRANS / 2), PAD_T + 20);
-  ctx.fillText('(切線模數)', xToPixel(LR_TRANS / 2), PAD_T + 35);
+  ctx.fillText('(平台 1.875)', xToPixel(LR_TRANS / 2), PAD_T + 35);
   ctx.fillStyle = '#c62828';
   ctx.fillText('彈性 Euler 區', xToPixel((LR_TRANS + LR_MAX) / 2), PAD_T + 20);
 }

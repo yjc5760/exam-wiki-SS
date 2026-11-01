@@ -48,16 +48,14 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> LRFD<br />
-<strong>標籤：</strong> <code>壓力桿件</code> <code>有效長度</code> <code>K係數</code> <code>對位圖</code> <code>nomograph</code> <code>側移構架</code> <code>G值</code> <code>多層框架</code> <code>鉸接</code> <code>固接</code></p>
+<strong>標籤：</strong> <code>壓力桿件</code> <code>有效長度</code> <code>K係數</code> <code>對位圖</code> <code>nomograph</code> <code>側移構架</code> <code>G值</code> <code>多層框架</code> <code>鉸接</code> <code>固接</code> <code>對位圖方程式</code></p>
 <hr />
 <h2>1. 原始題目重述</h2>
 <p>多層不規則鋼骨框架如圖一所示，以 LRFD 法求各柱之精確有效長度係數 K 值。</p>
-<p><strong>邊界條件：</strong></p>
-<ul>
-<li>A 點（柱 AD 底部）：鉸接（hinge）→ $G = 10$</li>
-<li>B 點（柱 BE 底部）：固接（fixed）→ $G = 1$</li>
-<li>C 點（柱 CF 底部）：固接（fixed）→ $G = 1$</li>
-</ul>
+<p><strong>邊界條件：</strong><br />
+- A 點（柱 AD 底部）：鉸接（hinge）→ $G = 10$<br />
+- B 點（柱 BE 底部）：固接（fixed）→ $G = 1$<br />
+- C 點（柱 CF 底部）：固接（fixed）→ $G = 1$</p>
 <p><strong>斷面慣性矩（題目提供）：</strong></p>
 <table>
 <thead>
@@ -98,29 +96,23 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>2. 考題核心精神與出題者意圖</h2>
 <p>本題核心：<strong>多層不規則側移框架的精確 K 值計算（nomograph 法）</strong>。</p>
-<p>難點在於：</p>
-<ol>
-<li>D 節點只有一根柱（AD）和一根梁（DE），非典型對稱節點</li>
-<li>F 節點只有右側梁 EF（無右方梁），需注意分母只有單梁</li>
-<li>G 節點（頂層，只有 GH 梁，無左方梁）</li>
-</ol>
+<p>難點在於：<br />
+1. D 節點只有一根柱（AD）和一根梁（DE），非典型對稱節點<br />
+2. F 節點只有右側梁 EF（無右方梁），需注意分母只有單梁<br />
+3. G 節點（頂層，只有 GH 梁，無左方梁）</p>
 <p>出題意圖：考生須能正確識別每個節點的 $\Sigma(I_c/L_c)$ 和 $\Sigma(I_b/L_b)$，並在對位圖上精確查讀 K 值。</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析</h2>
-<p><strong>解題步驟：</strong></p>
-<ol>
-<li>計算每根柱的 $I_c/L_c$（柱貢獻）</li>
-<li>計算每根梁的 $I_b/L_b$（梁貢獻）</li>
-<li>對各節點計算 $G = \Sigma(I_c/L_c) / \Sigma(I_b/L_b)$</li>
-<li>代入對位圖查讀 K</li>
-</ol>
-<p><strong>關鍵陷阱：</strong></p>
-<ol>
-<li><strong>D 節點無上方柱</strong>：G_D 的分子只有 AD 柱（向下），無上方柱，分母只有梁 DE（無右側以外方向的梁）</li>
-<li><strong>F 節點右方無梁</strong>：G_F 的分母只有梁 EF（向左），因 F 為最右側節點</li>
-<li><strong>鉸接基礎 G = 10（非 ∞）</strong>：實用設計取 G = 10，避免算出過高的 K 值</li>
-<li><strong>二樓柱 EG/FH 的底端 G 值</strong>：用的是節點 E 和 F 的 G 值（已含一樓梁和柱影響）</li>
-</ol>
+<p><strong>解題步驟：</strong><br />
+1. 計算每根柱的 $I_c/L_c$（柱貢獻）<br />
+2. 計算每根梁的 $I_b/L_b$（梁貢獻）<br />
+3. 對各節點計算 $G = \Sigma(I_c/L_c) / \Sigma(I_b/L_b)$<br />
+4. 代入對位圖查讀 K</p>
+<p><strong>關鍵陷阱：</strong><br />
+1. <strong>D 節點無上方柱</strong>：G_D 的分子只有 AD 柱（向下），無上方柱，分母只有梁 DE（無右側以外方向的梁）<br />
+2. <strong>F 節點右方無梁</strong>：G_F 的分母只有梁 EF（向左），因 F 為最右側節點<br />
+3. <strong>鉸接基礎 G = 10（非 ∞）</strong>：實用設計取 G = 10，避免算出過高的 K 值<br />
+4. <strong>二樓柱 EG/FH 的底端 G 值</strong>：用的是節點 E 和 F 的 G 值（已含一樓梁和柱影響）</p>
 <hr />
 <h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
 <blockquote>
@@ -276,27 +268,27 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>$K_{AD}$</td>
-<td>對位圖 $(G_A=10,\, G_D=1.323) \approx 2.5$</td>
-<td style="text-align: center;"></td>
+<td>對位圖 $(G_A=10,\, G_D=1.323)$ → $1.97$</td>
+<td style="text-align: center;">⚠</td>
 </tr>
 <tr>
 <td>$K_{BE}$</td>
-<td>對位圖 $(G_B=1.0,\, G_E=0.790) \approx 1.2$</td>
+<td>對位圖 $(G_B=1.0,\, G_E=0.790)$ → $1.29$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$K_{CF}$</td>
-<td>對位圖 $(G_C=1.0,\, G_F=1.412) \approx 1.27$</td>
+<td>對位圖 $(G_C=1.0,\, G_F=1.412)$ → $1.38$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$K_{EG}$</td>
-<td>對位圖 $(G_E=0.790,\, G_G=0.370) \approx 1.15$</td>
+<td>對位圖 $(G_E=0.790,\, G_G=0.370)$ → $1.19$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$K_{FH}$</td>
-<td>對位圖 $(G_F=1.412,\, G_H=0.370) \approx 1.20$</td>
+<td>對位圖 $(G_F=1.412,\, G_H=0.370)$ → $1.28$</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -425,49 +417,40 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$G = \frac{\sum (I_c/L_c)_{\text{柱}}}{\sum (I_b/L_b)_{\text{梁}}}$$</p>
 <p><strong>節點 A（柱 AD 底部，鉸接）：</strong><br />
 $$G_A = 10 \quad \text{（鉸接邊界條件，依規定取 10）}$$</p>
-<p><strong>節點 D（柱 AD 頂端，梁 DE 左端）：</strong></p>
-<ul>
-<li>分子（柱）：僅有柱 DA 向下 → $37.50$</li>
-<li>分母（梁）：僅有梁 DE 向右 → $28.33$（D 無上方柱，亦無左方梁）</li>
-</ul>
+<p><strong>節點 D（柱 AD 頂端，梁 DE 左端）：</strong><br />
+- 分子（柱）：僅有柱 DA 向下 → $37.50$<br />
+- 分母（梁）：僅有梁 DE 向右 → $28.33$（D 無上方柱，亦無左方梁）</p>
 <p>$$G_D = \frac{37.50}{28.33} = \mathbf{1.323}$$</p>
 <p><strong>節點 B（柱 BE 底部，固接）：</strong><br />
 $$G_B = 1.0 \quad \text{（固接邊界條件）}$$</p>
-<p><strong>節點 E（柱 BE 頂端 + 柱 EG 底端，梁 DE 右端 + 梁 EF 左端）：</strong></p>
-<ul>
-<li>分子（柱）：$37.50\ (\text{BE}) + 13.33\ (\text{EG}) = 50.83$</li>
-<li>分母（梁）：$28.33\ (\text{DE}) + 36.00\ (\text{EF}) = 64.33$</li>
-</ul>
+<p><strong>節點 E（柱 BE 頂端 + 柱 EG 底端，梁 DE 右端 + 梁 EF 左端）：</strong><br />
+- 分子（柱）：$37.50\ (\text{BE}) + 13.33\ (\text{EG}) = 50.83$<br />
+- 分母（梁）：$28.33\ (\text{DE}) + 36.00\ (\text{EF}) = 64.33$</p>
 <p>$$G_E = \frac{50.83}{64.33} = \mathbf{0.790}$$</p>
 <p><strong>節點 C（柱 CF 底部，固接）：</strong><br />
 $$G_C = 1.0$$</p>
-<p><strong>節點 F（柱 CF 頂端 + 柱 FH 底端，梁 EF 右端）：</strong></p>
-<ul>
-<li>分子（柱）：$37.50\ (\text{CF}) + 13.33\ (\text{FH}) = 50.83$</li>
-<li>分母（梁）：$36.00\ (\text{EF})$（F 為最右節點，右方無梁）</li>
-</ul>
+<p><strong>節點 F（柱 CF 頂端 + 柱 FH 底端，梁 EF 右端）：</strong><br />
+- 分子（柱）：$37.50\ (\text{CF}) + 13.33\ (\text{FH}) = 50.83$<br />
+- 分母（梁）：$36.00\ (\text{EF})$（F 為最右節點，右方無梁）</p>
 <p>$$G_F = \frac{50.83}{36.00} = \mathbf{1.412}$$</p>
-<p><strong>節點 G（柱 EG 頂端，梁 GH 左端）：</strong></p>
-<ul>
-<li>分子（柱）：$13.33\ (\text{EG})$（G 無上方柱）</li>
-<li>分母（梁）：$36.00\ (\text{GH})$（G 無左方梁）</li>
-</ul>
+<p><strong>節點 G（柱 EG 頂端，梁 GH 左端）：</strong><br />
+- 分子（柱）：$13.33\ (\text{EG})$（G 無上方柱）<br />
+- 分母（梁）：$36.00\ (\text{GH})$（G 無左方梁）</p>
 <p>$$G_G = \frac{13.33}{36.00} = \mathbf{0.370}$$</p>
-<p><strong>節點 H（柱 FH 頂端，梁 GH 右端）：</strong></p>
-<ul>
-<li>分子（柱）：$13.33\ (\text{FH})$（H 無上方柱）</li>
-<li>分母（梁）：$36.00\ (\text{GH})$（H 無右方梁）</li>
-</ul>
+<p><strong>節點 H（柱 FH 頂端，梁 GH 右端）：</strong><br />
+- 分子（柱）：$13.33\ (\text{FH})$（H 無上方柱）<br />
+- 分母（梁）：$36.00\ (\text{GH})$（H 無右方梁）</p>
 <p>$$G_H = \frac{13.33}{36.00} = \mathbf{0.370}$$</p>
 <h3>Step 3：各柱 K 值（對位圖查讀）</h3>
-<p>依 Sidesway Uninhibited 對位圖（圖二），連接各柱兩端 G 值，讀取中間 K 軸數值：</p>
+<p>依 Sidesway Uninhibited 對位圖（圖三），連接各柱兩端 G 值，讀取中間 K 軸數值。對位圖本身就是下列方程式的圖解，考場查圖、這裡以方程式精確解核對（查圖讀值落在 ±0.05 內即可）：</p>
+<p>$$\frac{G_AG_B(\pi/K)^2 - 36}{6(G_A + G_B)} = \frac{\pi/K}{\tan(\pi/K)}$$</p>
 <table>
 <thead>
 <tr>
 <th>柱</th>
 <th>$G_{\text{底端}}$</th>
 <th>$G_{\text{頂端}}$</th>
-<th>K（由對位圖查讀）</th>
+<th style="text-align: center;">K</th>
 </tr>
 </thead>
 <tbody>
@@ -475,42 +458,83 @@ $$G_C = 1.0$$</p>
 <td><strong>AD</strong></td>
 <td>$G_A = 10$</td>
 <td>$G_D = 1.323$</td>
-<td>$\approx \mathbf{2.5}$</td>
+<td style="text-align: center;"><strong>1.97</strong></td>
 </tr>
 <tr>
 <td><strong>BE</strong></td>
 <td>$G_B = 1.0$</td>
 <td>$G_E = 0.790$</td>
-<td>$\approx \mathbf{1.2}$</td>
+<td style="text-align: center;"><strong>1.29</strong></td>
 </tr>
 <tr>
 <td><strong>CF</strong></td>
 <td>$G_C = 1.0$</td>
 <td>$G_F = 1.412$</td>
-<td>$\approx \mathbf{1.27}$</td>
+<td style="text-align: center;"><strong>1.38</strong></td>
 </tr>
 <tr>
 <td><strong>EG</strong></td>
 <td>$G_E = 0.790$</td>
 <td>$G_G = 0.370$</td>
-<td>$\approx \mathbf{1.15}$</td>
+<td style="text-align: center;"><strong>1.19</strong></td>
 </tr>
 <tr>
 <td><strong>FH</strong></td>
 <td>$G_F = 1.412$</td>
 <td>$G_H = 0.370$</td>
-<td>$\approx \mathbf{1.20}$</td>
+<td style="text-align: center;"><strong>1.28</strong></td>
 </tr>
 </tbody>
 </table>
+<p><strong>查圖自我檢查：</strong><br />
+- 柱 AD：$G_A = 10$、$G_D = 1.32$，對位圖上直線交 K 軸在 2.0 刻度稍下。若讀成 2.5，代表 $G_D$ 要大到約 4.5，與 1.32 不符。<br />
+- 理論上底鉸（$G = \infty$）頂固（$G = 0$）可側移的 K 是 2.0；本題頂端 $G_D = 1.32$ 不是固接，若底端真用 $\infty$，K = 2.43。題目規定鉸接取 $G = 10$，讓 K 降到 1.97。<br />
+- 其餘四柱兩端 G 都在 0.4～1.4 之間，K 應在 1.15～1.40 之間，愈大的 G 對應愈大的 K（CF 的 $G_F$ 最大 → 1.38 最大）。</p>
 <h3>Step 4：有效長度 KL 彙整</h3>
-<p>$$K_{\text{AD}} \times L_{\text{AD}} = 2.5 \times 400 = \boxed{1000 \text{ cm} = 10 \text{ m}}$$</p>
-<p>$$K_{\text{BE}} \times L_{\text{BE}} = 1.2 \times 400 = \boxed{480 \text{ cm} = 4.8 \text{ m}}$$</p>
-<p>$$K_{\text{CF}} \times L_{\text{CF}} = 1.27 \times 400 = \boxed{508 \text{ cm} = 5.08 \text{ m}}$$</p>
-<p>$$K_{\text{EG}} \times L_{\text{EG}} = 1.15 \times 300 = \boxed{345 \text{ cm} = 3.45 \text{ m}}$$</p>
-<p>$$K_{\text{FH}} \times L_{\text{FH}} = 1.20 \times 300 = \boxed{360 \text{ cm} = 3.60 \text{ m}}$$</p>
+<table>
+<thead>
+<tr>
+<th>柱</th>
+<th style="text-align: center;">K</th>
+<th style="text-align: center;">L (cm)</th>
+<th style="text-align: center;">KL (cm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AD</td>
+<td style="text-align: center;">1.97</td>
+<td style="text-align: center;">400</td>
+<td style="text-align: center;"><strong>789</strong></td>
+</tr>
+<tr>
+<td>BE</td>
+<td style="text-align: center;">1.29</td>
+<td style="text-align: center;">400</td>
+<td style="text-align: center;">514</td>
+</tr>
+<tr>
+<td>CF</td>
+<td style="text-align: center;">1.38</td>
+<td style="text-align: center;">400</td>
+<td style="text-align: center;">550</td>
+</tr>
+<tr>
+<td>EG</td>
+<td style="text-align: center;">1.19</td>
+<td style="text-align: center;">300</td>
+<td style="text-align: center;">356</td>
+</tr>
+<tr>
+<td>FH</td>
+<td style="text-align: center;">1.28</td>
+<td style="text-align: center;">300</td>
+<td style="text-align: center;">382</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p><strong>最關鍵柱為 AD</strong>：底部鉸接 $G = 10$ 使 K 急遽增大至 $\approx 2.5$，有效長度達 10 m（兩倍實際柱長），在設計時須特別注意。</p>
+<p><strong>最關鍵柱為 AD</strong>：底部鉸接（$G = 10$），K ≈ 2，有效長度約為柱長的兩倍。</p>
 </blockquote>
 <hr />
 <h2>5. 關鍵爭議點與進階探討</h2>
@@ -519,9 +543,45 @@ $$G_C = 1.0$$</p>
 <p><strong>爭議點二：F 節點只有單側梁</strong></p>
 <p>F 為框架最右端，梁 EF 是唯一連接的梁，分母只有 36.00，使 G_F = 1.412，相對於對稱節點（有兩側梁的情況）偏高，導致柱 CF 的 K 值略大於 BE。這反映了<strong>邊柱效應</strong>：邊柱比內柱更容易發生側移。</p>
 <p><strong>爭議點三：鉸接 G = 10 vs. G = ∞</strong></p>
-<p>理論上，鉸接（pin support）的旋轉剛度為零，G → ∞。但實際查圖時採用 G = 10，這是 AISC 的實用建議值，避免讀圖超出對位圖刻度範圍，同時已偏保守（K 比 G = ∞ 時略小）。</p>
-<p><strong>進階：LeMessurier 靠柱效應修正</strong></p>
-<p>本題的柱 AD（鉸接底部）在實際多層框架中，其挫屈可能連帶影響同層柱（靠柱效應，leaning column effect）。AISC 建議對鉸接底柱在系統層級另行修正，以免低估 K 值。此修正在考題層級通常不要求，但在實務設計中需注意。</p>
+<p>理論上，鉸接（pin support）的旋轉剛度為零，G → ∞。AISC 建議實用上取 G = 10，反映實際鉸接柱腳仍有些微轉動束制。注意這<strong>不是</strong>保守取值：G = 10 得到的 K 比 G = ∞ 小（本題柱 AD：G = ∞ 時 K = 2.43，G = 10 時 1.97）；題目已指定 G = 10，照做即可。</p>
+<p><strong>進階：對位圖假設與實際框架的差距</strong></p>
+<p>對位圖假設同一層所有柱同時挫屈、每根梁兩端轉角相同。本題框架不規則（D 端只有一層、G–H 只蓋右兩跨），柱 AD 底部鉸接、頂部只有一根梁 DE 約束，是全框架最軟的一根；它的側移穩定實際上會受同層 BE、CF 牽動。精確的整層穩定可用 LeMessurier 的整層挫屈法或直接分析法檢核，考場依題意查圖即可。</p>
+<hr />
+<h2>6. 依最新規範（AISC 360-16／-22）對照</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">考卷（有效長度法）</th>
+<th style="text-align: left;">AISC 360-16／-22</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">對位圖</td>
+<td style="text-align: left;">本文規定</td>
+<td style="text-align: left;">移至附錄 7（有效長度法），解說 C-A-7 仍附相同對位圖與方程式</td>
+</tr>
+<tr>
+<td style="text-align: left;">支承 G 值</td>
+<td style="text-align: left;">鉸 10、固 1</td>
+<td style="text-align: left;">解說相同建議</td>
+</tr>
+<tr>
+<td style="text-align: left;">非彈性修正</td>
+<td style="text-align: left;">本題未要求</td>
+<td style="text-align: left;">附錄 7 解說建議以 $	au_b$ 折減柱勁度</td>
+</tr>
+<tr>
+<td style="text-align: left;">主流方法</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">第 C 章直接分析法：構材取 $K = 1$，穩定以二階分析＋剛度折減處理</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>修正日期：2026-11-01（G 值無誤；原解對位圖讀值偏差，柱 AD 讀成 2.5，以對位圖方程式精確解更正為 <strong>1.97</strong>，其餘 BE 1.2 → <strong>1.29</strong>、CF 1.27 → <strong>1.38</strong>、EG 1.15 → <strong>1.19</strong>、FH 1.20 → <strong>1.28</strong>；更正「G = 10 偏保守」之誤述；新增查圖自我檢查與 §6 對照）</em><br />
+<em>驗證狀態：unverified</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2007-4/SS-2007-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

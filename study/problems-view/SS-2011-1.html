@@ -243,7 +243,6 @@ $$\boxed{\alpha} = \frac{P_u}{P_a} \xrightarrow{L \gg D} \frac{1.6L}{L} = 1.6$$<
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -251,43 +250,36 @@ $$\boxed{\alpha} = \frac{P_u}{P_a} \xrightarrow{L \gg D} \frac{1.6L}{L} = 1.6$$<
 <tr>
 <td>P-Δ vs P-δ 差異</td>
 <td>P-Δ 影響整體結構穩定（層間側移）；P-δ 影響構材彎矩分布（桿件撓曲）；兩者均需考慮</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">P-DELTA-EFFECT</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SECOND-ORDER-ANALYSIS</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>假想水平力 $N_i$ 的 0.002 來源</td>
 <td>對應柱初始傾斜 $1/500$（$\Delta_0/L = 0.002$，AISC 施工容許誤差）之等效水平力比例；$Y_i$ 是該層<strong>重力載重</strong>，不是 $P_r$</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$N_i$ 何時可只加在重力組合</td>
 <td>當 $\Delta_{2nd}/\Delta_{1st} \leq 1.7$（360-16：$\leq 1.7$）時，$N_i$ 可視為「最小側力」只加在純重力組合；超過則須加在<strong>所有</strong>組合</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>勁度折減 0.8 的物理意義</td>
 <td>使 DAM 的構材強度曲線與 ELM 的柱曲線在無側移情況下吻合（校準用）；$\tau_b$ 的額外折減反映高軸力下殘留應力造成的非彈性軟化</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">RESIDUAL-STRESS</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">TANGENT-MODULUS-THEORY</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>DAM 令 $K = 1.0$ 的原因</td>
 <td>DAM 已在分析中直接考慮二階效應、初始不完美、勁度折減，$K$ 的補償作用已無必要 —— 規範明定<strong>取 $K = 1$</strong>（不是「不得小於 1.0」）</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">effective-length-chart</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>ELM／一階分析法的適用限制</td>
 <td>AISC 360-16 附錄 7：ELM（7.2）與一階分析法（7.3）皆限 $\Delta_{2nd}/\Delta_{1st} \leq 1.5$；一階分析法另限 $\alpha P_r/P_y \leq 0.5$。<strong>DAM 無此限制</strong>，適用所有結構</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>ASD 1.6 倍載重後的還原</td>
 <td>二階分析得到內力後需除以 1.6，再與 ASD 容許強度比較</td>
-<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>

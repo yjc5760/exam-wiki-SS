@@ -352,7 +352,6 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -360,37 +359,31 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tr>
 <td>LRFD 柱設計 $\lambda_c$ 判斷準則</td>
 <td>$\lambda_c \leq 1.5$ 用非彈性公式（$0.658^{\lambda_c^2}$），$&gt; 1.5$ 用彈性（$0.877/\lambda_c^2$）</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-column</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COLUMN-STRENGTH-CURVE</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$0.658^{\lambda_c^2}$ 與 $e^{-0.419\lambda_c^2}$ 等價推導</td>
 <td>$\ln 0.658 = -0.419$，故兩式完全相同，擇一代入計算機即可</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-column</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>正方形箱型 $r$ 化簡公式</td>
 <td>$r^2 = (b_o^2 + b_i^2)/12$ 僅適用<strong>正方形</strong>；矩形箱需分 $x$、$y$ 方向個別計算</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$\phi_c$ 的規範版本差異</td>
 <td>台灣現行規範（99 年版）與 AISC 舊 LRFD：$\phi_c = 0.85$；AISC 360-05 起改為 $\phi_c = 0.90$（$\phi_b$ 一直是 0.90）。考場依台灣規範</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-column</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">phi-resistance-factors</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>箱型斷面的局部挫屈界限</td>
 <td>箱型壁板四邊皆有支撐 → 屬「有側支撐板元」，$\lambda_r = 1.40\sqrt{E/F_y}$；細長時 $F_{cr}$ 須依有效寬度折減</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>兩方向 $K$ 不同時的控制方向</td>
 <td>需分別計算 $(KL/r)_1$ 與 $(KL/r)_2$，取較大者進行後續計算</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">effective-length-chart</span></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>

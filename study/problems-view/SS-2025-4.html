@@ -27,15 +27,113 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2025-4 題目解析</h1><a class="quick" href="../unit-SS-U2-1.html" title="SS-U2-1 塑性分析與設計 單元總覽">&#128269; U2-1 單元總覽</a><a class="lect" href="../lecture-SS-U2-1.html" title="SS-U2-1 塑性分析與設計 觀念講義">&#128218; U2-1 塑性分析與設計 講義</a></header>
-<main><h1>考題編號：SS-2025-4</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2025-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2025-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2025_鋼結構設計.pdf</code> 第 2 頁，第四題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 114 年（2025）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>無</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋關鍵尺寸 220–400 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>四、請說明：<em>1.</em> 何謂塑性鉸？ <em>2.</em> 常見塑性鉸的出現位置？ <em>3.</em> 何謂崩塌機構？（25 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<p>無（本卷無參考公式區）。</p>
+<h2>3. 附圖</h2>
+<p>本題無附圖。</p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>子題數</td>
+<td>3 個說明子題，未分配分數</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>第 3 子題範圍</td>
+<td>只問「何謂崩塌機構」；鉸數與靜不定度關係、如何求極限載重<strong>題目未要求</strong>，作答時屬延伸</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（U2-1 題目／解答拆分試做）｜確認：2026-11-02 使用者確認</em></p></details>
+<h1>考題編號：SS-2025-4</h1>
 <p><strong>主分類：</strong> <code>SS-U2-1</code> 塑性分析與設計<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> 概念題<br />
 <strong>標籤：</strong> <code>塑性分析</code> <code>塑性鉸</code> <code>崩塌機構</code> <code>極限載重</code> <code>塑性彎矩</code> <code>降伏鉸</code> <code>靜不定結構</code> <code>上限定理</code> <code>下限定理</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>四、請說明：1. 何謂塑性鉸？ 2. 常見塑性鉸的出現位置？ 3. 何謂崩塌機構？（25 分）</p>
-<p>（考卷原文如上。本解第 3 子題另補充「塑性鉸數與靜不定度的關係」及「以虛功法求極限載重」，屬延伸說明，題目並未要求。）</p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見同資料夾 <code>SS-2025-4-problem.md</code>（題目瀏覽頁最上方「📄 題目正本」區塊）。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第 3 子題範圍</td>
+<td>只問「何謂崩塌機構」</td>
+<td>以為要計算極限載重</td>
+</tr>
+<tr>
+<td>本解延伸</td>
+<td>鉸數與靜不定度、以虛功法求極限載重屬延伸說明</td>
+<td>把延伸當成題目要求而省略定義</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> （說明題，無數值）</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：塑性分析三位一體——塑性鉸、崩塌機構、極限載重</strong></p>
@@ -194,7 +292,6 @@ $$\delta W_{ext} = \sum P_i \delta_i = \sum M_{p,j} \theta_j = \delta W_{int}$$<
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -202,31 +299,26 @@ $$\delta W_{ext} = \sum P_i \delta_i = \sum M_{p,j} \theta_j = \delta W_{int}$$<
 <tr>
 <td>塑性鉸 ≠ 普通鉸，傳遞 $M_p$</td>
 <td>塑性鉸傳遞 $M_p$，允許轉動；普通鉸傳遞 $M=0$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">PLASTIC-HINGE</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>靜定結構 1 個鉸即崩塌（$n=0$）</td>
 <td>靜不定度 $n=0$，$n+1=1$ 個塑性鉸就崩塌</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-mechanism</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>機構法是上限法，需找最低 $P_u$</td>
 <td>不同假設機構對應不同 $P_u$，正確機構給出最低值</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-mechanism</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>虛功法幾何轉角需用相似三角形</td>
 <td>各部分轉角由幾何相容推導，非任意假設</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-mechanism</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>塑性分析前提：結實斷面（$\lambda \leq \lambda_p$）</td>
 <td>斷面需能充分轉動，不得發生局部挫屈</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COMPACT-SECTION</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">PLASTIC-HINGE</span></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -408,6 +500,7 @@ $$\delta W_{ext} = \sum P_i \delta_i = \sum M_{p,j} \theta_j = \delta W_{int}$$<
 <p><strong>崩塌機構（2 句 + 公式）：</strong> 完全機構的塑性鉸數 = $n+1$（$n$ 為靜不定度；局部機構可較少），形成幾何機構後結構不能再承受外力。利用虛功法（外力虛功 = 內力虛功）求極限載重。<br />
 <em>修正日期：2026-11-01（依考卷 114 年第四題原圖：題目原文為「1. 何謂塑性鉸？ 2. 常見塑性鉸的出現位置？ 3. 何謂崩塌機構？」，原重述自行加上「求極限載重」等要求，改回原文並註明延伸；§3.5 L2 表「$M_p \neq 0$」之 <code>\n</code> 被吃成換行、表格斷列，已還原；§4（三）表列「一次超靜定（單跨固端梁）｜2｜3」標籤與數字矛盾，改為兩次超靜定；§5 將 shakedown 誤譯為「應力遲緩」且描述不符，改寫為安定（交替塑性／增量崩塌）。數值無變動）</em></p>
 <p><em>修正日期：2026-11-01（第二次：§4（三）「塑性鉸數＝n＋1」補註僅適用完全機構，局部機構（如兩跨連續梁單跨崩塌）可少於 n＋1、超完全機構可多於；§5 考場答法同步改為「完全機構」。題目原文、答案結論不變。）</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2025-4-problem.md</code>（已確認）＋常見誤讀＋本解記號，避免題意兩份不同步；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2025-4/SS-2025-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

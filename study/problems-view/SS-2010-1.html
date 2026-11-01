@@ -27,18 +27,168 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2010-1 題目解析</h1><a class="quick" href="../unit-SS-U2-1.html" title="SS-U2-1 塑性分析與設計 單元總覽">&#128269; U2-1 單元總覽</a><a class="lect" href="../lecture-SS-U2-1.html" title="SS-U2-1 塑性分析與設計 觀念講義">&#128218; U2-1 塑性分析與設計 講義</a></header>
-<main><h1>考題編號：SS-2010-1</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2010-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2010-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2010_鋼結構設計.pdf</code> 第 1（正面） 頁，第一題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 99 年（2010）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>20 分（10＋10）</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（圖一，斷面），<code>SS-2010-1-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋關鍵尺寸 220–400 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>一、有一斷面如圖一所示，使用 SS540 鋼料（降伏強度 $F_y = 4.0\ \textit{tf/cm}^2$），求此斷面強軸之：</p>
+<p>㈠降伏力矩 $M_y$（<em>tf-cm</em>）。（10 分）</p>
+<p>㈡塑性力矩 $M_p$（<em>tf-cm</em>）。（10 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<p>本卷卷首有「◎參考公式集（請自行使用適合之公式，並檢查其正確性，若有問題應自行修正）」，內容（照錄，與本題無直接關係）：</p>
+<p>$$C_c = \sqrt{\frac{2\pi^2E}{F_y}},\quad F_a = \frac{12}{23}\times\frac{\pi^2E}{(k\ell/r)^2},\quad F_a = \frac{\left[1 - \dfrac{(k\ell/r)^2}{2C_c^2}\right]F_y}{\dfrac53 + \dfrac{3(k\ell/r)}{8C_c} - \dfrac{(k\ell/r)^3}{8C_c^3}}$$</p>
+<p>$$\lambda_c = \left(\frac{k\ell}{r\pi}\right)\sqrt{\frac{F_y}{E}},\quad F_{cr} = \left[\exp(-0.419\lambda_c^2)\right]F_y,\quad F_{cr} = \left(\frac{0.877}{\lambda_c^2}\right)F_y$$</p>
+<p>$$L_p = \frac{80 r_y}{\sqrt{F_{yf}}},\quad L_r = \frac{r_yX_1}{F_L}\sqrt{1+\sqrt{1+X_2F_L^2}},\quad C_b = 1.75 + 1.05\frac{M_1}{M_2} + 0.3\left(\frac{M_1}{M_2}\right)^2 \le 2.3$$</p>
+<p>$$M_n = C_b\left[M_p - (M_p - M_r)\left(\frac{L_b - L_p}{L_r - L_p}\right)\right] \le M_p,\quad M_{cr} = \frac{C_bS_xX_1\sqrt2}{L_b/r_y}\sqrt{1 + \frac{X_1^2X_2}{2(L_b/r_y)^2}} \le M_p$$</p>
+<p>注意：公式集出現 $M_p$，但<strong>沒有定義</strong> $M_p$ 或 $M_y$ 的算法。</p>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2010-1 圖一：由下而上為 6×2 全寬段、2×2 中央段、6×2 全寬段、2×2 頂部中央凸塊，單位 cm" src="../../raw/solutions/SS-2010-1/SS-2010-1-fig-1.png" /></p>
+<p><em>圖面文字照錄：右側垂直尺寸 2、2、2、2；下方水平尺寸 2、2、2；（單位為公分）；圖一。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>水平分段</td>
+<td>2-2-2，總寬 6 cm</td>
+<td>下方三段尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>垂直分段</td>
+<td>2-2-2-2，總高 8 cm</td>
+<td>右側四段尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>由下而上第 1 層（0–2）</td>
+<td>全寬 6 × 2</td>
+<td>圖形底部為最寬的矩形</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>第 2 層（2–4）</td>
+<td>中央 2 × 2</td>
+<td>窄頸，對齊水平尺寸中段</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>第 3 層（4–6）</td>
+<td>全寬 6 × 2</td>
+<td>第二個寬矩形</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>第 4 層（6–8）</td>
+<td>頂部中央凸塊 2 × 2</td>
+<td>最上方的小凸塊，對齊中段</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>對稱性</td>
+<td>左右對稱、<strong>上下不對稱</strong>（底部是全寬段，頂部是凸塊）</td>
+<td>圖形外框</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>強軸</td>
+<td>水平軸（$I_x$ 對水平軸較大）</td>
+<td>斷面高 8 &gt; 寬 6（解讀，算得 $I_x &gt; I_y$ 可驗證）</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（U2-1 題目／解答拆分試做）｜確認：2026-11-02 使用者確認</em></p></details>
+<h1>考題編號：SS-2010-1</h1>
 <p><strong>主分類：</strong> <code>SS-U2-1</code> 塑性分析與設計<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> 概念題（材料力學）<br />
 <strong>標籤：</strong> <code>斷面性質</code> <code>降伏力矩</code> <code>塑性力矩</code> <code>十字形斷面</code> <code>平行軸定理</code> <code>塑性中性軸</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>一、有一斷面如圖一所示，使用 SS540 鋼料（降伏強度 $F_y = 4.0\ \text{tf/cm}^2$），求此斷面強軸之：<br />
-㈠降伏力矩 $M_y$（tf-cm）。（10 分）<br />
-㈡塑性力矩 $M_p$（tf-cm）。（10 分）</p>
-<p><img alt="SS-2010-1 題目附圖：由下而上為 6×2 全寬段、2×2 中段、6×2 全寬段、2×2 頂部凸塊（單位 cm），上下不對稱" src="../../raw/solutions/SS-2010-1/SS-2010-1-fig-1.png" /></p>
-<p><em>圖說（依考卷原圖 400 dpi 目視判讀，2026-11-01 更正）：水平方向分三等份 2-2-2（總寬 6 cm），垂直方向分四等份 2-2-2-2（總高 8 cm）。由下而上：<strong>① 全寬 6×2（$y$ = 0～2）、② 中央 2×2（2～4）、③ 全寬 6×2（4～6）、④ 頂部中央凸塊 2×2（6～8）</strong>。斷面<strong>左右對稱、上下不對稱</strong>（底部是全寬段，不是凸塊）。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見同資料夾 <code>SS-2010-1-problem.md</code>（題目瀏覽頁最上方「📄 題目正本」區塊）。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>斷面形狀</td>
+<td>由下而上：全寬 6×2、中央 2×2、全寬 6×2、頂部凸塊 2×2——<strong>上下不對稱</strong></td>
+<td>讀成上下對稱十字形（舊版解析得 $M_y = 106.7$、$M_p = 192$）</td>
+</tr>
+<tr>
+<td>強軸</td>
+<td>水平軸（$I_x = 162.67 &gt; I_y = 74.67$ cm⁴）</td>
+<td>以為寬 6 的方向是強軸</td>
+</tr>
+<tr>
+<td>ENA 與 PNA</td>
+<td>ENA 距底 3.5 cm、PNA 距底 4.0 cm，兩者不同</td>
+<td>用同一條軸算 $S$ 與 $Z$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> $y$ 自底面量起（cm）；$F_y = 4.0$ tf/cm²；參考公式集與本題無關。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：非對稱斷面的 $M_y$ 與 $M_p$——彈性中性軸 ≠ 塑性中性軸</strong></p>
@@ -194,7 +344,6 @@ $$\boxed{Z_x} = \sum A_i\,|\bar{y}_i - y_{PNA}|, \quad \boxed{M_p} = F_y \cdot \
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -202,25 +351,21 @@ $$\boxed{Z_x} = \sum A_i\,|\bar{y}_i - y_{PNA}|, \quad \boxed{M_p} = F_y \cdot \
 <tr>
 <td>ENA 與 PNA 不同</td>
 <td>非對稱斷面彈性中性軸過形心、塑性中性軸平分面積</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$S_x$ 取 $S_{\min}$</td>
 <td>降伏由離中性軸最遠的纖維開始</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>平行軸定理</td>
 <td>$I = \sum(bh^3/12 + Ad^2)$，自身慣性矩不可漏</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>形狀因子</td>
 <td>$f = Z_x/S_x = 1.77$，介於矩形 1.5 與菱形 2.0 之間</td>
-<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -430,6 +575,7 @@ $$\boxed{Z_x} = \sum A_i\,|\bar{y}_i - y_{PNA}|, \quad \boxed{M_p} = F_y \cdot \
 <hr />
 <p><em>修正日期：2026-11-01（依考卷原圖 400 dpi：斷面由下而上為 6×2 全寬、2×2、6×2 全寬、2×2 頂部凸塊，上下不對稱；原解誤讀為上下對稱十字形。形心 3.5 cm、PNA 4.0 cm，$M_y$ 由 106.7 更正為 <strong>144.6 tf-cm</strong>、$M_p$ 由 192 更正為 <strong>256 tf-cm</strong>（形狀因子 1.80 → 1.77）；新增力偶法與移軸雙路徑驗算）</em><br />
 <em>驗證狀態：unverified</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2010-1-problem.md</code>（已確認）＋常見誤讀＋本解記號，避免題意兩份不同步；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2010-1/SS-2010-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

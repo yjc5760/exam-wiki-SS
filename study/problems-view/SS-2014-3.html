@@ -330,7 +330,6 @@ Step 4：雙向彎矩互制公式
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -338,31 +337,26 @@ Step 4：雙向彎矩互制公式
 <tr>
 <td>LTB 三段判斷</td>
 <td>先比較 $L_b$ 與 $L_p$、$L_r$；本題落非彈性段，$C_b$ 可提升強度但不超過 $M_p$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">LATERAL-TORSIONAL-BUCKLING</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$C_b$ 的計算</td>
 <td><strong>先判彎矩圖再算</strong>：均勻彎矩 $M_A=M_B=M_C=M_{\max}$ → $C_b = 1.0$（最不利）；均佈載重四分點 $= 3/4M_{\max}$ → $C_b = 1.136$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">cb-factor</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BENDING-MODIFICATION-FACTOR-CB</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>弱軸強度上限 $1.5 F_y S_y$</td>
 <td>I 型斷面弱軸 $Z_y/S_y$ 常 &gt; 1.5；直接用 $F_y Z_y$ 會高估強度（考試陷阱）</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$M_r = (F_y - F_r)S_x$</td>
 <td>$F_r$ 為殘留應力（題目給定 78 MPa）；忘記減 $F_r$ 會高估 $M_r$，低估 LTB 削減量</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">RESIDUAL-STRESS</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>雙向彎矩互制公式選擇</td>
 <td>無軸力（$P_u = 0$）時 <strong>H1-1b 自動退化</strong>為線性式 $M_{ux}/\phi_bM_{nx} + M_{uy}/\phi_bM_{ny} \leq 1.0$；規範並無編號「H1-2」的式子</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">pm-interaction</span></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>

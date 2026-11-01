@@ -4,7 +4,8 @@
     "primaryTopicId": "命題大綱主分類（依 syllabus_taxonomy.json，格式：XX-Un-m）",
     "secondaryTopicIds": "命題大綱副分類（跨主題時使用）",
     "designMethod": "設計法：LRFD / ASD / 概念題 / 混合 / 塑性分析",
-    "tags": "自由標籤，描述核心考點、概念、陷阱類型"
+    "tags": "自由標籤，描述核心考點、概念、陷阱類型",
+    "problemStatus": "題目正本 raw/solutions/<id>/<id>-problem.md 的判讀狀態：draft（待確認）／confirmed（使用者已確認）；欄位不存在＝尚未建立題目正本（2026-11-02 起，SS-U2-1 試做）"
   },
   "questions": [
     {
@@ -64,6 +65,7 @@
       ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "梁桿件",
         "撓曲構材",
@@ -87,6 +89,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "塑性分析",
         "塑性鉸",
@@ -251,6 +254,7 @@
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "非對稱斷面",
         "降伏彎矩",
@@ -445,6 +449,7 @@
       ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "梁桿件",
         "耐震緊實斷面",
@@ -515,6 +520,7 @@
       ],
       "designMethod": "塑性分析",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "塑性分析",
         "塑性鉸",
@@ -997,6 +1003,7 @@
       ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "拉力桿件",
         "接合設計",
@@ -1021,6 +1028,7 @@
       "secondaryTopicIds": [],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "壓力桿件",
         "組合柱",
@@ -1064,6 +1072,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "壓力桿件",
         "整體挫屈",
@@ -1152,6 +1161,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "空心圓管斷面",
         "斷面模數",
@@ -1173,6 +1183,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "有效長度係數",
         "對位圖",
@@ -1197,6 +1208,7 @@
       "secondaryTopicIds": [],
       "designMethod": "混合",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "壓力桿件",
         "有效長度",
@@ -1358,6 +1370,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "壓力桿件",
         "有效長度",
@@ -1405,6 +1418,7 @@
       "secondaryTopicIds": [],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "壓力桿件",
         "有效長度",
@@ -1429,6 +1443,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "斷面性質",
         "降伏力矩",
@@ -1474,6 +1489,7 @@
       "secondaryTopicIds": [],
       "designMethod": "混合",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "組合柱",
         "壓力桿件",
@@ -1573,6 +1589,7 @@
       ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "斷面性質",
         "塑性力矩",
@@ -1649,6 +1666,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "壓力桿件",
         "有效長度係數",
@@ -1785,6 +1803,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "壓力桿件",
         "有效長度",
@@ -1811,6 +1830,7 @@
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "整體挫屈",
         "局部挫屈",
@@ -1855,6 +1875,7 @@
       ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "斷面性質",
         "慣性矩",
@@ -1916,6 +1937,7 @@
       ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "拉力桿件",
         "剪力遲滯",
@@ -1984,6 +2006,7 @@
       ],
       "designMethod": "塑性分析",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "塑性分析",
         "崩塌機制",
@@ -2101,6 +2124,7 @@
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "塊狀剪力",
         "block shear",
@@ -2125,6 +2149,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "SRC複合柱",
         "包覆型複合柱",
@@ -2154,6 +2179,7 @@
       ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "接合設計",
         "剪力遲滯",
@@ -2256,6 +2282,7 @@
       "secondaryTopicIds": [],
       "designMethod": "混合",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "壓力桿件",
         "有效長度",

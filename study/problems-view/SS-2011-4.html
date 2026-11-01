@@ -44,18 +44,48 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 單元總覽">&#128269; U1-1 單元總覽</a><a class="lect" href="../lecture-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 觀念講義">&#128218; U1-1 拉力及壓力桿件 講義</a>
 </header>
 <main>
-<h1>考題編號：SS-2011-4</h1>
-<p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
-<strong>副分類：</strong> 無<br />
-<strong>設計法：</strong> ASD<br />
-<strong>標籤：</strong> <code>壓力桿件</code> <code>有效長度</code> <code>對位圖</code> <code>nomograph</code> <code>無側撐構架</code> <code>非彈性修正</code> <code>τ_a折減</code> <code>ASD</code> <code>G值邊界條件</code> <code>遠端修正因子</code> <code>鉸支端</code></p>
-<hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>圖示為一<strong>無側撐鋼架（Unbraced Frame）</strong>，且 <strong>G 點不可轉動</strong>、<strong>H 點可轉動</strong>。各梁與柱之 I 值如下表所示。試依據 Alignment Chart，並進行必要的修正，求彈性範圍之柱 DE 及柱 EF 的有效長度係數 K，並使用 ASD 規範求取<strong>非彈性範圍之柱 EF</strong> 的有效長度係數 K。（柱邊界為鉸接（hinged end）時 G 可使用 10，為固接（Fixed end）時 G 可使用 1。）（25 分）</p>
-<p><strong>斷面慣性矩表（單位：cm⁴）：</strong></p>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2011-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2011-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
 <table>
 <thead>
 <tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2011_鋼結構設計.pdf</code> 第 2 頁（全三頁之第二頁），第四題；公式在第 3 頁</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 100 年（2011）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（鋼架＋Sidesway not prevented 對位圖），<code>SS-2011-4-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋鋼架 450 dpi、第 3 頁 τ 式 300 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>四、圖示為一無側撐鋼架，且 G 點不可轉動、H 點可轉動。各梁與柱之 I 值如下表所示。試依據 Alignment Chart，並進行必要的修正，求取彈性範圍之柱 DE 及柱 EF 的有效長度係數 $K$，並使用 ASD 規範求取非彈性範圍之柱 EF 的有效長度係數 $K$。（柱邊界為鉸接（hinged end）時 G 可使用 10，為固接（Fixed end）時 G 可使用 1。）（25 分）</p>
+<table>
+<thead>
+<tr>
+<th></th>
 <th>柱 AB、柱 BC</th>
 <th>柱 DE、柱 EF</th>
 <th>梁 AD</th>
@@ -66,6 +96,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </thead>
 <tbody>
 <tr>
+<td>I 值（cm⁴）</td>
 <td>10700</td>
 <td>11400</td>
 <td>24000</td>
@@ -75,16 +106,179 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 </tbody>
 </table>
-<p><strong>柱 EF 材料及斷面性質：</strong><br />
-$F_y = 2.52 \text{ tf/cm}^2$，$E = 2040 \text{ tf/cm}^2$，$r_x = 10.5 \text{ cm}$，$I_x = 11400 \text{ cm}^4$，$A = 104 \text{ cm}^2$</p>
-<p><img alt="SS-2011-4 題目附圖：無側撐鋼架（左柱 ABC、中柱 DEF、梁 AD/DG/BE/EH），A 點梁柱鉸接，G 為不可轉動之滑動支承，H 為滾支，C 固接、F 鉸支；柱高 4m/5m，跨度 6m/8m；附對位圖（Sidesway not prevented）" src="../../raw/solutions/SS-2011-4/SS-2011-4-fig-1.png" /></p>
-<p><strong>構架幾何（依考卷原圖 500 dpi 目視判讀）：</strong><br />
-- 上層高 4 m（A–D–G 至 B–E–H），下層高 5 m（B–E–H 至 C–F）；左跨 6 m（AD、BE），右跨 8 m（DG、EH）。<br />
-- <strong>A 點</strong>：梁 AD 左端畫有小圓圈 → 梁 AD 與柱 AB 頂<strong>鉸接</strong>。<br />
-- <strong>D 點</strong>：只有柱 DE 向下（D 之上無柱），連接梁 AD、DG。<br />
-- <strong>G 點</strong>：上下皆有滾輪夾住的滑動支承 → <strong>不可轉動、可水平移動</strong>（題文「G 點不可轉動」）。<br />
-- <strong>H 點</strong>：三角形加滾輪 → 滾支，<strong>可轉動</strong>。<br />
-- <strong>C 點</strong>：斜線無三角形 → 固接。<strong>F 點</strong>：三角形 → <strong>鉸支</strong>，依題文 $G_F = 10$。</p>
+<p>柱 EF 材料及斷面性質：$F_y = 2.52$ tf/cm²，$E = 2040$ tf/cm²；$r_x = 10.5$ cm，$I_x = 11400$ cm⁴，$A = 104$ cm²</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>附 Sidesway not prevented（Unbraced frame）對位圖（$G_A$、$K$、$G_B$ 三軸）。</li>
+<li>第 3 頁「※參考公式：請自行選擇適合的公式參考，並檢查其正確性，若有問題應自行修正。」與本題相關者照錄：</li>
+</ul>
+<p>$$\text{For } \frac{KL}{r} \le C_c:\ F_a = \frac{\left[1 - \dfrac{(KL/r)^2}{2C_c^2}\right]F_y}{\dfrac53 + \dfrac{3(KL/r)}{8C_c} - \dfrac{(KL/r)^3}{8C_c^3}};\qquad \text{For } \frac{KL}{r} &gt; C_c:\ F_a = \frac{12\pi^2E}{23(KL/r)^2}$$</p>
+<p>$$F'_e = \frac{12\pi^2E}{23(Kl_b/r_b)^2}$$</p>
+<p>$$G_{inelastic} = \frac{\sum(EI/L)_{col}}{\sum(EI/L)_{beam}} = G_{elastic}\,\tau_a;\qquad \tau_a = \frac{E_t}{E} = \frac{F_{cr,inelastic}}{F_{cr,elastic}}\ (LSD);\qquad \tau_a = \frac{E_t}{E} = \frac{F_a}{F'_e}\ (ASD)$$</p>
+<ul>
+<li>卷首注意事項㈢：「本試題之相關符號、公式、物理常數及設計參數未提及時，請依規範自行合理推斷或假設。」</li>
+<li>考卷<strong>沒給</strong>：$C_c$ 式（第 3 頁未見，依規範 $\sqrt{2\pi^2E/F_y}$）、梁遠端修正係數。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2011-4 附圖：左柱 A-B-C（A 頂有鉸圓、C 固接），中柱 D-E-F（F 三角形鉸支），梁 AD、BE 跨 6 m，梁 DG、EH 跨 8 m；G 為上下滾輪夾住之方塊（可水平移動不可轉動），H 為三角形加滾輪；上層 4 m、下層 5 m；右附對位圖" src="../../raw/solutions/SS-2011-4/SS-2011-4-fig-1.png" /></p>
+<p><em>圖面文字照錄：A；D；G；B；E；H；C；F；4m；5m；6m；8m；G_A；K；G_B；(a) Sidesway not prevented (Unbraced frame)。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>「必要的修正」</td>
+<td>梁遠端條件與對位圖假設不同者修正：AD（遠端 A 鉸接）、DG（遠端 G 不轉）、EH（遠端 H 可轉）；BE 遠端 B 為剛接節點不修正</td>
+<td>題文＋支承符號（解讀）</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>2</td>
+<td>非彈性 $G_F$</td>
+<td>F 為鉸支、題目規定 $G = 10$；是否也乘 $\tau_a$ 折減，題未明說</td>
+<td>題文括號（解讀）</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>3</td>
+<td>非彈性 $K$ 用的 $f_a$</td>
+<td>題未給軸力；以「$K$ 自洽（$F_a$ 與 $F'_e$ 皆由同一 $K$ 求得）」疊代</td>
+<td>題文只問非彈性 $K$（解讀）</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A 點</td>
+<td>有鉸圓 → 梁 AD 與柱 AB 頂<strong>鉸接</strong></td>
+<td>附圖（450 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>B 點</td>
+<td>無鉸圓 → 剛接（柱 AB、BC 連續，與梁 BE 剛接）</td>
+<td>附圖（450 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>C 點</td>
+<td>固接（斜線、無三角形）</td>
+<td>附圖（450 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>F 點</td>
+<td><strong>鉸支</strong>（三角形）</td>
+<td>附圖（450 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>G 點</td>
+<td>方塊上下各一排滾輪夾住 → 可水平移動、<strong>不可轉動</strong>、不可垂直移動</td>
+<td>附圖＋題文「G 點不可轉動」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>H 點</td>
+<td>三角形＋滾輪 → 滾支，<strong>可轉動</strong></td>
+<td>附圖＋題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>D 點</td>
+<td>上方無柱，只有柱 DE 向下；梁 AD、DG 交會</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>尺寸</td>
+<td>上層 4 m（AB、DE）、下層 5 m（BC、EF）；左跨 6 m（AD、BE）、右跨 8 m（DG、EH）</td>
+<td>尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>12</td>
+<td>側移條件</td>
+<td>無側撐 → 用所附 Sidesway not prevented 圖</td>
+<td>題文＋對位圖標題</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>13</td>
+<td>柱 EF 面內</td>
+<td>只給 $r_x$、$I_x$ → 構架平面內為繞 $x$ 軸</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-1 題目正本推廣・批 2）｜確認：2026-11-02 使用者確認</em></p></details>
+<h1>考題編號：SS-2011-4</h1>
+<p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
+<strong>副分類：</strong> 無<br />
+<strong>設計法：</strong> ASD<br />
+<strong>標籤：</strong> <code>壓力桿件</code> <code>有效長度</code> <code>對位圖</code> <code>nomograph</code> <code>無側撐構架</code> <code>非彈性修正</code> <code>τ_a折減</code> <code>ASD</code> <code>G值邊界條件</code> <code>遠端修正因子</code> <code>鉸支端</code></p>
+<hr />
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2011-4-problem.md"><code>SS-2011-4-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 點</td>
+<td>鉸圓 → 梁 AD 與柱頂鉸接，梁遠端修正</td>
+<td>當成剛接</td>
+</tr>
+<tr>
+<td>F 點</td>
+<td>三角形鉸支，題定 $G_F = 10$</td>
+<td>當成固接（舊版解析 $G_F = 1.0$）</td>
+</tr>
+<tr>
+<td>G 點</td>
+<td>可平移、不可轉 → 梁 DG 遠端不轉</td>
+<td>當成鉸接或完全固定</td>
+</tr>
+<tr>
+<td>H 點</td>
+<td>滾支可轉 → 梁 EH 遠端鉸</td>
+<td>當成固接</td>
+</tr>
+<tr>
+<td>非彈性 $\tau_a$</td>
+<td>考卷第 3 頁 $\tau_a = F_a/F'_e$（ASD），以 $K$ 自洽疊代</td>
+<td>改用 LRFD 的 $\tau$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 柱 DE、EF：$I = 11{,}400$ cm⁴，$L$ = 400、500 cm；梁 AD 24,000／600、DG 28,000／800、BE 30,000／600、EH 36,000／800（cm⁴／cm）；柱 EF $r_x = 10.5$ cm、$A = 104$ cm²；$F_y = 2.52$、$E = 2040$ tf/cm²。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong><br />
@@ -311,7 +505,6 @@ $$\boxed{K_{inelastic}} \quad \text{（疊代至收斂）}$$</p>
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -319,25 +512,21 @@ $$\boxed{K_{inelastic}} \quad \text{（疊代至收斂）}$$</p>
 <tr>
 <td>對位圖的梁假設</td>
 <td>無側撐：梁兩端同向轉、雙曲率 $6EI/L$；有側撐：反向轉、單曲率 $2EI/L$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">effective-length-chart</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>遠端修正係數</td>
 <td>無側撐：遠端鉸 ×1/2、遠端固 ×2/3；有側撐：遠端鉸 ×1.5、遠端固 ×2</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">effective-length-chart</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>支承符號</td>
 <td>小圓圈＝鉸接點；三角形＝鉸支；滾輪＝可沿一方向滑動</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>ASD 勁度折減 $\tau_a$</td>
 <td>非彈性時 $E_t &lt; E$，柱的 $I/L$ 乘 $\tau_a$，G 變小、K 下降</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">asd-column</span></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -614,6 +803,7 @@ $$\boxed{K_{inelastic}} \quad \text{（疊代至收斂）}$$</p>
 <hr />
 <p><em>修正日期：2026-11-01（依考卷原圖：F 點為三角形鉸支，原解誤作固接取 $G_F = 1.0$；A 點小圓圈為梁柱鉸接，原解漏乘梁 AD 遠端修正 1/2。$G_D$ 由 0.450 更正為 <strong>0.658</strong>，$K_{DE}$ 1.21 → <strong>1.22</strong>、$K_{EF}$ 1.27 → <strong>1.84</strong>、非彈性 $K_{EF}$ 1.11 → <strong>1.79</strong>；K 值改以對位圖方程式精確解；新增 $G_F$ 折減與否之比較及 §6 對照）</em><br />
 <em>驗證狀態：unverified</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2011-4-problem.md</code>（已確認）＋常見誤讀＋本解記號；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2011-4/SS-2011-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

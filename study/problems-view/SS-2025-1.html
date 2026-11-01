@@ -307,7 +307,6 @@ $$\boxed{\phi_b M_{nx}} = 0.9 \times F_y \times \boxed{Z_x}$$</p>
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -315,37 +314,31 @@ $$\boxed{\phi_b M_{nx}} = 0.9 \times F_y \times \boxed{Z_x}$$</p>
 <tr>
 <td>翼板寬厚比分母是 $2t_f$</td>
 <td>翼板從腹板懸出，懸臂長 $b_f/2$，故 $\lambda = (b_f/2)/t_f = b_f/(2t_f)$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COMPACT-SECTION</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$\lambda_p$ 公式（銲接 vs 熱軋皆同）</td>
 <td>$\lambda_{pf} = 17/\sqrt{F_y}$（tf/cm² 制），不因斷面類型而異</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COMPACT-SECTION</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>完全側向支撐 → $M_n = M_p$（直接跳過 LTB）</td>
 <td>$L_b = 0 &lt; L_p$，三段判斷邏輯的第一段</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">LATERAL-TORSIONAL-BUCKLING</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$Z_x$ 包含腹板貢獻</td>
 <td>腹板分上下兩半，各部分 $= (h_w/2) \times t_w \times (h_w/4)$，不可漏算</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>殘留應力 $F_r$ 不影響 $M_p$</td>
 <td>$M_p = F_y Z_x$，殘留應力只影響 $M_r$ 和 $L_r$（LTB 相關），本題完全支撐故無影響</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">RESIDUAL-STRESS</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$\phi_b = 0.9$（彎曲）</td>
 <td>不可與 $\phi_c = 0.85$（壓力）混用</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-phi-values</span></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>

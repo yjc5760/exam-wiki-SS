@@ -44,29 +44,181 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 單元總覽">&#128269; U1-1 單元總覽</a><a class="lect" href="../lecture-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 觀念講義">&#128218; U1-1 拉力及壓力桿件 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2003-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2003-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2003_鋼結構設計.pdf</code> 第 1（正面） 頁，第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 92 年（2003）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（合成柱斷面），<code>SS-2003-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋關鍵處 400–500 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>二、下圖所示為一合成受壓構材之斷面，使用 A572 Gr. 50 之 H312×303×13×21 型鋼斷面，SD 420 之 D32 鋼筋（斷面積為 8.14 cm²）以及抗壓強度 $f'_c = 280\ \text{kg/cm}^2$ 之混凝土。該受壓構材在與腹板平行以及垂直之平面上，其長度皆為 15 m、有效長度係數皆為 0.8。以極限設計法求該受壓構材的設計強度。已知鋼骨降伏強度為 3.5 t/cm²，鋼筋降伏強度為 4.2 t/cm²，鋼材彈性係數為 2100 t/cm²，混凝土彈性係數為 250 t/cm²。<br />
+H312×303×13×21：$A = 165\ \text{cm}^2$；$r_x = 13.4$ cm；$r_y = 7.7$ cm。（25 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<p>題內「設計強度」說明照錄：</p>
+<blockquote>
+<p>設計強度：承受軸力之合成柱，其設計強度為 $\phi_cP_n$，其中 $\phi_c = 0.85$，$P_n$ 為標稱軸向強度，$P_n$ 可由公式⑴至⑷經過下述之修正、計算而得。<br />
+1. $A_s$：型鋼或鋼管（圓形、矩形）之全斷面積，cm²（代替 $A_g$）。<br />
+   $r_m$：型鋼或鋼管（圓形、矩形）之迴轉半徑，對型鋼而言，此值不應小於合成斷面沿著挫屈平面之全厚度之百分之三十，cm（代替 $r$）。<br />
+2. 降伏強度及斷面模數依下列二式修正為 $F_{my}$ 及 $E_m$。<br />
+   $F_{my} = F_y + C_1F_{yr}(A_r/A_s) + C_2f'_c(A_c/A_s)$　　$E_m = E + C_3E_c(A_c/A_s)$<br />
+   其中 $A_c$＝混凝土面積，$A_r$＝縱向鋼筋之面積，$A_s$＝鋼骨之斷面積，$E$＝鋼骨之彈性模數，$E_c$＝混凝土之彈性模數，$F_y$＝型鋼或鋼管（圓形或矩型）之標稱降伏強度，$F_{yr}$＝縱向鋼筋之標稱降伏強度，$f'_c$＝混凝土之抗壓強度，$C_1$、$C_2$、$C_3$ 為係數。對於中空部分澆注混凝土之鋼管（圓形、矩形）：$C_1 = 1.0$、$C_2 = 0.85$、$C_3 = 0.4$，對於混凝土包覆之型鋼：$C_1 = 0.7$、$C_2 = 0.6$、$C_3 = 0.2$</p>
+<p>設計受壓強度：若受壓斷面肢材之寬厚比滿足半結實斷面者，其設計強度為 $\phi_cP_n$。<br />
+其中 $\phi_c = 0.85$　$P_n = A_gF_{cr}$ ⋯⋯⑴<br />
+當 $\lambda_c \le 1.5$　$F_{cr} = [\exp(-0.419\lambda_c^2)]F_y$ ⋯⋯⑵<br />
+當 $\lambda_c &gt; 1.5$　$F_{cr} = \left[\dfrac{0.877}{\lambda_c^2}\right]F_y$ ⋯⋯⑶<br />
+其中 $\lambda_c = \dfrac{kL}{\pi r}\sqrt{\dfrac{F_y}{E}}$ ⋯⋯⑷<br />
+$A_g$＝構材之全斷面積，cm²　$F_y$＝標稱降伏應力，t/cm²　$E$＝彈性模數，t/cm²　$k$＝有效長度係數<br />
+$L$＝構材之無側撐長度，cm　$r$＝對挫屈平面之最小迴轉半徑，cm。</p>
+</blockquote>
+<ul>
+<li>考卷<strong>沒給</strong>鋼筋根數（由圖數）、混凝土面積（須自算）、鋼筋是否扣除於 $A_c$。</li>
+<li>$f'_c$ 單位為 kg/cm²，其餘為 t/cm²（單位混用為考卷原樣）。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2003-2 附圖：寬 500 mm、高 600 mm 矩形混凝土斷面，內包 H 型鋼（翼板水平、腹板垂直），四角各一根鋼筋" src="../../raw/solutions/SS-2003-2/SS-2003-2-fig-1.png" /></p>
+<p><em>圖面文字照錄：500 mm；600 mm。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>混凝土斷面</td>
+<td>寬 500 mm（水平）× 高 600 mm（垂直）</td>
+<td>上方尺寸線 500 mm、左側尺寸線 600 mm（500 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>型鋼方向</td>
+<td>翼板水平、腹板垂直，置中</td>
+<td>斷面圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>強軸／弱軸對應的全厚度</td>
+<td>繞強軸（水平軸 x）挫屈 → 沿 600 mm 方向；繞弱軸（垂直軸 y）挫屈 → 沿 500 mm 方向</td>
+<td>斷面圖＋$r_m$ 規定「沿著挫屈平面之全厚度」（解讀）</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>鋼筋</td>
+<td>4 根 D32，四角各 1 根，每根 8.14 cm²</td>
+<td>圖上四角黑點；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>長度與 K</td>
+<td>兩個平面皆 $L = 15$ m、$k = 0.8$</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>係數組</td>
+<td>混凝土包覆型鋼：$C_1 = 0.7$、$C_2 = 0.6$、$C_3 = 0.2$</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>$F_y$、$E$ 的意思</td>
+<td>公式⑵⑶⑷中以 $F_{my}$、$E_m$、$A_s$、$r_m$ 取代 $F_y$、$E$、$A_g$、$r$</td>
+<td>題文「經過下述之修正」（解讀）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>設計強度 $\phi_cP_n$</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-1 題目正本推廣・批 1）｜確認：2026-11-02 使用者確認</em></p></details>
 <h1>考題編號：SS-2003-2</h1>
 <p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>副分類：</strong>（無）<br />
 <strong>設計法：</strong> LRFD<br />
 <strong>標籤：</strong> <code>SRC複合柱</code> <code>包覆型複合柱</code> <code>有效降伏強度Fmy</code> <code>修正彈性模數Em</code> <code>整體挫屈</code> <code>非彈性挫屈</code> <code>λc</code> <code>Fcr</code> <code>φcPn</code> <code>H型鋼</code> <code>A572</code> <code>SD420</code> <code>rm下限</code> <code>0.3倍全厚</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>下圖所示為一合成受壓構材之斷面，使用 A572 Gr. 50 之 H312×303×13×21 型鋼斷面，SD 420 之 D32 鋼筋（斷面積為 8.14 cm²）以及抗壓強度 $f'_c = 280$ kg/cm² 之混凝土。該受壓構材在與腹板平行以及垂直之平面上，其長度皆為 15 m、有效長度係數皆為 0.8。以極限設計法求該受壓構材的設計強度。已知鋼骨降伏強度為 3.5 t/cm²，鋼筋降伏強度為 4.2 t/cm²，鋼材彈性係數為 2100 t/cm²，混凝土彈性係數為 250 t/cm²。（25 分）</p>
-<p>H312×303×13×21：$A = 165$ cm²；$r_x = 13.4$ cm；$r_y = 7.7$ cm。</p>
-<p><img alt="SS-2003-2 斷面圖：500 mm（寬）× 600 mm（高）矩形混凝土斷面，內包 H312×303×13×21 型鋼（腹板垂直、翼板水平），四角各一根 D32 鋼筋" src="../../raw/solutions/SS-2003-2/SS-2003-2-fig-1.png" /></p>
-<p><em>圖說：混凝土斷面寬 500 mm、高 600 mm；H 型鋼腹板垂直、翼板水平，強軸 $x$ 為水平軸（挫屈時沿 600 mm 方向位移），弱軸 $y$ 為垂直軸（挫屈時沿 500 mm 方向位移）；四角各配 1 根 D32。</em></p>
-<p><strong>考卷給定的設計規定（原文）：</strong></p>
-<p>承受軸力之合成柱，其設計強度為 $\phi_c P_n$，其中 $\phi_c = 0.85$，$P_n$ 可由公式 (1) 至 (4) 經過下述之修正、計算而得：</p>
-<ol>
-<li>$A_s$：型鋼或鋼管之全斷面積，cm²（代替 $A_g$）。<br />
-   <strong>$r_m$：型鋼或鋼管之迴轉半徑，對型鋼而言，此值不應小於合成斷面沿著挫屈平面之全厚度之百分之三十，cm（代替 $r$）。</strong></li>
-<li>降伏強度及斷面模數依下列二式修正為 $F_{my}$ 及 $E_m$：<br />
-   $$F_{my} = F_y + C_1F_{yr}\frac{A_r}{A_s} + C_2 f'_c\frac{A_c}{A_s},\qquad E_m = E + C_3E_c\frac{A_c}{A_s}$$<br />
-   對於混凝土包覆之型鋼：$C_1 = 0.7$、$C_2 = 0.6$、$C_3 = 0.2$。</li>
-</ol>
-<p>$$P_n = A_gF_{cr}\ \ (1)\qquad \lambda_c \le 1.5:\ F_{cr} = \left[\exp(-0.419\lambda_c^2)\right]F_y\ \ (2)$$<br />
-$$\lambda_c &gt; 1.5:\ F_{cr} = \left[\frac{0.877}{\lambda_c^2}\right]F_y\ \ (3)\qquad \lambda_c = \frac{kL}{\pi r}\sqrt{\frac{F_y}{E}}\ \ (4)$$</p>
-<p>（套用於合成柱時，(1)～(4) 式中的 $A_g, r, F_y, E$ 依序以 $A_s, r_m, F_{my}, E_m$ 取代。）</p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2003-2-problem.md"><code>SS-2003-2-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$r_m$</td>
+<td>不小於挫屈平面全厚度之 30%：弱軸 $\max(7.7,\,0.3 \times 50) = 15.0$、強軸 $\max(13.4,\,0.3 \times 60) = 18.0$ cm</td>
+<td>直接用型鋼 $r_y = 7.7$ cm（舊版解析即如此，$\phi_cP_n$ 147 t）</td>
+</tr>
+<tr>
+<td>全厚度方向</td>
+<td>繞強軸 → 600 mm、繞弱軸 → 500 mm</td>
+<td>兩者對調</td>
+</tr>
+<tr>
+<td>公式代換</td>
+<td>$A_g, r, F_y, E$ 依序換成 $A_s, r_m, F_{my}, E_m$</td>
+<td>$P_n$ 用混凝土＋鋼的總面積</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> H312×303×13×21：$A_s = 165$ cm²；$A_r = 4 \times 8.14 = 32.56$ cm²；$A_c = 50 \times 60 - A_s - A_r$；$F_y = 3.5$、$F_{yr} = 4.2$、$E = 2100$、$E_c = 250$ t/cm²，$f'_c = 0.28$ t/cm²；$kL = 0.8 \times 1500 = 1200$ cm。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 舊版 AISC LRFD 合成柱採「等效鋼柱法」——把鋼筋與混凝土的貢獻折算進 $F_{my}$、$E_m$，再套純鋼柱的柱強度曲線。等效之後還差一件事：<strong>迴轉半徑</strong>。型鋼自己的 $r$ 只反映鋼骨，但包在外面的混凝土讓整根柱實際上粗很多，所以規範規定 $r_m$ 不得小於「挫屈平面方向全厚度的 0.3 倍」（矩形斷面 $r = h/\sqrt{12} \approx 0.289h$，取 0.3 即是以整個混凝土斷面估迴轉半徑）。</p>
@@ -299,7 +451,6 @@ $$\boxed{\phi_cP_n} = 0.85\times165\times3.661 = 513\ \text{t}$$</p>
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -307,31 +458,26 @@ $$\boxed{\phi_cP_n} = 0.85\times165\times3.661 = 513\ \text{t}$$</p>
 <tr>
 <td>為什麼 $r_m \ge 0.3h$</td>
 <td>混凝土包覆後整根柱的抗彎勁度遠大於鋼骨；矩形斷面 $r = h/\sqrt{12} = 0.289h$，規範取 0.3 作為下限</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COLUMN-STRENGTH-CURVE</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>「挫屈平面之全厚度」</td>
 <td>柱在哪個方向側彎，就量那個方向的斷面尺寸；弱軸挫屈 → 沿寬度位移 → 用寬度</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$P_n = A_sF_{cr}$</td>
 <td>鋼筋與混凝土的貢獻已折算進 $F_{my}$，只乘鋼骨面積</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$\lambda_c$ 分界 1.5</td>
 <td>$\le 1.5$ 用指數式（非彈性）、$&gt;1.5$ 用 $0.877/\lambda_c^2$（彈性）</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-column</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>包覆型 vs 充填型 C 係數</td>
 <td>包覆型 0.7／0.6／0.2；充填型 1.0／0.85／0.4</td>
-<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -563,6 +709,7 @@ $$P_e = \frac{\pi^2EI_{eff}}{(KL)^2},\qquad P_n = \begin{cases}P_{no}\,0.658^{P_
 <p><em>解析完成時間：2026-04-xx</em><br />
 <em>修正日期：2026-11-01（考卷明文規定 $r_m$ 不得小於挫屈平面全厚度之 30%，原解直接取型鋼 $r_y = 7.7$ cm，致 $KL/r$ 155.8、$\lambda_c$ 2.405、誤判彈性挫屈，$\phi_cP_n$ 由 147 t 更正為 <strong>513 t</strong>；補強軸檢核與雙路徑驗算；新增 §6 AISC 360-16／-22 對照）</em><br />
 <em>驗證狀態：unverified</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2003-2-problem.md</code>（已確認）＋常見誤讀＋本解記號，避免題意兩份不同步；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2003-2/SS-2003-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

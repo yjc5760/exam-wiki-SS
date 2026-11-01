@@ -29,22 +29,144 @@ blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;paddin
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2003-1 題目解析</h1><a class="quick" href="../unit-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 單元總覽">&#128269; U1-1 單元總覽</a><a class="lect" href="../lecture-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 觀念講義">&#128218; U1-1 拉力及壓力桿件 講義</a></header>
-<main><h1>考題編號：SS-2003-1</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2003-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2003-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2003_鋼結構設計.pdf</code> 第 1（正面） 頁，第一題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 92 年（2003）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分（每小題 5 分）</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>無</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋關鍵處 400–500 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>一、簡答題：（每小題 5 分，共 25 分）<br />
+㈠試說明何謂塊狀剪力（block shear）撕裂。<br />
+㈡梁支承處若設計不當可能發生腹板局部降伏（web yielding），試說明其改善措施。<br />
+㈢受拉構材設計中，降伏應力（yielding stress）之安全係數較抗拉強度之安全係數為低，試簡述其理由。<br />
+㈣鋼結構構材斷面依其抵抗局部挫屈之特性，可分為那四種？試簡述之。<br />
+㈤何謂臨界長細比 Cc？其推導之理論背景為何？試簡述之。</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<p>無（本題無公式或附表；同卷背面附表屬第三、四題）。</p>
+<h2>3. 附圖</h2>
+<p>本題無附圖。</p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>題型</td>
+<td>五個簡答小題，皆不需計算</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>㈡ 問什麼</td>
+<td><strong>改善措施</strong>（不只是說明現象）</td>
+<td>題文「試說明其改善措施」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>㈢ 比較對象</td>
+<td>降伏（全斷面）安全係數 &lt; 斷裂（淨斷面）安全係數的理由</td>
+<td>題文（解讀）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>㈣「四種」</td>
+<td>依局部挫屈分類的四種斷面（如塑性設計斷面、結實、半結實、細長；名稱依當年規範）</td>
+<td>題文「可分為那四種」（解讀）</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>5</td>
+<td>㈤ $C_c$</td>
+<td>ASD 柱公式中彈性／非彈性挫屈分界的長細比</td>
+<td>題文（解讀）</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-1 題目正本推廣・批 1）｜確認：2026-11-02 使用者確認</em></p></details>
+<h1>考題編號：SS-2003-1</h1>
 <p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>副分類：</strong> <code>SS-U1-4</code> 接合之分析與設計、<code>SS-U1-2</code> 梁桿件<br />
 <strong>設計法：</strong> 概念題<br />
 <strong>標籤：</strong> <code>塊狀剪力</code> <code>block shear</code> <code>腹板承壓降伏</code> <code>web yielding</code> <code>Cc臨界細長比</code> <code>ASD</code> <code>受拉構材安全係數</code> <code>局部挫屈</code> <code>斷面分類</code> <code>結實斷面</code> <code>承壓加勁板</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>一、簡答題：（每小題 5 分，共 25 分）</p>
-<p>（一）試說明何謂塊狀剪力（block shear）撕裂。</p>
-<p>（二）梁支承處若設計不當可能發生腹板局部降伏（web yielding），試說明其<strong>改善措施</strong>。</p>
-<p>（三）受拉構材設計中，降伏應力（yielding stress）之安全係數較抗拉強度之安全係數為低，試簡述其理由。</p>
-<p>（四）鋼結構構材斷面依其抵抗局部挫屈之特性，可分為那四種？試簡述之。</p>
-<p>（五）何謂臨界長細比 $C_c$？其推導之理論背景為何？試簡述之。</p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
 <blockquote>
-<p>註：本題五小題文字皆可由考卷轉圖清楚判讀（原卷為 CID 字型，<code>pdftotext</code> 抽不到中文，須以 PyMuPDF 轉圖目視）。</p>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2003-1-problem.md"><code>SS-2003-1-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
 </blockquote>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>㈡ 問什麼</td>
+<td>腹板局部降伏的<strong>改善措施</strong></td>
+<td>只說明現象</td>
+</tr>
+<tr>
+<td>㈢、㈣ 題文</td>
+<td>㈢ 受拉構材降伏的安全係數較低之理由；㈣ 依抵抗局部挫屈特性分成的四種斷面</td>
+<td>照舊版解析自行「補全」的別題作答</td>
+</tr>
+<tr>
+<td>㈤ $C_c$</td>
+<td>ASD 柱公式彈性／非彈性挫屈分界長細比與其理論背景</td>
+<td>只寫公式不寫背景</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> （說明題，無數值）</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>五個小題各對應一個「規範背後的道理」，測驗的是<strong>為什麼</strong>，而不是公式：</p>
@@ -197,7 +319,6 @@ $$\text{（五）}\ \boxed{C_c} = \sqrt{\frac{2\pi^2E}{F_y}}\ \Leftarrow\ F_e = 
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -205,31 +326,26 @@ $$\text{（五）}\ \boxed{C_c} = \sqrt{\frac{2\pi^2E}{F_y}}\ \Leftarrow\ F_e = 
 <tr>
 <td>塊狀剪力擇式原則</td>
 <td>$F_uA_{nt} \ge 0.6F_uA_{nv}$ 時拉力面先斷 → 用 $0.6F_yA_{gv} + F_uA_{nt}$；反之用 $0.6F_uA_{nv} + F_yA_{gt}$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">block-shear</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BLOCK-SHEAR-RUPTURE</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$2.5k$ 與 $5k$</td>
 <td>集中力由翼板外緣以 1:2.5 斜率擴散到腹板趾；端部只有一側能擴散</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">WEB-LOCAL-YIELDING</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>延性 vs 脆性破壞</td>
 <td>降伏有大變形預警、不立即倒塌；淨斷面斷裂突然發生</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>寬厚比分級</td>
 <td>$\lambda_p$：可達 $M_p$；$\lambda_{pd}$：還要有足夠轉動能力形成塑性鉸</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COMPACT-SECTION</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>CRC 柱曲線</td>
 <td>熱軋型鋼殘留應力最大約 $0.3$～$0.5F_y$，取 $0.5F_y$ 為比例限</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COLUMN-STRENGTH-CURVE</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">RESIDUAL-STRESS</span></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -402,7 +518,8 @@ $$\text{LRFD：}\phi_t = 0.90\quad \text{vs}\quad \phi_t = 0.75$$</p>
 <hr />
 <p><em>解析完成時間：2026-04-xx</em><br />
 <em>修正日期：2026-11-01（依考卷轉圖逐字重判題目：（三）原題為「受拉構材降伏安全係數較低之理由」、（四）原題為「依局部挫屈特性之四種斷面分類」，舊解自行補全為合成柱係數與殘留應力，全數改寫；（二）改答「改善措施」；（一）補擇式原則與上限；新增 §6 AISC 360-16／-22 對照）</em><br />
-<em>驗證狀態：unverified</em></p></main>
+<em>驗證狀態：unverified</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2003-1-problem.md</code>（已確認）＋常見誤讀＋本解記號，避免題意兩份不同步；解題內容與答案不變）</em></p></main>
 <footer>來源：raw/solutions/SS-2003-1/SS-2003-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，

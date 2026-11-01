@@ -298,7 +298,6 @@ $$\boxed{M_n} = C_b\left[M_p - (M_p - M_r)\frac{L_b - L_p}{L_r - L_p}\right] \le
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -306,37 +305,31 @@ $$\boxed{M_n} = C_b\left[M_p - (M_p - M_r)\frac{L_b - L_p}{L_r - L_p}\right] \le
 <tr>
 <td>LTB 三段判斷</td>
 <td>$L_b \leq L_p$ 塑性 / $L_p &lt; L_b \leq L_r$ 非彈性 / $L_b &gt; L_r$ 彈性，判斷錯會用錯公式</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">LATERAL-TORSIONAL-BUCKLING</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$C_b$ 端彎矩型</td>
 <td>$M_1/M_2 = 0$ 時 $C_b = 1.75$，誤設 1.0 導致結果低 75%</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">cb-factor</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BENDING-MODIFICATION-FACTOR-CB</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$X_1$、$X_2$ 參數</td>
 <td>含 J（扭矩）、$C_W$（翹曲）的斷面挫屈參數，J 與 $C_W$ 定義容易混淆</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>翹曲常數 $C_W$</td>
 <td>本卷公式表明列 $C_W = I_f h^2/2$（$I_f$＝<strong>單一翼板</strong>對弱軸慣性矩，$h = d-t_f$）；近似式 $I_y(d-t_f)^2/4$ 會高估 0.37%（差在腹板項，$I_y/2 \neq I_f$）</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$M_n$ 上限不可超過 $M_p$</td>
 <td>$C_b$ 放大後仍需截斷在 $M_p$，否則預測強度超過塑性極限</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>殘留應力 $F_r$</td>
 <td>熱軋型鋼取 $F_r = 0.5F_y$ 或題目給定值，影響 $M_r$ 與 $L_r$ 計算</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">RESIDUAL-STRESS</span></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>

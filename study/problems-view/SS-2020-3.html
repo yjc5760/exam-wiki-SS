@@ -466,7 +466,6 @@ $$\frac{\boxed{P_u}}{\boxed{\phi_c P_n}} + \frac{8}{9}\!\left(\frac{\boxed{M_{ux
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -475,60 +474,50 @@ $$\frac{\boxed{P_u}}{\boxed{\phi_c P_n}} + \frac{8}{9}\!\left(\frac{\boxed{M_{ux
 <td>載重係數 $r$ 作用對象</td>
 <td><strong>所有</strong>工作載重均需乘 $r$（包含兩軸彎矩），不只軸力</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>強弱軸 $\lambda_c$ 分別計算</td>
 <td>$K_x \neq K_y$、$r_x \neq r_y$，需各自算出後取較大者控制柱強度</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-column</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$\exp(-0.419\lambda^2)$ 的等效形式</td>
 <td>等效於 $0.658^{\lambda^2}$（因 $\ln 0.658 \approx -0.419$）；本題公式直接給，直接代計算機</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-column</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">column-buckling-lambda-boundary</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$B_1$ 公式中 $M_1/M_2$ 符號</td>
 <td><strong>單曲率為「$-$」（負值）；雙曲率（S 形）為「$+$」（正值）</strong>；$\|M_1/M_2\| \leq 1$（大者放分母）；$B_1 &lt; 1$ 時取 $B_1 = 1.0$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">b1b2-amplification</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">b1-m1m2-sign-convention</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>台灣 (8.2-3) 與 AISC 的差別</td>
 <td>台灣用 $\frac{0.64}{1-P_u/P_{e1}}(1-\frac{M_1}{M_2}) + 0.32\frac{M_1}{M_2}$；AISC 用 $\frac{0.6-0.4(M_1/M_2)}{1-P_u/P_{e1}}$。<strong>兩者不等價</strong>，規範解說稱 AISC 是「更簡化」的版本</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">b1b2-amplification</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$P_{e1}$ 的 $K \leq 1.0$</td>
 <td>$B_1$ 屬構材內 P-δ，故用無側移長度；側移效應歸 $B_2$（$P_{e2}$ 之 $K \geq 1.0$）。混用即重複計入</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">b1b2-amplification</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>弱軸上限 $1.5F_yS_y$</td>
 <td>I 型斷面 $Z_y/S_y$ 常略大於 1.5；$M_{ny}$ 須取 $\min(F_yZ_y, 1.5F_yS_y)$。AISC 360-10 起放寬為 $1.6F_yS_y$</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>斷面性質須自算</td>
 <td>本題不給 $A$、$Z$、$r$，H 型組合斷面的 $Z_x = b_ft_f(d-t_f)+t_wh_w^2/4$、$Z_y = t_fb_f^2/2 + h_wt_w^2/4$ 必須背得出來</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>H1-1a vs H1-1b 選擇門檻</td>
 <td>$P_u/\phi_cP_n \geq 0.2$ 用 H1-1a（含 8/9 係數）；$&lt; 0.2$ 用 H1-1b</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">pm-interaction</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BEAM-COLUMN-INTERACTION</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>最終答案的單位還原</td>
 <td>題目問工作彎矩 $M_{wy}$；互制式解出的是設計彎矩 $M_{uy}$，須除以 $r$ 才是答案</td>
-<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>

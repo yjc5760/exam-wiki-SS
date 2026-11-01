@@ -44,55 +44,180 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 單元總覽">&#128269; U1-1 單元總覽</a><a class="lect" href="../lecture-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 觀念講義">&#128218; U1-1 拉力及壓力桿件 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2002-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2002-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2002_鋼結構設計.pdf</code> 第 1（正面） 頁，第三題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 91 年（2002）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分（㈠ 10、㈡ 15）</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>2 張：柱立面 X-Z／Y-Z 面＋斷面 <code>SS-2002-3-fig-1.png</code>；設計 K 值表 <code>SS-2002-3-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋關鍵處 400–500 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>三、有一受軸向載重之鋼柱長度為 10 m，柱子底部固接於基礎，頂端則為鉸接，中間垂直於弱軸有鉸接側向支撐（如附圖所示），採用 A36 鋼材斷面為 W14×53 型鋼，且為結實斷面。試回答以下問題：<br />
+㈠根據容許應力設計法，求該柱之容許載重（$P_a$）。（10 分）<br />
+㈡根據極限設計法，求該柱之設計載重（$P_u$）。（15 分）</p>
+<p>W14×53 斷面參數：$A = 100.64\ \text{cm}^2$，$r_x = 14.96$ cm，$r_y = 4.88$ cm<br />
+A36 鋼材：$F_y = 2.50\ \text{t/cm}^2$，$F_u = 4.10\ \text{t/cm}^2$，$E = 2.1\times10^3\ \text{t/cm}^2$<br />
+參考公式與圖表：</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<p>題內「參考公式與圖表」照錄：</p>
+<p>$$F_a = \frac{\left(1 - \dfrac{(KL/r)^2}{2C_c^2}\right)F_y}{\dfrac{5}{3} + \dfrac{3(KL/r)}{8C_c} - \dfrac{(KL/r)^3}{8C_c^3}}\qquad F_a = \frac{12}{23}\frac{\pi^2E}{(KL/r)^2}\qquad C_c = \sqrt{\frac{2\pi^2E}{F_y}}$$</p>
+<p>$$F_{cr} = \left[\exp(-0.419\lambda_c^2)\right]F_y\qquad F_{cr} = \left(\frac{0.877}{\lambda_c^2}\right)F_y\qquad \lambda_c = \frac{KL}{r\pi}\sqrt{\frac{F_y}{E}}\qquad \phi = 0.85$$</p>
+<ul>
+<li>公式未標適用範圍（$KL/r$ 與 $C_c$、$\lambda_c$ 與 1.5 的分界考卷沒寫）。</li>
+<li>設計 K 值表（柱之屈曲變形以虛線表示）：(a) 0.65、(b) 0.80、(c) 1.2、(d) 1.0、(e) 2.1、(f) 2.0（各欄端部符號見 §3 附圖 2）。</li>
+<li>考卷<strong>沒給</strong> $F_u$ 以外的用途說明；$F_u$ 本題用不到。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2002-3 附圖 1：X-Z 面柱高 10.0 m，底固接、頂鉸接，中間側撐距頂 4.0 m、距底 6.0 m；Y-Z 面柱高 10.0 m，底固接、頂鉸接，無中間側撐；斷面腹板垂直、X 軸水平" src="../../raw/solutions/SS-2002-3/SS-2002-3-fig-1.png" /></p>
+<p><em>圖面文字照錄：10.0 m；4.0 m；6.0 m；X - Z 面；10.0 m；Y - Z 面；Y；X。</em></p>
+<p><img alt="SS-2002-3 附圖 2：設計 K 值表 (a)–(f)" src="../../raw/solutions/SS-2002-3/SS-2002-3-fig-2.png" /></p>
+<p><em>圖面文字照錄：柱之屈曲變形以虛線表示；設計K值 0.65、0.80、1.2、1.0、2.1、2.0。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>柱長</td>
+<td>10 m（兩個面皆是）</td>
+<td>題文；兩面尺寸線皆 10.0 m</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>底部</td>
+<td>固接</td>
+<td>題文「底部固接」；兩面底部皆為地面斜線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>頂端</td>
+<td>鉸接（有側向束制，不可平移）</td>
+<td>題文「頂端則為鉸接」；頂端三角形＋側邊斜線支承</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>中間側撐位置</td>
+<td><strong>距頂 4.0 m、距底 6.0 m</strong>（只在 X-Z 面）</td>
+<td>X-Z 面尺寸線：上段 4.0 m、下段 6.0 m（500 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>側撐所在平面與軸</td>
+<td>X-Z 面＝柱在 X 方向側彎＝繞<strong>弱軸 Y</strong> 挫屈；Y-Z 面（繞強軸 X）無中間側撐</td>
+<td>斷面圖：腹板沿 Y 軸、翼板水平；題文「垂直於弱軸有鉸接側向支撐」（解讀）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>K 值取用</td>
+<td>考卷附「設計 K 值」表，作答應取表中設計值（固-鉸 0.80、鉸-鉸 1.0），而非理論值</td>
+<td>附圖 2（解讀）</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>7</td>
+<td>㈡「設計載重 $P_u$」</td>
+<td>設計強度 $\phi_cP_n$（$\phi = 0.85$），不是因數化外力</td>
+<td>題文＋公式區給 $\phi$（解讀）</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>8</td>
+<td>公式適用範圍</td>
+<td>考卷未標 $C_c$、$\lambda_c = 1.5$ 分界，依規範補</td>
+<td>公式區（解讀）</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-1 題目正本推廣・批 1）｜確認：2026-11-02 使用者確認</em></p></details>
 <h1>考題編號：SS-2002-3</h1>
 <p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>副分類：</strong>（無）<br />
 <strong>設計法：</strong> 混合（ASD + LRFD）<br />
 <strong>標籤：</strong> <code>壓力桿件</code> <code>有效長度</code> <code>K值</code> <code>端部條件</code> <code>中間側向支撐</code> <code>弱軸挫屈</code> <code>強軸挫屈</code> <code>ASD</code> <code>LRFD</code> <code>Cc</code> <code>Fa</code> <code>λc</code> <code>Fcr</code> <code>φcPn</code> <code>非彈性挫屈</code> <code>側撐位置判讀</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>有一受軸向載重之鋼柱長度為 10 m，柱子底部固接於基礎，頂端則為鉸接，中間垂直於弱軸有鉸接側向支撐（如附圖所示），採用 A36 鋼材斷面為 W14×53 型鋼，且為結實斷面。試回答以下問題：<br />
-（一）根據容許應力設計法，求該柱之容許載重（$P_a$）。（10 分）<br />
-（二）根據極限設計法，求該柱之設計載重（$P_u$）。（15 分）</p>
-<p>W14×53：$A = 100.64$ cm²，$r_x = 14.96$ cm，$r_y = 4.88$ cm；A36：$F_y = 2.50$ t/cm²，$F_u = 4.10$ t/cm²，$E = 2.1\times10^3$ t/cm²。考卷並附 ASD $F_a$、$C_c$ 與 LRFD $F_{cr}$、$\lambda_c$ 公式，$\phi = 0.85$，以及設計 K 值表。</p>
-<p><img alt="SS-2002-3 柱結構示意：X-Z 面柱高 10 m，底固接、頂鉸接，距頂 4.0 m（距底 6.0 m）處有鉸接側撐；Y-Z 面柱高 10 m，底固接、頂鉸接，無中間側撐" src="../../raw/solutions/SS-2002-3/SS-2002-3-fig-1.png" /></p>
-<p><em>圖說（依考卷原圖 500 dpi 目視判讀）：</em><br />
-- <em>斷面示意：腹板垂直、翼板水平，$X$ 軸水平（強軸）、$Y$ 軸垂直（弱軸）。</em><br />
-- <strong><em>X-Z 面</strong>（柱在 $X$ 方向側彎＝繞<strong>弱軸</strong> $Y$ 彎曲）：柱高 10 m，底部固接，頂端鉸接，<strong>中間側撐位於距頂 4.0 m、距底 6.0 m</strong>。</em><br />
-- <strong><em>Y-Z 面</strong>（繞<strong>強軸</strong> $X$ 彎曲）：柱高 10 m，底固接、頂鉸接，無中間側撐。</em></p>
-<p><img alt="SS-2002-3 有效長度 K 值對照圖：六種端部邊界條件（設計 K 值 0.65、0.80、1.2、1.0、2.1、2.0）" src="../../raw/solutions/SS-2002-3/SS-2002-3-fig-2.png" /></p>
-<p><em>圖說：考卷附設計 K 值表：(a) 固-固 0.65；(b) 固-鉸 0.80；(c) 固-可平移不轉動 1.2；(d) 鉸-鉸 1.0；(e) 固-自由 2.1；(f) 鉸-可平移不轉動 2.0。</em></p>
-<p><strong>斷面與材料：</strong></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2002-3-problem.md"><code>SS-2002-3-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
 <table>
 <thead>
 <tr>
 <th>項目</th>
-<th>數值</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>$A$</td>
-<td>$100.64\ \text{cm}^2$</td>
+<td>中間側撐位置</td>
+<td>距頂 4.0 m、距底 6.0 m，只在 X-Z 面</td>
+<td>當成中點 5 m（舊版解析即如此，上段 KL 500 cm 控制）</td>
 </tr>
 <tr>
-<td>$r_x$（強軸迴轉半徑）</td>
-<td>$14.96\ \text{cm}$</td>
+<td>側撐對應的軸</td>
+<td>X-Z 面＝柱沿 X 側彎＝繞<strong>弱軸</strong> Y；Y-Z 面（強軸）全長 10 m 無側撐</td>
+<td>把 X-Z 面當成強軸平面</td>
 </tr>
 <tr>
-<td>$r_y$（弱軸迴轉半徑）</td>
-<td>$4.88\ \text{cm}$</td>
+<td>K 值</td>
+<td>取考卷附表<strong>設計值</strong>：固-鉸 0.80、鉸-鉸 1.0</td>
+<td>用理論值 0.7</td>
 </tr>
 <tr>
-<td>$F_y$</td>
-<td>$2.50\ \text{t/cm}^2$</td>
-</tr>
-<tr>
-<td>$E$</td>
-<td>$2100\ \text{t/cm}^2$</td>
+<td>㈡「設計載重 $P_u$」</td>
+<td>設計強度 $\phi_cP_n$（$\phi = 0.85$）</td>
+<td>以為要另做載重組合</td>
 </tr>
 </tbody>
 </table>
+<p><strong>本解記號：</strong> W14×53：$A = 100.64$ cm²、$r_x = 14.96$、$r_y = 4.88$ cm；$F_y = 2.5$、$E = 2100$ t/cm²；$KL$：強軸 800、弱軸下段 480、弱軸上段 400 cm。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 壓力柱要分別檢查強軸與弱軸的有效細長比，取大者控制。中間側撐只對它所約束的那個方向有效；被側撐分開的兩段長度不同、端部條件也不同，要逐段算。</p>
@@ -284,7 +409,6 @@ $$\lambda_c = \frac{KL}{r\pi}\sqrt{\frac{F_y}{E}} = \boxed{1.080} &lt; 1.5 \Righ
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -293,24 +417,20 @@ $$\lambda_c = \frac{KL}{r\pi}\sqrt{\frac{F_y}{E}} = \boxed{1.080} &lt; 1.5 \Righ
 <td>立面圖與彎曲軸</td>
 <td>在 X-Z 面內側移＝繞 $Y$ 軸彎曲；先把「面」換成「軸」再配 $r$</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>側撐分段</td>
 <td>側撐點視為鉸（可轉不可移），兩段各自判斷端部條件與長度</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">effective-length-chart</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>ASD $C_c$</td>
 <td>Euler 應力 $= F_y/2$ 時的細長比</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">asd-column</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>設計 K 值</td>
 <td>含固接端的理論值往上調（0.5→0.65、0.7→0.80、2.0→2.1）</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">effective-length-chart</span></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -540,6 +660,7 @@ $$\lambda_c = \frac{KL}{r\pi}\sqrt{\frac{F_y}{E}} = \boxed{1.080} &lt; 1.5 \Righ
 <hr />
 <p><em>修正日期：2026-11-01（依考卷原圖：X-Z 面側撐位於距底 6.0 m、距頂 4.0 m，原解誤作中點 5 m，且誤把 X-Z 面標為強軸平面；更正為弱軸下段固-鉸控制，$KL/r$ 102.5 → <strong>98.4</strong>，$P_a$ 90.4 → <strong>93.9 t</strong>、$\phi_cP_n$ 125.8 → <strong>131.2 t</strong>；新增雙路徑驗算與 §6 對照）</em><br />
 <em>驗證狀態：unverified</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2002-3-problem.md</code>（已確認）＋常見誤讀＋本解記號，避免題意兩份不同步；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2002-3/SS-2002-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

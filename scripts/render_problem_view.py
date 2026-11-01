@@ -4,6 +4,7 @@
 
 用法：python scripts/render_problem_view.py SS-2003-2 [SS-2003-3 ...]
   - 來源：raw/solutions/<id>/<id>.md（解題內容唯一正本）
+  - 若有 raw/solutions/<id>/<id>-problem.md（題目正本：考卷原文＋判讀清單），渲染在解析之前（2026-11-02 起試做）
   - 數學式先保護再還原（$$…$$、$…$），避免 markdown 吞掉 < > _ *
   - [[ID]] 轉為藍色徽章；相對路徑圖片改指 ../../raw/solutions/<id>/
   - 頁面不存在時，以同目錄任一既有頁為版型，並依索引主分類設定單元按鈕
@@ -55,6 +56,15 @@ def main(ids):
         tpl = page if page.exists() else next(VIEW.glob("*.html"))
         t = tpl.read_text(encoding="utf-8")
         body = render_md(qid, md.read_text(encoding="utf-8"))
+        prob = ROOT / f"raw/solutions/{qid}/{qid}-problem.md"
+        if prob.exists():
+            # 題目正本（考卷原文＋判讀清單）放在解析之前；未確認時摺疊標題標「待確認」
+            ptxt = prob.read_text(encoding="utf-8")
+            state = "待確認" if "**待確認**" in ptxt else "已確認"
+            body = ('<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;'
+                    'border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px">'
+                    f'<summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（{state}）</summary>'
+                    + render_md(qid, ptxt) + "</details>\n" + body)
         new = re.sub(r"(<main>\n?).*?(\n?</main>)", lambda m: m.group(1) + body + m.group(2), t, count=1, flags=re.S)
         if tpl != page:
             old = tpl.stem

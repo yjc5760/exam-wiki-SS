@@ -421,7 +421,6 @@ $$\frac{P_u}{\boxed{\phi_c P_n}} + \frac{8}{9}\!\left(\frac{M_{u2}}{\boxed{\phi_
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -429,43 +428,36 @@ $$\frac{P_u}{\boxed{\phi_c P_n}} + \frac{8}{9}\!\left(\frac{M_{u2}}{\boxed{\phi_
 <tr>
 <td>BOX 斷面 $Z$ 公式</td>
 <td>$(b_o^3 - b_i^3)/4$（與 I 形 $b_f t_f(H-t_f) + t_w h_w^2/4$ 完全不同）</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$\phi_c = 0.85$（非 0.9）</td>
 <td>壓力桿件折減係數比彎曲桿件小，因柱破壞更突然</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-column</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$0.658^{\lambda_c^2}$ 計算</td>
 <td>用 $e^{\lambda_c^2 \ln(0.658)}$ 展開計算，不能直接用計算機的次方鍵犯錯</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-column</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">column-buckling-lambda-boundary</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$A_w$ 取兩片腹板</td>
 <td>箱形柱受 $V_2$ 時只有<strong>平行</strong>於剪力方向的兩片板承剪，非四片全算</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SHEAR-BUCKLING-WEB</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>H1-1a vs H1-1b 門檻</td>
 <td>$P_u/\phi_cP_n \geq 0.2$ 用 H1-1a；$&lt; 0.2$ 用 H1-1b（8/9 係數位置不同）</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">pm-interaction</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BEAM-COLUMN-INTERACTION</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>充分側向支撐的意義</td>
 <td>$L_b &lt; L_p$ → 無 LTB → 不需計算 $C_b$、$L_p$、$L_r$，直接取 $\phi_bM_p$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">LATERAL-TORSIONAL-BUCKLING</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>正方形兩軸對稱</td>
 <td>$I_2 = I_3$、$Z_2 = Z_3$，$\phi_bM_{n2} = \phi_bM_{n3}$，計算一次即可</td>
-<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>

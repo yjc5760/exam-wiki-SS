@@ -44,22 +44,168 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U2-1.html" title="SS-U2-1 塑性分析與設計 單元總覽">&#128269; U2-1 單元總覽</a><a class="lect" href="../lecture-SS-U2-1.html" title="SS-U2-1 塑性分析與設計 觀念講義">&#128218; U2-1 塑性分析與設計 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2020-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2020-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2020_鋼結構設計.pdf</code> 第 1 頁，第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 109 年（2020）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（梁立面＋梁斷面），<code>SS-2020-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋關鍵尺寸 220–400 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>二、下圖所示為一承受均佈載重之鋼梁桿件，兩端分別為滾支承及固定端，梁斷面如圖所示，假設鋼梁有充分之側向支撐，且斷面為結實斷面，材料強度 $F_y = 2.5\ \text{tf/cm}^2$，試依塑性分析，求此鋼梁可承受之極限均佈載重 $w_u$。（25 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<p>本卷第 3 頁「參考資料」（照錄，與本題無直接關係）：H400×400×12×22 斷面性質 $A = 218.7$ cm²、$r_x = 17.56$ cm、$r_y = 10.36$ cm、$Z_x = 3707$ cm³、$Z_y = 1773$ cm³；公式 $\lambda_c$、$F_{cr}$（兩式）、H1 互制兩式、$B_1 = \dfrac{0.64}{1 - (P_u/P_{e1})}\left[1 - \dfrac{M_1}{M_2}\right] + 0.32\dfrac{M_1}{M_2} \ge 1.0$、$P_{e1} = A_gF_y/\lambda_c^2$、$L_p = 80r_y/\sqrt{F_y}$。無塑性分析相關式。</p>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2020-2 附圖：A 端滾支、B 端固定的單跨梁，跨度 8 m，全跨均佈 wu；非對稱 I 型斷面，上翼板 300×25 mm、下翼板 200×25 mm、腹板厚 15 mm、全深 600 mm" src="../../raw/solutions/SS-2020-2/SS-2020-2-fig-1.png" /></p>
+<p><em>圖面文字照錄：Wu；A；B；8 m；300 mm；25 mm；15 mm；600 mm；25 mm；200 mm；梁斷面。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>結構型式</td>
+<td>單跨梁，跨度 8 m</td>
+<td>8 m 尺寸線兩端對齊 A、B</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A 端支承</td>
+<td>滾支</td>
+<td>圓圈＋地面斜線；題文「滾支承」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B 端支承</td>
+<td>固定端</td>
+<td>右側牆面斜線；題文「固定端」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>載重</td>
+<td>均佈 $w_u$，向下，滿跨</td>
+<td>整排箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>上翼板</td>
+<td>寬 300 mm、厚 25 mm</td>
+<td>上方尺寸線；左上 25 mm 一對箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>下翼板</td>
+<td>寬 200 mm、厚 25 mm</td>
+<td>下方尺寸線；左下 25 mm 一對箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>腹板厚</td>
+<td>15 mm</td>
+<td>中段一對箭頭夾腹板</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>全深</td>
+<td><strong>600 mm（上翼板頂至下翼板底）</strong>；腹板淨高 550 mm 為推得值</td>
+<td>右側尺寸線上、下界線分別對齊上翼板頂與下翼板底（220 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>寬翼板位置</td>
+<td>寬 300 在上、窄 200 在下</td>
+<td>斷面圖</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（U2-1 題目／解答拆分試做）｜確認：2026-11-02 使用者確認</em></p></details>
 <h1>考題編號：SS-2020-2</h1>
 <p><strong>主分類：</strong> <code>SS-U2-1</code> 塑性分析與設計<br />
 <strong>副分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
 <strong>設計法：</strong> 塑性分析<br />
 <strong>標籤：</strong> <code>塑性分析</code> <code>塑性鉸</code> <code>虛功法</code> <code>一端固定一端滾支</code> <code>懸臂梁</code> <code>均佈載重</code> <code>極限載重</code> <code>非對稱H型鋼</code> <code>塑性斷面模數</code> <code>中性軸</code> <code>半面積法</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>下圖所示為一承受均佈載重 $w_u$ 之鋼梁桿件，兩端分別為滾支承（A 端）及固定端（B 端），梁斷面如圖所示（非對稱 H 型鋼），假設鋼梁有充分之側向支撐，且斷面為結實斷面，材料強度 $F_y = 2.5$ tf/cm²，試依塑性分析，求此鋼梁可承受之極限均佈載重 $w_u$。（25 分）</p>
-<p><strong>梁斷面（非對稱 H 型鋼）：</strong><br />
-- 上翼板：寬 300 mm（30 cm），厚 25 mm（2.5 cm）<br />
-- 腹板：厚 15 mm（1.5 cm），高 550 mm（55 cm）<br />
-- 下翼板：寬 200 mm（20 cm），厚 25 mm（2.5 cm）<br />
-- 總高：300 + 550 + 250 mm → 600 mm（60 cm）（兩翼板各25mm + 腹板550mm）</p>
-<p><strong>結構型式：</strong> 跨度 $L = 8$ m = 800 cm，A 端滾支承，B 端固定端，全跨均佈載重 $w_u$（tf/cm）</p>
-<p><img alt="SS-2020-2 題目附圖：非對稱 H 型鋼斷面（上翼板 300×25mm，腹板 15mm×550mm，下翼板 200×25mm）及結構示意圖（A 端滾支，B 端固定，跨度 8m，均佈載重 wu）" src="../../raw/solutions/SS-2020-2/SS-2020-2-fig-1.png" /></p>
-<p><em>圖說：左圖為梁斷面（正視圖），上翼板寬 30 cm、厚 2.5 cm，腹板高 55 cm、厚 1.5 cm，下翼板寬 20 cm、厚 2.5 cm，總高 60 cm。右圖為結構示意，A 端為滾支承（下方），B 端為固定端（右方），跨度 L=8m=800cm，$w_u$ 為均向下作用之均佈載重。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見同資料夾 <code>SS-2020-2-problem.md</code>（題目瀏覽頁最上方「📄 題目正本」區塊）。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>600 mm</td>
+<td>全深（上翼板頂至下翼板底），腹板淨高 550 mm</td>
+<td>當成腹板高、全深 650 mm</td>
+</tr>
+<tr>
+<td>支承</td>
+<td>A 滾支、B 固定；跨間鉸距 A 端 $(\sqrt2 - 1)L$</td>
+<td>把 $x$ 量起點弄反（距固定端應為 $(2-\sqrt2)L$，同一點）</td>
+</tr>
+<tr>
+<td>翼板位置</td>
+<td>寬 300 在上、窄 200 在下</td>
+<td>上下對調（PNA 位置會錯）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> $L = 800$ cm；上翼板 30×2.5、腹板 55×1.5、下翼板 20×2.5 cm；$F_y = 2.5$ tf/cm²；$x$ 自 A 端（滾支）量起。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：塑性機構法（虛功法）+ 非對稱斷面之塑性斷面模數計算</strong></p>
@@ -311,7 +457,6 @@ $$\boxed{x} = L(\sqrt{2}-1), \quad \boxed{w_u} = \frac{2(1+\sqrt{2})^2 M_p}{L^2}
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -319,31 +464,26 @@ $$\boxed{x} = L(\sqrt{2}-1), \quad \boxed{w_u} = \frac{2(1+\sqrt{2})^2 M_p}{L^2}
 <tr>
 <td>等面積中性軸（PNA）≠ 幾何形心</td>
 <td>彈性中性軸 = 形心（ENA）；塑性中性軸 = 等面積點（PNA）；非對稱斷面兩者不重合</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>半面積法求 PNA</td>
 <td>從斷面頂部累積面積，超過 $A_g/2$ 的位置即為 PNA</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$Z_x$ 計算含腹板貢獻</td>
 <td>腹板上下各半各自對 PNA 求靜矩；忽略腹板將低估 $Z_x$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>一端固定需 2 個塑性鉸</td>
 <td>靜不定度 = 1，需 1+1 = 2 個鉸形成機構；固定端 B 必然先形成第一鉸</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-mechanism</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">PLASTIC-HINGE</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>虛功法中對 $x$ 求最小 $w_u$</td>
 <td>上界定理需找最危險（最小 $w_u$）機構；令 $dw_u/dx = 0$，解得 $x = L(\sqrt{2}-1)$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-mechanism</span></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -514,6 +654,8 @@ $$w_u^* = \frac{2(1+\sqrt{2})^2 M_p}{L^2} \approx \frac{11.657 M_p}{L^2}$$</p>
 <li>最優 $x = L(\sqrt{2}-1) = 331.4$ cm</li>
 <li>$w_u = 2(3+2\sqrt{2})×11560/800² = 0.2106$ tf/cm <strong>≈ 21.1 tf/m</strong></li>
 </ol>
+<p><em>修正日期：2026-11-02（§1 重述「總高」一句文字錯亂，改寫為全深 600 mm 與腹板淨高 550 mm；考卷原文與判讀清單見 <code>SS-2020-2-problem.md</code>。數值與答案不變）</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2020-2-problem.md</code>（已確認）＋常見誤讀＋本解記號，避免題意兩份不同步；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2020-2/SS-2020-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

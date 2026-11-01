@@ -30,50 +30,182 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </style></head><body>
 <header><h1>SS-2005-1 題目解析</h1><a class="quick" href="../unit-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 單元總覽">&#128269; U1-1 單元總覽</a><a class="lect" href="../lecture-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 觀念講義">&#128218; U1-1 拉力及壓力桿件 講義</a></header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2005-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2005-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2005_鋼結構設計.pdf</code> 第 1（正面） 頁，第一題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 94 年（2005）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（角鋼與接合板螺栓配置），<code>SS-2005-1-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋關鍵處 400–500 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>一、如圖所示為一單角鋼與鋼板以螺栓之接合。角鋼為 L200×200×20（mm），鋼材 $F_y = 2.5\ \text{tf/cm}^2$，$F_u = 4.1\ \text{tf/cm}^2$。承壓型螺栓直徑為 22 mm，螺栓標稱剪力強度為 4.2 tf/cm²，螺紋不在剪力平面上，螺栓孔直徑為 23.5 mm。試依極限設計法規範，假設接合板強度足夠，計算角鋼能承受之設計拉力強度 $\phi P_n$。（25 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<p>題內「參考資料」照錄：</p>
+<blockquote>
+<ol>
+<li>翼板寬度與斷面深度之比不小於 2/3 之 W、H、S 或 I 型鋼，及由此類型鋼切割或符合前述尺度需求之銲接 T 型鋼，且接合須在翼板處。若以螺栓接合則接合處沿應力方向每行螺栓數不少於 3 根 ⋯⋯ $U = 0.90$</li>
+<li>不合於上款之 W、H、S、I 或 T 型鋼，及包括組合斷面之其他各種斷面。若以螺栓接合則接合處沿應力方向每行螺栓數不少於 3 根 ⋯⋯ $U = 0.85$</li>
+<li>以螺栓接合之所有各種斷面且在接合處沿應力方向每行僅有 2 根螺栓 ⋯⋯ $U = 0.75$</li>
+</ol>
+<p>螺栓孔承壓強度 $\phi R_n$，採用 $R_n = 2.4dtF_u$</p>
+</blockquote>
+<ul>
+<li>考卷<strong>沒給</strong> $\phi$ 值（拉力降伏、斷裂、螺栓剪力、承壓）與角鋼斷面積，須依規範與尺寸自取。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2005-1 附圖：L200×200×20 角鋼一肢以 6 顆螺栓（2 排 × 3 顆）接於接合板，角鋼向右受拉" src="../../raw/solutions/SS-2005-1/SS-2005-1-fig-1.png" /></p>
+<p><em>圖面文字照錄：接合板；7.5 cm；7.5 cm；5 cm；5 cm；2@7.5 cm=15 cm。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>螺栓數</td>
+<td>6 顆＝沿力方向 2 排 × 每排 3 顆</td>
+<td>圖上圓孔（450 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>橫向尺寸</td>
+<td>自角鋼<strong>背</strong>（上緣雙線＝外伸肢側視）量 7.5 cm 至第 1 排、再 7.5 cm 至第 2 排；第 2 排至肢趾未標（推得 5 cm）</td>
+<td>左側尺寸線上界對齊角鋼上緣雙線（450 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>縱向尺寸</td>
+<td>角鋼端部至第 1 顆 5 cm；螺栓間距 2@7.5 cm = 15 cm；末顆至接合板邊緣 5 cm</td>
+<td>下方尺寸線：左 5 cm 界線對齊角鋼端、右 5 cm 界線對齊接合板斜邊端（450 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>外伸肢位置</td>
+<td>未連接肢在圖上緣（背側）</td>
+<td>上緣細雙線（解讀）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>剪力面</td>
+<td>單剪（單角鋼單面搭接一片接合板）</td>
+<td>題文「單角鋼與鋼板」（解讀）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>$U$ 適用款</td>
+<td>單角鋼屬第 2 款「其他各種斷面」，每排 3 根 → 0.85</td>
+<td>參考資料（解讀）</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>7</td>
+<td>承壓用 $t$</td>
+<td>角鋼厚 20 mm（接合板假設足夠）</td>
+<td>題文「假設接合板強度足夠」（解讀）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>角鋼設計拉力強度 $\phi P_n$（需含螺栓剪力、承壓等接合控制？）</td>
+<td>題文「角鋼能承受之設計拉力強度」（解讀）</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-1 題目正本推廣・批 1）｜確認：2026-11-02 使用者確認</em></p></details>
 <h1>考題編號：SS-2005-1</h1>
 <p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>副分類：</strong> <code>SS-U1-4</code> 接合之分析與設計<br />
 <strong>設計法：</strong> LRFD<br />
 <strong>標籤：</strong> <code>拉力桿件</code> <code>剪力遲滯</code> <code>U值</code> <code>淨斷面斷裂</code> <code>塊狀剪力</code> <code>螺栓接合</code> <code>等肢角鋼</code> <code>有效淨面積</code> <code>螺栓剪力</code> <code>螺栓承壓</code></p>
 <hr />
-<h2>1. 原始題目重述</h2>
-<p>如圖所示為一<strong>單角鋼</strong>與鋼板以螺栓之接合。角鋼為 <strong>L200×200×20（mm）</strong>，鋼材 $F_y = 2.5$ tf/cm²、$F_u = 4.1$ tf/cm²。<strong>承壓型螺栓直徑為 22 mm，螺栓標稱剪力強度為 4.2 tf/cm²，螺紋不在剪力平面上</strong>，螺栓孔直徑為 23.5 mm。試依<strong>極限設計法規範</strong>，<strong>假設接合板強度足夠</strong>，計算角鋼能承受之<strong>設計拉力強度 $\phi P_n$</strong>。（25 分）</p>
-<p><strong>參考資料（考卷提供）：</strong></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2005-1-problem.md"><code>SS-2005-1-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">情況</th>
-<th style="text-align: left;">適用條件</th>
-<th style="text-align: center;">$U$</th>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">1</td>
-<td style="text-align: left;">翼板寬度與斷面深度之比不小於 2/3 之 W、H、S 或 I 型鋼（及由此類型鋼切割或符合前述尺度需求之銲接 T 型鋼），且接合須在翼板處；若以螺栓接合則接合處沿應力方向每行螺栓數不少於 3 根</td>
-<td style="text-align: center;">0.90</td>
+<td>螺栓配置</td>
+<td>6 顆＝沿力方向每排 3 顆 × 2 排</td>
+<td>讀成每排 2 顆（$U$ 會變 0.75）</td>
 </tr>
 <tr>
-<td style="text-align: center;">2</td>
-<td style="text-align: left;">不合於上款之 W、H、S、I 或 T 型鋼，及包括組合斷面之其他各種斷面。若以螺栓接合則接合處沿應力方向每行螺栓數不少於 3 根</td>
-<td style="text-align: center;">0.85</td>
+<td>橫向尺寸起點</td>
+<td>自角鋼<strong>背</strong>量 7.5＋7.5 cm，第 2 排至肢趾剩 5 cm</td>
+<td>自肢趾量起</td>
 </tr>
 <tr>
-<td style="text-align: center;">3</td>
-<td style="text-align: left;">以螺栓接合之所有各種斷面且在接合處沿應力方向每行僅有 2 根螺栓</td>
-<td style="text-align: center;">0.75</td>
+<td>$U$</td>
+<td>考卷表第 2 款 → 0.85</td>
+<td>改用 $1 - \bar x/L$</td>
+</tr>
+<tr>
+<td>所求範圍</td>
+<td>設計拉力強度含螺栓剪力、承壓等接合控制</td>
+<td>只算 $\phi F_yA_g$、$\phi F_uA_e$</td>
+</tr>
+<tr>
+<td>剪力面</td>
+<td>單角鋼單面搭接 → 單剪</td>
+<td>雙剪</td>
 </tr>
 </tbody>
 </table>
-<p>螺栓孔承壓強度 $\phi R_n$，採用 $R_n = 2.4dtF_u$</p>
-<p><strong>螺栓幾何（由圖判讀）：</strong></p>
-<ul>
-<li><strong>6 顆螺栓 = 2 行（橫向，垂直載重）× 3 列（縱向，沿載重方向）</strong></li>
-<li>橫向（沿肢寬 20 cm 方向，自角鋼<strong>背（heel）</strong>量起）：$7.5$ cm → 第 1 行；$+7.5$ cm → 第 2 行；剩 $5$ cm 至<strong>肢趾（toe）</strong></li>
-<li>縱向（沿載重方向）：端距 $e = 5$ cm，列距 $s = 7.5$ cm × 2，接合長度 $L_{conn} = 2s = 15$ cm</li>
-</ul>
-<p><img alt="SS-2005-1 題目附圖：L200×200×20 等肢角鋼以一肢（水平肢）搭接於接合板，螺栓 2 行×3 列共 6 顆；橫向自角鋼背起 7.5 cm、7.5 cm（餘 5 cm 至肢趾），縱向 5 cm 端距 + 2@7.5 cm = 15 cm；角鋼向右受拉力" src="../../raw/solutions/SS-2005-1/SS-2005-1-fig-1.png" /></p>
-<p><em>圖說：角鋼以<strong>單一肢</strong>（圖中水平肢，寬 20 cm、厚 2 cm）搭接於接合板，接合板為左側之梯形板。螺栓配置為 <strong>2 行 × 3 列共 6 顆</strong>，行距（橫向、垂直於載重）7.5 cm，列距（縱向、沿載重）7.5 cm，端距 5 cm。角鋼的<strong>未連接肢（外伸肢）位於圖上緣</strong>（以細雙線表示），故橫向尺寸自角鋼背（heel，上緣）量起為 7.5 cm 至第 1 行、再 7.5 cm 至第 2 行，第 2 行至<strong>肢趾（toe，下緣自由邊）剩 5 cm</strong>。角鋼向右受拉力，螺栓為<strong>單剪</strong>（角鋼僅單面搭接一片接合板）。</em></p>
+<p><strong>本解記號：</strong> L200×200×20；螺栓 $d = 22$ mm、孔 23.5 mm；$F_y = 2.5$、$F_u = 4.1$、螺栓 $F_v = 4.2$ tf/cm²；端距 5 cm、間距 7.5 cm。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖</h2>
 <p>本題測驗 <strong>LRFD 螺栓接合拉力構件的「五個極限狀態」全套檢核</strong>，且刻意布置成「非最明顯者控制」：</p>
@@ -439,7 +571,6 @@ Step 8  取五者最小值
 <tr>
 <th style="text-align: left;">知識點</th>
 <th style="text-align: left;">說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: left;">卡關?</th>
 </tr>
 </thead>
@@ -447,43 +578,36 @@ Step 8  取五者最小值
 <tr>
 <td style="text-align: left;">剪力遲滯係數 $U$ 的款次判定</td>
 <td style="text-align: left;">W／H／S／I／T 翼板連接 $U=0.90$；其他斷面（含角鋼）每行≥3 顆 $U=0.85$；每行僅 2 顆 $U=0.75$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">shear-lag-u</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SHEAR-LAG</span></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;">$U$ 只影響淨斷面斷裂</td>
 <td style="text-align: left;">全斷面降伏用 $A_g$（無 $U$）；斷裂用 $A_e = UA_n$</td>
-<td style="text-align: center;"></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;">塊狀剪力的上限式</td>
 <td style="text-align: left;">$0.6F_yA_{gv}$（剪力面降伏）＋$F_uA_{nt}$（拉力面斷裂）為上限，取與 $0.6F_uA_{nv}+F_uA_{nt}$ 之較小值</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">block-shear</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BLOCK-SHEAR-RUPTURE</span></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;">塊狀剪力扣孔的 2.5 顆慣例</td>
 <td style="text-align: left;">剪力面通過 3 個孔，末端孔只切到一半 → 扣 $2.5 d_h$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">block-shear</span></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;">肢背側 BSR 路徑為何不成立</td>
 <td style="text-align: left;">肢背是折角、外伸肢仍相連，該路徑要同時剪斷外伸肢，容量遠高於算式值 → 實際由肢趾側控制</td>
-<td style="text-align: center;"></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;">螺栓剪力面數判定</td>
 <td style="text-align: left;">單面搭接一片接合板 → 單剪（$n$ 個剪力面 = 螺栓數）；夾在兩片板中 → 雙剪（$2n$）</td>
-<td style="text-align: center;"></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;">螺紋在／不在剪力平面</td>
 <td style="text-align: left;">不在剪力平面（X 型）用全桿身面積 $A_b$；在剪力平面（N 型）標稱剪力強度約降至 0.8 倍</td>
-<td style="text-align: center;"></td>
 <td style="text-align: left;"></td>
 </tr>
 </tbody>
@@ -774,6 +898,7 @@ $F_{nv}$ 約降至 $0.8 \times 4.2 = 3.36$ tf/cm²，則</p>
 <em>修正日期：2026-08-22（補算漏掉的螺栓剪力極限狀態 71.8 tf；修正 BSR 路徑之肢背／肢趾判讀與 $2.4dtF_u = 43.3$ tf 之算術；加入最新規範 $U$ 值對照）</em><br />
 <em>圖解補繪：2026-08-29（向量圖，腳本 <code>gen_SS-2005-1.py</code>，可重跑）</em><br />
 <em>驗證狀態：unverified</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2005-1-problem.md</code>（已確認）＋常見誤讀＋本解記號，避免題意兩份不同步；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2005-1/SS-2005-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

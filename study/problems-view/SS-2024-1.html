@@ -328,7 +328,6 @@ Step 6  繪四段曲線 + 標三個轉折點座標
 <tr>
 <th style="text-align: left;">知識點</th>
 <th style="text-align: left;">說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: left;">卡關?</th>
 </tr>
 </thead>
@@ -336,37 +335,31 @@ Step 6  繪四段曲線 + 標三個轉折點座標
 <tr>
 <td style="text-align: left;">切線模數／有效斷面理論</td>
 <td style="text-align: left;">完全彈塑性材料的降伏區 $E_t = 0$，等於「把降伏塊從斷面上挖掉」再算 Euler</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">TANGENT-MODULUS-THEORY</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COLUMN-STRENGTH-CURVE</span></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;">$I_e$ 代入 Euler 的化簡</td>
 <td style="text-align: left;">$F_{cr} = \pi^2EI_e/[A(KL)^2] = (I_e/I_x)\cdot\pi^2E/(KL/r)^2$，除 $F_y$ 得 $(I_e/I_x)/\lambda^2$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">TANGENT-MODULUS-THEORY</span></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>分支的有效區間</strong></td>
 <td style="text-align: left;">彈性分支只在 $F_{cr}\le0.5F_y$ 成立；非彈性分支只在 $F_{cr}\ge0.5F_y$ 成立；中間由平台 $0.5F_y$ 補上</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COLUMN-STRENGTH-CURVE</span></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;">強度曲線必須單調不遞增</td>
 <td style="text-align: left;">$F_{cr}$ 隨 $\lambda$ 增加不得上升（柱做長不會變強）——可用來自我檢查有沒有畫錯</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COLUMN-STRENGTH-CURVE</span></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;">塊狀 vs 線性殘餘應力分布</td>
 <td style="text-align: left;">塊狀 → 外側整塊同時降伏 → 剛度階梯式驟降 → 出現平台段；線性（拋物線）→ 逐漸降伏 → 平滑（即 CRC $1-\lambda^2/4$）</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">RESIDUAL-STRESS</span></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;">強軸與弱軸的敏感度差異</td>
 <td style="text-align: left;">強軸 $\Delta I \propto b\,\bar y^2$（削 51%）；弱軸 $\Delta I \propto b^3$（削 92%）→ 殘餘應力對弱軸殺傷力大得多</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">RESIDUAL-STRESS</span></td>
 <td style="text-align: left;"></td>
 </tr>
 </tbody>

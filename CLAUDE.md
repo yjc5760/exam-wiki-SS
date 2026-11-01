@@ -45,12 +45,14 @@ Cowork 讀取 CLAUDE.md + 考卷 PDF + question_index.json
 
 ```
 raw/solutions/SS-XXXX-N/SS-XXXX-N.md  ──→  study/problems-view/ （scripts/render_problem_view.py）
+raw/solutions/SS-XXXX-N/SS-XXXX-N-problem.md ──→  study/problems-view/ 同頁「📄 題目正本」區塊（放在解析之前）
 raw/json/question_index.json          ──→  dashboard-data.js、study/unit-*、study/frequency-*（腳本重建）
 raw/solutions/ ＋ question_index      ──→  study/lecture-*、textbook-*（講義，Cowork 維護）
 Cowork 查詢、稽核、盲解報告            ──→  wiki/queries/        （Cowork 直接存入）
 變更紀錄                               ──→  wiki/queries/log.md  （append only）
 
 解題內容唯一來源：raw/solutions/ 下的 .md 檔案
+題意唯一來源：raw/solutions/SS-YYYY-N/SS-YYYY-N-problem.md（考卷原文＋判讀清單；尚未建立者以考卷 PDF 為準）
 索引資訊唯一來源：raw/json/question_index.json
 方法論唯一來源：raw/solutions/methods/（可修正，須驗算＋記 log，見規則 1）
 封存：archive/wiki/（2026-11-01 前的 wiki 各層，唯讀參考、不再維護，ingest／compile-all 已停用）
@@ -80,6 +82,7 @@ exam-wiki-SS/
 │   └── solutions/                   ← AI 解析 + 補充截圖（每題一個資料夾）
 │       ├── SS-YYYY-N/               ← 🔒 證據，不可修改（規則 1、2）
 │       │   ├── SS-YYYY-N.md
+│       │   ├── SS-YYYY-N-problem.md   ← 題目正本：考卷原文、公式／附表、判讀清單（使用者確認後凍結）
 │       │   ├── SS-YYYY-N-fig-1.png
 │       └── methods/                 ← ✏️ 解題方法論（可修正公式／單位，見規則 1）
 │
@@ -136,10 +139,15 @@ exam-wiki-SS/
 
 ## 重要規則
 
-1. **`raw/` 目錄下所有檔案一律不可修改**，僅以下三處例外：
+1. **`raw/` 目錄下所有檔案一律不可修改**，僅以下四處例外：
    - `raw/json/question_index.json`（索引唯一人工維護處）
    - `raw/solutions/methods/`（方法論文件，可修正公式錯誤與單位標註）
    - `raw/solutions/SS-YYYY-N/SS-YYYY-N.md`（**個別題目解析，僅限「解析勘誤」**，見下方條件）
+   - `raw/solutions/SS-YYYY-N/SS-YYYY-N-problem.md`（**題目正本**，2026-11-02 起，SS-U2-1 試做）：
+     依 exam-solve 階段一讀題——一律轉圖目視、先盲讀、判讀清單每項標「圖上依據」與「把握」，不確定項排前面；
+     建立時頭表「判讀狀態」為**待確認**，經使用者確認後改**已確認**並凍結；`question_index.json` 同步 `problemStatus`（draft／confirmed）。
+     凍結後要改，須回考卷原圖重判、記 log，並重驗所有依該題意寫成的解析與講義。
+     本檔只寫考卷有什麼（原文逐字、公式／附表照錄、圖面文字），**不寫解法**；解析 §1 與它衝突時以本檔為準、勘誤解析。
 
    > **為什麼 methods/ 是例外**：本規則要保護的是**證據**（考卷、AI 解析、驗證過的答案），
    > 這些一旦被改就失去可追溯性。但 `raw/solutions/methods/` 存的是**可維護的知識整理**，
@@ -250,6 +258,7 @@ exam-wiki-SS/
 | 2026-11-01 | 新增單元總覽 `study/unit-SS-U2-1.html`／`.pdf`（塑性分析與設計，主 6＋副 2＝8 題、16 條公式，15 必背／1 別賭／0 會給）與資料檔 `study/data/unit-SS-U2-1.json`；`scripts/build_unit_page.py` 加「無觀念講義時移除講義連結」；problems-view 6 頁（U2-1 主考點）單元按鈕改指本頁；重跑 `build_frequency.py` | U2-1 原本三種教材都沒有。8 個考年考卷頁轉圖目視＋其餘 16 年全文搜尋，確認 15 條必背公式 24 年零次印出（唯一 ✔ 是 2005-4、2020-2 題目內文寫明結實斷面＋側撐，列「別賭」）；主考點兩組原題換斷面重考（2005-4 → 2020-2、2010-1 → 2023-3），6 題有 4 題要算非對稱斷面 PNA。詳見 wiki/queries/log.md UNIT-SS-U2-1 與 UNIT-SS-U2-1-R（同日兩個工作階段平行建置，資料檔以後者為準）|
 | 2026-11-01 | `start.html` 加入 SS-U2-1（`scripts/build_start.py`：空連結不輸出、無影片單元改列解析頁練題、12 週版 U1-3／U2-1 各 1 週）；新增轉址頁 `study/study-SS-U2-1.html`、`formula-given-SS-U2-1.html`；problems-view 90 頁 UN 表補 U2-1 | U2-1 已有單元總覽與講義，起點頁與轉址頁補齊。另記錄同日兩工作階段互相覆蓋 U2-1 講義／資料檔之事故與撤回（見 wiki/queries/log.md OVERWRITE-SS-U2-1） |
 | 2026-11-01 | `question_index.json` 為 SS-2021-3、SS-2025-3 加副分類 `SS-U2-1`（同步 dashboard-data.js、正本標頭、problems-view、frequency-SS.html）；SS-2025-4 題解補「n＋1 僅適用完全機構」 | 兩題明文要求 \(M_p\)／形狀因子（2021-3 並用塑性機構），與已列副分類的 SS-2006-3、2009-3 同型；SS-2010-4、2008-3、2020-1、2012-2 依判準不加。詳見 wiki/queries/log.md INDEX-SS-U2-1 |
+| 2026-11-02 | **題目／解答拆分試做（SS-U2-1 十題）**：新增 `raw/solutions/<id>/<id>-problem.md` 題目正本（考卷原文逐字、公式／附表照錄、判讀清單），規則 1 列為第四處例外；`render_problem_view.py` 在解析前渲染題目正本；`question_index.json` 加 `problemStatus`；報告 `wiki/queries/題目正本試做-SS-U2-1-2026-11-02.md` | 歷次改變答案的勘誤多為讀錯題，題意從未單獨驗證過。試做 10 題即查出 SS-2025-3 漏抄題給 $L_p$、$L_r$、$C_b$ 且答錯所求的量（$\phi_bM_n$ → **標稱 $M_n$ = 218.7 tf·m**），以及 SS-2021-3 的表一不在知識庫任何檔案 |
 
 ---
 

@@ -27,23 +27,129 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2006-3 題目解析</h1><a class="quick" href="../unit-SS-U1-2.html" title="SS-U1-2 梁桿件 單元總覽">&#128269; U1-2 單元總覽</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義">&#128218; U1-2 梁桿件 講義</a></header>
-<main><h1>考題編號：SS-2006-3</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2006-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2006-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2006_鋼結構設計.pdf</code> 第 1 頁，第三題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 95 年（2006）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>20 分（每小題 5 分）</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>無</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋關鍵尺寸 220–400 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>三、有一 H 型鋼梁，斷面標示為 H 600 × 300 × 12 × 20（mm），試求出：（每小題 5 分，共 20 分）</p>
+<p>㈠斷面強軸之慣性矩 $I_x$ = ? mm⁴</p>
+<p>㈡斷面弱軸之迴轉半徑 $r_y$ = ? mm</p>
+<p>㈢斷面強軸之塑性斷面模數 $Z_x$ = ? mm³</p>
+<p>㈣斷面強軸之塑性彎矩強度 $M_p$ = ? tf-cm（若鋼材降伏應力 $F_y = 3.5\ \text{tf/cm}^2$）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<p>無（本卷無參考公式區）。</p>
+<h2>3. 附圖</h2>
+<p>本題無附圖。</p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>斷面標示順序</td>
+<td>$d \times b_f \times t_w \times t_f$ = 600 × 300 × 12 × 20 mm</td>
+<td>國內 H 型鋼標示慣例（題目未另說明）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>圓角</td>
+<td>題目未給圓角半徑，以三塊矩形計</td>
+<td>題文無圓角資料（解讀）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>答案單位</td>
+<td>㈠ mm⁴、㈡ mm、㈢ mm³、㈣ tf-cm，各小題單位不同</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（U2-1 題目／解答拆分試做）｜確認：2026-11-02 使用者確認</em></p></details>
+<h1>考題編號：SS-2006-3</h1>
 <p><strong>主分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
 <strong>副分類：</strong> <code>SS-U2-1</code> 塑性分析與設計<br />
 <strong>設計法：</strong> LRFD<br />
 <strong>標籤：</strong> <code>斷面性質</code> <code>慣性矩</code> <code>迴轉半徑</code> <code>塑性斷面模數</code> <code>平行軸定理</code> <code>H型鋼</code> <code>塑性彎矩</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>有一 H 型鋼梁，斷面標示為 <strong>H 600 × 300 × 12 × 20（mm）</strong>，試求出：（每小題 5 分，共 20 分）</p>
-<ul>
-<li><strong>(一)</strong> 斷面強軸之慣性矩 $I_x = ?\ \text{mm}^4$</li>
-<li><strong>(二)</strong> 斷面弱軸之迴轉半徑 $r_y = ?\ \text{mm}$</li>
-<li><strong>(三)</strong> 斷面強軸之塑性斷面模數 $Z_x = ?\ \text{mm}^3$</li>
-<li><strong>(四)</strong> 斷面強軸之塑性彎矩強度 $M_p = ?\ \text{tf-cm}$（若鋼材降伏應力 $F_y = 3.5\ \text{tf/cm}^2$）</li>
-</ul>
+<h2>1. 題目（考卷原文見題目正本）</h2>
 <blockquote>
-<p>本題為純計算題，無題目附圖，斷面幾何由標示數字完整描述。</p>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見同資料夾 <code>SS-2006-3-problem.md</code>（題目瀏覽頁最上方「📄 題目正本」區塊）。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
 </blockquote>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>斷面標示</td>
+<td>$d \times b_f \times t_w \times t_f$ = 600 × 300 × 12 × 20 mm</td>
+<td>把 12、20 對調（腹板厚與翼板厚）</td>
+</tr>
+<tr>
+<td>圓角</td>
+<td>未給，以三塊矩形計</td>
+<td>自行加圓角面積</td>
+</tr>
+<tr>
+<td>答案單位</td>
+<td>㈠ mm⁴、㈡ mm、㈢ mm³、㈣ tf-cm</td>
+<td>全部用 cm 系統作答</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> $d = 600$、$b_f = 300$、$t_w = 12$、$t_f = 20$ mm，$h_w = d - 2t_f = 560$ mm；$F_y = 3.5$ tf/cm²。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題測驗 H 型鋼斷面性質的計算能力，是結構工程師基本功。出題意圖：</p>
@@ -259,7 +365,6 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -268,24 +373,20 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <td>平行軸定理 $I = I_0 + Ad^2$</td>
 <td>翼板形心距 $d = H/2 - t_f/2$，不是 $H/2$；算錯 $d$ 是最常見失誤</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$I_y$ 翼板公式的三次方</td>
 <td>弱軸方向翼板長邊是 $b_f$，故 $I_{y,f} = \frac{1}{12}t_f b_f^3$（$b_f$ 在三次方）</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$Z_x$ vs $S_x$ 定義差異</td>
 <td>$S_x = I_x/(H/2)$（彈性）；$Z_x = \sum A_i \bar{y}_i$（塑性）；形狀因子 $f = Z_x/S_x \approx 1.12$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>單位換算 mm³ → cm³</td>
 <td>$1$ cm $= 10$ mm，$1$ cm³ $= 10^3$ mm³（<strong>非</strong> $10^6$），用 $F_y$ (tf/cm²) 時必須換算</td>
-<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -373,6 +474,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>$I_x$ 分配比例：</strong></p>
 <p>$$\frac{I_{x,\text{flanges}}}{I_x} = \frac{1{,}009{,}600{,}000}{1{,}185{,}216{,}000} = 85.2\%$$</p>
 <p>超過 85% 的強軸慣性矩由翼板貢獻（主要是平行軸項），腹板只貢獻 14.8%。這正說明 H 型鋼「材料效率高」的設計哲學：用薄腹板抵抗剪力，厚翼板遠離中性軸提供彎曲剛度。</p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2006-3-problem.md</code>（已確認）＋常見誤讀＋本解記號，避免題意兩份不同步；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2006-3/SS-2006-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

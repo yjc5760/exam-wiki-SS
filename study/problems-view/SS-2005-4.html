@@ -44,20 +44,187 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U2-1.html" title="SS-U2-1 塑性分析與設計 單元總覽">&#128269; U2-1 單元總覽</a><a class="lect" href="../lecture-SS-U2-1.html" title="SS-U2-1 塑性分析與設計 觀念講義">&#128218; U2-1 塑性分析與設計 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2005-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2005-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2005_鋼結構設計.pdf</code> 第 2（背面） 頁，第四題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 94 年（2005）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（梁立面＋鋼梁斷面），<code>SS-2005-4-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋關鍵尺寸 220–400 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>四、有一靜不定鋼梁兩端分別為固接與簡支，鋼梁斷面為 T 型，使用鋼材 $F_y = 2.5\ \text{tf/cm}^2$，$F_u = 4.1\ \text{tf/cm}^2$。假設鋼梁有足夠側向支撐且為結實斷面。試以塑性設計法（Plastic design），僅考慮撓曲強度，計算鋼梁所能承受之因數化載重 $w_u$（不考慮鋼梁自重）。（25 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<p>無（本卷無參考公式區）。</p>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2005-4 附圖：左端固接、右端鉸支的單跨梁，跨度 600 cm，全跨均布 wu；T 型斷面翼板寬 40 cm、厚 2.6 cm，全深 24 cm，腹板厚 2.4 cm" src="../../raw/solutions/SS-2005-4/SS-2005-4-fig-1.png" /></p>
+<p><em>圖面文字照錄：$w_u$；600 cm；40 cm；2.6 cm；24 cm；2.4 cm；鋼梁斷面。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>結構型式</td>
+<td>單跨梁 1 根，跨度 600 cm</td>
+<td>600 cm 尺寸線兩端對齊左牆面與右支承</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>左端支承</td>
+<td>固接</td>
+<td>牆面斜線剖面；題文「固接」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>右端支承</td>
+<td>鉸支（簡支）</td>
+<td>三角形＋圓圈＋地面斜線；題文「簡支」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>載重</td>
+<td>均布 $w_u$，向下，滿跨</td>
+<td>整排箭頭由左端到右端</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>斷面方向</td>
+<td>T 型，翼板在上、腹板（肢）向下</td>
+<td>斷面圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>翼板寬</td>
+<td>40 cm</td>
+<td>上方尺寸線跨翼板全寬</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>翼板厚</td>
+<td>2.6 cm</td>
+<td>右側一對箭頭夾翼板上、下緣</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>全深</td>
+<td><strong>24 cm（翼板頂至腹板底）</strong>；腹板淨高 21.4 cm 為推得值</td>
+<td>左側尺寸線上界線與翼板頂齊平，下界線是由腹板底引出的水平線（400 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>腹板厚</td>
+<td>2.4 cm</td>
+<td>底部一對箭頭夾腹板兩側</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>$F_u$</td>
+<td>題目有給，但「僅考慮撓曲強度」故不使用</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>「因數化載重 $w_u$」</td>
+<td>以 $M_p$ 直接求崩塌載重，不另乘強度折減係數（題目未給 $\phi$）</td>
+<td>題文「以塑性設計法」（解讀）</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（U2-1 題目／解答拆分試做）｜確認：2026-11-02 使用者確認</em></p></details>
 <h1>考題編號：SS-2005-4</h1>
 <p><strong>主分類：</strong> <code>SS-U2-1</code> 塑性分析與設計<br />
 <strong>副分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
 <strong>設計法：</strong> 塑性分析<br />
 <strong>標籤：</strong> <code>塑性分析</code> <code>崩塌機制</code> <code>塑性鉸</code> <code>固端梁</code> <code>T型斷面</code> <code>塑性斷面模數</code> <code>虛功法</code> <code>均布載重</code> <code>propped cantilever</code></p>
 <hr />
-<h2>1. 原始題目重述</h2>
-<p>四、有一靜不定鋼梁兩端分別為固接與簡支，鋼梁斷面為 T 型，使用鋼材 $F_y = 2.5\ \text{tf/cm}^2$，$F_u = 4.1\ \text{tf/cm}^2$。假設鋼梁有足夠側向支撐且為結實斷面。試以塑性設計法（Plastic design），僅考慮撓曲強度，計算鋼梁所能承受之因數化載重 $w_u$（不考慮鋼梁自重）。（25 分）</p>
-<p><strong>T 型斷面（依考卷原圖）：</strong><br />
-- 翼板：$b_f = 40\ \text{cm}$，$t_f = 2.6\ \text{cm}$<br />
-- 腹板厚：$t_w = 2.4\ \text{cm}$<br />
-- <strong>全深 $d = 24\ \text{cm}$</strong>（尺寸線由翼板頂面量至腹板底）→ 腹板淨高 $h_w = 24 - 2.6 = 21.4\ \text{cm}$</p>
-<p><img alt="SS-2005-4 題目附圖：左端固接、右端簡支 T 型梁，跨度 600 cm，全跨均布 wu；T 型斷面翼板 40×2.6 cm、全深 24 cm、腹板厚 2.4 cm" src="../../raw/solutions/SS-2005-4/SS-2005-4-fig-1.png" /></p>
-<p><em>圖說（依考卷原圖 600 dpi 目視判讀，2026-11-01 更正）：左端固接、右端鉸支（簡支），跨度 600 cm，均布載重 $w_u$ 作用於全跨。T 型斷面：翼板寬 40 cm、厚 2.6 cm；<strong>左側「24 cm」尺寸線上界線對齊翼板頂面、下界線對齊腹板底 → 全深 24 cm</strong>；腹板厚 2.4 cm。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見同資料夾 <code>SS-2005-4-problem.md</code>（題目瀏覽頁最上方「📄 題目正本」區塊）。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全深 24 cm</td>
+<td>翼板頂至腹板底（全深），腹板淨高 $24 - 2.6 = 21.4$ cm</td>
+<td>當成腹板高、全深 26.6 cm（$M_p$ 高估 22%，舊版解析即如此）</td>
+</tr>
+<tr>
+<td>右端支承</td>
+<td>鉸支（簡支），不形成塑性鉸、不耗能</td>
+<td>當成固定端，多算一個鉸</td>
+</tr>
+<tr>
+<td>跨間鉸位置</td>
+<td>未知，需設 $x$ 求最小 $w_u$</td>
+<td>直接放在跨中</td>
+</tr>
+<tr>
+<td>「因數化載重 $w_u$」</td>
+<td>以 $M_p$ 直接求崩塌載重，不乘 $\phi$</td>
+<td>再乘 0.9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> $L = 600$ cm；$b_f = 40$、$t_f = 2.6$、$d = 24$、$t_w = 2.4$ cm；$F_y = 2.5$ tf/cm²（$F_u$ 不使用）；$x$ 自固定端 A 量起。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖</h2>
 <p>本題測驗<strong>塑性分析（plastic analysis）</strong>的完整流程：<br />
@@ -215,7 +382,6 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -223,25 +389,21 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tr>
 <td>塑性鉸機構分析</td>
 <td>超靜定次數 $n$ → 需 $n+1$ 個塑性鉸才能崩塌</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-mechanism</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">PLASTIC-HINGE</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>propped cantilever 鉸位置</td>
 <td>均布載重的跨間鉸在 $x = 0.586L$（距固端），非 $L/2$</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>T 型斷面 PNA</td>
 <td>先比較翼板面積與半面積，確認 PNA 所在區域</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>尺寸線判讀</td>
 <td>尺寸線兩條界線各對齊哪一個邊，決定量的是全深或腹板高</td>
-<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -353,6 +515,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><em>修正日期：2026-11-01（依考卷原圖 600 dpi：T 型斷面「24 cm」為全深（翼板頂至腹板底），原解誤作腹板高 24 cm、全深 26.6 cm。更正腹板淨高 21.4 cm、$A$ = 155.36 cm²、PNA 距頂 1.942 cm、$Z$ 813.0 → <strong>667.4 cm³</strong>、$M_p$ 2032.5 → <strong>1668.6 tf·cm</strong>，$w_u$ 6.58 → <strong>5.40 tf/m</strong>；平衡法與全跨彎矩掃描驗算；§5.2 刪除殘留英文草稿並重算彈性比較；新增 §6 對照）</em><br />
 <em>驗證狀態：unverified</em><br />
 <em>第二次修正日期：2026-11-01（§5.2 肢端在固端負彎矩下為受壓（原誤寫受拉，數值不變）；§5.3 改以塑性設計斷面 $\lambda_{pd} = 14/\sqrt{F_y}$ 檢核；§6 F9 之 $1.6M_y$ 原以翼板側 $S$ = 1323.2 計得 5293，應以肢端 $S_x$ = 372.0 計得 1488.2，跨間正彎矩改由 $1.6M_y$ 控制，並補兩鉸不等強度之閉合解與下限檢核，$w_u$ 由「約 4.2」更正為 <strong>4.28 tf/m</strong>（低約 21%）。考卷 94 年第四題原圖目視確認題意不變）</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2005-4-problem.md</code>（已確認）＋常見誤讀＋本解記號，避免題意兩份不同步；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2005-4/SS-2005-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

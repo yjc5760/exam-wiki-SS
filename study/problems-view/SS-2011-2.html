@@ -44,28 +44,190 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 單元總覽">&#128269; U1-1 單元總覽</a><a class="lect" href="../lecture-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 觀念講義">&#128218; U1-1 拉力及壓力桿件 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2011-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2011-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2011_鋼結構設計.pdf</code> 第 1 頁（全三頁之第一頁），第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 100 年（2011）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（鋼架 (I)、(II)），<code>SS-2011-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋附圖 450 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>二、AISC 規範針對承壓之鋼架結構系統，在其內部受靠桿效應（Leaning column effect）影響時，建議宜參考萊梅厥公式（LeMessurier formula）作有效長度係數 $K$ 值的修正，修正公式如右所示：$K' = \sqrt{\dfrac{P_e}{P_i} \times \dfrac{\sum P}{\sum P_{eK}}}$</p>
+<p>$P_i$　：欲求 $K$ 值之柱所受的垂直載重<br />
+$P_e$　：柱之尤拉挫屈載重（Euler buckling load）<br />
+$\Sigma P$　：整體結構承受的總垂直外載重<br />
+$\Sigma P_{eK}$：整體結構所有非靠桿且考慮相應有效長度係數後之挫屈載重（Buckling load）</p>
+<p>下圖中有兩個鋼架結構，已知鋼架（I）中柱 CD，鋼架（II）中柱 CD、柱 EF 及柱 GH 為靠桿。試以萊梅厥公式，分別求解鋼架（I）及鋼架（II）中柱 AB 之有效長度係數 $K_{(I)AB}$ 及 $K_{(II)AB}$，並試求二鋼架結構系統總挫屈載重 $\Sigma P_{(I)cr}$ 及 $\Sigma P_{(II)cr}$ 之比值，即 $\Sigma P_{(I)cr} / \Sigma P_{(II)cr}$ ＝？（25 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>萊梅厥公式及符號說明（見 §1，照錄）。</li>
+<li>卷首注意事項㈢：「本試題之相關符號、公式、物理常數及設計參數未提及時，請依規範自行合理推斷或假設。」</li>
+<li>第 3 頁「參考公式」（ASD／LSD 柱、梁、梁柱公式，另有 $G_{inelastic}$、$\tau_a$）與本題無直接關係。</li>
+<li>考卷<strong>沒給</strong>：$P_e$ 是否含 $K$（只寫「柱之尤拉挫屈載重」）、柱 AB 自身之 $K$。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2011-2 附圖：鋼架 (I) 兩柱、鋼架 (II) 四柱，頂梁 EI=∞；柱 AB（EI，K=?）底 B 固接、頂 A 有鉸圓；靠桿 CD、EF、GH（EI=∞）頂端有鉸圓、底端三角形鉸支；每根柱頂受 P；柱高 L、柱距 Lb" src="../../raw/solutions/SS-2011-2/SS-2011-2-fig-1.png" /></p>
+<p><em>圖面文字照錄：(I)：P；P；EI=∞；A；C；L；EI；K=?；EI=∞；B；D；L_b。(II)：P；P；P；P；EI=∞；A；C；E；G；L；EI；K=?；EI=∞；EI=∞；EI=∞；B；D；F；H；L_b；L_b；L_b。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>柱 AB 自身之 $K$</td>
+<td>底固、頂鉸、可側移 → 2.0（題未給，由支承判定）</td>
+<td>支承符號（解讀）</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>2</td>
+<td>$P_e$</td>
+<td>$\pi^2EI/L^2$（$K = 1$ 之尤拉載重）</td>
+<td>題文「柱之尤拉挫屈載重」（解讀）</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>3</td>
+<td>$\Sigma P_{cr}$</td>
+<td>挫屈時各柱頂 $P$ 的總和（(I) 為 $2P_{cr}$、(II) 為 $4P_{cr}$）</td>
+<td>題文「系統總挫屈載重」（解讀）</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B 點</td>
+<td><strong>固接</strong>（斜線地面、無三角形）</td>
+<td>附圖（450 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A 點</td>
+<td>有鉸圓 → 柱 AB 頂與頂梁<strong>鉸接</strong></td>
+<td>附圖（450 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>C、E、G 點</td>
+<td>有鉸圓 → 靠桿頂與頂梁鉸接</td>
+<td>附圖（450 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>D、F、H 點</td>
+<td>三角形 → 鉸支</td>
+<td>附圖（450 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>靠桿勁度</td>
+<td>圖標 $EI = \infty$，但兩端鉸接，無側向勁度（與題文「為靠桿」一致）</td>
+<td>附圖＋題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>頂梁</td>
+<td>$EI = \infty$，連成同一側移</td>
+<td>圖面文字</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>載重</td>
+<td>每根柱頂各一個垂直 $P$；柱高皆 $L$</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-1 題目正本推廣・批 2）｜確認：2026-11-02 使用者確認</em></p></details>
 <h1>考題編號：SS-2011-2</h1>
 <p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> LRFD<br />
 <strong>標籤：</strong> <code>壓力桿件</code> <code>有效長度</code> <code>LeMessurier公式</code> <code>靠柱效應</code> <code>側移構架</code> <code>整體挫屈</code> <code>K值修正</code> <code>系統挫屈載重</code> <code>柱頂鉸接</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>AISC 規範針對受壓之鋼架結構系統，在其內部受靠柱效應（Leaning column effect）影響時，建議參考 LeMessurier 公式作有效長度係數 K 值的修正。修正公式如下：</p>
-<p>$$K' = \sqrt{\frac{P_e}{P_i} \times \frac{\sum P}{\sum P_{eK}}}$$</p>
-<ul>
-<li>$P_i$：欲求 K 值之柱所受的垂直載重</li>
-<li>$P_e$：柱之尤拉挫屈載重（Euler buckling load）</li>
-<li>$\sum P$：整體結構承受的總垂直外載重</li>
-<li>$\sum P_{eK}$：整體結構所有非靠柱且考慮相應有效長度係數後之挫屈載重（Buckling load）</li>
-</ul>
-<p>下圖中有兩個鋼架結構，已知<strong>鋼架（I）中柱 CD，鋼架（II）中柱 CD、柱 EF 及柱 GH 為靠柱</strong>。試以 LeMessurier 公式，分別求解鋼架（I）及鋼架（II）中柱 AB 之有效長度係數 $K_{(I)AB}$ 及 $K_{(II)AB}$，並試求二鋼架結構系統總挫屈載重 $\sum P_{(I)cr}$ 及 $\sum P_{(II)cr}$ 之比值，即 $\sum P_{(I)cr}/\sum P_{(II)cr} = ?$（25 分）</p>
-<p><img alt="SS-2011-2 題目附圖：鋼架(I)、(II)，柱 AB 底端 B 固接、頂端 A 以鉸接（小圓圈）連接 EI=∞ 之頂梁；靠柱 CD、EF、GH 上端鉸接、下端鉸支；各柱頂承受 P" src="../../raw/solutions/SS-2011-2/SS-2011-2-fig-1.png" /></p>
-<p><em>圖說（依考卷原圖 400 dpi 目視判讀）：</em><br />
-- <em>柱 AB：底端 B 為<strong>固接</strong>（斜線支承、無三角形），頂端 A 有<strong>小圓圈＝柱頂與頂梁鉸接</strong>。</em><br />
-- <em>頂梁 $EI = \infty$，僅負責把各柱頂連成同一側移量。</em><br />
-- <em>靠柱 CD、EF、GH（$EI = \infty$）：上端 C、E、G 有小圓圈（鉸接），下端 D、F、H 為三角形鉸支 → 兩端皆鉸，自身零側向勁度。</em><br />
-- <em>每根柱頂各承受一個 $P$；鋼架（I）共 2 根柱、鋼架（II）共 4 根柱。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2011-2-problem.md"><code>SS-2011-2-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 點</td>
+<td>鉸圓 → 柱 AB 頂與頂梁鉸接</td>
+<td>當成剛接（舊版解析取 $K_0 = 1.0$）</td>
+</tr>
+<tr>
+<td>B 點</td>
+<td>固接</td>
+<td>當成鉸支</td>
+</tr>
+<tr>
+<td>靠桿 $EI = \infty$</td>
+<td>兩端鉸接，仍無側向勁度</td>
+<td>以為 $EI = \infty$ 會提供勁度</td>
+</tr>
+<tr>
+<td>$P_e$ 與 $\Sigma P_{eK}$</td>
+<td>$P_e$ 用 $L$（$K = 1$），$\Sigma P_{eK}$ 用 $K_0L$</td>
+<td>兩者都用 $K_0L$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 柱 AB 勁度 $EI$、高 $L$；每根柱頂受 $P$，鋼架 (I) 2 根、(II) 4 根柱；$K_0$ 為 AB 不計靠桿之 $K$。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 靠柱效應（Leaning Column Effect）。靠柱只承受垂直載重、不提供側向勁度，系統的側移穩定全部由「非靠柱」AB 負擔，因此 AB 的有效長度係數會被放大。</p>
@@ -282,7 +444,6 @@ $$\boxed{\sum P_{cr}} = n_{col} \times \frac{\pi^2 EI}{(K'_{AB} \cdot L)^2}$$</p
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th style="text-align: center;">補強頁</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
@@ -291,24 +452,20 @@ $$\boxed{\sum P_{cr}} = n_{col} \times \frac{\pi^2 EI}{(K'_{AB} \cdot L)^2}$$</p
 <td>支承與接頭符號</td>
 <td>構架圖上節點的小圓圈＝鉸接；三角形＝鉸支；斜線無三角形＝固接</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>旗桿柱 $K_0 = 2$</td>
 <td>底固、頂自由轉動、可側移 → 變形如懸臂，有效長度 $2L$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">effective-length-chart</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>LeMessurier 公式物理意義</td>
 <td>$\sum P_{eK}$ 只含非靠柱，且用 $K_0L$；$P_e$ 用實際長 $L$</td>
-<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">LEANER-COLUMN-EFFECT</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>系統總挫屈載重與靠柱數無關</td>
 <td>$K' = K_0\sqrt{n_{col}}$，代回得 $\sum P_{cr} = P_{eK,AB}$，與 $n_{col}$ 無關</td>
-<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -474,6 +631,7 @@ $$\boxed{\sum P_{cr}} = n_{col} \times \frac{\pi^2 EI}{(K'_{AB} \cdot L)^2}$$</p
 <hr />
 <p><em>修正日期：2026-11-01（考卷原圖 A 點有小圓圈＝柱頂鉸接，原解誤作剛接取 $K_0 = 1.0$；更正為底固頂鉸 $K_0 = 2.0$，$K_{(I)AB}$ 由 1.414 更正為 <strong>2.83</strong>、$K_{(II)AB}$ 由 2.0 更正為 <strong>4.0</strong>，比值 1 不變；釐清 $P_e$ 與 $\sum P_{eK}$ 的長度取法；新增直接平衡法驗算與 §6 對照）</em><br />
 <em>驗證狀態：unverified</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2011-2-problem.md</code>（已確認）＋常見誤讀＋本解記號；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2011-2/SS-2011-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

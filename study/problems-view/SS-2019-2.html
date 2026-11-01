@@ -93,22 +93,18 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 完全合成梁塑性應力分布法（PSD）的核心是「力平衡決定中性軸（PNA）位置，力矩臂決定強度」。當混凝土最大壓力 &gt; 鋼梁全斷面降伏力時，PNA 落在混凝土版內，整個鋼梁全部降伏受拉，計算最為簡潔。</p>
-<p><strong>出題者意圖：</strong></p>
-<ol>
-<li>考核單位換算（kgf/cm² → tf/cm²）</li>
-<li>考核 PNA 位置判斷（版內 vs 鋼翼 vs 鋼腹）</li>
-<li>考核塑性應力分布計算流程</li>
-</ol>
+<p><strong>出題者意圖：</strong><br />
+1. 考核單位換算（kgf/cm² → tf/cm²）<br />
+2. 考核 PNA 位置判斷（版內 vs 鋼翼 vs 鋼腹）<br />
+3. 考核塑性應力分布計算流程</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong></p>
-<ol>
-<li>確認鋼梁斷面積 $A_s$ 與全斷面降伏力 $T_{steel}$</li>
-<li>計算混凝土最大壓力 $C_{concrete,max}$</li>
-<li>比較 $T_{steel}$ 與 $C_{concrete,max}$ → 判斷 PNA 位置</li>
-<li>計算應力塊深度 $a$</li>
-<li>計算力臂 $d$，求 $M_n = T_{steel} \times d$</li>
-</ol>
+<p><strong>作戰計畫：</strong><br />
+1. 確認鋼梁斷面積 $A_s$ 與全斷面降伏力 $T_{steel}$<br />
+2. 計算混凝土最大壓力 $C_{concrete,max}$<br />
+3. 比較 $T_{steel}$ 與 $C_{concrete,max}$ → 判斷 PNA 位置<br />
+4. 計算應力塊深度 $a$<br />
+5. 計算力臂 $d$，求 $M_n = T_{steel} \times d$</p>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -150,7 +146,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
 <p>$$\boxed{T_{steel}} = A_s \times F_y \quad \text{（鋼梁全斷面降伏力）}$$</p>
 <p>$$C_{concrete,max} = 0.85 f'_c \times b_e \times t_s \quad \text{（混凝土最大壓力，L1 可計算）}$$</p>
-<p>$$\text{判斷：} T_{steel} < C_{concrete,max} \Rightarrow \text{PNA 在版內}$$</p>
+<p>$$\text{判斷：} T_{steel} &lt; C_{concrete,max} \Rightarrow \text{PNA 在版內}$$</p>
 <p>$$\boxed{a} = \frac{T_{steel}}{0.85 f'_c \times b_e} \quad \text{（應力塊深度）}$$</p>
 <p>$$\boxed{d} = \left(t_s + \frac{H}{2}\right) - \frac{a}{2} \quad \text{（力臂）}$$</p>
 <p>$$\boxed{M_n} = T_{steel} \times \boxed{d}$$</p>
@@ -246,7 +242,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>PNA 判斷</td>
-<td>$277 < 669.4$ → PNA 在版內，鋼梁全斷面降伏受拉</td>
+<td>$277 &lt; 669.4$ → PNA 在版內，鋼梁全斷面降伏受拉</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -313,7 +309,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>PNA 三段判斷邏輯</td>
-<td>先比 $T_s$ vs $C_{c,max}$：若 $T_s < C_{c,max}$ → 版內；再比上翼板；最後落腹板——每種情形計算方式不同</td>
+<td>先比 $T_s$ vs $C_{c,max}$：若 $T_s &lt; C_{c,max}$ → 版內；再比上翼板；最後落腹板——每種情形計算方式不同</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -385,7 +381,7 @@ $$T_{steel} = A_s \times F_y = 110.8 \times 2.5 = \mathbf{277 \text{ tf}}$$</p>
 <p><strong>混凝土版最大壓力（版全厚均受壓時）：</strong><br />
 $$C_{concrete,max} = 0.85 f'_c \times b_e \times t_s = 0.85 \times 0.21 \times 250 \times 15 = \mathbf{669.4 \text{ tf}}$$</p>
 <p><strong>判斷：</strong><br />
-$$T_{steel} = 277 \text{ tf} < C_{concrete,max} = 669.4 \text{ tf}$$</p>
+$$T_{steel} = 277 \text{ tf} &lt; C_{concrete,max} = 669.4 \text{ tf}$$</p>
 <p>→ <strong>PNA 落在混凝土版內</strong>（整個鋼梁全斷面降伏受拉，混凝土版僅部分受壓）✓</p>
 <hr />
 <h3>Step 3：計算混凝土應力塊深度 $a$</h3>
@@ -393,7 +389,7 @@ $$T_{steel} = 277 \text{ tf} < C_{concrete,max} = 669.4 \text{ tf}$$</p>
 <p>$$0.85 f'_c \times b_e \times a = T_{steel}$$</p>
 <p>$$a = \frac{T_{steel}}{0.85 f'_c \times b_e} = \frac{277}{0.85 \times 0.21 \times 250} = \frac{277}{44.625}$$</p>
 <p>$$\boxed{a = 6.21 \text{ cm}}$$</p>
-<p>驗核：$a = 6.21$ cm $< t_s = 15$ cm ✓（應力塊在版厚內，假設成立）</p>
+<p>驗核：$a = 6.21$ cm $&lt; t_s = 15$ cm ✓（應力塊在版厚內，假設成立）</p>
 <hr />
 <h3>Step 4：計算力臂 $d$（版頂至各力合力中心之距離差）</h3>
 <p><strong>混凝土壓力合力中心（距版頂）：</strong><br />
@@ -405,7 +401,7 @@ $$d = \bar{y}_T - \bar{y}_C = 40 - 3.105 = \mathbf{36.895 \text{ cm}}$$</p>
 <hr />
 <h3>Step 5：計算正彎矩標稱強度 $M_n$</h3>
 <p>$$M_n = T_{steel} \times d = 277 \times 36.895$$</p>
-<p>$$\boxed{M_n = 10{,}220 \text{ tf·cm} = \mathbf{102.2 \text{ tf·m}}}$$</p>
+<p>$$\boxed{M_n = 10{,}220 \text{ tf}\cdot\text{cm} = \mathbf{102.2 \text{ tf}\cdot\text{m}}}$$</p>
 <p>（$\phi_b M_n = 0.9 \times 102.2 = 92.0$ tf·m，若題目問設計強度則取此值）</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
@@ -444,12 +440,12 @@ $$d = \bar{y}_T - \bar{y}_C = 40 - 3.105 = \mathbf{36.895 \text{ cm}}$$</p>
 <tbody>
 <tr>
 <td><strong>混凝土版內</strong>（本題）</td>
-<td>$T_s < C_{c,max}$</td>
+<td>$T_s &lt; C_{c,max}$</td>
 <td>全鋼降伏受拉</td>
 </tr>
 <tr>
 <td>鋼梁上翼板內</td>
-<td>$C_{c,max} < T_s < C_{c,max} + 2t_f b_f F_y$</td>
+<td>$C_{c,max} &lt; T_s &lt; C_{c,max} + 2t_f b_f F_y$</td>
 <td>上翼部分受壓</td>
 </tr>
 <tr>

@@ -58,37 +58,28 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <li>降伏強度：$F_y = 3.5$ tf/cm²</li>
 <li>殘留應力（熱軋斷面）：$F_r = 0.7$ tf/cm²</li>
 </ul>
-<p>試依 LRFD 規範：</p>
-<ol>
-<li>計算 $M_p$（塑性彎矩）</li>
-<li>計算 $M_r$（彈性限制彎矩）</li>
-<li>確認 LTB 控制區間，求設計撓曲強度 $\phi_b M_n$</li>
-</ol>
-<blockquote>
-<p>📊 <strong>互動圖請參閱：</strong> <code>SS-2025-3-ltb-viz.html</code></p>
-</blockquote>
+<p>試依 LRFD 規範：<br />
+1. 計算 $M_p$（塑性彎矩）<br />
+2. 計算 $M_r$（彈性限制彎矩）<br />
+3. 確認 LTB 控制區間，求設計撓曲強度 $\phi_b M_n$</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：LRFD 梁的三段式 LTB 設計流程</strong></p>
-<p>本題考查完整的梁設計流程：</p>
-<ol>
-<li>計算 $Z_x$（需要理解塑性中性軸和塑性斷面模數的幾何意義）</li>
-<li>計算 $M_p$ 和 $M_r$（確立 LTB 曲線的上下界）</li>
-<li>比較 $L_b$ 與 $L_p$，確定 LTB 控制類型</li>
-<li>最終得出 $M_n$ 與 $\phi_b M_n$</li>
-</ol>
+<p>本題考查完整的梁設計流程：<br />
+1. 計算 $Z_x$（需要理解塑性中性軸和塑性斷面模數的幾何意義）<br />
+2. 計算 $M_p$ 和 $M_r$（確立 LTB 曲線的上下界）<br />
+3. 比較 $L_b$ 與 $L_p$，確定 LTB 控制類型<br />
+4. 最終得出 $M_n$ 與 $\phi_b M_n$</p>
 <p><strong>出題者給出 $M_r$ 的用意：</strong> 要求學生知道 $M_r = (F_y - F_r)S_x$（殘留應力使彈性限制彎矩降低），理解殘留應力在 LTB 曲線中的角色——$M_r$ 是 LTB 非彈性段和彈性段的分界點（在 $L_r$ 處的 $M_n$）。</p>
 <p><strong>出題者給出 $F_r = 0.7$ tf/cm²（非 1.16 tf/cm²）的暗示：</strong> 熱軋斷面，殘留應力較銲接組合斷面小。</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>步驟規劃：</strong></p>
-<ol>
-<li>由斷面標示推算幾何尺寸 → 計算 $Z_x$、$S_x$</li>
-<li>計算 $M_p = F_y Z_x$</li>
-<li>計算 $M_r = (F_y - F_r) S_x$</li>
-<li>計算 $L_p$（或用題目給定值）並與 $L_b$ 比較</li>
-<li>確認 $L_b < L_p$ → $M_n = M_p$ → 計算 $\phi_b M_n$</li>
-</ol>
+<p><strong>步驟規劃：</strong><br />
+1. 由斷面標示推算幾何尺寸 → 計算 $Z_x$、$S_x$<br />
+2. 計算 $M_p = F_y Z_x$<br />
+3. 計算 $M_r = (F_y - F_r) S_x$<br />
+4. 計算 $L_p$（或用題目給定值）並與 $L_b$ 比較<br />
+5. 確認 $L_b &lt; L_p$ → $M_n = M_p$ → 計算 $\phi_b M_n$</p>
 <p><strong>關鍵陷阱：</strong></p>
 <blockquote>
 <p>⚠️ <strong>陷阱1：$S_x$ 的計算基準</strong><br />
@@ -98,7 +89,7 @@ $Z_x$ 的翼板形心距 = $h_w/2 + t_f/2$（到塑性中性軸），而不是 $
 <p>⚠️ <strong>陷阱3：$F_r$ 的角色</strong><br />
 $F_r$ 不直接影響 $M_p$（$M_p = F_y Z_x$ 與殘留應力無關），只影響 $M_r = (F_y - F_r)S_x$（彈性範圍受殘留應力限制）。</p>
 <p>⚠️ <strong>陷阱4：$M_r$ 的應用場合</strong><br />
-本題 $L_b < L_p$，最終 $M_n = M_p$，$M_r$ 本身不直接代入 $M_n$ 公式，但仍需計算作為 LTB 線性插值公式的下界（萬一 $L_b$ 介於 $L_p$ 和 $L_r$ 之間時才用到插值：$M_n = M_p - (M_p - M_r)(L_b - L_p)/(L_r - L_p)$）。</p>
+本題 $L_b &lt; L_p$，最終 $M_n = M_p$，$M_r$ 本身不直接代入 $M_n$ 公式，但仍需計算作為 LTB 線性插值公式的下界（萬一 $L_b$ 介於 $L_p$ 和 $L_r$ 之間時才用到插值：$M_n = M_p - (M_p - M_r)(L_b - L_p)/(L_r - L_p)$）。</p>
 </blockquote>
 <hr />
 <h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
@@ -112,7 +103,7 @@ $$\boxed{S_x} = \frac{I_x}{d/2}, \quad \boxed{Z_x} = 2 b_f t_f \!\left(\frac{h_w
 <p><strong>Step 2：上下界彎矩</strong><br />
 $$\boxed{M_p} = F_y \boxed{Z_x}, \quad \boxed{M_r} = (F_y - F_r)\boxed{S_x}$$</p>
 <p><strong>Step 3：LTB 判斷</strong><br />
-$$L_b = 3.0\text{ m} \stackrel{?}{<} L_p \approx 3.4\text{ m} \quad \Rightarrow M_n = M_p$$</p>
+$$L_b = 3.0\text{ m} \stackrel{?}{&lt;} L_p \approx 3.4\text{ m} \quad \Rightarrow M_n = M_p$$</p>
 <p><strong>Step 4：設計強度</strong><br />
 $$\boxed{\phi_b M_n} = 0.9 \times \boxed{M_p}$$</p>
 <h3>L1：題目直接給定</h3>
@@ -244,7 +235,7 @@ $$\boxed{\phi_b M_n} = 0.9 \times \boxed{M_p}$$</p>
 </tr>
 <tr>
 <td>判斷</td>
-<td>$L_b = 3.0 < L_p = 3.4$ m → 塑性區 → $M_n = M_p$</td>
+<td>$L_b = 3.0 &lt; L_p = 3.4$ m → 塑性區 → $M_n = M_p$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -291,7 +282,7 @@ $$\boxed{\phi_b M_n} = 0.9 \times \boxed{M_p}$$</p>
 </tr>
 <tr>
 <td>LTB 三段判斷邏輯</td>
-<td>$L_b < L_p$：塑性；$L_p < L_b < L_r$：插值；$L_b > L_r$：彈性 LTB</td>
+<td>$L_b &lt; L_p$：塑性；$L_p &lt; L_b &lt; L_r$：插值；$L_b &gt; L_r$：彈性 LTB</td>
 <td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">LATERAL-TORSIONAL-BUCKLING</span></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -351,9 +342,9 @@ $$Z_x = 4{,}867.2 + 1{,}381.6 = \mathbf{6{,}248.8 \approx 6{,}249 \text{ cm}^3}$
 <hr />
 <h3>Step 4：計算 $M_p$ 和 $M_r$</h3>
 <p><strong>塑性彎矩 $M_p$：</strong><br />
-$$M_p = F_y \times Z_x = 3.5 \times 6{,}249 = \mathbf{21{,}871.5 \text{ tf·cm} \approx 218.7 \text{ tf·m}}$$</p>
+$$M_p = F_y \times Z_x = 3.5 \times 6{,}249 = \mathbf{21{,}871.5 \text{ tf}\cdot\text{cm} \approx 218.7 \text{ tf}\cdot\text{m}}$$</p>
 <p><strong>彈性限制彎矩 $M_r$（殘留應力限制翼板端部最大彈性應力為 $F_y - F_r$）：</strong><br />
-$$M_r = (F_y - F_r) \times S_x = (3.5 - 0.7) \times 5{,}628.6 = 2.8 \times 5{,}628.6 = \mathbf{15{,}760 \text{ tf·cm} \approx 157.6 \text{ tf·m}}$$</p>
+$$M_r = (F_y - F_r) \times S_x = (3.5 - 0.7) \times 5{,}628.6 = 2.8 \times 5{,}628.6 = \mathbf{15{,}760 \text{ tf}\cdot\text{cm} \approx 157.6 \text{ tf}\cdot\text{m}}$$</p>
 <hr />
 <h3>Step 5：確認 LTB 控制區間</h3>
 <p><strong>計算 $L_p$（塑性極限無側向支撐長度）：</strong></p>
@@ -363,11 +354,11 @@ $$M_r = (F_y - F_r) \times S_x = (3.5 - 0.7) \times 5{,}628.6 = 2.8 \times 5{,}6
 <p>（本題給定 $L_p$ 參考值為 3.4 m，實際計算建議依斷面性質表查取）</p>
 <p><strong>比較：</strong></p>
 <p>$$L_b = 3.0 \text{ m} \quad \text{vs} \quad L_p \approx 3.4 \text{ m（依題給）}$$</p>
-<p>$$L_b = 3.0 \text{ m} < L_p = 3.4 \text{ m} \quad \Rightarrow \quad \text{無側扭挫屈（LTB 不控制）}$$</p>
+<p>$$L_b = 3.0 \text{ m} &lt; L_p = 3.4 \text{ m} \quad \Rightarrow \quad \text{無側扭挫屈（LTB 不控制）}$$</p>
 <p>$$\boxed{M_n = M_p}$$</p>
 <hr />
 <h3>Step 6：計算設計撓曲強度 $\phi_b M_n$</h3>
-<p>$$\phi_b M_n = \phi_b \times M_p = 0.9 \times 21{,}871.5 = \mathbf{19{,}684 \text{ tf·cm} \approx 196.8 \text{ tf·m}}$$</p>
+<p>$$\phi_b M_n = \phi_b \times M_p = 0.9 \times 21{,}871.5 = \mathbf{19{,}684 \text{ tf}\cdot\text{cm} \approx 196.8 \text{ tf}\cdot\text{m}}$$</p>
 <hr />
 <h3>計算彙整</h3>
 <table>
@@ -401,7 +392,7 @@ $$M_r = (F_y - F_r) \times S_x = (3.5 - 0.7) \times 5{,}628.6 = 2.8 \times 5{,}6
 </tr>
 <tr>
 <td>LTB 判斷</td>
-<td>$L_b = 3.0m < L_p = 3.4m$</td>
+<td>$L_b = 3.0m &lt; L_p = 3.4m$</td>
 <td>無 LTB</td>
 </tr>
 <tr>
@@ -436,12 +427,12 @@ $$M_r = (F_y - F_r) \times S_x = (3.5 - 0.7) \times 5{,}628.6 = 2.8 \times 5{,}6
 </tr>
 <tr>
 <td>非彈性 LTB</td>
-<td>$L_p < L_b \leq L_r$</td>
+<td>$L_p &lt; L_b \leq L_r$</td>
 <td>$M_n = M_p - (M_p - M_r)\dfrac{L_b - L_p}{L_r - L_p}$</td>
 </tr>
 <tr>
 <td>彈性 LTB</td>
-<td>$L_b > L_r$</td>
+<td>$L_b &gt; L_r$</td>
 <td>$M_n = M_{cr}$（彈性臨界彎矩）</td>
 </tr>
 </tbody>
@@ -464,7 +455,7 @@ $$M_r = (F_y - F_r) S_x \quad \longleftarrow \quad \text{翼板端部應力達 }
 <li>$Z_x = 2(30 \times 2.4 \times 33.8) + 2(32.6 \times 1.3 \times 16.3) = 4867 + 1382 = 6249$ cm³</li>
 <li>$M_p = 3.5 \times 6249 = 21872$ tf·cm（218.7 tf·m）</li>
 <li>$M_r = 2.8 \times 5629 = 15760$ tf·cm（157.6 tf·m）</li>
-<li>$L_b = 3.0m < L_p$ → $M_n = M_p$</li>
+<li>$L_b = 3.0m &lt; L_p$ → $M_n = M_p$</li>
 <li>$\phi_b M_n = 0.9 \times 21872 = 19685$ tf·cm ≈ <strong>196.8 tf·m</strong></li>
 </ol>
 </main>

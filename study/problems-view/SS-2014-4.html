@@ -31,7 +31,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <header><h1>SS-2014-4 題目解析</h1><a class="quick" href="../unit-SS-U1-3.html" title="SS-U1-3 梁柱桿件 單元總覽">&#128269; U1-3 單元總覽</a><a class="lect" href="../lecture-SS-U1-3.html" title="SS-U1-3 梁柱桿件 觀念講義">&#128218; U1-3 梁柱桿件 講義</a></header>
 <main><h1>考題編號：SS-2014-4</h1>
 <p><strong>主分類：</strong> <code>SS-U1-3</code> 梁柱桿件<br />
-<strong>副分類：</strong> （無）<br />
+<strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> LRFD<br />
 <strong>標籤：</strong> <code>梁柱桿件</code> <code>P-M互制</code> <code>B1放大法</code> <code>B2放大法</code> <code>二階效應</code> <code>斜撐構架</code> <code>地震力組合</code> <code>非側移框架</code> <code>容量設計</code></p>
 <hr />
@@ -117,36 +117,28 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 </tbody>
 </table>
-<p><strong>樓層參數（供 B2 計算）：</strong></p>
-<ul>
-<li>$\sum P_u = 9000$ kN（所在樓層最大垂直載重，含載重係數）</li>
-<li>$H = 600$ kN（側力）</li>
-<li>$\Delta/L = 5/1000$（側位移角）</li>
-</ul>
+<p><strong>樓層參數（供 B2 計算）：</strong><br />
+- $\sum P_u = 9000$ kN（所在樓層最大垂直載重，含載重係數）<br />
+- $H = 600$ kN（側力）<br />
+- $\Delta/L = 5/1000$（側位移角）</p>
 <p><strong>互制公式：</strong></p>
 <p>$$\frac{P_u}{\phi_c P_n} + \frac{8}{9}\left(\frac{M_{ux}}{\phi_b M_{nx}} + \frac{M_{uy}}{\phi_b M_{ny}}\right) \leq 1.0 \quad , \quad P_u \geq 0.2\phi_c P_n$$</p>
-<p>$$\frac{P_u}{2\phi_c P_n} + \left(\frac{M_{ux}}{\phi_b M_{nx}} + \frac{M_{uy}}{\phi_b M_{ny}}\right) \leq 1.0 \quad , \quad P_u < 0.2\phi_c P_n$$</p>
+<p>$$\frac{P_u}{2\phi_c P_n} + \left(\frac{M_{ux}}{\phi_b M_{nx}} + \frac{M_{uy}}{\phi_b M_{ny}}\right) \leq 1.0 \quad , \quad P_u &lt; 0.2\phi_c P_n$$</p>
 <p>$$B_1 = \frac{C_m}{1 - P_u/P_e} \quad , \quad B_2 = \frac{1}{1 - \sum P_u \Delta / \sum HL}$$</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong></p>
-<ul>
-<li><strong>B1/B2 放大法（二階效應）</strong>：B1 處理 P-δ 效應（構件本身的撓曲），B2 處理 P-Δ 效應（樓層的側向位移）</li>
-<li><strong>載重組合的力流</strong>：垂直力產生 Mnt（非側移彎矩），地震力產生 Mlt（側移彎矩），兩者疊加後再放大</li>
-<li><strong>P-M 互制</strong>：軸壓 + 彎矩的複合受力，需判斷哪個互制方程式</li>
-</ul>
-<p><strong>出題意圖：</strong></p>
-<ol>
-<li>測試 B1 × Mnt + B2 × Mlt 的分離計算邏輯</li>
-<li>測試 Pe、Cm 的推導，以及 B1、B2 對結果的影響</li>
-<li>測試 P-M 互制的正確流程（先算 φcPn，再判斷公式）</li>
-</ol>
-<p><strong>陷阱：</strong></p>
-<ul>
-<li>⚠️ B2 用<strong>樓層</strong>總垂直載重（ΣPu=9000），不是本柱的 Pu</li>
-<li>⚠️ Pe 的 K 值：B1 計算中的 Pe 用非側移條件（K=1.0），不是 Kx=1.79</li>
-<li>⚠️ 載重組合：垂直+地震的組合為 1.2D+0.5L+1.0E</li>
-</ul>
+<p><strong>核心觀念：</strong><br />
+- <strong>B1/B2 放大法（二階效應）</strong>：B1 處理 P-δ 效應（構件本身的撓曲），B2 處理 P-Δ 效應（樓層的側向位移）<br />
+- <strong>載重組合的力流</strong>：垂直力產生 Mnt（非側移彎矩），地震力產生 Mlt（側移彎矩），兩者疊加後再放大<br />
+- <strong>P-M 互制</strong>：軸壓 + 彎矩的複合受力，需判斷哪個互制方程式</p>
+<p><strong>出題意圖：</strong><br />
+1. 測試 B1 × Mnt + B2 × Mlt 的分離計算邏輯<br />
+2. 測試 Pe、Cm 的推導，以及 B1、B2 對結果的影響<br />
+3. 測試 P-M 互制的正確流程（先算 φcPn，再判斷公式）</p>
+<p><strong>陷阱：</strong><br />
+- ⚠️ B2 用<strong>樓層</strong>總垂直載重（ΣPu=9000），不是本柱的 Pu<br />
+- ⚠️ Pe 的 K 值：B1 計算中的 Pe 用非側移條件（K=1.0），不是 Kx=1.79<br />
+- ⚠️ 載重組合：垂直+地震的組合為 1.2D+0.5L+1.0E</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>作戰計畫：</strong></p>
@@ -338,12 +330,12 @@ Step 7：P-M 互制公式檢核
 </tr>
 <tr>
 <td>$C_m$</td>
-<td>$0.6 - 0.4(M_1/M_2)$；單曲率保守取 = 0.855</td>
+<td>$0.6 - 0.4(M_1/M_2)$；圖示兩端彎矩同為順時針 → <strong>雙曲率</strong>，$M_1/M_2 = +70/110$ → $C_m$ = 0.345</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$B_1$</td>
-<td>$C_m / (1 - P_u/P_e) = 0.886 < 1.0$ → 取 1.0</td>
+<td>$C_m / (1 - P_u/P_e) = 0.358 &lt; 1.0$ → 取 1.0</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -429,7 +421,7 @@ Step 7：P-M 互制公式檢核
 </tr>
 <tr>
 <td>$\phi_b M_{nx}$</td>
-<td>$0.9 \times 900.5 = 810.4$ kN-m（$L_b < L_p$，無 LTB）</td>
+<td>$0.9 \times 900.5 = 810.4$ kN-m（$L_b &lt; L_p$，無 LTB）</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -481,25 +473,25 @@ Step 7：P-M 互制公式檢核
 </tr>
 <tr>
 <td>Cm 的正負號與曲率方向</td>
-<td>雙曲率 M1/M2 &gt; 0 → Cm 較小；單曲率取負 → 保守</td>
+<td>由圖判讀端彎矩轉向：兩端同轉向（同為順時針）＝雙曲率，M1/M2 &gt; 0 → Cm 較小；兩端反轉向＝單曲率，M1/M2 &lt; 0</td>
 <td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">b1b2-amplification</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>LRFD 柱強度 λc 公式</td>
-<td>$\lambda_c < 1.5$：$F_{cr} = 0.658^{\lambda_c^2}F_y$；$\geq 1.5$：$0.877/\lambda_c^2 \cdot F_y$</td>
+<td>$\lambda_c &lt; 1.5$：$F_{cr} = 0.658^{\lambda_c^2}F_y$；$\geq 1.5$：$0.877/\lambda_c^2 \cdot F_y$</td>
 <td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-column</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COLUMN-STRENGTH-CURVE</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>P-M 互制判斷門檻</td>
-<td>$P_u/\phi_cP_n \geq 0.2$ 用 H1-1a；$< 0.2$ 用 H1-1b</td>
+<td>$P_u/\phi_cP_n \geq 0.2$ 用 H1-1a；$&lt; 0.2$ 用 H1-1b</td>
 <td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">pm-interaction</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BEAM-COLUMN-INTERACTION</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>B1 下限取 1.0</td>
-<td>計算 $B_1 < 1.0$ 時，規範規定取 1.0，不可折減</td>
+<td>計算 $B_1 &lt; 1.0$ 時，規範規定取 1.0，不可折減</td>
 <td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">b1b2-amplification</span></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -507,9 +499,6 @@ Step 7：P-M 互制公式檢核
 </table>
 <hr />
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
-<blockquote>
-<p>📊 <strong>P-M 互制圖請參閱：</strong> <code>SS-2014-4-pm-viz.html</code></p>
-</blockquote>
 <h3>Step 1：組合設計載重</h3>
 <p><strong>LRFD 載重組合：1.2D + 0.5L + 1.0E</strong></p>
 <table>
@@ -546,13 +535,11 @@ Step 7：P-M 互制公式檢核
 <hr />
 <h3>Step 2：計算 B2（考慮 P-Δ 效應）</h3>
 <p>$$B_2 = \frac{1}{1 - \dfrac{\sum P_u \cdot \Delta}{\sum H \cdot L}}$$</p>
-<p><strong>各參數：</strong></p>
-<ul>
-<li>$\sum P_u = 9000$ kN（樓層總垂直載重）</li>
-<li>$\Delta = \frac{5}{1000} \times L = \frac{5}{1000} \times 3750 = 18.75$ mm</li>
-<li>$\sum H = 600$ kN（樓層側力）</li>
-<li>$L = 3750$ mm（層高）</li>
-</ul>
+<p><strong>各參數：</strong><br />
+- $\sum P_u = 9000$ kN（樓層總垂直載重）<br />
+- $\Delta = \frac{5}{1000} \times L = \frac{5}{1000} \times 3750 = 18.75$ mm<br />
+- $\sum H = 600$ kN（樓層側力）<br />
+- $L = 3750$ mm（層高）</p>
 <p>$$\frac{\sum P_u \cdot \Delta}{\sum H \cdot L} = \frac{9000 \times 18.75}{600 \times 3750} = \frac{168{,}750}{2{,}250{,}000} = 0.075$$</p>
 <p>$$\boxed{B_2 = \frac{1}{1 - 0.075} = \frac{1}{0.925} = 1.081}$$</p>
 <p><em>策略註解：穩定係數 θ = 0.075 &lt; 0.1（AISC 建議），屬合理範圍。B2 = 1.081 表示地震彎矩放大 8.1%。</em></p>
@@ -564,12 +551,12 @@ Step 7：P-M 互制公式檢核
 <p><em>策略註解：B1 中的 Pe 使用 K=1（非側移條件），因為 P-δ 效應是針對構件自身撓曲，不涉及整體側移。</em></p>
 <h4>3b. 計算 Cm（非側移端彎矩）</h4>
 <p>垂直力（非側移）下：$M_{nt,a} = 110$ kN-m（頂），$M_{nt,b} = 70$ kN-m（底）</p>
-<p>對於雙曲率彎曲（正值）或單曲率（負值），本題假設為<strong>單曲率</strong>（保守）：</p>
-<p>$$C_m = 0.6 - 0.4 \left(\frac{M_1}{M_2}\right) = 0.6 - 0.4 \times \left(-\frac{70}{110}\right) = 0.6 + 0.255 = 0.855$$</p>
-<p><em>策略註解：單曲率時 M1/M2 為負值（較保守）。若為雙曲率，$C_m = 0.6 - 0.4 \times 70/110 = 0.345$，更小但同樣得 B1 &lt; 1.0。</em></p>
+<p>$M_1/M_2$ 雙曲率取正、單曲率取負。題目附圖頂端 $M_a$、底端 $M_b$ 的箭頭<strong>皆為順時針</strong>——構材兩端端彎矩同轉向，表示<strong>雙曲率</strong>（反曲點在柱中段），故 $M_1/M_2 = +70/110$：</p>
+<p>$$C_m = 0.6 - 0.4 \left(\frac{M_1}{M_2}\right) = 0.6 - 0.4 \times \frac{70}{110} = 0.6 - 0.255 = 0.345$$</p>
+<p><em>策略註解：曲率由圖上端彎矩的轉向判讀，不需另做保守假設。若誤判為單曲率，$C_m = 0.6 + 0.4 \times 70/110 = 0.855$、$B_1 = 0.886$，同樣取 1.0，本題結果不受影響。</em></p>
 <h4>3c. 計算 B1</h4>
-<p>$$B_1 = \frac{C_m}{1 - P_u / P_e} = \frac{0.855}{1 - 2050/58{,}366} = \frac{0.855}{1 - 0.0351} = \frac{0.855}{0.965} = 0.886$$</p>
-<p>由於 $B_1 = 0.886 < 1.0$，取 <strong>$B_1 = 1.0$</strong>（規範規定最小值為 1.0）</p>
+<p>$$B_1 = \frac{C_m}{1 - P_u / P_e} = \frac{0.345}{1 - 2050/58{,}366} = \frac{0.345}{1 - 0.0351} = \frac{0.345}{0.965} = 0.358$$</p>
+<p>由於 $B_1 = 0.358 &lt; 1.0$，取 <strong>$B_1 = 1.0$</strong>（規範規定最小值為 1.0）</p>
 <p><em>策略註解：因為 Pe &gt;&gt; Pu（$P_u/P_e = 3.5\%$），B1 效應很小，非側移彎矩幾乎不放大。</em></p>
 <hr />
 <h3>Step 4：計算放大後設計彎矩 Mux</h3>
@@ -610,7 +597,7 @@ Step 7：P-M 互制公式檢核
 <p>$$\lambda_c = \frac{KL/r}{\pi} \sqrt{\frac{F_y}{E}} = \frac{43.03}{\pi} \times \sqrt{\frac{350}{200{,}000}}$$</p>
 <p>$$= \frac{43.03}{3.1416} \times \sqrt{0.00175} = 13.694 \times 0.04183 = 0.573$$</p>
 <h4>5c. 計算 Fcr</h4>
-<p>$\lambda_c = 0.573 < 1.5$ → <strong>非彈性挫屈</strong>：</p>
+<p>$\lambda_c = 0.573 &lt; 1.5$ → <strong>非彈性挫屈</strong>：</p>
 <p>$$F_{cr} = 0.658^{\lambda_c^2} \times F_y = 0.658^{0.573^2} \times 350 = 0.658^{0.328} \times 350$$</p>
 <p>$$0.658^{0.328} = e^{0.328 \times \ln 0.658} = e^{0.328 \times (-0.4193)} = e^{-0.1375} = 0.8715$$</p>
 <p>$$F_{cr} = 0.8715 \times 350 = \mathbf{305.0 \text{ MPa}}$$</p>
@@ -702,13 +689,55 @@ Step 7：P-M 互制公式檢核
 <p><strong>①B1 中 Pe 的 K 值選取：</strong><br />
 計算 B1 用的 Pe 應使用 K=1.0（非側移狀態），因為 B1 矯正的是「無側移時因軸力產生的彎矩放大（P-δ效應）」，而非整體側移（P-Δ效應，由 B2 處理）。若誤用 Kx=1.79，會低估 Pe，高估 B1 放大，偏保守但不正確。</p>
 <p><strong>②地震力彎矩的方向問題：</strong><br />
-本題地震力使頂底端各有 200 kN-m。若組合後頂端和底端彎矩相加（同向），則為單曲率，較嚴重；若為反向（雙曲率），則 Cm 較小，B1 更小。本解以單曲率（保守）計算。實務上應依分析軟體輸出的力矩方向判斷。</p>
+題目附圖已畫出端彎矩方向：頂端 $M_a$、底端 $M_b$ 皆為順時針，構材兩端同轉向即<strong>雙曲率</strong>（$M_1/M_2 &gt; 0$、$C_m = 0.345$）。原解未依圖判讀而「假設單曲率（保守）」得 $C_m = 0.855$，觀念上不正確；但兩者算得的 $B_1$（0.358／0.886）都小於 1.0、皆取 1.0，本題 $M_{ux}$ 與互制比不受影響。地震側力造成的 $M_{lt}$ 在斜撐構架中屬側移彎矩，以 $B_2$ 放大，不參與 $C_m$ 判斷。</p>
 <p><strong>③B2 &gt; 1.20 時的警示：</strong><br />
 若穩定係數 θ = ΣPuΔ/(ΣHL) &gt; 0.3，表示結構側向穩定性不足，AISC 規範建議以剛性設計（增加剛度）改善，B2 方法不再適用。本題 θ = 0.075，遠在安全範圍內。</p>
 <p><strong>④斜撐構架 vs 抗彎框架的設計差異：</strong><br />
 斜撐構架（Braced Frame）的側向剛度主要由斜撐提供，柱承受的 Mlt 相對較小；抗彎框架（Moment Frame）的柱 Mlt 大，B2 效應更顯著。本題為斜撐構架，柱的彎矩需求主要來自垂直力，地震彎矩是次要。</p>
 <p><strong>⑤Kx = 1.79 的來源（AISC 對齊圖法）：</strong><br />
-$K_x = 1.79$ 通常對應於柱上端受梁約束（部分固接）、下端固接於基礎的情況，從 AISC 對齊圖（alignment chart）讀取。有效長度 $K_x L = 1.79 \times 3.75 = 6.71$ m 相當大，暗示柱腳接近固接但柱頂梁的束制相對較弱。</p></main>
+$K_x = 1.79$ 通常對應於柱上端受梁約束（部分固接）、下端固接於基礎的情況，從 AISC 對齊圖（alignment chart）讀取。有效長度 $K_x L = 1.79 \times 3.75 = 6.71$ m 相當大，暗示柱腳接近固接但柱頂梁的束制相對較弱。</p>
+<hr />
+<h2>6. 依最新規範（AISC 360-16／-22）對照</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">考卷（AISC-LRFD 1993／1999 系）</th>
+<th style="text-align: left;">AISC 360-16／-22（附錄 8 近似二階分析）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">柱強度</td>
+<td style="text-align: left;">$\lambda_c$ 式，$\phi_c = 0.85$</td>
+<td style="text-align: left;">$F_e = \pi^2E/(KL/r)^2$、$F_{cr} = 0.658^{F_y/F_e}F_y$，$\phi_c = 0.90$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$C_m$</td>
+<td style="text-align: left;">$0.6 - 0.4(M_1/M_2)$，雙曲率取正</td>
+<td style="text-align: left;">同式（無橫向載重時）</td>
+</tr>
+<tr>
+<td style="text-align: left;">$B_1$</td>
+<td style="text-align: left;">$C_m/(1 - P_u/P_e) \geq 1.0$</td>
+<td style="text-align: left;">$C_m/(1 - \alpha P_r/P_{e1}) \geq 1.0$，$\alpha = 1.0$（LRFD）</td>
+</tr>
+<tr>
+<td style="text-align: left;">$B_2$</td>
+<td style="text-align: left;">$1/(1 - \Sigma P_u\Delta/\Sigma HL)$</td>
+<td style="text-align: left;">$1/(1 - \alpha P_{story}/P_{e,story})$，$P_{e,story} = R_M HL/\Delta_H$，斜撐構架 $R_M = 1.0$</td>
+</tr>
+<tr>
+<td style="text-align: left;">互制式</td>
+<td style="text-align: left;">H1-1a／b</td>
+<td style="text-align: left;">同</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本題以 360-16 估算：</strong> $KL/r = 43.03$ → $F_e = 1066$ MPa、$F_{cr} = 305.1$ MPa → $\phi_cP_n = 0.9 \times 305.1 \times 17{,}097 = 4694$ kN，$P_u/\phi_cP_n = 0.437$；$P_{e,story} = 600/0.005 = 120{,}000$ kN → $B_2 = 1/(1 - 9000/120{,}000) = 1.081$（與考卷式相同）；$B_1$ 仍取 1.0，$M_{ux} = 326.2$ kN-m；互制比 $= 0.437 + \tfrac{8}{9}\times 326.2/810.4 = 0.795 \leq 1.0$ OK（考卷版 0.821）。差異來自 $\phi_c$ 由 0.85 提高為 0.90。</p>
+<hr />
+<p><em>修正日期：2026-11-01（依考卷原圖：頂端 $M_a$、底端 $M_b$ 箭頭皆為順時針，構材兩端同轉向為<strong>雙曲率</strong>；原解未依圖判讀而假設單曲率（保守）取 $C_m = 0.855$，更正為 $C_m = 0.6 - 0.4 \times 70/110 = 0.345$、$B_1 = 0.358$，仍取 1.0，$M_{ux} = 326.2$ kN-m 與互制比 0.821 不變，結論 OK 不變；新增 §6 對照）</em><br />
+<em>驗證狀態：unverified</em></p></main>
 <footer>來源：raw/solutions/SS-2014-4/SS-2014-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，

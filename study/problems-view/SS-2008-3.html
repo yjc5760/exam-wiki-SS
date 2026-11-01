@@ -455,13 +455,13 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h3>Step 2：計算基本強度參數</h3>
 <p><strong>塑性彎矩：</strong></p>
-<p>$$M_p = F_y Z_x = 3.5 \times 3212 = 11{,}242 \text{ t·cm} = 112.42 \text{ t·m}$$</p>
+<p>$$M_p = F_y Z_x = 3.5 \times 3212 = 11{,}242 \text{ t}\cdot\text{cm} = 112.42 \text{ t}\cdot\text{m}$$</p>
 <p><strong>設計強度上限：</strong></p>
-<p>$$\phi_b M_p = 0.9 \times 11{,}242 = 10{,}118 \text{ t·cm} = 101.18 \text{ t·m}$$</p>
+<p>$$\phi_b M_p = 0.9 \times 11{,}242 = 10{,}118 \text{ t}\cdot\text{cm} = 101.18 \text{ t}\cdot\text{m}$$</p>
 <p><strong>殘留應力（熱軋斷面）：</strong></p>
 <p>$$F_r = 0.69 \text{ t/cm}^2 \quad \Rightarrow \quad F_y - F_r = 3.5 - 0.69 = 2.81 \text{ t/cm}^2$$</p>
 <p><strong>彈性極限彎矩：</strong></p>
-<p>$$M_r = (F_y - F_r) S_x = 2.81 \times 2802 = 7{,}874 \text{ t·cm}$$</p>
+<p>$$M_r = (F_y - F_r) S_x = 2.81 \times 2802 = 7{,}874 \text{ t}\cdot\text{cm}$$</p>
 <hr />
 <h3>Step 3：計算 $L_p$</h3>
 <p>$$L_p = \frac{80 r_y}{\sqrt{F_y}} = \frac{80 \times 4.65}{\sqrt{3.5}} = \frac{372}{1.871} = \mathbf{198.8 \text{ cm} \approx 199 \text{ cm}}$$</p>
@@ -469,8 +469,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h3>Step 4：計算 $X_1$、$X_2$ → 求 $L_r$</h3>
 <p><strong>$X_1$（扭轉常數一）：</strong></p>
 <p>$$X_1 = \frac{\pi}{S_x}\sqrt{\frac{EGJA}{2}}$$</p>
-<p>$$EGJA = 2100 \times 840 \times 181 \times 156.77 = 5.007 \times 10^{10} \text{ t}^2\text{·cm}^2$$</p>
-<p>$$\sqrt{EGJA/2} = \sqrt{2.504 \times 10^{10}} = 158{,}227 \text{ t·cm}$$</p>
+<p>$$EGJA = 2100 \times 840 \times 181 \times 156.77 = 5.007 \times 10^{10} \text{ t}^2\cdot\text{cm}^2$$</p>
+<p>$$\sqrt{EGJA/2} = \sqrt{2.504 \times 10^{10}} = 158{,}227 \text{ t}\cdot\text{cm}$$</p>
 <p>$$X_1 = \frac{\pi}{2802} \times 158{,}227 = \frac{3.14159}{2802} \times 158{,}227 = \mathbf{177.4 \text{ t/cm}^2}$$</p>
 <p><strong>$X_2$（扭轉常數二）：</strong></p>
 <p>$$X_2 = \frac{4C_w}{I_y}\left[\frac{S_x}{GJ}\right]^2$$</p>
@@ -499,8 +499,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$\frac{L_b}{r_y} = \frac{600}{4.65} = 129.03$$</p>
 <p>$$\frac{X_1^2 X_2}{2(L_b/r_y)^2} = \frac{(177.4)^2 \times 0.9291}{2 \times (129.03)^2} = \frac{31{,}471 \times 0.9291}{2 \times 16{,}649} = \frac{29{,}241}{33{,}298} = 0.8782$$</p>
 <p>$$\sqrt{1 + 0.8782} = \sqrt{1.8782} = 1.3704$$</p>
-<p>$$S_x X_1 \sqrt{2} = 2802 \times 177.4 \times 1.4142 = 703{,}022 \text{ t·cm}$$</p>
-<p>$$M_{cr}(C_b=1) = \frac{703{,}022}{129.03} \times 1.3704 = 5{,}449 \times 1.3704 = \mathbf{7{,}469 \text{ t·cm}}$$</p>
+<p>$$S_x X_1 \sqrt{2} = 2802 \times 177.4 \times 1.4142 = 703{,}022 \text{ t}\cdot\text{cm}$$</p>
+<p>$$M_{cr}(C_b=1) = \frac{703{,}022}{129.03} \times 1.3704 = 5{,}449 \times 1.3704 = \mathbf{7{,}469 \text{ t}\cdot\text{cm}}$$</p>
 <hr />
 <h3>Step 6：彎矩圖與各段 $C_b$、$M_n$</h3>
 <p><strong>載重與反力（依原圖：$w$ 只作用於 AB、CD）：</strong></p>
@@ -552,12 +552,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>均勻彎矩使受壓翼板全段受同樣大的壓力，是 LTB 最不利的情形。以 1.75 式計算時，兩端彎矩同向使梁<strong>單曲率</strong>彎曲，$M_1/M_2 = -1$：</p>
 <p>$$C_b = 1.75 + 1.05(-1) + 0.3(-1)^2 = 1.0$$</p>
 <p>（四分點式：$12.5 \times 18w/(2.5 \times 18w + 3 \times 18w + 4 \times 18w + 3 \times 18w) = 1.0$，相同。）</p>
-<p>$$M_n = 1.0 \times 7{,}465 = 7{,}465\ \text{t·cm} &lt; M_p = 11{,}242\ \text{t·cm}$$</p>
-<p>$$\phi_bM_n = 0.9 \times 74.65 = 67.18\ \text{t·m}$$</p>
+<p>$$M_n = 1.0 \times 7{,}465 = 7{,}465\ \text{t}\cdot\text{cm} &lt; M_p = 11{,}242\ \text{t}\cdot\text{cm}$$</p>
+<p>$$\phi_bM_n = 0.9 \times 74.65 = 67.18\ \text{t}\cdot\text{m}$$</p>
 <hr />
 <p><strong>段 A-B（C-D 對稱）：</strong></p>
 <p>四分點式 $C_b = \dfrac{12.5 \times 18}{2.5 \times 18 + 3 \times 7.875 + 4 \times 13.5 + 3 \times 16.875} = 1.30$（若用 1.75 式，$M_A = 0$ → 1.75）</p>
-<p>$$M_n = \min(1.30 \times 74.65,\ M_p) = 96.9\ \text{t·m}\ \ (\text{1.75 式則達 } M_p = 112.4)$$</p>
+<p>$$M_n = \min(1.30 \times 74.65,\ M_p) = 96.9\ \text{t}\cdot\text{m}\ \ (\text{1.75 式則達 } M_p = 112.4)$$</p>
 <hr />
 <h3>Step 7：求解 $w_{n,cr}$</h3>
 <table>

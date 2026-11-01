@@ -75,8 +75,7 @@
         "φbMn"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2025-4",
@@ -120,7 +119,6 @@
         "強度平台段"
       ],
       "hasHandwritten": false,
-      "hasViz": true,
       "hasSolution": true
     },
     {
@@ -145,7 +143,6 @@
       ],
       "verificationStatus": "unverified",
       "hasHandwritten": false,
-      "hasViz": false,
       "hasSolution": true
     },
     {
@@ -169,7 +166,6 @@
         "外伸梁"
       ],
       "hasHandwritten": false,
-      "hasViz": false,
       "hasSolution": true
     },
     {
@@ -194,7 +190,6 @@
         "SN耐震鋼材"
       ],
       "hasHandwritten": false,
-      "hasViz": false,
       "hasSolution": true
     },
     {
@@ -316,8 +311,7 @@
         "全滲透銲組合斷面"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2022-2",
@@ -479,7 +473,8 @@
         "銲接",
         "混合接合",
         "施工規範",
-        "滑動臨界"
+        "滑動臨界",
+        "螺栓銲接併用"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -553,8 +548,7 @@
         "Pe1有效長度"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2020-4",
@@ -580,7 +574,9 @@
         "剪力設計",
         "偏心螺栓群",
         "腹板彎矩分擔",
-        "Iw/Ix"
+        "Iw/Ix",
+        "腹板承壓",
+        "命題原意判斷"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -648,11 +644,12 @@
         "LTB",
         "Cb",
         "弱軸挫屈",
-        "彈性挫屈"
+        "彈性挫屈",
+        "連續柱彎矩分配",
+        "軸力路徑"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2019-4",
@@ -689,11 +686,12 @@
         "降伏比",
         "σ-ε曲線",
         "伸長量",
-        "均勻伸長",
         "應力集中",
         "韌性",
         "細縫鋼板",
-        "應變硬化"
+        "應變硬化",
+        "淨斷面控制",
+        "降伏比與淨斷面比"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -855,8 +853,7 @@
         "瞬心法"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2016-1",
@@ -921,8 +918,7 @@
         "強度平台段"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2016-4",
@@ -957,7 +953,8 @@
         "Charpy衝擊值",
         "韌性",
         "建築結構用鋼",
-        "耐震設計"
+        "耐震設計",
+        "Z向性能"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -984,8 +981,7 @@
         "腹板面積定義"
       ],
       "hasHandwritten": true,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2015-2",
@@ -1075,7 +1071,6 @@
         "彈性挫屈"
       ],
       "hasHandwritten": true,
-      "hasViz": true,
       "hasSolution": true
     },
     {
@@ -1099,7 +1094,6 @@
         "焊接韌性"
       ],
       "hasHandwritten": false,
-      "hasViz": false,
       "hasSolution": true
     },
     {
@@ -1123,7 +1117,6 @@
         "規範版本差異"
       ],
       "hasHandwritten": true,
-      "hasViz": false,
       "hasSolution": true
     },
     {
@@ -1141,10 +1134,10 @@
         "B2放大法",
         "二階效應",
         "斜撐構架",
-        "地震力組合"
+        "地震力組合",
+        "曲率判讀"
       ],
       "hasHandwritten": false,
-      "hasViz": true,
       "hasSolution": true
     },
     {
@@ -1186,7 +1179,8 @@
         "剛架",
         "靠桿",
         "leaning column",
-        "挫屈載重"
+        "挫屈載重",
+        "梁遠端修正"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -1210,7 +1204,8 @@
         "LRFD設計強度",
         "兩平面邊界不同",
         "Cc判斷",
-        "λc"
+        "λc",
+        "設計K值"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -1236,8 +1231,7 @@
         "符號解"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2012-1",
@@ -1277,7 +1271,8 @@
         "塑鉸區",
         "梁柱接頭",
         "耐震設計",
-        "側撐間距"
+        "側撐間距",
+        "本國耐震規範"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -1303,8 +1298,7 @@
         "有效長度"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2012-4",
@@ -1350,8 +1344,7 @@
         "規範版本差異"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2011-2",
@@ -1436,11 +1429,12 @@
         "斷面性質",
         "降伏力矩",
         "塑性力矩",
-        "十字形斷面",
         "平行軸定理",
         "塑性中性軸",
         "形狀因子",
-        "SS540鋼料"
+        "SS540鋼料",
+        "非對稱斷面",
+        "ENA≠PNA"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -1707,8 +1701,7 @@
         "強度方程式"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2007-1",
@@ -1729,7 +1722,7 @@
         "U值",
         "拉力桿件",
         "銲道容許應力",
-        "彎矩力偶"
+        "平衡銲道"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -1754,8 +1747,7 @@
         "H型鋼"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2007-3",
@@ -1908,8 +1900,7 @@
         "Panel Zone"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2005-1",
@@ -1962,7 +1953,7 @@
       "primaryTopicId": "SS-U1-4",
       "primaryTopicName": "接合之分析與設計",
       "secondaryTopicIds": [],
-      "designMethod": "LRFD",
+      "designMethod": "ASD",
       "verificationStatus": "unverified",
       "tags": [
         "填角銲",
@@ -1972,7 +1963,9 @@
         "銲接群分析",
         "彎矩剪力接合",
         "扭矩",
-        "E70XX"
+        "E70XX",
+        "銲接符號判讀",
+        "不對稱銲道群"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -1996,10 +1989,10 @@
         "塑性斷面模數",
         "虛功法",
         "均布載重",
-        "propped cantilever"
+        "propped cantilever",
+        "尺寸線判讀"
       ],
       "hasHandwritten": false,
-      "hasViz": true,
       "hasSolution": true
     },
     {
@@ -2042,7 +2035,9 @@
         "翼板連接",
         "連接板設計",
         "最短接合長度",
-        "ASD"
+        "ASD",
+        "內連接板寬度限制",
+        "雙剪"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -2063,7 +2058,9 @@
         "E70XX",
         "雙角鋼",
         "LRFD",
-        "極慣性矩"
+        "極慣性矩",
+        "⊐形銲道",
+        "斜向載重力矩方向"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -2087,8 +2084,7 @@
         "有效長度"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2003-1",
@@ -2195,8 +2191,7 @@
         "有側撐構架"
       ],
       "hasHandwritten": false,
-      "hasSolution": true,
-      "hasViz": true
+      "hasSolution": true
     },
     {
       "moduleId": "SS-2002-1",
@@ -2296,7 +2291,7 @@
         "容許剪應力",
         "容許承壓應力",
         "向量疊加",
-        "強度不足"
+        "斜向載重"
       ],
       "hasHandwritten": false,
       "hasSolution": true

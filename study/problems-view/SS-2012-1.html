@@ -143,15 +143,13 @@ $$C_b = \frac{12.5 M_{max}}{2.5 M_{max} + 3M_A + 4M_B + 3M_C}$$</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 本題考驗考生對「<strong>非結實斷面（Non-compact Section）</strong>」在強軸彎曲的處理能力。W14×90 + A572 Gr.50 是一個典型的「陷阱」：<strong>翼板寬厚比剛好超過結實限值</strong>，考生若不檢核斷面分類就直接用 $\phi_b M_p$ 必然錯誤。</p>
-<p>出題者測驗的能力：</p>
-<ol>
-<li>斷面分類（結實/非結實）的判斷</li>
-<li>非結實斷面翼板局部挫屈（FLB）的折減計算</li>
-<li>非彈性 LTB 的計算，含 $C_b$ 係數的正確套用</li>
-<li>取兩種極限狀態（LTB vs FLB）的較小值作為設計強度</li>
-<li>回推最大活載重</li>
-</ol>
-<p><strong>出題意圖：</strong> 簡支梁兩端有側向支撐 → $L_b = L = 10$ m，落在非彈性 LTB 區間（$L_p < L_b < L_r$），同時翼板非結實，兩個極限狀態同時存在，考驗考生能否正確處理並取控制值。</p>
+<p>出題者測驗的能力：<br />
+1. 斷面分類（結實/非結實）的判斷<br />
+2. 非結實斷面翼板局部挫屈（FLB）的折減計算<br />
+3. 非彈性 LTB 的計算，含 $C_b$ 係數的正確套用<br />
+4. 取兩種極限狀態（LTB vs FLB）的較小值作為設計強度<br />
+5. 回推最大活載重</p>
+<p><strong>出題意圖：</strong> 簡支梁兩端有側向支撐 → $L_b = L = 10$ m，落在非彈性 LTB 區間（$L_p &lt; L_b &lt; L_r$），同時翼板非結實，兩個極限狀態同時存在，考驗考生能否正確處理並取控制值。</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>作戰計畫：</strong></p>
@@ -166,7 +164,7 @@ Step 7: 設定 Mu = φbMn，回推 WL
 <p><strong>四大陷阱：</strong></p>
 <ol>
 <li>
-<p><strong>⚠️ 陷阱 1：誤判斷面為結實</strong> — 直覺上 W14×90 很肥大，但 Gr.50 的 $\lambda_p = 9.19$，而 $\lambda_f = b_f/(2t_f) = 368/(2 \times 18) = 10.22 > 9.19$，<strong>翼板非結實！</strong></p>
+<p><strong>⚠️ 陷阱 1：誤判斷面為結實</strong> — 直覺上 W14×90 很肥大，但 Gr.50 的 $\lambda_p = 9.19$，而 $\lambda_f = b_f/(2t_f) = 368/(2 \times 18) = 10.22 &gt; 9.19$，<strong>翼板非結實！</strong></p>
 </li>
 <li>
 <p><strong>⚠️ 陷阱 2：Mr 的公式混淆</strong> — 題目給 $F_r = 69$ MPa，意指用<strong>舊版公式</strong> $M_r = (F_y - F_r)S_x = F_L S_x$（$F_L = 281$ MPa），而非新版 $0.7F_y S_x = 245$ MPa。驗證：$\lambda_r = 0.83\sqrt{E/(F_y-F_r)} = 0.83\sqrt{200000/281} = 22.1 \approx 22.3$ ✓</p>
@@ -312,7 +310,7 @@ $$\phi_b M_n = \min(\phi_b M_n^{(FLB)},\; \phi_b M_n^{(LTB)}) \quad \Rightarrow 
 </tr>
 <tr>
 <td>判斷</td>
-<td>$\lambda_p = 9.19 < 10.22 < \lambda_r = 22.3$ → <strong>非結實翼板</strong></td>
+<td>$\lambda_p = 9.19 &lt; 10.22 &lt; \lambda_r = 22.3$ → <strong>非結實翼板</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -445,7 +443,7 @@ $$\phi_b M_n = \min(\phi_b M_n^{(FLB)},\; \phi_b M_n^{(LTB)}) \quad \Rightarrow 
 </tr>
 <tr>
 <td>LTB 三段判斷</td>
-<td>$L_p < L_b < L_r$ 為非彈性 LTB，需套用線性內插公式</td>
+<td>$L_p &lt; L_b &lt; L_r$ 為非彈性 LTB，需套用線性內插公式</td>
 <td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">LATERAL-TORSIONAL-BUCKLING</span></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -472,24 +470,22 @@ $$\phi_b M_n = \min(\phi_b M_n^{(FLB)},\; \phi_b M_n^{(LTB)}) \quad \Rightarrow 
 <hr />
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <h3>Step 1：基準強度計算</h3>
-<p>$$M_p = F_y Z_x = 350 \times 2{,}572{,}769 = 900{,}469{,}150 \text{ N·mm} = \boxed{900.47 \text{ kN·m}}$$</p>
-<p>$$\phi_b M_p = 0.9 \times 900.47 = 810.42 \text{ kN·m}$$</p>
+<p>$$M_p = F_y Z_x = 350 \times 2{,}572{,}769 = 900{,}469{,}150 \text{ N}\cdot\text{mm} = \boxed{900.47 \text{ kN}\cdot\text{m}}$$</p>
+<p>$$\phi_b M_p = 0.9 \times 900.47 = 810.42 \text{ kN}\cdot\text{m}$$</p>
 <p>取 $F_L = F_y - F_r = 350 - 69 = 281$ MPa</p>
-<p>$$M_r = F_L \cdot S_x = 281 \times 2{,}343{,}350 = 658{,}481{,}350 \text{ N·mm} = 658.48 \text{ kN·m}$$</p>
+<p>$$M_r = F_L \cdot S_x = 281 \times 2{,}343{,}350 = 658{,}481{,}350 \text{ N}\cdot\text{mm} = 658.48 \text{ kN}\cdot\text{m}$$</p>
 <h3>Step 2：斷面分類（翼板）</h3>
 <p>實際翼板寬厚比：<br />
 $$\lambda_f = \frac{b_f}{2t_f} = \frac{368}{2 \times 18} = \frac{368}{36} = 10.22$$</p>
-<p>與限值比較：</p>
-<ul>
-<li>$\lambda_p = 9.19$（結實/非結實分界）</li>
-<li>$\lambda_r = 22.3$（非結實/細長分界）</li>
-</ul>
-<p>$$\because \lambda_p = 9.19 < \lambda_f = 10.22 < \lambda_r = 22.3$$</p>
+<p>與限值比較：<br />
+- $\lambda_p = 9.19$（結實/非結實分界）<br />
+- $\lambda_r = 22.3$（非結實/細長分界）</p>
+<p>$$\because \lambda_p = 9.19 &lt; \lambda_f = 10.22 &lt; \lambda_r = 22.3$$</p>
 <p><strong>→ 翼板為非結實（Non-compact Flange）</strong></p>
 <p><em>策略註解：翼板剛超過結實限值，需額外計算 FLB 極限狀態。W14×90 搭配 Gr.50 是典型考題陷阱。</em></p>
 <h3>Step 3：計算 Cb（均佈載重，簡支梁）</h3>
 <p>$$L_b = 10 \text{ m}$$（僅兩端有側向支撐）</p>
-<p>$$\because L_p = 4.5 \text{ m} < L_b = 10 \text{ m} < L_r = 11.7 \text{ m} \quad \rightarrow \text{非彈性 LTB 區間}$$</p>
+<p>$$\because L_p = 4.5 \text{ m} &lt; L_b = 10 \text{ m} &lt; L_r = 11.7 \text{ m} \quad \rightarrow \text{非彈性 LTB 區間}$$</p>
 <p>對均佈載重簡支梁，各特徵截面彎矩：<br />
 $$M_{max} = \frac{wL^2}{8}, \quad M_A = M_C = \frac{3wL^2}{32} = \frac{3}{4}M_{max}, \quad M_B = M_{max}$$</p>
 <p>$$C_b = \frac{12.5 M_{max}}{2.5 M_{max} + 3 \cdot \frac{3}{4}M_{max} + 4M_{max} + 3 \cdot \frac{3}{4}M_{max}}$$</p>
@@ -499,24 +495,24 @@ $$M_{max} = \frac{wL^2}{8}, \quad M_A = M_C = \frac{3wL^2}{32} = \frac{3}{4}M_{m
 <p>$$M_n^{(FLB)} = M_p - (M_p - M_r)\frac{\lambda_f - \lambda_p}{\lambda_r - \lambda_p}$$</p>
 <p>$$= 900.47 - (900.47 - 658.48) \times \frac{10.22 - 9.19}{22.3 - 9.19}$$</p>
 <p>$$= 900.47 - 241.99 \times \frac{1.03}{13.11}$$</p>
-<p>$$= 900.47 - 241.99 \times 0.0786 = 900.47 - 19.02 = 881.45 \text{ kN·m}$$</p>
-<p>$$\phi_b M_n^{(FLB)} = 0.9 \times 881.45 = \boxed{793.3 \text{ kN·m}}$$</p>
+<p>$$= 900.47 - 241.99 \times 0.0786 = 900.47 - 19.02 = 881.45 \text{ kN}\cdot\text{m}$$</p>
+<p>$$\phi_b M_n^{(FLB)} = 0.9 \times 881.45 = \boxed{793.3 \text{ kN}\cdot\text{m}}$$</p>
 <h3>Step 5：LTB 極限狀態（側向扭轉挫屈，含 Cb）</h3>
 <p>$$M_n^{(LTB)} = C_b \left[ M_p - (M_p - M_r)\frac{L_b - L_p}{L_r - L_p} \right] \leq M_p$$</p>
 <p>$$= 1.136 \left[ 900.47 - 241.99 \times \frac{10 - 4.5}{11.7 - 4.5} \right]$$</p>
 <p>$$= 1.136 \left[ 900.47 - 241.99 \times \frac{5.5}{7.2} \right]$$</p>
 <p>$$= 1.136 \left[ 900.47 - 241.99 \times 0.7639 \right]$$</p>
-<p>$$= 1.136 \times [900.47 - 184.84] = 1.136 \times 715.63 = 812.96 \text{ kN·m}$$</p>
-<p>$$\because M_n^{(LTB)} = 812.96 \leq M_p = 900.47 \text{ kN·m} \checkmark$$</p>
-<p>$$\phi_b M_n^{(LTB)} = 0.9 \times 812.96 = \boxed{731.7 \text{ kN·m}}$$</p>
+<p>$$= 1.136 \times [900.47 - 184.84] = 1.136 \times 715.63 = 812.96 \text{ kN}\cdot\text{m}$$</p>
+<p>$$\because M_n^{(LTB)} = 812.96 \leq M_p = 900.47 \text{ kN}\cdot\text{m} \checkmark$$</p>
+<p>$$\phi_b M_n^{(LTB)} = 0.9 \times 812.96 = \boxed{731.7 \text{ kN}\cdot\text{m}}$$</p>
 <h3>Step 6：控制極限狀態</h3>
-<p>$$\phi_b M_n = \min\left(\phi_b M_n^{(LTB)}, \phi_b M_n^{(FLB)}\right) = \min(731.7, 793.3) = \boxed{731.7 \text{ kN·m}}$$</p>
+<p>$$\phi_b M_n = \min\left(\phi_b M_n^{(LTB)}, \phi_b M_n^{(FLB)}\right) = \min(731.7, 793.3) = \boxed{731.7 \text{ kN}\cdot\text{m}}$$</p>
 <p><strong>→ LTB 控制（非彈性側扭挫屈為決定性極限狀態）</strong></p>
 <h3>Step 7：回推最大活載重 WL</h3>
 <p>LRFD 因數化載重：<br />
 $$w_u = 1.2 w_D + 1.6 W_L = 1.2 \times 5.8 + 1.6 W_L = 6.96 + 1.6 W_L \text{ (kN/m)}$$</p>
 <p>需求彎矩：<br />
-$$M_u = \frac{w_u L^2}{8} = \frac{(6.96 + 1.6 W_L) \times 10^2}{8} = 12.5(6.96 + 1.6 W_L) \text{ kN·m}$$</p>
+$$M_u = \frac{w_u L^2}{8} = \frac{(6.96 + 1.6 W_L) \times 10^2}{8} = 12.5(6.96 + 1.6 W_L) \text{ kN}\cdot\text{m}$$</p>
 <p>設定 $M_u = \phi_b M_n$：<br />
 $$12.5(6.96 + 1.6 W_L) = 731.7$$</p>
 <p>$$6.96 + 1.6 W_L = \frac{731.7}{12.5} = 58.54$$</p>
@@ -525,21 +521,19 @@ $$12.5(6.96 + 1.6 W_L) = 731.7$$</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>5.1 使用 FL = Fy-Fr vs. 0.7Fy 的版本差異</h3>
-<p>本題給定 $F_r = 69$ MPa，對應的是舊版 AISC LRFD（台灣舊版規範）的公式體系：</p>
-<ul>
-<li>$F_L = F_y - F_r = 281$ MPa → $M_r = 658.5$ kN·m</li>
-<li>驗證：$\lambda_r = 0.83\sqrt{E/F_L} = 0.83\sqrt{200000/281} = 22.1 \approx 22.3$ ✓</li>
-</ul>
+<p>本題給定 $F_r = 69$ MPa，對應的是舊版 AISC LRFD（台灣舊版規範）的公式體系：<br />
+- $F_L = F_y - F_r = 281$ MPa → $M_r = 658.5$ kN·m<br />
+- 驗證：$\lambda_r = 0.83\sqrt{E/F_L} = 0.83\sqrt{200000/281} = 22.1 \approx 22.3$ ✓</p>
 <p>若誤用新版（AISC 360-05 / 台灣 2011 LRFD）：$0.7F_y = 245$ MPa，計算結果偏差約 10%。<strong>考場上依題目給定的 $F_r$ 判斷版本。</strong></p>
 <h3>5.2 LTB vs FLB 的控制結果意義</h3>
 <p>$\phi_b M_n^{(LTB)} = 731.7$ kN·m &lt; $\phi_b M_n^{(FLB)} = 793.3$ kN·m</p>
 <p>→ LTB 先發生，FLB 雖存在但不控制。這表示 10m 的無側支撐跨度對此斷面影響更顯著。如果加中間側向支撐縮短 $L_b$，可顯著提升容許彎矩。</p>
 <h3>5.3 Cb 的物理意義</h3>
-<p>$C_b = 1.136 > 1.0$：均佈載重形成的彎矩梯度（兩端為零、中間最大）比最不利的均勻彎矩情況有利，因此 LTB 強度有 13.6% 的提升。若改為均勻彎矩（如純彎矩），$C_b = 1.0$，強度更低。</p>
+<p>$C_b = 1.136 &gt; 1.0$：均佈載重形成的彎矩梯度（兩端為零、中間最大）比最不利的均勻彎矩情況有利，因此 LTB 強度有 13.6% 的提升。若改為均勻彎矩（如純彎矩），$C_b = 1.0$，強度更低。</p>
 <h3>5.4 快速驗算</h3>
 <p>$$W_{L,max} \approx 32.2 \text{ kN/m}$$<br />
 $$w_u = 1.2(5.8) + 1.6(32.2) = 6.96 + 51.52 = 58.48 \text{ kN/m}$$<br />
-$$M_u = 58.48 \times 100/8 = 730.9 \approx 731.7 \text{ kN·m} \checkmark$$</p>
+$$M_u = 58.48 \times 100/8 = 730.9 \approx 731.7 \text{ kN}\cdot\text{m} \checkmark$$</p>
 </main>
 <footer>來源：raw/solutions/SS-2012-1/SS-2012-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

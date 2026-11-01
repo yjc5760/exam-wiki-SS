@@ -276,8 +276,8 @@ $$\boxed{R_n} = \mu \cdot D_u \cdot h_f \cdot T_b \cdot n_s \quad \text{（每�
 <ol>
 <li><strong>螺栓預緊</strong>：安裝後，以扭力扳手、轉角法或直接張力指示器（DTI）等方式，將螺栓預緊至設計拉力 $T_o$。</li>
 <li><strong>夾緊力形成</strong>：螺桿拉伸 → 頭部和螺帽對鋼板形成夾緊壓力 $T_o$（正向力）。</li>
-<li><strong>摩擦力抵抗剪力</strong>：在接觸面（faying surface）上，摩擦力 $f = \mu \times T_o$ 抵抗外部剪力。<br />
-   - $\mu$（或 $k_s$）= 滑動係數，取決於接觸面處理方式（未塗裝 / 噴砂 / 熱浸鍍鋅等）</li>
+<li><strong>摩擦力抵抗剪力</strong>：在接觸面（faying surface）上，摩擦力 $f = \mu \times T_o$ 抵抗外部剪力。</li>
+<li>$\mu$（或 $k_s$）= 滑動係數，取決於接觸面處理方式（未塗裝 / 噴砂 / 熱浸鍍鋅等）</li>
 <li><strong>不滑動狀態</strong>：在外力未超過摩擦力總量之前，接合板不產生相對滑動，<strong>螺栓桿本身幾乎不承受剪力或承壓力</strong>。</li>
 </ol>
 <p><img alt="SS-2017-2 雙剪摩阻型接合剖面：螺栓預拉力使兩片外板與中板壓合，兩個接觸面上各有摩擦力 f = μ·Tb 抵抗外力 V，滑動前螺栓桿不受剪、孔壁不承壓" src="../../raw/solutions/SS-2017-2/figs/SS-2017-2-fig-1-mechanism.svg" /></p>
@@ -310,7 +310,7 @@ $$\boxed{R_n} = \mu \cdot D_u \cdot h_f \cdot T_b \cdot n_s \quad \text{（每�
 </tbody>
 </table>
 <p>並於 §10.3.7 規定接觸面處理：「潔淨銹皮與噴氣清除及表面塗以護膜者，其<strong>滑動係數應在 0.33 以上</strong>」。</p>
-<p><em>（對照：同表之</em><em>承壓型</em><em> A490 螺紋不在剪力面者為 40 ksi = 2.81 tf/cm²——摩阻型僅為承壓型的 </em><em>52%</em><em>，這是摩阻型設計「較保守」的量化證據。）</em></p>
+<p><em>（對照：同表之<strong>承壓型</strong> A490 螺紋不在剪力面者為 40 ksi = 2.81 tf/cm²——摩阻型僅為承壓型的 <strong>52%</strong>，這是摩阻型設計「較保守」的量化證據。）</em></p>
 <p><strong>(b) AISC 360 系列：乘積公式</strong></p>
 <p>$$R_n = \mu \cdot D_u \cdot h_f \cdot T_b \cdot n_s$$</p>
 <p>其中：<br />
@@ -319,7 +319,12 @@ $$\boxed{R_n} = \mu \cdot D_u \cdot h_f \cdot T_b \cdot n_s \quad \text{（每�
 - $h_f$ = 填隙板（filler）係數（<strong>360-10 起</strong>取代 360-05 之孔型係數 $h_{sc}$）<br />
 - $T_b = 0.70F_u^bA_t$ = 規定最小預拉力<br />
 - $n_s$ = 接觸面（faying surface）數：單剪 = 1，雙剪 = 2</p>
-<p>$$\phi R_n:\quad \begin{cases} \text{AISC 360-05：} &amp; \phi = 1.00\ (\text{使用性極限}),\quad \phi = 0.85\ (\text{強度極限}) \[2pt] \text{AISC 360-10／-16／-22：} &amp; \phi = 1.00\ (\text{標準孔、短槽孔垂直力向}) \ &amp; \phi = 0.85\ (\text{超大孔、短槽孔平行力向}) \ &amp; \phi = 0.70\ (\text{長槽孔}) \end{cases}$$</p>
+<p>$$\phi R_n:\quad \begin{cases}
+\text{AISC 360-05：} &amp; \phi = 1.00\ (\text{使用性極限}),\quad \phi = 0.85\ (\text{強度極限}) \\[2pt]
+\text{AISC 360-10／-16／-22：} &amp; \phi = 1.00\ (\text{標準孔、短槽孔垂直力向}) \\
+&amp; \phi = 0.85\ (\text{超大孔、短槽孔平行力向}) \\
+&amp; \phi = 0.70\ (\text{長槽孔})
+\end{cases}$$</p>
 <blockquote>
 <p>⚠️ <strong>這是本題最容易答錯的細節</strong>：「$\phi = 1.0$ 用於使用性、$\phi = 0.85$ 用於強度」是 <strong>AISC 360-05（及台灣規範所本之 LRFD 1999 附錄）</strong>的規定；<strong>AISC 360-10 起 $\phi$ 改依孔型取值</strong>，孔型效應由 $h_{sc}$ 移入 $\phi$，而「使用性／強度」之區分則純粹決定<strong>檢核時所用的載重組合</strong>（使用載重 vs 因數化載重），不再影響 $\phi$。</p>
 </blockquote>
@@ -751,7 +756,8 @@ $$\boxed{R_n} = \mu \cdot D_u \cdot h_f \cdot T_b \cdot n_s \quad \text{（每�
 </table>
 <hr />
 <p><em>修正日期：2026-08-22</em><br />
-<em>本次修正內容：①</em><em>釐清 $\phi$ 值之規範版本歸屬</em><em>——舊版逕稱「$\phi = 1.0$ 使用性、$\phi = 0.85$ 強度」，此為 </em><em>AISC 360-05</em><em> 之規定；</em><em>AISC 360-10 起 $\phi$ 改依孔型取值</em><em>（標準孔／短槽孔垂直力向 1.00、超大孔／短槽孔平行力向 0.85、長槽孔 0.70），且孔型係數 $h_{sc}$ 已改為填隙板係數 $h_f$；②補入</em><em>台灣 2010 規範之實際做法</em><em>（容許應力設計法以表列容許剪應力處理，不用乘積公式）並列出規範表值 A325 標準孔 1.19 tf/cm²、A490 標準孔 1.47 tf/cm²，及 §10.3.7(g)「滑動係數應在 0.33 以上」之原文；③更正滑動係數表：台灣 0.33、AISC 360-05 為 0.35、</em><em>AISC 360-10 起 A 類為 0.30</em><em>（舊版誤將 0.33 標為 AISC 值）；④</em><em>移除來源不明之 F10T 預拉力表</em><em>，改以規範原文「等於最小抗拉強度之 0.7 倍」＝ $0.70F_u^bA_t$（$A_t$ 為螺紋處有效抗拉面積）表述，並以 3/4 in A325 之 28 kips 表值作數值驗核；⑤補入「摩阻型僅為承壓型 X 之 52%」之量化比較、規範強制採用摩阻型之情形、承壓／撕出之 360-16 → -22 拆分；⑥新增 §6 依最新規範對照。</em><br />
+<em>本次修正內容：①<strong>釐清 $\phi$ 值之規範版本歸屬</strong>——舊版逕稱「$\phi = 1.0$ 使用性、$\phi = 0.85$ 強度」，此為 <strong>AISC 360-05</strong> 之規定；<strong>AISC 360-10 起 $\phi$ 改依孔型取值</strong>（標準孔／短槽孔垂直力向 1.00、超大孔／短槽孔平行力向 0.85、長槽孔 0.70），且孔型係數 $h_{sc}$ 已改為填隙板係數 $h_f$；②補入<strong>台灣 2010 規範之實際做法</strong>（容許應力設計法以表列容許剪應力處理，不用乘積公式）並列出規範表值 A325 標準孔 1.19 tf/cm²、A490 標準孔 1.47 tf/cm²，及 §10.3.7(g)「滑動係數應在 0.33 以上」之原文；③更正滑動係數表：台灣 0.33、AISC 360-05 為 0.35、<strong>AISC 360-10 起 A 類為 0.30</strong>（舊版誤將 0.33 標為 AISC 值）；④<strong>移除來源不明之 F10T 預拉力表</strong>，改以規範原文「等於最小抗拉強度之 0.7 倍」＝ $0.70F_u^bA_t$（$A_t$ 為螺紋處有效抗拉面積）表述，並以 3/4 in A325 之 28 kips 表值作數值驗核；⑤補入「摩阻型僅為承壓型 X 之 52%」之量化比較、規範強制採用摩阻型之情形、承壓／撕出之 360-16 → -22 拆分；⑥新增 §6 依最新規範對照。</em><br />
+<em>圖解補繪：2026-08-29（向量圖 3 張，腳本 <code>gen_SS-2017-2.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em><br />
 <em>驗證狀態：unverified</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2017-2/SS-2017-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>

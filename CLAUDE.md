@@ -27,7 +27,7 @@ Cowork 讀取 CLAUDE.md + 考卷 PDF + question_index.json
 你加入補充截圖（chart/eqn/hand）
 請 Cowork 更新 question_index.json（tags、verified）
     ↓
-說：「ingest SS-XXXX-N」→ Cowork 直接執行，wiki 自動更新
+（ingest 已停用：2026-11-01 wiki 封存；驗算後只需更新 question_index.json 的 verificationStatus）
 ```
 
 ---
@@ -37,28 +37,23 @@ Cowork 讀取 CLAUDE.md + 考卷 PDF + question_index.json
 | 環境 | 負責什麼 |
 |------|---------|
 | **你（使用者）** | PDF 題目附圖截圖（fig-N.png）、chart/eqn/hand 補充截圖、人工驗算後通知 Cowork 更新 verificationStatus |
-| **Cowork** | 解題（SOLVE，**一次一題**）、存檔（.md + viz.html）、更新 question_index.json、**所有 wiki 操作指令**（ingest / compile-all / lint / status / reindex / add-concept / add-method / refresh-dashboard / frequency / analyze / predict / study / find / related / unverified / query，共 16 個，詳見 CLAUDE-CODE.md）、直接維護 wiki/diagnosis/ · wiki/failure-modes/ · wiki/materials/ · wiki/code-ref/ · wiki/queries/ · study/（study 指令輸出）、**修正 raw/solutions/methods/ 的公式錯誤**（須驗算＋同步 wiki＋記 log） |
+| **Cowork** | 解題（SOLVE，**一次一題**）、存檔（.md）、更新 question_index.json、操作指令（詳見 CLAUDE-CODE.md；ingest / compile-all / add-concept 等會寫 wiki 的指令已於 2026-11-01 停用）、直接維護 wiki/queries/ · study/、**修正 raw/solutions/methods/ 的公式錯誤**（須驗算＋記 log） |
 
 ---
 
 ## 單向資料流
 
 ```
-raw/solutions/SS-XXXX-N/SS-XXXX-N.md  ──→  wiki/problems/      （Cowork: ingest）
-raw/json/concepts.json                 ──→  wiki/concepts/      （Cowork: compile-all）
-raw/solutions/methods/                 ──→  wiki/methods/       （Cowork: compile-all）
-   ↑ 修正公式錯誤時改「這一端」，不要只改 wiki 副本（否則下次 compile 會被蓋回）
-Cowork 查詢結果                        ──→  wiki/queries/       （Cowork 直接存入）
-Cowork study 指令輸出                  ──→  study/              （Cowork 直接存入）
-Cowork 跨層知識工具                    ──→  wiki/diagnosis/     （Cowork 直接存入）
-                                       ──→  wiki/failure-modes/ （Cowork 直接存入）
-                                       ──→  wiki/materials/     （Cowork 直接存入）
-                                       ──→  wiki/code-ref/      （Cowork 直接存入）
+raw/solutions/SS-XXXX-N/SS-XXXX-N.md  ──→  study/problems-view/ （scripts/render_problem_view.py）
+raw/json/question_index.json          ──→  dashboard-data.js、study/unit-*、study/frequency-*（腳本重建）
+raw/solutions/ ＋ question_index      ──→  study/lecture-*、textbook-*（講義，Cowork 維護）
+Cowork 查詢、稽核、盲解報告            ──→  wiki/queries/        （Cowork 直接存入）
+變更紀錄                               ──→  wiki/queries/log.md  （append only）
 
 解題內容唯一來源：raw/solutions/ 下的 .md 檔案
 索引資訊唯一來源：raw/json/question_index.json
-方法論唯一來源：raw/solutions/methods/（可修正，須驗算＋同步 wiki＋記 log，見規則 1）
-wiki/queries/、study/（study 輸出）及四個跨層知識目錄：由 Cowork 直接寫入，不走 ingest 流程
+方法論唯一來源：raw/solutions/methods/（可修正，須驗算＋記 log，見規則 1）
+封存：archive/wiki/（2026-11-01 前的 wiki 各層，唯讀參考、不再維護，ingest／compile-all 已停用）
 ```
 
 ---
@@ -80,17 +75,18 @@ exam-wiki-SS/
 ├── raw/                             ← 所有原始資料（預設唯讀，僅 ✏️ 兩處可改）
 │   ├── exams/                       ← 原始考卷 PDF（命名：SS-YYYY_鋼結構設計.pdf）
 │   ├── json/
-│   │   ├── concepts.json            ← 概念定義（供 compile-all）
+│   │   ├── concepts.json            ← 概念定義（compile-all 已停用，保留備查）
 │   │   └── question_index.json      ← ⭐✏️ 題目總索引（唯一需要人工維護的 JSON）
 │   └── solutions/                   ← AI 解析 + 補充截圖（每題一個資料夾）
 │       ├── SS-YYYY-N/               ← 🔒 證據，不可修改（規則 1、2）
 │       │   ├── SS-YYYY-N.md
 │       │   ├── SS-YYYY-N-fig-1.png
-│       │   ├── SS-YYYY-N-[內容碼]-viz.html
-│       │   └── *.pdf                ← 補充筆記（選用，命名無限制）
 │       └── methods/                 ← ✏️ 解題方法論（可修正公式／單位，見規則 1）
 │
-└── wiki/                            ← 知識庫輸出
+├── wiki/
+│   └── queries/                     ← 稽核／盲解／查詢報告、audit-ledger、log.md（變更紀錄，append only）
+│
+└── archive/wiki/                    ← 🗄️ 2026-11-01 封存的舊 wiki 各層（唯讀參考，不再維護）
     ├── index.md                     ← 主導航（七層架構）
     ├── by-year.md                   ← 依考年分類
     ├── log.md                       ← 操作紀錄（append only）
@@ -108,19 +104,10 @@ exam-wiki-SS/
 
 ---
 
-## 知識分類骨架（七層）
+## 知識分類骨架（已封存）
 
-Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/ingest 生成，後四層由 Cowork 直接維護）：
-
-| 層 | 目錄 | 維護者 | 內容 |
-|----|------|:------:|------|
-| Layer 1 | `concepts/` + `problems/` | Cowork (ingest/compile) | 核心構件設計（拉壓/梁/梁柱/接合） |
-| Layer 2 | `philosophy/` | Cowork (compile-all) | 設計哲學與實務（耐震/材料/施工） |
-| Layer 3 | `methods/` | Cowork (compile-all) | 解題方法論（共軛梁/虛功/P-M圖） |
-| Layer 4 | `diagnosis/` | Cowork (直接存入) | 題型診斷決策樹 |
-| Layer 5 | `failure-modes/` | Cowork (直接存入) | 失敗模式（強度/穩定/使用性/接合） |
-| Layer 6 | `materials/` | Cowork (直接存入) | 材料行為（應力應變/殘留應力/斷裂韌性/銲接性） |
-| Layer 7 | `code-ref/` | Cowork (直接存入) | 規範條文對應（AISC 360/341/AWS D1.1） |
+> **2026-11-01 起 wiki/ 只保留 `wiki/queries/`**。原七層 wiki（concepts／problems／philosophy／methods／diagnosis／failure-modes／materials／code-ref、traps、topics、index.md、by-year.md）已搬到 `archive/wiki/` 封存，不再維護、內容未經全面核對（2026-11-01 掃描發現 45 項錯誤，見 `wiki/queries/觀念方法頁掃描-SS-2026-11-01.md`）。
+> 讀書請以 `study/`（題目瀏覽頁、觀念講義、單元總覽、教科書）為準；題解正本為 `raw/solutions/`；方法論正本為 `raw/solutions/methods/`。
 
 ---
 
@@ -156,18 +143,18 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 
    > **為什麼 methods/ 是例外**：本規則要保護的是**證據**（考卷、AI 解析、驗證過的答案），
    > 這些一旦被改就失去可追溯性。但 `raw/solutions/methods/` 存的是**可維護的知識整理**，
-   > 且它是 `wiki/methods/` 的 compile 來源 —— 只改 wiki 副本的話，下次 `compile-all` 會被蓋回舊版。
+   > （原本也是 `wiki/methods/` 的 compile 來源；wiki/methods 已於 2026-11-01 封存，改 raw 即可。）
    > 發現公式或係數錯誤時，必須改 raw 來源才算根治。
    >
    > **修改 methods/ 的三個條件（缺一不可）**：
    > ① 修正前先做**數值驗算**（邊界代入、量綱檢查、與驗證解答交叉比對），不可憑印象改；
-   > ② 改完**同步覆蓋** `wiki/methods/` 對應檔；
-   > ③ 在 `wiki/log.md` 記錄**改了什麼、為什麼、怎麼驗證的**。
+   > ② 若 `study/` 講義或單元資料引用同一公式，一併更正（`wiki/methods/` 已封存，不必同步）；
+   > ③ 在 `wiki/queries/log.md` 記錄**改了什麼、為什麼、怎麼驗證的**。
    >
    > **為什麼「解析勘誤」是例外**：本規則要保護的是**可追溯性**，不是保護錯誤。
    > `raw/solutions/SS-YYYY-N/SS-YYYY-N.md` 是解題內容的**唯一正本**，
-   > `wiki/problems/` 與 `study/problems-view/` 都由它生成 —— 只改下游副本，
-   > 下次 `ingest` 會被蓋回錯誤版本，等於錯誤永久留存。
+   > `study/problems-view/` 由它生成 —— 只改下游副本，
+   > 下次重新渲染會被蓋回錯誤版本，等於錯誤永久留存。
    >
    > ⚠️ **教訓（2026-07-30）**：該次 VERIFY 已查出 `SS-2013-2.md` 的 π²EIc 量級筆誤，
    > 卻因本規則舊條文「不在例外內」而**不敢修，只在 log 記一筆**。
@@ -179,13 +166,12 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
    >    ⚠️ 本科考卷為 Adobe-CNS1 CID 字型，`pdftotext` **抽不到中文**，且支承符號、鉸接圓圈、
    >    尺寸線只能目視 —— 必須轉圖（300–450 dpi）**逐頁目視判讀**，不可只靠文字抽取；
    > ② **數值獨立重算**：每個數字以程式重算，並做量綱檢查與雙路徑交叉驗算，不可憑印象改；
-   > ③ **同步全部下游**：`wiki/problems/`、`study/problems-view/`、該題 `*-viz.html`、
-   >    `raw/json/question_index.json`（tags）、必要時 `dashboard-data.js` 與 `study/study-*.html`；
-   > ④ 在 `wiki/log.md` 記錄**改了什麼、為什麼錯、怎麼驗證的**，並在 .md 頁尾加「修正日期」。
+   > ③ **同步全部下游**：`study/problems-view/`（`scripts/render_problem_view.py`）、該題 viz／figs、
+   >    `raw/json/question_index.json`（tags）、`dashboard-data.js`、`study/` 講義與 `study/data/unit-*.json`（重跑 `build_unit_page.py`），必要時重出 PDF；
+   > ④ 在 `wiki/queries/log.md` 記錄**改了什麼、為什麼錯、怎麼驗證的**，並在 .md 頁尾加「修正日期」。
    >
    > **不在例外內（仍完整受保護）**：`raw/exams/`（考卷原件）、同資料夾的
-   > `-fig-*.png`／`-chart-*.png`／`-eqn-*.png`／`-hand-*.png`（使用者截圖證據）、
-   > 使用者放入的補充筆記 `*.pdf`。勘誤只准動 `.md` 正本與 Cowork 自己生成的 `*-viz.html`。
+   > `-fig-*.png`／`-chart-*.png`／`-eqn-*.png`／`-hand-*.png`（使用者截圖證據）。勘誤只准動 `.md` 正本。
    >
    > **驗證狀態連動**：解析一經勘誤，該題 `verificationStatus` 必須退回 `unverified`，
    > 由使用者人工複核後才可改回 `verified`（規則 5）。
@@ -193,12 +179,12 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 2. **`verifiedSolution` 是最終答案，不可質疑或重新計算**
    > 界線：本條保護的是**已人工驗算確認**（`verificationStatus = "verified"`）的答案。
    > 當使用者明示要求勘誤、或該題已退回 `unverified` 時，本條不阻止重新計算。
-3. **`wiki/log.md` 只可 append，不可刪除已有紀錄**
-4. **wiki/ 大多數目錄是 compile 輸出，不可手動修改**；例外：diagnosis/ · failure-modes/ · materials/ · code-ref/ · queries/ 由 Cowork 直接維護
-5. **ingest 前必須確認 verificationStatus = "verified"**
-6. 概念連結使用 `[[concept_id]]`（Obsidian 相容）
-7. 每次 ingest 同時更新 index.md 和 by-year.md
-8. **格式與命名規範見 CLAUDE-SPEC.md；操作指令（ingest/compile/lint/status 等 16 項）見 CLAUDE-CODE.md，全部由 Cowork 執行**
+3. **`wiki/queries/log.md`（原 `wiki/log.md`）只可 append，不可刪除已有紀錄**
+4. **wiki/ 只保留 `queries/`，由 Cowork 直接維護**；其餘舊 wiki 已封存於 `archive/wiki/`（唯讀參考，不再修改、不再 compile）
+5. ~~ingest 前必須確認 verificationStatus = "verified"~~（ingest 已停用，2026-11-01 wiki 封存；verificationStatus 仍須人工複核後才改 verified）
+6. 題號連結使用 `[[SS-YYYY-N]]`（Obsidian 相容；儀表板閱讀器會導向 study/problems-view）
+7. ~~每次 ingest 同時更新 index.md 和 by-year.md~~（已停用：index.md、by-year.md 已封存）
+8. **格式與命名規範見 CLAUDE-SPEC.md；操作指令見 CLAUDE-CODE.md（會寫 wiki 的指令已停用），全部由 Cowork 執行**
 
 ---
 
@@ -217,7 +203,7 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-07-25 | 新增 `study/lecture-SS-U1-3.html` / `.pdf`（梁柱桿件，30 頁）；`study/problems-view/` 補齊 SS-U1-3 全 12 題渲染頁；`study-SS-U1-3.html` 加入三顆教材互連按鈕 | 六子項中最後一個缺講義、且與 U1-1／U1-2 相依最深的單元 |
 | 2026-07-25 | 新增 `study/lecture-SS-U1-4.html` / `.pdf`（接合之分析與設計，33 頁）；`study/problems-view/` 補齊 SS-U1-4 全 26 題渲染頁；`study-SS-U1-4.html` 加入三顆教材互連按鈕 | SS 最大單元（26 題）補上「練題前建立物理直覺」的教材 |
 | 2026-07-26 | 新增 `study/lecture-SS-U2-3.html` / `.pdf`（設計規範對施工之要求，26 頁）；`study/problems-view/` 補齊該單元全 13 題（主 7 + 副 6）渲染頁；`study-SS-U2-3.html` 加入三顆教材互連按鈕 | 第二單元首份講義；本單元全為說明題，需要「三道防線（事前／事中／事後）」的答題骨架與機制解釋，而非條文背誦 |
-| 2026-07-30 | 新增 `study/lecture-VHA-7題觀念講義.html` / `.pdf`（51 頁，7 章）：由 7 題的 §3.5 VHA（主要公式／L2／L3）重組為理解導向觀念講義，含 7 則完整手算範例與七章 L3 卡關清單 | VHA 原本是「解題後定位卡關點」的診斷工具，缺少「把卡關點一次補起來」的教材；本檔把跨題的 L3 深層知識串成一條可理解的觀念鏈 |
+| 2026-07-30 | 新增 `study/lecture-VHA-7題觀念講義.html` / `.pdf`（51 頁，7 章；2026-11-01 使用者刪除 HTML 版，PDF 仍在）：由 7 題的 §3.5 VHA（主要公式／L2／L3）重組為理解導向觀念講義，含 7 則完整手算範例與七章 L3 卡關清單 | VHA 原本是「解題後定位卡關點」的診斷工具，缺少「把卡關點一次補起來」的教材；本檔把跨題的 L3 深層知識串成一條可理解的觀念鏈 |
 | 2026-08-07 | 新增 `study/formula-given-SS-U1-1.html` / `.pdf`（U1-1 主要公式「考卷會給 vs. 必須自己背」逐條分界，30 條公式 × 24 年考卷證據）；新增 `skills/unit-formula-map/`（六科通用）與 `skills/unit-formula-map.skill`，附 `scripts/` 四支 PDF 產線腳本 | `study-*`（速查）與 `lecture-*`（觀念）都沒回答「這條公式要不要花時間背」；此判斷需以考卷原文為證據，且掃描影像頁必須目視判讀（SS 有 102、105、112、113 四年公式全為影像），不宜每次重推流程 |
 | 2026-08-07 | 新增 `study/formula-given-SS-U1-2.html` / `.pdf`（U1-2 梁桿件，33 條公式 × 25 題 × 24 年考卷證據，12 頁）；`study-SS-U1-2.html`、`lecture-SS-U1-2.html` 加入互連按鈕，`formula-given-SS-U1-1/-4.html` 補上互連 | U1-2 是題數最多（25 題）的單元，判定結論與 U1-1／U1-4 相反：LTB 的長式子幾乎必給（`Lp`/`Lr` 十一年、`Cb` 十年、`Mn`/`Mcr` 七年），但 `Mp = FyZx`／`My = FySx` 24 年一次都沒印過、`φb = 0.9` 只印過兩次。另發現 113 年第三題的整組 LTB 公式（`Lp`、`Lr`、`X1`、`X2`、`J`、`FL`、`Mr`、`Mn`、`Mcr`）以圖片嵌入，`pdftotext` 只抽到「參考公式：」四字，不目視會把該年誤判成零公式年 |
 | 2026-08-07 | 新增 `study/formula-given-SS-U1-4.html` / `.pdf`（U1-4 接合之分析與設計，37 條公式 × 26 題 × 24 年考卷證據，12 頁）；`study-SS-U1-4.html`、`lecture-SS-U1-4.html`、`formula-given-SS-U1-1.html` 三處加入互連按鈕 | U1-4 是 26 題的最大單元，且是六個子項裡「公式最不給」的一個：偏心接合考過 4 次（91/93/94/106）四次全零公式、95 與 98 年整張零公式而兩年都有 U1-4 題。判定過程中另發現 113 年的「最小銲腳尺寸表」以圖片嵌入，`pdftotext` 完全抽不到，必須轉圖目視 |
@@ -248,6 +234,8 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-08-29 | 第五批五題向量圖解補繪（`SS-U2-3` 設計規範對施工之要求：SS-2021-1／2004-1／2019-1／2022-3／2016-2，共 15 張 SVG ＋ 2× PNG）；下游同步 `wiki/problems/` ×5（內文 15 張＋圖形表 15 列，**SS-2004-1／2019-1／2022-3／2016-2 原無圖故新建「圖形」節**）、`study/problems-view/` ×5（15 張） | 本組五題全為概念說明題，沒有算式可畫，圖的任務改成把**規範數字的方向與範圍**以及**幾何為何逼出某個工法**畫清楚：SS-2016-2 三處 $4w$ 的下限／上限之別（並算出 $w < 10$ mm 時真正控制的是 $40$ mm）、SS-2019-1 以 Magnus 式現算的露點界線（低溫時比 $85\%$ 更早咬住，證明 §7.4.4 第 ③ 項不是第 ② 項的重述）、SS-2022-3 箱型柱內橫隔板為何只能 ESW 又只能 UT。同輪與 .md 對帳後改掉一張錯圖：SS-2004-1 之 $0.7F_u^b = 700$ MPa **仍在彈性段**（為 $F_y$ 的 $78\%$），越過降伏的是轉角法而非預拉力本身。新增排版教訓：勾叉符號 `✔`／`✘`／`✗` 缺字、`text_px` 會把 `t_min` 誤讀為下標、以及靠左對齊的長標籤會超出畫布左緣而 `render.py` 不會報錯（只量座標不量文字寬） |
 | 2026-10-09 | 以 `subject-frequency-map` v1.1 重跑 `study/frequency-SS.html`；新增 `scripts/build_frequency.py`（v1.1） | v1.1 加入前／後半期比較、後半期排名、可點熱圖與影片偵測；本輪揭出 U2-2 鋼材特性前半 0 → 後半 5 題（新出現）、U2-3 2 → 5（升溫）、U1-3 7 → 4（退燒）。8 題他科 `primaryTopicId` 仍未修 |
 | 2026-10-23 | 重繪 `study/lecture-SS-U2-3.html` 12 張圖解（程式產生 SVG，原始碼 `study/figs-src/lecture-SS-U2-3/`），並重新產生 `.pdf`（36 頁）| 原圖有 6 處內容錯誤：HAZ 正火區溫度錯置、層狀撕裂箭頭畫成壓力、銲道／螺栓荷重–變形曲線不符文獻、梁柱接頭 ESW 引線指到剪力板、「0.7Fu 已超過降伏」（實為轉角法推過降伏）；同輪更正 §2.2 最小有效長度 38 mm → 國內 §4.1.5(6)(7) 之 4w／斷續每段 ≥ 40 mm |
+| 2026-11-01 | **廢止題解互動圖**：刪除 `raw/solutions/` 下 19 份 `*-viz.html`，清除 .md／`wiki/problems/`／`study/problems-view/` 引用，`question_index.json` 移除 `hasViz`，`dashboard-data.js` 移除 viz 欄；`index.html` 移除互動圖按鈕／篩選／統計並優化 | 圖解改以 `figs/*.svg` 向量圖為準（可重跑、可審核），互動圖維護成本高且易與 .md 不同步 |
+| 2026-11-01 | **移除補充筆記 PDF**：刪除 `raw/solutions/` 下 8 份題目補充 PDF；`index.html` 移除「📎 補充筆記 PDF」按鈕與篩選；`dashboard-data.js` 改為 5 欄（去 pdf）；同步 CLAUDE-SPEC／CLAUDE-CODE／README／檔案架構索引表／知識庫使用說明書 | 依使用者指示；PDF 多為舊互動圖列印稿或外部筆記，與正本易不同步 |
 | 2026-10-23 | `study/lecture-SS-U1-1.html`／`.pdf` v3：12 張 SVG 依數值重繪＋新增 5 張（圖 1-2、2-2、5-3、6-2、7-3），原始碼存 `study/figs-src/lecture-SS-U1-1/`；內文同步 2026-08-22 勘誤（§2.3 SS-2025-2、陷阱 C-01、§7.7 比值、§10／§11／§13） | 原圖有物理錯誤（4-1 球懸空、5-1 反曲點位置錯、3-1 剪力面未穿孔）；講義仍沿用已勘誤的 SS-2025-2 錯解與 C-01 錯誤 K 值；LRFD/ASD 比值實為 1.39–1.47 而非 1.4–1.6 |
 | 2026-10-23 | `study/lecture-SS-U1-2.html`／`.pdf` 圖解重繪（7 張依數值產生，新增圖 1-2），原始碼 `study/figs-src/gen_lecture-SS-U1-2_figs.py` | 修正舊圖 3-2 理論彈性曲線畫在直線下方、圖 3-1 翹曲項反比次數誤寫、§3.4 重複乘 Cb、圖 10-1 決策樹死路等問題；更新 PDF（40 頁） |
 | 2026-10-23 | `study/lecture-SS-U1-3.html`／`.pdf` 圖解重繪＋內文同步 08-22 勘誤（10 張重繪＋新增圖 3-2、8-1），原始碼 `study/figs-src/lecture-SS-U1-3/` | 修正 Dm 貝茲線失真、H1-1a/b 兩段斜率顛倒、範例 C 算術錯誤（B₂ 1.799→1.420、Mu 54.49→48.82 tf·m）、刪除不存在的 B₂≤2.5 規定，更新 PDF（35 頁） |
@@ -258,6 +246,8 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-11-01 | 勘誤第三批 SS-2002-3／SS-2010-3／SS-2007-4／SS-2023-1 | SS-2002-3 側撐位置看錯（距底 6 m 非中點，φcPn 125.8 → **131.2 t**）；SS-2010-3 平行軸距離配錯軸（φcPn 79.0 → **83.8 t**）；SS-2007-4、SS-2023-1 對位圖讀值偏差（K_AD 2.5 → **1.97**、K_CF 2.50 → **2.17**），改以對位圖方程式精確解核對。另更正單元總覽「91 年未給 K 值表」之證據錯誤。詳見 wiki/log.md FIX-SS-U1-1-B3 |
 | 2026-11-01 | 勘誤第四批 SS-2021-2／SS-2016-3（觀念作圖題）；U1-1 盲解 12 題分歧全數勘誤完畢 | SS-2021-2 圖二寬度 100 與銲長 150 對調、塊狀剪力應在節點板；SS-2016-3 塊狀殘留應力應得**強度平台** $F_{cr} = 1.875$（$19.9 \le L/r \le 103.6$），原解用平滑式並虛構腹板平衡，另指出題目殘留應力不自相平衡（與 08-22 SS-2024-1 同型）。詳見 wiki/log.md FIX-SS-U1-1-B4 |
 | 2026-11-01 | 盲解比對 SS-U1-2 未查 15 題（一致 11、分歧 4），勘誤 SS-2008-3／SS-2005-2／SS-2024-3／SS-2021-3 | 仍以讀圖錯為主：SS-2008-3 載重只在兩側卻當全跨、均勻彎矩 Cb 正負號代反（w 2.50 → **3.73 t/m**）；SS-2024-3 外伸梁看成簡支梁（Mu 21 → **42 t·m**）；SS-2005-2 0.85f'c 單位錯 10 倍（Mn 170.3 → **135.5 tf·m**）；SS-2021-3 選斷面理由「最輕」不實、Lr 代錯迴轉半徑（改選 BH700×300×12×25）。全部維持 unverified。詳見 wiki/log.md AUDIT-BLIND-U1-2、FIX-SS-U1-2-B1 |
+| 2026-11-01 | **wiki 封存**：wiki/ 只保留 `queries/`；code-ref／concepts／diagnosis／failure-modes／materials／methods／philosophy／problems／topics／traps 與 index.md、by-year.md 搬到 `archive/wiki/`；`wiki/log.md` 移為 `wiki/queries/log.md`；ingest／compile-all／add-concept 等寫 wiki 指令停用；規則 1、3、4、5、7 與資料流同步改寫 | 舊 wiki 為 AI 一次生成、與正本重複且未持續核對（觀念／方法頁掃描 45 項錯誤），每次勘誤又多一份同步負擔；讀書以 study/ 為準 |
+
 ---
 
 ## 目前收錄狀況

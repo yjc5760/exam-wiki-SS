@@ -29,20 +29,20 @@ XB      = 0.60          # B 點側撐位置（距 A，以 L 為單位）
 # §4-一 斷面迴旋半徑
 RX      = 15.17         # cm
 RY      = 6.215         # cm
-# §4-二～四 三個有效長細比（採考卷表列之理論 K 值）
-K_X,  L_X  = 0.7, L_TOT                 # 強軸全柱：A 鉸 - C 固（無側位移）
-K_YL, L_YL = 0.7, XB * L_TOT            # 弱軸下段 A-B：A 固 - B 鉸
+# §4-二～四 三個有效長細比（採考卷表列之設計 K 值；2026-11-01 使用者決定，理論值 0.7 見 §5.2）
+K_X,  L_X  = 0.8, L_TOT                 # 強軸全柱：A 鉸 - C 固（無側位移）
+K_YL, L_YL = 0.8, XB * L_TOT            # 弱軸下段 A-B：A 固 - B 鉸
 K_YU, L_YU = 1.0, (1 - XB) * L_TOT      # 弱軸上段 B-C：B 鉸 - C 鉸
-SR_X   = K_X  * L_X  / RX               # 73.8
-SR_YL  = K_YL * L_YL / RY               # 108.1 ← 控制
+SR_X   = K_X  * L_X  / RX               # 84.4
+SR_YL  = K_YL * L_YL / RY               # 123.6 ← 控制
 SR_YU  = K_YU * L_YU / RY               # 103.0
 SR_MAX = max(SR_X, SR_YL, SR_YU)
 # §5.1 設計啟示：把 B 點下移至兩段 KL 相等之位置
-A_OPT  = K_YU * L_TOT / (K_YL + K_YU)   # 0.7a = 1.0(L-a) → a = 941 cm
-SR_OPT = K_YL * A_OPT / RY              # 106.0
+A_OPT  = K_YU * L_TOT / (K_YL + K_YU)   # 0.8a = 1.0(L-a) → a = 889 cm
+SR_OPT = K_YL * A_OPT / RY              # 114.4
 # §4-五、六 最終答案
-PA      = 96.8          # tf（ASD）
-PHI_PN  = 134.3         # tf（LRFD, phi_c = 0.85）
+PA      = 79.6          # tf（ASD）
+PHI_PN  = 111.4         # tf（LRFD, phi_c = 0.85）
 
 # ── 挫屈模態：由特徵方程解出，不是憑印象畫 ──
 # 固接-鉸接（propped cantilever）之特徵值為 tan(u) = u 的最小正根
@@ -165,12 +165,12 @@ def fig2_boundaries():
     a.dot((mode_x(mode_pf, yi), yi), 5.6, fill="#FFFFFF", stroke=C["accent"], w=2.9)
     a.text_px(a.X(0) - 14, a.Y(yi), "反曲點", 12.5, C["accent"], "end", weight="700")
     a.dim((0, 0), (0, 1), f"L = {L_TOT:.0f} cm", off=-108, label_off=-14)
-    _kl_bracket(a, XBR, 0, yi, C["accent"], f"K_{{x}}L = 0.7(1600) = {K_X * L_X:.0f} cm")
+    _kl_bracket(a, XBR, 0, K_X, C["accent"], f"K_{{x}}L = {K_X}(1600) = {K_X * L_X:.0f} cm")
     a.text_px(PW / 2, PH - 84, "強軸全柱（B 點側撐不在本平面，故不分段）", 12.5, C["muted"])
     a.math_px(PW / 2, PH - 59, f"(KL/r)_{{x}} = {K_X * L_X:.0f} / {RX} = {SR_X:.1f}",
               15.5, C["deform"], weight="700")
     a.text_px(PW / 2, PH - 34,
-              f"不控制　｜　挫屈方程理論解 {K_PF:.3f}L = {K_PF * L_TOT:.0f} cm，考卷表列取 0.7",
+              f"不控制　｜　取考卷表設計值 {K_X}（理論 0.7；挫屈方程解 {K_PF:.3f}L）",
               11.5, C["muted"])
 
     # ── 右：x-z 面（弱軸）──
@@ -193,7 +193,7 @@ def fig2_boundaries():
     b.dim((0, 0), (0, XB), f"0.6L = {L_YL:.0f} cm", off=-108, label_off=-14)
     b.dim((0, XB), (0, 1), f"0.4L = {L_YU:.0f} cm", off=-108, label_off=-14)
     _kl_bracket(b, XBR, 0, XB, C["accent"],
-                f"KL = 0.7({L_YL:.0f}) = {K_YL * L_YL:.0f} cm", "← 控制")
+                f"KL = {K_YL}({L_YL:.0f}) = {K_YL * L_YL:.0f} cm", "← 控制")
     _kl_bracket(b, XBR, XB, 1, C["deform"],
                 f"KL = 1.0({L_YU:.0f}) = {K_YU * L_YU:.0f} cm")
     b.text_px(PW / 2, PH - 84, "弱軸分兩段，兩段各自檢核", 12.5, C["muted"])
@@ -230,9 +230,9 @@ def fig3_slenderness():
                 mini.line((-0.13, yy), (0.13, yy), col, 2.0)
 
     bar_compare(
-        [("強軸　y-z 面（全柱）", "A 鉸-C 固，K = 0.7",
+        [("強軸　y-z 面（全柱）", "A 鉸-C 固，設計 K = 0.8",
           SR_X, f"L = {L_X:.0f}, KL = {K_X * L_X:.0f} cm, KL/r = {SR_X:.1f}", C["deform"]),
-         ("弱軸　下段 A–B　控制", "A 固-B 鉸，K = 0.7",
+         ("弱軸　下段 A–B　控制", "A 固-B 鉸，設計 K = 0.8",
           SR_YL, f"L = {L_YL:.0f}, KL = {K_YL * L_YL:.0f} cm, KL/r = {SR_YL:.1f}", C["accent"]),
          ("弱軸　上段 B–C", "B 鉸-C 鉸，K = 1.0",
           SR_YU, f"L = {L_YU:.0f}, KL = {K_YU * L_YU:.0f} cm, KL/r = {SR_YU:.1f}", C["deform"]),

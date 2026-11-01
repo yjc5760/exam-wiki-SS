@@ -40,15 +40,13 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>(一) （5分）</strong> 說明梁柱桿件穩定公式中 $C_m$ 係數的意義與目的。</p>
 <p><strong>(二) （5分）</strong> $C_m = 0.6 - 0.4(M_1/M_2) \geq 0.4$ 適用於哪類構材？其下限 $0.4$ 的工程意義為何？</p>
 <p><strong>(三) （15分）</strong> 一 H 型鋼懸臂梁柱構材，斜置 45°（如附圖），承受靜載重：$P = 2000\ \text{kg}$，構材長度 $L = 350\ \text{cm}$，以 ASD 法驗算本構材是否滿足強度需求。</p>
-<p>設計條件：</p>
-<ul>
-<li>鋼材：A36，$F_y = 2.5\ \text{tf/cm}^2$</li>
-<li>斷面性質：$S_x = 451\ \text{cm}^3$，$S_y = 152\ \text{cm}^3$，$r_x = 8.81\ \text{cm}$，$r_y = 5.13\ \text{cm}$，$A = 59\ \text{cm}^2$，$E = 2.1 \times 10^3\ \text{tf/cm}^2$</li>
-<li>設計參數（已知）：$K = 2.1$，$C_c = 127$，$F_{bx} = 0.66F_y$，$F_{by} = 0.75F_y$，$C_m = 0.85$</li>
-<li><strong>弱軸彎曲（$S_y$ 控制）</strong></li>
-</ul>
+<p>設計條件：<br />
+- 鋼材：A36，$F_y = 2.5\ \text{tf/cm}^2$<br />
+- 斷面性質：$S_x = 451\ \text{cm}^3$，$S_y = 152\ \text{cm}^3$，$r_x = 8.81\ \text{cm}$，$r_y = 5.13\ \text{cm}$，$A = 59\ \text{cm}^2$，$E = 2.1 \times 10^3\ \text{tf/cm}^2$<br />
+- 設計參數（已知）：$K = 2.1$，$C_c = 127$，$F_{bx} = 0.66F_y$，$F_{by} = 0.75F_y$，$C_m = 0.85$<br />
+- <strong>弱軸彎曲（$S_y$ 控制）</strong></p>
 <p>ASD 互制方程式（考題附）：</p>
-<p>$$\text{若}\ \frac{f_a}{F_a} < 0.15：\quad \frac{f_a}{F_a} + \frac{f_{bx}}{F_{bx}} + \frac{f_{by}}{F_{by}} \leq 1.0$$</p>
+<p>$$\text{若}\ \frac{f_a}{F_a} &lt; 0.15：\quad \frac{f_a}{F_a} + \frac{f_{bx}}{F_{bx}} + \frac{f_{by}}{F_{by}} \leq 1.0$$</p>
 <p>$$\text{若}\ \frac{f_a}{F_a} \geq 0.15：$$</p>
 <p>$$\text{穩定方程式：}\quad \frac{f_a}{F_a} + \frac{C_{mx}f_{bx}}{F_{bx}\!\left(1-\dfrac{f_a}{F'_{ex}}\right)} + \frac{C_{my}f_{by}}{F_{by}\!\left(1-\dfrac{f_a}{F'_{ey}}\right)} \leq 1.0$$</p>
 <p>$$\text{強度方程式：}\quad \frac{f_a}{0.6F_y} + \frac{f_{bx}}{F_{bx}} + \frac{f_{by}}{F_{by}} \leq 1.0$$</p>
@@ -65,15 +63,13 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析</h2>
-<p><strong>作戰計畫：</strong></p>
-<ol>
-<li>回答 (一)(二) 觀念題</li>
-<li>分解 45° 斜置垂直荷載為軸力與橫向分量</li>
-<li>計算 $f_a$（軸壓應力）與 $f_{by}$（弱軸彎曲應力）</li>
-<li>計算允許壓縮應力 $F_a$（依 $KL/r_y$ 與 $C_c$ 判斷公式）</li>
-<li>判斷 $f_a/F_a$ 是否 $\geq 0.15$，選用適當互制方程式</li>
-<li>代入互制公式，得出結論</li>
-</ol>
+<p><strong>作戰計畫：</strong><br />
+1. 回答 (一)(二) 觀念題<br />
+2. 分解 45° 斜置垂直荷載為軸力與橫向分量<br />
+3. 計算 $f_a$（軸壓應力）與 $f_{by}$（弱軸彎曲應力）<br />
+4. 計算允許壓縮應力 $F_a$（依 $KL/r_y$ 與 $C_c$ 判斷公式）<br />
+5. 判斷 $f_a/F_a$ 是否 $\geq 0.15$，選用適當互制方程式<br />
+6. 代入互制公式，得出結論</p>
 <p><strong>陷阱分析：</strong></p>
 <table>
 <thead>
@@ -95,12 +91,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <td>$r_y = 5.13\ \text{cm}$，不用 $r_x$</td>
 </tr>
 <tr>
-<td>⚠️ $KL/r > C_c$ → 用尤拉公式</td>
-<td>$143.3 > 127$ → 進入彈性挫屈區</td>
+<td>⚠️ $KL/r &gt; C_c$ → 用尤拉公式</td>
+<td>$143.3 &gt; 127$ → 進入彈性挫屈區</td>
 <td>$F_a = 12\pi^2E/[23(KL/r)^2]$</td>
 </tr>
 <tr>
-<td>⚠️ $f_a/F_a < 0.15$ → 用簡化式</td>
+<td>⚠️ $f_a/F_a &lt; 0.15$ → 用簡化式</td>
 <td>軸壓力極小，採簡化互制式</td>
 <td>$f_a/F_a + f_{by}/F_{by}$ 即可</td>
 </tr>
@@ -120,8 +116,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$N = P\cos45°,\quad V = P\sin45° \quad \text{（荷載分解）}$$</p>
 <p>$$\boxed{M} = V \times L \quad \text{（懸臂固端彎矩）}$$</p>
 <p>$$\boxed{f_a} = N/A,\quad \boxed{f_{by}} = M/S_y$$</p>
-<p>$$\frac{KL}{r_y} > C_c \Rightarrow \boxed{F_a} = \frac{12\pi^2 E}{23(KL/r)^2} \quad \text{（彈性挫屈區）}$$</p>
-<p>$$\frac{f_a}{F_a} < 0.15 \Rightarrow \frac{f_a}{F_a} + \frac{f_{by}}{F_{by}} \leq 1.0 \quad \text{（簡化式）}$$</p>
+<p>$$\frac{KL}{r_y} &gt; C_c \Rightarrow \boxed{F_a} = \frac{12\pi^2 E}{23(KL/r)^2} \quad \text{（彈性挫屈區）}$$</p>
+<p>$$\frac{f_a}{F_a} &lt; 0.15 \Rightarrow \frac{f_a}{F_a} + \frac{f_{by}}{F_{by}} \leq 1.0 \quad \text{（簡化式）}$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -276,7 +272,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>判斷</td>
-<td>$143.3 > C_c = 127$ → 彈性挫屈區</td>
+<td>$143.3 &gt; C_c = 127$ → 彈性挫屈區</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -298,17 +294,17 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>$f_a/F_a$</td>
-<td>$0.024/0.527 = 0.046 < 0.15$ → 簡化式</td>
+<td>$0.024/0.527 = 0.046 &lt; 0.15$ → 簡化式</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>簡化式</td>
-<td>$0.046 + 3.257/1.875 = 0.046 + 1.737 = 1.783 > 1.0$ ❌</td>
+<td>$0.046 + 3.257/1.875 = 0.046 + 1.737 = 1.783 &gt; 1.0$ ❌</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>強度式</td>
-<td>$0.016 + 1.737 = 1.753 > 1.0$ ❌</td>
+<td>$0.016 + 1.737 = 1.753 &gt; 1.0$ ❌</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -338,7 +334,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>ASD 柱設計 $C_c$ 分界</td>
-<td>$KL/r < C_c$ 非彈性；$> C_c$ 改用尤拉公式，$F_a$ 大幅降低</td>
+<td>$KL/r &lt; C_c$ 非彈性；$&gt; C_c$ 改用尤拉公式，$F_a$ 大幅降低</td>
 <td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">asd-column</span></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -349,7 +345,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>$f_a/F_a < 0.15$ 判斷</td>
+<td>$f_a/F_a &lt; 0.15$ 判斷</td>
 <td>軸壓比小於 0.15 才用簡化式；否則需用含 $C_m/(1-f_a/F'_e)$ 的穩定式</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -369,28 +365,22 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <ol>
 <li><strong>校正彎矩分佈形狀的影響</strong>：穩定公式的推導假設構材承受「均勻彎矩（uniform moment）」，此時放大效果最嚴重。當實際彎矩分佈非均勻（如三角形、拋物線）時，實際的二次效應較小。</li>
 <li><strong>換算為等效均勻彎矩</strong>：$C_m \leq 1.0$ 表示實際彎矩分佈比均勻彎矩「溫和」，允許承受更大的彎矩；$C_m = 1.0$ 為最保守，等同均勻彎矩假設。</li>
-<li><strong>物理意義</strong>：$C_m/(1 - f_a/F'_e)$ 是考慮 P-δ 效應後的放大係數，$C_m < 1.0$ 反映非均勻彎矩對穩定性的有利影響。</li>
+<li><strong>物理意義</strong>：$C_m/(1 - f_a/F'_e)$ 是考慮 P-δ 效應後的放大係數，$C_m &lt; 1.0$ 反映非均勻彎矩對穩定性的有利影響。</li>
 </ol>
 <hr />
 <h3>(二) $C_m = 0.6-0.4(M_1/M_2)\geq 0.4$ 的適用條件與下限意義（5分）</h3>
-<p><strong>適用條件：</strong></p>
-<ul>
-<li>有側向支撐（braced frame），<strong>無側移</strong>的梁柱構材</li>
-<li>構材在兩端之間<strong>無橫向載重</strong>，僅在端部受彎矩 $M_1$、$M_2$</li>
-</ul>
-<p><strong>$M_1/M_2$ 符號規定：</strong></p>
-<ul>
-<li>雙曲率（double curvature，反曲）→ $M_1/M_2$ 取<strong>負值</strong>，$C_m$ 減小（最有利）</li>
-<li>單曲率（single curvature）→ $M_1/M_2$ 取<strong>正值</strong>，$C_m$ 增大</li>
-<li>$M_2$ 為絕對值較大端；$M_1$ 為較小端</li>
-</ul>
+<p><strong>適用條件：</strong><br />
+- 有側向支撐（braced frame），<strong>無側移</strong>的梁柱構材<br />
+- 構材在兩端之間<strong>無橫向載重</strong>，僅在端部受彎矩 $M_1$、$M_2$</p>
+<p><strong>$M_1/M_2$ 符號規定：</strong><br />
+- 雙曲率（double curvature，反曲）→ $M_1/M_2$ 取<strong>負值</strong>，$C_m$ 減小（最有利）<br />
+- 單曲率（single curvature）→ $M_1/M_2$ 取<strong>正值</strong>，$C_m$ 增大<br />
+- $M_2$ 為絕對值較大端；$M_1$ 為較小端</p>
 <p><strong>下限 $0.4$ 的工程意義：</strong><br />
-即使是雙曲率（最有利分佈，$M_1/M_2 = -1$ 時 $C_m = 1.0$），甚至考慮雙曲率的有利影響，由於：</p>
-<ol>
-<li>幾何非線性（P-δ 效應）始終存在，不可忽略</li>
-<li>加工誤差與殘留應力導致實際初始偏心</li>
-<li>公式推導的保守餘量</li>
-</ol>
+即使是雙曲率（最有利分佈，$M_1/M_2 = -1$ 時 $C_m = 1.0$），甚至考慮雙曲率的有利影響，由於：<br />
+1. 幾何非線性（P-δ 效應）始終存在，不可忽略<br />
+2. 加工誤差與殘留應力導致實際初始偏心<br />
+3. 公式推導的保守餘量</p>
 <p>下限 $C_m \geq 0.4$ 確保即使在最有利的彎矩分佈下，仍保有適當的安全餘量。</p>
 <hr />
 <h3>(三) 45° 懸臂梁柱 ASD 驗算（15分）</h3>
@@ -402,7 +392,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>因構材弱軸方向承受橫向載重，彎矩作用於<strong>弱軸</strong>（$S_y$ 控制）</p>
 </blockquote>
 <h4>4.2 固端彎矩（懸臂）</h4>
-<p>$$M = V \times L = \sqrt{2} \times 350 = 494.97 \approx 495\ \text{tf·cm}$$</p>
+<p>$$M = V \times L = \sqrt{2} \times 350 = 494.97 \approx 495\ \text{tf}\cdot\text{cm}$$</p>
 <hr />
 <h4>4.3 實際應力</h4>
 <p><strong>軸壓應力：</strong><br />
@@ -416,17 +406,17 @@ $$f_{by} = \frac{M}{S_y} = \frac{494.97}{152} = \boxed{3.257\ \text{tf/cm}^2}$$<
 $$F_{by} = 0.75 F_y = 0.75 \times 2.5 = \boxed{1.875\ \text{tf/cm}^2}$$</p>
 <p><strong>細長比（弱軸，控制）：</strong><br />
 $$\frac{KL}{r_y} = \frac{2.1 \times 350}{5.13} = \frac{735}{5.13} = \boxed{143.3}$$</p>
-<p>判斷：$KL/r_y = 143.3 > C_c = 127$ → <strong>彈性挫屈區，採尤拉公式：</strong></p>
+<p>判斷：$KL/r_y = 143.3 &gt; C_c = 127$ → <strong>彈性挫屈區，採尤拉公式：</strong></p>
 <p>$$F_a = \frac{12\pi^2 E}{23\left(\dfrac{KL}{r}\right)^2} = \frac{12\pi^2 \times 2100}{23 \times 143.3^2} = \frac{248{,}808}{23 \times 20{,}535} = \frac{248{,}808}{472{,}305} = \boxed{0.527\ \text{tf/cm}^2}$$</p>
 <hr />
 <h4>4.5 ASD 互制方程式驗算</h4>
 <p><strong>判斷適用公式：</strong><br />
-$$\frac{f_a}{F_a} = \frac{0.02396}{0.527} = 0.0455 < 0.15$$</p>
+$$\frac{f_a}{F_a} = \frac{0.02396}{0.527} = 0.0455 &lt; 0.15$$</p>
 <p>→ 採<strong>簡化互制公式</strong>：</p>
 <p>$$\frac{f_a}{F_a} + \frac{f_{by}}{F_{by}} \leq 1.0$$</p>
-<p>$$0.0455 + \frac{3.257}{1.875} = 0.0455 + 1.737 = \boxed{1.783 > 1.0\ ❌}$$</p>
+<p>$$0.0455 + \frac{3.257}{1.875} = 0.0455 + 1.737 = \boxed{1.783 &gt; 1.0\ ❌}$$</p>
 <p><strong>另驗算強度方程式（無論 $f_a/F_a$ 大小皆須驗算）：</strong></p>
-<p>$$\frac{f_a}{0.6F_y} + \frac{f_{by}}{F_{by}} = \frac{0.024}{1.5} + \frac{3.257}{1.875} = 0.016 + 1.737 = \boxed{1.753 > 1.0\ ❌}$$</p>
+<p>$$\frac{f_a}{0.6F_y} + \frac{f_{by}}{F_{by}} = \frac{0.024}{1.5} + \frac{3.257}{1.875} = 0.016 + 1.737 = \boxed{1.753 &gt; 1.0\ ❌}$$</p>
 <hr />
 <h4>4.6 結論</h4>
 <p>$$\boxed{\text{本構材不滿足 ASD 梁柱互制需求，設計 NG}}$$</p>
@@ -481,7 +471,7 @@ $$\frac{f_a}{F_a} = \frac{0.02396}{0.527} = 0.0455 < 0.15$$</p>
 </tr>
 <tr>
 <td>固端彎矩 $M$</td>
-<td>$495\ \text{tf·cm}$</td>
+<td>$495\ \text{tf}\cdot\text{cm}$</td>
 </tr>
 <tr>
 <td>軸壓應力 $f_a$</td>
@@ -493,7 +483,7 @@ $$\frac{f_a}{F_a} = \frac{0.02396}{0.527} = 0.0455 < 0.15$$</p>
 </tr>
 <tr>
 <td>$KL/r_y$</td>
-<td>$143.3 > C_c = 127$（彈性區）</td>
+<td>$143.3 &gt; C_c = 127$（彈性區）</td>
 </tr>
 <tr>
 <td>允許壓縮應力 $F_a$</td>
@@ -516,12 +506,10 @@ $$\frac{f_a}{F_a} = \frac{0.02396}{0.527} = 0.0455 < 0.15$$</p>
 <hr />
 <h2>6. 關鍵爭議點與進階探討</h2>
 <h3>6.1 為何弱軸彎曲如此嚴重？</h3>
-<p>弱軸彎矩 $M = 495\ \text{tf·cm}$，僅 $2\ \text{tf}$ 的小載重即造成如此大的彎曲應力，原因：</p>
-<ul>
-<li>弱軸斷面模數 $S_y = 152\ \text{cm}^3$ 遠小於強軸 $S_x = 451\ \text{cm}^3$（弱軸抗彎能力僅強軸的 $33\%$）</li>
-<li>懸臂長度 $L = 350\ \text{cm}$ 對彎矩放大效果顯著</li>
-<li>若改用強軸承受橫向彎矩：$f_{bx} = 495/451 = 1.098\ \text{tf/cm}^2 < F_{bx} = 1.65\ \text{tf/cm}^2\ \checkmark$（通過）</li>
-</ul>
+<p>弱軸彎矩 $M = 495\ \text{tf}\cdot\text{cm}$，僅 $2\ \text{tf}$ 的小載重即造成如此大的彎曲應力，原因：<br />
+- 弱軸斷面模數 $S_y = 152\ \text{cm}^3$ 遠小於強軸 $S_x = 451\ \text{cm}^3$（弱軸抗彎能力僅強軸的 $33\%$）<br />
+- 懸臂長度 $L = 350\ \text{cm}$ 對彎矩放大效果顯著<br />
+- 若改用強軸承受橫向彎矩：$f_{bx} = 495/451 = 1.098\ \text{tf/cm}^2 &lt; F_{bx} = 1.65\ \text{tf/cm}^2\ \checkmark$（通過）</p>
 <p>這說明<strong>斷面方向的選擇對斜置梁柱的設計至關重要</strong>。</p>
 <h3>6.2 懸臂構材的 $C_m$</h3>
 <p>本題 $C_m = 0.85$ 為直接給定。ASD 規範對有橫向載重的構材（包括懸臂）通常建議 $C_m = 0.85$（保守值），而非用 $0.6-0.4M_1/M_2$（後者僅適用於端部受彎矩、無橫向載重的構材）。</p>

@@ -90,25 +90,21 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 蓋板與 H 型鋼之間的水平介面需傳遞「剪力流（shear flow）」。剪力流 $q = V_u Q/I$ 代表單位長度介面所受的水平剪力；斷續銲道每段須承擔一個間距 $s$ 內的剪力流合力。</p>
-<p><strong>出題者意圖：</strong></p>
-<ol>
-<li>考核組合斷面性質計算（$I_{composite}$、$Q$）</li>
-<li>考核剪力流公式的應用（$q = VQ/I$）</li>
-<li>考核 LRFD 填角銲容許強度計算</li>
-<li>考核斷續銲道長度求解</li>
-</ol>
+<p><strong>出題者意圖：</strong><br />
+1. 考核組合斷面性質計算（$I_{composite}$、$Q$）<br />
+2. 考核剪力流公式的應用（$q = VQ/I$）<br />
+3. 考核 LRFD 填角銲容許強度計算<br />
+4. 考核斷續銲道長度求解</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong></p>
-<ol>
-<li>計算組合斷面（H + 蓋板）之形心位置 $\bar{y}$</li>
-<li>計算組合斷面慣性矩 $I_{composite}$</li>
-<li>計算蓋板對形心的靜矩 $Q$</li>
-<li>計算剪力流 $q = V_u Q / I$</li>
-<li>計算每個間距 $s$ 內的剪力力 $F_s = q \times s$</li>
-<li>計算每 cm 銲道的承載力 $\phi R_n$（雙面銲）</li>
-<li>求解 $L = F_s / \phi R_n$</li>
-</ol>
+<p><strong>作戰計畫：</strong><br />
+1. 計算組合斷面（H + 蓋板）之形心位置 $\bar{y}$<br />
+2. 計算組合斷面慣性矩 $I_{composite}$<br />
+3. 計算蓋板對形心的靜矩 $Q$<br />
+4. 計算剪力流 $q = V_u Q / I$<br />
+5. 計算每個間距 $s$ 內的剪力力 $F_s = q \times s$<br />
+6. 計算每 cm 銲道的承載力 $\phi R_n$（雙面銲）<br />
+7. 求解 $L = F_s / \phi R_n$</p>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -221,16 +217,16 @@ $$\boxed{L} \geq \frac{F_s}{\phi R_n / \text{cm}} = \frac{F_s}{2 \times \phi \ti
 <tbody>
 <tr>
 <td>$A_H$</td>
-<td>$2(20 	imes 1.6) + 46.8 	imes 0.9 = 106.12$ cm²</td>
+<td>$2(20 \times 1.6) + 46.8 \times 0.9 = 106.12$ cm²</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$A_{PL}$</td>
-<td>$2.5 	imes 30 = 75$ cm²</td>
+<td>$2.5 \times 30 = 75$ cm²</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>$ar{y}_{composite}$</td>
+<td>$\bar{y}_{composite}$</td>
 <td>$\sum A_i y_i / A_{total} = 6496.75/181.12 = 35.87$ cm（自 H 底部）</td>
 <td style="text-align: center;"></td>
 </tr>
@@ -248,7 +244,7 @@ $$\boxed{L} \geq \frac{F_s}{\phi R_n / \text{cm}} = \frac{F_s}{2 \times \phi \ti
 <tbody>
 <tr>
 <td>$I_H$</td>
-<td>$[20 	imes 50^3 - 19.1 	imes 46.8^3]/12 = 45{,}183$ cm⁴</td>
+<td>$[20 \times 50^3 - 19.1 \times 46.8^3]/12 = 45{,}183$ cm⁴</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -270,17 +266,17 @@ $$\boxed{L} \geq \frac{F_s}{\phi R_n / \text{cm}} = \frac{F_s}{2 \times \phi \ti
 <tbody>
 <tr>
 <td>$Q$</td>
-<td>$A_{PL} 	imes d_{PL} = 75 	imes 15.38 = 1{,}153.5$ cm³</td>
+<td>$A_{PL} \times d_{PL} = 75 \times 15.38 = 1{,}153.5$ cm³</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$q$</td>
-<td>$V_u Q / I = 50 	imes 1153.5 / 75510 = 0.7638$ tf/cm</td>
+<td>$V_u Q / I = 50 \times 1153.5 / 75510 = 0.7638$ tf/cm</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$F_s$</td>
-<td>$q 	imes s = 0.7638 	imes 15 = 11.46$ tf</td>
+<td>$q \times s = 0.7638 \times 15 = 11.46$ tf</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -297,17 +293,17 @@ $$\boxed{L} \geq \frac{F_s}{\phi R_n / \text{cm}} = \frac{F_s}{2 \times \phi \ti
 <tbody>
 <tr>
 <td>$t_e$</td>
-<td>$0.707 	imes w = 0.707 	imes 0.8 = 0.566$ cm（有效喉厚）</td>
+<td>$0.707 \times w = 0.707 \times 0.8 = 0.566$ cm（有效喉厚）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$\phi R_n$/cm</td>
-<td>$2 	imes 0.75 	imes 0.6 	imes 4.9 	imes 0.566 = 2.494$ tf/cm（雙面兩道銲）</td>
+<td>$2 \times 0.75 \times 0.6 \times 4.9 \times 0.566 = 2.494$ tf/cm（雙面兩道銲）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$L$</td>
-<td>$F_s / (\phi R_n/	ext{cm}) = 11.46/2.494 = 4.59$ cm → 取 <strong>5 cm</strong></td>
+<td>$F_s / (\phi R_n/\text{cm}) = 11.46/2.494 = 4.59$ cm → 取 <strong>5 cm</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -331,7 +327,7 @@ $$\boxed{L} \geq \frac{F_s}{\phi R_n / \text{cm}} = \frac{F_s}{2 \times \phi \ti
 </tr>
 <tr>
 <td>組合斷面形心偏移</td>
-<td>蓋板貼上後形心上移，必須重新計算 $ar{y}$；否則 $Q$ 和 $I$ 均錯誤</td>
+<td>蓋板貼上後形心上移，必須重新計算 $\bar{y}$；否則 $Q$ 和 $I$ 均錯誤</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -343,14 +339,19 @@ $$\boxed{L} \geq \frac{F_s}{\phi R_n / \text{cm}} = \frac{F_s}{2 \times \phi \ti
 </tr>
 <tr>
 <td>填角銲有效喉厚 $t_e = 0.707w$</td>
-<td>填角銲設計強度基於有效喉面積；$t_e 
-eq w$（腳長非喉厚）</td>
+<td>填角銲設計強度基於有效喉面積；$t_e</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>雙面銲道計算（$	imes 2$）</td>
-<td>蓋板兩側各一道銲，每 cm 承載力為 $2 	imes \phi 	imes 0.6F_{EXX} 	imes t_e$；常忘乘 2</td>
+<td>eq w$（腳長非喉厚）</td>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>雙面銲道計算（$\times 2$）</td>
+<td>蓋板兩側各一道銲，每 cm 承載力為 $2 \times \phi \times 0.6F_{EXX} \times t_e$；常忘乘 2</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -460,7 +461,7 @@ $$\phi R_n = 2 \times \phi \times 0.6 F_{EXX} \times t_e = 2 \times 0.75 \times 
 <p><strong>最小銲道長度規定：</strong> $L_{min} = 4w = 4 \times 0.8 = 3.2$ cm（已滿足）</p>
 <p>$$\boxed{L = 4.59 \text{ cm} \approx \mathbf{5 \text{ cm（50 mm）}}}$$</p>
 <p><strong>驗核：</strong><br />
-$$\phi R_n \times L = 2.494 \times 5 = 12.47 \text{ tf} > F_s = 11.46 \text{ tf} \quad \checkmark$$</p>
+$$\phi R_n \times L = 2.494 \times 5 = 12.47 \text{ tf} &gt; F_s = 11.46 \text{ tf} \quad \checkmark$$</p>
 <hr />
 <h3>斷續銲道示意</h3>
 <pre><code>┌───蓋板 PL25×300───┐

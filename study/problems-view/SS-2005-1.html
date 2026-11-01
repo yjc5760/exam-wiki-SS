@@ -73,7 +73,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <li>縱向（沿載重方向）：端距 $e = 5$ cm，列距 $s = 7.5$ cm × 2，接合長度 $L_{conn} = 2s = 15$ cm</li>
 </ul>
 <p><img alt="SS-2005-1 題目附圖：L200×200×20 等肢角鋼以一肢（水平肢）搭接於接合板，螺栓 2 行×3 列共 6 顆；橫向自角鋼背起 7.5 cm、7.5 cm（餘 5 cm 至肢趾），縱向 5 cm 端距 + 2@7.5 cm = 15 cm；角鋼向右受拉力" src="../../raw/solutions/SS-2005-1/SS-2005-1-fig-1.png" /></p>
-<p><em>圖說：角鋼以</em><em>單一肢</em><em>（圖中水平肢，寬 20 cm、厚 2 cm）搭接於接合板，接合板為左側之梯形板。螺栓配置為 </em><em>2 行 × 3 列共 6 顆</em><em>，行距（橫向、垂直於載重）7.5 cm，列距（縱向、沿載重）7.5 cm，端距 5 cm。角鋼的</em><em>未連接肢（外伸肢）位於圖上緣</em><em>（以細雙線表示），故橫向尺寸自角鋼背（heel，上緣）量起為 7.5 cm 至第 1 行、再 7.5 cm 至第 2 行，第 2 行至</em><em>肢趾（toe，下緣自由邊）剩 5 cm</em><em>。角鋼向右受拉力，螺栓為</em><em>單剪</em><em>（角鋼僅單面搭接一片接合板）。</em></p>
+<p><em>圖說：角鋼以<strong>單一肢</strong>（圖中水平肢，寬 20 cm、厚 2 cm）搭接於接合板，接合板為左側之梯形板。螺栓配置為 <strong>2 行 × 3 列共 6 顆</strong>，行距（橫向、垂直於載重）7.5 cm，列距（縱向、沿載重）7.5 cm，端距 5 cm。角鋼的<strong>未連接肢（外伸肢）位於圖上緣</strong>（以細雙線表示），故橫向尺寸自角鋼背（heel，上緣）量起為 7.5 cm 至第 1 行、再 7.5 cm 至第 2 行，第 2 行至<strong>肢趾（toe，下緣自由邊）剩 5 cm</strong>。角鋼向右受拉力，螺栓為<strong>單剪</strong>（角鋼僅單面搭接一片接合板）。</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖</h2>
 <p>本題測驗 <strong>LRFD 螺栓接合拉力構件的「五個極限狀態」全套檢核</strong>，且刻意布置成「非最明顯者控制」：</p>
@@ -447,7 +447,7 @@ Step 8  取五者最小值
 <tr>
 <td style="text-align: left;">剪力遲滯係數 $U$ 的款次判定</td>
 <td style="text-align: left;">W／H／S／I／T 翼板連接 $U=0.90$；其他斷面（含角鋼）每行≥3 顆 $U=0.85$；每行僅 2 顆 $U=0.75$</td>
-<td style="text-align: center;">[[shear-lag-u]] · [[SHEAR-LAG]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">shear-lag-u</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SHEAR-LAG</span></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -459,13 +459,13 @@ Step 8  取五者最小值
 <tr>
 <td style="text-align: left;">塊狀剪力的上限式</td>
 <td style="text-align: left;">$0.6F_yA_{gv}$（剪力面降伏）＋$F_uA_{nt}$（拉力面斷裂）為上限，取與 $0.6F_uA_{nv}+F_uA_{nt}$ 之較小值</td>
-<td style="text-align: center;">[[block-shear]] · [[BLOCK-SHEAR-RUPTURE]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">block-shear</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BLOCK-SHEAR-RUPTURE</span></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;">塊狀剪力扣孔的 2.5 顆慣例</td>
 <td style="text-align: left;">剪力面通過 3 個孔，末端孔只切到一半 → 扣 $2.5 d_h$</td>
-<td style="text-align: center;">[[block-shear]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">block-shear</span></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -575,7 +575,7 @@ Step 8  取五者最小值
 <p>縱向剪切長度（自角鋼端至最遠螺栓）：$L_{sh} = e + 2s = 5 + 7.5 + 7.5 = 20$ cm</p>
 <p>每一剪力面：$A_{gv} = 20 \times 2.0 = 40$ cm²；$A_{nv} = [20 - 2.5(2.35)] \times 2.0 = 28.25$ cm²</p>
 <p><img alt="SS-2005-1 圖 2：四格圖。第一格為連接肢俯視的接合幾何——L200×200×20 角鋼連接肢寬 20 cm，自肢背起 7.5 cm 至第 1 行、再 7.5 cm 至第 2 行、第 2 行距肢趾僅 5.0 cm；沿載重方向端距 5 cm 加兩個 7.5 cm 列距，剪力面長度 20 cm；6 個孔徑 2.35 cm 的螺栓孔；未連接之外伸肢位於肢背側。後三格為三條塊狀剪力路徑：路徑 A 沿第 2 行剪出並拉裂至肢趾（A_nt = 7.65 平方公分，φR_n = 68.5 tf，控制）、路徑 B 沿第 1 行剪出並拉裂至肢背（A_nt = 12.65，φR_n = 83.9 tf）、路徑 C 兩行同時剪出並拉裂行間（A_nt = 10.30，兩個剪力面，φR_n = 121.7 tf）" src="../../raw/solutions/SS-2005-1/figs/SS-2005-1-fig-2-block-shear.svg" /></p>
-<p><em>圖 2　把三條塊狀剪力路徑畫在同一張幾何上：剪力面（紫）永遠是自角鋼端到最遠螺栓的 20 cm，差別只在拉力面（紅）落在哪一段寬度。肢趾側只剩 5 cm，拉力面積最小，故路徑 A 控制。<strong>攔錯：</strong>只算一條路徑、或把拉力面畫到邊距較大的肢背側，答案會從 68.5 tf 變成 83.9 tf。</em></p>
+<p><em>圖 2　把三條塊狀剪力路徑畫在同一張幾何上：剪力面（紫）永遠是自角鋼端到最遠螺栓的 20 cm，差別只在拉力面（紅）落在哪一段寬度。肢趾側只剩 5 cm，拉力面積最小，故路徑 A 控制。<strong>攔錯：</strong> 只算一條路徑、或把拉力面畫到邊距較大的肢背側，答案會從 68.5 tf 變成 83.9 tf。</em></p>
 <hr />
 <p><strong>路徑 A：沿第 2 行剪出 ＋ 拉裂至肢趾（拉力寬 5.0 cm）</strong> ← <strong>控制</strong></p>
 <p>$$A_{nt} = (5.0 - 0.5 \times 2.35)(2.0) = 3.825 \times 2.0 = 7.65\ \text{cm}^2$$</p>
@@ -668,7 +668,7 @@ $1.2L_ctF_u = 1.2(3.825)(2.0)(4.1) = 37.6$ tf/bolt $&lt; 43.3$ → 該顆改由�
 </table>
 <p>$$\boxed{\phi P_n = 68.5\ \text{tf}\quad\text{（由塊狀剪力 BSR 路徑 A 控制）}}$$</p>
 <p><img alt="SS-2005-1 圖 3：五個極限狀態的設計強度長條比較。① 全斷面降伏 171.0 tf（88%）、② 淨斷面斷裂 174.1 tf（89%）、③ 塊狀剪力路徑 A 68.5 tf（35%，控制）、④ 螺栓剪力單剪 6 顆 71.8 tf（37%）、⑤ 螺栓孔承壓 194.8 tf（100%）；③ 與 ④ 的長條幾乎同高，兩者僅差 4.8%" src="../../raw/solutions/SS-2005-1/figs/SS-2005-1-fig-3-limit-states.svg" /></p>
-<p><em>圖 3　五個極限狀態並排後才看得出：第 ④ 項螺栓剪力（71.8 tf）只比控制值高 4.8%，兩根長條幾乎同高。<strong>攔錯：</strong>漏算螺栓剪力——題目給的 $F_{nv} = 4.2$ tf/cm² 與「螺紋不在剪力平面上」若沒用到，就是少檢核了一個幾乎控制的極限狀態。</em></p>
+<p><em>圖 3　五個極限狀態並排後才看得出：第 ④ 項螺栓剪力（71.8 tf）只比控制值高 4.8%，兩根長條幾乎同高。<strong>攔錯：</strong> 漏算螺栓剪力——題目給的 $F_{nv} = 4.2$ tf/cm² 與「螺紋不在剪力平面上」若沒用到，就是少檢核了一個幾乎控制的極限狀態。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討</h2>
 <h3>5.1 塊狀剪力主控：只有全斷面降伏的 40%</h3>

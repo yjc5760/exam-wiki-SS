@@ -3,7 +3,7 @@
 
 > **使用環境：Cowork**
 > 在 Cowork 開啟 `exam-wiki-SS/` 資料夾後，此檔案提供解題、分析的完整規範。
-> wiki 的維護（ingest/compile/lint）請對 Cowork 說出對應指令，詳見 CLAUDE-CODE.md。
+> wiki 已於 2026-11-01 封存（只保留 wiki/queries/），ingest／compile／lint 停用；同步方式見 CLAUDE.md 規則 1。
 
 ---
 
@@ -33,7 +33,7 @@
    → 圖形說明（如有）
 ```
 
-**wiki/methods/[method-id].md 格式：**
+**方法論頁格式**（原 wiki/methods/[method-id].md；wiki 已封存，現只寫 raw/solutions/methods/[method-id]/[method-id].md，格式沿用如下）：
 ```markdown
 # [方法名稱]
 
@@ -95,8 +95,8 @@
    → 直接存入 raw/solutions/SS-XXXX-N/SS-XXXX-N.md
 9. 所有數學公式使用 LaTeX 格式
 10. 每份解析開頭必須包含標籤區塊
-11. 判斷是否需要輸出互動圖（依「圖形觸發條件」）：
-    → 直接存入 raw/solutions/SS-XXXX-N/SS-XXXX-N-[內容碼]-viz.html
+11. 不輸出互動圖 *-viz.html（2026-11-01 起廢止）；
+    → 需要圖解時以 struct-diagram 產生 figs/*.svg 向量圖並插回 .md
 ```
 
 ---
@@ -312,7 +312,6 @@ P-M 互制：
    - 欄位：**知識點 ∣ 說明 ∣ 卡關?**（卡關欄全部留空）
 
 ## 4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)
-   > 📊 互動圖（如有）：`SS-XXXX-N-sfd-bmd-viz.html`
    - 完整計算過程，含公式、單位、中間結果
    - 關鍵步驟加「策略註解」說明為何這樣做
    - 最終答案用 \boxed{} 標示
@@ -346,7 +345,7 @@ N    = 題號（1、2、3、4，部分年份有 5）
    - SS-XXXX-N-hand-1.png
 4. 人工驗算解析內容正確後，更新 verificationStatus：
    告訴 Cowork：「將 SS-XXXX-N 的 verificationStatus 改為 verified」
-5. 說：「ingest SS-XXXX-N」 → Cowork 直接執行，wiki 自動更新
+5. ~~說「ingest SS-XXXX-N」~~（已停用：wiki 封存）；題目瀏覽頁以 `python scripts/render_problem_view.py SS-XXXX-N` 重生
 6. 說「繼續下一題」→ Cowork 解析下一道尚未有解析的題目
 ```
 

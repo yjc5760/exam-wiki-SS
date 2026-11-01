@@ -8,16 +8,17 @@
 
 ## 這個資料庫是什麼
 
-每道考古題都有一份 **深度解析**（LaTeX 公式、逐步計算、陷阱說明），解析由 AI 完成，人工驗算確認後才進 wiki。
+每道考古題都有一份 **深度解析**（LaTeX 公式、逐步計算、陷阱說明），解析由 AI 完成，經盲解比對與人工驗算確認。讀書以 `study/`（題目瀏覽頁、觀念講義、單元總覽、教科書）為準。
+
+> 2026-11-01 起 **wiki/ 只保留 `wiki/queries/`**（稽核報告、盲解紀錄、變更紀錄 log.md）；舊 wiki 各層已封存於 `archive/wiki/`，不再維護、內容未經全面核對。
 
 **兩個工作角色：**
 
 | 你要做什麼 | 怎麼做 |
 |-----------|--------|
 | 解一道新題 | 對 **Cowork** 說「解析 XXXX 年考卷」 |
-| 把解析寫進 wiki | 對 **Cowork** 說「ingest SS-XXXX-N」 |
+| 解析勘誤後同步 | 依 CLAUDE.md 規則 1（重生 `study/problems-view/`、更新索引與教材、記 `wiki/queries/log.md`）；ingest 已停用 |
 | 查詢知識 / 跨題分析 | 對 **Cowork** 直接提問 |
-| 維護橫向知識工具 | 對 **Cowork** 說（diagnosis / failure-modes / materials / code-ref） |
 
 > 所有操作都在 Cowork 對話中完成，無需終端機或其他工具。完整指令清單見 **CLAUDE-CODE.md**。
 
@@ -31,12 +32,10 @@
 | 特定題目的解析 | `raw/solutions/SS-YYYY-N/SS-YYYY-N.md` |
 | 子項單元總覽（考什麼＋公式給／背＋逐題公式表） | `study/unit-SS-UN-n.html`（由 `study/data/unit-SS-UN-n.json` 經 `python scripts/build_unit_page.py SS-UN-n` 產生；舊 `study-`／`formula-given-` 為轉址頁） |
 | **單元觀念講義（練題前建立原理直覺）** | `study/lecture-SS-UN-n.html` + `.pdf`（說「生成 SS-UN-n 講義」生成） |
-| wiki 題目頁（含標籤/圖形） | `wiki/problems/SS-YYYY-N.md` |
-| 依年份瀏覽所有題目 | `wiki/by-year.md` |
-| 概念說明（LTB、柱強度等） | `wiki/concepts/` |
-| 解題策略（拿到考題怎麼判斷） | `wiki/diagnosis/` |
-| 規範條文對應 | `wiki/code-ref/` |
-| 操作紀錄 | `wiki/log.md` |
+| 題目渲染頁（公式／附圖可讀） | `study/problems-view/SS-YYYY-N.html` |
+| 稽核、盲解比對報告 | `wiki/queries/`（總帳 `audit-ledger-SS.json`） |
+| 操作紀錄 | `wiki/queries/log.md` |
+| 舊 wiki 各層（概念、方法、陷阱、規範對應…） | `archive/wiki/`（封存，僅供參考） |
 
 ---
 
@@ -62,18 +61,14 @@ exam-wiki-SS/
 ├── raw/               ← 原始資料（預設唯讀；例外見 CLAUDE.md 規則 1）
 │   ├── exams/         ← 考卷 PDF（SS-YYYY_鋼結構設計.pdf）
 │   ├── json/          ← question_index.json ✏️可改、concepts.json
-│   └── solutions/     ← 每題一個資料夾，含 .md + 截圖 + 補充筆記 PDF
+│   └── solutions/     ← 每題一個資料夾，含 .md + 截圖
 │       ├── SS-YYYY-N/ ← 🔒 證據，不可修改
-│       └── methods/   ← ✏️ 方法論，可修正公式（須驗算＋同步 wiki＋記 log）
+│       └── methods/   ← ✏️ 方法論，可修正公式（須驗算＋記 log）
 │
-└── wiki/              ← 知識庫（七層架構）
-    ├── problems/      ← 所有題目頁
-    ├── concepts/      ← 概念頁
-    ├── methods/       ← 解題方法論
-    ├── diagnosis/     ← 題型診斷決策樹
-    ├── failure-modes/ ← 失敗模式分類
-    ├── materials/     ← 材料行為
-    └── code-ref/      ← 規範條文對應
+├── wiki/
+│   └── queries/       ← 稽核／盲解報告、audit-ledger、log.md
+│
+└── archive/wiki/      ← 🗄️ 2026-11-01 封存的舊 wiki 各層（唯讀參考）
 ```
 
 ---
@@ -87,7 +82,7 @@ exam-wiki-SS/
 4. 告知 Cowork「截圖完成，請開始解題」
 5. Cowork 輸出 SS-2025-1.md（一次一題）
 6. 人工驗算無誤後，說：「將 SS-2025-1 的 verificationStatus 改為 verified」
-7. 說：「ingest SS-2025-1」→ Cowork 直接寫入 wiki
+7. 執行 `python scripts/render_problem_view.py SS-2025-1` 產生題目瀏覽頁（ingest 已停用）
 ```
 
 ---
@@ -96,7 +91,7 @@ exam-wiki-SS/
 
 - 年份用**西元**（SS-2015-1，不是 SS-104-1）
 - PNG 截圖必須加序號（`fig-1.png`，不可寫 `fig.png`）
-- 互動圖後綴必須是 `-viz.html`（`pm-viz.html`，不是 `pm.html`）
+- 不產生互動圖 `*-viz.html`（2026-11-01 廢止）；圖解一律用 `figs/*.svg` 向量圖
 - 公式必須用 LaTeX（`$F_y$`，不可寫純文字）
 - ingest 前確認 `verificationStatus = "verified"`
 

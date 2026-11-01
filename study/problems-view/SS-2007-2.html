@@ -37,13 +37,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>1. 原始題目重述</h2>
 <p>H 500×300×15×20（$d \times b_f \times t_w \times t_f$，單位 mm）鋼柱，兩端鉸接（K=1），承受下列組合載重，以 ASD 驗算是否滿足規範要求：</p>
-<p><strong>設計載重：</strong></p>
-<ul>
-<li>軸壓力：$P = 40$ tf</li>
-<li>強軸彎矩：$M_x = 20$ m-tf（= 2000 tf·cm）</li>
-<li>弱軸彎矩：$M_y = 10$ m-tf（= 1000 tf·cm）</li>
-<li>柱長：$L = 10$ m = 1000 cm</li>
-</ul>
+<p><strong>設計載重：</strong><br />
+- 軸壓力：$P = 40$ tf<br />
+- 強軸彎矩：$M_x = 20$ m-tf（= 2000 tf·cm）<br />
+- 弱軸彎矩：$M_y = 10$ m-tf（= 1000 tf·cm）<br />
+- 柱長：$L = 10$ m = 1000 cm</p>
 <p><strong>材料：</strong> $F_y = 3.5 \text{ tf/cm}^2$，$F_u = 5 \text{ tf/cm}^2$，$E = 2040 \text{ tf/cm}^2$</p>
 <p><strong>斷面性質（題目提供）：</strong></p>
 <table>
@@ -96,29 +94,23 @@ $$C_m = 0.6 - 0.4(M_1/M_2) \quad;\quad C_b = 1.75 + 1.05(M_1/M_2) + 0.3(M_1/M_2)
 <hr />
 <h2>2. 考題核心精神與出題者意圖</h2>
 <p>本題核心：<strong>ASD 雙軸彎矩梁柱桿件完整驗算流程</strong>。</p>
-<p>關鍵難點：</p>
-<ol>
-<li>弱軸細長比 $KL/r_y = 144.7 > C_c = 107.3$，進入<strong>彈性挫屈</strong>區段 → $F_a$ 很小，且 $F'_{ey} = F_a$，使放大係數 $1/(1-f_a/F'_{ey})$ 顯著放大弱軸彎矩效應</li>
-<li>強軸 LTB（L/rT 落在非彈性 LTB 範圍）→ Fbx 需以公式計算，不能直接用 0.66Fy</li>
-<li>判斷 fa/Fa ≥ 0.15 → 必須用 Equation (2) 含放大係數</li>
-</ol>
+<p>關鍵難點：<br />
+1. 弱軸細長比 $KL/r_y = 144.7 &gt; C_c = 107.3$，進入<strong>彈性挫屈</strong>區段 → $F_a$ 很小，且 $F'_{ey} = F_a$，使放大係數 $1/(1-f_a/F'_{ey})$ 顯著放大弱軸彎矩效應<br />
+2. 強軸 LTB（L/rT 落在非彈性 LTB 範圍）→ Fbx 需以公式計算，不能直接用 0.66Fy<br />
+3. 判斷 fa/Fa ≥ 0.15 → 必須用 Equation (2) 含放大係數</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析</h2>
-<p><strong>解題步驟：</strong></p>
-<ol>
-<li>計算實際應力 fa、fbx、fby</li>
-<li>計算 Cc 並比對 KL/r，確認 Fa（弱軸彈性挫屈控制）</li>
-<li>計算 Fbx（需考慮 LTB，兩公式取大）</li>
-<li>確認 Fby（弱軸彎曲，結實斷面 = 0.75Fy）</li>
-<li>判斷 fa/Fa 是否 ≥ 0.15，選用 Equation (2)</li>
-<li>代入兩個互制方程式驗算</li>
-</ol>
-<p><strong>關鍵陷阱：</strong></p>
-<ol>
-<li><strong>F'ey ≠ Euler 公式</strong>：當弱軸為彈性挫屈時，$F'_{ey} = F_a$（與 Fa 計算式相同），而非另外算一個 Euler 值</li>
-<li><strong>兩個互制方程式都要查</strong>：Equation (2) 和 Equation (3) 均不得超過 1.0</li>
-<li><strong>M1/M2 = 0 的影響</strong>：矩一端為零 → Cm = 0.6，Cb = 1.75（不是 1.0）</li>
-</ol>
+<p><strong>解題步驟：</strong><br />
+1. 計算實際應力 fa、fbx、fby<br />
+2. 計算 Cc 並比對 KL/r，確認 Fa（弱軸彈性挫屈控制）<br />
+3. 計算 Fbx（需考慮 LTB，兩公式取大）<br />
+4. 確認 Fby（弱軸彎曲，結實斷面 = 0.75Fy）<br />
+5. 判斷 fa/Fa 是否 ≥ 0.15，選用 Equation (2)<br />
+6. 代入兩個互制方程式驗算</p>
+<p><strong>關鍵陷阱：</strong><br />
+1. <strong>F'ey ≠ Euler 公式</strong>：當弱軸為彈性挫屈時，$F'_{ey} = F_a$（與 Fa 計算式相同），而非另外算一個 Euler 值<br />
+2. <strong>兩個互制方程式都要查</strong>：Equation (2) 和 Equation (3) 均不得超過 1.0<br />
+3. <strong>M1/M2 = 0 的影響</strong>：矩一端為零 → Cm = 0.6，Cb = 1.75（不是 1.0）</p>
 <hr />
 <h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
 <blockquote>
@@ -277,7 +269,7 @@ $$C_m = 0.6 - 0.4(M_1/M_2) \quad;\quad C_b = 1.75 + 1.05(M_1/M_2) + 0.3(M_1/M_2)
 </tr>
 <tr>
 <td>$KL/r_y$</td>
-<td>$1000/6.91 = 144.7 > C_c$ → <strong>彈性挫屈</strong></td>
+<td>$1000/6.91 = 144.7 &gt; C_c$ → <strong>彈性挫屈</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -287,7 +279,7 @@ $$C_m = 0.6 - 0.4(M_1/M_2) \quad;\quad C_b = 1.75 + 1.05(M_1/M_2) + 0.3(M_1/M_2)
 </tr>
 <tr>
 <td>$f_a/F_a$</td>
-<td>$0.2116/0.502 = 0.422 > 0.15$ → 用 Eq.(2)</td>
+<td>$0.2116/0.502 = 0.422 &gt; 0.15$ → 用 Eq.(2)</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -309,7 +301,7 @@ $$C_m = 0.6 - 0.4(M_1/M_2) \quad;\quad C_b = 1.75 + 1.05(M_1/M_2) + 0.3(M_1/M_2)
 </tr>
 <tr>
 <td>LTB 區段</td>
-<td>$\sqrt{7160C_b/F_y} = 59.8 < 125.9 < \sqrt{35800C_b/F_y} = 133.8$ → 非彈性</td>
+<td>$\sqrt{7160C_b/F_y} = 59.8 &lt; 125.9 &lt; \sqrt{35800C_b/F_y} = 133.8$ → 非彈性</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -373,12 +365,12 @@ $$C_m = 0.6 - 0.4(M_1/M_2) \quad;\quad C_b = 1.75 + 1.05(M_1/M_2) + 0.3(M_1/M_2)
 </tr>
 <tr>
 <td>Eq.(2) 合計</td>
-<td>$0.422 + 0.220 + 0.658 = 1.300 > 1.0$ ❌</td>
+<td>$0.422 + 0.220 + 0.658 = 1.300 &gt; 1.0$ ❌</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Eq.(3) 合計</td>
-<td>$0.101 + 0.349 + 0.635 = 1.085 > 1.0$ ❌</td>
+<td>$0.101 + 0.349 + 0.635 = 1.085 &gt; 1.0$ ❌</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -408,7 +400,7 @@ $$C_m = 0.6 - 0.4(M_1/M_2) \quad;\quad C_b = 1.75 + 1.05(M_1/M_2) + 0.3(M_1/M_2)
 </tr>
 <tr>
 <td>弱軸細長比大的放大效應</td>
-<td>$KL/r_y = 144.7 > C_c$，$F'_{ey}$ 極小，放大係數 $1/(1-f_a/F'_{ey}) = 1.73$，弱軸項被大幅放大</td>
+<td>$KL/r_y = 144.7 &gt; C_c$，$F'_{ey}$ 極小，放大係數 $1/(1-f_a/F'_{ey}) = 1.73$，弱軸項被大幅放大</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -443,14 +435,14 @@ $$C_m = 0.6 - 0.4(M_1/M_2) \quad;\quad C_b = 1.75 + 1.05(M_1/M_2) + 0.3(M_1/M_2)
 <p><strong>計算兩軸細長比：</strong></p>
 <p>$$\frac{KL}{r_x} = \frac{1 \times 1000}{20.74} = 48.2$$</p>
 <p>$$\frac{KL}{r_y} = \frac{1 \times 1000}{6.91} = 144.7 \quad \leftarrow \text{ 控制}$$</p>
-<p>由於 $KL/r_y = 144.7 > C_c = 107.3$ → <strong>彈性挫屈</strong>：</p>
+<p>由於 $KL/r_y = 144.7 &gt; C_c = 107.3$ → <strong>彈性挫屈</strong>：</p>
 <p>$$F_a = \frac{12\pi^2 E}{23(KL/r)^2} = \frac{12\pi^2 \times 2040}{23 \times (144.7)^2} = \frac{241{,}607}{481{,}574} = \boxed{0.502 \text{ tf/cm}^2}$$</p>
 <p><strong>判斷互制方程式類型：</strong></p>
-<p>$$\frac{f_a}{F_a} = \frac{0.2116}{0.502} = 0.422 > 0.15 \implies \text{使用 Equation (2)}$$</p>
+<p>$$\frac{f_a}{F_a} = \frac{0.2116}{0.502} = 0.422 &gt; 0.15 \implies \text{使用 Equation (2)}$$</p>
 <h3>Step 4：容許強軸彎矩應力 Fbx（含 LTB）</h3>
 <p>$$\frac{L}{r_T} = \frac{1000}{7.94} = 125.9$$</p>
 <p>$$\sqrt{\frac{7160 C_b}{F_y}} = \sqrt{\frac{7160 \times 1.75}{3.5}} = 59.8 \quad ; \quad \sqrt{\frac{35800 C_b}{F_y}} = 133.8$$</p>
-<p>$\because 59.8 < 125.9 < 133.8$ → 非彈性 LTB：</p>
+<p>$\because 59.8 &lt; 125.9 &lt; 133.8$ → 非彈性 LTB：</p>
 <p>$$F_{b1} = \left[\frac{2}{3} - \frac{F_y(L/r_T)^2}{107600 C_b}\right]F_y = \left[0.6667 - 0.2947\right] \times 3.5 = 1.302 \text{ tf/cm}^2$$</p>
 <p>$$A_f = b_f \times t_f = 30 \times 2.0 = 60 \text{ cm}^2 \quad ; \quad \frac{Ld}{A_f} = \frac{1000 \times 50}{60} = 833.3$$</p>
 <p>$$F_{b2} = \frac{840 C_b}{Ld/A_f} = \frac{840 \times 1.75}{833.3} = 1.764 \text{ tf/cm}^2$$</p>
@@ -462,20 +454,18 @@ $$C_m = 0.6 - 0.4(M_1/M_2) \quad;\quad C_b = 1.75 + 1.05(M_1/M_2) + 0.3(M_1/M_2)
 <p>$$F'_{ey} = \frac{12\pi^2 E}{23(KL/r_y)^2} = 0.502 \text{ tf/cm}^2 = F_a$$</p>
 <h3>Step 7：ASD 互制方程式驗算</h3>
 <p><strong>Equation (2)：</strong></p>
-<p>$$\frac{f_a}{F_a} + \frac{C_{mx} f_{bx}}{\left(1-\dfrac{f_a}{F'_{ex}}\right)F_{bx}} + \frac{C_{my} f_{by}}{\left(1-\dfrac{f_a}{F'_{ey}}\right)F_{by}} = 0.422 + 0.220 + 0.658 = \mathbf{1.300 > 1.0\ ❌}$$</p>
+<p>$$\frac{f_a}{F_a} + \frac{C_{mx} f_{bx}}{\left(1-\dfrac{f_a}{F'_{ex}}\right)F_{bx}} + \frac{C_{my} f_{by}}{\left(1-\dfrac{f_a}{F'_{ey}}\right)F_{by}} = 0.422 + 0.220 + 0.658 = \mathbf{1.300 &gt; 1.0\ ❌}$$</p>
 <p><strong>Equation (3)：</strong></p>
-<p>$$\frac{f_a}{0.6 F_y} + \frac{f_{bx}}{F_{bx}} + \frac{f_{by}}{F_{by}} = 0.101 + 0.349 + 0.635 = \mathbf{1.085 > 1.0\ ❌}$$</p>
+<p>$$\frac{f_a}{0.6 F_y} + \frac{f_{bx}}{F_{bx}} + \frac{f_{by}}{F_{by}} = 0.101 + 0.349 + 0.635 = \mathbf{1.085 &gt; 1.0\ ❌}$$</p>
 <p>$$\boxed{\text{H500×300×15×20 不滿足 ASD 雙軸梁柱互制方程式}}$$</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討</h2>
 <p><strong>關鍵觀察：弱軸彈性挫屈的特殊性</strong></p>
-<p>當 $KL/r_y > C_c$ 時，$F'_{ey} = F_a$，導致放大係數 $1/(1-f_a/F'_{ey})$ 的分母極小（= 0.578），使弱軸彎矩項被放大 1.73 倍。這是本題超過限制的主要原因，提示考試重點：<strong>細長柱的 Fa 很小時，弱軸彎矩的二階放大效應會非常顯著</strong>。</p>
-<p><strong>改善方向（實務）：</strong></p>
-<ul>
-<li>縮短柱長（加設中間側向支撐點 → 降低 $KL/r_y$）</li>
-<li>改用更大的 H 型或箱型斷面（提高 $r_y$ 和 $S_y$）</li>
-<li>採用鋼管或箱型柱（兩軸 $r$ 接近，避免弱軸主導）</li>
-</ul>
+<p>當 $KL/r_y &gt; C_c$ 時，$F'_{ey} = F_a$，導致放大係數 $1/(1-f_a/F'_{ey})$ 的分母極小（= 0.578），使弱軸彎矩項被放大 1.73 倍。這是本題超過限制的主要原因，提示考試重點：<strong>細長柱的 Fa 很小時，弱軸彎矩的二階放大效應會非常顯著</strong>。</p>
+<p><strong>改善方向（實務）：</strong><br />
+- 縮短柱長（加設中間側向支撐點 → 降低 $KL/r_y$）<br />
+- 改用更大的 H 型或箱型斷面（提高 $r_y$ 和 $S_y$）<br />
+- 採用鋼管或箱型柱（兩軸 $r$ 接近，避免弱軸主導）</p>
 <p><strong>與 LRFD 的比較：</strong><br />
 ASD 在此情境的放大係數 $C_m/(1-f_a/F'_e)$ 對應 LRFD 的 $B_1$ 放大係數，兩者物理意義相同（P-δ 效應）。</p></main>
 <footer>來源：raw/solutions/SS-2007-2/SS-2007-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>

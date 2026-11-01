@@ -52,13 +52,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>下圖所示為一承受均佈載重 $w_u$ 之鋼梁桿件，兩端分別為滾支承（A 端）及固定端（B 端），梁斷面如圖所示（非對稱 H 型鋼），假設鋼梁有充分之側向支撐，且斷面為結實斷面，材料強度 $F_y = 2.5$ tf/cm²，試依塑性分析，求此鋼梁可承受之極限均佈載重 $w_u$。（25 分）</p>
-<p><strong>梁斷面（非對稱 H 型鋼）：</strong></p>
-<ul>
-<li>上翼板：寬 300 mm（30 cm），厚 25 mm（2.5 cm）</li>
-<li>腹板：厚 15 mm（1.5 cm），高 550 mm（55 cm）</li>
-<li>下翼板：寬 200 mm（20 cm），厚 25 mm（2.5 cm）</li>
-<li>總高：300 + 550 + 250 mm → 600 mm（60 cm）（兩翼板各25mm + 腹板550mm）</li>
-</ul>
+<p><strong>梁斷面（非對稱 H 型鋼）：</strong><br />
+- 上翼板：寬 300 mm（30 cm），厚 25 mm（2.5 cm）<br />
+- 腹板：厚 15 mm（1.5 cm），高 550 mm（55 cm）<br />
+- 下翼板：寬 200 mm（20 cm），厚 25 mm（2.5 cm）<br />
+- 總高：300 + 550 + 250 mm → 600 mm（60 cm）（兩翼板各25mm + 腹板550mm）</p>
 <p><strong>結構型式：</strong> 跨度 $L = 8$ m = 800 cm，A 端滾支承，B 端固定端，全跨均佈載重 $w_u$（tf/cm）</p>
 <p><img alt="SS-2020-2 題目附圖：非對稱 H 型鋼斷面（上翼板 300×25mm，腹板 15mm×550mm，下翼板 200×25mm）及結構示意圖（A 端滾支，B 端固定，跨度 8m，均佈載重 wu）" src="../../raw/solutions/SS-2020-2/SS-2020-2-fig-1.png" /></p>
 <p><em>圖說：左圖為梁斷面（正視圖），上翼板寬 30 cm、厚 2.5 cm，腹板高 55 cm、厚 1.5 cm，下翼板寬 20 cm、厚 2.5 cm，總高 60 cm。右圖為結構示意，A 端為滾支承（下方），B 端為固定端（右方），跨度 L=8m=800cm，$w_u$ 為均向下作用之均佈載重。</em></p>
@@ -67,34 +65,30 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>核心觀念：塑性機構法（虛功法）+ 非對稱斷面之塑性斷面模數計算</strong></p>
 <p>本題測驗兩個環節：</p>
 <ol>
+<li><strong>計算非對稱 H 型鋼的塑性斷面模數 $Z_x$</strong></li>
+<li>等面積中性軸（PNA）不在幾何中心，需用「半面積法」求 PNA 位置</li>
 <li>
-<p><strong>計算非對稱 H 型鋼的塑性斷面模數 $Z_x$</strong><br />
-   - 等面積中性軸（PNA）不在幾何中心，需用「半面積法」求 PNA 位置<br />
-   - PNA 將斷面分為上下等面積，$Z_x = $ 上半面積對 PNA 之一次矩 + 下半面積對 PNA 之一次矩</p>
+<p>PNA 將斷面分為上下等面積，$Z_x = $ 上半面積對 PNA 之一次矩 + 下半面積對 PNA 之一次矩</p>
 </li>
 <li>
-<p><strong>計算一端固定一端滾支梁（propped cantilever）承受 UDL 之極限載重</strong><br />
-   - 靜定度 = 1（一次靜不定），需形成 <strong>2 個</strong> 塑性鉸才能成為機構<br />
-   - 最佳機構：固定端 B 形成第一個鉸（$M = M_p$），跨內距 A 端 $x = L(\sqrt{2}-1)$ 處形成第二個鉸</p>
+<p><strong>計算一端固定一端滾支梁（propped cantilever）承受 UDL 之極限載重</strong></p>
 </li>
+<li>靜定度 = 1（一次靜不定），需形成 <strong>2 個</strong> 塑性鉸才能成為機構</li>
+<li>最佳機構：固定端 B 形成第一個鉸（$M = M_p$），跨內距 A 端 $x = L(\sqrt{2}-1)$ 處形成第二個鉸</li>
 </ol>
-<p><strong>出題者測驗重點：</strong></p>
-<ul>
-<li>等面積中性軸定位（半面積法）</li>
-<li>$Z_x$ 的積分計算（上下兩部分各自對 PNA 求一次矩）</li>
-<li>虛功法建立方程式，並對 $x$ 求最小 $w_u$（或最大機構條件）</li>
-</ul>
+<p><strong>出題者測驗重點：</strong><br />
+- 等面積中性軸定位（半面積法）<br />
+- $Z_x$ 的積分計算（上下兩部分各自對 PNA 求一次矩）<br />
+- 虛功法建立方程式，並對 $x$ 求最小 $w_u$（或最大機構條件）</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>步驟規劃：</strong></p>
-<ol>
-<li>計算各部位面積，求總面積 $A_g$</li>
-<li>以半面積法找塑性中性軸（PNA）位置</li>
-<li>計算塑性斷面模數 $Z_x$（上下分區求一次矩後相加）</li>
-<li>計算塑性彎矩 $M_p = F_y \cdot Z_x$</li>
-<li>用虛功法（機構法）推導 $w_u$ 的公式</li>
-<li>對機構最優位置求最小 $w_u$（或直接用一次靜不定分析結果）</li>
-</ol>
+<p><strong>步驟規劃：</strong><br />
+1. 計算各部位面積，求總面積 $A_g$<br />
+2. 以半面積法找塑性中性軸（PNA）位置<br />
+3. 計算塑性斷面模數 $Z_x$（上下分區求一次矩後相加）<br />
+4. 計算塑性彎矩 $M_p = F_y \cdot Z_x$<br />
+5. 用虛功法（機構法）推導 $w_u$ 的公式<br />
+6. 對機構最優位置求最小 $w_u$（或直接用一次靜不定分析結果）</p>
 <p><strong>關鍵陷阱：</strong></p>
 <blockquote>
 <p>⚠️ <strong>陷阱1：誤將幾何中心當塑性中性軸</strong><br />
@@ -180,17 +174,17 @@ $$\boxed{x} = L(\sqrt{2}-1), \quad \boxed{w_u} = \frac{2(1+\sqrt{2})^2 M_p}{L^2}
 <tbody>
 <tr>
 <td>$A_1$（上翼板）</td>
-<td>$30 	imes 2.5 = 75$ cm²</td>
+<td>$30 \times 2.5 = 75$ cm²</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$A_2$（腹板）</td>
-<td>$1.5 	imes 55 = 82.5$ cm²</td>
+<td>$1.5 \times 55 = 82.5$ cm²</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$A_3$（下翼板）</td>
-<td>$20 	imes 2.5 = 50$ cm²</td>
+<td>$20 \times 2.5 = 50$ cm²</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -226,7 +220,7 @@ $$\boxed{x} = L(\sqrt{2}-1), \quad \boxed{w_u} = \frac{2(1+\sqrt{2})^2 M_p}{L^2}
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>$ar{y}_{PNA}$</td>
+<td>$\bar{y}_{PNA}$</td>
 <td>$2.5 + 19.17 = 21.67$ cm（距頂面）</td>
 <td style="text-align: center;"></td>
 </tr>
@@ -244,22 +238,22 @@ $$\boxed{x} = L(\sqrt{2}-1), \quad \boxed{w_u} = \frac{2(1+\sqrt{2})^2 M_p}{L^2}
 <tbody>
 <tr>
 <td>$Z_1$（上翼板）</td>
-<td>$75 	imes (21.67 - 1.25) = 1{,}531.5$ cm³</td>
+<td>$75 \times (21.67 - 1.25) = 1{,}531.5$ cm³</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$Z_2$（腹板上半）</td>
-<td>$28.755 	imes (19.17/2) = 275.7$ cm³</td>
+<td>$28.755 \times (19.17/2) = 275.7$ cm³</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$Z_3$（腹板下半）</td>
-<td>$53.745 	imes (35.83/2) = 962.9$ cm³</td>
+<td>$53.745 \times (35.83/2) = 962.9$ cm³</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$Z_4$（下翼板）</td>
-<td>$50 	imes (58.75 - 21.67) = 1{,}854.0$ cm³</td>
+<td>$50 \times (58.75 - 21.67) = 1{,}854.0$ cm³</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -269,7 +263,7 @@ $$\boxed{x} = L(\sqrt{2}-1), \quad \boxed{w_u} = \frac{2(1+\sqrt{2})^2 M_p}{L^2}
 </tr>
 <tr>
 <td>$M_p$</td>
-<td>$2.5 	imes 4624 = 11{,}560$ tf·cm</td>
+<td>$2.5 \times 4624 = 11{,}560$ tf·cm</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -391,11 +385,9 @@ $$\boxed{x} = L(\sqrt{2}-1), \quad \boxed{w_u} = \frac{2(1+\sqrt{2})^2 M_p}{L^2}
 <hr />
 <h3>Step 2：求等面積中性軸（PNA）位置</h3>
 <p>$$\frac{A_g}{2} = \frac{207.5}{2} = 103.75 \text{ cm}^2$$</p>
-<p><strong>從頂面往下累積面積：</strong></p>
-<ul>
-<li>上翼板全部：$75$ cm² $< 103.75$ cm²（PNA 在翼板以下）</li>
-<li>剩餘面積：$103.75 - 75 = 28.75$ cm²，需在腹板中取得</li>
-</ul>
+<p><strong>從頂面往下累積面積：</strong><br />
+- 上翼板全部：$75$ cm² $&lt; 103.75$ cm²（PNA 在翼板以下）<br />
+- 剩餘面積：$103.75 - 75 = 28.75$ cm²，需在腹板中取得</p>
 <p>設 PNA 距上翼板底面（腹板頂部）往下 $d$ cm：</p>
 <p>$$d = \frac{28.75}{t_w} = \frac{28.75}{1.5} = 19.17 \text{ cm}$$</p>
 <p><strong>PNA 距頂面距離：</strong><br />
@@ -418,7 +410,7 @@ $$Z_4 = A_3 \times (y_3 - \bar{y}_{PNA}) = 50 \times (58.75 - 21.67) = 50 \times
 $$Z_x = Z_1 + Z_2 + Z_3 + Z_4 = 1531.5 + 275.7 + 962.9 + 1854.0 = \mathbf{4{,}624.1 \text{ cm}^3}$$</p>
 <hr />
 <h3>Step 4：計算塑性彎矩 $M_p$</h3>
-<p>$$M_p = F_y \cdot Z_x = 2.5 \times 4{,}624.1 = \mathbf{11{,}560 \text{ tf·cm}}$$</p>
+<p>$$M_p = F_y \cdot Z_x = 2.5 \times 4{,}624.1 = \mathbf{11{,}560 \text{ tf}\cdot\text{cm}}$$</p>
 <hr />
 <h3>Step 5：虛功法推導極限均佈載重 $w_u$</h3>
 <p><strong>機構分析（一次靜不定，需 2 個塑性鉸）：</strong></p>

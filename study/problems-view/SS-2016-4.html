@@ -51,29 +51,23 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <strong>標籤：</strong> <code>LTB側扭挫屈</code> <code>側向扭轉挫屈</code> <code>強軸彎曲</code> <code>弱軸彎曲</code> <code>整體挫屈</code> <code>H型鋼梁</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p><strong>子問題：</strong></p>
-<ol>
-<li><strong>(一)</strong> 何謂側向扭轉挫屈（Lateral-Torsional Buckling, LTB）？（5 分）</li>
-<li><strong>(二)</strong> H 梁的強軸與弱軸在設計時是否需要考慮側向扭轉挫屈？試說明原因。（5 分）</li>
-</ol>
+<p><strong>子問題：</strong><br />
+1. <strong>(一)</strong> 何謂側向扭轉挫屈（Lateral-Torsional Buckling, LTB）？（5 分）<br />
+2. <strong>(二)</strong> H 梁的強軸與弱軸在設計時是否需要考慮側向扭轉挫屈？試說明原因。（5 分）</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：LTB 的力學本質——強軸弱、弱軸強的對稱性</strong></p>
 <p>此題考查考生對側向扭轉挫屈機制的深層理解。關鍵在於：LTB 是一種<strong>離面（out-of-plane）穩定性問題</strong>，其能否發生取決於梁的「強弱軸剛度之比」。H 型鋼的強弱軸差異（$I_x \gg I_y$）是判斷的核心。</p>
-<p><strong>出題者測驗重點：</strong></p>
-<ul>
-<li>LTB 的定義：同時側向彎曲 + 扭轉的聯合失穩模式</li>
-<li>強軸彎曲：必須考慮 LTB（壓翼板弱軸方向剛度小）</li>
-<li>弱軸彎曲：<strong>不需要</strong>考慮 LTB（原因需從力學角度解釋，不能只說「規範不要求」）</li>
-</ul>
+<p><strong>出題者測驗重點：</strong><br />
+- LTB 的定義：同時側向彎曲 + 扭轉的聯合失穩模式<br />
+- 強軸彎曲：必須考慮 LTB（壓翼板弱軸方向剛度小）<br />
+- 弱軸彎曲：<strong>不需要</strong>考慮 LTB（原因需從力學角度解釋，不能只說「規範不要求」）</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>步驟規劃：</strong></p>
-<ol>
-<li>定義 LTB（運動描述 + 觸發條件）</li>
-<li>分析強軸彎曲梁的穩定性 → 需要考慮 LTB</li>
-<li>分析弱軸彎曲梁的穩定性 → 不需要考慮 LTB（力學理由）</li>
-</ol>
+<p><strong>步驟規劃：</strong><br />
+1. 定義 LTB（運動描述 + 觸發條件）<br />
+2. 分析強軸彎曲梁的穩定性 → 需要考慮 LTB<br />
+3. 分析弱軸彎曲梁的穩定性 → 不需要考慮 LTB（力學理由）</p>
 <p><strong>關鍵陷阱：</strong></p>
 <blockquote>
 <p>⚠️ <strong>陷阱1：只說「強軸考慮、弱軸不考慮」而沒有解釋力學原因</strong><br />
@@ -270,20 +264,16 @@ LTB 發生後（離面失穩）：
              ╲← 截面同時扭轉（翼板位移 ≠ 腹板位移）
 </code></pre>
 <p><strong>必要條件：</strong><br />
-LTB 發生需同時滿足：</p>
-<ol>
-<li>梁受到<strong>彎矩</strong>（使一側翼板受壓，另一側受拉）</li>
-<li>壓縮翼板未受到足夠的<strong>側向支撐</strong>（無支撐長度 $L_b$ 足夠長）</li>
-<li>梁截面具有<strong>強弱軸剛度差異</strong>（$I_x \gg I_y$，即扁平斷面）</li>
-</ol>
+LTB 發生需同時滿足：<br />
+1. 梁受到<strong>彎矩</strong>（使一側翼板受壓，另一側受拉）<br />
+2. 壓縮翼板未受到足夠的<strong>側向支撐</strong>（無支撐長度 $L_b$ 足夠長）<br />
+3. 梁截面具有<strong>強弱軸剛度差異</strong>（$I_x \gg I_y$，即扁平斷面）</p>
 <p><strong>LTB 臨界彎矩（彈性）：</strong></p>
 <p>$$M_{cr} = \frac{\pi}{L_b} \sqrt{EI_y \cdot GJ + \left(\frac{\pi E}{L_b}\right)^2 I_y C_w}$$</p>
-<p>其中：</p>
-<ul>
-<li>$EI_y$：弱軸彎曲剛度</li>
-<li>$GJ$：純扭轉剛度</li>
-<li>$EI_y C_w$：翹曲剛度</li>
-</ul>
+<p>其中：<br />
+- $EI_y$：弱軸彎曲剛度<br />
+- $GJ$：純扭轉剛度<br />
+- $EI_y C_w$：翹曲剛度</p>
 <hr />
 <h3>(二) 強軸 vs 弱軸彎曲：是否需要考慮 LTB</h3>
 <h4>H 梁強軸彎曲（Bending About Major Axis）：<strong>需要考慮 LTB</strong></h4>
@@ -309,12 +299,10 @@ LTB 發生需同時滿足：</p>
 </tr>
 </tbody>
 </table>
-<p>強軸彎曲時：</p>
-<ul>
-<li>受壓翼板的潛在「側向逃逸方向」= <strong>弱軸方向</strong></li>
-<li>弱軸方向的剛度 $EI_y$ 遠小於彎曲方向剛度 $EI_x$</li>
-<li>受壓翼板容易向弱軸方向側向彎曲並帶動截面扭轉</li>
-</ul>
+<p>強軸彎曲時：<br />
+- 受壓翼板的潛在「側向逃逸方向」= <strong>弱軸方向</strong><br />
+- 弱軸方向的剛度 $EI_y$ 遠小於彎曲方向剛度 $EI_x$<br />
+- 受壓翼板容易向弱軸方向側向彎曲並帶動截面扭轉</p>
 <p>$$\text{強軸彎曲：} I_x \gg I_y \quad \Rightarrow \quad \text{壓翼板易向弱軸方向側移} \quad \Rightarrow \quad \text{需考慮 LTB}$$</p>
 <hr />
 <h4>H 梁弱軸彎曲（Bending About Minor Axis）：<strong>不需要考慮 LTB</strong></h4>
@@ -342,11 +330,9 @@ LTB 發生需同時滿足：</p>
 </tbody>
 </table>
 <p><strong>物理解釋：</strong></p>
-<p>LTB 的本質是梁從「已使用（較弱）彎曲方向」逃逸到「另一方向」。</p>
-<ul>
-<li>強軸彎曲：逃逸方向（弱軸）剛度更弱 → <strong>可能逃逸</strong> → LTB 會發生</li>
-<li>弱軸彎曲：逃逸方向（強軸）剛度更強 → <strong>不可能逃逸到剛度更高的方向</strong> → LTB <strong>不會發生</strong></li>
-</ul>
+<p>LTB 的本質是梁從「已使用（較弱）彎曲方向」逃逸到「另一方向」。<br />
+- 強軸彎曲：逃逸方向（弱軸）剛度更弱 → <strong>可能逃逸</strong> → LTB 會發生<br />
+- 弱軸彎曲：逃逸方向（強軸）剛度更強 → <strong>不可能逃逸到剛度更高的方向</strong> → LTB <strong>不會發生</strong></p>
 <p>數學上，若強制令弱軸彎曲梁發生側向失穩，等效 $M_{cr}$ 會趨向無限大：</p>
 <p>$$M_{cr}^{\text{weak axis}} \propto \sqrt{EI_x \cdot GJ + \cdots} \gg M_{cr}^{\text{strong axis}}$$</p>
 <p>因為 $I_x \gg I_y$，所以弱軸彎曲的 LTB 臨界彎矩極大，設計中不可能達到此值，故規範允許弱軸彎曲<strong>不考慮 LTB</strong>，設計強度直接取 $\phi_b M_{ny} = \phi_b M_{py}$（全截面塑性）。</p>
@@ -380,12 +366,10 @@ LTB 發生需同時滿足：</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>弱軸彎曲的設計強度</h3>
-<p>LRFD 規範中，弱軸彎曲（無 LTB 控制）：</p>
-<ul>
-<li>結實斷面（$\lambda \leq \lambda_p$）：$M_n = M_{py} = Z_y F_y$</li>
-<li>非結實斷面（$\lambda_p < \lambda \leq \lambda_r$）：線性內插至 $0.7F_y S_y$</li>
-<li>不需要計算 $L_b$、$L_p$、$L_r$ 等側扭挫屈參數</li>
-</ul>
+<p>LRFD 規範中，弱軸彎曲（無 LTB 控制）：<br />
+- 結實斷面（$\lambda \leq \lambda_p$）：$M_n = M_{py} = Z_y F_y$<br />
+- 非結實斷面（$\lambda_p &lt; \lambda \leq \lambda_r$）：線性內插至 $0.7F_y S_y$<br />
+- 不需要計算 $L_b$、$L_p$、$L_r$ 等側扭挫屈參數</p>
 <h3>圓形截面 vs H 型鋼</h3>
 <p>圓形截面（圓管或實心圓）：$I_x = I_y$，無強弱軸之分，<strong>任何彎曲方向均不發生 LTB</strong>（類似弱軸彎曲的情況）。這也是為什麼圓截面柱的設計不考慮 LTB。</p>
 <h3>考場安全答法</h3>

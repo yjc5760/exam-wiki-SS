@@ -306,13 +306,13 @@ $$\boxed{M_n} = C_b\left[M_p - (M_p - M_r)\frac{L_b - L_p}{L_r - L_p}\right] \le
 <tr>
 <td>LTB 三段判斷</td>
 <td>$L_b \leq L_p$ 塑性 / $L_p &lt; L_b \leq L_r$ 非彈性 / $L_b &gt; L_r$ 彈性，判斷錯會用錯公式</td>
-<td style="text-align: center;">[[ltb-3zone]] · [[LATERAL-TORSIONAL-BUCKLING]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">LATERAL-TORSIONAL-BUCKLING</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$C_b$ 端彎矩型</td>
 <td>$M_1/M_2 = 0$ 時 $C_b = 1.75$，誤設 1.0 導致結果低 75%</td>
-<td style="text-align: center;">[[cb-factor]] · [[BENDING-MODIFICATION-FACTOR-CB]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">cb-factor</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">BENDING-MODIFICATION-FACTOR-CB</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -330,13 +330,13 @@ $$\boxed{M_n} = C_b\left[M_p - (M_p - M_r)\frac{L_b - L_p}{L_r - L_p}\right] \le
 <tr>
 <td>$M_n$ 上限不可超過 $M_p$</td>
 <td>$C_b$ 放大後仍需截斷在 $M_p$，否則預測強度超過塑性極限</td>
-<td style="text-align: center;">[[ltb-3zone]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>殘留應力 $F_r$</td>
 <td>熱軋型鋼取 $F_r = 0.5F_y$ 或題目給定值，影響 $M_r$ 與 $L_r$ 計算</td>
-<td style="text-align: center;">[[RESIDUAL-STRESS]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">RESIDUAL-STRESS</span></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -445,26 +445,26 @@ $$\lambda_w = \frac{h}{t_w} = \frac{38.08}{1.27} = 29.98 &lt; \frac{170}{\sqrt{F
 <p>$$L_p = 212.8 \text{ cm} &lt; L_b = 812.8 \text{ cm} &lt; L_r = 833.2 \text{ cm}$$</p>
 <p>$$\boxed{\text{非彈性側扭挫屈（Inelastic LTB）範圍}}$$</p>
 <p><strong>結論：此梁挫屈時「不在彈性範圍內」</strong>（$L_b &lt; L_r$ 故為非彈性 LTB）</p>
-<p><img alt="SS-2011-3 圖 2：標稱彎矩 M_n 對側向無支撐長度 L_b 的三分區曲線。塑性區 L_b ≤ L_p = 212.8 cm、非彈性 LTB 區 212.8 至 L_r = 833.2 cm、彈性 LTB 區 L_b > 833.2 cm，三區以底色區分。本題曲線（C_b = 1.75）因 C_b 放大而在 L_b ≤ 747 cm 之前都被 M_p = 3,719.2 tf·cm 截斷，之後下降；設計點 L_b = 812.8 cm 落在非彈性區最尾端，M_n = 3,378 tf·cm，距 L_r 僅 20.4 cm（2.4%）。另繪 C_b 誤設 1.0 之對照曲線（同一 L_b 只剩 1,930 tf·cm），以及彈性式向左延伸之連續性驗算線（與主曲線幾乎重合）" src="../../raw/solutions/SS-2011-3/figs/SS-2011-3-fig-2-ltb-zones.svg" /></p>
-<p><em>圖 2　三分區曲線與設計點的位置：$C_b = 1.75$ 的放大效果讓 $M_n$ 在 $L_b \le 747$ cm 之前都被 $M_p$ 截斷，而本題的 $L_b = 812.8$ cm 恰好落在非彈性區的最尾端，距 $L_r$ 只有 20.4 cm。<strong>攔錯：</strong>分區判斷錯（誤答「彈性」），或直接把 $C_b$ 取 1.0 —— 圖上灰虛線顯示同一根梁的 $M_n$ 會只剩 1,930 tf·cm。</em></p>
+<p><img alt="SS-2011-3 圖 2：標稱彎矩 M_n 對側向無支撐長度 L_b 的三分區曲線。塑性區 L_b ≤ L_p = 212.8 cm、非彈性 LTB 區 212.8 至 L_r = 833.2 cm、彈性 LTB 區 L_b &gt; 833.2 cm，三區以底色區分。本題曲線（C_b = 1.75）因 C_b 放大而在 L_b ≤ 747 cm 之前都被 M_p = 3,719.2 tf·cm 截斷，之後下降；設計點 L_b = 812.8 cm 落在非彈性區最尾端，M_n = 3,378 tf·cm，距 L_r 僅 20.4 cm（2.4%）。另繪 C_b 誤設 1.0 之對照曲線（同一 L_b 只剩 1,930 tf·cm），以及彈性式向左延伸之連續性驗算線（與主曲線幾乎重合）" src="../../raw/solutions/SS-2011-3/figs/SS-2011-3-fig-2-ltb-zones.svg" /></p>
+<p><em>圖 2　三分區曲線與設計點的位置：$C_b = 1.75$ 的放大效果讓 $M_n$ 在 $L_b \le 747$ cm 之前都被 $M_p$ 截斷，而本題的 $L_b = 812.8$ cm 恰好落在非彈性區的最尾端，距 $L_r$ 只有 20.4 cm。<strong>攔錯：</strong> 分區判斷錯（誤答「彈性」），或直接把 $C_b$ 取 1.0 —— 圖上灰虛線顯示同一根梁的 $M_n$ 會只剩 1,930 tf·cm。</em></p>
 <hr />
 <h3>Step 6：計算標稱彎矩 $M_n$</h3>
 <p><strong>基準彎矩：</strong></p>
-<p>$$M_p = F_y Z_x = 2.52 \times 1475.9 = 3719.2 \text{ tf·cm}$$</p>
-<p>$$M_r = (F_y - F_r)S_x = 1.47 \times 1271.8 = 1869.6 \text{ tf·cm}$$</p>
+<p>$$M_p = F_y Z_x = 2.52 \times 1475.9 = 3719.2 \text{ tf}\cdot\text{cm}$$</p>
+<p>$$M_r = (F_y - F_r)S_x = 1.47 \times 1271.8 = 1869.6 \text{ tf}\cdot\text{cm}$$</p>
 <p><strong>非彈性 LTB 公式：</strong></p>
 <p>$$M_n = C_b\left[M_p - (M_p - M_r)\frac{L_b - L_p}{L_r - L_p}\right] \leq M_p$$</p>
 <p>$$= 1.75 \times \left[3719.2 - (3719.2 - 1869.6) \times \frac{812.8 - 212.8}{833.2 - 212.8}\right]$$</p>
 <p>$$= 1.75 \times \left[3719.2 - 1849.6 \times \frac{600.0}{620.4}\right]$$</p>
 <p>$$= 1.75 \times \left[3719.2 - 1849.6 \times 0.96712\right]$$</p>
 <p>$$= 1.75 \times \left[3719.2 - 1788.8\right]$$</p>
-<p>$$= 1.75 \times 1930.4 = 3378.2 \text{ tf·cm}$$</p>
+<p>$$= 1.75 \times 1930.4 = 3378.2 \text{ tf}\cdot\text{cm}$$</p>
 <p><strong>上限檢核：</strong> $3378.2 \leq M_p = 3719.2$ tf·cm ✓</p>
-<p>$$\boxed{M_n = 3378 \text{ tf·cm} \approx 33.78 \text{ tf·m}}$$</p>
+<p>$$\boxed{M_n = 3378 \text{ tf}\cdot\text{cm} \approx 33.78 \text{ tf}\cdot\text{m}}$$</p>
 <p><strong>設計強度：</strong> $\phi_b M_n = 0.9 \times 3378 = 3040$ tf·cm</p>
 <blockquote>
 <p>✅ <strong>連續性交叉驗算</strong>：因 $L_b$ 幾乎等於 $L_r$，改用<strong>彈性</strong> LTB 公式應得到幾乎相同的值：<br />
-$$M_n^{elastic} = \frac{C_b S_x X_1\sqrt{2}}{L_b/r_y}\sqrt{1 + \frac{X_1^2X_2}{2(L_b/r_y)^2}} = 3380 \text{ tf·cm}$$<br />
+$$M_n^{elastic} = \frac{C_b S_x X_1\sqrt{2}}{L_b/r_y}\sqrt{1 + \frac{X_1^2X_2}{2(L_b/r_y)^2}} = 3380 \text{ tf}\cdot\text{cm}$$<br />
 與非彈性式的 3378 tf·cm 僅差 <strong>0.07%</strong> —— 兩支曲線在 $L_b = L_r$ 處確實相接，證明<br />
 $X_1$、$X_2$、$L_r$ 的計算彼此一致（若 $L_r$ 算錯，兩式必大幅分歧）。</p>
 </blockquote>
@@ -485,9 +485,9 @@ $X_1$、$X_2$、$L_r$ 的計算彼此一致（若 $L_r$ 算錯，兩式必大幅
 </blockquote>
 <h3>$C_b = 1.75$ 的加成效果</h3>
 <p>若誤設 $C_b = 1.0$：</p>
-<p>$$M_n^{(C_b=1)} = 1.0 \times 1930.4 = 1930 \text{ tf·cm}$$</p>
+<p>$$M_n^{(C_b=1)} = 1.0 \times 1930.4 = 1930 \text{ tf}\cdot\text{cm}$$</p>
 <p>正確 $C_b = 1.75$：</p>
-<p>$$M_n = 3378 \text{ tf·cm}$$</p>
+<p>$$M_n = 3378 \text{ tf}\cdot\text{cm}$$</p>
 <p>兩者相差 <strong>75%</strong>！端彎矩型 $C_b$ 的影響極為顯著，考場上務必計算而非直接使用 1.0。</p>
 <h3>為什麼「端彎矩＋另一端為零」是最有利的 $C_b$？</h3>
 <p>舊式 $C_b = 1.75 + 1.05(M_1/M_2) + 0.3(M_1/M_2)^2$ 中，$M_1/M_2$ 取<strong>負值代表單曲率</strong>（同向彎曲）。本題 $M_1 = 0$ 為單曲率與雙曲率的分界，$C_b = 1.75$。若兩端等值反向（$M_1/M_2 = +1$，雙曲率）則 $C_b = 1.75+1.05+0.3 = 3.10 &gt; 2.3$ 取 2.3；若兩端等值同向（純均勻彎矩，$M_1/M_2 = -1$）則 $C_b = 1.75-1.05+0.3 = 1.0$。<strong>均勻彎矩是最不利情形（$C_b = 1.0$）</strong>，因為整段側撐長度內壓力翼板都承受最大壓應力。</p>
@@ -644,14 +644,14 @@ $X_1$、$X_2$、$L_r$ 的計算彼此一致（若 $L_r$ 算錯，兩式必大幅
 <p>$$L_r^{TW} = 833.2 \text{ cm} \ &gt; \ L_b = 812.8 \text{ cm} \quad \Rightarrow \quad \textbf{非彈性 LTB}$$</p>
 <p><strong>同一根梁，兩個規範給出相反的答案。</strong> 這正是題目那句「確認此梁挫屈時是否在彈性範圍內」最值得注意的地方。</p>
 <p><img alt="SS-2011-3 圖 3：兩套規範的挫屈分區帶對照。上排為台灣 2010 規範（本卷公式表）：L_p = 212.8、L_r = 833.2 cm，L_b = 812.8 cm 落在非彈性區，C_b = 1.75、M_n = 3,378 tf·cm；下排為 AISC 360-16／-22 §F2：L_p = 214.5、L_r = 721.3 cm，同一個 L_b 落在彈性區，C_b = 1.667、M_n = 3,176 tf·cm。一條紅色虛線代表 L_b = 812.8 cm 貫穿兩排，顯示同一根梁在兩套規範下的分區相反" src="../../raw/solutions/SS-2011-3/figs/SS-2011-3-fig-3-code-flip.svg" /></p>
-<p><em>圖 3　把兩套規範的 $L_p$、$L_r$ 畫成同一條刻度上的分區帶，$L_b = 812.8$ cm 的紅線一貫到底：上排落在非彈性、下排落在彈性。$L_r$ 縮短 13.4% 的根源是轉折彎矩由 $(F_y-F_r)S_x$ 改為 $0.7F_yS_x$。<strong>攔錯：</strong>拿 AISC 360-16 的 $L_r$ 去配本卷的舊式 $X_1$／$X_2$ 公式（或反之），分區與答案都會錯。</em></p>
+<p><em>圖 3　把兩套規範的 $L_p$、$L_r$ 畫成同一條刻度上的分區帶，$L_b = 812.8$ cm 的紅線一貫到底：上排落在非彈性、下排落在彈性。$L_r$ 縮短 13.4% 的根源是轉折彎矩由 $(F_y-F_r)S_x$ 改為 $0.7F_yS_x$。<strong>攔錯：</strong> 拿 AISC 360-16 的 $L_r$ 去配本卷的舊式 $X_1$／$X_2$ 公式（或反之），分區與答案都會錯。</em></p>
 <p>$L_r$ 縮短 13.4% 的主因是 $M_r$ 的定義改變：舊版 $M_r = (F_y - F_r)S_x$ 用題目給的 $F_r = 1.05$（＝$0.417F_y$），得 $M_r = 1.47S_x$；新版固定用 $0.7F_yS_x = 1.764S_x$，轉折彎矩<strong>提高 20%</strong>，於是曲線更早（更短的 $L_b$）就降到 $M_r$，$L_r$ 自然變小。</p>
 <h3>6.3 AISC 360-16 的 $M_n$</h3>
 <p>$$\frac{L_b}{r_{ts}} = \frac{812.8}{5.246} = 154.9$$</p>
 <p>$$F_{cr} = \frac{C_b\pi^2E}{(L_b/r_{ts})^2}\sqrt{1 + 0.078\frac{Jc}{S_xh_o}\left(\frac{L_b}{r_{ts}}\right)^2} = \frac{1.667\pi^2(2100)}{154.9^2}\sqrt{1+0.078(0.001074)(154.9^2)}$$</p>
 <p>$$= 1.4394 \times \sqrt{1+2.0100} = 1.4394 \times 1.7349 = 2.4972 \text{ tf/cm}^2 &lt; F_y = 2.52 \ \checkmark$$</p>
-<p>$$M_n = F_{cr}S_x = 2.4972 \times 1271.8 = \mathbf{3176 \text{ tf·cm}} \ (\leq M_p = 3719.2 \ \checkmark)$$</p>
-<p>$$\phi_b M_n = 0.9 \times 3176 = 2858 \text{ tf·cm}$$</p>
+<p>$$M_n = F_{cr}S_x = 2.4972 \times 1271.8 = \mathbf{3176 \text{ tf}\cdot\text{cm}} \ (\leq M_p = 3719.2 \ \checkmark)$$</p>
+<p>$$\phi_b M_n = 0.9 \times 3176 = 2858 \text{ tf}\cdot\text{cm}$$</p>
 <h3>6.4 對照結論</h3>
 <table>
 <thead>
@@ -703,7 +703,7 @@ $X_1$、$X_2$、$L_r$ 的計算彼此一致（若 $L_r$ 算錯，兩式必大幅
 </table>
 <p><strong>作答建議</strong>：本卷第三頁已把 $X_1$、$X_2$、$L_p$、$L_r$、$C_b$、$C_W$ 的舊式公式全部印出，且卷首要求依 2010 規範作答，故<strong>主答必須用舊式，答「非彈性」</strong>。若要展現對新規範的掌握，可在答案末尾以三、五行補述「若依 AISC 360-16，$L_r$ 縮為 721 cm，本梁改屬彈性 LTB，$M_n$ 降至 3176 tf·cm」，屬加分而非替代。</p>
 <hr />
-<p><em>修正日期：2026-08-22（勘誤：$C_W$ 依本卷公式表改用 $I_fh^2/2 = 687{,}469$ cm⁶（原用近似式 689,693，高估 0.37%）；連帶 $X_2$ 1.230→</em><em>1.224</em><em>、$L_r$ 833.5→</em><em>833.2</em><em>、$M_n$ 3382→</em><em>3378</em><em> tf·cm；$A$／$I_x$／$S_x$／$Z_x$／$M_p$／$M_r$ 精度修正；新增彈性－非彈性連續性交叉驗算、$C_b$ 端彎矩討論、§6 最新規範對照（含 AISC 360-16 下</em><em>挫屈分區翻轉為彈性</em><em>之重要發現））</em><br />
+<p><em>修正日期：2026-08-22（勘誤：$C_W$ 依本卷公式表改用 $I_fh^2/2 = 687{,}469$ cm⁶（原用近似式 689,693，高估 0.37%）；連帶 $X_2$ 1.230→<strong>1.224</strong>、$L_r$ 833.5→<strong>833.2</strong>、$M_n$ 3382→<strong>3378</strong> tf·cm；$A$／$I_x$／$S_x$／$Z_x$／$M_p$／$M_r$ 精度修正；新增彈性－非彈性連續性交叉驗算、$C_b$ 端彎矩討論、§6 最新規範對照（含 AISC 360-16 下<strong>挫屈分區翻轉為彈性</strong>之重要發現））</em><br />
 <em>圖解補繪：2026-08-29（向量圖，腳本 <code>gen_SS-2011-3.py</code>，可重跑）</em><br />
 <em>驗證狀態：unverified</em></p>
 </main>

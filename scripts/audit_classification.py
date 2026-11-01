@@ -5,7 +5,7 @@
 以 raw/json/question_index.json 為準，比對：
   A 索引自身：主分類代號不存在於大綱、指向他科、名稱與大綱不符、副分類含主分類或他科代號、索引題號無題解
   B 題解正本 raw/solutions/<id>/<id>.md 標頭（主分類／副分類／設計法）
-  C wiki/problems/<id>.md 標頭
+  C wiki/problems/<id>.md 標頭（目錄不存在時略過；SS 已於 2026-11-01 封存）
   D wiki/topics/<單元>.md 的「主分類題目」「副分類題目」清單
   E wiki/ 其他頁表格中寫的單元名稱 ≠ 索引主分類
 """
@@ -71,8 +71,10 @@ def main():
             if s == p: iss[qid].append(("A 索引", f"副分類重複列入主分類 {s}"))
             elif not s.startswith(S + "-"): iss[qid].append(("A 索引", f"副分類 {s} 指向他科"))
             elif s not in names: iss[qid].append(("A 索引", f"副分類 {s} 不在命題大綱"))
-        for lab, path in (("B 題解正本", root / f"raw/solutions/{qid}/{qid}.md"),
-                          ("C wiki題頁", root / f"wiki/problems/{qid}.md")):
+        checks = [("B 題解正本", root / f"raw/solutions/{qid}/{qid}.md")]
+        if (root / "wiki/problems").is_dir():  # 2026-11-01 起 SS 已封存 wiki/problems，目錄不存在時略過 C
+            checks.append(("C wiki題頁", root / f"wiki/problems/{qid}.md"))
+        for lab, path in checks:
             h = header(path)
             if h is None:
                 iss[qid].append((lab, "檔案不存在")); continue

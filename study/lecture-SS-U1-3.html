@@ -1129,7 +1129,7 @@ $$M_{ny} = \min\left(F_y Z_y,\ 1.5F_y S_y\right)\quad\text{（AISC 360-10 起放
 W 型鋼的 \(Z_y/S_y\) 通常在 1.50～1.67 之間，<b>多數斷面超過 1.5</b> ——
 若允許發展到 \(F_yZ_y\)，服務載重下翼板外緣會出現大範圍永久變形。
 <br><br><b>觸發信號</b>：題目<b>同時給你 \(Z_y\) 與 \(S_y\)</b> → 這本身就是暗示，出題者要你檢查 \(Z_y/S_y\) 有沒有超過上限。
-（詳見 <code>wiki/traps/WEAK-AXIS-BENDING-LIMIT</code>，出自 <a class="qlink" href="problems-view/SS-2014-3.html" target="_blank">SS-2014-3</a>）
+（詳見 <code>archive/wiki/traps/WEAK-AXIS-BENDING-LIMIT</code>，出自 <a class="qlink" href="problems-view/SS-2014-3.html" target="_blank">SS-2014-3</a>）
 </div>
 
 <table>
@@ -1630,7 +1630,7 @@ $$G = \frac{\sum(I_c/L_c)}{\sum(I_b/L_b)}\quad\text{（節點處柱的線勁度 
 <li>基礎<b>固接</b>：\(G = 1.0\)（理論 0，設計取 1）　｜　基礎<b>鉸接</b>：\(G = 10\)（理論 ∞，設計取 10）</li>
 <li><b>兩張圖不要拿錯</b>：無側移圖 \(0.5 \leq K \leq 1.0\)；有側移圖 \(K \geq 1.0\)。
 算出「有側移構架的 \(K = 0.8\)」就是拿錯圖了。</li>
-<li>梁遠端條件修正：遠端固接用 \(I_b/L_b\)；遠端<b>鉸接</b>用 \(\tfrac34(I_b/L_b)\)（勁度較小 → \(G\) 較大 → \(K\) 較大）</li>
+<li>梁遠端條件修正（乘在梁的 \(I_b/L_b\) 上）：<b>有側移</b>遠端鉸接 ×0.5、遠端固接 ×⅔；<b>無側移</b>遠端鉸接 ×1.5、遠端固接 ×2.0（對位圖已假設有側移梁為反向曲率 \(6EI/L\)、無側移梁為單曲率 \(2EI/L\)；不要用彎矩分配法的 ¾）</li>
 </ul>
 <b>方向檢查</b>：\(G\) 大 ＝ 梁太軟撐不住柱 ＝ 柱端接近鉸接 ＝ \(K\) 大。若你算出「\(G\) 變大而 \(K\) 變小」，方向就錯了。
 </div>
@@ -2083,7 +2083,7 @@ DAM 把二階、初始不完美、剛度折減、ASD×1.6 全部顯式化 → �
 <tr><td><a class="qlink" href="problems-view/SS-2012-3.html" target="_blank">SS-2012-3</a></td><td>101</td><td>LRFD</td><td>P-M 互制、雙軸彎矩、<b>斜撐構架</b>（只需 \(B_1\)）、弱軸挫屈、固接柱、有效長度</td><td>§3、§5、§6</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2013-4.html" target="_blank">SS-2013-4</a></td><td>102</td><td>LRFD</td><td>二階效應、<b>\(B_1\)＋\(B_2\) 完整計算</b>、無側撐剛架（<b>單柱 BC、A／D 為梁端滾支承</b>）、對位圖 \(K\)、\(M_{nt}\)／\(M_{lt}\)、<b>層間穩定 \(\sum P_{eK}\)</b></td><td>§4（全節）、§8.1</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2014-4.html" target="_blank">SS-2014-4</a></td><td>103</td><td>LRFD</td><td>P-M 互制、\(B_1\)＋\(B_2\)、二階效應、斜撐構架、<b>地震力組合</b>（耐震）</td><td>§3、§4、§6</td></tr>
-<tr><td><a class="qlink" href="problems-view/SS-2019-3.html" target="_blank">SS-2019-3</a></td><td>108</td><td>ASD</td><td>偏心載重、互制公式、\(C_m\)、\(F'_e\)、LTB、\(C_b\)、弱軸挫屈、<b>P-M 互制圖繪製</b></td><td>§6.1、§7、§5.2</td></tr>
+<tr><td><a class="qlink" href="problems-view/SS-2019-3.html" target="_blank">SS-2019-3</a></td><td>108</td><td>ASD</td><td>偏心載重、互制公式、\(C_m\)、\(F'_e\)、LTB、\(C_b\)、弱軸挫屈、連續柱彎矩分配（B 點中間支承）、軸力路徑</td><td>§6.1、§7、§5.2</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2020-3.html" target="_blank">SS-2020-3</a></td><td>109</td><td>LRFD</td><td>雙軸彎矩、\(B_1\) 放大、有效長度、<b>\(M_1/M_2\) 符號判斷</b>、<b>回算工作彎矩 \(M_{wy}\)</b>、台灣 \(B_1\) (8.2-3)、\(P_{e1}\) 取 \(K = 1\)、弱軸 \(1.5F_yS_y\) 上限</td><td>§3.1、§6、§7.3</td></tr>
 <tr><td><a class="qlink" href="problems-view/SS-2022-1.html" target="_blank">SS-2022-1</a></td><td>111</td><td>LRFD</td><td><b>箱形柱</b>、雙軸彎矩、軸壓、P-M 互制、<b>整體＋局部挫屈</b>、剪力強度、有效長細比</td><td>§5、§6</td></tr>
 </tbody>
@@ -2355,7 +2355,7 @@ ASD 與 LRFD 利用率比在 ±10% 內？互制式答案是「幾成」的量級
 
 <footer>
   SS-U1-3 梁柱桿件 — 觀念講義｜exam-wiki-SS<br>
-  資料來源：<code>raw/json/question_index.json</code>、<code>wiki/code-ref/</code>（b1／b2 推導、P-M 物理意義、ASD Fa／Cc）、<code>wiki/methods/</code>、<code>wiki/traps/BEAM-COLUMN-TRAPS.md</code>、2026-08-22 勘誤後之 <code>raw/solutions/</code>（SS-2003-4／2009-1／2011-1／2013-4／2020-3）<br>
+  資料來源：<code>raw/json/question_index.json</code>、<code>archive/wiki/code-ref/</code>（b1／b2 推導、P-M 物理意義、ASD Fa／Cc）、<code>archive/wiki/methods/</code>、<code>archive/wiki/traps/BEAM-COLUMN-TRAPS.md</code>、2026-08-22 勘誤後之 <code>raw/solutions/</code>（SS-2003-4／2009-1／2011-1／2013-4／2020-3）<br>
 圖解：<code>study/figs-src/lecture-SS-U1-3/gen_figs.py</code> 依公式產生（2026-10-23），範例數值由同資料夾 <code>calcs.py</code> 獨立重算
 </footer>
 

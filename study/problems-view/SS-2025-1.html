@@ -315,37 +315,37 @@ $$\boxed{\phi_b M_{nx}} = 0.9 \times F_y \times \boxed{Z_x}$$</p>
 <tr>
 <td>翼板寬厚比分母是 $2t_f$</td>
 <td>翼板從腹板懸出，懸臂長 $b_f/2$，故 $\lambda = (b_f/2)/t_f = b_f/(2t_f)$</td>
-<td style="text-align: center;">[[COMPACT-SECTION]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COMPACT-SECTION</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$\lambda_p$ 公式（銲接 vs 熱軋皆同）</td>
 <td>$\lambda_{pf} = 17/\sqrt{F_y}$（tf/cm² 制），不因斷面類型而異</td>
-<td style="text-align: center;">[[COMPACT-SECTION]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">COMPACT-SECTION</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>完全側向支撐 → $M_n = M_p$（直接跳過 LTB）</td>
 <td>$L_b = 0 &lt; L_p$，三段判斷邏輯的第一段</td>
-<td style="text-align: center;">[[ltb-3zone]] · [[LATERAL-TORSIONAL-BUCKLING]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">ltb-3zone</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">LATERAL-TORSIONAL-BUCKLING</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$Z_x$ 包含腹板貢獻</td>
 <td>腹板分上下兩半，各部分 $= (h_w/2) \times t_w \times (h_w/4)$，不可漏算</td>
-<td style="text-align: center;">[[plastic-zx]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">plastic-zx</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>殘留應力 $F_r$ 不影響 $M_p$</td>
 <td>$M_p = F_y Z_x$，殘留應力只影響 $M_r$ 和 $L_r$（LTB 相關），本題完全支撐故無影響</td>
-<td style="text-align: center;">[[RESIDUAL-STRESS]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">RESIDUAL-STRESS</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$\phi_b = 0.9$（彎曲）</td>
 <td>不可與 $\phi_c = 0.85$（壓力）混用</td>
-<td style="text-align: center;">[[lrfd-phi-values]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">lrfd-phi-values</span></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -407,7 +407,7 @@ $$\lambda_w = \frac{h_w}{t_w} = \frac{42}{1.5} = 28.0$$</p>
 <h3>Step 4：計算塑性斷面模數 $Z_x$</h3>
 <p>塑性斷面模數 $Z_x$ = 中性軸上下各部分面積 × 各面積形心到中性軸距離之代數和。</p>
 <p>對於對稱 H 型鋼（中性軸在腹板中點）：</p>
-<p>$$Z_x = \underbrace{2 \times b_f t_f \times \left(\frac{h_w}{2} + \frac{t_f}{2}\right)}<em _text_腹板貢獻（上下各半）="\text{腹板貢獻（上下各半）">{\text{翼板貢獻（上下各一）}} + \underbrace{2 \times \frac{h_w}{2} \times t_w \times \frac{h_w}{4}}</em>$$}</p>
+<p>$$Z_x = \underbrace{2 \times b_f t_f \times \left(\frac{h_w}{2} + \frac{t_f}{2}\right)}_{\text{翼板貢獻（上下各一）}} + \underbrace{2 \times \frac{h_w}{2} \times t_w \times \frac{h_w}{4}}_{\text{腹板貢獻（上下各半）}}$$</p>
 <p><strong>翼板貢獻：</strong><br />
 $$Z_{x,\text{flange}} = 2 \times (30 \times 1.5) \times \left(\frac{42}{2} + \frac{1.5}{2}\right) = 2 \times 45 \times (21 + 0.75) = 2 \times 45 \times 21.75 = 1{,}957.5 \text{ cm}^3$$</p>
 <p><strong>腹板貢獻：</strong><br />
@@ -416,15 +416,15 @@ $$Z_{x,\text{web}} = 2 \times \frac{42}{2} \times 1.5 \times \frac{42}{4} = 2 \t
 $$Z_x = 1{,}957.5 + 661.5 = \mathbf{2{,}619 \text{ cm}^3}$$</p>
 <hr />
 <h3>Step 5：計算塑性彎矩 $M_p$</h3>
-<p>$$M_p = F_y \times Z_x = 2.5 \times 2{,}619 = 6{,}547.5 \text{ tf·cm}$$</p>
+<p>$$M_p = F_y \times Z_x = 2.5 \times 2{,}619 = 6{,}547.5 \text{ tf}\cdot\text{cm}$$</p>
 <hr />
 <h3>Step 6：計算設計撓曲強度 $\phi_b M_n$</h3>
 <p>由 Step 2–3 確認：$M_n = M_p$（結實斷面 + 完全側向支撐 + 腹板不局部挫屈）</p>
 <p><strong>標稱彎矩強度：</strong></p>
-<p>$$\boxed{M_{nx} = M_p = 6{,}547.5 \text{ tf·cm} = 65.475 \text{ tf·m}}$$</p>
+<p>$$\boxed{M_{nx} = M_p = 6{,}547.5 \text{ tf}\cdot\text{cm} = 65.475 \text{ tf}\cdot\text{m}}$$</p>
 <p><strong>設計彎矩強度（$\phi_b = 0.90$）：</strong></p>
-<p>$$\phi_b M_n = \phi_b M_p = 0.9 \times 6{,}547.5 = \mathbf{5{,}892.75 \text{ tf·cm}}$$</p>
-<p>$$\boxed{\phi_b M_{nx} = 5{,}892.75 \text{ tf·cm} = 58.93 \text{ tf·m}}$$</p>
+<p>$$\phi_b M_n = \phi_b M_p = 0.9 \times 6{,}547.5 = \mathbf{5{,}892.75 \text{ tf}\cdot\text{cm}}$$</p>
+<p>$$\boxed{\phi_b M_{nx} = 5{,}892.75 \text{ tf}\cdot\text{cm} = 58.93 \text{ tf}\cdot\text{m}}$$</p>
 <blockquote>
 <p>原卷問「設計彎矩強度 $M_{nx}$」，符號與形容詞不一致，<strong>兩個數字都寫出來</strong>最安全：<br />
 標稱 $M_{nx} = 6{,}547.5$ tf·cm；設計 $\phi_bM_{nx} = 5{,}892.75$ tf·cm。</p>
@@ -547,7 +547,7 @@ $$Z_x = 1{,}957.5 + 661.5 = \mathbf{2{,}619 \text{ cm}^3}$$</p>
 <li>引用題幹三個豁免條件：<strong>結實梁</strong>、<strong>腹板不局部挫屈</strong>、<strong>完全側支撐</strong></li>
 <li>驗證 $\lambda_f = b_f/(2t_f) = 30/3 = 10.0 &lt; \lambda_{pf} = 17/\sqrt{2.5} = 10.75$（結實 ✓）</li>
 <li>完全側支撐 → $L_b = 0 &lt; L_p$ → 無 LTB → $M_n = M_p$</li>
-<li>$Z_x = \underbrace{2(30)(1.5)(21.75)}<em 661.5="661.5">{1957.5} + \underbrace{1.5(42)^2/4}</em>619$ cm³} = 2{,</li>
+<li>$Z_x = \underbrace{2(30)(1.5)(21.75)}_{1957.5} + \underbrace{1.5(42)^2/4}_{661.5} = 2{,}619$ cm³</li>
 <li>標稱：$M_{nx} = 2.5 \times 2{,}619 = 6{,}547.5$ tf·cm；設計：$\phi_bM_{nx} = 0.9 \times 6{,}547.5 = \mathbf{5{,}892.75}$ tf·cm $= 58.93$ tf·m</li>
 <li>一句話交代干擾資訊：「銲接殘餘應力 1.16 tf/cm² 僅用於 $M_r = (F_y - F_r)S_x$ 與 $L_r$ 之計算，本題因完全側支撐而不需使用」</li>
 </ol>
@@ -558,7 +558,7 @@ $$Z_x = 1{,}957.5 + 661.5 = \mathbf{2{,}619 \text{ cm}^3}$$</p>
 </blockquote>
 <h3>6.1 結論不變：$\phi_b M_{nx}$ 兩規範完全相同</h3>
 <p>結實斷面＋完全側支撐時，兩規範都是 $M_n = M_p = F_yZ_x$、$\phi_b = 0.90$：</p>
-<p>$$\phi_b M_{nx} = 0.9 \times 2.5 \times 2{,}619 = \mathbf{5{,}892.75 \text{ tf·cm}} \quad (\text{兩規範同值})$$</p>
+<p>$$\phi_b M_{nx} = 0.9 \times 2.5 \times 2{,}619 = \mathbf{5{,}892.75 \text{ tf}\cdot\text{cm}} \quad (\text{兩規範同值})$$</p>
 <p>$Z_x$ 是純幾何量、$\phi_b = 0.90$ 自 AISC LRFD 1993 起未變，故<strong>本題答案不受規範改版影響</strong>。</p>
 <h3>6.2 翼板結實界限：差異 0.96%，判定相同</h3>
 <table>

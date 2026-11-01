@@ -76,7 +76,7 @@
 科目全名以 `raw/json/syllabus_taxonomy.json` 為準
 （**SM = 土壤力學與基礎設計、MM = 材料力學**，2026-08-07 前的版本把這兩科寫反了）。
 
-**前置條件：** 該科需有 `raw/json/question_index.json` 與 `wiki/topics/XX-Un-m.md`
+**前置條件：** 該科需有 `raw/json/question_index.json`；`wiki/topics/XX-Un-m.md` 若存在可參考（SS 已於 2026-11-01 封存 wiki（只留 wiki/queries/，其餘在 archive/wiki/ 僅供參考、未經全面核對，見 wiki/queries/觀念方法頁掃描-SS-2026-11-01.md），SS 不需要）
 
 ---
 
@@ -147,7 +147,7 @@
 | | `lecture-*.html` | `formula-given-*.html` | `study-*.html`（本 skill） |
 |---|---|---|---|
 | 回答的問題 | 這條公式**為什麼**成立？ | 這條公式**要不要背**？ | 這個單元**考什麼**？ |
-| 資料來源 | wiki + 解析 + 規範 | `raw/exams/` 考卷原文 | `raw/json/question_index.json` |
+| 資料來源 | 解析＋規範（SS 不再用 wiki，見下註） | `raw/exams/` 考卷原文 | `raw/json/question_index.json` |
 | 可否自動重生 | 否 | 半自動 | **是（純資料驅動）** |
 | 時機 | 第一次接觸該單元 | 排讀書計畫 | 決定練題順序、考前押題 |
 
@@ -190,7 +190,7 @@
 | Skill | 功能 | 觸發語句 |
 |-------|------|---------| 
 | `vha` | 為解析 .md 加入 §3.5 VHA 區塊 | 「幫 SS-XXXX-N 做 VHA」 |
-| `add-to-wiki` | 將知識點新增至六層知識庫 | 「把這個知識點加入知識庫」 |
+| `add-to-wiki` | 將知識點新增至六層知識庫（SS 已封存 wiki，不適用） | 「把這個知識點加入知識庫」 |
 
 ---
 
@@ -242,3 +242,4 @@ instructions: |
 
 歡迎 PR！新增 skill 請按照上方「新增 Skill 規範」格式操作。
 
+> 註：SS 已於 2026-11-01 封存 wiki（只留 wiki/queries/，其餘在 archive/wiki/ 僅供參考、未經全面核對，見 wiki/queries/觀念方法頁掃描-SS-2026-11-01.md）。各 skill 在 SS 中讀 wiki 的步驟，改讀 `raw/solutions/`（含 methods/）與 `study/` 教材。

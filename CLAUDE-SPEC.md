@@ -24,7 +24,6 @@
 - 官方設計圖表截圖：`SS-YYYY-N-chart-n.png`
 - 參考公式截圖：`SS-YYYY-N-eqn-n.png`
 - 手寫補充：`SS-YYYY-N-hand-n.png`
-- PDF 補充筆記：`*.pdf`（由使用者放入對應題目資料夾，命名無強制規範）
 
 > **⚠️ 禁止：** 不可使用 `SS-2015-1-fig.png`（必須有後置序號 `-1`）。
 
@@ -46,18 +45,10 @@
 > **⚠️ 禁止：** 觀念講義不可命名為 `study-SS-UN-n.html`（會覆蓋該子項的命題分析頁）。
 > 三份教材的檔名固定為 `lecture-`（觀念講義）／`formula-given-`（給／背分界）／`study-`（命題分析），不可互換。
 
-### 1.3 互動圖（HTML）
+### 1.3 互動圖（HTML）——已廢止
 
-- 由 Cowork 在解析時生成，格式為 `SS-YYYY-N-[內容碼]-viz.html`
-- SS 專屬內容碼（由題型決定）：
-  - 梁設計/剪力力學：`sfd-bmd`
-  - 梁柱桿件（軸力與雙向彎矩）：`pm`
-  - 側扭挫屈判斷：`ltb`
-  - 柱強度曲線：`column-curve`
-  - 接合詳圖：`connection`
-- 例：`SS-2018-2-pm-viz.html`
-
-> **⚠️ 禁止：** 不可使用 `SS-2018-2-viz.html` 或 `SS-2018-2-pm.html`。必須有特定的內容碼及 `-viz` 後綴。
+- 2026-11-01 起不再產生 `*-viz.html`，既有 19 份已全數刪除。
+- 需要圖解時，改用 struct-diagram 產生 `figs/*.svg` 向量圖（附 `gen_*.py` 可重跑），並以 `![...](figs/xxx.svg)` 插回 .md。
 
 ### 1.4 Wiki 概念與方法論（由 Cowork 建立）
 
@@ -86,7 +77,6 @@
   "hasSolution": true,             // 只要有 .md 就是 true
   "verificationStatus": "verified",// unverified / needs-review / verified
   "hasHandwritten": false,         // 有無 -hand-*.png
-  "hasViz": true,                  // 有無 *-viz.html
   "tags": [                        // 至少 3 個具體考點標籤
     "結實斷面",
     "Cb係數",
@@ -125,38 +115,7 @@
       *圖說：6m 簡支梁，兩端鉸接，跨中受 PL=10t。上方載重為均佈靜載重 2t/m（含自重）。斷面型式為 W400x200x8x13。*
       ```
 
-2.  **使用者補充的 PDF 檔 (`*.pdf`)**：
-    - 命名無強制規範（例：`老師解答.pdf` 或 `筆記.pdf`）。
-    - 放入資料夾後，不需在 .md 內引用；但需對 Cowork 說 `更新儀表板資料`，儀表板的題卡會自動產生「📎 補充筆記 PDF」按鈕。
 
-3.  **Cowork 生成的互動 HTML 圖 (`*-viz.html`)**：
-    - 在 `.md` 中以特定標記顯示連結。
-    - 範例：
-      ```markdown
-      > 📊 互動圖：[梁柱 P-M 互制圖 (SS-2018-2-pm-viz.html)](SS-2018-2-pm-viz.html)
-      ```
-
----
-
-## 3. Wiki 輸出層（`wiki/`）規範
-
-此層檔案除了 `wiki/diagnosis/`、`wiki/failure-modes/`、`wiki/materials/`、`wiki/code-ref/` 與 `wiki/queries/` 之外，其餘均由 `ingest` 或 `compile all` 指令生成。
-
-### 3.1 題解 Markdown 模板（由 ingest 寫入）
-
-> 從 `raw/` 讀入時，Cowork 會在文檔最開頭（H1 之後，正文之前）注入 Meta 區塊。
-
-```markdown
-# 考題編號：[SS-XXXX-N]
-
-**主分類：** `SS-U1-2` 梁桿件
-**副分類：** 無
-**設計法：** LRFD
-**標籤：** `LTB` `Cb係數` `非結實斷面`
-
----
-（接續 raw/solutions/SS-XXXX-N/SS-XXXX-N.md 內容）
-```
 
 ### 3.2 內部連結格式（Wiki 化）
 
@@ -235,13 +194,8 @@ _需要知道公式名稱與適用條件，套入 L1 即可算出。_
 - [ ] 第 3.5 節的 VHA 卡關欄位 `| |` 均留空（供考生自填）
 - [ ] VHA 的關鍵公式區段正確使用 `\boxed{}` 標記中繼變數
 - [ ] 數學式無純文字的 `Mu`、`Fcr`（皆替換為 `$M_u$`、`$F_{cr}$` 等 LaTeX）
-- [ ] （如有）生互動圖 `-viz.html` 且附上正確對應檔名之 Markdown 連結
 - [ ] 自動更新 `question_index.json`：hasSolution=true，且填入 3 個以上的標籤
 - [ ] 自動填寫 designMethod 與 secondaryTopicIds
 
-### 4.2 ingest 到 Wiki
-- [ ] 前置檢查：`verificationStatus === "verified"`
-- [ ] `wiki/problems/[id].md` 被建立
-- [ ] 對應的 `concepts.json` 條目的相關題目表格已更新
-- [ ] `wiki/index.md` 與 `wiki/by-year.md` 已追加此題連結
-- [ ] 在 `wiki/log.md` 紀錄此操作
+### 4.2 ~~ingest 到 Wiki~~（已停用：2026-11-01 wiki 封存）
+> 解析完成或勘誤後的同步改為：`python scripts/render_problem_view.py SS-XXXX-N` 重生 `study/problems-view/`、更新 `question_index.json`／`dashboard-data.js`、必要時重跑 `build_unit_page.py`，並在 `wiki/queries/log.md` 紀錄。

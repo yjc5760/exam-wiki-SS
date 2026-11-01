@@ -142,11 +142,11 @@ pdftoppm -r 110 -png "raw/exams/XX-YYYY_科目名.pdf" /tmp/img/YYYY
 
 | 來源 | 取什麼 |
 |------|--------|
-| `wiki/methods/*.md` | 「適用題型」欄含本單元代號者，取其核心原理與解題步驟裡的每條式子 |
+| `raw/solutions/methods/*/*.md`（他科若仍有 `wiki/methods/*.md` 亦可） | 「適用題型」欄含本單元代號者，取其核心原理與解題步驟裡的每條式子 |
 | `study/lecture-XX-Un-m.html`（若已存在） | 各章的主公式與其來源推導 |
-| `wiki/concepts/`、`wiki/failure-modes/`、`wiki/materials/` | 本單元相關頁的判定式與門檻值 |
+| （他科）`wiki/concepts/`、`wiki/failure-modes/`、`wiki/materials/`；SS 已封存於 `archive/wiki/`，僅供參考、需與正本核對 | 本單元相關頁的判定式與門檻值 |
 | `raw/solutions/XX-YYYY-N/*.md` | §3.5 VHA 的「主要公式」與 L2/L3 條目（最貼近實戰） |
-| `wiki/code-ref/` | 規範條文的係數與適用範圍 |
+| （他科）`wiki/code-ref/`；SS 在 `archive/wiki/code-ref/`，僅供參考 | 規範條文的係數與適用範圍 |
 
 **清單要涵蓋四類，不要只列「長得像公式」的東西** —— 最常被漏掉的正是後三類，
 而它們恰好是最不會被印在考卷上的：

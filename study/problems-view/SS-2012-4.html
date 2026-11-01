@@ -88,13 +88,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </table>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong> 本題考驗梁柱簡單接頭（Simple Shear Connection）的標準設計流程，剪力板接合為最常見型式。設計需同時確認：</p>
-<ol>
-<li><strong>螺栓剪力強度</strong>（決定螺栓數目）</li>
-<li><strong>承壓強度</strong>（決定螺栓數目或板厚下限）</li>
-<li><strong>剪力板淨截面剪力破壞</strong>（最常控制板厚）</li>
-<li><strong>剪力板全截面剪力降伏</strong></li>
-</ol>
+<p><strong>核心觀念：</strong> 本題考驗梁柱簡單接頭（Simple Shear Connection）的標準設計流程，剪力板接合為最常見型式。設計需同時確認：<br />
+1. <strong>螺栓剪力強度</strong>（決定螺栓數目）<br />
+2. <strong>承壓強度</strong>（決定螺栓數目或板厚下限）<br />
+3. <strong>剪力板淨截面剪力破壞</strong>（最常控制板厚）<br />
+4. <strong>剪力板全截面剪力降伏</strong></p>
 <p><strong>出題意圖：</strong> 考生必須熟悉 LRFD 接合設計的三層次驗證（螺栓強度 → 承壓強度 → 板件強度），並給出螺栓排列圖示。</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
@@ -426,12 +424,10 @@ $$\phi R_n^{(\text{bolt shear})} = \phi \cdot F_v \cdot A_b = 0.75 \times 330 \t
 </table>
 <p><strong>配置驗算：</strong><br />
 $$L_e + (n-1) \times s + L_e = 30 + 2 \times 60 + 30 = 180 \text{ mm} \checkmark \quad \text{（恰好等於板高）}$$</p>
-<p><strong>螺栓位置（自板頂端計）：</strong></p>
-<ul>
-<li>第 1 顆：距板頂 30 mm</li>
-<li>第 2 顆：距板頂 90 mm（中央）</li>
-<li>第 3 顆：距板頂 150 mm（距板底 30 mm）</li>
-</ul>
+<p><strong>螺栓位置（自板頂端計）：</strong><br />
+- 第 1 顆：距板頂 30 mm<br />
+- 第 2 顆：距板頂 90 mm（中央）<br />
+- 第 3 顆：距板頂 150 mm（距板底 30 mm）</p>
 <p><em>策略註解：3顆螺栓恰好在 180mm 板上排得乾淨，邊距 30mm、間距 60mm，這是考題刻意設計的整數結果。</em></p>
 <h3>Step 4：承壓強度驗核</h3>
 <p>孔徑：$d_h = d + 2 = 20 + 2 = 22$ mm（標準孔）</p>
@@ -548,11 +544,9 @@ mm   │          │
 <hr />
 <h2>6. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>6.1 淨截面剪力破壞為控制極限狀態的原因</h3>
-<p>三個孔打掉後有效面積 = (180 - 66)/180 = 63% 的原始面積，而 $F_u/F_y = 400/248 = 1.61$，扣掉 φ 後：</p>
-<ul>
-<li>剪力降伏：$\phi \times 0.6F_y = 0.9 \times 0.6 \times 248 = 133.9$ MPa</li>
-<li>剪力破壞：$\phi \times 0.6F_u \times 0.63 = 0.75 \times 0.6 \times 400 \times 0.63 = 113.4$ MPa</li>
-</ul>
+<p>三個孔打掉後有效面積 = (180 - 66)/180 = 63% 的原始面積，而 $F_u/F_y = 400/248 = 1.61$，扣掉 φ 後：<br />
+- 剪力降伏：$\phi \times 0.6F_y = 0.9 \times 0.6 \times 248 = 133.9$ MPa<br />
+- 剪力破壞：$\phi \times 0.6F_u \times 0.63 = 0.75 \times 0.6 \times 400 \times 0.63 = 113.4$ MPa</p>
 <p>淨斷面強度較低且孔損失較大，因此淨截面剪力破壞控制板厚。</p>
 <h3>6.2 為何使用承壓型（Bearing Type）而非摩阻型（Slip-Critical）？</h3>
 <ul>

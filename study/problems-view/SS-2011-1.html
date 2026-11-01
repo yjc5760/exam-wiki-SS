@@ -97,8 +97,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>最終目標：</strong> 正確說明 AISC 2010 Chapter C 直接分析法四大核心要素：二階分析、初始不完美、剛度折減、ASD 1.6 倍係數推導</p>
 <h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
 <p><strong>子題三：剛度修正</strong><br />
-$$EI^<em> = 0.8\,\tau_b\,EI, \quad EA^</em> = 0.8\,EA \qquad (\text{規範符號為 } \tau_b\text{，不是 } \tau_a)$$<br />
-$$\boxed{\tau_b} = \begin{cases} 1.0 &amp; \alpha P_r/P_y \leq 0.5 \ 4\left(\dfrac{\alpha P_r}{P_y}\right)\left(1 - \dfrac{\alpha P_r}{P_y}\right) &amp; \alpha P_r/P_y &gt; 0.5 \end{cases}$$</p>
+$$EI^* = 0.8\,\tau_b\,EI, \quad EA^* = 0.8\,EA \qquad (\text{規範符號為 } \tau_b\text{，不是 } \tau_a)$$<br />
+$$\boxed{\tau_b} = \begin{cases} 1.0 &amp; \alpha P_r/P_y \leq 0.5 \\ 4\left(\dfrac{\alpha P_r}{P_y}\right)\left(1 - \dfrac{\alpha P_r}{P_y}\right) &amp; \alpha P_r/P_y &gt; 0.5 \end{cases}$$</p>
 <p><strong>子題四：ASD 係數推導</strong><br />
 $$\boxed{\alpha} = \frac{P_u}{P_a} \xrightarrow{L \gg D} \frac{1.6L}{L} = 1.6$$</p>
 <h3>L1：題目直接給定</h3>
@@ -185,7 +185,7 @@ $$\boxed{\alpha} = \frac{P_u}{P_a} \xrightarrow{L \gg D} \frac{1.6L}{L} = 1.6$$<
 <tbody>
 <tr>
 <td>基本折減</td>
-<td><strong>所有</strong>對穩定有貢獻之構材：$EI^<em> = 0.8\tau_bEI$、$EA^</em> = 0.8EA$</td>
+<td><strong>所有</strong>對穩定有貢獻之構材：$EI^* = 0.8\tau_bEI$、$EA^* = 0.8EA$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -251,7 +251,7 @@ $$\boxed{\alpha} = \frac{P_u}{P_a} \xrightarrow{L \gg D} \frac{1.6L}{L} = 1.6$$<
 <tr>
 <td>P-Δ vs P-δ 差異</td>
 <td>P-Δ 影響整體結構穩定（層間側移）；P-δ 影響構材彎矩分布（桿件撓曲）；兩者均需考慮</td>
-<td style="text-align: center;">[[P-DELTA-EFFECT]] · [[SECOND-ORDER-ANALYSIS]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">P-DELTA-EFFECT</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SECOND-ORDER-ANALYSIS</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -269,13 +269,13 @@ $$\boxed{\alpha} = \frac{P_u}{P_a} \xrightarrow{L \gg D} \frac{1.6L}{L} = 1.6$$<
 <tr>
 <td>勁度折減 0.8 的物理意義</td>
 <td>使 DAM 的構材強度曲線與 ELM 的柱曲線在無側移情況下吻合（校準用）；$\tau_b$ 的額外折減反映高軸力下殘留應力造成的非彈性軟化</td>
-<td style="text-align: center;">[[RESIDUAL-STRESS]] · [[TANGENT-MODULUS-THEORY]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">RESIDUAL-STRESS</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">TANGENT-MODULUS-THEORY</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>DAM 令 $K = 1.0$ 的原因</td>
 <td>DAM 已在分析中直接考慮二階效應、初始不完美、勁度折減，$K$ 的補償作用已無必要 —— 規範明定<strong>取 $K = 1$</strong>（不是「不得小於 1.0」）</td>
-<td style="text-align: center;">[[effective-length-chart]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">effective-length-chart</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -331,15 +331,18 @@ $$\boxed{\alpha} = \frac{P_u}{P_a} \xrightarrow{L \gg D} \frac{1.6L}{L} = 1.6$$<
 <p><strong>策略註解：</strong> 兩種方法在物理上是等效的，實務上多採用假想水平力法，因為不需要修改結構幾何。</p>
 <hr />
 <p><img alt="SS-2011-1 兩格對照：左為直接把節點座標偏移 Δ0 = L/500，右為幾何維持完美但施加等效假想水平力 Ni = 0.002·α·Yi" src="../../raw/solutions/SS-2011-1/figs/SS-2011-1-fig-2-imperfection.svg" /></p>
-<p><em>圖 2　起始不完美的兩種等效模擬。$0.002$ 就是 $\Delta_0/L = 1/500$ 這個同一個數；這張圖攔的是把 $N_i$ 寫成 $0.002P_r$（$Y_i$ 是該層重力載重，不是構材需求軸力）。</em></p>
+<p><em>圖 2　起始不完美的兩種等效模擬。$0.002$ 就是 $\Delta_0/L = 1/500$ 這個同一個數；這張圖攔的是把 $N_i$ 寫成 $0.002P_r$（$Y_i$ 是該層<strong>重力載重</strong>，不是構材需求軸力）。</em></p>
 <h3>(三) 剛度修正（Adjustments to Stiffness）</h3>
 <p><strong>為何需要剛度修正？</strong></p>
 <p>鋼結構在軸壓作用下，材料在到達彈性挫屈載重之前，因<strong>殘留應力</strong>的存在會提前進入局部降伏，導致有效剛度降低。若分析中仍使用彈性剛度 $EI$，將<strong>高估結構的抵抗側移能力</strong>，導致不安全的設計結果。</p>
 <p>AISC 2010 §C2.3 規定對<strong>所有對結構穩定有貢獻的構材</strong>作以下修正（<strong>規範符號為 $\tau_b$</strong>，不是 $\tau_a$）：</p>
-<p>$$EI^<em> = 0.8\,\tau_b\,EI \quad \text{（彎曲勁度）}$$<br />
-$$EA^</em> = 0.8\,EA \quad \text{（軸向勁度）}$$</p>
+<p>$$EI^* = 0.8\,\tau_b\,EI \quad \text{（彎曲勁度）}$$<br />
+$$EA^* = 0.8\,EA \quad \text{（軸向勁度）}$$</p>
 <p>其中勁度折減係數 $\tau_b$：</p>
-<p>$$\tau_b = \begin{cases} 1.0 &amp; \text{當 } \dfrac{\alpha P_r}{P_{y}} \leq 0.5 \[6pt] 4\dfrac{\alpha P_r}{P_y}\left(1 - \dfrac{\alpha P_r}{P_y}\right) &amp; \text{當 } \dfrac{\alpha P_r}{P_{y}} &gt; 0.5 \end{cases}$$</p>
+<p>$$\tau_b = \begin{cases}
+1.0 &amp; \text{當 } \dfrac{\alpha P_r}{P_{y}} \leq 0.5 \\[6pt]
+4\dfrac{\alpha P_r}{P_y}\left(1 - \dfrac{\alpha P_r}{P_y}\right) &amp; \text{當 } \dfrac{\alpha P_r}{P_{y}} &gt; 0.5
+\end{cases}$$</p>
 <p>其中：<br />
 - $P_r$：構材之需求軸壓強度<br />
 - $P_y = F_y A_g$：構材全斷面降伏力<br />
@@ -402,11 +405,11 @@ $$EA^</em> = 0.8\,EA \quad \text{（軸向勁度）}$$</p>
 <p><strong>為什麼一定要抬升？</strong> 二階效應（$B_2 = 1/(1-\sum P/\sum P_e)$）對載重是<strong>非線性</strong>的：在服務載重下算出的放大量會系統性低估強度位階的放大量。因此必須在 LRFD 位階分析，再把內力除回來。這是 AISC 給出的<strong>根本理由</strong>，比「1.6 怎麼算出來」更重要，答題時應先寫這一點。</p>
 </li>
 <li>
-<p><strong>1.6 這個數字的來源要誠實交代。</strong> AISC 規範解說<strong>並未</strong>給出唯一的算式，只說明「ASD 載重組合約為 LRFD 的 $1/1.6$」。可佐證的三項事實：<br />
-   - $\dfrac{1.2D+1.6L}{D+L}$ 的區間為 $1.2 \sim 1.6$，取<strong>上限 1.6</strong> 最保守（上面的推導）；<br />
-   - AISC 的 ASD／LRFD 標定關係為 $\Omega = 1.5/\phi$，其中 1.5 來自 $L/D = 3$ 時 $\dfrac{1.2D+1.6L}{D+L} = 1.5$；<br />
-   - <strong>AISC 360-05 §H1.2 用的常數就是 1.5</strong>，到 360-10 才以 $\alpha = 1.6$ 取代。</p>
+<p><strong>1.6 這個數字的來源要誠實交代。</strong> AISC 規範解說<strong>並未</strong>給出唯一的算式，只說明「ASD 載重組合約為 LRFD 的 $1/1.6$」。可佐證的三項事實：</p>
 </li>
+<li>$\dfrac{1.2D+1.6L}{D+L}$ 的區間為 $1.2 \sim 1.6$，取<strong>上限 1.6</strong> 最保守（上面的推導）；</li>
+<li>AISC 的 ASD／LRFD 標定關係為 $\Omega = 1.5/\phi$，其中 1.5 來自 $L/D = 3$ 時 $\dfrac{1.2D+1.6L}{D+L} = 1.5$；</li>
+<li><strong>AISC 360-05 §H1.2 用的常數就是 1.5</strong>，到 360-10 才以 $\alpha = 1.6$ 取代。</li>
 </ol>
 <p>換言之：<strong>1.5 是「典型」比值，1.6 是「上限」比值，規範選了較保守的 1.6。</strong> 考場作答寫「取 $L \gg D$ 之上限 1.6，較典型值 1.5 保守」即完整。</p>
 <hr />
@@ -659,7 +662,8 @@ $$EA^</em> = 0.8\,EA \quad \text{（軸向勁度）}$$</p>
 </table>
 <p><strong>四個子題的答案在 360-10／-16／-22 三版下實質相同</strong>；本題的內容至今仍是有效的。真正的落差在於<strong>台灣規範尚未引進 DAM</strong>——作答時若被問「我國規範如何規定」，須答「我國現行仍採有效長度法＋$B_1B_2$（第 8.2 節），尚無直接分析法之對應條文」。</p>
 <hr />
-<p><em>修正日期：2026-08-22（勘誤：①勁度折減係數符號 $\tau_a$ 全面更正為規範用的 </em><em>$\tau_b$</em><em>；②釐清「$0.8$ 是無條件折減、$\tau_b$ 才是條件折減」（原文易讓人誤解為只有非彈性才折減），並補 $\tau_b$ 在 $\alpha P_r/P_y = 0.5$ 處連續、$= 1.0$ 處歸零之性質，以及「一律取 $\tau_b=1$ ＋ 額外 $0.001Y_i$」之替代規定；③§3 表格「ASD 安全係數 $\Omega = 1.6$」更正為「</em><em>載重係數</em><em> $\alpha = 1.6$」（$\Omega_c = 1.67$ 才是安全係數）；④子題(四) 補上誠實的來源交代——AISC 解說未列單一推導，且 </em><em>360-05 用的常數是 1.5</em><em>、360-10 才改為 1.6，$\Omega = 1.5/\phi$ 的標定給的是 1.5，故 1.6 是「取上限較保守」；⑤「$K$ 可取 1.0（但不得小於 1.0）」更正為規範明定「</em><em>取 $K=1$</em><em>」；⑥補 $N_i$ 之 $Y_i$ 定義（重力載重，非 $P_r$）與 $\Delta_{2nd}/\Delta_{1st} \leq 1.7$ 之最小側力規定、ELM／一階分析法之 $\leq 1.5$ 適用限制；⑦新增 §6：台灣規範仍在 ELM 體系（無 DAM）之落差說明，及 360-10→-16→-22 第 C 章變動對照（含 $L_c = KL$ 新符號、$\alpha=1.6$ 三版未變））</em><br />
+<p><em>修正日期：2026-08-22（勘誤：①勁度折減係數符號 $\tau_a$ 全面更正為規範用的 <strong>$\tau_b$</strong>；②釐清「$0.8$ 是無條件折減、$\tau_b$ 才是條件折減」（原文易讓人誤解為只有非彈性才折減），並補 $\tau_b$ 在 $\alpha P_r/P_y = 0.5$ 處連續、$= 1.0$ 處歸零之性質，以及「一律取 $\tau_b=1$ ＋ 額外 $0.001Y_i$」之替代規定；③§3 表格「ASD 安全係數 $\Omega = 1.6$」更正為「<strong>載重係數</strong> $\alpha = 1.6$」（$\Omega_c = 1.67$ 才是安全係數）；④子題(四) 補上誠實的來源交代——AISC 解說未列單一推導，且 <strong>360-05 用的常數是 1.5</strong>、360-10 才改為 1.6，$\Omega = 1.5/\phi$ 的標定給的是 1.5，故 1.6 是「取上限較保守」；⑤「$K$ 可取 1.0（但不得小於 1.0）」更正為規範明定「<strong>取 $K=1$</strong>」；⑥補 $N_i$ 之 $Y_i$ 定義（重力載重，非 $P_r$）與 $\Delta_{2nd}/\Delta_{1st} \leq 1.7$ 之最小側力規定、ELM／一階分析法之 $\leq 1.5$ 適用限制；⑦新增 §6：台灣規範仍在 ELM 體系（無 DAM）之落差說明，及 360-10→-16→-22 第 C 章變動對照（含 $L_c = KL$ 新符號、$\alpha=1.6$ 三版未變））</em><br />
+<em>圖解補繪：2026-08-29（向量圖 4 張，腳本 <code>gen_SS-2011-1.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em><br />
 <em>驗證狀態：unverified</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2011-1/SS-2011-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>

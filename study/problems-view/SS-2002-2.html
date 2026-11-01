@@ -106,12 +106,10 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong><br />
 ASD 梁設計的核心是根據無支撐長度 $L_b$ 與 $L_c$、$L_u$ 的比較決定容許撓曲應力 $F_b$，再以最大彎矩不超過容許彎矩作為設計條件。</p>
-<p><strong>出題者意圖：</strong></p>
-<ol>
-<li>測驗考生能否正確<strong>辨別移動載重的控制位置</strong>（P 在何處產生最大彎矩）</li>
-<li>測驗 $L_b$ 與 $L_c$/$L_u$ 的比較與 $F_b$ 的決定</li>
-<li>確認考生不忘記<strong>自重的貢獻</strong>（靜載重 + 活載重疊加）</li>
-</ol>
+<p><strong>出題者意圖：</strong><br />
+1. 測驗考生能否正確<strong>辨別移動載重的控制位置</strong>（P 在何處產生最大彎矩）<br />
+2. 測驗 $L_b$ 與 $L_c$/$L_u$ 的比較與 $F_b$ 的決定<br />
+3. 確認考生不忘記<strong>自重的貢獻</strong>（靜載重 + 活載重疊加）</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>解題順序：</strong><br />
@@ -137,7 +135,7 @@ $$\text{確認 }L_b \to \text{比較 }L_b, L_c, L_u \to F_b \to M_a \to \text{�
 </blockquote>
 <p><strong>最終目標：</strong> 確認 $L_b$ vs $L_c$ → 決定 $F_b$ → 計算 $M_a$ → 確認移動載重最不利位置 → 求 $\boxed{P_a}$</p>
 <h3>主要公式（$\boxed{\phantom{x}}$ = 未知，待推導）</h3>
-<p>$$L_b = \frac{L}{4} = 3.5\ \text{m} < L_c = 3.87\ \text{m} \Rightarrow \boxed{F_b} = 0.66F_y$$<br />
+<p>$$L_b = \frac{L}{4} = 3.5\ \text{m} &lt; L_c = 3.87\ \text{m} \Rightarrow \boxed{F_b} = 0.66F_y$$<br />
 $$\boxed{M_a} = F_b \times S_x$$<br />
 $$M_{sw} = \frac{wL^2}{8}, \quad M_{P,max} = \frac{P \cdot L}{4}\text{（P 在跨中）}$$<br />
 $$M_{P,max} + M_{sw} \leq M_a \Rightarrow \boxed{P_a}$$</p>
@@ -211,7 +209,7 @@ $$M_{P,max} + M_{sw} \leq M_a \Rightarrow \boxed{P_a}$$</p>
 </tr>
 <tr>
 <td>$F_b$</td>
-<td>$L_b < L_c \Rightarrow 0.66F_y = 1.65$ tf/cm²</td>
+<td>$L_b &lt; L_c \Rightarrow 0.66F_y = 1.65$ tf/cm²</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -307,7 +305,7 @@ $$M_{P,max} + M_{sw} \leq M_a \Rightarrow \boxed{P_a}$$</p>
 <tbody>
 <tr>
 <td>ASD $L_b$ vs $L_c$ vs $L_u$ 三段判斷</td>
-<td>$L_b < L_c$：$F_b = 0.66F_y$；$L_c < L_b < L_u$：內插；$L_b > L_u$：彈性 LTB 公式</td>
+<td>$L_b &lt; L_c$：$F_b = 0.66F_y$；$L_c &lt; L_b &lt; L_u$：內插；$L_b &gt; L_u$：彈性 LTB 公式</td>
 <td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">asd-column</span></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -337,19 +335,19 @@ $$M_{P,max} + M_{sw} \leq M_a \Rightarrow \boxed{P_a}$$</p>
 <p>側向支撐位置：$0,\ 3.5,\ 7.0,\ 10.5,\ 14.0\ \text{m}$（共 5 處，4 個區間）</p>
 <p>$$L_b = \frac{14}{4} = 3.5\ \text{m}$$</p>
 <h3>步驟 2：比較 $L_b$ 與 $L_c$、$L_u$，決定容許撓曲應力 $F_b$</h3>
-<p>$$L_b = 3.5\ \text{m} < L_c = 3.87\ \text{m}$$</p>
+<p>$$L_b = 3.5\ \text{m} &lt; L_c = 3.87\ \text{m}$$</p>
 <p>→ <strong>全截面塑性彎矩控制</strong>，採用最大容許撓曲應力：</p>
 <p>$$\boxed{F_b = 0.66 F_y = 0.66 \times 2.5 = 1.65\ \text{tf/cm}^2}$$</p>
 <h3>步驟 3：計算容許彎矩 $M_a$</h3>
-<p>$$M_a = F_b \times S_x = 1.65 \times 1373 = 2265.45\ \text{tf·cm} = 22.655\ \text{tf·m}$$</p>
+<p>$$M_a = F_b \times S_x = 1.65 \times 1373 = 2265.45\ \text{tf}\cdot\text{cm} = 22.655\ \text{tf}\cdot\text{m}$$</p>
 <h3>步驟 4：計算自重在跨中產生的彎矩</h3>
 <p>$$w = 0.097\ \text{tf/m}$$</p>
-<p>$$M_{sw} = \frac{w L^2}{8} = \frac{0.097 \times 14^2}{8} = \frac{0.097 \times 196}{8} = \frac{19.012}{8} = 2.377\ \text{tf·m}$$</p>
+<p>$$M_{sw} = \frac{w L^2}{8} = \frac{0.097 \times 14^2}{8} = \frac{0.097 \times 196}{8} = \frac{19.012}{8} = 2.377\ \text{tf}\cdot\text{m}$$</p>
 <h3>步驟 5：確認移動集中載重的最不利位置</h3>
 <p>移動集中載重 $P$ 在位置 $x$ 時，跨中彎矩（即最大彎矩位置的彎矩）：</p>
 <p>$$M_P(x) = \frac{P \cdot x \cdot (L - x)}{L}$$</p>
 <p>對 $x$ 微分求極值：$\dfrac{dM_P}{dx} = \dfrac{P(L - 2x)}{L} = 0 \Rightarrow x = \dfrac{L}{2} = 7\ \text{m}$</p>
-<p>$$\therefore M_{P,max} = \frac{P \cdot L}{4} = \frac{P \times 14}{4} = 3.5P \quad \text{（tf·m）}$$</p>
+<p>$$\therefore M_{P,max} = \frac{P \cdot L}{4} = \frac{P \times 14}{4} = 3.5P \quad \text{（tf}\cdot\text{m）}$$</p>
 <p><strong>此時 $P$ 恰好位於第 3 個側向支撐點（$x = 7\ \text{m}$），$L_b = 3.5\ \text{m}$ 不受影響。</strong></p>
 <h3>步驟 6：彎矩設計條件求 $P_a$</h3>
 <p>$$M_{P,max} + M_{sw} \leq M_a$$</p>
@@ -384,7 +382,7 @@ $$M_{P,max} + M_{sw} \leq M_a \Rightarrow \boxed{P_a}$$</p>
 </tr>
 <tr>
 <td>$L_b$ vs $L_c$</td>
-<td>$3.5 < 3.87$ → $F_b = 0.66F_y$</td>
+<td>$3.5 &lt; 3.87$ → $F_b = 0.66F_y$</td>
 </tr>
 <tr>
 <td>$F_b$</td>
@@ -392,15 +390,15 @@ $$M_{P,max} + M_{sw} \leq M_a \Rightarrow \boxed{P_a}$$</p>
 </tr>
 <tr>
 <td>$M_a = F_b S_x$</td>
-<td>$22.655\ \text{tf·m}$</td>
+<td>$22.655\ \text{tf}\cdot\text{m}$</td>
 </tr>
 <tr>
 <td>$M_{sw}$（自重，跨中）</td>
-<td>$2.377\ \text{tf·m}$</td>
+<td>$2.377\ \text{tf}\cdot\text{m}$</td>
 </tr>
 <tr>
 <td>可用於 $P$ 的彎矩</td>
-<td>$20.278\ \text{tf·m}$</td>
+<td>$20.278\ \text{tf}\cdot\text{m}$</td>
 </tr>
 <tr>
 <td>$P_a = 20.278/3.5$</td>
@@ -420,8 +418,8 @@ $$M_{P,max} + M_{sw} \leq M_a \Rightarrow \boxed{P_a}$$</p>
 <p>$L_c$（ASD 法）是梁能充分發展側向扭轉塑性（使 $F_b = 0.66F_y$）的最大無支撐長度，由以下兩式取小值定義（A36 鋼，SI 單位）：</p>
 <p>$$L_c = \min\left(\frac{200 b_f}{\sqrt{F_y}},\ \frac{137900}{(d/A_f) F_y}\right) \quad \text{（cm，}F_y \text{ 單位 kgf/cm}^2\text{）}$$</p>
 <p>本題由考卷直接給定 $L_c = 3.87\ \text{m}$，無需自行計算。</p>
-<h3>Q：若 $L_b > L_u = 8.44\ \text{m}$ 時如何處理？</h3>
-<p>當 $L_b > L_u$ 時，$F_b$ 需由彈性側向扭轉挫屈公式計算（$F_b < 0.60F_y$），需計算 $rT$、$A_f$、$C_b$ 等參數。本題 $L_b = 3.5\ \text{m} \ll L_u = 8.44\ \text{m}$，無此問題。</p>
+<h3>Q：若 $L_b &gt; L_u = 8.44\ \text{m}$ 時如何處理？</h3>
+<p>當 $L_b &gt; L_u$ 時，$F_b$ 需由彈性側向扭轉挫屈公式計算（$F_b &lt; 0.60F_y$），需計算 $rT$、$A_f$、$C_b$ 等參數。本題 $L_b = 3.5\ \text{m} \ll L_u = 8.44\ \text{m}$，無此問題。</p>
 <h3>Q：本題為何不考慮撓度限制？</h3>
 <p>ASD 規範要求梁的活載重撓度 $\delta \leq L/360$（使用性）。題目僅要求計算容許載重，未要求撓度驗算，故略去。實際設計時需補充驗算：</p>
 <p>$$\delta = \frac{PL^3}{48EI} \leq \frac{L}{360}$$</p>

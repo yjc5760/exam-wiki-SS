@@ -67,7 +67,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <ul>
 <li><strong>形狀因子 $Z_x/S_x \approx 1.12\sim1.15$</strong>：H 型鋼翼板面積集中，力臂已接近彈性模數所用值，形狀因子遠小於矩形（1.5）</li>
 <li><strong>$A_w = d \times t_w$（非 $h \times t_w$）</strong>：規範定義腹板面積用<strong>全深</strong> $d$，這是常見筆誤</li>
-<li><strong>弱軸為控制挫屈軸</strong>：$b_f = 30.4\text{ cm} < d = 50\text{ cm}$，故 $r_y < r_x$，弱軸細長比大</li>
+<li><strong>弱軸為控制挫屈軸</strong>：$b_f = 30.4\text{ cm} &lt; d = 50\text{ cm}$，故 $r_y &lt; r_x$，弱軸細長比大</li>
 <li><strong>$\lambda_c$ 公式含 $\pi$</strong>：$\lambda_c = (KL/r\pi)\sqrt{F_y/E}$，分母有 $\pi$，初學者常忘記</li>
 </ul>
 <hr />
@@ -260,7 +260,7 @@ $$\boxed{\lambda_c} = \frac{K_y L_y}{\boxed{r_y} \cdot \pi}\sqrt{\frac{F_y}{E}}$
 </tr>
 <tr>
 <td>$C_v$</td>
-<td>$30.1 < 2.45\sqrt{E/F_y} = 59.1$ → $C_v = 1.0$</td>
+<td>$30.1 &lt; 2.45\sqrt{E/F_y} = 59.1$ → $C_v = 1.0$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -344,7 +344,7 @@ $$\boxed{\lambda_c} = \frac{K_y L_y}{\boxed{r_y} \cdot \pi}\sqrt{\frac{F_y}{E}}$
 </tr>
 <tr>
 <td>弱軸為 Y 軸的理由</td>
-<td>$b_f < d$，故 $I_y < I_x$；翼板繞弱軸慣性矩靠板寬三次方，遠小於強軸</td>
+<td>$b_f &lt; d$，故 $I_y &lt; I_x$；翼板繞弱軸慣性矩靠板寬三次方，遠小於強軸</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -404,7 +404,7 @@ $$\boxed{\lambda_c} = \frac{K_y L_y}{\boxed{r_y} \cdot \pi}\sqrt{\frac{F_y}{E}}$
 <h3>一、$M_p / M_y$（形狀因子）</h3>
 <p>翼板形心距全斷面形心：$d_f = 25.0 - 1.2 = 23.8\ \text{cm}$</p>
 <p>$$I_x = 2\left[\frac{30.4 \times 2.4^3}{12} + 72.96 \times 23.8^2\right] + \frac{1.5 \times 45.2^3}{12} = 82{,}722 + 11{,}543 = \mathbf{94{,}265\ \text{cm}^4}$$</p>
-<p>$$S_x = \frac{94{,}265}{25} = 3{,}771\ \text{cm}^3; \quad M_y = 3.5 \times 3{,}771 = 13{,}198\ \text{tf·cm}$$</p>
+<p>$$S_x = \frac{94{,}265}{25} = 3{,}771\ \text{cm}^3; \quad M_y = 3.5 \times 3{,}771 = 13{,}198\ \text{tf}\cdot\text{cm}$$</p>
 <p>PNA 以上一次面積矩（PNA 在 $y = 25\ \text{cm}$）：</p>
 <table>
 <thead>
@@ -430,11 +430,11 @@ $$\boxed{\lambda_c} = \frac{K_y L_y}{\boxed{r_y} \cdot \pi}\sqrt{\frac{F_y}{E}}$
 </tr>
 </tbody>
 </table>
-<p>$$Z_x = 2 \times 2{,}119.5 = 4{,}239\ \text{cm}^3; \quad M_p = 3.5 \times 4{,}239 = 14{,}837\ \text{tf·cm}$$</p>
+<p>$$Z_x = 2 \times 2{,}119.5 = 4{,}239\ \text{cm}^3; \quad M_p = 3.5 \times 4{,}239 = 14{,}837\ \text{tf}\cdot\text{cm}$$</p>
 <p>$$\boxed{\frac{M_p}{M_y} = \frac{4{,}239}{3{,}771} \approx 1.124}$$</p>
 <hr />
 <h3>二、標稱剪力強度 $V_n$</h3>
-<p>$$\frac{h}{t_w} = \frac{45.2}{1.5} = 30.1 < 2.45\sqrt{\frac{2{,}040}{3.5}} = 59.1 \quad \Rightarrow C_v = 1.0$$</p>
+<p>$$\frac{h}{t_w} = \frac{45.2}{1.5} = 30.1 &lt; 2.45\sqrt{\frac{2{,}040}{3.5}} = 59.1 \quad \Rightarrow C_v = 1.0$$</p>
 <p>$$A_w = d \times t_w = 50.0 \times 1.5 = 75.0\ \text{cm}^2$$</p>
 <p>$$\boxed{V_n = 0.6 \times 3.5 \times 75.0 \times 1.0 = 157.5\ \text{tf}}$$</p>
 <hr />
@@ -486,7 +486,7 @@ $$\boxed{\lambda_c} = \frac{K_y L_y}{\boxed{r_y} \cdot \pi}\sqrt{\frac{F_y}{E}}$
 <p><strong>觀念精析：</strong></p>
 <p>H 型鋼形狀因子 $\approx 1.12\sim1.15$：翼板面積集中在遠離形心處，塑性儲備已接近彈性極限，遠小於矩形斷面（1.5）。</p>
 <p>$A_w = d \times t_w$ 而非 $h \times t_w$：AISC 定義腹板剪力面積用全深 $d$，含角落翼腹交界的剪力流貢獻。</p>
-<p>弱軸 $r_y \ll r_x$ 的原因：翼板寬 $b_f < $ 全深 $d$，弱軸慣性矩 $I_y$ 主要靠翼板（形如薄板繞窄邊），而強軸靠翼板遠離形心（力臂大），故 $r_y < r_x$，弱軸為控制挫屈軸。</p>
+<p>弱軸 $r_y \ll r_x$ 的原因：翼板寬 $b_f &lt; $ 全深 $d$，弱軸慣性矩 $I_y$ 主要靠翼板（形如薄板繞窄邊），而強軸靠翼板遠離形心（力臂大），故 $r_y &lt; r_x$，弱軸為控制挫屈軸。</p>
 </main>
 <footer>來源：raw/solutions/SS-2009-3/SS-2009-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

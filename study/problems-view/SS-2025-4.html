@@ -44,21 +44,17 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：塑性分析三位一體——塑性鉸、崩塌機構、極限載重</strong></p>
 <p>塑性分析是利用鋼材的延展性，允許結構在局部位置（塑性鉸）發生充分的塑性轉動，以「再分配」彎矩，充分發揮靜不定結構的全部強度。</p>
-<p><strong>出題者測驗重點：</strong></p>
-<ul>
-<li>塑性鉸的本質：截面達 $M_p$ 後可持續轉動（形同鉸接，但傳遞 $M_p$）</li>
-<li>塑性鉸位置的判斷邏輯（彎矩最大值、支撐條件、截面突變處）</li>
-<li>崩塌機構與靜不定度的關係：<strong>靜不定度 $n$ + 1 個塑性鉸 = 崩塌機構</strong></li>
-<li>虛功法（機構法、上限法）求極限載重的步驟</li>
-</ul>
+<p><strong>出題者測驗重點：</strong><br />
+- 塑性鉸的本質：截面達 $M_p$ 後可持續轉動（形同鉸接，但傳遞 $M_p$）<br />
+- 塑性鉸位置的判斷邏輯（彎矩最大值、支撐條件、截面突變處）<br />
+- 崩塌機構與靜不定度的關係：<strong>靜不定度 $n$ + 1 個塑性鉸 = 崩塌機構</strong><br />
+- 虛功法（機構法、上限法）求極限載重的步驟</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>回答架構（依三子題）：</strong></p>
-<ol>
-<li>塑性鉸定義：力學定義 + 材料行為 + 與一般鉸接的差異</li>
-<li>常見位置：4個典型位置 + 說明原因</li>
-<li>崩塌機構：定義 + 鉸數公式 + 虛功法步驟</li>
-</ol>
+<p><strong>回答架構（依三子題）：</strong><br />
+1. 塑性鉸定義：力學定義 + 材料行為 + 與一般鉸接的差異<br />
+2. 常見位置：4個典型位置 + 說明原因<br />
+3. 崩塌機構：定義 + 鉸數公式 + 虛功法步驟</p>
 <p><strong>關鍵陷阱：</strong></p>
 <blockquote>
 <p>⚠️ <strong>陷阱1：塑性鉸 ≠ 一般鉸接</strong><br />
@@ -77,11 +73,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>最終目標：</strong> 說明塑性鉸定義、常見位置、崩塌機構與極限載重求解方法（概念題，無數值計算）</p>
 <h3>主要公式（概念題關鍵公式）</h3>
 <p><strong>塑性鉸形成條件</strong><br />
-$$M = M_p = F_y Z_x \quad \Rightarrow 	ext{截面可自由轉動，傳遞常數彎矩 } M_p$$</p>
+$$M = M_p = F_y Z_x \quad \Rightarrow \text{截面可自由轉動，傳遞常數彎矩 } M_p$$</p>
 <p><strong>崩塌機構條件</strong><br />
-$$	ext{塑性鉸數} = 	ext{靜不定度 } n + 1$$</p>
+$$\text{塑性鉸數} = \text{靜不定度 } n + 1$$</p>
 <p><strong>虛功法（機構法）</strong><br />
-$$\delta W_{ext} = \sum P_i \delta_i = \sum M_{p,j} 	heta_j = \delta W_{int}$$</p>
+$$\delta W_{ext} = \sum P_i \delta_i = \sum M_{p,j} \theta_j = \delta W_{int}$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -191,7 +187,7 @@ $$\delta W_{ext} = \sum P_i \delta_i = \sum M_{p,j} 	heta_j = \delta W_{int}$$</
 </tr>
 <tr>
 <td>內力虛功</td>
-<td>$\sum M_{p,j} 	heta_j$</td>
+<td>$\sum M_{p,j} \theta_j$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -407,12 +403,10 @@ $$\delta W_{ext} = \sum P_i \delta_i = \sum M_{p,j} 	heta_j = \delta W_{int}$$</
 </table>
 <p>考場上機構法較直觀，適合大多數題型。</p>
 <h3>塑性分析的前提條件</h3>
-<p>塑性分析的有效性依賴以下假設：</p>
-<ol>
-<li><strong>充分延展性（結實斷面）</strong>：截面在形成塑性鉸前不發生局部挫屈</li>
-<li><strong>穩定性</strong>：塑性鉸轉動過程中不發生整體穩定破壞（如側扭挫屈）</li>
-<li><strong>應力遲緩（Shakedown）不發生</strong>：在疲勞或交變載重下，塑性鉸不累積損傷</li>
-</ol>
+<p>塑性分析的有效性依賴以下假設：<br />
+1. <strong>充分延展性（結實斷面）</strong>：截面在形成塑性鉸前不發生局部挫屈<br />
+2. <strong>穩定性</strong>：塑性鉸轉動過程中不發生整體穩定破壞（如側扭挫屈）<br />
+3. <strong>應力遲緩（Shakedown）不發生</strong>：在疲勞或交變載重下，塑性鉸不累積損傷</p>
 <p>台灣規範（及 AISC）要求在使用塑性分析的構件中，$\lambda \leq \lambda_p$（結實斷面），且需特別考慮穩定性條件。</p>
 <h3>考場安全答法</h3>
 <p><strong>定義（1-2 句）：</strong> 截面彎矩達 $M_p$ 後形成，傳遞 $M_p$ 且允許無限轉動，與普通鉸的差異在於 $M = M_p \neq 0$。</p>

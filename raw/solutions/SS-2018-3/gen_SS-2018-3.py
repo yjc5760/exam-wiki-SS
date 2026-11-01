@@ -53,7 +53,7 @@ AWF  = lambda w, L=LF: THR(w)*L
 TAUF = FF/AWF(W0)                             # 151.6
 TAUF_ALT = FF/AWF(W0, LF_ALT)                 # 140.3
 W_FL_REQ = W0*TAUF/FA                          # 10.05
-W_FL_USE = 10     # §4 翼板 Step 4：10.05 → 10 mm
+W_FL_USE = 11     # §4 翼板 Step 4：10.05 → 進位 11 mm（2026-11-01；10 mm 時 τ=91.0>90.5）
 SIG_BASE = FF/(BF*TFL)                        # 80.4 母材
 SIG_ALLOW_BASE = 0.6*FY                       # 141
 W_FL_MAX = TFL - 2                            # 沿板緣上限 14 mm

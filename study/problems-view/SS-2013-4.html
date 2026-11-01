@@ -41,9 +41,9 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>原卷逐字</strong>：「如圖 4 所示一<strong>無側撐剛架</strong>，承受垂直軸壓力 P 及水平力 H。試使用 LRFD 求解<strong>柱 BC</strong> 之二階設計彎矩（Second-order design moment）$M_u$ 及 $B_1$、$B_2$、$M_{nt}$、$M_{lt}$。（求解柱 BC 之有效長度係數時，請參考題二之 Alignment Chart。）（25 分）（柱邊界為固接（Fixed end）時 G 使用 1、為鉸接（hinged end）時 G 使用 10。）」</p>
 </blockquote>
 <p><img alt="SS-2013-4 題目附圖：水平梁 A—B—D 位於上方，A、D 為滾支承，B 點下方連一根長度 L 的柱 BC，C 為鉸支承；水平力 H 作用於 A，垂直力 P 作用於 B；AB = BD = 1.5L" src="../../raw/solutions/SS-2013-4/SS-2013-4-fig-1.png" /></p>
-<p><em>圖說（依原卷圖 4 目視判讀）：</em><em>上方</em><em>為連續水平梁 </em><em>A—B—D</em><em>，$AB = BD = 1.5L$（全長 $3L$），各段 $EI$ 相同。</em><em>A 端與 D 端均為滾支承</em><em>（三角形＋滾輪＋斜線地面符號）——只提供</em><em>垂直</em><em>支承，水平方向</em><em>可自由平移</em><em>。</em><em>B 點</em><em>為梁與柱之剛性交會點。自 B 往</em><em>下</em><em>接一根長度 $L$、剛度 $EI$ 之柱 </em><em>BC</em><em>，柱底 </em><em>C 為鉸支承</em><em>（三角形＋斜線地面，無滾輪）——同時束制水平與垂直。</em><em>水平力 $H$ 作用於 A 點</em><em>（向右），</em><em>垂直軸壓力 $P$ 作用於 B 點</em><em>（向下，即柱頂）。</em></p>
+<p><em>圖說（依原卷圖 4 目視判讀）：<strong>上方</strong>為連續水平梁 <strong>A—B—D</strong>，$AB = BD = 1.5L$（全長 $3L$），各段 $EI$ 相同。<strong>A 端與 D 端均為滾支承</strong>（三角形＋滾輪＋斜線地面符號）——只提供<strong>垂直</strong>支承，水平方向<strong>可自由平移</strong>。<strong>B 點</strong>為梁與柱之剛性交會點。自 B 往<strong>下</strong>接一根長度 $L$、剛度 $EI$ 之柱 <strong>BC</strong>，柱底 <strong>C 為鉸支承</strong>（三角形＋斜線地面，無滾輪）——同時束制水平與垂直。<strong>水平力 $H$ 作用於 A 點</strong>（向右），<strong>垂直軸壓力 $P$ 作用於 B 點</strong>（向下，即柱頂）。</em></p>
 <p><img alt="SS-2013-4 題目幾何向量重繪：上方連續梁 A—B—D 兩端為滾支承，B 點下方接單一柱 BC，柱底 C 為鉸支承；H 作用於 A、P 作用於柱頂 B" src="../../raw/solutions/SS-2013-4/figs/SS-2013-4-fig-1-frame.svg" /></p>
-<p><em>圖 1　題目幾何重繪。A、D 是梁端的滾支承而非柱頂節點——全結構只有柱 BC 一根，這張圖攔的是「單層兩跨、三根柱」的誤讀，該誤讀會同時把 $\sum P_{eK}$ 膨脹 2.7 倍、把 $M_{lt}$ 錯分成 $HL/3$。</em></p>
+<p><em>圖 1　題目幾何重繪。A、D 是<strong>梁端的滾支承</strong>而非柱頂節點——全結構只有柱 BC 一根，這張圖攔的是「單層兩跨、三根柱」的誤讀，該誤讀會同時把 $\sum P_{eK}$ 膨脹 2.7 倍、把 $M_{lt}$ 錯分成 $HL/3$。</em></p>
 <p><strong>⚠️ 幾何判讀重點（本題最易誤讀之處）：</strong></p>
 <table>
 <thead>
@@ -436,37 +436,37 @@ $M_A/M_B = 0/0$ 無定義。但 $B_1 M_{nt} = B_1 \times 0 = 0$，$B_1$ 之數�
 <tr>
 <td>$\sum P_{eK}$ 只計抵抗側移之柱</td>
 <td>$B_2$ 是「層」的穩定係數；分母為該層<strong>提供側向勁度</strong>之柱的 $P_{eK}$ 總和。滾支承不是柱，不計入</td>
-<td style="text-align: center;">[[b1b2-amplification]] · [[MOMENT-AMPLIFICATION-B1-B2]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">b1b2-amplification</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">MOMENT-AMPLIFICATION-B1-B2</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$\sum P_u$ 含靠桿（leaning column）</td>
 <td>$\sum P_u$ 為該層<strong>全部</strong>垂直載重（含不抵抗側移者）；本題 $P$ 全在 BC 上，無靠桿</td>
-<td style="text-align: center;">[[b1b2-amplification]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">b1b2-amplification</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$B_1$ 用無側移 K、$B_2$ 用有側移 K</td>
 <td>規範：$P_{e1}$ 之 $K \leq 1.0$（P-δ 屬構材內效應）；$P_{e2}$ 之 $K$ 依 4.8 節且 $\geq 1.0$（P-Δ 屬層效應）。混用即重複計入側移</td>
-<td style="text-align: center;">[[b1b2-amplification]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">b1b2-amplification</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>對位圖 $G$ 的分母</td>
 <td>為節點上<strong>所有</strong>梁的 $I/L$ 之和；柱頂 B 連左右兩段，故分母是單段的兩倍，$G$ 減半</td>
-<td style="text-align: center;">[[effective-length-chart]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">effective-length-chart</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>對位圖對梁遠端條件的假設</td>
 <td>有側移對位圖內設「梁遠端反對稱轉動」（梁勁度 $6EI/L_g$）。本題梁遠端為滾支承（轉動自由，實際勁度 $3EI/L_g$），嚴格應將 $I_g/L_g$ 乘 0.5，見 §5</td>
-<td style="text-align: center;">[[effective-length-chart]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">effective-length-chart</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>P-Δ 與 P-δ 的分工</td>
 <td>P-Δ：層間漂移 × 重力 → 放大 $M_{lt}$；P-δ：構材撓曲 × 軸力 → 放大 $M_{nt}$</td>
-<td style="text-align: center;">[[P-DELTA-EFFECT]] · [[SECOND-ORDER-ANALYSIS]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">P-DELTA-EFFECT</span> · <span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SECOND-ORDER-ANALYSIS</span></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -902,7 +902,8 @@ $$\sum P_u = P$$</p>
 <p><strong>作答建議：</strong> 原卷已印出 $B_1$、$C_m$、$P_{eK}$、$B_2$、$M_u$ 的舊式公式並要求查對位圖，故<strong>主答必須用台灣 2010／ELM 體系</strong>。可在末尾以三、五行補述「AISC 360-10 起已把 $B_1$-$B_2$ 移入附錄 8，主方法改為直接分析法，$K$ 一律取 1.0，$\sum P_{e,story}$ 改由一階側移 $\Delta_H$ 直接推算」，屬加分。</p>
 <hr />
 <p><em>解析完成時間：2026-04-23</em><br />
-<em>修正日期：2026-08-22（</em><em>重大勘誤：原解析對圖 4 的幾何判讀完全錯誤</em><em>——原文寫成「單層兩跨、三根柱、柱底均鉸接、P 作用於節點 D」，實際上 A、D 是</em><em>梁兩端的滾支承</em><em>、全結構</em><em>只有一根柱 BC</em><em>、</em><em>P 作用於柱頂 B</em><em>。連帶更正：$M_{lt}$ 由 $HL/3$ 改為 </em><em>$HL$</em><em>（層剪力全由 BC 承擔）、$\sum P_{eK}$ 由 $7.722EI/L^2$（三柱）改為 </em><em>$2.88EI/L^2$</em><em>（單柱）、$B_2$ 與 $M_u$ 隨之改寫。另刪除「$M_{nt}=0$ 時 AISC 規定 $C_m=1.0$」之虛構條文；新增對位圖精確超越方程式之交叉驗算（1.847 vs 近似 1.851）與 $G_B=G_C=0 \Rightarrow K=1$ 之自我驗證、$M_{nt}=0$ 的對稱性證明、梁遠端鉸接之 0.5 折減討論、$P$ 分配之勁度比討論、§6 最新規範對照（含 AISC 360-16 App. 8 之 $R_M\sum HL/\Delta_H$ 側移法重算）</em><br />
+<em>修正日期：2026-08-22（<strong>重大勘誤：原解析對圖 4 的幾何判讀完全錯誤</strong>——原文寫成「單層兩跨、三根柱、柱底均鉸接、P 作用於節點 D」，實際上 A、D 是<strong>梁兩端的滾支承</strong>、全結構<strong>只有一根柱 BC</strong>、<strong>P 作用於柱頂 B</strong>。連帶更正：$M_{lt}$ 由 $HL/3$ 改為 <strong>$HL$</strong>（層剪力全由 BC 承擔）、$\sum P_{eK}$ 由 $7.722EI/L^2$（三柱）改為 <strong>$2.88EI/L^2$</strong>（單柱）、$B_2$ 與 $M_u$ 隨之改寫。另刪除「$M_{nt}=0$ 時 AISC 規定 $C_m=1.0$」之虛構條文；新增對位圖精確超越方程式之交叉驗算（1.847 vs 近似 1.851）與 $G_B=G_C=0 \Rightarrow K=1$ 之自我驗證、$M_{nt}=0$ 的對稱性證明、梁遠端鉸接之 0.5 折減討論、$P$ 分配之勁度比討論、§6 最新規範對照（含 AISC 360-16 App. 8 之 $R_M\sum HL/\Delta_H$ 側移法重算）</em><br />
+<em>圖解補繪：2026-08-29（向量圖 3 張，腳本 <code>gen_SS-2013-4.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em><br />
 <em>驗證狀態：unverified</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2013-4/SS-2013-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>

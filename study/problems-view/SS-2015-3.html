@@ -310,19 +310,19 @@ Step 4  ASD 流程：fa = Pa/Atotal → Cc → 比較 KL/r → Fa → 反算 L
 <tr>
 <td>ASD 柱設計 Cc 判斷</td>
 <td>$KL/r &lt; C_c$ 非彈性段；$&gt; C_c$ 彈性段（各用不同公式）</td>
-<td style="text-align: center;">[[asd-column]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">asd-column</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$k=2.0$ 的邊界型式</td>
 <td>底鉸接＋頂可平移不能轉 = <strong>固接*-鉸接</strong>（理論 $k$＝設計 $k$＝2.0）；<strong>不是</strong>懸臂柱（自由端*-固接，設計 $k$＝2.1）</td>
-<td style="text-align: center;">[[effective-length-chart]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">effective-length-chart</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>先假設彈性段再驗證</td>
 <td>先用彈性公式解 $KL/r$，解完後確認是否 $&gt; C_c$</td>
-<td style="text-align: center;">[[asd-column]]</td>
+<td style="text-align: center;"><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">asd-column</span></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -352,7 +352,7 @@ $$d = \frac{30}{2} - C_y = 15 - 2.49 = 12.51 \text{ cm}$$</p>
 <p><strong>最小迴旋半徑：</strong></p>
 <p>$$r_{min} = r_X = \sqrt{\frac{I_X}{A_{total}}} = \sqrt{\frac{3940}{2 \times 29.9}} = \sqrt{\frac{3940}{59.8}} = \sqrt{65.89} = \boxed{8.12 \text{ cm}}$$</p>
 <p><img alt="SS-2015-3 圖 2：三格斷面圖。第一格為斷面尺寸判讀——兩根 C200×75 翼板朝內、腹板朝外的「[ ]」型排列，外寬 30 cm、腹板高 20 cm，C_y = 2.49 cm，故每根形心距組合 Y 軸 d = 15 − 2.49 = 12.51 cm；第二格為繞 X 軸——兩形心都落在 X 軸上，不需平行軸，I_X = 2(1,970) = 3,940 cm⁴、r_X = 8.12 cm，為最小迴旋半徑並控制本題；第三格為繞 Y 軸——形心偏離 Y 軸 d = 12.51 cm，必須加 Ad²，I_Y = 2(170 + 29.9×12.51²) = 9,699 cm⁴、r_Y = 12.74 cm，不控制" src="../../raw/solutions/SS-2015-3/figs/SS-2015-3-fig-2-section.svg" /></p>
-<p><em>圖 2　哪一軸需要平行軸定理，直接決定了誰是弱軸：兩根槽鋼的形心都落在 $X$ 軸上，$I_X$ 拿不到任何 $Ad^2$ 的加持，因此無論間距多大，$X$ 軸永遠是弱軸。<strong>攔錯：</strong>把圖上的 20 cm（腹板高）當成形心間距，或對 $I_X$ 也誤加平行軸項。</em></p>
+<p><em>圖 2　哪一軸需要平行軸定理，直接決定了誰是弱軸：兩根槽鋼的形心都落在 $X$ 軸上，$I_X$ 拿不到任何 $Ad^2$ 的加持，因此無論間距多大，$X$ 軸永遠是弱軸。<strong>攔錯：</strong> 把圖上的 20 cm（腹板高）當成形心間距，或對 $I_X$ 也誤加平行軸項。</em></p>
 <hr />
 <h3>Part (二)：容許最大長度 $L$</h3>
 <p><strong>需求應力：</strong><br />
@@ -440,10 +440,12 @@ $$F_a = \frac{12\pi^2 \times 2040}{23 \times 172.4^2} = \frac{241\,640}{684\,690
 </tr>
 </tbody>
 </table>
-<p>兩者 $k$ 的<strong>理論值巧合相同</strong>，但物理機制相反（一個是頂端固、底端鉸；一個是底端固、頂端全自由）。<br />
+<p>兩者 $k$ 的<strong>理論值巧合相同</strong>，但物理機制相反（一個是頂端固、底端鉸；一個是底端固、頂端全自由）。</p>
+</blockquote>
 <p><img alt="SS-2015-3 圖 3：兩格挫屈模態對照。左格為本題的「固接*-鉸接」——柱底鉸接（可轉、不可移）、柱頂可平移但不可轉動，挫屈形狀為 sin(πξ/2)，曲率最大在頂端、柱底彎矩為零，理論 k = 2.0、設計 k = 2.0，L = 172.5 × 8.12 / 2.0 = 700 cm；右格為懸臂柱「自由端*-固接」——柱底固接、柱頂完全自由，挫屈形狀為 1 − cos(πξ/2)，曲率最大在柱底、頂端彎矩為零，理論 k = 2.0 但設計 k = 2.1，若誤判則 L 降為 667 cm。兩格皆以灰虛線畫出把柱補成兩端彎矩為零的虛擬延伸段，兩個空心圓之間即 KL = 2L" src="../../raw/solutions/SS-2015-3/figs/SS-2015-3-fig-3-boundary.svg" /></p>
-<p><em>圖 3　兩種柱的理論 $k$ 巧合都是 2.0，但把柱補成「兩端彎矩為零」的等值柱後，虛擬延伸段的方向完全相反：本題柱底是鉸、曲率最大在頂端；懸臂柱柱底是固接、曲率最大在柱底。<strong>攔錯：</strong>把本題說成「等效於懸臂柱」而取設計 $k = 2.1$，容許長度會由 700 cm 掉到 667 cm。</em></p>
-本題題目已直接給 $k = 2.0$，不必查表；但若考官只給邊界文字敘述，判錯型式就會取到 2.1。</p>
+<p><em>圖 3　兩種柱的理論 $k$ 巧合都是 2.0，但把柱補成「兩端彎矩為零」的等值柱後，虛擬延伸段的方向完全相反：本題柱底是鉸、曲率最大在頂端；懸臂柱柱底是固接、曲率最大在柱底。<strong>攔錯：</strong> 把本題說成「等效於懸臂柱」而取設計 $k = 2.1$，容許長度會由 700 cm 掉到 667 cm。</em></p>
+<blockquote>
+<p>本題題目已直接給 $k = 2.0$，不必查表；但若考官只給邊界文字敘述，判錯型式就會取到 2.1。</p>
 </blockquote>
 <p><strong>進階：依最新規範計算的差異</strong></p>
 <table>
@@ -494,7 +496,7 @@ $$F_a = \frac{12\pi^2 \times 2040}{23 \times 172.4^2} = \frac{241\,640}{684\,690
 （$I_X = 2I_x$，無 $Ad^2$ 項）→ 屬 AISC 所稱之「不需修正」的情形。<br />
 若控制軸是 $Y$ 軸（需 $Ad^2$、連接件承受剪力）才須修正——但本題 $I_Y = 9{,}699 \gg I_X = 3{,}940$，$Y$ 軸不控制。</p>
 <p><strong>但仍應檢核「單根槽鋼在兩繫條之間」不先挫屈</strong>（AISC E6.2 / 台灣規範同旨）：</p>
-<p>$$\frac{a}{r_i} \le 0.75\left(\frac{KL}{r}\right)<em y_text_單根="y,\text{單根">{\text{組合}} = 0.75(172.5) = 129 \;\Rightarrow\; a \le 129 \times r</em>$$}} = 129 \times \sqrt{170/29.9} = 129(2.385) = 308\ \text{cm</p>
+<p>$$\frac{a}{r_i} \le 0.75\left(\frac{KL}{r}\right)_{\text{組合}} = 0.75(172.5) = 129 \;\Rightarrow\; a \le 129 \times r_{y,\text{單根}} = 129 \times \sqrt{170/29.9} = 129(2.385) = 308\ \text{cm}$$</p>
 <p>即繫條間距不得超過約 <strong>3.0 m</strong>（本題柱長 7 m，至少需 2 道中間繫條）。題目未問，但這是「臨時支撐組合柱」<br />
 在實務上一定要交代的一句。</p>
 <hr />

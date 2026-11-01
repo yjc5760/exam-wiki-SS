@@ -43,7 +43,7 @@ npm install pptxgenjs
 
 依序嘗試：
 
-1. **本地知識庫**（最準）：若能存取 `exam-wiki-XX` 專案，直接讀 `raw/json/question_index.json`、`wiki/methods/*.md`，以及該 HTML 的原始碼中的 JS 資料陣列。
+1. **本地知識庫**（最準）：若能存取 `exam-wiki-XX` 專案，直接讀 `raw/json/question_index.json`、`raw/solutions/methods/*/*.md`（他科若仍有 `wiki/methods/*.md` 亦可；SS 已封存 wiki），以及該 HTML 的原始碼中的 JS 資料陣列。
 2. **請使用者提供**：請對方貼上 30 條卡片清單，或給檔案路徑。
 3. **重建 + 揭露**：以頁面「一、判定方法」「四、背誦策略」的敘述為骨架，加上該科規範知識重建公式集與三色分級。**交付時必須明講哪些是重建的**，並請使用者校準。
 

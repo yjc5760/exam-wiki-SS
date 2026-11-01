@@ -59,7 +59,9 @@
       "year": 114,
       "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
-      "secondaryTopicIds": [],
+      "secondaryTopicIds": [
+        "SS-U2-1"
+      ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
       "tags": [
@@ -438,7 +440,9 @@
       "year": 110,
       "primaryTopicId": "SS-U1-2",
       "primaryTopicName": "梁桿件",
-      "secondaryTopicIds": [],
+      "secondaryTopicIds": [
+        "SS-U2-1"
+      ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
       "tags": [

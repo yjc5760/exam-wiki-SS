@@ -41,7 +41,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <body>
 <header>
   <h1>SS-2005-4 題目解析</h1>
-  <a class="quick" href="../unit-SS-U1-2.html" title="SS-U1-2 梁桿件 單元總覽（副分類）">&#128269; U1-2 單元總覽（副分類）</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義（副分類）">&#128218; U1-2 梁桿件 講義（副分類）</a>
+  <a class="quick" href="../unit-SS-U2-1.html" title="SS-U2-1 塑性分析與設計 單元總覽">&#128269; U2-1 單元總覽</a><a class="lect" href="../lecture-SS-U2-1.html" title="SS-U2-1 塑性分析與設計 觀念講義">&#128218; U2-1 塑性分析與設計 講義</a>
 </header>
 <main>
 <h1>考題編號：SS-2005-4</h1>
@@ -311,11 +311,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$w_u = \frac{2\sqrt{2}}{(2-\sqrt{2})(\sqrt{2}-1)}\frac{M_p}{L^2} = \frac{2\sqrt{2}}{3\sqrt{2}-4}\frac{M_p}{L^2} = (6+4\sqrt{2})\frac{M_p}{L^2} \approx 11.657\frac{M_p}{L^2}$$</p>
 <h3>5.2 與彈性設計比較</h3>
 <p>彈性中性軸距頂面 $\bar{Y} = (104 \times 1.3 + 51.36 \times 13.3)/155.36 = 5.27$ cm；$I = 6969.5$ cm⁴；$S_{bot} = 6969.5/(24 - 5.27) = 372.0$ cm³。</p>
-<p>彈性分析固端負彎矩 $wL^2/8$ 控制，底緣（受拉、離中性軸較遠）先降伏：</p>
+<p>彈性分析固端負彎矩 $wL^2/8$ 控制，肢端（底緣）先降伏——固端為負彎矩，肢端<strong>受壓</strong>，且離彈性中性軸 $24 - 5.27 = 18.73$ cm，遠大於翼板頂的 5.27 cm：</p>
 <p>$$w_e = \frac{8F_yS_{bot}}{L^2} = \frac{8 \times 2.5 \times 372.0}{600^2} = 0.0207\ \text{tf/cm}$$</p>
 <p>$w_u / w_e = 2.61$：T 型斷面形狀因子大（$Z/S_{bot} = 1.79$），加上彎矩重分配，塑性設計容量明顯較高。</p>
 <h3>5.3 結實斷面檢核</h3>
-<p>翼板 $\dfrac{b_f/2}{t_f} = \dfrac{20}{2.6} = 7.69 \le 17/\sqrt{F_y} = 10.75$ ✓；腹板（T 肢）$d/t_w = 24/2.4 = 10$，甚小 ✓。</p>
+<p>翼板 $\dfrac{b_f/2}{t_f} = \dfrac{20}{2.6} = 7.69 \le \lambda_{pd} = 14/\sqrt{F_y} = 8.85$ ✓（塑性分析需塑性鉸持續轉動，國內規範以「塑性設計斷面」$\lambda_{pd}$ 檢核，較結實斷面 $\lambda_p = 17/\sqrt{F_y} = 10.75$ 嚴；本題兩者皆通過）；腹板（T 肢）$d/t_w = 24/2.4 = 10$，甚小 ✓。</p>
 <h3>5.4 更正說明</h3>
 <p>舊版解答把「24 cm」當腹板高、全深取 26.6 cm，得 $M_p = 2032.5$ tf·cm、$w_u = 6.58$ tf/m，高估約 22%。依原圖全深為 24 cm，正確 $w_u = 5.40$ tf/m。</p>
 <hr />
@@ -337,14 +337,22 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tr>
 <td style="text-align: left;">T 型斷面 $M_n$</td>
 <td style="text-align: left;">$M_p = F_yZ$</td>
-<td style="text-align: left;">F9：肢受拉時 $M_p = F_yZ_x \le 1.6M_y$；肢受壓（負彎矩）$M_p \le M_y$</td>
+<td style="text-align: left;">F9：肢受拉時 $M_p = F_yZ_x \le 1.6M_y$；肢受壓（負彎矩）$M_p \le M_y$；$M_y = F_yS_x$，$S_x$ 取<strong>肢端</strong>（先降伏、較小者）</td>
 </tr>
 </tbody>
 </table>
-<p><strong>本題以 360-16 F9 估算：</strong> 正彎矩（肢受拉）$1.6M_y = 1.6 \times 2.5 \times 1323.2 = 5293$ tf·cm &gt; $M_p$ → $M_p^+ = 1668.6$；負彎矩（固端，肢受壓）$M_p^- \le M_y = F_yS_{bot} = 930.1$ tf·cm。以 $M_A = 930.1$、$M_C = 1668.6$ 重做機構分析，$w_u$ 約 4.2 tf/m（較考卷版低約 22%）。新版對 T 型肢受壓的限制正是為了避免肢部局部降伏後失穩。</p>
+<p><strong>本題以 360-16 F9 估算：</strong> $M_y = F_yS_x = 2.5 \times 372.0 = 930.1$ tf·cm（$S_x$ 取至肢端，T 型梁最先降伏處；Kloiber, <em>Engineering Journal</em> 對 WT 撓曲強度的說明亦取「肢降伏之較小值」）。</p>
+<ul>
+<li>正彎矩（跨間 C，肢受拉）：$1.6M_y = 1{,}488.2$ tf·cm $&lt; M_p = 1{,}668.6$ → $M_C = 1{,}488.2$ tf·cm（由 1.6$M_y$ 控制）</li>
+<li>負彎矩（固端 A，肢受壓）：$M_A = M_y = 930.1$ tf·cm</li>
+</ul>
+<p>兩鉸強度不同時，虛功式為 $w(x) = \dfrac{2[M_A(L-x) + M_C L]}{L\,x\,(L-x)}$；$dw/dx = 0 \Rightarrow M_A x^2 - 2L(M_A+M_C)x + (M_A+M_C)L^2 = 0$，</p>
+<p>$$x = L\,\frac{(M_A+M_C) - \sqrt{(M_A+M_C)M_C}}{M_A} = 0.5604L = 336.2\ \text{cm},\qquad w_u = 0.04278\ \text{tf/cm} = 4.28\ \text{tf/m}$$</p>
+<p>（數值掃描最小值同為 4.278 tf/m；代回平衡：$R_A = w_uL/2 + M_A/L$，跨間最大正彎矩恰為 $M_C = 1{,}488.2$ tf·cm、全跨無一處超過，上下限重合。）較考卷版 5.40 tf/m 低約 21%。新版對 T 型肢受壓的限制正是為了避免肢部局部降伏後失穩。</p>
 <hr />
 <p><em>修正日期：2026-11-01（依考卷原圖 600 dpi：T 型斷面「24 cm」為全深（翼板頂至腹板底），原解誤作腹板高 24 cm、全深 26.6 cm。更正腹板淨高 21.4 cm、$A$ = 155.36 cm²、PNA 距頂 1.942 cm、$Z$ 813.0 → <strong>667.4 cm³</strong>、$M_p$ 2032.5 → <strong>1668.6 tf·cm</strong>，$w_u$ 6.58 → <strong>5.40 tf/m</strong>；平衡法與全跨彎矩掃描驗算；§5.2 刪除殘留英文草稿並重算彈性比較；新增 §6 對照）</em><br />
-<em>驗證狀態：unverified</em></p>
+<em>驗證狀態：unverified</em><br />
+<em>第二次修正日期：2026-11-01（§5.2 肢端在固端負彎矩下為受壓（原誤寫受拉，數值不變）；§5.3 改以塑性設計斷面 $\lambda_{pd} = 14/\sqrt{F_y}$ 檢核；§6 F9 之 $1.6M_y$ 原以翼板側 $S$ = 1323.2 計得 5293，應以肢端 $S_x$ = 372.0 計得 1488.2，跨間正彎矩改由 $1.6M_y$ 控制，並補兩鉸不等強度之閉合解與下限檢核，$w_u$ 由「約 4.2」更正為 <strong>4.28 tf/m</strong>（低約 21%）。考卷 94 年第四題原圖目視確認題意不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2005-4/SS-2005-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
@@ -352,7 +360,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
    兩顆按鈕改指向「來源那個單元」；直接開檔或來源不明時，維持本題主分類單元。 */
 (function(){
   var UN={'SS-U1-1':'拉力及壓力桿件','SS-U1-2':'梁桿件','SS-U1-3':'梁柱桿件',
-          'SS-U1-4':'接合之分析與設計','SS-U2-3':'設計規範對施工之要求'};
+          'SS-U1-4':'接合之分析與設計','SS-U2-3':'設計規範對施工之要求','SS-U2-1':'塑性分析與設計'};
   var m=(document.referrer||'').match(/(?:unit|study|lecture|formula-given)-(SS-U\d-\d)\.html/);
   if(!m||!UN[m[1]])return;
   var u=m[1],code=u.replace('SS-','');

@@ -78,7 +78,7 @@ UNITS = [
         ],
     },
     {
-        "id": "SS-U1-3", "name": "梁柱桿件",
+        "id": "SS-U1-3", "name": "梁柱桿件", "weeks12": 1,
         "overview": "study/unit-SS-U1-3.html",
         "lecture": "study/lecture-SS-U1-3.html",
         "textbook": [],
@@ -116,6 +116,23 @@ UNITS = [
             ("SS-2016-2", "回銲（繞角銲）", "https://youtu.be/Mp3TA-kSXT4"),
         ],
     },
+    {
+        "id": "SS-U2-1", "name": "塑性分析與設計", "weeks12": 1,
+        "overview": "study/unit-SS-U2-1.html",
+        "lecture": "study/lecture-SS-U2-1.html",
+        "textbook": [],
+        "lecture_video": "", "lecture_anim": "", "video_handout": "", "slides_pdf": "",
+        "formula_video": "", "notebooklm": "",
+        "solutions": [],
+        # 尚無影片：練題改連渲染頁（單元總覽講義 §13 精選順序）
+        "practice": [
+            ("SS-2023-3", "非對稱 I 型斷面的 My 與 Mp", "study/problems-view/SS-2023-3.html"),
+            ("SS-2020-2", "固定–簡支梁機構法求 wu", "study/problems-view/SS-2020-2.html"),
+            ("SS-2005-4", "T 型斷面（PNA 在翼板）＋平衡驗算", "study/problems-view/SS-2005-4.html"),
+            ("SS-2013-1", "圓管以 D 表示 S、Z、f", "study/problems-view/SS-2013-1.html"),
+            ("SS-2025-4", "塑性鉸與崩塌機構（說明）", "study/problems-view/SS-2025-4.html"),
+        ],
+    },
 ]
 
 
@@ -127,6 +144,11 @@ def a(href, text, cls="", ext=None):
     return f'<a href="{escape(href)}"{c}{tgt}>{text}</a>'
 
 
+def li(href, text):
+    """連結為空（該單元尚未製作）時不輸出這一列。"""
+    return f"<li>{a(href, text)}</li>" if href else ""
+
+
 def unit_block(i, u):
     tb = ""
     if u["textbook"]:
@@ -134,12 +156,20 @@ def unit_block(i, u):
     sols = "".join(
         f'<li>{a(h, f"<span class=qid>{escape(q)}</span> {escape(t)}")}</li>'
         for q, t, h in u["solutions"])
+    if not u["solutions"] and u.get("practice"):
+        sols = "".join(
+            f'<li>{a(h, f"<span class=qid>{escape(q)}</span> {escape(t)}（解析頁）")}</li>'
+            for q, t, h in u["practice"])
+    nvid = len(u["solutions"])
+    count = f"{nvid} 題解題影片" if nvid else f"{len(u.get('practice', []))} 題精選練習"
+    vid_line = (f"<li>{a(u['lecture_video'], '觀念講義影片')} ・ {a(u['lecture_anim'], '動畫版')}</li>"
+                if u["lecture_video"] else "")
     return f"""
 <details class="unit" id="{u['id']}"{' open' if i == 0 else ''}>
   <summary>
     <span class="unum">{i+1}</span>
     <span class="utitle"><span class="uid">{u['id']}</span>{escape(u['name'])}</span>
-    <span class="ucount">{len(u['solutions'])} 題解題影片</span>
+    <span class="ucount">{count}</span>
   </summary>
   <div class="ubody">
     <div class="col">
@@ -150,21 +180,21 @@ def unit_block(i, u):
       <h4><span class="dot d2"></span>懂原理 <small>文字或影片選一種</small></h4>
       <ul>
         <li>{a(u['lecture'], '觀念講義（網頁）')}</li>
-        <li>{a(u['lecture_video'], '觀念講義影片')} ・ {a(u['lecture_anim'], '動畫版')}</li>
-        <li>{a(u['video_handout'], '影片講義（圖文）')}</li>
-        <li>{a(u['slides_pdf'], '講義簡報 PDF')}</li>
+        {vid_line}
+        {li(u['video_handout'], '影片講義（圖文）')}
+        {li(u['slides_pdf'], '講義簡報 PDF')}
         {tb}
       </ul>
     </div>
     <div class="col">
       <h4><span class="dot d3"></span>記公式</h4>
       <ul>
-        <li>{a(u['formula_video'], '公式記憶影片')}</li>
+        {li(u['formula_video'], '公式記憶影片')}
         <li>{a(u['overview'], '單元總覽的「必須自己背」清單')}</li>
       </ul>
       <h4><span class="dot d5"></span>問到懂</h4>
       <ul>
-        <li>{a(u['notebooklm'], 'NotebookLM 單元筆記本')}</li>
+        {li(u['notebooklm'], 'NotebookLM 單元筆記本') or '<li>尚無單元筆記本：把單元總覽與觀念講義丟給 AI 提問</li>'}
       </ul>
     </div>
     <div class="col wide">
@@ -183,14 +213,16 @@ def schedule_rows(weeks):
     w += 1
     per = 1 if weeks == 8 else 2
     for u in UNITS:
-        end = w + per - 1 if weeks == 12 else w
+        uper = u.get("weeks12", per) if weeks == 12 else 1
+        end = w + uper - 1
         label = f"第 {w} 週" if end == w else f"第 {w}–{end} 週"
-        if weeks == 8:
+        if weeks == 8 or uper == 1:
             what = "單元總覽 → 觀念講義 → 試寫一題 → 公式影片 → 練 3 題以上"
         else:
             what = "第一週：單元總覽、觀念講義、試寫一題、背公式；第二週：清單上的考古題全部自己寫一遍"
         rows.append((label, f"{u['id']} {u['name']}", what))
         w = end + 1
+    assert w <= weeks, f"{weeks} 週進度表排不下（單元週數合計超過）"
     last = f"第 {w} 週" if w == weeks else f"第 {w}–{weeks} 週"
     rows.append((last, "總複習", "重看各單元總覽的「必背公式」，限時重寫錯過的題目，用 AI 追問仍不懂的地方"))
     return "".join(f"<tr><td>{escape(a_)}</td><td>{escape(b)}</td><td>{escape(c)}</td></tr>" for a_, b, c in rows)
@@ -340,7 +372,7 @@ footer p{{margin:6px 0}}
   <div class="stats">
     <div><b>{len(UNITS)}</b>個重點單元</div>
     <div><b>{n_sol}</b>支解題影片</div>
-    <div><b>{len(UNITS)}</b>本 NotebookLM 筆記本</div>
+    <div><b>{sum(1 for u in UNITS if u["notebooklm"])}</b>本 NotebookLM 筆記本</div>
   </div>
 </div>
 

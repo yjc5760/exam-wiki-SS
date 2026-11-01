@@ -26,7 +26,7 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>SS-2013-1 題目解析</h1><a class="quick" href="../frequency-SS.html#s-rank" title="SS-U2-1 塑性分析與設計 尚無單元總覽，改連全科出題頻率排名">&#128269; U2-1 全科頻率排名</a><a class="lect" href="../../index.html" title="SS-U2-1 塑性分析與設計 尚無觀念講義，改連題庫儀表板">&#128218; 題庫儀表板</a></header>
+<header><h1>SS-2013-1 題目解析</h1><a class="quick" href="../unit-SS-U2-1.html" title="SS-U2-1 塑性分析與設計 單元總覽">&#128269; U2-1 單元總覽</a><a class="lect" href="../lecture-SS-U2-1.html" title="SS-U2-1 塑性分析與設計 觀念講義">&#128218; U2-1 塑性分析與設計 講義</a></header>
 <main><h1>考題編號：SS-2013-1</h1>
 <p><strong>主分類：</strong> <code>SS-U2-1</code> 塑性分析與設計<br />
 <strong>副分類：</strong> 無<br />
@@ -34,7 +34,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <strong>標籤：</strong> <code>空心圓管斷面</code> <code>斷面模數</code> <code>塑性斷面模數</code> <code>形狀因子</code> <code>彈性中性軸</code> <code>塑性中性軸</code> <code>一次矩</code> <code>慣性矩</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖1所示之<strong>空心圓管斷面</strong>，外徑為 $D$，內徑 $\delta_0 = 0.6D$，試求：</p>
+<p>如圖1所示之<strong>空心圓管斷面</strong>，外徑為 $D$，內徑 $\delta_0 = 0.6D$（考卷記為 $d = 0.6D$；本解以 $\delta_0$ 表示以免與其他符號混淆），試求：</p>
 <ol>
 <li><strong>斷面模數</strong> $S_x$（Section Modulus）</li>
 <li><strong>塑性斷面模數</strong> $Z_x$（Plastic Section Modulus）</li>
@@ -272,7 +272,7 @@ $Z_x$ 是由<strong>塑性中性軸（PNA）上下各半面積的一次矩之和
 <hr />
 <h3>二、斷面模數 $S_x$</h3>
 <p>$$S_x = \frac{I_x}{c} = \frac{I_x}{D/2} = \frac{0.8704\pi D^4/64}{D/2} = \frac{0.8704\pi D^3}{32}$$</p>
-<p>$$\boxed{S_x = \frac{\pi D^3(1-0.6^4)}{32} = \frac{0.8704\pi D^3}{32} \approx 0.08547\pi D^3}$$</p>
+<p>$$\boxed{S_x = \frac{\pi D^3(1-0.6^4)}{32} = \frac{0.8704\pi D^3}{32} = 0.0272\pi D^3 \approx 0.0855\,D^3}$$</p>
 <hr />
 <h3>三、塑性斷面模數 $Z_x$（一次矩法）</h3>
 <p>由對稱性，PNA = 幾何中心（x 軸通過圓心）。</p>
@@ -307,7 +307,7 @@ $$Z_x = 2 \times Q_{\text{半環}} = 2 \times 0.06533D^3 = 0.13067D^3$$</p>
 <tr>
 <td>$S_x$</td>
 <td>$0.8704\pi D^3/32$</td>
-<td>$\approx 0.2686D^3$</td>
+<td>$\approx 0.0855D^3$</td>
 </tr>
 <tr>
 <td>$Z_x$</td>
@@ -360,7 +360,8 @@ $$Z_x = 2 \times Q_{\text{半環}} = 2 \times 0.06533D^3 = 0.13067D^3$$</p>
 <p>此公式可由<strong>整圓 $Z_x$（外）減去內圓 $Z_x$（內）</strong>得到：<br />
 $$Z_{\text{外}} = \frac{D^3}{6}, \quad Z_{\text{內}} = \frac{\delta_0^3}{6} = \frac{(0.6D)^3}{6} = \frac{0.216D^3}{6}$$<br />
 $$Z_x = Z_{\text{外}} - Z_{\text{內}} = \frac{D^3 - 0.216D^3}{6} = \frac{0.784D^3}{6} \checkmark$$</p>
-<p>（類比 $I_x = I_{\text{外}} - I_{\text{內}}$，$Z_x$ 也具有相同的可減性，因為 PNA 不變）</p>
+<p>（類比 $I_x = I_{\text{外}} - I_{\text{內}}$，$Z_x$ 也具有相同的可減性，因為 PNA 不變）<br />
+<em>修正日期：2026-11-01（$S_x$ 數值筆誤：§4 二「$\approx 0.08547\pi D^3$」多乘一個 $\pi$、§4 五彙整表「$\approx 0.2686D^3$」，皆更正為 $0.0272\pi D^3 \approx 0.0855D^3$；$Z_x = 0.1307D^3$、$f = 1.529$ 不變。考卷 102 年第一題原圖目視確認題意；程式重算 $S_x = 0.085451D^3$、$Z_x = 0.130667D^3$、$f = 1.52914$，並以 $d \to 0$（1.698）與 $d \to D$（$4/\pi$）極限檢查）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2013-1/SS-2013-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
@@ -368,7 +369,7 @@ $$Z_x = Z_{\text{外}} - Z_{\text{內}} = \frac{D^3 - 0.216D^3}{6} = \frac{0.784
    兩顆按鈕改指向「來源那個單元」；直接開檔或來源不明時，維持本題主分類單元。 */
 (function(){
   var UN={'SS-U1-1':'拉力及壓力桿件','SS-U1-2':'梁桿件','SS-U1-3':'梁柱桿件',
-          'SS-U1-4':'接合之分析與設計','SS-U2-3':'設計規範對施工之要求'};
+          'SS-U1-4':'接合之分析與設計','SS-U2-3':'設計規範對施工之要求','SS-U2-1':'塑性分析與設計'};
   var m=(document.referrer||'').match(/(?:unit|study|lecture|formula-given)-(SS-U\d-\d)\.html/);
   if(!m||!UN[m[1]])return;
   var u=m[1],code=u.replace('SS-','');

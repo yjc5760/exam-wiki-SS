@@ -117,6 +117,9 @@ def build(unit, check=False):
     out = open(TPL, encoding="utf-8").read()
     for k, v in rep.items():
         out = out.replace("{{" + k + "}}", v)
+    if not os.path.exists(os.path.join(ROOT, "study", f"lecture-{unit}.html")):
+        # 尚無觀念講義：拿掉導覽列與按鈕列的講義連結，避免死連結
+        out = re.sub(r'\s*<a [^>]*href="lecture-' + re.escape(unit) + r'\.(?:html|pdf)"[^>]*>.*?</a>', "", out)
     left = re.findall(r"\{\{[A-Z_]+\}\}", out)
     if left:
         print(f"[{unit}] 模板有未替換的欄位：{sorted(set(left))}")

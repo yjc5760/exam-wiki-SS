@@ -250,7 +250,85 @@ def fig3_slenderness():
 
 
 # ══════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════
+# 圖 1：題目附圖重繪（依題目正本 SS-2013-3-problem.md §4 判讀清單，2026-11-02 已確認）
+# 只畫考卷給的東西，與上方解題常數分開；不含任何解題結果（K、反曲點不畫）
+# ══════════════════════════════════════════════════════════
+Q_BR = 0.6                    # #8 B 距 A 0.6L、距 C 0.4L（x-z 面）
+#   y-z 面：#5 A 鉸支、#6 C 不可側移不可轉動（方塊夾在兩側滾輪牆間）、#11 全長無中間支撐
+#   x-z 面：#7 A 固接、#8 B 鉸接側撐、#9 C 鉸接側撐；#3 翼板水平，x 水平、y 垂直
+
+
+def _q_guided_top(cv, p):
+    x, y = cv.P(p)
+    m = C["member"]
+    cv.parts.append(f'<rect x="{x-8:.1f}" y="{y-26:.1f}" width="16" height="26" fill="{m}"/>')
+    for sgn in (-1, 1):
+        for dy in (-20, -7):
+            cv.parts.append(f'<circle cx="{x+sgn*13:.1f}" cy="{y+dy:.1f}" r="4.6" fill="#FFFFFF" '
+                            f'stroke="{m}" stroke-width="1.8"/>')
+        xx = x + sgn * 19
+        cv.parts.append(f'<line x1="{xx:.1f}" y1="{y-34:.1f}" x2="{xx:.1f}" y2="{y+6:.1f}" '
+                        f'stroke="{m}" stroke-width="2.4"/>')
+        for k in range(5):
+            by = y - 32 + k * 8
+            cv.parts.append(f'<line x1="{xx:.1f}" y1="{by:.1f}" x2="{xx+sgn*7:.1f}" y2="{by-6:.1f}" '
+                            f'stroke="{m}" stroke-width="1.6"/>')
+
+
+def _q_col(title, sub, plane):
+    W1, H1, sx = 330, 540, 300
+    cv = Canvas(W1, H1, sx=sx, ox=W1 / 2 + 10, oy=80)
+    cv.panel(title, sub)
+    cv.line((0, 0), (0, 1), C["member"], 3.6, cap="butt")
+    cv.arrow((0, 1.20), (0, 1.03 if plane == "xz" else 1.10), C["load"], 2.8, 10)
+    cv.math((0, 1.20), "P", 15, C["load"], "end", dx=-8, weight="700")
+    cv.text((0, 1), "C", 15, C["text"], "start", dx=34, dy=4, weight="700")
+    cv.text((0, 0), "A", 15, C["text"], "start", dx=34, dy=-6, weight="700")
+    if plane == "yz":
+        cv.support((0, 0), "pin", 0, size=14)
+        _q_guided_top(cv, (0, 1))
+        cv.dim((0, 0), (0, 1), "L", off=-70, label_off=-16)
+    else:
+        cv.support((0, 0), "fixed", 0, size=20)
+        cv.support((0, 1), "roller", 90, size=13)
+        cv.support((0, Q_BR), "roller", 90, size=13)
+        cv.text((0, Q_BR), "B", 15, C["text"], "start", dx=44, dy=4, weight="700")
+        cv.dim((0, Q_BR), (0, 1), f"{1 - Q_BR:.1f} L", off=-64, label_off=-26)
+        cv.dim((0, 0), (0, Q_BR), f"{Q_BR:.1f} L", off=-64, label_off=-26)
+    return cv
+
+
+def _q_section():
+    W1, H1 = 330, 540
+    cv = Canvas(W1, H1, sx=4.2, ox=W1 / 2, oy=H1 / 2 - 10)
+    cv.panel("斷面方位", "W14×61（示意）")
+    bf, d, tf, tw = 25.4, 35.3, 1.64, 0.952
+    for x0, x1, y0, y1 in ((-bf / 2, bf / 2, d / 2 - tf, d / 2), (-bf / 2, bf / 2, -d / 2, -d / 2 + tf),
+                           (-tw / 2, tw / 2, -d / 2 + tf, d / 2 - tf)):
+        cv.polygon([(x0, y0), (x1, y0), (x1, y1), (x0, y1)], C["fill_c"], C["member"], 1.6)
+    cv.arrow((0, 0), (0, d / 2 + 9), C["text"], 1.6, 8)
+    cv.arrow((0, 0), (bf / 2 + 9, 0), C["text"], 1.6, 8)
+    cv.math((0, d / 2 + 9), "y", 16, C["text"], dy=-12, weight="700")
+    cv.math((bf / 2 + 9, 0), "x", 16, C["text"], "start", dx=6, weight="700")
+    return cv
+
+
+def fig1_problem():
+    path = os.path.join(OUT, f"{TAG}-fig-1-problem.svg")
+    compose([_q_col("y-z 面", "A 鉸支；C 不可側移、不可轉", "yz"),
+             _q_col("x-z 面", "A 固接；B、C 鉸接側撐", "xz"),
+             _q_section()], cols=3,
+            title="SS-2013-3 題目附圖（重繪）",
+            sub="依題目正本判讀清單 #3、#5–#9、#11；只畫考卷所給條件",
+            note="B 點側撐只在 x-z 面；y-z 面全長無中間支撐；柱長 L = 16 m",
+            path=path)
+    return path
+
+
 FIGURES = [
+    (fig1_problem, "§1（題目正本 §4）",
+     "B 側撐放錯平面；兩平面柱底條件對調；0.4L／0.6L 顛倒"),
     (fig2_boundaries,  "§1·§4二·§4三",
      "兩平面柱底條件相反被誤讀成同一組；B 點側撐被誤用來切割強軸"),
     (fig3_slenderness, "§4四·§5.1",

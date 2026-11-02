@@ -203,6 +203,8 @@ $\Sigma P_{eK}$：整體結構所有非靠桿且考慮相應有效長度係數�
 <blockquote>
 <p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2013-2-problem.md"><code>SS-2013-2-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
 </blockquote>
+<p><img alt="SS-2013-2 圖 1：題目附圖重繪。單跨剛架，柱高 L、跨度 L；A、D 鉸支，B 梁柱剛接，C 為鉸圓（柱 CD 兩端鉸，為靠桿）；梁 BC 全跨受向下均佈 w" src="../../raw/solutions/SS-2013-2/figs/SS-2013-2-fig-1-problem.svg" /></p>
+<p><em>圖 1　題目附圖重繪（依題目正本判讀清單 #5–#10；對位圖為設計圖表，不重繪）。只畫考卷給的支承與載重，A 鉸支、C 鉸圓分別標出，攔下把 A 當固接（$G_A$ 取錯）或把 C 當剛接（CD 不再是靠桿）的誤讀；解題用的 $G$ 值與挫屈模態見圖 2。</em></p>
 <h3>常見誤讀</h3>
 <table>
 <thead>
@@ -884,6 +886,7 @@ $\Rightarrow$ 整層側向抵抗<strong>只有柱 AB</strong>（透過 B 點剛�
 <em>修正日期：2026-11-01（依使用者決定，主答改採對位圖梁遠端修正：C 端梁柱鉸接、有側移 ×0.5 → $G_B$ 0.221 → <strong>0.442</strong>、$K_{AB}$ 1.71 → <strong>1.777</strong>（方程式精解）、$P_{eK,AB}$ 575.6 → 533.3 tf、$K'$ 2.42 → <strong>2.51</strong>、$w_{cr}$ 96.0 → <strong>88.9 tf/m</strong>、$d$ 0.40 → <strong>0.37 m</strong>；未修正值移至 §5.5 作對照，並更正原 §5.5「方向偏保守」為<strong>偏不保守</strong>（不修正會高估挫屈載重）；新增陷阱 1-2、L3 列與修正係數表；§5.4 $G_A = \infty$ 之比較改以修正後 $G_B$ 重算；圖 2、圖 3 與 <code>gen_SS-2013-2.py</code> 同步。驗證：對位圖超越方程式精解、Jackson–Moreland 近似式 1.772、層穩定 $\sum P \le \sum P_{eK}$ 雙路徑）</em><br />
 <em>驗證狀態：unverified</em></p>
 <p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2013-2-problem.md</code>（已確認）＋常見誤讀＋本解記號，§1 內自繪向量圖保留於「判讀圖解」；解題內容與答案不變）</em></p>
+<p><em>修正日期：2026-11-03（§1 補入題目附圖重繪 <code>figs/SS-2013-2-fig-1-problem.svg</code>（依已確認的題目正本判讀清單，腳本 <code>gen_SS-2013-2.py</code>，可重跑）；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2013-2/SS-2013-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

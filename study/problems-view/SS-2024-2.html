@@ -174,6 +174,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <blockquote>
 <p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2024-2-problem.md"><code>SS-2024-2-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
 </blockquote>
+<p><img alt="SS-2024-2 圖 1：題目附圖重繪。左為圓管斷面，外徑 D、管壁 10 mm，十字形連接板（厚 t_g）四支穿出管壁，每支管外兩側各一道填角銲，共 8 道；右為側視，連接板插入管端開槽，4 條粗黑線為可見的銲道，銲長 L = D，槽端半圓孔徑 22 mm 在銲道區之外" src="../../raw/solutions/SS-2024-2/figs/SS-2024-2-fig-1-problem.svg" /></p>
+<p><em>圖 1　題目附圖重繪（依題目正本判讀清單 #1–#4；填角銲最小尺寸表見題目正本 §2）。斷面圖畫出 8 個銲道三角形、側視圖標出 $L = D$ 與槽端位置，攔下把銲道算成 4 道或把開槽當成在銲道區內的誤讀。</em></p>
 <h3>常見誤讀</h3>
 <table>
 <thead>
@@ -623,7 +625,8 @@ $$w_{req} = \frac{T_u}{\phi(0.6F_{EXX})(0.707) \times 8L},\quad w = \max(w_{req}
 <hr />
 <p><em>修正日期：2026-11-01（依考卷原圖：「半圓孔徑 22 mm」為圓管開槽，原解以「無孔」取 $A_n = A_g$，更正為扣除 4 道槽之 $A_n = 73.8$ cm²，$\phi_tT_n$ 由 130.8 t 更正為 <strong>117.0 t</strong>；斷面圖每支板兩側各一道銲，銲道由 4 道更正為 <strong>8 道</strong>，所需銲腳 7.66 → 3.4 mm，設計銲腳仍為 8 mm；補管壁剪力撕裂檢核、極限狀態說明與 §6 對照；更正 $F_{EXX}$ 筆誤 49 → 4.92 tf/cm²）</em><br />
 <em>驗證狀態：unverified</em></p>
-<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2024-2-problem.md</code>（已確認）＋常見誤讀＋本解記號；解題內容與答案不變）</em></p></main>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2024-2-problem.md</code>（已確認）＋常見誤讀＋本解記號；解題內容與答案不變）</em></p>
+<p><em>修正日期：2026-11-03（§1 補入題目附圖重繪 <code>figs/SS-2024-2-fig-1-problem.svg</code>（依已確認的題目正本判讀清單，腳本 <code>gen_SS-2024-2.py</code>，可重跑）；解題內容與答案不變）</em></p></main>
 <footer>來源：raw/solutions/SS-2024-2/SS-2024-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，

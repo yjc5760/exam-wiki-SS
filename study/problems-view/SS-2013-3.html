@@ -239,6 +239,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <blockquote>
 <p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2013-3-problem.md"><code>SS-2013-3-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
 </blockquote>
+<p><img alt="SS-2013-3 圖 1：題目附圖重繪。左為 y-z 面，柱底 A 鉸支、柱頂 C 為方塊夾在兩側滾輪牆間（不可側移、不可轉動），全長 L 無中間支撐；中為 x-z 面，柱底 A 固接，B（距 A 0.6L）與 C 為滾輪式鉸接側撐，上段 0.4L；右為斷面方位，翼板水平，x 軸水平、y 軸垂直" src="../../raw/solutions/SS-2013-3/figs/SS-2013-3-fig-1-problem.svg" /></p>
+<p><em>圖 1　題目附圖重繪（依題目正本判讀清單 #3、#5–#9、#11）。兩個平面並排，柱底條件相反（y-z 鉸、x-z 固）且 B 側撐只在 x-z 面，攔下把 B 側撐用來切割強軸或兩平面邊界讀成同一組；解題用的有效長度見圖 2。</em></p>
 <h3>常見誤讀</h3>
 <table>
 <thead>
@@ -903,6 +905,7 @@ $KL$ 反而較大。<strong>「短的那段不一定安全」是本題的設計�
 <em>修正日期：2026-11-01（依使用者決定，主答改採考卷 K 值表之<strong>設計 K 值</strong>（強軸、弱軸下段 0.7 → 0.8，上段 1.0 不變）：控制 $KL/r$ 108.1 → <strong>123.6</strong>、FS 1.909 → 1.916、$F_a$ 0.834 → 0.686、<strong>$P_a$ 96.8 → 79.6 tf</strong>；$\lambda_c$ 1.205 → 1.377、$F_{cr}$ 1.362 → 1.130、<strong>$\phi_cP_n$ 134 → 111 tf</strong>；理論 K 結果移為 §5.2 對照，理由為 AISC 建議設計值、實際支承難達理想、偏保守；§5.1 最佳側撐位置 941 → 889 cm、§5.3 AISC 360 對照、§5.4 交叉檢核同步重算；圖 2、圖 3 與 <code>gen_SS-2013-3.py</code> 同步。驗證：Python 重算 ASD／LRFD 兩法、交叉檢核 $\phi_cP_n/1.4 = 79.6 \approx P_a$）</em><br />
 <em>驗證狀態：unverified</em></p>
 <p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2013-3-problem.md</code>（已確認）＋常見誤讀＋本解記號，§1 內自繪向量圖保留於「判讀圖解」；解題內容與答案不變）</em></p>
+<p><em>修正日期：2026-11-03（§1 補入題目附圖重繪 <code>figs/SS-2013-3-fig-1-problem.svg</code>（依已確認的題目正本判讀清單，腳本 <code>gen_SS-2013-3.py</code>，可重跑）；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2013-3/SS-2013-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

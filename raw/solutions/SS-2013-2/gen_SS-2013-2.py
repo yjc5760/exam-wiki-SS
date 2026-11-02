@@ -187,7 +187,41 @@ def fig3_magnitude():
 
 
 # ══════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════
+# 圖 1：題目附圖重繪（依題目正本 SS-2013-2-problem.md §4 判讀清單，2026-11-02 已確認）
+# 只畫考卷給的東西，與上方解題常數分開；不含任何解題結果（G、K 值不畫）
+# ══════════════════════════════════════════════════════════
+#   #5 A 鉸支；#6 D 鉸支；#7 B 剛接；#8 C 鉸圓（CD 兩端鉸＝靠桿）
+#   #9 w 布滿梁 BC 全跨；#10 柱高 L、跨度 L（皆 6 m）；對位圖為設計圖表，不重繪
+Q_L = 1.0
+
+
+def fig1_problem():
+    W1, H1, sx = 560, 490, 230
+    cv = Canvas(W1, H1, sx=sx, ox=(W1 - sx) / 2 + 20, oy=100)
+    cv.panel("圖 2　剛架", "柱高 L、跨度 L（L = 6 m）")
+    A, B, Cn, D = (0, 0), (0, Q_L), (Q_L, Q_L), (Q_L, 0)
+    for p0, p1 in ((A, B), (B, Cn), (D, Cn)):
+        cv.line(p0, p1, C["member"], 4.2, cap="butt")
+    cv.support(A, "pin", 0, size=14)
+    cv.support(D, "pin", 0, size=14)
+    cv.udl(B, Cn, 0.13, n=9, label="w")
+    cv.dot(Cn, 6.5, fill="#FFFFFF", stroke=C["member"], w=2.4)
+    for p, n, dx, dy in ((A, "A", -18, -10), (B, "B", -18, 14), (Cn, "C", 20, 14), (D, "D", 20, -10)):
+        cv.text(p, n, 15, C["text"], "middle", dx=dx, dy=dy, weight="700")
+    cv.dim(A, B, "L", off=-60, label_off=-16)
+    cv.dim(A, D, "L", off=60, label_off=16)
+    path = os.path.join(OUT, f"{TAG}-fig-1-problem.svg")
+    compose([cv], title="SS-2013-2 題目附圖（重繪）",
+            sub="依題目正本判讀清單 #5–#10；對位圖為設計圖表，不重繪",
+            note="A、D 鉸支；B 剛接、C 鉸接（CD 為靠桿）；w 布滿梁 BC 全跨",
+            path=path)
+    return path
+
+
 FIGURES = [
+    (fig1_problem, "§1（題目正本 §4）",
+     "A 讀成固接、C 讀成剛接（G 值與靠桿判錯）"),
     (fig2_leaning_column, "§1·§4一·§4五",
      "把 CD 讀成「底端鉸接的一般柱」→ ΣP_eK 多算一根"),
     (fig3_magnitude,      "§5.1",

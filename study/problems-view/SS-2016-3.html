@@ -181,6 +181,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <blockquote>
 <p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2016-3-problem.md"><code>SS-2016-3-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
 </blockquote>
+<p><img alt="SS-2016-3 圖 1：題目附圖重繪。上為寬 b、厚 t 的實心矩形板；下為殘餘應力分布，三段各 b/3，左右兩段 Fy/4 壓（基線上方），中段 Fy/4 拉（基線下方）" src="../../raw/solutions/SS-2016-3/figs/SS-2016-3-fig-1-problem.svg" /></p>
+<p><em>圖 1　題目附圖重繪（依題目正本判讀清單 #1–#3；圖 2 應力–應變曲線不重繪）。壓、拉分畫在基線兩側且等高，一眼可見壓力合力是拉力合力的 2 倍（圖面數值不自平衡），攔下把斷面讀成 H 型鋼或壓拉段對調的誤讀。</em></p>
 <h3>常見誤讀</h3>
 <table>
 <thead>
@@ -678,6 +680,7 @@ Euler 曲線的有效起始點是 $(L/r)_{\text{trans}}$，其數值由 $F_e = F
 <p><em>修正日期：2026-11-01（依考卷原圖：圖 1 為單一矩形板 $b \times t$，兩側 $b/3$ 壓、中間 $b/3$ 拉，無腹板；原解以平滑式 $F_yF_e/(F_e + F_{rc})$ 繪非彈性段並以「腹板拉力」補足平衡。更正為塊狀殘留應力的切線模數解：兩側同時降伏、強軸 $I_e/I = 1/27$ → 平台 $F_{cr} = 1.875$（$19.9 \le L/r \le 103.6$）、上升段 $\pi^2E/[27(L/r)^2]$、全斷面降伏 2.29（或 $F_y$）；指出題目殘留應力不自相平衡；同步 <code>SS-2016-3-column-curve-viz.html</code>；新增 §6 對照）</em><br />
 <em>驗證狀態：unverified</em></p>
 <p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2016-3-problem.md</code>（已確認）＋常見誤讀＋本解記號；頭表設計法補註考卷未指定；解題內容與答案不變）</em></p>
+<p><em>修正日期：2026-11-03（§1 補入題目附圖重繪 <code>figs/SS-2016-3-fig-1-problem.svg</code>（依已確認的題目正本判讀清單，腳本 <code>gen_SS-2016-3.py</code>，可重跑）；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2016-3/SS-2016-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

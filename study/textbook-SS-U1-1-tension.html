@@ -529,7 +529,7 @@ LRFD 的強度要跟<b>放大後</b>的載重比；ASD 的容許值要跟<b>未�
 
 <div class="trap"><b>還沒結束！</b><br>
 這支角鋼真正的控制模式不是 NSF：第 5 章會算出<b>塊狀剪力只有 30.1 tf</b>（LRFD）。
-GSY、NSF 只是拉力帳本的前兩條，螺栓接合一定還要檢查塊狀剪力，必要時再加螺栓剪力與孔承壓（<a href="problems-view/SS-2005-1.html">SS-2005-1</a> 的螺栓剪力只比控制值高 5%）。</div>
+GSY、NSF 只是拉力帳本的前兩條，螺栓接合一定還要檢查塊狀剪力，必要時再加螺栓剪力與孔承壓（<a href="problems-view/SS-2005-1.html">SS-2005-1</a> 就是由螺栓剪力控制）。</div>
 
 <!-- ======================================================== 2.6 -->
 <div class="rebuild">
@@ -873,7 +873,7 @@ $$\phi R_n=0.75\,\min\Big(\underbrace{0.6F_uA_{nv}+U_{bs}F_uA_{nt}}_{\text{式�
 <tr><td>舊版「兩式擇一、不大於 \(0.6F_uA_{nv}+F_uA_{nt}\)」</td><td><span class="tg half">別賭</span></td><td>5.4</td></tr>
 <tr><td>ASD：\(0.30F_uA_{nv}+0.50F_uA_{nt}\)（＝LRFD÷1.5）</td><td><span class="tg half">別賭</span></td><td>5.5</td></tr>
 </table>
-<p class="note">相關考題：<a href="problems-view/SS-2021-2.html">SS-2021-2</a>（說明 0.6\(F_y\) 的意義與上限的理由）、<a href="problems-view/SS-2005-1.html">SS-2005-1</a>（三條路徑、塊剪控制）、<a href="problems-view/SS-2015-2.html">SS-2015-2</a>（由上限式控制）。</p>
+<p class="note">相關考題：<a href="problems-view/SS-2021-2.html">SS-2021-2</a>（說明 0.6\(F_y\) 的意義與上限的理由）、<a href="problems-view/SS-2005-1.html">SS-2005-1</a>（撕出塊要對應承擔的螺栓數；最後由螺栓剪力控制）、<a href="problems-view/SS-2015-2.html">SS-2015-2</a>（由上限式控制）。</p>
 </div>
 
 <h3 class="t">5.1　種子 S2：剪力為什麼只值 0.6</h3>
@@ -960,7 +960,7 @@ LRFD／ASD \(=30.1/21.3=1.41\)，<b>小於 1.5</b>：因為 LRFD 由上限式（
 </div>
 <div class="trap"><b>這就是為什麼「只算 GSY、NSF」會失分</b><br>
 如果只算前兩條，答案是 41.0 tf，<b>高估 36%</b>。螺栓接合的拉桿一定要畫塊體；必要時再算螺栓剪力與孔承壓（屬 U1-4 接合單元）。
-<a href="problems-view/SS-2005-1.html">SS-2005-1</a> 有三條塊體路徑，控制的是「肢趾側邊距最小」那一條。</div>
+<a href="problems-view/SS-2005-1.html">SS-2005-1</a> 有多條塊體路徑：只含一排 3 栓的窄條塊只承擔一半拉力，要乘 2 才能跟總拉力比；真正的塊狀剪力是含全部 6 栓的撕出塊（100.2 tf），最後控制的是螺栓剪力 71.8 tf。</div>
 
 <div class="rebuild">
 <div class="rb-h">🧩 30 秒重建卡｜塊狀剪力</div>
@@ -1039,7 +1039,7 @@ LRFD／ASD \(=30.1/21.3=1.41\)，<b>小於 1.5</b>：因為 LRFD 由上限式（
 <table>
 <tr><th style="width:15%">題號</th><th>考什麼</th><th style="width:32%">練完要會的動作</th><th style="width:10%">章</th></tr>
 <tr><td><a href="problems-view/SS-2025-2.html">SS-2025-2</a></td><td>ASD 板類縱向銲，\(U=f(l/w)\)，求板寬上限；<b>整卷零公式</b></td><td>不看公式寫出 \(0.6F_y\)、\(0.5F_u\) 與 \(l/w\) 表；看出 \(l\ge w\) 是答案</td><td>2、4</td></tr>
-<tr><td><a href="problems-view/SS-2005-1.html">SS-2005-1</a></td><td>螺栓接合單角鋼，5 個極限狀態取小</td><td>畫三條塊體路徑；螺栓剪力只比控制值高 5%，不能漏</td><td>2～5</td></tr>
+<tr><td><a href="problems-view/SS-2005-1.html">SS-2005-1</a></td><td>螺栓接合單角鋼，5 個極限狀態取小</td><td>撕出塊要對應承擔的螺栓數；控制的是螺栓剪力，不能漏</td><td>2～5</td></tr>
 <tr><td><a href="problems-view/SS-2024-2.html">SS-2024-2</a></td><td>圓管縱向填角銲的剪力遲滯</td><td>半圓管 \(\bar x=D/\pi\)；\(L\) 是銲長不是周長；開槽要扣（\(A_n=73.8\) cm²）</td><td>4</td></tr>
 <tr><td><a href="problems-view/SS-2015-2.html">SS-2015-2</a></td><td>雙槽鋼拉桿：錯列淨斷面＋塊狀剪力（上限式控制）</td><td>判對自由邊；橫斷面切幾個孔；兩式取小</td><td>3、5</td></tr>
 <tr><td><a href="problems-view/SS-2021-2.html">SS-2021-2</a></td><td>說明題：拉力斷裂與塊剪模式、0.6\(F_y\) 的意義、上限的理由</td><td>用 von Mises 講 0.6；用「哪個面先斷」講兩式與上限</td><td>5</td></tr>

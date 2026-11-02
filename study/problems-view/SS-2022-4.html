@@ -27,7 +27,114 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2022-4 題目解析</h1><a class="quick" href="../frequency-SS.html#s-rank" title="SS-U2-2 鋼結構材料特性 尚無單元總覽，改連全科出題頻率排名">&#128269; U2-2 全科頻率排名</a><a class="lect" href="../../index.html" title="SS-U2-2 鋼結構材料特性 尚無觀念講義，改連題庫儀表板">&#128218; 題庫儀表板</a></header>
-<main><h1>考題編號：SS-2022-4</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2022-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2022-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2022_鋼結構設計.pdf</code> 第 2 頁（頁次 2－2），第四題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 111 年（2022）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（(a) 門型構架、(b) 兩鋼材降伏強度分布），<code>SS-2022-4-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-03，PyMuPDF 110 dpi 全頁＋附圖 400 dpi 局部目視（附圖為 623×330 點陣圖）＋抽出文字核對，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>四、設計考慮如圖(a)的鉸支承門型抗彎鋼構架受地震水平力作用時，鋼梁比鋼柱先降伏且在梁端形成塑鉸。為達上述「強柱弱梁」設計目標，選擇使鋼柱的塑性斷面模數為鋼梁的 1.25 倍。兩種鋼材的降伏強度分布如圖(b)所示。假設鋼梁與鋼柱的製作屬統計上之獨立事件。試分別針對鋼材 A 與鋼材 B，分析柱與梁使用同一種鋼材製作卻未達設計目標變「強梁弱柱」之機率，並說明限制鋼材降伏強度範圍的意義。（25 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：$Z_{\text{柱}} = 1.25\,Z_{\text{梁}}$；梁、柱製作為統計獨立。</li>
+<li>圖(b)：縱軸「機率」刻度 1/100、1/200；橫軸「降伏強度(MPa)」刻度 300、400、500。</li>
+<li>卷首注意事項：㈠可以使用電子計算器；㈡不必抄題；㈢本科目除專門名詞或數理公式外，應使用本國文字作答。另卷首註：題目所列之計算公式僅供參考應自負確認與勘誤責任，另視設計需求可自行假設適用的條件等。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2022-4 圖：(a) 門型構架，兩柱底為鉸支承，梁頂左端受水平力；標「水平力」「鋼梁」「鋼柱」。(b) 降伏強度分布：鋼材 B 為 300～400 MPa、高度 1/100 的矩形（直線陰影）；鋼材 A 為 300～500 MPa、高度 1/200 的矩形（400～500 為水平線陰影，300～400 為點線格，與 B 重疊）" src="../../raw/solutions/SS-2022-4/SS-2022-4-fig-1.png" /></p>
+<p><em>圖面文字照錄：水平力；鋼梁；鋼柱；(a)；機率；鋼材B；鋼材A；1/100；1/200；300；400；500；降伏強度(MPa)；(b)；圖。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>鋼材 B 分布</td>
+<td>300～400 MPa 均勻分布，縱軸值 1/100</td>
+<td>圖(b) 直線陰影矩形（400 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>鋼材 A 分布</td>
+<td>300～500 MPa 均勻分布，縱軸值 1/200（300～400 段以點線格畫在 B 之下）</td>
+<td>點線格與水平陰影同高 1/200，A 標籤指 400～500 段</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>縱軸意義</td>
+<td>「機率」實為每 MPa 的機率密度（B：100×1/100 = 1；A：200×1/200 = 1）</td>
+<td>面積檢核</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>失敗定義</td>
+<td>「強梁弱柱」：柱的塑性彎矩小於梁（$1.25F_{y,\text{柱}} &lt; F_{y,\text{梁}}$）</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>同一鋼材</td>
+<td>柱與梁皆用 A，或皆用 B，分別計算</td>
+<td>題文「分別針對」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>圖(a)</td>
+<td>只是情境示意，無尺寸數值</td>
+<td>圖</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-03（SS-U2-2 題目正本推廣・批 1）</em></p></details>
+<h1>考題編號：SS-2022-4</h1>
 <p><strong>主分類：</strong> <code>SS-U2-2</code> 鋼結構材料特性<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> 概念題（含機率計算）<br />

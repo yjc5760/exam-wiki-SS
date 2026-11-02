@@ -259,6 +259,7 @@ exam-wiki-SS/
 | 2026-11-01 | `start.html` 加入 SS-U2-1（`scripts/build_start.py`：空連結不輸出、無影片單元改列解析頁練題、12 週版 U1-3／U2-1 各 1 週）；新增轉址頁 `study/study-SS-U2-1.html`、`formula-given-SS-U2-1.html`；problems-view 90 頁 UN 表補 U2-1 | U2-1 已有單元總覽與講義，起點頁與轉址頁補齊。另記錄同日兩工作階段互相覆蓋 U2-1 講義／資料檔之事故與撤回（見 wiki/queries/log.md OVERWRITE-SS-U2-1） |
 | 2026-11-01 | `question_index.json` 為 SS-2021-3、SS-2025-3 加副分類 `SS-U2-1`（同步 dashboard-data.js、正本標頭、problems-view、frequency-SS.html）；SS-2025-4 題解補「n＋1 僅適用完全機構」 | 兩題明文要求 \(M_p\)／形狀因子（2021-3 並用塑性機構），與已列副分類的 SS-2006-3、2009-3 同型；SS-2010-4、2008-3、2020-1、2012-2 依判準不加。詳見 wiki/queries/log.md INDEX-SS-U2-1 |
 | 2026-11-02 | **題目／解答拆分試做（SS-U2-1 十題）**：新增 `raw/solutions/<id>/<id>-problem.md` 題目正本（考卷原文逐字、公式／附表照錄、判讀清單），規則 1 列為第四處例外；`render_problem_view.py` 在解析前渲染題目正本；`question_index.json` 加 `problemStatus`；報告 `wiki/queries/題目正本試做-SS-U2-1-2026-11-02.md` | 歷次改變答案的勘誤多為讀錯題，題意從未單獨驗證過。試做 10 題即查出 SS-2025-3 漏抄題給 $L_p$、$L_r$、$C_b$ 且答錯所求的量（$\phi_bM_n$ → **標稱 $M_n$ = 218.7 tf·m**），以及 SS-2021-3 的表一不在知識庫任何檔案 |
+| 2026-11-03 | **盲解比對剩餘 22 題（SS 98 題全數盲解一次）並勘誤 SS-2011-3／SS-2005-1／SS-2013-4、清 SS-2009-1 殘留**；同步 problems-view、三支 gen 腳本與 5 張圖、tags、lecture-SS-U1-1／U1-2／U1-3、textbook tension、unit-SS-U1-3 與 5 份 PDF | 一致 17／答案改變 2／觀念作圖 2／不確定 1。SS-2011-3 把腹板淨高 40.62 讀成全深（d **43.16**，改判**彈性** LTB，Mn 3378 → **3489** tf·cm）；SS-2005-1 單排撕出塊只承 P/2 卻比總力（φPn 68.5 → **71.8 tf** 螺栓剪力控制，6 栓塊 100.2）；SS-2013-4 依使用者決定採梁遠端修正（K 1.85 → **2.01**、ΣPeK **2.45EI/L²**）。詳見 wiki/queries/log.md AUDIT-BLIND-REMAIN22、FIX-SS-REMAIN22 |
 
 ---
 

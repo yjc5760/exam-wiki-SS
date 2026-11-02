@@ -652,5 +652,207 @@
   "source": "",
   "report": "wiki/queries/盲解比對-SS-剩餘18題-2026-11-01.md",
   "human": ""
+ },
+ "SS-2011-3": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "L1 看圖",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "盲解對（40.62 為腹板淨高，主工作階段看圖確認）",
+  "scope": "已勘誤題剩餘",
+  "fixed": "2026-11-03"
+ },
+ "SS-2005-1": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "分歧-答案改變",
+  "source": "觀念模型",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "使用者決定：採受力分擔，主答 71.8 tf 螺栓剪力控制（6 栓撕出塊 100.2 tf）",
+  "scope": "已勘誤題剩餘",
+  "fixed": "2026-11-03"
+ },
+ "SS-2009-1": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "分歧-觀念作圖",
+  "source": "觀念模型",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "盲解對（勘誤殘留：§3 Step 1–3、§3.5 L3 已清）",
+  "scope": "已勘誤題剩餘",
+  "fixed": "2026-11-03"
+ },
+ "SS-2022-3": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "分歧-觀念作圖",
+  "source": "規範條文漏用",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2013-4": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "盲解不確定",
+  "source": "觀念模型",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "使用者決定：主答採梁遠端修正（G_B 1.5、K 2.01、ΣPeK 2.45EI/L²）；未修正 K 1.85 移 §5 並註偏不保守",
+  "scope": "已勘誤題剩餘",
+  "fixed": "2026-11-03"
+ },
+ "SS-2015-2": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2015-3": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2018-2": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2022-2": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2024-1": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2008-1": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2010-4": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2025-1": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2003-4": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2011-1": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2009-4": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2017-2": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2024-4": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2004-1": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2016-2": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2018-4": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
+ },
+ "SS-2019-1": {
+  "date": "2026-11-03",
+  "model": "claude-opus-5-5",
+  "result": "一致",
+  "source": "",
+  "report": "wiki/queries/盲解比對-SS-已勘誤剩餘22題-2026-11-03.md",
+  "human": "",
+  "scope": "已勘誤題剩餘"
  }
 }

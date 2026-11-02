@@ -388,6 +388,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "耐震設計",
         "強柱弱梁",
@@ -714,6 +715,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "降伏比",
         "σ-ε曲線",
@@ -812,6 +814,7 @@
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "鋼材材料",
         "鋼種選擇",
@@ -987,6 +990,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "鋼材材料",
         "降伏比",
@@ -1084,6 +1088,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "鋼材材料",
         "型鋼斷面",
@@ -1129,6 +1134,7 @@
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "SN耐震鋼材",
         "降伏比",
@@ -1280,7 +1286,8 @@
         "Mlt",
         "層間穩定",
         "滾支承",
-        "符號解"
+        "符號解",
+        "梁遠端修正"
       ],
       "hasHandwritten": false,
       "hasSolution": true
@@ -1438,7 +1445,7 @@
       "tags": [
         "梁桿件",
         "LTB側扭挫屈",
-        "非彈性LTB",
+        "彈性LTB",
         "Cb係數",
         "端彎矩",
         "X1X2參數",

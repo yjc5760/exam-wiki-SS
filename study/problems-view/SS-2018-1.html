@@ -27,7 +27,124 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2018-1 題目解析</h1><a class="quick" href="../frequency-SS.html#s-rank" title="SS-U2-2 鋼結構材料特性 尚無單元總覽，改連全科出題頻率排名">&#128269; U2-2 全科頻率排名</a><a class="lect" href="../../index.html" title="SS-U2-2 鋼結構材料特性 尚無觀念講義，改連題庫儀表板">&#128218; 題庫儀表板</a></header>
-<main><h1>SS-2018-1 解析</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2018-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2018-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2018_鋼結構設計.pdf</code> 第 1 頁（頁次 2－1），第一題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 107 年（2018）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分（㈠ 15、㈡ 10）</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（細縫鋼板＋兩鋼材應力－應變曲線），<code>SS-2018-1-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-03，PyMuPDF 110 dpi 全頁＋附圖 400 dpi 局部目視（附圖為 489×163、335×249 點陣圖）＋抽出文字核對，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>一、如圖，有一中間設有細縫（slit）之鋼板受拉力作用，此鋼件考慮分別使用應力-應變關係不同之兩種鋼材 A 與 B 製作。</p>
+<p>㈠忽略應力/應變集中進行分析，試推估兩種材料之鋼件受最大拉力時標點間伸長量為何？（15 分）</p>
+<p>㈡說明降伏比對鋼件伸長量之影響。（10 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>圖上數值：標點間距 $l_0$ = 1000 mm；板寬 w；細縫長 0.2w（位於板寬中央，與拉力方向垂直）。</li>
+<li>應力－應變圖：縱軸 σ（N/mm²），刻度 300、400、450、500；橫軸 ε，刻度 0.06、0.2。</li>
+<li><strong>沒有給板厚數值、彈性模數、細縫沿長度方向的尺寸</strong>。</li>
+<li>卷首注意事項：㈠可以使用電子計算器；㈡不必抄題；㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2018-1 附圖：上為鋼板立體示意，兩端受拉（箭頭向外），板寬 w，中央有一條垂直於拉力方向的細縫，長 0.2w；細縫兩側各有一個標點（黑點），標點間距 l0 = 1000 mm；另標「鋼板厚度」。下為應力－應變圖：鋼材 A 降伏於 450 有平台，平台末端約在 ε = 0.06 後開始硬化；鋼材 B 降伏於 300 有平台，平台較短，硬化後在 ε = 0.06 時為 400（以虛線標示）；兩曲線在 ε = 0.2 時同達最大值 500（虛線標示），之後下降" src="../../raw/solutions/SS-2018-1/SS-2018-1-fig-1.png" /></p>
+<p><em>圖面文字照錄：鋼板厚度；細縫；標點；0.2w；w；l₀=1000mm；σ(N/mm²)；鋼材 A；500；450；400；300；鋼材 B；o；0.06；0.2；ε。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>鋼材 A</td>
+<td>降伏 450 N/mm²、抗拉強度 500（ε = 0.2）；降伏比 0.9</td>
+<td>圖上刻度（400 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>鋼材 B</td>
+<td>降伏 300、抗拉強度 500（ε = 0.2）；ε = 0.06 時應力 400；降伏比 0.6</td>
+<td>圖上刻度與虛線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>鋼材 A 平台長</td>
+<td>平台末端與 0.06 虛線約同位置，圖上未標數值</td>
+<td>400 dpi 目視（點陣圖）</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>細縫</td>
+<td>寬方向長 0.2w → 細縫處淨寬 0.8w；細縫沿拉力方向的長度未標（極窄）</td>
+<td>圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>標點</td>
+<td>兩標點在細縫兩側，間距 1000 mm，伸長量以此段計</td>
+<td>圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>「忽略應力/應變集中」</td>
+<td>細縫處淨斷面與其餘全斷面各自均勻受力</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>「最大拉力」</td>
+<td>鋼件所能承受的最大拉力（由較弱斷面控制）</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-03（SS-U2-2 題目正本推廣・批 1）</em></p></details>
+<h1>SS-2018-1 解析</h1>
 <h3>考題編號：SS-2018-1</h3>
 <p><strong>主分類：</strong> <code>SS-U2-2</code> 鋼結構材料特性<br />
 <strong>副分類：</strong> 無<br />

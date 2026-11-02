@@ -30,6 +30,139 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </style></head><body>
 <header><h1>SS-2013-4 題目解析</h1><a class="quick" href="../unit-SS-U1-3.html" title="SS-U1-3 梁柱桿件 單元總覽">&#128269; U1-3 單元總覽</a><a class="lect" href="../lecture-SS-U1-3.html" title="SS-U1-3 梁柱桿件 觀念講義">&#128218; U1-3 梁柱桿件 講義</a></header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2013-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2013-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2013_鋼結構設計.pdf</code> 第 2 頁（全一張・背面），第四題；所引 Alignment Chart 在第 1 頁（題二）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 102 年（2013）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（圖 4：無側撐剛架），<code>SS-2013-4-fig-1.png</code>；題內公式截圖 <code>SS-2013-4-eqn-1.png</code>；第 1 頁 Alignment Chart 截圖 <code>SS-2013-4-eqn-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁＋附圖 500 dpi 局部目視（向量圖）＋PDF 向量座標核對，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>四、如圖 4 所示一無側撐剛架，承受垂直軸壓力 $P$ 及水平力 $H$。試使用 LRFD 求解柱 BC 之二階設計彎矩（Second-order design moment）$M_u$ 及 $B_1$、$B_2$、$M_{nt}$、$M_{lt}$。（求解柱 BC 之有效長度係數時，請參考題二之 Alignment Chart。）（25 分）</p>
+<p>（柱邊界為固接（Fixed end）時 G 使用 1、為鉸接（hinged end）時 G 使用 10。）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：只有符號 $P$、$H$、$L$、$EI$，<strong>沒有任何數值</strong>。</li>
+<li>「以下公式僅提供參考」照錄：</li>
+</ul>
+<p>$$B_1 = \frac{C_m}{1 - P_u/P_{eK}} \ge 1.0,\qquad C_m = 0.6 - 0.4(M_A/M_B),$$<br />
+$$P_{eK} = \frac{\pi^2EI}{(KL)^2} = \frac{P_e}{(K)^2}\;;\qquad B_2 = \frac{1}{1 - \Sigma P_u/\Sigma P_{eK}}$$</p>
+<p><img alt="SS-2013-4 題內參考公式截圖" src="../../raw/solutions/SS-2013-4/SS-2013-4-eqn-1.png" /></p>
+<ul>
+<li>題二（第 1 頁）的 Alignment Chart（左：側位移束制；右：側位移不束制）：</li>
+</ul>
+<p><img alt="SS-2013-4 所引第 1 頁 Alignment Chart 截圖" src="../../raw/solutions/SS-2013-4/SS-2013-4-eqn-2.png" /></p>
+<ul>
+<li>同頁第三題下方的「理論／設計 K 值」表屬第三題。</li>
+<li>公式未給 $M_u = B_1M_{nt} + B_2M_{lt}$ 式；未說明梁遠端鉸接時 Alignment Chart 是否須修正梁勁度。</li>
+<li>卷首注意事項：㈠可以使用電子計算器；㈡不必抄題。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2013-4 圖 4：水平梁 A–B–D，A–B、B–D 各 1.5 L，梁 EI；A、D 兩端各為滾支承，梁端以小圓圈（鉸）接於支承；水平力 H 自左方作用於 A 點（梁高程）；垂直力 P 向下作用於 B 點；柱 BC 自 B 向下長 L、EI，B 為剛接（無圓圈），C 端為鉸支承（三角形＋圓圈）" src="../../raw/solutions/SS-2013-4/SS-2013-4-fig-1.png" /></p>
+<p><em>圖面文字照錄：H；A；EI；B；P；EI；D；L；EI；C；1.5 L；1.5 L；（圖 4）。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A、D 支承</td>
+<td>滾支承（只承垂直力、可水平移動），梁端以鉸接於支承</td>
+<td>500 dpi：三角形下兩個圓輪＋三角形頂端小圓圈</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C 支承</td>
+<td>鉸支承 → $G_C$ = 10</td>
+<td>三角形＋圓圈、無滾輪</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B 節點</td>
+<td>梁柱剛接（無鉸圓圈）</td>
+<td>圖上 B 點無圓圈</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>側移</td>
+<td>唯一水平束制在 C（鉸）→ 結構可側移，柱 BC 用「側位移不束制」圖</td>
+<td>題文「無側撐剛架」＋支承</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>尺寸</td>
+<td>梁 AB = BD = 1.5 L；柱 BC = L；三者 EI 相同</td>
+<td>尺寸線、EI 標註</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>載重位置</td>
+<td>H 水平作用於 A（梁高程）、P 向下作用於 B</td>
+<td>圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>梁遠端鉸接</td>
+<td>梁 AB、BD 遠端（A、D）為鉸，計算 $G_B$ 時是否修正梁勁度題未說明</td>
+<td>題文只說參考題二 Chart、G 取 1／10</td>
+<td>不確定（解讀，影響答案，請確認）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>數值</td>
+<td>全題無數值，答案以 $P$、$H$、$L$、$EI$ 表示</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-3 題目正本推廣・批 2）</em></p></details>
 <h1>考題編號：SS-2013-4</h1>
 <p><strong>主分類：</strong> <code>SS-U1-3</code> 梁柱桿件<br />
 <strong>副分類：</strong> 無<br />

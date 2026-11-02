@@ -30,6 +30,98 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </style></head><body>
 <header><h1>SS-2011-1 題目解析</h1><a class="quick" href="../unit-SS-U1-3.html" title="SS-U1-3 梁柱桿件 單元總覽">&#128269; U1-3 單元總覽</a><a class="lect" href="../lecture-SS-U1-3.html" title="SS-U1-3 梁柱桿件 觀念講義">&#128218; U1-3 梁柱桿件 講義</a></header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2011-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2011-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2011_鋼結構設計.pdf</code> 第 1 頁（全三頁・第一頁），第一題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 100 年（2011）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分（未分配各小題）</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>無</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁目視＋抽出文字核對，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>一、美國 AISC 2010 年版鋼結構設計規範第 C 章（Chapter C: Design for Stability），針對 AISC 2005 年版第 C 章（Chapter C: Stability Analysis and Design）作大幅修改，將 2005 年版原有第 C 章移至附錄而改用全新規範。AISC 2010 年版第 C 章中針對鋼結構穩定問題，要求以直接分析法（Direct Analysis Method of Design）進行鋼結構強度確認，此法對於巨蛋、機場大廳、模板支撐等整體細長比大的鋼結構設計尤其重要。直接分析法需要考慮二階分析（Second-order Analysis）、起始不完美（Initial Imperfections）、勁度修正（Adjustments to Stiffness）等議題；也要求設計載重使用 1.0 倍 LRFD 混合載重（LRFD load combinations），或 1.6 倍 ASD 混合載重（1.6 times ASD load combinations）。</p>
+<p>試簡要說明 AISC 2010 年規範第 C 章中，㈠二階分析與一階分析有何不同？㈡二階分析除直接設置結構起始不完美外，亦可使用何者來模擬此起始不完美？㈢二階分析為何要作勁度修正？什麼情況下需要作勁度修正？㈣ 1.6 倍 ASD 載重中，如何得出此係數 1.6？（25 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>本題<strong>沒有給任何數值或公式</strong>；第 3 頁參考公式與本題無關。</li>
+<li>卷首注意事項：㈠可以使用電子計算器；㈡不必抄題；㈢本試題之相關符號、公式、物理常數及設計參數未提及時，請依規範自行合理推斷或假設。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p>本題無附圖。</p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>小題</td>
+<td>四小題：㈠二階 vs 一階分析；㈡起始不完美的替代模擬；㈢勁度修正的原因與適用情況；㈣ 1.6 倍 ASD 係數由來</td>
+<td>題文（抽出文字缺小題符號，依全頁影像補）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>依據</td>
+<td>AISC 360-10 第 C 章（直接分析法），非我國規範</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>㈢</td>
+<td>一句含兩問：「為何要作」與「什麼情況下需要作」</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>配分</td>
+<td>全題 25 分，未分配各小題</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-3 題目正本推廣・批 1）</em></p></details>
 <h1>考題編號：SS-2011-1</h1>
 <p><strong>主分類：</strong> <code>SS-U1-3</code> 梁柱桿件（穩定分析）<br />
 <strong>副分類：</strong> 無<br />

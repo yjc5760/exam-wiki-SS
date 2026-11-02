@@ -29,7 +29,144 @@ blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;paddin
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2007-2 題目解析</h1><a class="quick" href="../unit-SS-U1-3.html" title="SS-U1-3 梁柱桿件 單元總覽">&#128269; U1-3 單元總覽</a><a class="lect" href="../lecture-SS-U1-3.html" title="SS-U1-3 梁柱桿件 觀念講義">&#128218; U1-3 梁柱桿件 講義</a></header>
-<main><h1>考題編號：SS-2007-2</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2007-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2007-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2007_鋼結構設計.pdf</code> 第 1 頁（全三頁・第一頁），第二題；公式集在第 3 頁</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 96 年（2007）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（圖二：斷面、$M_X$ 與 $M_Y$ 彎矩圖），<code>SS-2007-2-fig-1.png</code>；第 3 頁公式集截圖 <code>SS-2007-2-eqn-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁＋附圖 300 dpi 局部目視（向量圖）＋抽出文字核對，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>二、如圖二所示，一 H 500×300×15×20 鋼柱（型鋼所示尺寸 d×bf×tw×tf，單位均為 mm）承受軸壓力（$P$ = 40 tf）及雙軸力矩（$M_x$ = 20 m-tf, $M_Y$ = 10 m-tf），柱長 $L$ = 10 公尺，兩端鉸接，試用 ASD 法檢核此結構是否適當？（25 分）</p>
+<p>假設 $C_m = 0.6-0.4(M_1/M_2)$ 及 $C_b = 1.75+1.05(M_1/M_2)+0.3(M_1/M_2)^2 \le 2.3$。所有之鋼板為 $F_y$ = 3.5tf/cm² 及 $F_u$ = 5 tf/cm²。</p>
+<p>（H 500×300, $d$ = 50 cm, $t_w$ = 1.5 cm, $b_f$ = 30 cm, $t_f$ = 2 cm, $A$ = 189 cm², $r_x$ = 20.74 cm, $r_Y$ = 6.91 cm, $r_T$ = 7.94 cm, $S_X$ = 3253 cm³, $S_Y$ = 600 cm³, $I_X$ = 81327 cm⁴, $I_Y$ = 9012 cm⁴）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：斷面性質（照錄於 §1）；$P$ = 40 tf；$M_x$ = 20 m-tf、$M_Y$ = 10 m-tf；$L$ = 10 m；$F_y$ = 3.5、$F_u$ = 5 tf/cm²；$C_m$、$C_b$ 公式。</li>
+<li>第 3 頁「※供參考之公式集（請自行使用適合之公式，並檢查此公式之正確性，若有問題，應自行修正）」與本題相關者照錄：</li>
+</ul>
+<p>$$E = 2040\ \text{tf/cm}^2,\quad G = 790\ \text{t/cm}^2$$<br />
+$$\text{For flange: } \lambda_{pd} = 14/\sqrt{F_y},\ \lambda_p = 17/\sqrt{F_y},\ \lambda_r = 25/\sqrt{F_y}\ (F_y\ \text{單位 t/cm}^2),\ b_f/(2t_f) \le \lambda_{pd}$$<br />
+$$\text{For web: } \lambda_{pd} = \frac{138}{\sqrt{F_y}}\left(1 - 3.17\frac{f_a}{F_y}\right)\ \text{for}\ f_a/F_y \le 0.16,\quad = 68/\sqrt{F_y}\ \text{for others}$$<br />
+$$\frac{20b_f}{\sqrt{F_y}}\ \text{or}\ \frac{1400}{(d/A_f)F_y}$$<br />
+$$\sqrt{7160C_b/F_y} \le L/r_t \le \sqrt{35800C_b/F_y}\ \text{then}\ F_b = \left[\frac23 - \frac{F_y(L/r_T)^2}{107600C_b}\right]F_y\;;\qquad \sqrt{35800C_b/F_y} &lt; L/r_t\ \text{then}\ F_b = 12000C_b/(L/r_T)^2$$<br />
+$$F_b = \frac{840C_b}{Ld/A_f}$$<br />
+$$(1)\ \frac{f_a}{F_a} &lt; 0.15:\ \frac{f_a}{F_a} + \frac{f_{bx}}{F_{bx}} + \frac{f_{by}}{F_{by}} \le 1\qquad (2)\ \frac{f_a}{F_a} &gt; 0.15:\ \frac{f_a}{F_a} + \frac{C_{mx}f_{bx}}{\left(1 - \dfrac{f_a}{F'_{ex}}\right)F_{bx}} + \frac{C_{my}f_{by}}{\left(1 - \dfrac{f_a}{F'_{ey}}\right)F_{by}} \le 1$$<br />
+$$\frac{f_a}{0.6F_y} + \frac{f_{bx}}{F_{bx}} + \frac{f_{by}}{F_{by}} \le 1$$<br />
+$$\text{if } \frac{kl}{r} \le C_c:\ F_a = \frac{\left[1 - \dfrac{(kl/r)^2}{2C_c^2}\right]F_y}{\dfrac53 + \dfrac{3(kl/r)}{8C_c} - \dfrac{(kl/r)^3}{8C_c^3}}\quad \text{else}\ F_a = \frac{12\pi^2E}{23(kl/r)^2}$$</p>
+<p><img alt="SS-2007-2 第 3 頁公式集截圖" src="../../raw/solutions/SS-2007-2/SS-2007-2-eqn-1.png" /></p>
+<ul>
+<li>公式集<strong>沒有給 $F'_e$ 的定義式</strong>、<strong>沒有給 $C_c$ 式</strong>（交互式用到 $F'_{ex}$、$F'_{ey}$）；條件 (1)(2) 寫「&lt; 0.15」「&gt; 0.15」，等號兩邊都沒有。</li>
+<li>題文<strong>沒有給 $K$、側向無支撐長度、$E$</strong>（$E$ 只在公式集）；<strong>沒有給構架是否可側移</strong>。</li>
+<li>卷首注意事項：㈠可以使用電子計算器；㈡不必抄題。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2007-2 圖二：左為 H 形斷面，Y 軸沿腹板向上、X 軸垂直腹板向右，標 d、t_f、t_w、b_f；中為直立柱，上下端各有 P 軸壓，旁為 M_X 彎矩圖（三角形：上端最大、下端為 O），柱旁尺寸 L；右為另一視向的直立柱（可見兩翼板線），上下端 P，旁為 M_Y 彎矩圖（三角形：上端最大、下端為 O）" src="../../raw/solutions/SS-2007-2/SS-2007-2-fig-1.png" /></p>
+<p><em>圖面文字照錄：Y；tf；d；X；tw；bf；P；MX；L；O；P；P；MY；O；P；圖二（註：L = 10 公尺）。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>彎矩分布</td>
+<td>$M_X$、$M_Y$ 皆為三角形：上端最大（20、10 m-tf）、下端為 0 → $M_1/M_2 = 0$</td>
+<td>圖二彎矩圖下端標 O（300 dpi 向量圖）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>軸向</td>
+<td>X 軸垂直腹板 → $M_x$ 為強軸彎矩、$M_Y$ 為弱軸彎矩</td>
+<td>斷面圖軸向</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>有效長度</td>
+<td>兩端鉸接 → $K_x = K_y = 1$，$KL$ = 10 m（題未給 $K$）</td>
+<td>題文「兩端鉸接」</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>側向無支撐長度</td>
+<td>全長 10 m（題未給 $L_b$）</td>
+<td>題文＋圖無中間支撐</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>構架型式</td>
+<td>題給 $C_m = 0.6-0.4(M_1/M_2)$ → 視為不側移構材</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>$E$</td>
+<td>題文未給，公式集 $E$ = 2040 tf/cm²</td>
+<td>第 3 頁</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>$F'_e$</td>
+<td>公式集未給定義式，考生須自備</td>
+<td>第 3 頁</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>$F_u$</td>
+<td>題給 5 tf/cm²，本題檢核用不到</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-3 題目正本推廣・批 1）</em></p></details>
+<h1>考題編號：SS-2007-2</h1>
 <p><strong>主分類：</strong> <code>SS-U1-3</code> 梁柱桿件<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> ASD<br />

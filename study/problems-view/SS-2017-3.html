@@ -44,19 +44,164 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 單元總覽">&#128269; U1-1 單元總覽</a><a class="lect" href="../lecture-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 觀念講義">&#128218; U1-1 拉力及壓力桿件 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2017-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2017-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2017_鋼結構設計.pdf</code> 第 1 頁（全一頁），第三題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 106 年（2017）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>30 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>無</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁目視＋抽出文字核對，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>三、某工程師依據容許應力設計法設計一長 6m 承受純軸壓之銲接組合 H 型鋼 H700×300×25×50，應力檢核時得容許應力（$F_a$）為 $0.34F_y$，請問計算所得之值容許應力（$F_a$）是否合理？請敘述原因。（30 分）（假設 $K_x = 0.8$、$K_y = 2.1$，$C_c = 128$）</p>
+</blockquote>
+<p>（「計算所得之值容許應力」照考卷原文，疑為「計算所得之容許應力值」的筆誤，不影響題意。）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：$L = 6$ m，$K_x = 0.8$，$K_y = 2.1$，$C_c = 128$，$F_a$（工程師所得）$= 0.34F_y$。</li>
+<li><strong>沒有給 $F_y$、$E$，也沒有給斷面性質</strong>（$A$、$I$、$r$ 都要由 H700×300×25×50 自行計算）。</li>
+<li>本題<strong>沒有印任何公式</strong>。</li>
+<li>卷首注意事項：㈠可用計算器、㈡不必抄題、㈢除專門名詞或數理公式外應使用本國文字作答。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p>本題無附圖。</p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>斷面標示</td>
+<td>H700×300×25×50 ＝ $d \times b_f \times t_w \times t_f$（mm）：深 700、翼寬 300、腹板厚 25、翼板厚 50</td>
+<td>國內 H 型鋼標示慣例</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>柱長</td>
+<td>兩軸無支長度都是 6 m（題文只給一個長度）</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>$K$</td>
+<td>強軸 $K_x = 0.8$、弱軸 $K_y = 2.1$，兩軸分別算 $KL/r$ 取大者</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>$F_y$ 未給</td>
+<td>由 $C_c = \sqrt{2\pi^2E/F_y} = 128$ 反推（$E$ 取 2040 tf/cm² 時約 2.46 tf/cm²），或以 $F_a/F_y$ 的比值作答而不需 $F_y$ 數值</td>
+<td>題文只給 $C_c$</td>
+<td>不確定 → 使用者確認：由 $C_c$ 反推 $F_y = 2.458$ tf/cm²（$E$ 取 2040）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>斷面性質</td>
+<td>未給，自行由板尺寸計算（翼板與腹板矩形組合，不計銲道）</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>「是否合理」</td>
+<td>依 ASD 公式以控制軸 $KL/r$ 重算 $F_a/F_y$，與 0.34 比較並說明差異原因</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>局部挫屈</td>
+<td>是否要檢核翼板／腹板寬厚比（題目未提）</td>
+<td>題文未提</td>
+<td>不確定 → 使用者確認：不列為必答（本解未檢核）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-1 題目正本推廣・批 3）｜確認：2026-11-02 使用者確認</em></p></details>
 <h1>考題編號：SS-2017-3</h1>
 <p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> ASD<br />
 <strong>標籤：</strong> <code>壓力桿件</code> <code>容許應力法</code> <code>柱強度</code> <code>細長比</code> <code>彈性挫屈</code> <code>非彈性挫屈</code> <code>強弱軸</code> <code>有效長度</code> <code>ASD公式</code> <code>錯誤診斷</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>某工程師依據容許應力設計法（ASD）設計一長 <strong>6 m</strong> 承受純軸壓之銲接組合 H 型鋼 <strong>H700×300×25×50</strong>，應力檢核時得容許應力（$F_a$）為 $0.34F_y$。</p>
-<p>請問計算所得之容許應力（$F_a$）是否合理？請敘述原因。（30 分）</p>
-<p><strong>給定條件：</strong><br />
-$$K_x = 0.8,\quad K_y = 2.1,\quad C_c = 128,\quad L = 6\text{ m} = 600\text{ cm}$$</p>
-<p><strong>斷面標示：</strong><br />
-$$\text{H}700 \times 300 \times 25 \times 50 \quad (d \times b_f \times t_w \times t_f,\text{ 單位 mm})$$</p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2017-3-problem.md"><code>SS-2017-3-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>斷面性質</td>
+<td>題未給，由 H700×300×25×50 板尺寸自算</td>
+<td>套型鋼表或只算一軸</td>
+</tr>
+<tr>
+<td>控制軸</td>
+<td>兩軸長度同為 600 cm，弱軸 $K_yL/r_y \approx 178 &gt; C_c$ 控制</td>
+<td>只算強軸（$K_xL/r_x = 16.9$）</td>
+</tr>
+<tr>
+<td>$F_y$</td>
+<td>題未給，由 $C_c = 128$ 反推 2.458 tf/cm²（$E$ 取 2040）</td>
+<td>另設 $F_y$ 而與 $C_c$ 矛盾</td>
+</tr>
+<tr>
+<td>公式區間</td>
+<td>$KL/r &gt; C_c$ 用彈性式 $F_a = 12\pi^2E/[23(KL/r)^2]$</td>
+<td>續用非彈性式</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> $L = 600$ cm，$K_x = 0.8$，$K_y = 2.1$，$C_c = 128$；$E = 2040$ tf/cm²（題未給，本解假設）。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：弱軸控制 + 彈性挫屈才是正確答案</strong></p>
@@ -401,6 +546,7 @@ $$\frac{K_yL/r_y}{K_xL/r_x} = \frac{178}{16.9} \approx 10.5 \text{ 倍}$$</p>
 <li>計算 $F_a = 0.135F_y$</li>
 <li>結論：$0.34F_y$ 不合理，高估了 2.5 倍</li>
 </ol>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2017-3-problem.md</code>（已確認）＋常見誤讀＋本解記號；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2017-3/SS-2017-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

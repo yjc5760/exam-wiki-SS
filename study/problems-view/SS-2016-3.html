@@ -44,30 +44,176 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 單元總覽">&#128269; U1-1 單元總覽</a><a class="lect" href="../lecture-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 觀念講義">&#128218; U1-1 拉力及壓力桿件 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2016-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2016-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2016_鋼結構設計.pdf</code> 第 1 頁（全一張之正面），第三題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 105 年（2016）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>30 分（㈠ 5、㈡ 5、㈢ 5、㈣ 15）</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>2 張（圖 1 斷面示意圖 <code>SS-2016-3-fig-1.png</code>；圖 2 材料性質圖 <code>SS-2016-3-fig-2.png</code>）</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋圖 1 350 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>三、㈠何謂殘餘應力？（5 分）<br />
+㈡殘餘應力的來源有那些？（5 分）<br />
+㈢殘餘應力對受壓桿件的影響為何？（5 分）<br />
+㈣圖 1 所示為某一斷面殘餘應力的分布圖，請繪出圖 1 所示斷面受壓時強軸的 $F_{cr}$ vs $L/r$ 曲線（$F_{cr}$：由軸壓力所引致的挫屈應力，繪圖時，$y$ 軸為 $F_{cr}$，$x$ 軸為 $L/r$，假設 $K = 1$），其中材料之降伏應力（$F_y$）為 2.5 tf/cm² 並具有完美的彈塑性曲線（如圖 2 所示）。（15 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：$F_y = 2.5$ tf/cm²，$K = 1$。</li>
+<li>圖 2：$E = 2040$ tf/cm²，完全彈塑性（$\varepsilon_y$ 之後水平）。</li>
+<li>本題<strong>沒有印任何公式</strong>，也沒有指定設計法（同卷第一題提到 ASD，與本題無關）。</li>
+<li>卷首注意事項只有㈠可用計算器、㈡不必抄題兩條。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2016-3 圖 1：寬 b、厚 t 的單一實心矩形板（灰色）；下方殘餘應力分布三段：左右各 b/3 為 Fy/4（壓），中間 b/3 為 Fy/4（拉）" src="../../raw/solutions/SS-2016-3/SS-2016-3-fig-1.png" /></p>
+<p><em>圖面文字照錄：t；b；b/3；b/3；b/3；Fy/4（壓）；Fy/4（拉）；Fy/4（壓）；圖 1 斷面示意圖。</em></p>
+<p><img alt="SS-2016-3 圖 2：應力–應變圖，彈性段斜率 E = 2040 tf/cm²，至 εy 達 Fy 後水平延伸" src="../../raw/solutions/SS-2016-3/SS-2016-3-fig-2.png" /></p>
+<p><em>圖面文字照錄：Fy；E = 2040 tf/cm²；εy；ε；圖 2 材料性質圖。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>斷面形狀</td>
+<td>單一實心矩形板，寬 $b$、厚 $t$（不是 H 型鋼）</td>
+<td>圖 1 灰色矩形＋右側 $t$ 尺寸線（350 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>分段尺寸</td>
+<td>總寬 $b$；下方分三段各 $b/3$（中段的 $b/3$ 標在兩條尺寸線之間）</td>
+<td>圖 1 尺寸線端點（350 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>殘餘應力</td>
+<td>左右兩段 $F_y/4$ 壓、中段 $F_y/4$ 拉，均為塊狀（每段內均勻）</td>
+<td>圖 1</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>自平衡</td>
+<td>圖上數值<strong>不自平衡</strong>：壓力合力 $2\cdot\tfrac{b}{3}t\cdot\tfrac{F_y}{4}$ 是拉力合力的 2 倍；照圖數值作答並指出缺陷，或改為自平衡分布再作答</td>
+<td>由圖 1 數值計算</td>
+<td>不確定 → 使用者確認：照圖數值作答並指出缺陷</td>
+</tr>
+<tr>
+<td>5</td>
+<td>強軸</td>
+<td>板寬 $b$ 方向彎曲的軸（$I = tb^3/12$）</td>
+<td>題文「強軸」＋圖 1 $b \gg t$</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>$F_{cr}$ 的定義</td>
+<td>軸壓力造成的平均挫屈應力 $P_{cr}/A$（題文括號已定義）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>曲線範圍</td>
+<td>由 $L/r = 0$ 畫到彈性段，需標出比例限與轉折點</td>
+<td>題文「$F_{cr}$ vs $L/r$ 曲線」</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>理論依據</td>
+<td>切線模數理論（降伏部分 $E_t = 0$），不乘任何安全係數或 $\phi$</td>
+<td>題文未指定設計法，問的是挫屈應力</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-1 題目正本推廣・批 3）｜確認：2026-11-02 使用者確認</em></p></details>
 <h1>考題編號：SS-2016-3</h1>
 <p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>副分類：</strong> 無<br />
-<strong>設計法：</strong> LRFD<br />
+<strong>設計法：</strong> LRFD（考卷未指定設計法；本題為挫屈強度理論，不含 $\phi$）<br />
 <strong>標籤：</strong> <code>壓力桿件</code> <code>拉力桿件</code> <code>殘留應力</code> <code>柱強度曲線</code> <code>切線模數</code> <code>塊狀殘留應力</code> <code>強度平台段</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p><strong>子問題：</strong><br />
-1. <strong>(一)</strong> 何謂殘留應力？（5 分）<br />
-2. <strong>(二)</strong> 殘留應力的來源有哪些？（5 分）<br />
-3. <strong>(三)</strong> 殘留應力對受壓桿件的影響為何？（5 分）<br />
-4. <strong>(四)</strong> 圖 1 所示為某一斷面殘留應力的分布圖（寬 $b$、厚 $t$ 的矩形板，兩側各 $b/3$ 為壓應力 $F_y/4$，中間 $b/3$ 為拉應力 $F_y/4$），請繪出該斷面受壓時強軸的 $F_{cr}$ vs $L/r$ 曲線（$F_{cr}$：由軸壓力所引致的挫屈應力；$y$ 軸為 $F_{cr}$，$x$ 軸為 $L/r$，假設 $K=1$）。已知材料降伏應力 $F_y = 2.5 \text{ tf/cm}^2$，完美彈塑性曲線如圖 2，$E = 2040 \text{ tf/cm}^2$。（15 分）</p>
-<p><strong>殘留應力分佈（圖 1，依考卷原圖目視判讀）：</strong></p>
-<pre><code>   ┌──────────────────────────────┐ ↕ t
-   └──────────────────────────────┘
-   |← b/3 →|←  b/3  →|← b/3 →|
-   [ Fy/4 壓 ]          [ Fy/4 壓 ]
-            [ Fy/4 拉 ]
-</code></pre>
-<p><img alt="SS-2016-3 圖1 斷面示意圖：寬 b、厚 t 的單一矩形板；兩側各 b/3 為殘留壓應力 Fy/4，中間 b/3 為殘留拉應力 Fy/4" src="../../raw/solutions/SS-2016-3/SS-2016-3-fig-1.png" /></p>
-<p><em>圖說：圖 1 是<strong>一塊寬 $b$、厚 $t$ 的矩形板</strong>（不是 H 型鋼，沒有腹板）。殘留應力為三段塊狀：兩側各 $b/3$ 壓應力 $F_y/4$，中間 $b/3$ 拉應力 $F_y/4$。注意這組數字<strong>不自相平衡</strong>：壓力合力 $2 \times \tfrac{b}{3}t \times \tfrac{F_y}{4}$ 是拉力合力 $\tfrac{b}{3}t \times \tfrac{F_y}{4}$ 的兩倍（淨壓力 $F_ybt/12$）。這是題目的缺陷，答題時應指出，並說明採用的處理方式（見 §4(四)）。</em><br />
-<em>強軸：板寬 $b$ 方向的彎曲（繞平行於 $t$ 的軸），$I = tb^3/12$，兩側的 $b/3$ 對勁度貢獻最大。</em></p>
-<p><img alt="SS-2016-3 圖2 材料性質圖：完全彈塑性應力-應變關係，彈性段斜率 E=2040 tf/cm²，達 Fy 後水平延伸（無應變硬化）" src="../../raw/solutions/SS-2016-3/SS-2016-3-fig-2.png" /></p>
-<p><em>圖說（圖 2 材料性質圖）：鋼材採完全彈塑性假設（Perfect Elastic-Plastic）。彈性段：應力 $F = E\varepsilon$，斜率 $E = 2040\text{ tf/cm}^2$，至降伏應變 $\varepsilon_y = F_y/E$。塑性段：應力維持 $F = F_y = 2.5\text{ tf/cm}^2$ 水平延伸（無應變硬化，無下降段）。此假設是切線模數理論的材料基礎——降伏後切線模數 $E_t = 0$，降伏前 $E_t = E$。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2016-3-problem.md"><code>SS-2016-3-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>斷面</td>
+<td>單一實心矩形板 $b \times t$</td>
+<td>當成 H 型鋼的翼板與腹板</td>
+</tr>
+<tr>
+<td>殘餘應力</td>
+<td>外側各 $b/3$ 壓 $F_y/4$、中段 $b/3$ 拉 $F_y/4$；圖上數值不自平衡，照圖作答並指出</td>
+<td>自行改成自平衡卻不說明</td>
+</tr>
+<tr>
+<td>強軸</td>
+<td>板寬 $b$ 方向彎曲（$I = tb^3/12$），外側 $b/3$ 先降伏、勁度損失最大</td>
+<td>以為降伏位置不影響勁度</td>
+</tr>
+<tr>
+<td>比例限</td>
+<td>$F_{PL} = F_y - F_y/4 = 1.875$ tf/cm²</td>
+<td>以 $F_y$ 當比例限</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> $F_y = 2.5$、$E = 2040$ tf/cm²；$F_{rc} = F_y/4 = 0.625$ tf/cm²；$K = 1$；$F_{cr}$ 為平均挫屈應力 $P_{cr}/A$。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：殘留應力降低柱的挫屈強度——中間細長比最危險</strong></p>
@@ -358,7 +504,7 @@ Euler 曲線的有效起始點是 $(L/r)_{\text{trans}}$，其數值由 $F_e = F
 <hr />
 <h3>(四) 繪製 $F_{cr}$ vs $L/r$ 曲線（強軸，$K = 1$）</h3>
 <p><strong>已知：</strong> $F_y = 2.5$ tf/cm²，$E = 2040$ tf/cm²，殘留應力 $\pm F_y/4 = 0.625$ tf/cm²，完全彈塑性材料。</p>
-<p><strong>處理方式：</strong> 以「外力造成的平均應力增量」$F = P/A$ 計算，殘留應力只決定各塊何時降伏（題目數字不自相平衡，見圖說）。強軸彎曲時，寬度方向距中心愈遠的材料對 $I$ 貢獻愈大，彈性部分的 $I_e$ 決定切線模數挫屈：</p>
+<p><strong>處理方式：</strong> 以「外力造成的平均應力增量」$F = P/A$ 計算，殘留應力只決定各塊何時降伏（題目數字不自相平衡，見題目正本判讀 #4）。強軸彎曲時，寬度方向距中心愈遠的材料對 $I$ 貢獻愈大，彈性部分的 $I_e$ 決定切線模數挫屈：</p>
 <p>$$F_{cr} = \frac{\pi^2E}{(L/r)^2}\cdot\frac{I_e}{I}$$</p>
 <h4>步驟 1：比例限</h4>
 <p>兩側原有壓應力 $F_y/4$，外力應力 $F$ 疊加後 $F + F_y/4 = F_y$ 時兩側<strong>同時整塊</strong>降伏：</p>
@@ -531,6 +677,7 @@ Euler 曲線的有效起始點是 $(L/r)_{\text{trans}}$，其數值由 $F_e = F
 <hr />
 <p><em>修正日期：2026-11-01（依考卷原圖：圖 1 為單一矩形板 $b \times t$，兩側 $b/3$ 壓、中間 $b/3$ 拉，無腹板；原解以平滑式 $F_yF_e/(F_e + F_{rc})$ 繪非彈性段並以「腹板拉力」補足平衡。更正為塊狀殘留應力的切線模數解：兩側同時降伏、強軸 $I_e/I = 1/27$ → 平台 $F_{cr} = 1.875$（$19.9 \le L/r \le 103.6$）、上升段 $\pi^2E/[27(L/r)^2]$、全斷面降伏 2.29（或 $F_y$）；指出題目殘留應力不自相平衡；同步 <code>SS-2016-3-column-curve-viz.html</code>；新增 §6 對照）</em><br />
 <em>驗證狀態：unverified</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2016-3-problem.md</code>（已確認）＋常見誤讀＋本解記號；頭表設計法補註考卷未指定；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2016-3/SS-2016-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

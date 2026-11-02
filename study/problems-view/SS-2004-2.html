@@ -29,7 +29,208 @@ blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;paddin
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2004-2 題目解析</h1><a class="quick" href="../unit-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 單元總覽">&#128269; U1-4 單元總覽</a><a class="lect" href="../lecture-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 觀念講義">&#128218; U1-4 接合之分析與設計 講義</a></header>
-<main><h1>考題編號：SS-2004-2</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2004-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2004-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2004_鋼結構設計.pdf</code> 第 1 頁（全一張之正面），第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 93 年（2004）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（翼板續接立面），<code>SS-2004-2-fig-1.png</code>；聯結物容許應力表照錄於 §2</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁＋附圖 400 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>二、下圖所示為一 H150×150×7×10 斷面拉力構材之續接。該構材承受靜載重 DL＝40 t 及活載重 LL＝30 t，在服務載重下該接合不可產生滑動。以容許應力（ASD）法設計此接合，且在規定範圍內盡量縮短接合之長度。設計內容包括螺栓之直徑 d、個數、配置方式，連接板（外連接板及內連接板）之厚度、寬度、長度，螺栓孔形式、配置（繪簡圖標示之）。拉力構材及連接板使用 A36 鋼材（$F_y$＝2.5 t/cm²，$F_u$＝4.1 t/cm²），假設連接板為全斷面積降伏控制；使用 A325 螺栓，螺栓孔最小邊距為 1.5d，最小間距為 3d，所有尺寸皆以 1mm 為最小增量。<u>H150×150×7×10：A＝40.1 cm²，翼板與腹板交接處彎角之半徑 R＝11 mm</u>。（本設計僅在翼板連結，不在腹板接合）。（25 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：DL＝40 t、LL＝30 t；A36，$F_y$＝2.5、$F_u$＝4.1 t/cm²；A325；邊距 ≥ 1.5d、間距 ≥ 3d；尺寸以 1 mm 為增量；A＝40.1 cm²；R＝11 mm。</li>
+<li>「聯結物之容許應力（t/cm²）表」（照錄）：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>聯結物種類</th>
+<th>容許張應力 $F_t$</th>
+<th>摩阻型 標準孔</th>
+<th>摩阻型 擴大孔及短槽孔</th>
+<th>摩阻型 長槽孔 載重垂直</th>
+<th>摩阻型 長槽孔 載重平行</th>
+<th>承壓式接合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A307 螺栓</td>
+<td>1.40</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.70</td>
+</tr>
+<tr>
+<td>A325 螺栓、螺紋在剪力平面</td>
+<td>3.05</td>
+<td>1.19</td>
+<td>1.05</td>
+<td>0.84</td>
+<td>0.70</td>
+<td>1.45</td>
+</tr>
+<tr>
+<td>A325 螺栓、螺紋不在剪力平面</td>
+<td>3.05</td>
+<td>1.19</td>
+<td>1.05</td>
+<td>0.84</td>
+<td>0.70</td>
+<td>2.10</td>
+</tr>
+<tr>
+<td>A490 螺栓、螺紋在剪力平面</td>
+<td>3.75</td>
+<td>1.47</td>
+<td>1.26</td>
+<td>1.05</td>
+<td>0.91</td>
+<td>1.95</td>
+</tr>
+<tr>
+<td>A490 螺栓、螺紋不在剪力平面</td>
+<td>3.75</td>
+<td>1.47</td>
+<td>1.26</td>
+<td>1.05</td>
+<td>0.91</td>
+<td>2.80</td>
+</tr>
+<tr>
+<td>螺牙桿件符合 3.5 節規定螺栓、螺紋在剪力平面</td>
+<td>0.33 $F_u$</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.17 $F_u$</td>
+</tr>
+<tr>
+<td>螺牙桿件符合 3.5 節規定螺栓、螺紋不在剪力平面</td>
+<td>0.33 $F_u$</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.17 $F_u$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>卷首注意事項：㈠不必抄題；㈡可以使用電子計算器。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2004-2 附圖：兩段 H 型鋼對接，接縫間隙 5 mm；上、下翼板外側各一片外連接板，翼板內側（腹板兩側）各有內連接板；不在腹板接合" src="../../raw/solutions/SS-2004-2/SS-2004-2-fig-1.png" /></p>
+<p><em>圖面文字照錄：外連接板；內連接板；5 mm。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>連接板配置</td>
+<td>每片翼板外側一片外連接板、內側腹板兩側各一片內連接板 → 螺栓雙剪</td>
+<td>附圖 400 dpi＋題文「外連接板及內連接板」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>間隙 5 mm</td>
+<td>兩段構材端面間隙</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>服務拉力</td>
+<td>DL＋LL＝70 t，兩翼板各分擔一半</td>
+<td>題文＋「僅在翼板連結」</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>不可滑動</td>
+<td>摩阻型、標準孔 $F_v$＝1.19 t/cm²</td>
+<td>題文＋附表</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>內連接板寬</td>
+<td>受腹板厚與彎角半徑 R 限制</td>
+<td>題給 R＝11 mm</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>連接板強度</td>
+<td>「全斷面積降伏控制」→ $F_t = 0.6F_y$ 檢核毛面積</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>拉力構材本身</td>
+<td>是否須檢核構材翼板淨斷面（題文只說連接板全斷面控制）</td>
+<td>題文</td>
+<td>不確定（解讀）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>螺栓直徑</td>
+<td>由考生自選（題未指定），以縮短接合長度為目標</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-4 題目正本推廣・批 1）</em></p></details>
+<h1>考題編號：SS-2004-2</h1>
 <p><strong>主分類：</strong> <code>SS-U1-4</code> 接合之分析與設計<br />
 <strong>副分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>設計法：</strong> ASD<br />

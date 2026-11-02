@@ -44,6 +44,117 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-2.html" title="SS-U1-2 梁桿件 單元總覽">&#128269; U1-2 單元總覽</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義">&#128218; U1-2 梁桿件 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2012-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2012-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2012_鋼結構設計.pdf</code> 第 1 頁（全一張之正面），第一題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 101 年（2012）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>無（題內公式照錄於 §1）</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁目視＋抽出文字核對，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>一、有一 ASTM A572 Gr.50 之 W14×90 簡支鋼梁，梁長 10 m，在梁兩端（一端為鉸接支承，另一端為滾支承）均有側向支撐，梁全長承受向下均佈的工作靜載重為 5.8 kN/m（包含梁自重）及向下均佈的工作活載重為 $W_L$（kN/m），利用極限設計法（LRFD）設計此梁強軸彎矩強度所能承載之最大活載重 $W_L$。（25 分）<br />
+鋼材 $F_y$ = 350 MPa, $F_r$ = 69 MPa<br />
+W14×90 型鋼性質：$S_x$ = 2343350 mm³, $Z_x$ = 2572769 mm³<br />
+d = 356 mm, $b_f$ = 368 mm, $t_f$ = 18 mm<br />
+$\lambda_p$ = 9.19, $\lambda_r$ = 22.3, $L_p$ = 4.5 m, $L_r$ = 11.7 m<br />
+公式：$C_b = \dfrac{12.5M_{max}}{2.5M_{max} + 3M_A + 4M_B + 3M_c}$</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：$L = 10$ m；$w_D = 5.8$ kN/m（含自重）；$F_y = 350$、$F_r = 69$ MPa；W14×90 性質與 $\lambda_p$、$\lambda_r$、$L_p$、$L_r$（照錄於 §1）；$C_b$ 公式。</li>
+<li><strong>沒有給載重組合係數、$\phi_b$</strong>，也沒有給 $E$、$r_y$ 等（$L_p$、$L_r$ 已直接給）。</li>
+<li>卷首注意事項：㈠可用計算器、㈡不必抄題、㈢本試題之相關公式、物理常數、符號意義及設計參數未提及時，請自行合理推斷與假設。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p>本題無附圖。</p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>側撐</td>
+<td>只在兩端，$L_b = 10$ m（介於 $L_p$ 與 $L_r$ 之間）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>$\lambda_p$、$\lambda_r$</td>
+<td>翼板寬厚比限值；翼板 $b_f/2t_f = 368/36 = 10.2$ 介於兩者之間（須檢核翼板局部挫屈）</td>
+<td>題文給值＋斷面尺寸</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>$C_b$ 式中 $M_A$、$M_B$、$M_c$</td>
+<td>無支撐段 1/4、1/2、3/4 點彎矩（與支承代號無關）</td>
+<td>規範公式慣例</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>載重組合</td>
+<td>1.2D＋1.6L（係數題未給）</td>
+<td>題文「極限設計法」</td>
+<td>不確定（解讀）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>$\phi_b$</td>
+<td>題未給，依規範 0.9</td>
+<td>題文未給</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>所求</td>
+<td>由強軸彎矩強度反求最大工作活載重 $W_L$（kN/m，未因數化）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-2 題目正本推廣・批 2）</em></p></details>
 <h1>考題編號：SS-2012-1</h1>
 <p><strong>主分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
 <strong>副分類：</strong> 無<br />

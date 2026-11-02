@@ -44,6 +44,190 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-2.html" title="SS-U1-2 梁桿件 單元總覽">&#128269; U1-2 單元總覽</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義">&#128218; U1-2 梁桿件 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2015-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2015-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2015_鋼結構設計.pdf</code> 第 1 頁（全三頁之第一頁），第一題；參考公式在第 3 頁</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 104 年（2015）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>30 分（每小題 10 分）</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>2 張：圖 1(a) 簡支梁和斷面 <code>SS-2015-1-fig-1.png</code>、圖 1(b) 梁設計彎矩強度 <code>SS-2015-1-chart-1.png</code>；第 3 頁參考公式截圖 <code>SS-2015-1-eqn-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁＋圖 1(b) 250 dpi 目視，圖 1(b) 曲線另以 PDF 向量座標讀值，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>一、【極限設計法】有一跨距 8.4 m 之簡支承鋼梁，在三分點處各承受載重 $P_D$ = 22 tf，活載重 $P_L$ = 35 tf，梁僅在支承點和載重點有側向支撐如圖 1(a)所示，$E_s$ = 2040 tf/cm²。（每小題 10 分，共 30 分）<br />
+㈠若使用 A709-36 級鋼料（$F_y$ = 2.52 tf/cm²），由圖 1(b)設計最佳之抗彎矩斷面。<br />
+㈡檢核此斷面之剪力強度是否足夠？（$\phi_v$ = 0.9，腹板未使用加勁板，$k_v$ = 5.0）<br />
+㈢檢核此斷面因活載重造成之撓度，是否符合規範之限制。</p>
+</blockquote>
+<p>（題文「在三分點處各承受載重 $P_D$ = 22 tf」照考卷原文，前段漏「靜」字，圖上標 $P_D$。）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：跨距 8.4 m；三分點 $P_D = 22$、$P_L = 35$ tf；$E_s = 2040$、$F_y = 2.52$ tf/cm²；$\phi_v = 0.9$、$k_v = 5.0$。</li>
+<li>圖 1(b)（$F_y = 2.52$ tf/cm²、$C_b = 1.0$）七條曲線，以 PDF 向量座標讀值（縱軸 227–235 tf-m 線性、橫軸 2.0–5.0 m）：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>斷面（單位重）</th>
+<th>平台值（tf-m）</th>
+<th>平台終點 $L_b$（m）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BH 820×400×16×25（254 kg/m）</td>
+<td>234.2</td>
+<td>4.56</td>
+</tr>
+<tr>
+<td>BH 920×300×19×25（247 kg/m）</td>
+<td>233.8</td>
+<td>3.04</td>
+</tr>
+<tr>
+<td>BH 500×500×25×40（396 kg/m）</td>
+<td>233.6</td>
+<td>至 5.0 仍為平台</td>
+</tr>
+<tr>
+<td>BH 600×400×19×40（329 kg/m）</td>
+<td>232.3</td>
+<td>至 5.0 仍為平台</td>
+</tr>
+<tr>
+<td>BH 826×350×16×28（251 kg/m）</td>
+<td>231.2</td>
+<td>4.01</td>
+</tr>
+<tr>
+<td>BH 610×350×19×45（325 kg/m）</td>
+<td>231.0</td>
+<td>4.47</td>
+</tr>
+<tr>
+<td>BH 870×350×16×25（240 kg/m）</td>
+<td>228.8</td>
+<td>3.87</td>
+</tr>
+</tbody>
+</table>
+<p>（BH 920×300 的標籤沒有貼在曲線旁，以箭頭指向在 $L_b$ ≈ 3.4 m 陡降的那條線，其平台為 233.8。）<br />
+- 第 3 頁「※參考公式」與本題相關者：剪力強度三段式</p>
+<p>$$\frac{h}{t_w} \le 50\sqrt{\frac{k_v}{F_{yw}}}:\ V_n = 0.6F_{yw}A_w;\quad 50\sqrt{\frac{k_v}{F_{yw}}} &lt; \frac{h}{t_w} \le 62\sqrt{\frac{k_v}{F_{yw}}}:\ V_n = 0.6F_{yw}A_w\frac{50\sqrt{k_v/F_{yw}}}{h/t_w};\quad 62\sqrt{\frac{k_v}{F_{yw}}} &lt; \frac{h}{t_w} \le 260:\ V_n = \frac{1860k_v}{(h/t_w)^2}A_w$$</p>
+<p><img alt="SS-2015-1 第 3 頁參考公式截圖" src="../../raw/solutions/SS-2015-1/SS-2015-1-eqn-1.png" /><br />
+- <strong>沒有給載重組合係數、撓度限值與各斷面的 $I_x$</strong>。<br />
+- 卷首注意事項：㈠可用計算器、㈡不必抄題、㈢計算所需之物理常數、參數及公式等如未給時，請自行合理假設或推知；㈣作答請採用內政部發布 2010 年「鋼結構設計技術規範」為原則，並依題目指定設計法作答。</p>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2015-1 圖 1(a)：簡支梁，左端三角形鉸支、右端滾支，三等分 3@2.8 = 8.4 m，兩個三分點各受 PD、PL；梁頂四個 ⊗ 符號（側撐）在兩支承與兩載重點；右側 BH H×B×tw×tf 斷面示意（單位 mm）" src="../../raw/solutions/SS-2015-1/SS-2015-1-fig-1.png" /></p>
+<p><img alt="SS-2015-1 圖 1(b)：梁設計彎矩強度對無側撐長度 Lb（2.0–5.0 m）的七條曲線，Fy = 2.52 tf/cm²、Cb = 1.0，縱軸 227–235 tf-m" src="../../raw/solutions/SS-2015-1/SS-2015-1-chart-1.png" /></p>
+<p><em>圖面文字照錄：PD；PD；PL；PL；⊗：側撐；3@2.8 = 8.4 m；BH H×B×tw×tf 單位: mm；tf；tw；H；B；圖 1(a) 簡支梁和斷面；Fy = 2.52 tf/cm², Cb = 1.0；設計彎矩強度 (tf-m)；無側撐長度 Lb (m)；七條曲線標籤（見 §2 表）；圖 1(b) 梁設計彎矩強度。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>側撐</td>
+<td>兩支承與兩載重點，$L_b = 2.8$ m</td>
+<td>圖 1(a) ⊗ 位置＋題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>圖 1(b) 縱軸</td>
+<td>設計彎矩強度 $\phi_bM_n$（已乘 $\phi_b$）</td>
+<td>縱軸標「設計彎矩強度」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>曲線與標籤對應</td>
+<td>如 §2 表；BH 920×300 以箭頭指認</td>
+<td>圖 1(b) 250 dpi＋向量座標</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>$C_b$</td>
+<td>中段 $L_b$ 內彎矩均勻，$C_b = 1.0$ 與圖條件一致</td>
+<td>題文＋圖</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>載重組合</td>
+<td>1.2D＋1.6L（係數題未給）</td>
+<td>卷首注意㈢、㈣</td>
+<td>不確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>梁自重</td>
+<td>不計（題未給，選斷面前也未知）</td>
+<td>題文</td>
+<td>不確定（解讀）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>「最佳」</td>
+<td>設計強度足夠的斷面中單位重最輕者</td>
+<td>圖例附單位重</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>㈡ $A_w$、$h$</td>
+<td>由所選 BH 尺寸計算（$h$ 取腹板淨高）</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>9</td>
+<td>㈢ 撓度限值</td>
+<td>活載重撓度依規範 $L/360$（題未給）</td>
+<td>題文「規範之限制」</td>
+<td>不確定（解讀）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-2 題目正本推廣・批 2）</em></p></details>
 <h1>考題編號：SS-2015-1</h1>
 <p><strong>主分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
 <strong>副分類：</strong> 無<br />

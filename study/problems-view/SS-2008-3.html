@@ -44,6 +44,141 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-2.html" title="SS-U1-2 梁桿件 單元總覽">&#128269; U1-2 單元總覽</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義">&#128218; U1-2 梁桿件 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2008-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2008-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2008_鋼結構設計.pdf</code> 第 2 頁（全四頁之第二頁），第三題；參考公式在第 3–4 頁</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 97 年（2008）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（圖 2：梁立面、載重、側撐），<code>SS-2008-3-fig-1.png</code>；參考公式截圖 <code>SS-2008-3-eqn-1.png</code>（第 3 頁）、<code>SS-2008-3-eqn-2.png</code>（第 4 頁）</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁＋圖 2 400 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>三、圖 2 為一鋼梁，假設鋼梁在 A、B、C、D 四點側向均有側撐補強，且此梁兩側承受均佈載重 w，如圖所示。採用 H 型鋼，鋼梁長度 L 為 18 m，鋼材特性如下所示，試以極限設計法（LRFD），求解此鋼梁所能承受之容許標稱外載重 $w_{n,cr}$。（25 分）<br />
+W 型鋼斷面參數及材料特性如下：<br />
+d＝54.43 cm，$b_f$＝21.22 cm，$t_f$＝2.12 cm，$t_w$＝1.31 cm，A＝156.77 cm²<br />
+$I_x$＝76170 cm⁴，$r_x$＝22.02 cm，$S_x$＝2802 cm³，$Z_x$＝3212 cm³<br />
+$I_y$＝3388 cm⁴，$r_y$＝4.65 cm<br />
+$r_T$＝5.46 cm，$C_w$＝2317464 cm⁶，J＝181 cm⁴<br />
+E＝2100 t/cm²，G＝840 t/cm²，$F_y$＝3.5 t/cm²</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：$L = 18$ m；斷面與材料參數（照錄於 §1）。</li>
+<li>第 3–4 頁「※參考公式：請自行選擇適合使用的公式，若有問題請自行修正。」與本題相關者照錄：</li>
+</ul>
+<p>$$C_b = 1.75 + 1.05(M_A/M_B) + 0.3(M_A/M_B)^2 \le 2.3$$<br />
+$$L_p = \frac{80r_y}{\sqrt{F_y}},\qquad L_r = \frac{r_yX_1}{(F_y - F_r)}\sqrt{1 + \sqrt{1 + X_2(F_y - F_r)^2}}$$<br />
+$$M_n = C_b\left[M_p - (M_p - M_r)\left(\frac{L_b - L_p}{L_r - L_p}\right)\right] \le M_p,\qquad M_n = \frac{C_bS_xX_1\sqrt2}{L_b/r_y}\sqrt{1 + \frac{X_1^2X_2}{2(L_b/r_y)^2}} \le M_p$$<br />
+$$M_r = (F_y - F_r)S_x,\qquad X_1 = \frac{\pi}{S_x}\sqrt{EGJA/2},\qquad X_2 = 4\frac{C_w}{I_y}[S_x/(GJ)]^2$$<br />
+$$\text{For flange: } \lambda_{pd} = 14/\sqrt{F_y},\ \lambda_p = 17/\sqrt{F_y},\ \lambda_r = 25/\sqrt{F_y};\quad \text{For web: } \lambda_p = \frac{170}{\sqrt{F_y}}\left(1 - 3.74\frac{f_a}{F_y}\right)\ (f_a/F_y \le 0.16),\ 68/\sqrt{F_y}\ (f_a/F_y &gt; 0.16)$$</p>
+<p><img alt="SS-2008-3 第 3 頁參考公式截圖" src="../../raw/solutions/SS-2008-3/SS-2008-3-eqn-1.png" /></p>
+<p><img alt="SS-2008-3 第 4 頁參考公式截圖" src="../../raw/solutions/SS-2008-3/SS-2008-3-eqn-2.png" /><br />
+- <strong>沒有給殘留應力 $F_r$</strong>，也沒有給 $\phi_b$。<br />
+- 卷首注意事項：㈠不必抄題；㈡可以使用電子計算器，但需詳列解答過程；㈢物理常數、參數或條件等有不足時，請依規範自行作合理假設。</p>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2008-3 圖 2：上為立面，A 端滾支（兩小圓）、D 端三角形鉸支，全長分三等分 L/3；均佈載重 w 只畫在 A–B 與 C–D 兩段，B–C 無載重；右側斷面 x 水平、y 向下（強軸 x）；下為平面，A、B、C、D 四點兩側皆有側撐符號，標「側撐補強」" src="../../raw/solutions/SS-2008-3/SS-2008-3-fig-1.png" /></p>
+<p><em>圖面文字照錄：w；w；A；B；C；D；z；L/3；L/3；L/3；x；y；A；B；C；D；z；x；（側撐補強）；圖 2。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>支承</td>
+<td>A 滾支、D 鉸支，簡支梁</td>
+<td>圖 2 立面（400 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>載重範圍</td>
+<td>$w$ 只作用於 AB、CD 兩段（「兩側」＝兩端各 $L/3$），BC 段無載重</td>
+<td>圖 2 立面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>側撐</td>
+<td>A、B、C、D 四點，各段 $L_b = L/3 = 6$ m</td>
+<td>圖 2 平面＋題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>彎曲軸</td>
+<td>繞強軸 $x$（$y$ 向下為載重方向）</td>
+<td>圖 2 斷面座標</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>「容許標稱外載重 $w_{n,cr}$」</td>
+<td>由各段設計強度 $\phi_bM_n$ 反求可承受的 $w$（是否乘 $\phi_b$ 有歧義：「標稱」指不乘、「LRFD 容許」指乘）</td>
+<td>題文</td>
+<td>不確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>$F_r$</td>
+<td>題未給，依規範自取（熱軋斷面常用 0.69 tf/cm²）</td>
+<td>題文未給＋卷首注意㈢</td>
+<td>不確定（解讀）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>各段 $C_b$</td>
+<td>依各段彎矩分布自行決定；考卷 $C_b$ 式只適用線性彎矩段</td>
+<td>參考公式</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>自重</td>
+<td>不計（題未給單位重）</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-2 題目正本推廣・批 1）</em></p></details>
 <h1>考題編號：SS-2008-3</h1>
 <p><strong>主分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
 <strong>副分類：</strong> 無<br />

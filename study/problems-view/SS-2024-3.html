@@ -44,6 +44,134 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-2.html" title="SS-U1-2 梁桿件 單元總覽">&#128269; U1-2 單元總覽</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義">&#128218; U1-2 梁桿件 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2024-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2024-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2024_鋼結構設計.pdf</code> 第 3 頁（頁次 4－3），第三題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 113 年（2024）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（圖(a) 強軸、圖(b) 弱軸），<code>SS-2024-3-fig-1.png</code>；題內參考公式為圖片，截圖 <code>SS-2024-3-eqn-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁＋附圖 300 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>三、依下圖示梁採用 RH488 × 300 × 11 × 18 斷面及 SN490B 鋼材，假設此斷面為結實斷面，其降伏應力 $F_y$ = 2.35 tf/cm² 及 $F_u$ = 4.0 tf/cm²，並分別以斷面強軸與弱軸承受一集中載重。兩者之支承條件相同，滾支承並無面外束制，且 A 及 B 處翼板皆有設置充分側向支撐，試檢核此梁是否可以承擔如圖(a)及圖(b)所示之 5 tf 靜載重及 5 tf 活載重。檢核時忽略梁自重，並以下方公式估算 $C_b$ 值。（25 分）</p>
+<p>$$C_b = \frac{12.5M_{max}}{2.5M_{max} + 3M_A + 4M_B + 3M_C} \le 3.0$$</p>
+<p>參考公式：（圖片，照錄於 §2）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：RH488×300×11×18；SN490B，$F_y = 2.35$、$F_u = 4.0$ tf/cm²；結實斷面；DL = LL = 5 tf；忽略自重；$C_b$ 公式。</li>
+<li>題內參考公式（圖片，照錄）：</li>
+</ul>
+<p>$$L_p = 80r_y\big/\sqrt{F_{Yf}}\ \text{(cm)},\qquad L_r = \frac{r_yX_1}{(F_L)}\sqrt{1 + \sqrt{1 + X_2(F_L)^2}},\qquad M_r = F_LS$$<br />
+$$M_n = C_b\left[M_p - (M_p - M_r)\left(\frac{L_b - L_p}{L_r - L_p}\right)\right] \le M_p,\qquad M_n = \frac{C_bS_xX_1\sqrt2}{L_b/r_y}\sqrt{1 + \frac{X_1^2X_2}{2(L_b/r_y)^2}} \le M_p$$<br />
+$$X_1 = \frac{\pi}{S_x}\sqrt{\frac{EGJA}{2}}\ (\text{tf/cm}^2),\quad X_2 = 4\frac{C_w}{I_y}\left(\frac{S_x}{GJ}\right)^2\ (\text{tf/cm}^2)^{-2},\quad J = \frac13\left[2b_ft_f^3 + (d - t_f)t_w^3\right]\ (\text{cm}^4),\quad F_L = (F_{Yf} - 0.7)\ (\text{tf/cm}^2)$$</p>
+<p><img alt="SS-2024-3 題內參考公式截圖" src="../../raw/solutions/SS-2024-3/SS-2024-3-eqn-1.png" /><br />
+- <strong>沒有給斷面性質</strong>（$A$、$I_x$、$I_y$、$S_x$、$Z_x$、$r_y$、$C_w$）<strong>與 $E$、$G$、載重組合係數、$\phi_b$</strong>。<br />
+- 卷首「（註：題目所列之計算公式僅供參考應自負確認與勘誤責任，另視設計需求可自行假設適用的條件等）」；注意事項㈠可用計算器、㈡不必抄題、㈢除專門名詞或數理公式外應使用本國文字作答。</p>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2024-3 附圖：圖(a) 與圖(b) 同為外伸梁——A 三角形鉸支、距 A 3 m 處 C 為圓形滾支、再 3 m 至自由端 B，B 受集中載重 DL = 5tf、LL = 5tf；「×」為側向及扭轉支撐點，只在 A、B 的上下翼板；圖(a) 腹板垂直（強軸受彎），圖(b) 腹板水平（弱軸受彎）" src="../../raw/solutions/SS-2024-3/SS-2024-3-fig-1.png" /></p>
+<p><em>圖面文字照錄：集中載重 DL=5tf LL=5tf；A；C；B；3 m；3 m；RH488×300×11×18；× 側向及扭轉支撐點；圖(a)；圖(b)。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>支承與載重</td>
+<td>A 鉸支、C 滾支（距 A 3 m）、B 為外伸自由端（距 C 3 m），載重在 B</td>
+<td>附圖 300 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>側撐</td>
+<td>只有 A、B；C 無面外束制 → 強軸 $L_b = 6$ m（A 至 B）</td>
+<td>「×」只在 A、B＋題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>彎曲軸</td>
+<td>圖(a) 強軸、圖(b) 弱軸，支承與載重相同</td>
+<td>附圖斷面示意</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>$C_b$ 式的 $M_A$、$M_B$、$M_C$</td>
+<td>無支撐段 1/4、1/2、3/4 點彎矩，<strong>不是</strong>圖上 A、B、C 點的彎矩</td>
+<td>規範公式慣例（圖上代號與式中代號重名）</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>斷面性質</td>
+<td>題未給，查 RH488×300×11×18 型鋼表或由尺寸計算</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>$E$、$G$</td>
+<td>題未給，依規範（2040、790 tf/cm²）自取</td>
+<td>題文未給</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>載重組合</td>
+<td>1.2D＋1.6L（係數題未給）</td>
+<td>題文</td>
+<td>不確定（解讀）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>弱軸</td>
+<td>弱軸彎曲無 LTB，$M_{ny}$ 依斷面決定</td>
+<td>題文「結實斷面」</td>
+<td>確定（解讀）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-2 題目正本推廣・批 2）</em></p></details>
 <h1>考題編號：SS-2024-3</h1>
 <p><strong>主分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
 <strong>設計法：</strong> LRFD<br />

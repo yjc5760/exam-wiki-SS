@@ -44,6 +44,205 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-2.html" title="SS-U1-2 梁桿件 單元總覽">&#128269; U1-2 單元總覽</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義">&#128218; U1-2 梁桿件 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2010-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2010-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2010_鋼結構設計.pdf</code> 第 2 頁（全一張之背面），第四題；參考公式集在第 1 頁</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 99 年（2010）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>30 分（㈠ 15、㈡ 15）</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（圖三：鋼梁側視圖、梁版斷面圖），<code>SS-2010-4-fig-1.png</code>；RH 斷面表照錄於 §2</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁＋圖三 400 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>四、有一 15 cm 厚鋼筋混凝土版由鋼梁支撐，鋼梁為跨距 6.0 m 之簡支承，梁與梁之間距為 3.0 m，上翼版埋入混凝土版內（如圖三），混凝土單位重 2.4 tf/m³，版面上貼大理石面磚，重 30 kg/m²，樓版承受活載重 400 kg/m²，荷重僅考慮靜載重與活載重之組合，試使用 A992 鋼料（降伏強度 $F_y$＝3.52 tf/cm²，E＝2,040 tf/cm²），以極限設計法（LSD）參考下表設計。<br />
+㈠僅就力矩考量，設計一最經濟之 RH 梁斷面。（15 分）<br />
+㈡檢核此斷面之撓度是否合乎 L/360 之規定。（15 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：版厚 15 cm；跨距 6.0 m；梁距 3.0 m；混凝土 2.4 tf/m³；面磚 30 kg/m²；活載重 400 kg/m²；A992，$F_y = 3.52$、$E = 2040$ tf/cm²。</li>
+<li>題內 RH 斷面表（照錄）：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>RH 斷面 (H×B)</th>
+<th>斷面模數 $S_x$ (cm³)</th>
+<th>塑性模數 $Z_x$ (cm³)</th>
+<th>慣性矩 $I_x$ (cm⁴)</th>
+<th>迴轉半徑 $r_y$ (cm)</th>
+<th>$X_1$ (tf/cm²)</th>
+<th>$X_2$ (cm²/tf)²</th>
+<th>單位重 (kg/m)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>175×175</td>
+<td>331</td>
+<td>370</td>
+<td>2,900</td>
+<td>4.37</td>
+<td>288</td>
+<td>0.102</td>
+<td>40.4</td>
+</tr>
+<tr>
+<td>298×149</td>
+<td>424</td>
+<td>475</td>
+<td>6,320</td>
+<td>3.29</td>
+<td>128</td>
+<td>3.07</td>
+<td>32.0</td>
+</tr>
+<tr>
+<td>200×200</td>
+<td>472</td>
+<td>525</td>
+<td>4,720</td>
+<td>5.02</td>
+<td>267</td>
+<td>0.135</td>
+<td>49.9</td>
+</tr>
+<tr>
+<td>244×175</td>
+<td>495</td>
+<td>550</td>
+<td>6,040</td>
+<td>4.21</td>
+<td>201</td>
+<td>0.451</td>
+<td>43.6</td>
+</tr>
+<tr>
+<td>200×204</td>
+<td>498</td>
+<td>565</td>
+<td>4,980</td>
+<td>4.88</td>
+<td>309</td>
+<td>0.0853</td>
+<td>56.2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>第 1 頁「◎參考公式集（請自行使用適合之公式，並檢查其正確性，若有問題應自行修正）」有 $L_p$、$L_r$、$C_b$、$M_n$、$M_{cr}$ 等式（見 SS-2010 卷第 1 頁），<strong>沒有載重組合係數、$\phi_b$ 與撓度公式</strong>。</li>
+<li>卷首注意事項：㈠可用計算器、㈡不必抄題、㈢下列計算各題若有所需設計參數或公式不足時，請自行合理假設或推知。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2010-4 圖三：左為鋼梁側視圖，梁擱在兩端支座上，跨距 6.0 m；右為梁、版斷面圖，三根 H 型鋼梁間距 3.0 m、3.0 m，上方 15 cm 厚 RC 版，上翼板頂與版底相接" src="../../raw/solutions/SS-2010-4/SS-2010-4-fig-1.png" /></p>
+<p><em>圖面文字照錄：6.0 m；鋼梁側視圖；15 cm 厚 RC 版；3.0 m；3.0 m；梁、版斷面圖；圖三。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>支承與跨距</td>
+<td>簡支，跨距 6.0 m</td>
+<td>題文＋側視圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>受載寬度</td>
+<td>中間梁，左右各半跨，受載寬 3.0 m</td>
+<td>斷面圖梁距 3.0 m</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>靜載重</td>
+<td>RC 版 $0.15 \times 2.4$ tf/m²＋面磚 30 kg/m²＋鋼梁自重（依表單位重）</td>
+<td>題文＋表</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>側撐</td>
+<td>上翼板埋入 RC 版 → 受壓翼板連續側撐，不受 LTB 控制（表中 $X_1$、$X_2$ 用不到）</td>
+<td>題文「上翼版埋入混凝土版內」</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>合成作用</td>
+<td>不計合成梁作用，以鋼梁單獨設計（題未提剪力釘）</td>
+<td>題文「設計一 RH 梁斷面」</td>
+<td>不確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>載重組合</td>
+<td>1.2D＋1.6L 與 1.4D 取大（係數題未給）</td>
+<td>題文「僅考慮靜載重與活載重之組合」</td>
+<td>不確定（解讀）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>「最經濟」</td>
+<td>滿足強度的斷面中單位重最輕者</td>
+<td>題文＋表「單位重」欄</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>㈡ 撓度</td>
+<td>以未因數化活載重計算，限值 $L/360$</td>
+<td>題文</td>
+<td>不確定（解讀）</td>
+</tr>
+<tr>
+<td>9</td>
+<td>「LSD」</td>
+<td>即極限設計法（LRFD），$\phi_b$ 依規範取 0.9</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-2 題目正本推廣・批 1）</em></p></details>
 <h1>考題編號：SS-2010-4</h1>
 <p><strong>主分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
 <strong>副分類：</strong> 無<br />

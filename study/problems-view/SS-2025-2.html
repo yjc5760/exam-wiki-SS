@@ -44,38 +44,171 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 單元總覽">&#128269; U1-1 單元總覽</a><a class="lect" href="../lecture-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 觀念講義">&#128218; U1-1 拉力及壓力桿件 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2025-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2025-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2025_鋼結構設計.pdf</code> 第 1 頁（頁次 2－1），第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 114 年（2025）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（銲接疊接），<code>SS-2025-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋銲道處 500 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>二、如圖示之銲接結合，受拉桿件寬度為 L cm，厚度為 2 cm，連接板厚度為 1 cm。假設銲道強度足夠，請依容許應力設計法（ASD）規範，計算 L 值最大或最小值應為何值，可使工作拉力 P 為最大？所有鋼材 $F_y = 2.5$ tf/cm²，$F_u = 4.1$ tf/cm²。（25 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：受拉桿件寬 $L$ cm、厚 2 cm；連接板厚 1 cm；$F_y = 2.5$、$F_u = 4.1$ tf/cm²；銲道強度足夠。</li>
+<li>圖面：縱向銲道（疊接）長 3 cm。</li>
+<li>本題<strong>沒有印任何公式</strong>，也沒有給連接板寬度。</li>
+<li>卷首注意事項：㈠可用計算器、㈡不必抄題、㈢除專門名詞或數理公式外應使用本國文字作答。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2025-2 附圖：受拉桿件（矩形板）自左受拉力 P，右端疊在梯形連接板上，疊接長 3 cm；斜線陰影銲道沿桿件上緣（3 cm）、桿件端面（長 L）與下緣（3 cm）三面圍銲；連接板右方受 P" src="../../raw/solutions/SS-2025-2/SS-2025-2-fig-1.png" /></p>
+<p><em>圖面文字照錄：P；受拉桿件；連接板；3 cm；L；P。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>銲道配置</td>
+<td>三面圍銲：上、下緣各一道縱向銲長 3 cm，端面一道橫向銲長 $L$</td>
+<td>斜線陰影在上緣、端面、下緣（500 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3 cm</td>
+<td>疊接長度＝縱向銲道長度（自連接板左緣到桿件端面）</td>
+<td>尺寸線端點</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>$L$</td>
+<td>受拉桿件寬度（端面旁的尺寸線）</td>
+<td>圖＋題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>板厚</td>
+<td>受拉桿件 2 cm、連接板 1 cm</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>「工作拉力」</td>
+<td>ASD 容許拉力（使用載重，不乘載重係數）</td>
+<td>題文＋指定 ASD</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>「L 值最大或最小值」</td>
+<td>求使 $P$ 最大的 $L$ 界限（板寬與縱向銲長的關係決定 $U$ 或適用條件）</td>
+<td>題文</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>7</td>
+<td>端面橫向銲道的作用</td>
+<td>縱向＋橫向並用時，是否仍以縱向銲長與板寬比決定 $U$</td>
+<td>圖上有橫向銲道</td>
+<td>不確定 → 使用者確認：仍依縱向銲長 $l = 3$ cm 與板寬比定 $U$（同本解）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>連接板</td>
+<td>厚 1 cm 比桿件薄、寬度未給，是否需檢核</td>
+<td>題文未給寬度</td>
+<td>不確定 → 使用者確認：不控制，不列為必答（本解 §5.4）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-1 題目正本推廣・批 3）｜確認：2026-11-02 使用者確認</em></p></details>
 <h1>考題編號：SS-2025-2</h1>
 <p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>副分類：</strong> 無（題目已明言「假設銲道強度足夠」，接合設計本身不在考核範圍）<br />
 <strong>設計法：</strong> ASD<br />
 <strong>標籤：</strong> <code>拉力桿件</code> <code>容許應力法</code> <code>剪力遲滯</code> <code>U值</code> <code>淨截面斷裂</code> <code>全斷面降伏</code> <code>最佳化</code> <code>銲接拉力接合</code> <code>板類縱向銲接</code> <code>l/w規定</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖示之銲接結合，<strong>受拉桿件寬度為 $L$ cm、厚度為 2 cm</strong>，<strong>連接板厚度為 1 cm</strong>。假設<strong>銲道強度足夠</strong>，請依<strong>容許應力設計法（ASD）規範</strong>，計算 <strong>$L$ 值最大或最小值應為何值，可使工作拉力 $P$ 為最大</strong>？所有鋼材 $F_y = 2.5$ tf/cm²、$F_u = 4.1$ tf/cm²。（25 分）</p>
-<p><strong>銲道配置（由圖判讀）：</strong></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2025-2-problem.md"><code>SS-2025-2-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">銲道</th>
-<th style="text-align: left;">長度</th>
-<th style="text-align: left;">位置</th>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">縱向銲道（沿載重方向）</td>
-<td style="text-align: left;"><strong>各 3 cm，共 2 道</strong></td>
-<td style="text-align: left;">受拉桿件上、下兩側邊緣</td>
+<td>銲道</td>
+<td>三面圍銲：上下縱向各 3 cm＋端面橫向長 $L$</td>
+<td>只看縱向銲</td>
 </tr>
 <tr>
-<td style="text-align: left;">橫向銲道（垂直載重方向）</td>
-<td style="text-align: left;">$L$（＝板寬）</td>
-<td style="text-align: left;">受拉桿件端面</td>
+<td>$L$</td>
+<td>受拉桿件寬度（待求）</td>
+<td>當成銲長</td>
+</tr>
+<tr>
+<td>$U$</td>
+<td>縱向＋橫向並用，仍依縱向銲長 $l = 3$ cm 與板寬比定 $U$（使用者確認）</td>
+<td>因有橫向銲而取 $U = 1.0$</td>
+</tr>
+<tr>
+<td>連接板</td>
+<td>厚 1 cm、寬未給，不控制（§5.4）</td>
+<td>以 1 cm 板算桿件強度</td>
 </tr>
 </tbody>
 </table>
-<p><img alt="SS-2025-2 題目附圖：受拉桿件（矩形板，寬 L、厚 2 cm）自左方受拉力 P，其右端搭接於梯形連接板（厚 1 cm）；接合以填角銲三面圍焊——沿板上、下兩長邊各一道長 3 cm 的縱向銲道（圖上標「3 cm」），以及沿板端面一道長 L 的橫向銲道（圖上以「L」尺寸標示）；連接板右方受反向拉力 P" src="../../raw/solutions/SS-2025-2/SS-2025-2-fig-1.png" /></p>
-<p><em>圖說：受拉桿件為矩形鋼板，寬 $L$ cm、厚 2 cm，自左方受拉力 $P$；其右端搭接於梯形連接板（厚 1 cm）之左緣。接合為<strong>三面圍焊</strong>：沿受拉桿件上、下兩長邊各一道<strong>長 3 cm 的縱向銲道</strong>（圖上以「3 cm」標示，斜線陰影），以及沿桿件端面一道<strong>長 $L$ 的橫向銲道</strong>（圖右以「$L$」之尺寸線標示）。板寬 $L$ 為待求量，縱向銲長固定為 3 cm——這正是本題「$L$ 有上限」的來源。</em></p>
+<p><strong>本解記號：</strong> $t = 2$ cm；$w = L$（待求）；$l = 3$ cm；連接板厚 1 cm；$F_y = 2.5$、$F_u = 4.1$ tf/cm²；ASD。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：板類構件以兩側縱向銲道傳力時，規範用「銲長 $l$ 與板寬 $w$ 的比值」規定 $U$，並且要求 $l \ge w$——這是一條「階梯函數＋硬性上限」，不是連續公式。</strong></p>
@@ -694,6 +827,7 @@ $L$ 將無上限、題目也就沒有答案——反證此讀法與題意不符�
 <p><em>解析完成時間：2026-06-xx</em><br />
 <em>修正日期：2026-08-22（改以規範 §4.3「板類兩側縱向銲道」$l/w$ 階梯 $U$ 值取代誤用之 $U = 1-\bar x/l$；答案由 $P_{\max}=6.15$ tf 更正為 9.00 tf）</em><br />
 <em>驗證狀態：unverified</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2025-2-problem.md</code>（已確認）＋常見誤讀＋本解記號；解題內容與答案不變）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2025-2/SS-2025-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

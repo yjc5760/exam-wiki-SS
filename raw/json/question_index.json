@@ -16,6 +16,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁桿件",
         "撓曲構材",
@@ -40,6 +41,7 @@
       "secondaryTopicIds": [],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "拉力桿件",
         "容許應力法",
@@ -111,6 +113,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "壓力桿件",
         "殘留應力",
@@ -147,6 +150,7 @@
         "開槽淨面積"
       ],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasHandwritten": false,
       "hasSolution": true
     },
@@ -158,6 +162,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁桿件",
         "LTB側扭挫屈",
@@ -183,6 +188,7 @@
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁柱接頭",
         "電熱熔渣銲",
@@ -205,6 +211,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "有效長度",
         "K係數",
@@ -229,6 +236,7 @@
       "secondaryTopicIds": [],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "壓力桿件",
         "ASD",
@@ -280,6 +288,7 @@
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "焊接",
         "破壞形式",
@@ -329,6 +338,7 @@
       ],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "拉力桿件",
         "插銷接合",
@@ -425,6 +435,7 @@
       ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "拉力桿件",
         "塊狀剪力",
@@ -475,6 +486,7 @@
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "接合設計",
         "高拉力螺栓",
@@ -496,6 +508,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "耐震設計",
         "梁柱接頭",
@@ -570,6 +583,7 @@
       ],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "接合設計",
         "腹板續接",
@@ -620,6 +634,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "合成梁",
         "複合梁",
@@ -671,6 +686,7 @@
       ],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "填角銲",
         "斷續銲接",
@@ -714,6 +730,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "壓力桿件",
         "箱型斷面",
@@ -737,6 +754,7 @@
       "secondaryTopicIds": [],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "填角銲",
         "梁柱接頭",
@@ -808,6 +826,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "接合設計",
         "高強度螺栓",
@@ -833,6 +852,7 @@
       "secondaryTopicIds": [],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "壓力桿件",
         "拉力桿件",
@@ -849,6 +869,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "接合設計",
         "填角銲",
@@ -875,6 +896,7 @@
       ],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁桿件",
         "撓曲構材",
@@ -918,6 +940,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "壓力桿件",
         "拉力桿件",
@@ -938,6 +961,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁桿件",
         "撓曲構材",
@@ -977,6 +1001,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁桿件",
         "撓曲構材",
@@ -1117,6 +1142,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁桿件",
         "LTB側扭挫屈",
@@ -1257,6 +1283,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁桿件",
         "LTB側扭挫屈",
@@ -1279,6 +1306,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "韌性抗彎矩構架",
         "塑性轉角需求",
@@ -1324,6 +1352,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "接合設計",
         "剪力板",
@@ -1393,6 +1422,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁桿件",
         "LTB側扭挫屈",
@@ -1514,6 +1544,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁桿件",
         "斷面選擇",
@@ -1563,6 +1594,7 @@
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "節點域",
         "Panel Zone",
@@ -1615,6 +1647,7 @@
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "銲接",
         "開槽銲",
@@ -1643,6 +1676,7 @@
       "secondaryTopicIds": [],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁桿件",
         "ASD",
@@ -1688,6 +1722,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁桿件",
         "LRFD",
@@ -1735,6 +1770,7 @@
       ],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "填角銲",
         "ASD",
@@ -1779,6 +1815,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁桿件",
         "LRFD",
@@ -1854,6 +1891,7 @@
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "高拉力螺栓",
         "預拉力",
@@ -1896,6 +1934,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "板梁",
         "剪力挫屈",
@@ -1915,6 +1954,7 @@
       "secondaryTopicIds": [],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "箱型柱",
         "梁柱接頭",
@@ -1961,6 +2001,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "SRC鋼骨鋼筋混凝土",
         "塑性應力分佈法",
@@ -1981,6 +2022,7 @@
       "secondaryTopicIds": [],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "填角銲",
         "偏心接合",
@@ -2054,6 +2096,7 @@
       ],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "拉力構材續接",
         "高拉力螺栓",
@@ -2077,6 +2120,7 @@
       "secondaryTopicIds": [],
       "designMethod": "LRFD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "填角銲",
         "偏心接合",
@@ -2234,6 +2278,7 @@
       ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "剪力流",
         "弱軸剪力",
@@ -2258,6 +2303,7 @@
       "secondaryTopicIds": [],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "梁桿件",
         "容許應力法",
@@ -2312,6 +2358,7 @@
       "secondaryTopicIds": [],
       "designMethod": "ASD",
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "tags": [
         "接合設計",
         "偏心螺栓群",

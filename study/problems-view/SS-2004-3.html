@@ -29,7 +29,150 @@ blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;paddin
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2004-3 題目解析</h1><a class="quick" href="../unit-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 單元總覽">&#128269; U1-4 單元總覽</a><a class="lect" href="../lecture-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 觀念講義">&#128218; U1-4 接合之分析與設計 講義</a></header>
-<main><h1>考題編號：SS-2004-3</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2004-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2004-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2004_鋼結構設計.pdf</code> 第 2 頁（全一張之背面），第三題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 93 年（2004）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（托架銲接），<code>SS-2004-3-fig-1.png</code>；題內表 10.2.5 照錄於 §2</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁＋附圖 400 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>三、有一托架（bracket）承受一偏心因數化載重（factored load, $P_u$），托架上下端分別銲接於柱子翼板，接頭與銲接相關尺寸如附圖所示。柱子為 W 型鋼，鋼柱、雙角鋼皆使用 A36 鋼材，使用填角銲（fillet weld）與 E70XX 銲條，假設接合相關各接板強度足夠。若使用銲接尺寸（weld size）為 10 mm 之填角銲，試根據極限設計法規範，以彈性分析法求該托架所能承受之最大因數化載重（$P_u$）。（25 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>參考資料：A36 鋼材：$F_y$ = 2.50 t/cm²。E70XX 銲條 $F_{EXX}$ = 4.93 t/cm²。</li>
+<li>附錄 鋼結構極限設計法規範及解說 表 10.2.5 銲接之設計強度（填角銲部分，照錄）：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>銲接與應力型態</th>
+<th>材料</th>
+<th>強度係數 $\phi$</th>
+<th>標稱強度 $F_{BM}$ 或 $F_W$</th>
+<th>銲接強度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>有效面積上之剪力</td>
+<td>母材／銲材</td>
+<td>0.75</td>
+<td>$0.6F_{EXX}$</td>
+<td>可採小於或等於相稱之銲材</td>
+</tr>
+<tr>
+<td>平行於銲軸之拉力或壓力</td>
+<td>母材</td>
+<td>0.90</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>卷首注意事項：㈠不必抄題；㈡可以使用電子計算器。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2004-3 附圖：托架板搭在柱翼板上，上、下各一組斜線填角銲——沿托架上（下）緣水平 7.5 cm（托架左緣至柱翼板右緣），加沿托架左緣垂直 5 cm；中段 15 cm 不銲，托架總高 5＋15＋5 cm；托架上緣、距柱翼板右緣 10 cm 處受 Pu，以 1:1 斜率向左下" src="../../raw/solutions/SS-2004-3/SS-2004-3-fig-1.png" /></p>
+<p><em>圖面文字照錄：7.5 cm；10 cm；Pu；1；1；5 cm；15 cm；5 cm。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>銲道形狀</td>
+<td>上、下各一組：水平 7.5 cm（沿托架上／下緣）＋垂直 5 cm（沿托架左緣），中段 15 cm 不銲</td>
+<td>斜線區（400 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>7.5 cm</td>
+<td>托架左緣至柱翼板右緣（托架搭接在翼板上的寬度）</td>
+<td>尺寸線端點</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>10 cm</td>
+<td>柱翼板右緣至 $P_u$ 作用點（虛線）</td>
+<td>尺寸線端點</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>$P_u$</td>
+<td>作用於托架上緣，1:1 向左下（水平、垂直分量相等）</td>
+<td>箭頭與斜率三角形</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>銲道面數</td>
+<td>只畫一面（托架與翼板搭接的一側），單面填角銲</td>
+<td>立面圖只見一面；題文未說兩面</td>
+<td>不確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>「雙角鋼」</td>
+<td>題文提雙角鋼，圖上為單一托架板；以圖為準，視為一塊托架板</td>
+<td>題文與圖不一致</td>
+<td>不確定（解讀）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>銲道強度</td>
+<td>喉厚 $0.707 \times 10$ mm，$\phi(0.6F_{EXX})$，$\phi = 0.75$</td>
+<td>表 10.2.5</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-4 題目正本推廣・批 1）</em></p></details>
+<h1>考題編號：SS-2004-3</h1>
 <p><strong>主分類：</strong> <code>SS-U1-4</code> 接合之分析與設計<br />
 <strong>副分類：</strong> （無）<br />
 <strong>設計法：</strong> LRFD<br />

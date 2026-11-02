@@ -29,7 +29,114 @@ blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;paddin
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2019-4 題目解析</h1><a class="quick" href="../unit-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 單元總覽">&#128269; U1-4 單元總覽</a><a class="lect" href="../lecture-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 觀念講義">&#128218; U1-4 接合之分析與設計 講義</a></header>
-<main><h1>SS-2019-4 解析</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2019-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2019-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2019_鋼結構設計.pdf</code> 第 3 頁（頁次 3－3），第四題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 108 年（2019）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（組合斷面與銲接符號），<code>SS-2019-4-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁＋附圖 450 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>四、下圖所示組合斷面為一 H 型鋼 H500 × 200 × 9 × 16（mm）上翼板銲接一鋼板 PL25 × 300（mm），該斷面承受因數化載重彎矩 25 tf-m 與剪力 50 tf。型鋼與鋼板之鋼材降伏應力皆為 $F_y$ = 2.5 tf/cm²。鋼板與型鋼的銲接使用腳長為 8 mm 的填角銲，銲條為 E70XX，$F_{EXX}$ = 4.9 tf/cm²。銲接為斷續銲接，銲道中心至中心距離為 150 mm。試以極限設計法，計算所需斷續銲道長度 L 為何。（25 分）<br />
+參考公式：$\phi 0.6F_{EXX}$，$\phi$ = 0.75。</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：H500×200×9×16；PL25×300；$M_u$ = 25 tf-m、$V_u$ = 50 tf；$F_y$ = 2.5、$F_{EXX}$ = 4.9 tf/cm²；腳長 8 mm；斷續銲中心距 150 mm；$\phi$ = 0.75。</li>
+<li>卷首注意事項：㈠可用計算器、㈡不必抄題、㈢除專門名詞或數理公式外應使用本國文字作答。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2019-4 附圖：H 型鋼上翼板頂面疊一塊較寬的鋼板（寬 300 mm），鋼板底面與翼板兩側邊緣交角各有一個黑色填角銲；銲接符號箭頭指向右側銲道，基線上下皆為「8 ▷ L-150」" src="../../raw/solutions/SS-2019-4/SS-2019-4-fig-1.png" /></p>
+<p><em>圖面文字照錄：300 mm；8；L-150；8；L-150。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>銲道位置</td>
+<td>鋼板底面與翼板左右兩側邊緣交角各一道，沿梁長方向</td>
+<td>斷面圖兩處黑色三角（450 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>符號</td>
+<td>8 mm 填角銲，「L-150」= 每段長 L（待求）、中心距 150 mm；基線上下對稱 → 兩道並列（鏈式，非交錯）</td>
+<td>符號上下對齊</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>設計力</td>
+<td>鋼板與翼板介面的水平剪力流 $q = V_uQ/I$，$Q$ 取鋼板對組合斷面中性軸的一次矩</td>
+<td>題文給 $V_u$</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>$M_u$ = 25 tf-m</td>
+<td>剪力流計算用不到（干擾資訊或供檢核斷面）</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>斷面性質</td>
+<td>題未給，由尺寸自算（不計圓角）</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>母材檢核</td>
+<td>是否另檢核翼板／鋼板母材剪力</td>
+<td>題文只給銲道式</td>
+<td>不確定（解讀）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-4 題目正本推廣・批 3）</em></p></details>
+<h1>SS-2019-4 解析</h1>
 <h3>考題編號：SS-2019-4</h3>
 <p><strong>主分類：</strong> <code>SS-U1-4</code> 接合之分析與設計<br />
 <strong>副分類：</strong> <code>SS-U1-2</code>（梁桿件組合斷面）<br />

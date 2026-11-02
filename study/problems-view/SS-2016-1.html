@@ -44,6 +44,122 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-2.html" title="SS-U1-2 梁桿件 單元總覽">&#128269; U1-2 單元總覽</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義">&#128218; U1-2 梁桿件 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2016-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2016-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2016_鋼結構設計.pdf</code> 第 1 頁（全一張之正面），第一題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 105 年（2016）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>20 分（每小題 10 分）</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>無（題內表格照錄於 §1）</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁目視＋抽出文字核對，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>一、ASD（Allowable Stress Design）規範中關於柱與梁之翼板與腹板的寬厚比的規定如下表所示：（每小題 10 分，共 20 分）<br />
+㈠如表所示，梁翼板與柱翼板的 $\lambda_r$ 相同；而梁腹板與柱腹板的 $\lambda_r$ 不同，試說明其原因。<br />
+㈡如表所示，梁的 $\lambda_p$ 小於梁的 $\lambda_r$，請詳述在制定梁之 $\lambda_p$ 與 $\lambda_r$ 所考慮的因素有那些？</p>
+<p>受壓肢之寬厚比限制（部分）</p>
+<table>
+<thead>
+<tr>
+<th>構材</th>
+<th></th>
+<th>$\lambda_p$</th>
+<th>$\lambda_r$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>未加勁肢材</td>
+<td>受彎曲之熱軋 I 型梁之翼板</td>
+<td>$17/\sqrt{F_y}$</td>
+<td>$25/\sqrt{F_y}$</td>
+</tr>
+<tr>
+<td></td>
+<td>受純壓力之 I 型斷面之翼板</td>
+<td>$16/\sqrt{F_y}$</td>
+<td>$25/\sqrt{F_y}$</td>
+</tr>
+<tr>
+<td>加勁肢材</td>
+<td>受彎曲壓應力之腹板</td>
+<td>$170/\sqrt{F_y}$</td>
+<td>$260/\sqrt{F_y}$</td>
+</tr>
+<tr>
+<td></td>
+<td>其他兩端有支撐且受均勻應力之肢材</td>
+<td>不適用</td>
+<td>$68/\sqrt{F_y}$</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題內寬厚比表（照錄於 §1）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器；㈡不必抄題。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p>本題無附圖。</p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>表與題文對應</td>
+<td>「梁翼板」＝受彎曲熱軋 I 型梁翼板；「柱翼板」＝受純壓力 I 型斷面翼板；「梁腹板」＝受彎曲壓應力之腹板；「柱腹板」＝其他兩端有支撐且受均勻應力之肢材（$68/\sqrt{F_y}$）</td>
+<td>題文＋表</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>題型</td>
+<td>兩小題皆為說明題，不需數值</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-2 題目正本推廣・批 2）</em></p></details>
 <h1>考題編號：SS-2016-1</h1>
 <p><strong>主分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
 <strong>副分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />

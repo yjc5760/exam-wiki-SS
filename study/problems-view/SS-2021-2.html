@@ -29,21 +29,169 @@ blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;paddin
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2021-2 題目解析</h1><a class="quick" href="../unit-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 單元總覽">&#128269; U1-1 單元總覽</a><a class="lect" href="../lecture-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 觀念講義">&#128218; U1-1 拉力及壓力桿件 講義</a></header>
-<main><h1>考題編號：SS-2021-2</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2021-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2021-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2021_鋼結構設計.pdf</code> 第 1 頁（頁次 3－1），第二題；參考公式在第 3 頁</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 110 年（2021）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>20 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（圖二：疊接拉力接合），<code>SS-2021-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋圖二 400 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>二、圖二所示拉力構材為 SM400 鋼材，$F_y = 2.5$ tf/cm²，$F_u = 4.1$ tf/cm²，$E = 2040$ tf/cm²，板厚分別為 $t = 20$ mm 及 $t = 25$ mm，採用填角銲道疊接，請分別繪製發生拉力斷裂及塊狀剪力破壞之模式，依現行鋼結構極限設計法規範，塊狀剪力破壞拉力強度依式(1)及式(2)計算後擇一，且不大於 $0.6F_uA_{nv} + F_uA_{nt}$。請詳細說明式(1)中 $0.6F_yA_{gv}$ 之 $0.6F_y$ 所代表之意義；又，請詳細說明塊狀剪力破壞式(1)及式(2)擇一且不大於 $0.6F_uA_{nv} + F_uA_{nt}$ 之原因。（20 分）</p>
+<p>$$\phi R_n = \phi(0.6F_yA_{gv} + F_uA_{nt}) \le \phi(0.6F_uA_{nv} + F_uA_{nt}) \;\cdots\cdots(1)$$<br />
+$$\phi R_n = \phi(0.6F_uA_{nv} + F_yA_{gt}) \le \phi(0.6F_uA_{nv} + F_uA_{nt}) \;\cdots\cdots(2)$$</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：SM400，$F_y = 2.5$、$F_u = 4.1$、$E = 2040$ tf/cm²；板厚 20 mm 與 25 mm；式(1)、式(2)（照錄於 §1）。</li>
+<li>第 3 頁「參考公式：請自行選擇適合的公式，並檢查其正確性，若有問題應自行修正。」與本題相關者照錄：</li>
+</ul>
+<p>$$\text{當 } F_uA_{nt} \ge 0.6F_uA_{nv} \text{ 時}\quad \phi R_n = \phi(0.6F_yA_{gv} + F_uA_{nt}) \le \phi(0.6F_uA_{nv} + F_uA_{nt})$$<br />
+$$\text{當 } 0.6F_uA_{nv} \ge F_uA_{nt} \text{ 時}\quad \phi R_n = \phi(0.6F_uA_{nv} + F_yA_{gt}) \le \phi(0.6F_uA_{nv} + F_uA_{nt})$$<br />
+$$\phi = 0.75$$</p>
+<p>（題文只說「擇一」，<strong>擇一的判別條件印在第 3 頁</strong>。）<br />
+- 卷首注意事項：㈠可用計算器、㈡不必抄題、㈢除專門名詞或數理公式外應使用本國文字作答。</p>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2021-2 圖二：t = 25 mm 梯形節點板（左端受拉、向左）與 t = 20 mm 矩形受拉板（右端受 P、向右）疊接；受拉板寬 100、疊接長 150 mm；粗線銲道沿受拉板上下兩緣，板端左緣為細線、僅兩角有短粗線；虛線為節點板右緣（被受拉板遮住）" src="../../raw/solutions/SS-2021-2/SS-2021-2-fig-1.png" /></p>
+<p><em>圖面文字照錄：t=25 mm；t=20 mm；100；150 mm；P；圖二。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>構件分工</td>
+<td>$t = 20$ mm 為受拉板（右端受 $P$）；$t = 25$ mm 為梯形節點板（左端承接）</td>
+<td>圖二標註位置（400 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>100</td>
+<td>受拉板寬度（單位未標，依圖中另一尺寸「150 mm」判為 mm）</td>
+<td>尺寸線端點在受拉板上下緣</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>150 mm</td>
+<td>疊接長度＝縱向銲道長度</td>
+<td>尺寸線自板端到節點板右緣</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>銲道配置</td>
+<td>兩道縱向填角銲沿受拉板上下兩緣；板端無橫向銲，只在兩角有短回銲</td>
+<td>粗線只在上下緣，左緣細線，兩角短粗線（400 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>題目要求</td>
+<td>繪拉力斷裂與塊狀剪力<strong>破壞模式</strong>＋文字說明兩項原因；<strong>不要求算出數值</strong></td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>繪圖對象</td>
+<td>拉力斷裂與塊狀剪力都要考慮受拉板與節點板兩者（題文說「板厚分別為」兩種）</td>
+<td>題文</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>7</td>
+<td>「擇一」</td>
+<td>依第 3 頁條件：$F_uA_{nt} \ge 0.6F_uA_{nv}$ 用式(1)，否則用式(2)</td>
+<td>第 3 頁參考公式</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-1 題目正本推廣・批 3）｜確認：2026-11-02 使用者確認</em></p></details>
+<h1>考題編號：SS-2021-2</h1>
 <p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>副分類：</strong> <code>SS-U1-4</code> 接合之分析與設計<br />
 <strong>設計法：</strong> LRFD<br />
 <strong>標籤：</strong> <code>拉力桿件</code> <code>塊狀剪力</code> <code>銲接拉力接合</code> <code>填角銲</code> <code>疊接</code> <code>斷裂模式</code> <code>0.6Fy意義</code> <code>剪力降伏</code> <code>節點板塊狀剪力</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>圖二所示拉力構材為 SM400 鋼材，$F_y = 2.5$ tf/cm²，$F_u = 4.1$ tf/cm²，$E = 2040$ tf/cm²，板厚分別為 $t = 20$ mm 及 $t = 25$ mm，採用填角銲道疊接，請分別繪製發生拉力斷裂及塊狀剪力破壞之模式。依現行鋼結構極限設計法規範，塊狀剪力破壞拉力強度依式(1)及式(2)計算後擇一，且不大於 $0.6F_uA_{nv} + F_uA_{nt}$。請詳細說明式(1)中 $0.6F_yA_{gv}$ 之 $0.6F_y$ 所代表之意義；又，請詳細說明塊狀剪力破壞式(1)及式(2)擇一且不大於 $0.6F_uA_{nv} + F_uA_{nt}$ 之原因。（20 分）</p>
-<p>$$\phi R_n = \phi(0.6F_y A_{gv} + F_u A_{nt}) \leq \phi(0.6F_u A_{nv} + F_u A_{nt}) \quad \cdots (1)$$<br />
-$$\phi R_n = \phi(0.6F_u A_{nv} + F_y A_{gt}) \leq \phi(0.6F_u A_{nv} + F_u A_{nt}) \quad \cdots (2)$$</p>
-<p><img alt="SS-2021-2 題目附圖（圖二）：t=20 mm 受拉板（寬 100 mm）疊接於 t=25 mm 梯形節點板上，沿受拉板上下兩緣各一道縱向填角銲，銲長（疊接長度）150 mm；拉力 P 向右，節點板向左承接" src="../../raw/solutions/SS-2021-2/SS-2021-2-fig-1.png" /></p>
-<p><em>圖說（依考卷原圖 500 dpi 目視判讀）：</em><br />
-- <em>$t = 20$ mm 為<strong>受拉構材</strong>（矩形板，右端受拉力 $P$）；$t = 25$ mm 為<strong>梯形節點板</strong>（左端承接反力）。</em><br />
-- <strong><em>垂直標註 100 mm 為受拉板寬度 $w$</strong>；<strong>水平標註 150 mm 為疊接長度</strong>，也就是上下兩道縱向填角銲的長度 $l$。</em><br />
-- <em>粗線（銲道）只在受拉板上下兩緣，左端為細線，僅轉角有短回銲；虛線為節點板右緣（被受拉板遮住的部分）。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2021-2-problem.md"><code>SS-2021-2-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>兩板分工</td>
+<td>$t = 20$ mm 為受拉板（寬 100 mm）；$t = 25$ mm 為梯形節點板</td>
+<td>兩板角色對調</td>
+</tr>
+<tr>
+<td>銲道</td>
+<td>上下兩道縱向銲，長 150 mm；板端只有兩角短回銲，沒有橫向銲</td>
+<td>當成三面圍銲</td>
+</tr>
+<tr>
+<td>所求</td>
+<td>繪破壞模式並說明原因；數值只作說明</td>
+<td>只算數值不畫圖</td>
+</tr>
+<tr>
+<td>擇一</td>
+<td>第 3 頁條件：$F_uA_{nt} \ge 0.6F_uA_{nv}$ 用式(1)，否則用式(2)</td>
+<td>取兩式較大或較小者</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 受拉板 $w = 10$ cm、$t = 2.0$ cm；節點板 $t = 2.5$ cm；銲長 $l = 15$ cm；$F_y = 2.5$、$F_u = 4.1$ tf/cm²；$\phi = 0.75$（塊狀剪力）。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 銲接疊接的兩種破壞位置不同——<strong>拉力斷裂發生在受拉構材</strong>（含剪力遲滯），<strong>塊狀剪力發生在節點板</strong>（被兩道銲線圍住的那一塊被撕出）；再說明塊狀剪力公式「剪力降伏／斷裂 ＋ 拉力斷裂／降伏」組合與上限的由來。</p>
@@ -360,7 +508,8 @@ $$\phi R_n = \phi(0.6F_u A_{nv} + F_y A_{gt}) \leq \phi(0.6F_u A_{nv} + F_u A_{n
 </ol>
 <hr />
 <p><em>修正日期：2026-11-01（依考卷原圖：垂直標註 100 mm 為受拉板寬、水平 150 mm 為疊接（銲道）長度，原解兩者對調；塊狀剪力發生於 $t = 25$ mm 節點板（兩道銲線為剪力面、銲線左端連線為拉力面），原解畫在受拉板上；更正擇一準則說明（比較兩斷裂項，斷裂發生在較大者），補剪力遲滯 $U = 0.87$ 與數值示意；新增 AISC 360-05 以後單一式之對照）</em><br />
-<em>驗證狀態：unverified</em></p></main>
+<em>驗證狀態：unverified</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2021-2-problem.md</code>（已確認）＋常見誤讀＋本解記號；解題內容與答案不變）</em></p></main>
 <footer>來源：raw/solutions/SS-2021-2/SS-2021-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，

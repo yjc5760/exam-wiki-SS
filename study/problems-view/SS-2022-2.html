@@ -29,42 +29,175 @@ blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;paddin
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2022-2 題目解析</h1><a class="quick" href="../unit-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 單元總覽">&#128269; U1-1 單元總覽</a><a class="lect" href="../lecture-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 觀念講義">&#128218; U1-1 拉力及壓力桿件 講義</a></header>
-<main><h1>考題編號：SS-2022-2</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2022-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2022-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2022_鋼結構設計.pdf</code> 第 1 頁（頁次 2－1），第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 111 年（2022）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>無（題文內三條公式照錄於 §1）</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁目視＋抽出文字核對，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>二、設計考慮靜載重 135 kN 與活載重 315 kN，而構件使用寬度 300 mm 而厚度($t$)為 20 mm 的 A572 Gr. 50 鋼板（降伏強度 $F_y = 345$ Mpa，而抗拉強度 $F_u = 450$ MPa），在其中一個角隅距兩邊離 $a = 65$ mm 處與另一連接部件均開一個直徑($d$)為 100 mm 的圓孔，以放入插銷作成一個鉸接合。設計鉸接拉力構件除受拉全斷面降伏，亦應考慮下列極限狀態：<br />
+1. 受拉有效面積斷裂 $P_n = F_u(2tb_e)$，$b_e \le (b_e)_{max} = (2t + 16)$(mm)<br />
+2. 受剪有效面積斷裂 $P_n = 0.6F_uA_{sf}$，$A_{sf} = 2t(a + d/2)$<br />
+3. 插銷投影面積承壓 $P_n = 1.8F_yA_{pb}$，$A_{pb} = td$</p>
+<p>試依容許應力設計（ASD）法，設計與分析上述鉸接拉力構件之可用強度。（25 分）</p>
+</blockquote>
+<p>（「Mpa」照考卷原文。）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：$D = 135$ kN，$L = 315$ kN；板寬 300 mm、$t = 20$ mm；$F_y = 345$ MPa、$F_u = 450$ MPa；$a = 65$ mm；孔徑 $d = 100$ mm；三條極限狀態公式（照錄於 §1）。</li>
+<li><strong>全斷面降伏只點名、沒有印公式</strong>；<strong>沒有給 ASD 安全係數 $\Omega$</strong>；沒有給插銷直徑（只給孔徑）。</li>
+<li>卷首「（註：題目所列之計算公式僅供參考應自負確認與勘誤責任，另視設計需求可自行假設適用的條件等）」。</li>
+<li>卷首注意事項：㈠可用計算器、㈡不必抄題、㈢除專門名詞或數理公式外應使用本國文字作答。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p>本題無附圖。</p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>需求載重</td>
+<td>ASD 組合 $D + L = 450$ kN</td>
+<td>題文＋指定 ASD</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>「角隅距兩邊離 $a = 65$ mm」</td>
+<td>孔設在板的一個角落，孔緣距板端與距一側邊各 65 mm（孔不在板寬中央）</td>
+<td>題文；$A_{sf} = 2t(a + d/2)$ 中 $a$ 為孔緣至板端距離</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>3</td>
+<td>孔兩側淨寬</td>
+<td>一側 65 mm、另一側 $300 - 65 - 100 = 135$ mm；$b_e$ 取兩側中受 $(b_e)_{max}$ 限制者</td>
+<td>由第 2 項推得</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>$(b_e)_{max}$</td>
+<td>$2t + 16 = 56$ mm（$t$ 以 mm 代入）</td>
+<td>題文公式</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>承壓面積</td>
+<td>$A_{pb} = t \cdot d$，以孔徑 100 mm 代插銷直徑</td>
+<td>題文公式只有 $d$</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>全斷面降伏</td>
+<td>$P_n = F_yA_g$，$A_g = 300 \times 20$ mm²</td>
+<td>題文點名、未印式</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>$\Omega$</td>
+<td>題未給，依規範各極限狀態取值並註明</td>
+<td>題文未給</td>
+<td>不確定 → 使用者確認</td>
+</tr>
+<tr>
+<td>8</td>
+<td>「設計與分析」</td>
+<td>除四種強度取小外，是否須檢核插銷孔尺寸規定（端距、板寬、孔置中）</td>
+<td>題文「設計」</td>
+<td>不確定 → 使用者確認：要（本解檢核端距、孔置中、板寬）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-1 題目正本推廣・批 3）｜確認：2026-11-02 使用者確認</em></p></details>
+<h1>考題編號：SS-2022-2</h1>
 <p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>副分類：</strong> <code>SS-U1-4</code> 接合之分析與設計<br />
 <strong>設計法：</strong> ASD<br />
 <strong>標籤：</strong> <code>拉力桿件</code> <code>插銷接合</code> <code>鉸接</code> <code>ASD</code> <code>有效淨面積</code> <code>塊狀剪力</code> <code>承壓</code> <code>A572</code> <code>容許強度</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>設計考慮<strong>靜載重 135 kN</strong> 與<strong>活載重 315 kN</strong>，構件使用寬度 300 mm、厚度 $t = 20$ mm 的 <strong>A572 Gr. 50</strong> 鋼板（$F_y = 345$ MPa，$F_u = 450$ MPa）。</p>
-<p>在其中一個角隅距兩邊離 $a = 65$ mm 處，與另一連接部件均開一個直徑 $d = 100$ mm 的圓孔，以放入插銷作成一個鉸接合。</p>
-<p>設計鉸接拉力構件<strong>除受拉全斷面降伏</strong>，亦應考慮下列極限狀態（題目提供公式）：</p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2022-2-problem.md"><code>SS-2022-2-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
 <table>
 <thead>
 <tr>
-<th>極限狀態</th>
-<th>公式</th>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1. 受拉有效面積斷裂</td>
-<td>$P_n = F_u(2t b_e)$，$b_e \le (b_e)_{\max} = (2t+16)$ mm</td>
+<td>孔位</td>
+<td>孔在角隅：孔緣距板端與近側邊各 65 mm，遠側 135 mm（孔不置中）</td>
+<td>當成孔在板寬中央</td>
 </tr>
 <tr>
-<td>2. 受剪有效面積斷裂</td>
-<td>$P_n = 0.6F_u A_{sf}$，$A_{sf} = 2t(a+d/2)$</td>
+<td>$b_e$</td>
+<td>$\le 2t + 16 = 56$ mm，且不大於孔緣至邊的實際距離</td>
+<td>當成 $b_e = 2t + 16$ 等號</td>
 </tr>
 <tr>
-<td>3. 插銷投影面積承壓</td>
-<td>$P_n = 1.8F_y A_{pb}$，$A_{pb} = td$</td>
+<td>全斷面降伏</td>
+<td>題只點名，須自寫 $P_n = F_yA_g$</td>
+<td>漏算</td>
+</tr>
+<tr>
+<td>ASD 需求</td>
+<td>$P = D + L = 450$ kN，不乘載重係數</td>
+<td>用 LRFD 組合</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>📌 <strong>原卷未印受拉全斷面降伏的公式</strong>：題目只以文字點名「除受拉全斷面降伏」，$P_n = F_yA_g$ 須自行寫出；印出的只有上表三條。另注意原卷是 $b_e \le (b_e)_{\max}$（上限），不是等號。</p>
-</blockquote>
-<p>試依容許應力設計（ASD）法，<strong>設計與分析</strong>上述鉸接拉力構件之可用強度。（25 分）</p>
+<p><strong>本解記號：</strong> 板寬 300 mm、$t = 20$ mm；$a = 65$ mm；$d = 100$ mm；$F_y = 345$、$F_u = 450$ MPa；$P_D = 135$、$P_L = 315$ kN；$\Omega$ 依規範。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：插銷鉸接拉力構件有四種獨立破壞機制，ASD 各有不同 Ω 係數</strong></p>
@@ -619,7 +752,8 @@ $$P_a = 504 \text{ kN} &gt; P = 450 \text{ kN} \quad \Rightarrow \boxed{\text{�
 <p>LRFD 的 $\phi = 1/\Omega \times \text{安全邊際校正}$，兩種方法結果應相近，但機率論基礎不同。</p>
 <p><em>修正日期：2026-10-29</em><br />
 <em>本次修正內容：依 111 年原卷（第 1 頁，300 dpi 目視）——①§1「題目提供公式」表移除 $P_n = F_yA_g$（原卷只以文字點名「除受拉全斷面降伏」，未印公式）；②$b_e = (b_e)_{\max}$ 更正為原卷之 $b_e \le (b_e)_{\max}$；③作答要求更正為「設計與分析」；④補回「與另一連接部件均開」孔之敘述；⑤孔位更正：舊解寫「孔兩側各 100 mm」把孔當成置中，與題文「角隅」不符；改依 AISC D5.1 定義 $a$ 為孔緣距（孔中心距板端／近側邊 115 mm），$b_e$ 改為逐側與實際邊距比較（$\min(56, 65, 135) = 56$ mm），刪除「不需驗算淨寬」之錯誤提示；⑥新增 §4 八 D5.2 尺寸規定檢核（孔不置中、端距 $65 &lt; 74.5$ mm 不符）與修正配置（孔置中、$a = 75$ mm，$P_a = 504$ kN OK）；⑦§5 新增「$a$ 量到孔中心」之另一解讀（$P_a = 135$ kN NG）並說明不採理由；⑧更正 $A_{sf}$ 中 $a$ 的定義與 $b_e$ 條文編號（D5.2 → D5.1）。四種極限狀態之強度值不變（以程式重算，含另一解讀與修正配置）。</em><br />
-<em>驗證狀態：unverified</em></p></main>
+<em>驗證狀態：unverified</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2022-2-problem.md</code>（已確認）＋常見誤讀＋本解記號；解題內容與答案不變）</em></p></main>
 <footer>來源：raw/solutions/SS-2022-2/SS-2022-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，

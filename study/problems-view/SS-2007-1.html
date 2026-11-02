@@ -29,7 +29,123 @@ blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;paddin
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2007-1 題目解析</h1><a class="quick" href="../unit-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 單元總覽">&#128269; U1-4 單元總覽</a><a class="lect" href="../lecture-SS-U1-4.html" title="SS-U1-4 接合之分析與設計 觀念講義">&#128218; U1-4 接合之分析與設計 講義</a></header>
-<main><h1>考題編號：SS-2007-1</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2007-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2007-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2007_鋼結構設計.pdf</code> 第 1 頁（全三頁之第一頁），第一題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 96 年（2007）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（圖一：角鋼銲接於連接板），<code>SS-2007-1-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁＋圖一 400 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>一、有一角鋼（L 150 mm×100 mm×15 mm）使用填角焊焊接在一塊連接板（厚度 1.5 cm）上，使用此角鋼之材料強度，試依據工作應力法（ASD）設計焊接長度 a 及 b。（25 分）<br />
+鋼材之降伏強度 $F_y$ = 3.5 tf/cm²，抗拉強度 $F_u$ = 4.8 tf/cm²，焊材之 $F_u$ = 4.9 tf/cm²，填角焊腳長（Leg length）使用 1.2 cm，角鋼之形心離端點長度為 10 cm（如圖一中外力 P 離端點之長度，P 為斷面上之總外力），面積折減係數 U = 0.85。（註：圖一中斜線部分表示填角焊之區域）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：L150×100×15；連接板厚 1.5 cm；$F_y$ = 3.5、$F_u$ = 4.8 tf/cm²；焊材 $F_u$ = 4.9 tf/cm²；腳長 1.2 cm；形心距 10 cm；U = 0.85。</li>
+<li>本題<strong>沒有印公式</strong>，也沒有給角鋼斷面積（須由尺寸計算或查表）。</li>
+<li>第 3 頁公式集為梁柱用，與本題無關。</li>
+<li>卷首注意事項：㈠可以使用電子計算器；㈡不必抄題。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2007-1 圖一：L150×100×15 的 150 mm 肢平貼 15 mm 連接板，斜線區為填角焊——沿角鋼上緣的縱向焊 a、沿下緣的縱向焊 b、角鋼端部的橫向焊（標 15 cm，即肢寬）；右上角 10 cm 尺寸線由角鋼上緣量到 P 作用線；下緣旁有一條平行線（另一肢的稜線）" src="../../raw/solutions/SS-2007-1/SS-2007-1-fig-1.png" /></p>
+<p><em>圖面文字照錄：L 150×100×15；Unit = mm；10 cm；P；a；15 cm；b；15 mm-plate；圖一。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>貼板的肢</td>
+<td>150 mm 肢平貼連接板（端部橫向焊標 15 cm）</td>
+<td>圖一</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>焊道</td>
+<td>三段：上緣縱向 a、下緣縱向 b、端部橫向 15 cm</td>
+<td>斜線區（400 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>肢背側</td>
+<td>下緣（b 側）有另一肢的稜線 → b 側為肢背、a 側為趾</td>
+<td>下緣平行線</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>「端點」與 10 cm</td>
+<td>由上緣（a 側、趾）量到 P 作用線 10 cm，即距 b 側（肢背）5 cm</td>
+<td>尺寸線端點＋題文「如圖一中外力 P 離端點之長度」</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>設計力</td>
+<td>「使用此角鋼之材料強度」→ P 取角鋼拉力容許強度（全斷面降伏與有效淨斷面斷裂取小）</td>
+<td>題文＋給 U</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>焊道容許應力</td>
+<td>喉部 $0.3F_u$（焊材 4.9），題未給</td>
+<td>ASD 規範</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>端部橫向焊</td>
+<td>計入焊道群（平衡焊道設計時三段共同分擔）</td>
+<td>斜線區含端部</td>
+<td>確定（解讀）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-4 題目正本推廣・批 1）</em></p></details>
+<h1>考題編號：SS-2007-1</h1>
 <p><strong>主分類：</strong> <code>SS-U1-4</code> 接合之分析與設計<br />
 <strong>副分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>設計法：</strong> ASD<br />

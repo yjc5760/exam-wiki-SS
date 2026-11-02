@@ -29,24 +29,184 @@ blockquote{border-left:4px solid #ffcc80;background:#fff3e0;margin:14px 0;paddin
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
 <header><h1>SS-2024-2 題目解析</h1><a class="quick" href="../unit-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 單元總覽">&#128269; U1-1 單元總覽</a><a class="lect" href="../lecture-SS-U1-1.html" title="SS-U1-1 拉力及壓力桿件 觀念講義">&#128218; U1-1 拉力及壓力桿件 講義</a></header>
-<main><h1>考題編號：SS-2024-2</h1>
+<main><details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（已確認）</summary><h1>SS-2024-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2024-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2024_鋼結構設計.pdf</code> 第 2 頁（頁次 4－2），第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 113 年（2024）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分（㈠ 15、㈡ 10）</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（圓管斷面、側視圖、填角銲最小尺寸表），<code>SS-2024-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-02 使用者確認，含「不確定」項之解讀；轉錄同日，PyMuPDF 110 dpi 全頁＋附圖 300 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>二、下圖所示為一中空鋼管斷面拉力桿件之端部與十字形連接板之接頭，桿件預計使用 A500 Grade 50 鋼材之 STK273×10 圓管，管外徑尺寸 $D = 273$ mm，並於鋼管外側採用 E70 系列銲條之縱向填角銲道與連接板相連接，如圖所示。<br />
+㈠以極限設計法求此桿件之設計強度（$\phi_tT_n$），請詳述可能之極限狀態種類。（15 分）<br />
+㈡依前一小題之所得之設計強度為銲接之設計力，設計此接頭之銲道尺寸。（10 分）<br />
+其中 A500 Grade 50 鋼材之 $F_y = 2.3$ tf/cm²，$F_u = 3.1$ tf/cm²。圓管之斷面積 $A_g = 82.6$ cm²，十字形連接板厚 $t_g = 20$ mm。<br />
+參考公式：$U = 1 - \dfrac{\bar{x}}{L}$，$\bar{x} = \dfrac{D}{\pi}$（半圓管），$U = \dfrac{3L^2}{3L^2 + W^2}$</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：STK273×10，$D = 273$ mm，$F_y = 2.3$、$F_u = 3.1$ tf/cm²，$A_g = 82.6$ cm²，$t_g = 20$ mm，E70 銲條。</li>
+<li>參考公式三條（照錄於 §1），未說明 $W$ 是什麼、第二條何時適用。</li>
+<li>附圖內「填角銲最小尺寸」表：接合部板厚 $t \le 6$ → 3；$6 &lt; t \le 12$ → 5；$12 &lt; t \le 19$ → 6；$19 &lt; t \le 38$ → 8（mm）。</li>
+<li><strong>沒有給 $\phi_t$、銲材強度 $F_{EXX}$ 數值與銲道 $\phi$</strong>。</li>
+<li>卷首「（註：題目所列之計算公式僅供參考應自負確認與勘誤責任，另視設計需求可自行假設適用的條件等）」。</li>
+<li>卷首注意事項：㈠可用計算器、㈡不必抄題、㈢除專門名詞或數理公式外應使用本國文字作答。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2024-2 附圖：左為圓管斷面，十字形連接板四支板穿出管壁，每支板穿出處兩側各一個黑色三角形填角銲；中為側視圖，連接板插入管端開槽，黑色粗線為銲道，銲長 L = D，槽端標「半圓孔徑 = 22mm」；右為填角銲最小尺寸表" src="../../raw/solutions/SS-2024-2/SS-2024-2-fig-1.png" /></p>
+<p><em>圖面文字照錄：D；填角銲；$t_g$；單位: mm；STK273×10；L=D；十字形連接板；半圓孔徑 = 22mm；圓管；接合部板厚 t (mm)；填角銲最小尺寸 (mm)；t ≤ 6｜3；6 &lt; t ≤ 12｜5；12 &lt; t ≤ 19｜6；19 &lt; t ≤ 38｜8。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>銲道數</td>
+<td>十字形板四支各在管外兩側一道，共 <strong>8 道</strong>縱向填角銲</td>
+<td>斷面圖 8 個三角形（300 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>銲長</td>
+<td>每道 $L = D = 273$ mm</td>
+<td>側視圖尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>開槽</td>
+<td>管端沿四支板開 4 道槽，槽端為半圓、孔徑（槽寬）22 mm，槽端在銲道區之外</td>
+<td>側視圖箭頭與虛線</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>管壁厚</td>
+<td>10 mm（STK273×10）</td>
+<td>斷面標示</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>極限狀態範圍</td>
+<td>桿件全斷面降伏、槽端淨斷面斷裂（扣開槽、乘 $U$）；連接板的極限狀態是否也要列</td>
+<td>題文「此桿件之設計強度」</td>
+<td>不確定 → 使用者確認：只算桿件：全斷面降伏、槽端淨斷面斷裂（本解另列管壁剪力撕裂）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>用哪條 $U$</td>
+<td>$U = 1 - \bar{x}/L$ 配半圓管 $\bar{x} = D/\pi$；第二條 $U = 3L^2/(3L^2+W^2)$ 中 $W$ 的意義與是否適用</td>
+<td>參考公式未說明</td>
+<td>不確定 → 使用者確認：用 $U = 1 - \bar{x}/L$、$\bar{x} = D/\pi$；第二條不用（同本解）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>最小銲腳查表用的 $t$</td>
+<td>以較薄者（管壁 10 mm）或較厚者（連接板 20 mm）查表</td>
+<td>表頭「接合部板厚」未指明</td>
+<td>不確定 → 使用者確認：以較厚板（連接板 20 mm）查表 → 8 mm（同本解）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>㈡ 設計力</td>
+<td>以㈠所得 $\phi_tT_n$ 為 8 道銲道合計的設計力</td>
+<td>題文</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>9</td>
+<td>未給係數</td>
+<td>$\phi_t$、$F_{EXX}$（E70）、銲道 $\phi$ 依規範自取並註明</td>
+<td>題文未給</td>
+<td>確定（解讀）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-1 題目正本推廣・批 3）｜確認：2026-11-02 使用者確認</em></p></details>
+<h1>考題編號：SS-2024-2</h1>
 <p><strong>主分類：</strong> <code>SS-U1-1</code> 拉力及壓力桿件<br />
 <strong>副分類：</strong> <code>SS-U1-4</code> 接合之分析與設計<br />
 <strong>設計法：</strong> LRFD<br />
 <strong>標籤：</strong> <code>拉力桿件</code> <code>圓管HSS</code> <code>縱向填角銲</code> <code>剪力遲滯</code> <code>U值</code> <code>半圓管</code> <code>淨截面斷裂</code> <code>銲道設計</code> <code>開槽淨面積</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>下圖所示為一中空鋼管斷面拉力桿件之端部與十字形連接板之接頭，桿件預計使用 A500 Grade 50 鋼材之 STK273×10 圓管，管外徑 $D = 273$ mm，並於鋼管外側採用 E70 系列銲條之縱向填角銲道與連接板相連接。</p>
-<p>（一）以極限設計法求此桿件之設計強度（$\phi_tT_n$），請詳述可能之極限狀態種類。（15 分）<br />
-（二）依前一小題之所得之設計強度為銲接之設計力，設計此接頭之銲道尺寸。（10 分）</p>
-<p>其中 $F_y = 2.3$ tf/cm²，$F_u = 3.1$ tf/cm²；圓管斷面積 $A_g = 82.6$ cm²；十字形連接板厚 $t_g = 20$ mm。</p>
-<p><strong>參考公式：</strong> $U = 1 - \bar{x}/L$，$\bar{x} = D/\pi$（半圓管），$U = 3L^2/(3L^2+W^2)$</p>
-<p><img alt="SS-2024-2 題目附圖：STK273×10 圓管斷面與側視圖；十字形連接板貫穿圓管四處開槽，每處板兩側各一道縱向填角銲（共 8 道），銲道長 L=D，開槽端為半圓孔徑 22 mm；附填角銲最小尺寸表" src="../../raw/solutions/SS-2024-2/SS-2024-2-fig-1.png" /></p>
-<p><em>圖說（依考卷原圖 450 dpi 目視判讀）：</em><br />
-- <em>斷面圖：十字形連接板的四支板穿出管壁，每個穿出處板的<strong>兩側各有一個三角形銲道符號</strong> → 共 <strong>8 道</strong>縱向填角銲。</em><br />
-- <em>側視圖：管端沿四支板的位置<strong>開槽</strong>讓板插入，槽端為「<strong>半圓孔徑 = 22 mm</strong>」（槽寬 22 mm ＝ 板厚 20 mm ＋ 間隙），虛線表示槽延伸到銲道區外。</em><br />
-- <em>銲道長 $L = D = 273$ mm。</em><br />
-- <em>最小銲腳表：$t \le 6 \to 3$；$6 &lt; t \le 12 \to 5$；$12 &lt; t \le 19 \to 6$；$19 &lt; t \le 38 \to 8$（mm）。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SS-2024-2-problem.md"><code>SS-2024-2-problem.md</code></a>。本節只列<strong>解題時最容易讀錯的地方</strong>與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>銲道數</td>
+<td>四支板 × 管外兩側 = 8 道，每道 $L = D = 273$ mm</td>
+<td>算成 4 道</td>
+</tr>
+<tr>
+<td>開槽</td>
+<td>4 道槽、槽寬 22 mm，槽端淨斷面要扣</td>
+<td>以為無孔、$A_n = A_g$</td>
+</tr>
+<tr>
+<td>$U$</td>
+<td>用 $U = 1 - \bar{x}/L$、$\bar{x} = D/\pi$；第二條 $3L^2/(3L^2+W^2)$ 不用（使用者確認）</td>
+<td>套第二條</td>
+</tr>
+<tr>
+<td>最小銲腳</td>
+<td>以接合部較厚板（連接板 20 mm）查表 → 8 mm（使用者確認）；若以較薄板（管壁 10 mm）查表為 5 mm</td>
+<td>未說明用哪片板厚查表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> $D = 27.3$、$t = 1.0$ cm；$A_g = 82.6$ cm²；$F_y = 2.3$、$F_u = 3.1$ tf/cm²；$t_g = 20$ mm；槽寬 22 mm；$F_{EXX} = 4.92$ tf/cm²（E70）。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 開槽圓管（slotted HSS）以縱向銲接到連接板時，受拉桿件要檢核三件事：全斷面降伏、槽端淨斷面斷裂（扣開槽面積＋剪力遲滯 $U$）、管壁沿銲道的剪力撕裂；接頭本身再檢核銲道強度與最小銲腳。</p>
@@ -462,7 +622,8 @@ $$w_{req} = \frac{T_u}{\phi(0.6F_{EXX})(0.707) \times 8L},\quad w = \max(w_{req}
 <p><strong>觀察：</strong> 若銲道長度加長到 $L \ge 1.3D = 35.5$ cm，$U = 1.0$，NSF 提高到 $0.75 \times 3.1 \times 73.8 = 171.6$ t，與全斷面降伏 171.0 t 幾乎相同——這就是規範設定 1.3D 門檻的用意。</p>
 <hr />
 <p><em>修正日期：2026-11-01（依考卷原圖：「半圓孔徑 22 mm」為圓管開槽，原解以「無孔」取 $A_n = A_g$，更正為扣除 4 道槽之 $A_n = 73.8$ cm²，$\phi_tT_n$ 由 130.8 t 更正為 <strong>117.0 t</strong>；斷面圖每支板兩側各一道銲，銲道由 4 道更正為 <strong>8 道</strong>，所需銲腳 7.66 → 3.4 mm，設計銲腳仍為 8 mm；補管壁剪力撕裂檢核、極限狀態說明與 §6 對照；更正 $F_{EXX}$ 筆誤 49 → 4.92 tf/cm²）</em><br />
-<em>驗證狀態：unverified</em></p></main>
+<em>驗證狀態：unverified</em></p>
+<p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2024-2-problem.md</code>（已確認）＋常見誤讀＋本解記號；解題內容與答案不變）</em></p></main>
 <footer>來源：raw/solutions/SS-2024-2/SS-2024-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，

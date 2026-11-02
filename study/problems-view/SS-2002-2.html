@@ -44,6 +44,113 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   <a class="quick" href="../unit-SS-U1-2.html" title="SS-U1-2 梁桿件 單元總覽">&#128269; U1-2 單元總覽</a><a class="lect" href="../lecture-SS-U1-2.html" title="SS-U1-2 梁桿件 觀念講義">&#128218; U1-2 梁桿件 講義</a>
 </header>
 <main>
+<details class="prob" open style="background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:0 10px 10px 0;padding:10px 18px;margin:0 0 26px"><summary style="cursor:pointer;font-weight:700;color:#e65100">📄 題目正本：考卷原文・附圖・判讀清單（待確認）</summary><h1>SS-2002-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄<strong>考卷上寫了什麼、圖上畫了什麼</strong>，不含任何解法。解析見同資料夾 <code>SS-2002-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SS-2002_鋼結構設計.pdf</code> 第 1 頁（全一張之正面），第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>民國 91 年（2002）</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td>1 張（簡支梁與斷面座標），<code>SS-2002-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（轉錄 2026-11-02，PyMuPDF 110 dpi 全頁＋附圖 300 dpi 局部目視，盲讀後才比對既有解析）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<blockquote>
+<p>二、如圖所示之 A36 簡支梁，斷面為 W12×65，長 14m，承受一移動集中載重 P，假設梁兩端及每 1/4 跨距處之弱軸方向均有一側向支撐，考慮自重。依容許應力設計法(ASD)，試計算此容許載重 P。（A36 鋼材之 E＝2100 t/cm², $F_y$＝2.5 t/cm², $F_u$＝4.1 t/cm²；W12×65 為結實斷面，斷面性質如下：A＝119.4 cm², d＝30.3 cm, $t_w$＝1 cm, $b_f$＝30cm, $t_f$＝1.5 cm, $I_x$＝20820 cm⁴, $I_y$＝6797 cm⁴, $S_x$＝1373 cm³, $S_y$＝455 cm³, $r_x$＝13.2 cm, $r_y$＝7.6 cm, $L_c$＝3.87 m, $L_u$＝8.44 m；鋼梁自重為 97 kg/m。）（25 分）</p>
+</blockquote>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>題文：跨長 14 m；A36，$E = 2100$、$F_y = 2.5$、$F_u = 4.1$ t/cm²；W12×65 斷面性質（照錄於 §1）；$L_c = 3.87$ m、$L_u = 8.44$ m；自重 97 kg/m；結實斷面。</li>
+<li>本題<strong>沒有印 ASD 容許撓曲應力公式</strong>（同頁第三題的公式是柱用）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器，需詳列解答過程；㈡不必抄題。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SS-2002-2 附圖：左端三角形鉸支、右端圓形滾支的簡支梁，跨長 14 m，中間附近一個向下的集中載重 p，標 W12×65；右側斷面座標 y 向上、x 水平，工字形直立" src="../../raw/solutions/SS-2002-2/SS-2002-2-fig-1.png" /></p>
+<p><em>圖面文字照錄：y；p；W12×65；14 m；y；x。</em></p>
+<h2>4. 判讀清單</h2>
+<p>「把握」標<strong>不確定</strong>者請優先確認；解讀類項目（題目用字的意思）另標「解讀」。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>支承</td>
+<td>左端鉸支、右端滾支，簡支</td>
+<td>附圖（300 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>彎曲軸</td>
+<td>工字形直立，繞強軸 $x$ 彎曲</td>
+<td>斷面座標圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>側撐</td>
+<td>兩端與每 1/4 跨（3.5、7、10.5 m）處，無支長度 $L_b = 3.5$ m</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>移動載重</td>
+<td>$P$ 位置可變，取最不利位置；圖上 $p$ 畫在跨中附近只是示意</td>
+<td>題文「移動」</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>自重</td>
+<td>97 kg/m 全跨均佈，與 $P$ 同時作用</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>所求</td>
+<td>依 ASD 求容許 $P$（是否也檢核剪力，題未明示）</td>
+<td>題文</td>
+<td>不確定（解讀）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-02（SS-U1-2 題目正本推廣・批 1）</em></p></details>
 <h1>考題編號：SS-2002-2</h1>
 <p><strong>主分類：</strong> <code>SS-U1-2</code> 梁桿件<br />
 <strong>副分類：</strong>（無）<br />

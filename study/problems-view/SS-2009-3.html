@@ -555,6 +555,8 @@ $$\boxed{\lambda_c} = \frac{K_y L_y}{\boxed{r_y} \cdot \pi}\sqrt{\frac{F_y}{E}}$
 </table>
 <p>$$Z_x = 2 \times 2{,}119.5 = 4{,}239\ \text{cm}^3; \quad M_p = 3.5 \times 4{,}239 = 14{,}837\ \text{tf}\cdot\text{cm}$$</p>
 <p>$$\boxed{\frac{M_p}{M_y} = \frac{4{,}239}{3{,}771} \approx 1.124}$$</p>
+<p><img alt="SS-2009-3 圖解：H 500×304×15×24 斷面旁並列彈性極限（三角形，外緣 Fy）與全塑性（矩形 Fy）應力分布；Sx = 3,771 cm³、My = 13,198 tf·cm；Zx = 2 × (1,736.4 + 383.1) = 4,239 cm³、Mp = 14,837 tf·cm；Mp/My ≈ 1.124" src="../../raw/solutions/SS-2009-3/figs/SS-2009-3-fig-2-shape.svg" /></p>
+<p><em>圖 2　$M_p/M_y = Z_x/S_x = 4{,}239/3{,}771 \approx 1.124$：寬翼斷面材料集中在翼板，三角形換成矩形只多出腹板中段。這張圖攔的是把 $I_x/(d/2)$ 當成 $Z_x$、一次面積矩沒量到 PNA，或形狀因子寫成倒數。（$I_x$ 翼板項精確為 82,725，解析寫 82,722，尾數差不影響 $S_x$。）</em></p>
 <hr />
 <h3>二、標稱剪力強度 $V_n$</h3>
 <p>$$\frac{h}{t_w} = \frac{45.2}{1.5} = 30.1 &lt; 2.45\sqrt{\frac{2{,}040}{3.5}} = 59.1 \quad \Rightarrow C_v = 1.0$$</p>
@@ -566,6 +568,8 @@ $$\boxed{\lambda_c} = \frac{K_y L_y}{\boxed{r_y} \cdot \pi}\sqrt{\frac{F_y}{E}}$
 <p>$$r_y = \sqrt{\frac{11{,}251}{213.72}} = 7.255\ \text{cm}; \quad \frac{K_y L_y}{r_y} = \frac{400}{7.255} = 55.1$$</p>
 <p>$$\boxed{\lambda_c = \frac{400}{7.255 \times \pi}\sqrt{\frac{3.5}{2{,}040}} = 17.55 \times 0.04143 = 0.727}$$</p>
 <p>$\lambda_c = 0.727 \leq 1.5$，非彈性挫屈段，$F_{cr} = 0.658^{0.529} \times 3.5 = 2.80\ \text{tf/cm}^2$（供參）</p>
+<p><img alt="SS-2009-3 圖解：(a) 剪力面積 Aw = d × tw = 50.0 × 1.5 = 75.0 cm²（紫色條含翼板厚），h/tw = 30.1 小於 59.1、Cv = 1.0，Vn = 157.5 tf；(b) 柱曲線 Fcr/Fy 對 λc，ry = √(11,251/213.72) = 7.255 cm，KyLy/ry = 55.1，λc = 0.727 落在 0.658 的 λc² 次方段，Fcr ≈ 2.8 tf/cm²" src="../../raw/solutions/SS-2009-3/figs/SS-2009-3-fig-3-checks.svg" /></p>
+<p><em>圖 3　$V_n = 0.6 \times 3.5 \times 75.0 = 157.5$ tf（$C_v = 1.0$）；弱軸 $\lambda_c = 0.727 \le 1.5$，非彈性段。這張圖攔的是 $A_w$ 用淨高 $h \times t_w$、$h/t_w$ 判斷改用 $d$，或 $\lambda_c$ 用強軸 $r_x$、漏乘 $\sqrt{F_y/E}/\pi$。</em></p>
 <hr />
 <h2>5. 結果彙整與驗算 (Summary &amp; Verification)</h2>
 <table>
@@ -613,6 +617,8 @@ $$\boxed{\lambda_c} = \frac{K_y L_y}{\boxed{r_y} \cdot \pi}\sqrt{\frac{F_y}{E}}$
 <p><em>修正日期：2026-11-02（§1 重述補上考卷第三小題題內給定的 $P_n$ 式與 $\lambda_c \le 1.5$ 條件、第二小題的規範依據；數值與答案不變）</em></p>
 <p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2009-3-problem.md</code>（已確認）＋常見誤讀＋本解記號，避免題意兩份不同步；解題內容與答案不變）</em></p>
 <p><em>修正日期：2026-11-03（§1 補入題目附圖重繪 <code>figs/SS-2009-3-fig-1-problem.svg</code>（依已確認的題目正本判讀清單，腳本 <code>gen_SS-2009-3.py</code>，可重跑）；解題內容與答案不變）</em></p>
+<hr />
+<p><em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2009-3.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2009-3/SS-2009-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

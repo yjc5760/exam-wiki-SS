@@ -450,6 +450,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </table>
 <p>（螺栓分居腹板兩側，顆數取偶數。）M22 以上雖然更短，但內板放不下。</p>
 <p>$$\boxed{d = 20\ \text{mm（A325，摩阻型，標準孔 } \phi 22\text{ mm）}}$$</p>
+<p><img alt="SS-2004-2 兩格：左為 H150×150×7×10 翼板斷面依比例，外連接板在翼板外側、兩片內連接板在腹板圓角以外，可用寬 60.5 → 60 mm；右為 M16、M20、M22、M24 的內板寬需求 3d 與每側長度，M22、M24 放不下" src="../../raw/solutions/SS-2004-2/figs/SS-2004-2-fig-1-inner.svg" /></p>
+<p><em>圖 1　內連接板只能放在腹板圓角與翼板邊緣之間（60 mm），一行螺栓兩側各留 1.5d ⇒ $d \le 20$ mm。這張圖攔的是為了縮短接合而選 M22 以上、卻沒檢查內板放不放得下，以及忽略圓角 $R$。</em></p>
 <h3>4.3 螺栓數量</h3>
 <p>$$n = \left\lceil \frac{35}{7.48} \right\rceil = 5 \rightarrow \boxed{6\ \text{顆／翼板／側}}\ (2\ \text{行} \times 3\ \text{列}),\qquad 6 \times 7.48 = 44.9\ \text{t} \ge 35\ \text{t}\ \checkmark$$</p>
 <p>全接合：$6 \times 2\ \text{側} \times 2\ \text{翼板} = \boxed{24\ \text{顆 M20}}$</p>
@@ -469,6 +471,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   30   │  ●    ●    ●     │隙│     ●    ●    ●  │   ← 第 2 行（腹板另一側）
 翼板緣 └──────────────────┴─┴──────────────────┘
 </code></pre>
+<p><img alt="SS-2004-2 翼板續接平面：連接板 150×365 mm，兩段構材間隙 5 mm，每側 2 行 × 3 列 M20，端距 30、列距 60、行距 90，內連接板 60 mm 寬以虛線表示" src="../../raw/solutions/SS-2004-2/figs/SS-2004-2-fig-2-layout.svg" /></p>
+<p><em>圖 2　螺栓配置平面。每側 $30 + 2 \times 60 + 30 = 180$ mm，全長 $2 \times 180 + 5 = 365$ mm，兩行螺栓恰在兩片內板中心；這張圖攔的是端距、列距配錯與漏算構材間隙。</em></p>
 <h3>4.5 連接板設計（全斷面降伏，$F_t = 1.5\ \text{t/cm}^2$）</h3>
 <p>雙剪下外板與兩片內板各傳一半：$35/2 = 17.5$ t，各需 $A_g \ge 17.5/1.5 = 11.67\ \text{cm}^2$。</p>
 <table>
@@ -579,6 +583,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>本題以 360-16 估算：</strong> 每翼板每側仍為 6 顆，設計不變。</p>
 <hr />
 <p><em>修正日期：2026-11-01（依考卷原圖：內連接板在腹板兩側各一片，螺栓須分居腹板兩側。原解把每排 1 顆螺栓「置中於翼板」（該處為腹板）、內連接板作一整片 120 mm 跨過腹板，配置無法施工；且未檢核內板寬度限制，選用 M25（需內板寬 ≥ 75 mm）。更正：內板可用寬 60.5 mm → 螺栓上限 M20；每翼板每側 6 顆（2 行 × 3 列）、全接合 24 顆；外連接板 PL8×150×365、內連接板 2-PL10×60×365（原解 M25 × 12 顆、板厚 9 mm、板長 457 mm）。新增直徑比較表、承壓補充檢核、構材本身不足之提醒與 §6 對照）</em><br />
+<em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2004-2.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em><br />
 <em>驗證狀態：unverified</em></p></main>
 <footer>來源：raw/solutions/SS-2004-2/SS-2004-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

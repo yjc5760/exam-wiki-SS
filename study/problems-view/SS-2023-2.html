@@ -410,6 +410,8 @@ $$\left(\frac{KL}{r}\right)_{\text{控制}} = 87.8 \quad \text{（弱軸 y 軸�
 <p>$$\boxed{\Rightarrow \text{非彈性挫屈（Inelastic Buckling）}}$$</p>
 <p>應使用<strong>非彈性挫屈公式</strong>（Johnson 曲線）：<br />
 $$F_a = \frac{\left[1 - \dfrac{(KL/r)^2}{2C_c^2}\right]F_y}{\dfrac{5}{3} + \dfrac{3}{8}\left(\dfrac{KL/r}{C_c}\right) - \dfrac{1}{8}\left(\dfrac{KL/r}{C_c}\right)^3}$$</p>
+<p><img alt="SS-2023-2 圖解：ASD 容許應力 Fa 對 KL/r 曲線，Cc = 107.3 分界，左為非彈性 Johnson 式、右為彈性 12π²E/23(KL/r)²；標出強軸 38.2、弱軸 87.8（控制，在非彈性段）" src="../../raw/solutions/SS-2023-2/figs/SS-2023-2-fig-1-type.svg" /></p>
+<p><em>圖 1　（一）弱軸 $KL/r = 87.8$ 小於 $C_c = 107.3$：非彈性挫屈，用 Johnson 式。這張圖攔的是取強軸細長比 38.2、$C_c$ 代錯，或 $KL/r$ 小於 $C_c$ 卻用彈性式。</em></p>
 <hr />
 <h3>四、求彈性/非彈性挫屈交界點的柱長</h3>
 <p>交界點條件：<br />
@@ -420,6 +422,8 @@ $$\frac{KL}{r} = C_c = 107.3$$</p>
 <p><strong>驗算：</strong><br />
 $$\frac{KL}{r_y} = \frac{1.0 \times 794}{7.4} = 107.3 = C_c \checkmark$$</p>
 <p>$$\frac{KL}{r_x} = \frac{1.0 \times 794}{17} = 46.7 &lt; C_c \quad \text{（強軸仍為非彈性，弱軸才是控制軸）} \checkmark$$</p>
+<p><img alt="SS-2023-2 圖解：KL/r 對柱長 L 的兩條直線，弱軸 L/7.4、強軸 L/17，水平線 Cc = 107.3；L = 650 時弱軸 87.8，L = 794 cm 時弱軸恰等於 Cc、強軸 46.7" src="../../raw/solutions/SS-2023-2/figs/SS-2023-2-fig-2-length.svg" /></p>
+<p><em>圖 2　（二）$L = 107.3 \times 7.4 = 794$ cm（≈ 7.94 m）時弱軸恰在交界點，此時強軸 46.7 仍在非彈性段。這張圖攔的是用 $r_x$ 求交界柱長（得 1,824 cm），或忘了驗算另一軸。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>Cc 的物理意義</h3>
@@ -465,6 +469,8 @@ $$\frac{KL}{r_y} = \frac{1.0 \times 794}{7.4} = 107.3 = C_c \checkmark$$</p>
 <p>$KL/r_y = 87.8$，$C_c = 107.3$，比值 = 87.8/107.3 = 0.82。</p>
 <p>柱位於非彈性區域的<strong>中間段</strong>，距交界點還有相當距離。若繼續增長至 7.94m（+22%），才到達交界點。這說明本題原始柱長（6.5m）在非彈性區設計屬於常見範圍，並非接近極限狀態。</p>
 <p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2023-2-problem.md</code>（已確認）＋常見誤讀＋本解記號；解題內容與答案不變）</em></p>
+<hr />
+<p><em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2023-2.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2023-2/SS-2023-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

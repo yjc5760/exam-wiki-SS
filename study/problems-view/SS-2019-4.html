@@ -539,6 +539,8 @@ $$= \frac{20 \times 125000 - 19.1 \times 102503}{12} = \frac{2{,}500{,}000 - 1{,
 <hr />
 <h3>Step 5：計算剪力流 $q$</h3>
 <p>$$q = \frac{V_u \times Q}{I_{composite}} = \frac{50 \times 1{,}153.5}{75{,}510} = \frac{57{,}675}{75{,}510} = \mathbf{0.7638 \text{ tf/cm}}$$</p>
+<p><img alt="SS-2019-4 組合斷面（依比例）：H500×200×9×16 上加 PL25×300 蓋板，組合中性軸距底 35.87 cm（H 型鋼形心 25 cm 以虛線對照），蓋板形心距中性軸 15.38 cm，Q = 75 × 15.38 = 1,153.5 cm³" src="../../raw/solutions/SS-2019-4/figs/SS-2019-4-fig-1-section.svg" /></p>
+<p><em>圖 1　加了蓋板，中性軸上移到 35.87 cm；剪力流用的 $Q$ 只取蓋板那一塊。這張圖攔的是用 H 型鋼形心（25 cm）算力臂（$Q$ 高估 71%）以及 $I$ 漏算蓋板。</em></p>
 <hr />
 <h3>Step 6：計算每間距內的剪力合力 $F_s$</h3>
 <p>$$F_s = q \times s = 0.7638 \times 15 = \mathbf{11.46 \text{ tf}}$$</p>
@@ -565,6 +567,8 @@ $$\phi R_n \times L = 2.494 \times 5 = 12.47 \text{ tf} &gt; F_s = 11.46 \text{ 
          ←────── s = 15cm ──────→
 </code></pre>
 <p>填充率 = $L/s = 5/15 = 33\%$</p>
+<p><img alt="SS-2019-4 斷續銲示意：沿梁長每 15 cm 一段 5 cm 銲道、上下兩道對稱，剪力流 q 沿全長連續；下方長條：每間距需求 q·s = 11.46 tf，對 L = 5 cm 容量 12.47 tf" src="../../raw/solutions/SS-2019-4/figs/SS-2019-4-fig-2-inter.svg" /></p>
+<p><em>圖 2　斷續銲的換算鏈：$q$（每 cm 梁長）× $s$ = 每段的力 11.46 tf，再除以每 cm 銲道容量 2.494 tf/cm 得 $L = 4.59 \to 5$ cm。這張圖攔的是把 $q$ 直接當每段的力、只算一道銲，以及間距與段長混淆。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>為何剪力流只與 $V_u$ 有關，而非 $M_u$？</h3>
@@ -584,7 +588,9 @@ $$\phi R_n \times L = 2.494 \times 5 = 12.47 \text{ tf} &gt; F_s = 11.46 \text{ 
 <h3>本題若改用連續銲道</h3>
 <p>若採連續銲道（$s \to 0$，即每 1cm 都銲），所需的最小腳長：</p>
 <p>$$w_{req} = \frac{q}{\phi \times 0.6F_{EXX} \times 0.707 \times 2} = \frac{0.7638}{0.75 \times 0.6 \times 4.9 \times 0.707 \times 2} = \frac{0.7638}{3.119} = 0.245 \text{ cm} = 2.45 \text{ mm}$$</p>
-<p>遠小於 8mm，可見斷續銲道在此情形合理，且有多餘容量。</p></main>
+<p>遠小於 8mm，可見斷續銲道在此情形合理，且有多餘容量。</p>
+<hr />
+<p><em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2019-4.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em></p></main>
 <footer>來源：raw/solutions/SS-2019-4/SS-2019-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，

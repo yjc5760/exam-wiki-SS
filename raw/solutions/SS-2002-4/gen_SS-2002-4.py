@@ -121,9 +121,164 @@ def fig1_problem():
     return path
 
 
+# ── 解題圖解共用小工具（像素座標；y 由上往下）──
+def _hl(cv, PH, x0, y0, x1, y1, color, w=2.0, dash=None):
+    cv.line((x0, PH - y0), (x1, PH - y1), color, w, dash=dash, cap="butt")
+
+
+def rsum(terms, nd=3):
+    """與解析相同的加法：各項先四捨五入到 nd 位再相加"""
+    return round(sum(round(t, nd) for t in terms), nd)
+
+
+def _stack_row(cv, x0, y, scale, terms, colors, name, total_color, h=34, fmt="{:.3f}"):
+    """水平堆疊長條：互制比 1.0 對應 scale 像素"""
+    cv.text_px(x0 - 14, y, name, 14, C["text"], "end", weight="700")
+    xx = x0
+    for t, col in zip(terms, colors):
+        w = scale * t
+        cv.rect_px(xx, y - h/2, w, h, col, 0)
+        if w > 44:
+            cv.text_px(xx + w/2, y, fmt.format(t), 12.5, "#FFFFFF", weight="700")
+        xx += w
+    tot = rsum(terms)
+    cv.text_px(xx + 12, y, "= " + fmt.format(tot), 15, total_color, "start", weight="700")
+    return tot
+
+
+# ══════════════════════════════════════════════════════════════
+# 解題圖解（2026-11-03 補繪）——數值全部取自 SS-2002-4.md §4，由下式即時算出
+# ══════════════════════════════════════════════════════════════
+Q_P = 20.0                                         # tf                      §1
+Q_UX, Q_UY = -PH / 5.0, -PV / 5.0                   # 方向（向左下 3:4）       判讀 #5
+Q_BOLTS = [(x, y) for x in (-G / 2, G / 2) for y in (-1.5 * S, -0.5 * S, 0.5 * S, 1.5 * S)]
+Q_XP, Q_YP = G / 2 + A25, 1.5 * S + EDGE           # 作用點相對形心（28.5, 15.5）  §4 步驟 2
+Q_PX, Q_PY = Q_P * Q_UX, Q_P * Q_UY
+Q_IP = sum(x * x + y * y for x, y in Q_BOLTS)      # 588                     步驟 1
+Q_M  = Q_XP * Q_PY - Q_YP * Q_PX                   # −270（順時針）            步驟 3
+Q_E  = abs(Q_M) / Q_P                              # 13.5
+Q_N  = len(Q_BOLTS)
+def q_force(x, y):
+    fx = Q_PX / Q_N - Q_M * y / Q_IP
+    fy = Q_PY / Q_N + Q_M * x / Q_IP
+    return fx, fy
+Q_R = [(x, y, *q_force(x, y)) for x, y in Q_BOLTS]
+Q_RMAX = max(math.hypot(fx, fy) for *_, fx, fy in Q_R)
+Q_FV, Q_AB = 2.10, 3.88                            # t/cm²、cm²               步驟 5
+Q_RV = Q_FV * Q_AB
+Q_FPB = 1.2 * 4.1                                  # 1.2Fu                    步驟 5
+Q_RP_COL, Q_RP_PL = Q_FPB * DB * 1.156, Q_FPB * DB * 1.5
+
+
+def fig1_ecc():
+    W1, H1 = 560, 560
+    sx = 9.0
+    cv = Canvas(W1, H1, sx=sx, ox=150, oy=250)
+    cv.panel("① 扭矩 = P × 形心到力線的垂直距離", "力線方向 3:4，作用於鋼板右上角")
+    for x, y in Q_BOLTS:
+        cv.circle((x, y), DB / 2, fill="#FFFFFF", stroke=C["member"], w=1.8)
+    cv.line((-1.2, 0), (1.2, 0), C["text"], 1.4); cv.line((0, -1.2), (0, 1.2), C["text"], 1.4)
+    cv.text_px(cv.X(0) + 7, cv.Y(0) - 12, "O", 13, C["text"], "start", weight="700")
+    p0 = (Q_XP, Q_YP)
+    a, b = (p0[0] - 11 * Q_UX, p0[1] - 11 * Q_UY), (p0[0] + 40 * Q_UX, p0[1] + 40 * Q_UY)
+    cv.line(a, b, C["ghost"], 1.4, dash="6 5")
+    cv.arrow((p0[0] - 9 * Q_UX, p0[1] - 9 * Q_UY), p0, C["load"], 3.2, 11)
+    cv.text_px(cv.X(p0[0] - 9 * Q_UX) + 8, cv.Y(p0[1] - 9 * Q_UY), f"P = {Q_P:g} tf", 13.5, C["load"], "start", weight="700")
+    cv.dot(p0, 4.5, fill=C["load"])
+    cv.text_px(cv.X(p0[0]) + 10, cv.Y(p0[1]) + 16, f"({Q_XP:g}, {Q_YP:g})", 12, C["muted"], "start")
+    t = -(p0[0] * Q_UX + p0[1] * Q_UY)
+    foot = (p0[0] + t * Q_UX, p0[1] + t * Q_UY)
+    cv.line((0, 0), foot, C["accent"], 2.6)
+    # 直角記號
+    k = 1.4
+    nx, ny = -foot[0] / Q_E, -foot[1] / Q_E
+    c1 = (foot[0] + k * nx, foot[1] + k * ny); c2 = (c1[0] - k * Q_UX, c1[1] - k * Q_UY); c3 = (foot[0] - k * Q_UX, foot[1] - k * Q_UY)
+    cv.poly([c1, c2, c3], C["accent"], 1.4)
+    mid = (foot[0] / 2, foot[1] / 2)
+    cv.text_px(cv.X(mid[0]) + 12, cv.Y(mid[1]) + 4, f"e = {Q_E:.1f} cm", 14, C["accent"], "start", weight="700")
+    cv.text_px(W1 / 2, H1 - 56, f"M = P·e = {Q_P:g} × {Q_E:.1f} = {abs(Q_M):.0f} tf·cm（順時針）", 14, C["text"], weight="700")
+    cv.text_px(W1 / 2, H1 - 30, f"Ip = Σx² + Σy² = {Q_IP:.0f} cm²（8 顆）", 12.5, C["muted"])
+    p1 = cv
+
+    cv = Canvas(W1, H1, sx=1)
+    cv.panel("② 分量取矩：兩個分量的力矩方向相反", "第二條路徑，結果必須與 ① 相同")
+    x0, sc = 210, 0.38
+    rows = ((f"Py × xP = {abs(Q_PY):g} × {Q_XP:g}", abs(Q_PY) * Q_XP, C["load"], "順時針"),
+            (f"Px × yP = {abs(Q_PX):g} × {Q_YP:g}", abs(Q_PX) * Q_YP, C["compr"], "逆時針"),
+            ("淨扭矩 M", abs(Q_M), C["accent"], "順時針"),
+            (f"誤：P × xP = {Q_P:g} × {Q_XP:g}", Q_P * Q_XP, C["ghost"], "誤"))
+    for i, (nm, v, col, dirn) in enumerate(rows):
+        y = 140 + i * 74
+        cv.text_px(x0 - 12, y, nm, 12.5, C["text"] if i < 3 else C["muted"], "end", weight="700" if i == 2 else "400")
+        cv.rect_px(x0, y - 14, sc * v, 28, col, 4)
+        cv.text_px(x0 + sc * v + 8, y, f"{v:.0f}（{dirn}）", 12.5, col if i < 3 else C["muted"], "start", weight="700")
+    cv.text_px(W1 / 2, H1 - 56, f"{abs(Q_PY) * Q_XP:.0f} − {abs(Q_PX) * Q_YP:.0f} = {abs(Q_M):.0f} tf·cm ✓ 與 P·e 相同", 13.5, C["text"], weight="700")
+    cv.text_px(W1 / 2, H1 - 30, "水平分量把扭矩抵掉四成——只看垂直分量會高估 69%", 12.5, C["muted"])
+    p2 = cv
+    path = os.path.join(OUT, f"{TAG}-fig-1-ecc.svg")
+    compose([p1, p2], cols=2,
+            title=f"圖 1　偏心距 e = {Q_E:.1f} cm，扭矩 M = {abs(Q_M):.0f} tf·cm",
+            sub=f"O＝螺栓群形心；P = {Q_P:g} tf：Px = {abs(Q_PX):g} tf（←）、Py = {abs(Q_PY):g} tf（↓）；作用點相對形心 ({Q_XP:g}, {Q_YP:g}) cm",
+            note="斜向載重的偏心距是形心到力線的垂直距離，不是作用點的水平或垂直座標",
+            path=path)
+    return path
+
+
+def fig2_forces():
+    W1, H1 = 560, 600
+    sx = 13.0
+    cv = Canvas(W1, H1, sx=sx, ox=230, oy=310)
+    cv.panel("① 各螺栓合力（直接剪力＋扭矩剪力）", "箭頭長度與合力大小成比例")
+    vs = 7.0 / Q_RMAX * 1.0
+    for x, y, fx, fy in Q_R:
+        r = math.hypot(fx, fy)
+        crit = abs(r - Q_RMAX) < 1e-9
+        cv.circle((x, y), DB / 2, fill="#FFFFFF", stroke=C["member"], w=1.8)
+        tip = (x + vs * fx, y + vs * fy)
+        cv.arrow((x, y), tip, C["load"] if crit else C["bmd"], 3.0 if crit else 2.2, 9)
+        dx = 8 if fx >= 0 else -8
+        cv.text_px(cv.X(tip[0]) + dx, cv.Y(tip[1]) + (14 if fy < 0 else -10), f"{r:.2f}", 12,
+                   C["load"] if crit else C["bmd"], "start" if fx >= 0 else "end", weight="700")
+    # 臨界螺栓的分量
+    xc, yc, fxc, fyc = max(Q_R, key=lambda q: math.hypot(q[2], q[3]))
+    dd = (Q_PX / Q_N * vs, Q_PY / Q_N * vs)
+    cv.arrow((xc, yc), (xc + dd[0], yc + dd[1]), C["muted"], 1.6, 7, dash="4 3")
+    cv.arrow((xc + dd[0], yc + dd[1]), (xc + vs * fxc, yc + vs * fyc), C["sfd"], 1.6, 7, dash="4 3")
+    cv.line((-1, 0), (1, 0), C["text"], 1.2); cv.line((0, -1), (0, 1), C["text"], 1.2)
+    cv.legend(40, H1 - 96, [(C["muted"], f"直接剪力 P/n = {Q_P / Q_N:.1f} tf"), (C["sfd"], "扭矩剪力 ⊥ 半徑")], size=12, gap=19)
+    cv.text_px(W1 / 2, H1 - 30, "右下角：扭矩剪力與直接剪力方向最接近 ⇒ 合力最大", 12.5, C["muted"])
+    p1 = cv
+
+    cv = Canvas(W1, H1, sx=1)
+    cv.panel("② 最大螺栓力與容許值（tf）", "取剪力與承壓的較小者")
+    x0, sc = 190, 18.0
+    rows = (("最大螺栓力", Q_RMAX, C["load"]), ("單剪 Fv·Ab", Q_RV, C["bmd"]),
+            ("承壓（柱翼板）", Q_RP_COL, C["compr"]), ("承壓（鋼板）", Q_RP_PL, C["ghost"]))
+    for i, (nm, v, col) in enumerate(rows):
+        y = 150 + i * 80
+        cv.text_px(x0 - 12, y, nm, 13, C["text"], "end", weight="700")
+        cv.rect_px(x0, y - 15, sc * v, 30, col, 4)
+        cv.text_px(x0 + sc * v - 10, y, f"{v:.3f}" if i == 1 else f"{v:.2f}", 13, "#FFFFFF" if i < 3 else C["text"], "end", weight="700")
+    _hl(cv, H1, x0 + sc * Q_RV, 120, x0 + sc * Q_RV, 430, C["bmd"], 1.6, dash="5 4")
+    cv.text_px(W1 / 2, H1 - 56, f"{Q_RMAX:.2f} ≤ {Q_RV:.3f}（剪力控制），比值 {Q_RMAX / Q_RV:.2f} ⇒ O.K.", 14, C["text"], weight="700")
+    cv.text_px(W1 / 2, H1 - 30, "承壓容量遠大於剪力——控制的是螺栓本身", 12.5, C["muted"])
+    p2 = cv
+    path = os.path.join(OUT, f"{TAG}-fig-2-forces.svg")
+    compose([p1, p2], cols=2,
+            title=f"圖 2　最不利螺栓在右下角：R = {Q_RMAX:.2f} tf ≤ {Q_RV:.3f} tf",
+            sub=f"f = P/n ＋ M·r/Ip（M = {abs(Q_M):.0f} tf·cm、Ip = {Q_IP:.0f} cm²）",
+            note="扭矩剪力最大的是四個角點，但只有右下角的扭矩剪力與直接剪力同向相加",
+            path=path)
+    return path
+
+
 FIGURES = [
     (fig1_problem, "§1（題目正本 §4）",
      "25 cm 起點讀成腹板中心或左行（偏心差 3.5 或 7 cm）；P 斜率 3:4 讀反成水平 4、垂直 3"),
+    (fig1_ecc, "§4 步驟 2–3",
+     "以作用點座標當力臂（P × 28.5 = 570）或只取一個分量的力矩，扭矩高估"),
+    (fig2_forces, "§4 步驟 4–6",
+     "選錯臨界螺栓（取右上角）；以承壓而非剪力為控制"),
 ]
 
 if __name__ == "__main__":

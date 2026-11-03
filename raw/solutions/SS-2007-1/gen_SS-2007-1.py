@@ -94,9 +94,130 @@ def fig1_problem():
     return path
 
 
+# ── 解題圖解共用小工具（像素座標；y 由上往下）──
+def _hl(cv, PH, x0, y0, x1, y1, color, w=2.0, dash=None):
+    cv.line((x0, PH - y0), (x1, PH - y1), color, w, dash=dash, cap="butt")
+
+
+def rsum(terms, nd=3):
+    """與解析相同的加法：各項先四捨五入到 nd 位再相加"""
+    return round(sum(round(t, nd) for t in terms), nd)
+
+
+def _stack_row(cv, x0, y, scale, terms, colors, name, total_color, h=34, fmt="{:.3f}"):
+    """水平堆疊長條：互制比 1.0 對應 scale 像素"""
+    cv.text_px(x0 - 14, y, name, 14, C["text"], "end", weight="700")
+    xx = x0
+    for t, col in zip(terms, colors):
+        w = scale * t
+        cv.rect_px(xx, y - h/2, w, h, col, 0)
+        if w > 44:
+            cv.text_px(xx + w/2, y, fmt.format(t), 12.5, "#FFFFFF", weight="700")
+        xx += w
+    tot = rsum(terms)
+    cv.text_px(xx + 12, y, "= " + fmt.format(tot), 15, total_color, "start", weight="700")
+    return tot
+
+
+# ══════════════════════════════════════════════════════════════
+# 解題圖解（2026-11-03 補繪）——數值全部取自 SS-2007-1.md §4，由下式即時算出
+# 座標：x 沿角鋼長向（由端部橫向銲起算，cm）；y 跨 150 mm 肢，b（肢背）在 y = 0、a（趾）在 y = 15
+# ══════════════════════════════════════════════════════════════
+import math
+Q_FY, Q_FU, Q_U = 3.5, 4.8, 0.85                       # t/cm²、U              §1
+Q_AG = (15 + 10 - T) * T                               # 35.25 cm²             Step 1
+Q_AE = Q_U * Q_AG
+Q_PY, Q_PU = 0.6 * Q_FY * Q_AG, 0.5 * Q_FU * Q_AE      # 74.0、71.9
+Q_P = min(Q_PY, Q_PU)
+Q_Q = 0.3 * 4.9 * 0.707 * W                            # 1.247 t/cm            Step 2
+Q_F3 = Q_Q * BL                                        # 端部橫向銲 18.71       Step 3
+Q_YP = BL - EP                                         # P 作用線距 b 側 5 cm
+Q_FB = (Q_P * EP - Q_F3 * BL / 2) / BL                 # 對 a 線取矩            Step 4
+Q_FA = Q_P - Q_F3 - Q_FB
+Q_LA, Q_LB = Q_FA / Q_Q, Q_FB / Q_Q                    # 11.7、30.9
+Q_LA_U, Q_LB_U = math.ceil(Q_LA), math.ceil(Q_LB)       # 12、31
+Q_EQ = (Q_P - Q_F3) / 2 / Q_Q                          # 誤：兩側平分
+
+
+def fig1_balance():
+    W1, H1 = 1000, 520
+    sx = 15.0
+    cv = Canvas(W1, H1, sx=sx, ox=235, oy=170)
+    cv.panel("角鋼 150 mm 肢平貼連接板（平面，依比例）", "紅＝銲道；箭頭＝銲道對角鋼的抵抗力與外力 P")
+    Lx = 34.0
+    cv.polygon([(0, 0), (Lx, 0), (Lx, BL), (0, BL)], "rgba(63,74,90,0.10)", C["member"], 1.6)
+    cv.line((0, BL), (Q_LA_U, BL), C["load"], 6, cap="butt")
+    cv.line((0, 0), (Q_LB_U, 0), C["load"], 6, cap="butt")
+    cv.line((0, 0), (0, BL), C["load"], 6, cap="butt")
+    cv.text_px(cv.X(Q_LA_U / 2), cv.Y(BL) - 14, f"a = {Q_LA_U} cm", 13, C["load"], weight="700")
+    cv.text_px(cv.X(Q_LB_U / 2), cv.Y(0) + 22, f"b = {Q_LB_U} cm", 13, C["load"], weight="700")
+    cv.text_px(cv.X(Lx) + 72, cv.Y(BL) + 4, "a 側（趾）", 12, C["muted"], "start")
+    cv.text_px(cv.X(Lx) + 72, cv.Y(0) + 4, "b 側（肢背）", 12, C["muted"], "start")
+    # P
+    cv.line((Lx - 6, Q_YP), (Lx + 7, Q_YP), C["ghost"], 1.2, dash="6 4")
+    cv.arrow((Lx - 2, Q_YP), (Lx + 7, Q_YP), C["load"], 3.4, 12)
+    cv.text_px(cv.X(Lx + 7) + 6, cv.Y(Q_YP), f"P = {Q_P:.1f}", 14, C["load"], "start", weight="700")
+    # 銲道合力（向左，畫在構材外側）
+    for y, f, lab, dx in ((BL, Q_FA, f"Fa = {Q_FA:.2f}", 0), (BL / 2, Q_F3, f"F3 = {Q_F3:.2f}", 0), (0, Q_FB, f"Fb = {Q_FB:.2f}", 0)):
+        x0 = -1.5
+        cv.arrow((x0, y), (x0 - 0.13 * f, y), C["compr"], 3.0, 10)
+        cv.text_px(cv.X(x0 - 0.13 * f) - 6, cv.Y(y), lab, 12.5, C["compr"], "end", weight="700")
+    cv.dim((Lx + 4, Q_YP), (Lx + 4, BL), f"{EP:g}", off=-30, label_off=-14, size=12.5)
+    cv.dim((Lx + 4, 0), (Lx + 4, Q_YP), f"{Q_YP:g}", off=-30, label_off=-14, size=12.5)
+    cv.text_px(W1 / 2, H1 - 44,
+               f"對 a 線取矩：Fb × 15 + F3 × 7.5 = P × 10 ⇒ Fb = {Q_FB:.2f}；Fa = P − F3 − Fb = {Q_FA:.2f}（tf）",
+               13, C["text"], weight="700")
+    path = os.path.join(OUT, f"{TAG}-fig-1-balance.svg")
+    compose([cv], cols=1,
+            title=f"圖 1　平衡銲：P 偏向肢背，b 側要比 a 側長（{Q_LB_U} 對 {Q_LA_U} cm）",
+            sub=f"P 作用線距 a 側 {EP:g} cm、距 b 側 {Q_YP:g} cm；端部橫向銲 {BL:g} cm 承 {Q_F3:.2f} tf（合力在 7.5 cm）",
+            note=f"驗算：三力合力位置 (0 × {Q_FA:.2f} + 7.5 × {Q_F3:.2f} + 15 × {Q_FB:.2f}) / {Q_P:.1f} = {(7.5 * Q_F3 + 15 * Q_FB) / Q_P:.1f} cm（自 a 側），恰為 P 作用線位置",
+            path=path)
+    return path
+
+
+def fig2_lengths():
+    W1, H1 = 560, 460
+    cv = Canvas(W1, H1, sx=1)
+    cv.panel("① 設計力 P（tf）", "毛斷面降伏與有效淨斷面斷裂取小")
+    x0, sc = 190, 4.2
+    for i, (nm, v, col) in enumerate((("0.6 Fy Ag", Q_PY, C["ghost"]), ("0.5 Fu U An", Q_PU, C["bmd"]))):
+        y = 160 + i * 90
+        cv.text_px(x0 - 12, y, nm, 14, C["text"], "end", weight="700")
+        cv.rect_px(x0, y - 16, sc * v, 32, col, 4)
+        cv.text_px(x0 + sc * v + 8, y, f"{v:.1f}", 14, col if i else C["muted"], "start", weight="700")
+    cv.text_px(W1 / 2, H1 - 56, f"P = {Q_P:.1f} tf（有效淨斷面斷裂控制，U = {Q_U}）", 13.5, C["text"], weight="700")
+    cv.text_px(W1 / 2, H1 - 30, f"Ag = (15 + 10 − 1.5) × 1.5 = {Q_AG:.2f} cm²（全銲接無孔）", 12.5, C["muted"])
+    p1 = cv
+    cv = Canvas(W1, H1, sx=1)
+    cv.panel("② 縱向銲所需長度（cm）", f"每 cm 容許 q = {Q_Q:.3f} tf/cm")
+    x0, sc = 190, 9.0
+    rows = ((f"a（趾側）", Q_LA, Q_LA_U, C["bmd"]), (f"b（肢背側）", Q_LB, Q_LB_U, C["bmd"]),
+            ("誤：兩側平分", Q_EQ, None, C["ghost"]))
+    for i, (nm, v, u, col) in enumerate(rows):
+        y = 140 + i * 74
+        cv.text_px(x0 - 12, y, nm, 13, C["text"] if u else C["muted"], "end", weight="700")
+        cv.rect_px(x0, y - 14, sc * v, 28, col, 4)
+        cv.text_px(x0 + sc * v + 8, y, f"{v:.1f}" + (f" → {u}" if u else "（a 側過長、b 側不足）"), 12.5,
+                   col if u else C["muted"], "start", weight="700")
+    cv.text_px(W1 / 2, H1 - 30, f"兩側平分各 {Q_EQ:.1f} cm：b 側只剩所需的 {Q_EQ / Q_LB:.0%}", 12.5, C["load"])
+    p2 = cv
+    path = os.path.join(OUT, f"{TAG}-fig-2-lengths.svg")
+    compose([p1, p2], cols=2,
+            title=f"圖 2　P = {Q_P:.1f} tf ⇒ a = {Q_LA_U} cm、b = {Q_LB_U} cm",
+            sub=f"q = 0.3 × 4.9 × 0.707 × {W} = {Q_Q:.3f} tf/cm；Fa = {Q_FA:.2f}、Fb = {Q_FB:.2f}、F3 = {Q_F3:.2f} tf",
+            note="平衡銲的長度分配由力矩決定：靠近 P 作用線的那一側要承擔較大的力",
+            path=path)
+    return path
+
+
 FIGURES = [
     (fig1_problem, "§1（題目正本 §4）",
      "10 cm 誤當成距肢背，a、b 分配對調；漏算端部橫向焊 15 cm"),
+    (fig1_balance, "§4 Step 3–6",
+     "兩側等長或取矩線錯；忽略端部橫向銲的力矩貢獻；合力未落在 P 作用線上"),
+    (fig2_lengths, "§4 Step 1–5",
+     "以 0.6FyAg 為設計力；兩側平分銲長（b 側不足）"),
 ]
 
 if __name__ == "__main__":

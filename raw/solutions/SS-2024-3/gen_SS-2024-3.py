@@ -106,9 +106,134 @@ def fig1_problem():
     return path
 
 
+# ── 解題圖解共用小工具（像素座標；y 由上往下）──
+def _hl(cv, PH, x0, y0, x1, y1, color, w=2.0, dash=None):
+    cv.line((x0, PH - y0), (x1, PH - y1), color, w, dash=dash, cap="butt")
+
+
+def rsum(terms, nd=3):
+    """與解析相同的加法：各項先四捨五入到 nd 位再相加"""
+    return round(sum(round(t, nd) for t in terms), nd)
+
+
+def _stack_row(cv, x0, y, scale, terms, colors, name, total_color, h=34, fmt="{:.3f}"):
+    """水平堆疊長條：互制比 1.0 對應 scale 像素"""
+    cv.text_px(x0 - 14, y, name, 14, C["text"], "end", weight="700")
+    xx = x0
+    for t, col in zip(terms, colors):
+        w = scale * t
+        cv.rect_px(xx, y - h/2, w, h, col, 0)
+        if w > 44:
+            cv.text_px(xx + w/2, y, fmt.format(t), 12.5, "#FFFFFF", weight="700")
+        xx += w
+    tot = rsum(terms)
+    cv.text_px(xx + 12, y, "= " + fmt.format(tot), 15, total_color, "start", weight="700")
+    return tot
+
+
+# ══════════════════════════════════════════════════════════════
+# 解題圖解（2026-11-03 補繪）——數值全部取自 SS-2024-3.md §4，由下式即時算出
+# ══════════════════════════════════════════════════════════════
+import math
+Q_FY, Q_E, Q_G = 2.35, 2040.0, 810.0          # tf/cm²（解析所取 E、G）
+Q_FL = Q_FY - 0.7
+Q_H, Q_B, Q_TW, Q_TF = D / 10, BF / 10, TW / 10, TF / 10
+Q_HW = Q_H - 2 * Q_TF
+Q_A = 2 * Q_B * Q_TF + Q_HW * Q_TW
+Q_IX = 2 * (Q_B * Q_TF ** 3 / 12 + Q_B * Q_TF * ((Q_H - Q_TF) / 2) ** 2) + Q_TW * Q_HW ** 3 / 12
+Q_SX = Q_IX / (Q_H / 2)
+Q_IY = 2 * Q_TF * Q_B ** 3 / 12 + Q_HW * Q_TW ** 3 / 12
+Q_RY = math.sqrt(Q_IY / Q_A)
+Q_SY = Q_IY / (Q_B / 2)
+Q_J = (2 * Q_B * Q_TF ** 3 + (Q_H - Q_TF) * Q_TW ** 3) / 3
+Q_CW = Q_IY * (Q_H - Q_TF) ** 2 / 4
+Q_ZX = 2 * (Q_B * Q_TF * (Q_H - Q_TF) / 2 + Q_TW * Q_HW ** 2 / 8)
+Q_ZY = 2 * Q_TF * Q_B ** 2 / 4 + Q_HW * Q_TW ** 2 / 4
+Q_X1 = math.pi / Q_SX * math.sqrt(Q_E * Q_G * Q_J * Q_A / 2)
+Q_X2 = 4 * Q_CW / Q_IY * (Q_SX / (Q_G * Q_J)) ** 2
+Q_LP = 80 * Q_RY / math.sqrt(Q_FY)
+Q_LR = Q_RY * Q_X1 / Q_FL * math.sqrt(1 + math.sqrt(1 + Q_X2 * Q_FL ** 2))
+Q_PU = 1.2 * 5 + 1.6 * 5                       # 14 tf
+Q_LBM = (X_B - X_A) / 1000                     # 6 m
+Q_MW = lambda x: -Q_PU * x if x <= 3 else -Q_PU * (6 - x)   # t·m（A 反力向下）
+Q_MU = abs(Q_MW(3))
+Q_CB = 12.5 * Q_MU / (2.5 * Q_MU + 3 * abs(Q_MW(1.5)) + 4 * abs(Q_MW(3)) + 3 * abs(Q_MW(4.5)))
+Q_MP = Q_FY * Q_ZX
+Q_MR = Q_FL * Q_SX
+Q_LB = Q_LBM * 100
+Q_MNX = min(Q_CB * (Q_MP - (Q_MP - Q_MR) * (Q_LB - Q_LP) / (Q_LR - Q_LP)), Q_MP)
+Q_MNX1 = Q_MP - (Q_MP - Q_MR) * (Q_LB - Q_LP) / (Q_LR - Q_LP)
+Q_MNY = min(Q_FY * Q_ZY, 1.5 * Q_FY * Q_SY)
+
+
+def fig1_moment():
+    W1, H1 = 1000, 500
+    cv = Canvas(W1, H1, sx=120, ox=180, oy=290)
+    cv.panel(f"外伸梁彎矩圖（Pu = 1.2 × 5 + 1.6 × 5 = {Q_PU:g} tf）", "A 反力向下 14 tf、C 反力向上 28 tf；全梁負彎矩，C 點 −42 t·m")
+    cv.line((0, 0), (6, 0), C["member"], 5, cap="butt")
+    cv.support((0, 0), "pin", 0, size=13)
+    cv.support((3, 0), "roller", 0, size=13)
+    cv.arrow((6, 1.05), (6, 0.08), C["load"], 3, 10)
+    cv.text((6, 1.05), f"Pu = {Q_PU:g}", 13, C["load"], "start", dx=8, weight="700")
+    for x, n in ((0, "A"), (3, "C"), (6, "B")):
+        cv.text((x, 0), n, 14, C["text"], dy=36 if x != 6 else -14, dx=18 if x == 6 else 0, weight="700")
+    for x in (0, 6):
+        cv.text((x, 0.42), "×", 18, C["accent"], weight="700")
+    cv.text((3, 0.55), "C 無面外束制", 12, C["muted"])
+    sc = 0.02
+    xs = [6 * i / 120 for i in range(121)]
+    yb = -0.8
+    cv.polygon([(0, yb)] + [(x, yb + Q_MW(x) * sc) for x in xs] + [(6, yb)], C["fill_m"], C["bmd"], 2.2)
+    for x in (1.5, 3, 4.5):
+        cv.line((x, yb), (x, yb + Q_MW(x) * sc), C["bmd"], 1, dash="3 3")
+        cv.text((x, yb + Q_MW(x) * sc), f"{Q_MW(x):g}".replace("-", "−"), 12, C["bmd"], dy=16, weight="700")
+    cv.dim((0, yb + 0.25), (6, yb + 0.25), f"Lb = {Q_LBM:g} m", off=0, label_off=-12)
+    cv.text_px(W1 - 40, H1 - 60, "負彎矩：上翼板受拉、", 12.5, C["muted"], "end")
+    cv.text_px(W1 - 40, H1 - 36, "下翼板受壓而側向挫屈", 12.5, C["muted"], "end")
+    path = os.path.join(OUT, f"{TAG}-fig-1-moment.svg")
+    compose([cv], cols=1,
+            title=f"圖 1　Lb = 6 m（只有 A、B 側撐），四分點取絕對值 21、42、21：Cb = {Q_CB:.3f}",
+            sub=f"Cb = 12.5 × 42 / (2.5 × 42 + 3 × 21 + 4 × 42 + 3 × 21) = {Q_CB:.3f}；式中 MA、MB、MC 是無支撐段的 1/4、1/2、3/4 點，不是圖上的 A、B、C 點",
+            note="把 C 當側撐點（Lb 取 3 m）、或把 Cb 式的 MA／MC 代成支點彎矩 0，都會算錯",
+            path=path)
+    return path
+
+
+def fig2_axes():
+    W1, H1 = 1000, 480
+    cv = Canvas(W1, H1, sx=1)
+    cv.panel("同一斷面、同一支承與載重：強軸 vs 弱軸（t·m）", f"Lp = {Q_LP:.0f}、Lr = {Q_LR:,.0f} cm；Mp = {Q_MP:,.0f}、Mr = {Q_MR:,.0f} tf·cm")
+    x0, sc = 330, 6.5
+    rows = [("圖(a) 強軸：φbMn", 0.9 * Q_MNX / 100, C["bmd"], f"Cb × 內插 = {Q_CB * Q_MNX1:,.0f} 大於 Mp → 取 Mp"),
+            ("　（不計 Cb）", 0.9 * Q_MNX1 / 100, C["ghost"], "結論相同"),
+            ("圖(b) 弱軸：φbMny", 0.9 * Q_MNY / 100, C["load"], f"min(FyZy {Q_FY * Q_ZY:,.0f}, 1.5FySy {1.5 * Q_FY * Q_SY:,.0f})")]
+    for i, (lab, v, col, s) in enumerate(rows):
+        y = 140 + i * 80
+        cv.text_px(x0 - 12, y, lab, 13, C["text"], "end", weight="700")
+        cv.rect_px(x0, y - 15, sc * v, 30, col, 3)
+        ok = v >= Q_MU
+        cv.text_px(x0 + sc * v + 8, y - 6, f"{v:.1f}　{'OK' if ok else 'NG'}", 13.5, C["bmd"] if ok else C["load"], "start", weight="700")
+        cv.text_px(x0 + sc * v + 8, y + 14, s, 11.5, C["muted"], "start")
+    xm = x0 + sc * Q_MU
+    _hl(cv, H1, xm, 110, xm, 330, C["accent"], 1.6, dash="5 4")
+    cv.text_px(xm, 350, f"Mu = {Q_MU:g}", 13, C["accent"], weight="700")
+    cv.text_px(W1 / 2, H1 - 40, "弱軸彎曲不會側扭挫屈，但塑性模數小、且受 1.5FySy 上限：強度只剩強軸的約 1/4", 12.5, C["muted"])
+    path = os.path.join(OUT, f"{TAG}-fig-2-axes.svg")
+    compose([cv], cols=1,
+            title=f"圖 2　強軸 φbMn = {0.9 * Q_MNX / 100:.1f} t·m ≥ 42 OK；弱軸 φbMny = {0.9 * Q_MNY / 100:.1f} t·m 小於 42 NG",
+            sub=f"Mn = Cb × 內插（{Q_CB:.3f} × {Q_MNX1:,.0f}）超過 Mp，以 Mp 為上限",
+            note="弱軸忘了 1.5FySy 上限（取 FyZy）、或以為弱軸也要算 LTB，都會判錯；Cb 放大後不得超過 Mp",
+            path=path)
+    return path
+
+
 FIGURES = [
     (fig1_problem, "§1（題目正本 §4）",
      "把 C 滾支承當成側撐點而把無支長度切成兩段 3 m；強軸、弱軸兩圖的斷面方位對調"),
+    (fig1_moment, "§4 設計用彎矩、圖(a) Cb",
+     "C 當側撐點（Lb 取 3 m）；Cb 式 MA、MC 代支點彎矩；A 反力方向弄反"),
+    (fig2_axes, "§4 圖(a)、圖(b)",
+     "Cb 放大後超過 Mp 未截斷；弱軸漏 1.5FySy 上限；弱軸也算 LTB"),
 ]
 
 if __name__ == "__main__":

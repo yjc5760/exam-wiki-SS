@@ -471,6 +471,8 @@ $$r_y = \sqrt{\frac{I_y}{A}} = \sqrt{\frac{225{,}781{,}250}{45{,}000}} = \sqrt{5
 <p>$$\frac{K_y L}{r_y} = \frac{2.1 \times 600}{7.083} = \frac{1{,}260}{7.083} = \mathbf{177.9}$$</p>
 <p><strong>控制細長比：</strong><br />
 $$\left(\frac{KL}{r}\right)_{\max} = 177.9 \quad \text{（弱軸控制）}$$</p>
+<p><img alt="SS-2017-3 圖解：H700×300×25×50 斷面依比例，標強軸 x、弱軸 y；右側長條比較強軸 KxL/rx = 16.9、弱軸 KyL/ry = 177.9（控制）與錯誤的 Ky 配 rx = 44.4，Cc = 128 標線" src="../../raw/solutions/SS-2017-3/figs/SS-2017-3-fig-1-axes.svg" /></p>
+<p><em>圖 1　弱軸 $K_yL/r_y = 177.9$ 超過 $C_c = 128$，控制；強軸只有 16.9。這張圖攔的是只算強軸、把 $K_y$ 配上 $r_x$（得 44.4），或算 $I_x$ 漏了翼板的平行軸項。</em></p>
 <hr />
 <h3>Step 3：判斷挫屈類型（與 $C_c$ 比較）</h3>
 <p>$$C_c = 128 \quad \Rightarrow \quad \left(\frac{KL}{r}\right)_{\max} = 177.9 &gt; C_c = 128$$</p>
@@ -486,6 +488,8 @@ $$F_a = \frac{12 \times \pi^2 \times 2040}{23 \times 177.9^2} = \frac{12 \times 
 <p>換算為 $F_y$ 的倍數：<br />
 $$\frac{F_a}{F_y} = \frac{0.3313}{2.458} = \mathbf{0.135}$$</p>
 <p>$$\boxed{F_a = 0.135 F_y}$$</p>
+<p><img alt="SS-2017-3 圖解：ASD Fa/Fy 對 KL/r 曲線（Cc = 128），標出弱軸 177.9 → 0.135（正確）、0.34Fy 對應 KL/r 約 107、Ky 配 rx 44.4 → 0.52、強軸 16.9 → 0.58" src="../../raw/solutions/SS-2017-3/figs/SS-2017-3-fig-2-fa.svg" /></p>
+<p><em>圖 2　正確 $F_a = 0.135F_y$；工程師的 $0.34F_y$ 相當於 $KL/r \approx 107$ 的柱，高估約 2.5 倍。這張圖攔的是 $KL/r$ 超過 $C_c$ 仍套非彈性式，或把 0.34 判為合理。（彈性段 $F_a$ 精確值 0.3320 tf/cm²，解析寫 0.3313，比值 0.135 不變。）</em></p>
 <hr />
 <h3>Step 5：與工程師的 $F_a = 0.34F_y$ 比較</h3>
 <table>
@@ -547,6 +551,8 @@ $$\frac{K_yL/r_y}{K_xL/r_x} = \frac{178}{16.9} \approx 10.5 \text{ 倍}$$</p>
 <li>結論：$0.34F_y$ 不合理，高估了 2.5 倍</li>
 </ol>
 <p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2017-3-problem.md</code>（已確認）＋常見誤讀＋本解記號；解題內容與答案不變）</em></p>
+<hr />
+<p><em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2017-3.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2017-3/SS-2017-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

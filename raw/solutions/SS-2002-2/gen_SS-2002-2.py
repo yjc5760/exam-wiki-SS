@@ -91,9 +91,140 @@ def fig1_problem():
     return path
 
 
+# ── 解題圖解共用小工具（像素座標；y 由上往下）──
+def _hl(cv, PH, x0, y0, x1, y1, color, w=2.0, dash=None):
+    cv.line((x0, PH - y0), (x1, PH - y1), color, w, dash=dash, cap="butt")
+
+
+def rsum(terms, nd=3):
+    """與解析相同的加法：各項先四捨五入到 nd 位再相加"""
+    return round(sum(round(t, nd) for t in terms), nd)
+
+
+def _stack_row(cv, x0, y, scale, terms, colors, name, total_color, h=34, fmt="{:.3f}"):
+    """水平堆疊長條：互制比 1.0 對應 scale 像素"""
+    cv.text_px(x0 - 14, y, name, 14, C["text"], "end", weight="700")
+    xx = x0
+    for t, col in zip(terms, colors):
+        w = scale * t
+        cv.rect_px(xx, y - h/2, w, h, col, 0)
+        if w > 44:
+            cv.text_px(xx + w/2, y, fmt.format(t), 12.5, "#FFFFFF", weight="700")
+        xx += w
+    tot = rsum(terms)
+    cv.text_px(xx + 12, y, "= " + fmt.format(tot), 15, total_color, "start", weight="700")
+    return tot
+
+
+# ══════════════════════════════════════════════════════════════
+# 解題圖解（2026-11-03 補繪）——數值全部取自 SS-2002-2.md §4，由下式即時算出
+# ══════════════════════════════════════════════════════════════
+Q_FY, Q_SX = 2.5, 1373.0                 # t/cm²、cm³（題文）
+Q_LC, Q_LU = 3.87, 8.44                  # m（題文）
+Q_W = 0.097                              # t/m 自重
+Q_LB = SPAN / BRACE_N                    # 3.5
+Q_FB = 0.66 * Q_FY if Q_LB <= Q_LC else 0.60 * Q_FY
+Q_MA = round(Q_FB * Q_SX / 100 + 1e-9, 3)   # t·m 22.655（四捨五入，與解析同）
+Q_MSW = round(Q_W * SPAN ** 2 / 8 + 1e-9, 3)   # 2.377
+Q_MAV = Q_MA - Q_MSW                     # 20.278
+Q_PA = Q_MAV / (SPAN / 4)                # 5.79
+Q_VMAX = Q_PA + Q_W * SPAN / 2
+Q_VA = 0.4 * Q_FY * D * TW
+
+
+def fig1_lb():
+    W1, H1 = 1000, 280
+    cv = Canvas(W1, H1, sx=56, ox=110, oy=100)
+    cv.panel("梁立面：側撐每 1/4 跨，Lb = 14 / 4 = 3.5 m", "移動載重 P 在跨中時恰落在側撐點，不改變 Lb")
+    cv.line((0, 0), (SPAN, 0), C["member"], 6, cap="butt")
+    cv.support((0, 0), "pin", 0, size=14)
+    cv.support((SPAN, 0), "roller", 0, size=14)
+    for k in range(BRACE_N + 1):
+        x = SPAN * k / BRACE_N
+        cv.line((x, -0.45), (x, 0.45), C["accent"], 2.4, cap="butt")
+        cv.text((x, 0.45), f"{x:g}", 11.5, C["accent"], dy=-10)
+    cv.arrow((SPAN / 2 + 0.25, 1.15), (SPAN / 2 + 0.25, 0.15), C["load"], 3, 10)
+    cv.text((SPAN / 2 + 0.25, 1.0), "P（移動）", 13, C["load"], "start", dx=8, weight="700")
+    p1 = cv
+    cv = Canvas(W1, 280, sx=1)
+    cv.panel("ASD 容許撓曲應力分區（Lb 對 Lc、Lu）", "結實斷面：Lb ≤ Lc → 0.66Fy；Lc 到 Lu → 0.60Fy；大於 Lu → LTB 公式")
+    X0, X1, Y = 120, 880, 160
+    lmax = 10.0
+    PX = lambda l: X0 + (X1 - X0) * l / lmax
+    for a, b, lab, col in ((0, Q_LC, "0.66Fy", "rgba(46,125,50,0.25)"), (Q_LC, Q_LU, "0.60Fy", "rgba(46,125,50,0.12)"),
+                           (Q_LU, lmax, "LTB 式", "rgba(192,57,43,0.12)")):
+        cv.rect_px(PX(a), Y - 26, PX(b) - PX(a), 52, col, 0)
+        cv.text_px((PX(a) + PX(b)) / 2, Y - 40, lab, 13, C["bmd"] if "Fy" in lab else C["load"], weight="700")
+    _hl(cv, 280, X0, Y + 26, X1, Y + 26, C["muted"], 1.5)
+    for v, lab in ((0, "0"), (Q_LC, f"Lc = {Q_LC}"), (Q_LU, f"Lu = {Q_LU}"), (lmax, "10 m")):
+        cv.text_px(PX(v), Y + 46, lab, 12, C["muted"])
+    _hl(cv, 280, PX(Q_LB), Y - 30, PX(Q_LB), Y + 30, C["load"], 3)
+    cv.text_px(PX(Q_LB) - 8, Y + 2, f"Lb = {Q_LB:g}", 13, C["load"], "end", weight="700")
+    p2 = cv
+    path = os.path.join(OUT, f"{TAG}-fig-1-lb.svg")
+    compose([p1, p2], cols=1,
+            title=f"圖 1　Lb = {Q_LB:g} m 小於 Lc = {Q_LC} m：Fb = 0.66Fy = {Q_FB:.2f} tf/cm²",
+            sub="題目已給 Lc、Lu，直接比較即可，不必再算",
+            note="把 Lb 取全跨 14 m（大於 Lu）會改用 LTB 公式，容許彎矩大幅下降",
+            path=path)
+    return path
+
+
+def fig2_moment():
+    W1, H1 = 1000, 520
+    cv = Canvas(W1, H1, sx=1)
+    cv.panel(f"P = {Q_PA:.2f} tf 在跨中時的彎矩圖（tf·m）", "自重拋物線 wL²/8 ＋ 集中載重三角形 PL/4，跨中合計 = Ma")
+    X0, X1, YB, YT = 100, 600, 420, 120
+    mmax = 24.0
+    PX = lambda x: X0 + (X1 - X0) * x / SPAN
+    PY = lambda m: YB - (YB - YT) * m / mmax
+    _hl(cv, H1, X0, YB, X1, YB, C["muted"], 1.5)
+    for v in range(0, 25, 6):
+        cv.text_px(X0 - 8, PY(v), f"{v}", 11.5, C["muted"], "end")
+        _hl(cv, H1, X0, PY(v), X1, PY(v), C["ghost"], 0.6, dash="2 4")
+    for x in (0, 3.5, 7, 10.5, 14):
+        cv.text_px(PX(x), YB + 18, f"{x:g}", 11.5, C["muted"])
+    xs = [SPAN * i / 100 for i in range(101)]
+    msw = lambda x: Q_W * x * (SPAN - x) / 2
+    mp = lambda x: Q_PA * min(x, SPAN - x) / 2
+    cv.polygon([(PX(0), H1 - PY(0))] + [(PX(x), H1 - PY(msw(x) + mp(x))) for x in xs] + [(PX(SPAN), H1 - PY(0))], C["fill_m"], C["bmd"], 2.4)
+    cv.poly([(PX(x), H1 - PY(mp(x))) for x in xs], C["load"], 1.8, dash="6 4")
+    cv.poly([(PX(x), H1 - PY(msw(x))) for x in xs], C["compr"], 1.8, dash="6 4")
+    _hl(cv, H1, X0, PY(Q_MA), X1, PY(Q_MA), C["accent"], 1.4, dash="5 4")
+    cv.text_px(X1, PY(Q_MA) - 10, f"Ma = {Q_MA:.3f}", 12, C["accent"], "end", weight="700")
+    cv.text_px(PX(4.2), PY(mp(4.2)) + 26, "P 的三角形", 12, C["load"], "start")
+    cv.text_px(PX(7), PY(msw(7)) - 12, "自重拋物線", 12, C["compr"])
+    xt, x0 = 650, 650
+    sc = 12.0
+    y = 200
+    cv.text_px(xt, 150, "跨中彎矩預算", 13, C["text"], "start", weight="700")
+    cv.rect_px(x0, y - 16, sc * Q_MSW, 32, C["compr"], 2)
+    cv.rect_px(x0 + sc * Q_MSW, y - 16, sc * Q_MAV, 32, C["load"], 2)
+    cv.text_px(x0 + sc * Q_MSW / 2, y + 32, f"{Q_MSW:.3f}", 11.5, C["compr"])
+    cv.text_px(x0 + sc * Q_MSW + sc * Q_MAV / 2, y, f"{Q_MAV:.3f}", 12, "#FFFFFF", weight="700")
+    rows = [(f"Ma = {Q_FB:.2f} × {Q_SX:g} = {Q_MA:.3f} tf·m", C["text"], "400"),
+            (f"自重 0.097 × 14² / 8 = {Q_MSW:.3f}", C["compr"], "400"),
+            (f"3.5P ≤ {Q_MAV:.3f}", C["load"], "400"),
+            (f"Pa = {Q_MAV:.3f} / 3.5 = {Q_PA:.2f} tf", C["bmd"], "700"),
+            (f"剪力 {Q_VMAX:.2f} ≤ {Q_VA:.1f} tf ✓", C["muted"], "400")]
+    for i, (s, col, wt) in enumerate(rows):
+        cv.text_px(xt, 270 + i * 32, s, 13, col, "start", weight=wt)
+    path = os.path.join(OUT, f"{TAG}-fig-2-moment.svg")
+    compose([cv], cols=1,
+            title=f"圖 2　跨中 3.5P + {Q_MSW:.3f} ≤ {Q_MA:.3f} ⇒ Pa = {Q_PA:.2f} tf",
+            sub="移動集中載重在跨中時跨中彎矩最大：PL/4 = 3.5P",
+            note="忘了扣自重彎矩、或把自重也乘 L/4，都會算錯 Pa",
+            path=path)
+    return path
+
+
 FIGURES = [
     (fig1_problem, "§1（題目正本 §4）",
      "把移動載重固定在圖上位置；漏看每 1/4 跨側撐而以全跨 14 m 當無支長度；兩端支承讀反"),
+    (fig1_lb, "§4 步驟 1–2",
+     "Lb 取全跨 14 m；Lb 與 Lc、Lu 比錯而用 0.60Fy 或 LTB 式"),
+    (fig2_moment, "§4 步驟 3–6",
+     "忘了扣自重彎矩；P 的最不利位置不在跨中"),
 ]
 
 if __name__ == "__main__":

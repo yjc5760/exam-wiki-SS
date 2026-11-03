@@ -440,6 +440,8 @@ $$M_{P,max} + M_{sw} \leq M_a \Rightarrow \boxed{P_a}$$</p>
 <p>$$L_b = 3.5\ \text{m} &lt; L_c = 3.87\ \text{m}$$</p>
 <p>→ <strong>全截面塑性彎矩控制</strong>，採用最大容許撓曲應力：</p>
 <p>$$\boxed{F_b = 0.66 F_y = 0.66 \times 2.5 = 1.65\ \text{tf/cm}^2}$$</p>
+<p><img alt="SS-2002-2 兩格：上為 14 m 簡支梁立面，側撐在 0、3.5、7、10.5、14 m，移動載重 P 在跨中恰落在側撐點；下為 ASD 容許撓曲應力分區帶，Lb ≤ Lc = 3.87 為 0.66Fy、Lc 到 Lu = 8.44 為 0.60Fy、大於 Lu 為 LTB 公式，Lb = 3.5 落在第一區" src="../../raw/solutions/SS-2002-2/figs/SS-2002-2-fig-1-lb.svg" /></p>
+<p><em>圖 1　側撐每 1/4 跨，$L_b = 3.5$ m 小於 $L_c = 3.87$ m，$F_b = 0.66F_y = 1.65$ tf/cm²。這張圖攔的是把 $L_b$ 取全跨 14 m，或 $L_b$ 與 $L_c$、$L_u$ 比錯而改用 $0.60F_y$ 或 LTB 公式。</em></p>
 <h3>步驟 3：計算容許彎矩 $M_a$</h3>
 <p>$$M_a = F_b \times S_x = 1.65 \times 1373 = 2265.45\ \text{tf}\cdot\text{cm} = 22.655\ \text{tf}\cdot\text{m}$$</p>
 <h3>步驟 4：計算自重在跨中產生的彎矩</h3>
@@ -456,6 +458,8 @@ $$M_{P,max} + M_{sw} \leq M_a \Rightarrow \boxed{P_a}$$</p>
 <p>$$3.5 P_a + 2.377 \leq 22.655$$</p>
 <p>$$3.5 P_a \leq 20.278$$</p>
 <p>$$\boxed{P_a = \frac{20.278}{3.5} \approx 5.79\ \text{tf}}$$</p>
+<p><img alt="SS-2002-2 圖解：P = 5.79 tf 在跨中時的彎矩圖，自重拋物線（跨中 2.377）加集中載重三角形（跨中 20.278），合計恰等於 Ma = 22.655 tf·m；右側列彎矩預算與 Pa = 20.278 / 3.5 = 5.79 tf" src="../../raw/solutions/SS-2002-2/figs/SS-2002-2-fig-2-moment.svg" /></p>
+<p><em>圖 2　跨中 $3.5P + 2.377 \le 22.655$，$P_a = 5.79$ tf。這張圖攔的是忘了扣自重彎矩，或把移動載重的最不利位置放錯。</em></p>
 <h3>驗算：剪力檢核</h3>
 <p>移動載重 $P$ 靠近支承端時，最大剪力發生：</p>
 <p>$$V_{max} = P_a + \frac{wL}{2} = 5.79 + \frac{0.097 \times 14}{2} = 5.79 + 0.679 = 6.47\ \text{tf}$$</p>
@@ -525,6 +529,8 @@ $$M_{P,max} + M_{sw} \leq M_a \Rightarrow \boxed{P_a}$$</p>
 <h3>Q：本題為何不考慮撓度限制？</h3>
 <p>ASD 規範要求梁的活載重撓度 $\delta \leq L/360$（使用性）。題目僅要求計算容許載重，未要求撓度驗算，故略去。實際設計時需補充驗算：</p>
 <p>$$\delta = \frac{PL^3}{48EI} \leq \frac{L}{360}$$</p>
+<hr />
+<p><em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2002-2.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2002-2/SS-2002-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

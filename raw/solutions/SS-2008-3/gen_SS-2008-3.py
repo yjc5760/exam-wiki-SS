@@ -113,9 +113,154 @@ def fig1_problem():
     return path
 
 
+# ── 解題圖解共用小工具（像素座標；y 由上往下）──
+def _hl(cv, PH, x0, y0, x1, y1, color, w=2.0, dash=None):
+    cv.line((x0, PH - y0), (x1, PH - y1), color, w, dash=dash, cap="butt")
+
+
+def rsum(terms, nd=3):
+    """與解析相同的加法：各項先四捨五入到 nd 位再相加"""
+    return round(sum(round(t, nd) for t in terms), nd)
+
+
+def _stack_row(cv, x0, y, scale, terms, colors, name, total_color, h=34, fmt="{:.3f}"):
+    """水平堆疊長條：互制比 1.0 對應 scale 像素"""
+    cv.text_px(x0 - 14, y, name, 14, C["text"], "end", weight="700")
+    xx = x0
+    for t, col in zip(terms, colors):
+        w = scale * t
+        cv.rect_px(xx, y - h/2, w, h, col, 0)
+        if w > 44:
+            cv.text_px(xx + w/2, y, fmt.format(t), 12.5, "#FFFFFF", weight="700")
+        xx += w
+    tot = rsum(terms)
+    cv.text_px(xx + 12, y, "= " + fmt.format(tot), 15, total_color, "start", weight="700")
+    return tot
+
+
+def q_mn_lrfd(lb, cb, mp, mr, lp, lr, sx, x1, x2, ry):
+    """LRFD 撓曲 Mn（tf·cm；lb、lp、lr 為 cm）"""
+    if lb <= lp:
+        return mp
+    if lb <= lr:
+        return min(cb * (mp - (mp - mr) * (lb - lp) / (lr - lp)), mp)
+    s = lb / ry
+    return min(cb * sx * x1 * math.sqrt(2) / s * math.sqrt(1 + x1 * x1 * x2 / (2 * s * s)), mp)
+
+
+# ══════════════════════════════════════════════════════════════
+# 解題圖解（2026-11-03 補繪）——數值全部取自 SS-2008-3.md §4，由下式即時算出
+# ══════════════════════════════════════════════════════════════
+import math
+Q_FY, Q_FR, Q_E, Q_G = 3.5, 0.69, 2100.0, 840.0
+Q_SX, Q_ZX, Q_IY, Q_RY, Q_J, Q_CW, Q_A = 2802.0, 3212.0, 3388.0, 4.65, 181.0, 2317464.0, 156.77
+Q_MP = Q_FY * Q_ZX                                        # 11,242
+Q_MR = (Q_FY - Q_FR) * Q_SX                               # 7,874
+Q_X1 = math.pi / Q_SX * math.sqrt(Q_E * Q_G * Q_J * Q_A / 2)
+Q_X2 = 4 * Q_CW / Q_IY * (Q_SX / (Q_G * Q_J)) ** 2
+Q_LP = 80 * Q_RY / math.sqrt(Q_FY)
+Q_LR = Q_RY * Q_X1 / (Q_FY - Q_FR) * math.sqrt(1 + math.sqrt(1 + Q_X2 * (Q_FY - Q_FR) ** 2))
+Q_LB = L / NSEG * 100                                     # 600 cm
+mn = lambda lb, cb: q_mn_lrfd(max(lb, 1e-6), cb, Q_MP, Q_MR, Q_LP, Q_LR, Q_SX, Q_X1, Q_X2, Q_RY)
+Q_MCR = mn(Q_LB, 1.0)                                     # 7,465
+Q_MCR2 = math.pi / Q_LB * math.sqrt(Q_E * Q_IY * Q_G * Q_J + (math.pi * Q_E / Q_LB) ** 2 * Q_IY * Q_CW)   # 雙路徑
+Q_MW = lambda x: 6 * x - x * x / 2 if x <= 6 else (18.0 if x <= 12 else 6 * (18 - x) - (18 - x) ** 2 / 2)   # M/w
+Q_CB_AB = 12.5 * 18 / (2.5 * 18 + 3 * Q_MW(1.5) + 4 * Q_MW(3) + 3 * Q_MW(4.5))   # 1.30
+Q_CB_BC = 1.0
+Q_PHIMN = {"AB": 0.9 * mn(Q_LB, Q_CB_AB) / 100, "BC": 0.9 * Q_MCR / 100, "CD": 0.9 * mn(Q_LB, Q_CB_AB) / 100}
+Q_WCR = min(v / 18 for v in Q_PHIMN.values())             # 3.73 t/m
+
+
+def fig1_cb():
+    W1, H1 = 1000, 470
+    cv = Canvas(W1, H1, sx=44, ox=110, oy=105)
+    cv.panel("彎矩圖（M / w，t·m per t/m）與各無支撐段 Cb", "w 只作用在 AB、CD；BC 段彎矩為常數 18w")
+    for i in range(NSEG):
+        x0, x1 = i * SEG, (i + 1) * SEG
+        if i in LOADED:
+            cv.udl((x0, 4.2), (x1, 4.2), 0.9, n=9, color=C["load"], w=1.8)
+    cv.line((0, 4.2), (L, 4.2), C["member"], 5, cap="butt")
+    for k, n in enumerate(NAMES):
+        x = k * SEG
+        cv.line((x, 3.8), (x, 4.6), C["accent"], 2.4, cap="butt")
+        cv.text((x, 3.8), n, 13, C["text"], dx=-12, dy=14, weight="700")
+    sc = 0.15
+    xs = [L * i / 180 for i in range(181)]
+    cv.polygon([(0, 0)] + [(x, Q_MW(x) * sc) for x in xs] + [(L, 0)], C["fill_m"], C["bmd"], 2.4)
+    cv.line((0, 0), (L, 0), C["muted"], 1.2)
+    for x in (1.5, 3, 4.5):
+        cv.line((x, 0), (x, Q_MW(x) * sc), C["bmd"], 1, dash="3 3")
+        cv.text((x, Q_MW(x) * sc), f"{Q_MW(x):g}", 11, C["bmd"], dy=-10)
+    cv.text((9, 18 * sc), "18w（均勻彎矩）", 12.5, C["bmd"], dy=-12, weight="700")
+    for i, (seg, cb, note) in enumerate((("AB", Q_CB_AB, "四分點式"), ("BC", Q_CB_BC, "均勻彎矩"), ("CD", Q_CB_AB, "對稱"))):
+        xm = (i + 0.5) * SEG
+        cv.text((xm, 0), f"Cb = {cb:.2f}", 14, C["load"] if seg == "BC" else C["compr"], dy=24, weight="700")
+        cv.text((xm, 0), note, 11.5, C["muted"], dy=44)
+    path = os.path.join(OUT, f"{TAG}-fig-1-cb.svg")
+    compose([cv], cols=1,
+            title=f"圖 1　三段 Lb 都是 6 m，但 BC 段均勻彎矩 Cb = 1.0 最不利；AB、CD 段 Cb = {Q_CB_AB:.2f}",
+            sub=f"AB 四分點 M = 7.875w、13.5w、16.875w，Mmax = 18w：Cb = 12.5 × 18 / (2.5 × 18 + 3 × 7.875 + 4 × 13.5 + 3 × 16.875)",
+            note="以為 BC 段沒載重就不控制是錯的：它的彎矩最大且均勻，受壓翼板整段受同樣壓力",
+            path=path)
+    return path
+
+
+def fig2_curve():
+    W1, H1 = 1000, 540
+    cv = Canvas(W1, H1, sx=1)
+    cv.panel("φbMn 對 Lb（t·m）", f"Lp = {Q_LP:.0f} cm、Lr = {Q_LR:.0f} cm；Lb = {Q_LB:.0f} cm 略大於 Lr → 彈性 LTB")
+    X0, X1, YB, YT = 100, 620, 450, 110
+    lmax, mmax = 900.0, 110.0
+    PX = lambda l: X0 + (X1 - X0) * l / lmax
+    PY = lambda m: YB - (YB - YT) * m / mmax
+    _hl(cv, H1, X0, YB, X1, YB, C["muted"], 1.5)
+    _hl(cv, H1, X0, YB, X0, YT, C["muted"], 1.5)
+    for v in range(0, 901, 150):
+        cv.text_px(PX(v), YB + 18, f"{v}", 11.5, C["muted"])
+    for v in range(0, 111, 20):
+        cv.text_px(X0 - 8, PY(v), f"{v}", 11.5, C["muted"], "end")
+        _hl(cv, H1, X0, PY(v), X1, PY(v), C["ghost"], 0.6, dash="2 4")
+    cv.text_px((X0 + X1) / 2, YB + 42, "Lb（cm）", 13, C["text"], weight="700")
+    cv.text_px(X0 - 4, YT - 18, "φbMn（t·m）", 13, C["text"], "start", weight="700")
+    ls = [lmax * i / 300 for i in range(0, 301)]
+    cv.poly([(PX(l), H1 - PY(0.9 * mn(l, Q_CB_AB) / 100)) for l in ls], C["compr"], 2.2, dash="7 4")
+    cv.poly([(PX(l), H1 - PY(0.9 * mn(l, 1.0) / 100)) for l in ls], C["bmd"], 2.8)
+    for l, lab in ((Q_LP, "Lp"), (Q_LR, "Lr")):
+        _hl(cv, H1, PX(l), YB, PX(l), YT, C["accent"], 1.1, dash="4 4")
+        cv.text_px(PX(l) + 4, YT + 6, f"{lab} = {l:.0f}", 11.5, C["accent"], "start")
+    for seg, cb, col, dx, anc, nd in (("BC", 1.0, C["load"], -12, "end", 2), ("AB、CD", Q_CB_AB, C["compr"], 12, "start", 1)):
+        v = 0.9 * mn(Q_LB, cb) / 100
+        cv.dot((PX(Q_LB), H1 - PY(v)), 6.5, fill=col)
+        cv.text_px(PX(Q_LB) + dx, PY(v) + 4, f"{seg}：{v:.{nd}f}", 13, col, anc, weight="700")
+    cv.legend(X0 + 20, YB - 60, [(C["bmd"], "Cb = 1.0"), (C["compr"], f"Cb = {Q_CB_AB:.2f}（≤ φMp）")], size=12, gap=19)
+    xt = 670
+    rows = [(f"Mcr（Cb = 1）= {Q_MCR:,.0f} t·cm", C["text"], "400"),
+            (f"直接公式驗算 {Q_MCR2:,.0f} ✓", C["muted"], "400"),
+            ("", C["text"], "400"),
+            ("各段需求 18w：", C["text"], "400"),
+            (f"BC：w = {Q_PHIMN['BC']:.2f} / 18 = {Q_PHIMN['BC'] / 18:.2f} ← 控制", C["load"], "700"),
+            (f"AB、CD：{Q_PHIMN['AB']:.1f} / 18 = {Q_PHIMN['AB'] / 18:.2f}", C["compr"], "400"),
+            ("", C["text"], "400"),
+            (f"可承受 w = {Q_WCR:.2f} t/m（設計值）", C["bmd"], "700")]
+    for i, (s, col, wt) in enumerate(rows):
+        if s:
+            cv.text_px(xt, 140 + i * 32, s, 13, col, "start", weight=wt)
+    path = os.path.join(OUT, f"{TAG}-fig-2-curve.svg")
+    compose([cv], cols=1,
+            title=f"圖 2　Lb = 600 cm 剛超過 Lr = {Q_LR:.0f} cm：BC 段 φbMn = {Q_PHIMN['BC']:.2f} t·m，w = {Q_WCR:.2f} t/m",
+            sub="三段需求彎矩都是 18w，比的是各段強度；BC 段 Cb 最小而控制",
+            note="以為 Lb 在 Lp、Lr 之間而用直線內插，會高估強度；Lr 要先算出來再比較",
+            path=path)
+    return path
+
+
 FIGURES = [
     (fig1_problem, "§1（題目正本 §4）",
      "把「兩側」讀成全跨均佈（BC 也有 w）；側撐只看兩端而以 L 當無支長度；A、D 支承讀反"),
+    (fig1_cb, "§4 Step 6",
+     "BC 段無載重而忽略；BC 段 Cb 取 1.75；AB 段四分點彎矩算錯"),
+    (fig2_curve, "§4 Step 3–5、7",
+     "Lb 判成非彈性區而用直線內插；控制段選錯"),
 ]
 
 if __name__ == "__main__":

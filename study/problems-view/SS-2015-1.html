@@ -714,6 +714,8 @@ $$r_y = \sqrt{\frac{11\,300}{315.3}} = \sqrt{35.83} = 5.99 \text{ cm}，\quad L_
 <p>⚠️ <strong>關鍵陷阱</strong>：BH 920×300×19×25 的平台高度（233.78）與 BH 500×500×25×40（233.66）在圖上幾乎重疊，且其標籤在圖 1(b) 中是以<strong>引線指向 $L_b \approx 3.1$ m 的陡降段</strong>，極易被誤讀或漏看，因此常見解法從 240 不合格後「直接跳到 251」。實際上 247 kg/m 才是最輕合格者。</p>
 </blockquote>
 <p><strong>選定斷面：BH 920×300×19×25（247 kg/m）</strong></p>
+<p><img alt="SS-2015-1 圖解：七個候選 BH 斷面依單位重排序的 φbMp 長條（長度 = φbMp − 220），Mu = 230.72 標線；240 kg/m 228.69 不足、247 kg/m（BH 920×300×19×25）233.78、Lp 3.02 m 最輕合格，其餘五個合格但較重" src="../../raw/solutions/SS-2015-1/figs/SS-2015-1-fig-1-select.svg" /></p>
+<p><em>圖 1　依單位重逐一檢核：240 kg/m 的 $\phi_bM_p = 228.69$ 不足 2.03 tf·m，247 kg/m（BH 920×300×19×25）$\phi_bM_p = 233.78$、$L_p = 3.02 \ge L_b = 2.8$ m，是最輕合格斷面。這張圖攔的是依圖面高低挑斷面、240 不合格後直接跳到 251，或忘了確認 $L_b \le L_p$。</em></p>
 <hr />
 <h3>Step 3：剪力強度檢核</h3>
 <p><strong>需求剪力：</strong> $V_u = R_a = 82.4$ tf</p>
@@ -752,6 +754,8 @@ $$= 2 \times 150\,231 + 104\,263 = 300\,463 + 104\,263 = \boxed{404\,726 \text{ 
 <p><strong>規範限制：</strong><br />
 $$\delta_{allow} = \frac{L}{360} = \frac{840}{360} = 2.33 \text{ cm}$$</p>
 <p>$$\delta_L = 0.892 \text{ cm} &lt; \delta_{allow} = 2.33 \text{ cm} \quad \checkmark \quad \text{（僅達限制值的 38.2\%）}$$</p>
+<p><img alt="SS-2015-1 圖解：BH 920×300×19×25 三項檢核使用率長條：彎矩 98.7%（230.72 / 233.78）、剪力 36.6%（82.4 / 224.9）、活載撓度 38.2%（0.892 / 2.33 cm）" src="../../raw/solutions/SS-2015-1/figs/SS-2015-1-fig-2-checks.svg" /></p>
+<p><em>圖 2　彎矩使用率 98.7% 控制；剪力 36.6%、活載撓度 38.2%（$\delta = 23PL^3/648EI$）都很寬裕。這張圖攔的是撓度用係數化載重或單一集中力的 $PL^3/48EI$。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>爭議一：「最佳」＝最輕，必須依單位重逐一檢核（本題最易失分處）</strong></p>
@@ -890,6 +894,7 @@ $$V_n = 0.6 F_y A_w = 0.6 \times 2.52 \times 174.8 = 264.3 \text{ tf}，\quad \p
 <hr />
 <p><em>解析完成時間：2026-04-08（重新解析，依當前 CLAUDE.md 格式）</em><br />
 <em>修正日期：2026-08-22（勘誤：子題(一)最佳斷面由 BH 826×350×16×28 改為 <strong>BH 920×300×19×25</strong>；連帶修正 $A_w$ 定義、$h/t_w$、$\phi_vV_n$、$I_x$、$\delta_L$；新增 §6 最新規範對照）</em><br />
+<em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2015-1.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em><br />
 <em>驗證狀態：unverified</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2015-1/SS-2015-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>

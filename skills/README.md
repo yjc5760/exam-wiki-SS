@@ -80,6 +80,23 @@
 
 ---
 
+### `unit-textbook.skill`
+
+**功能：** 為某個命題大綱單元產生「教科書等級」講義：全書只記 4～8 顆種子，每條公式附看圖 → 第一性原理 → 推導 → 極限檢查 → 30 秒重建卡；可分上下冊，輸出 HTML ＋ A4 PDF
+
+**觸發語句：**
+- 「把 SS-U1-1 寫成教科書」
+- 「第一性原理講義」「向量圖解講義」
+- 「不死背公式」「記不住公式但又要準備公式」
+
+**輸出：** `study/textbook-XX-Un-m[-冊].html` ＋ `.pdf`；原始碼留在 `study/figs-src/textbook-XX-Un-m/`
+
+**附帶檔案：** `unit-textbook/`（scripts、references、assets、examples/SS-U1-1）；`new_unit.py` 從這裡複製工作檔
+
+**與 `unit-lecture` 的分工：** lecture 講物理直覺（較短）；textbook 講每條公式怎麼從種子推出來
+
+---
+
 ### `unit-formula-map.skill`
 
 **功能：** 盤點某單元的主要公式，以歷屆考卷原文為證據，分辨「哪些考卷會給、哪些必須自己背」

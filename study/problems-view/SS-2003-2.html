@@ -534,10 +534,14 @@ $$\boxed{\phi_cP_n} = 0.85\times165\times3.661 = 513\ \text{t}$$</p>
 <p>$$\lambda_c = \frac{KL}{\pi r_{my}}\sqrt{\frac{F_{my}}{E_m}} = \frac{80.0}{\pi}\sqrt{\frac{6.934}{2949}} = 25.46\times0.04849 = \boxed{1.235} \le 1.5$$</p>
 <p>→ <strong>非彈性挫屈</strong>，用公式 (2)。</p>
 <p><strong>雙路徑驗算：</strong> $F_e = \pi^2E_m/(KL/r_m)^2 = \pi^2(2949)/80^2 = 4.548$ t/cm²，$\lambda_c = \sqrt{F_{my}/F_e} = \sqrt{6.934/4.548} = 1.235$ ✓</p>
+<p><img alt="SS-2003-2 圖解：型鋼自身迴轉半徑 ry = 7.7、rx = 13.4 cm，與合成斷面全厚 50、60 cm 的 0.3 倍（15.0、18.0 cm）比較，取大者 rmy = 15.0、rmx = 18.0；並標出細長比因此由約 156 降到 80" src="../../raw/solutions/SS-2003-2/figs/SS-2003-2-fig-1-rm.svg" /></p>
+<p><em>圖 1　修正迴轉半徑 $r_m$ 取型鋼 $r$ 與 $0.3\times$全厚的大者：弱軸 $7.7 \to 15.0$ cm、強軸 $13.4 \to 18.0$ cm。這張圖攔的是直接用型鋼 $r_y$（細長比翻倍、落入彈性段）或把 0.3 乘錯方向的厚度。</em></p>
 <h3>步驟 6：臨界應力與設計強度</h3>
 <p>$$F_{cr} = \exp(-0.419\times1.235^2)\times6.934 = \exp(-0.6388)\times6.934 = 0.5279\times6.934 = \boxed{3.661\ \text{t/cm}^2}$$</p>
 <p>$$P_n = A_sF_{cr} = 165\times3.661 = 604.0\ \text{t}$$</p>
 <p>$$\boxed{\phi_cP_n = 0.85\times604.0 = 513\ \text{t}}$$</p>
+<p><img alt="SS-2003-2 圖解：Fmy = Fy + c1·Fyr·Ar/As + c2·fc'·Ac/As 的三項堆疊 = 6.934 t/cm²，Em = E + c3·Ec·Ac/As = 2,949 t/cm²；設計強度 φcPn = 513 t 對照誤用型鋼 ry 的 147 t" src="../../raw/solutions/SS-2003-2/figs/SS-2003-2-fig-2-strength.svg" /></p>
+<p><em>圖 2　$F_{my} = 6.934$、$E_m = 2{,}949$ t/cm²，$\phi_cP_n = 513$ t；若漏了 $0.3\times$全厚的規定只剩 147 t。這張圖攔的是 $P_n$ 乘成總面積（應乘型鋼 $A_s$），以及修正項的面積比分母寫錯。</em></p>
 <h3>驗算：強軸不控制</h3>
 <p>$$\lambda_{c,x} = \frac{66.7}{\pi}\sqrt{\frac{6.934}{2949}} = 1.029,\quad F_{cr,x} = e^{-0.419(1.029)^2}\times6.934 = 4.450\ \text{t/cm}^2,\quad \phi_cP_{n,x} = 624\ \text{t} &gt; 513\ \text{t}$$</p>
 <p><strong>結論：弱軸控制，$\phi_cP_n \approx 513$ t。</strong></p>
@@ -710,6 +714,7 @@ $$P_e = \frac{\pi^2EI_{eff}}{(KL)^2},\qquad P_n = \begin{cases}P_{no}\,0.658^{P_
 <hr />
 <p><em>解析完成時間：2026-04-xx</em><br />
 <em>修正日期：2026-11-01（考卷明文規定 $r_m$ 不得小於挫屈平面全厚度之 30%，原解直接取型鋼 $r_y = 7.7$ cm，致 $KL/r$ 155.8、$\lambda_c$ 2.405、誤判彈性挫屈，$\phi_cP_n$ 由 147 t 更正為 <strong>513 t</strong>；補強軸檢核與雙路徑驗算；新增 §6 AISC 360-16／-22 對照）</em><br />
+<em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2003-2.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em><br />
 <em>驗證狀態：unverified</em></p>
 <p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2003-2-problem.md</code>（已確認）＋常見誤讀＋本解記號，避免題意兩份不同步；解題內容與答案不變）</em></p>
 <p><em>修正日期：2026-11-03（§1 補入題目附圖重繪 <code>figs/SS-2003-2-fig-1-problem.svg</code>（依已確認的題目正本判讀清單，腳本 <code>gen_SS-2003-2.py</code>，可重跑）；解題內容與答案不變）</em></p>

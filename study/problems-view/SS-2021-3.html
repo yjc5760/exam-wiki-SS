@@ -604,11 +604,15 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <li>塑性鉸位置（A 端與距 B 端約 $0.414L = 4.97$ m 處，即距 A 約 7.0 m）附近也要有側撐：A 端由梁柱接頭提供，正彎矩鉸落在 6～9 m 段內，兩端皆有側撐。</li>
 <li>側撐須同時拘束<strong>上下翼板</strong>（或以樓板＋下翼板角撐），且側撐強度 ≥ 2% $F_yb_ft_f$（13.6.7）。</li>
 </ol>
+<p><img alt="SS-2021-3 圖解：BH700×300×12×25 的 Mn 對 Lb 曲線，Cb = 1.0 實線與 1.75 虛線（上限 Mp），Lp = 301、Lr = 898 cm；只在兩端側撐 Lb = 1200 時 Mn = 86.8（Cb 1）～151.9（Cb 1.75）t·m，小於 Mp = 221.6；每 300 cm 加側撐後 Lb ≤ Lp，Mn = Mp" src="../../raw/solutions/SS-2021-3/figs/SS-2021-3-fig-1-ltb.svg" /></p>
+<p><em>圖 1　只在兩端側撐時 $M_n$ 最多 151.9 t·m，小於 $M_p = 221.6$ t·m；每 3 m 加一處側撐，$L_b = 300 \le L_p = 300.6$ cm，才能發揮 $M_p$。這張圖攔的是不加側撐就用 $M_p$、$C_b$ 直接取 1.75，或側撐間距只看耐震上限 639 cm。</em></p>
 <h3>Step 6：塑性極限強度</h3>
 <p>側撐後各段皆可發揮 $M_p$。一端固接、一端簡支梁受均布載重的塑性機構：固端塑性鉸＋跨內塑性鉸（距簡支端 $x = (\sqrt2 - 1)L = 0.414L$）：</p>
 <p>$$w_u = \frac{2M_p}{x^2} = \frac{2M_p}{(0.414L)^2} = \frac{11.66M_p}{L^2} = \frac{11.66 \times 221.6}{12^2} = \boxed{17.9\ \text{t/m}}$$</p>
 <p>（以設計強度計 $\phi_b = 0.9$：16.1 t/m。）</p>
 <p><strong>雙路徑驗算（虛功法）：</strong> 設跨內鉸在距 B 端 $x$，令 $\theta_B = \delta/x$、$\theta_A = \delta/(L - x)$，內功 $M_p[\theta_A + (\theta_A + \theta_B)]$，外功 $w L\delta/2$ → $w = \dfrac{2M_p(2L - x)}{Lx(L - x)}$，對 $x$ 求極小得 $x = 0.586L$（距 A）= 0.414L（距 B），$w_u = 11.66M_p/L^2$ ✔。</p>
+<p><img alt="SS-2021-3 圖解：12 m 一端固接一端簡支梁滿跨均布 wu，側撐在 3、6、9 m；崩塌機構為固端塑性鉸（−Mp）與距簡支端 0.414L = 4.97 m 的跨內塑性鉸（+Mp），wu = 17.9 t/m" src="../../raw/solutions/SS-2021-3/figs/SS-2021-3-fig-2-mech.svg" /></p>
+<p><em>圖 2　塑性崩塌機構：固端鉸＋距簡支端 $0.414L = 4.97$ m 的跨內鉸，$w_u = 11.66M_p/L^2 = 17.9$ t/m（$\phi$ 後 16.1）。這張圖攔的是把跨內鉸放在跨中，或漏了固端鉸。</em></p>
 <h3>計算彙整</h3>
 <table>
 <thead>
@@ -737,6 +741,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <p><em>修正日期：2026-11-01（原解選 BH500×500×16×36 之理由「最輕」與表一不符（A = 428 cm²，非最輕），且 $L_r$ 改用 $r_T$ 與考卷公式不符；依強軸受彎效率與用鋼量改選 <strong>BH700×300×12×25</strong>（$Z_x$ = 6,330 cm³、$M_p$ = 221.6 t·m、$f$ = 1.116），$L_b$ = 12 m 彈性 LTB 不能發揮 $M_p$，改善為每 300 cm 側撐（並符合 $0.086r_yE/F_y$ = 352 cm），塑性極限強度 $w_u$ = 11.66$M_p/L^2$ = <strong>17.9 t/m</strong>；並列 BH500×500×16×36 之替代論述；指出題表 BH700×300×9×19 面積數字有誤；新增虛功法驗算與 §6 對照）</em><br />
 <em>修正日期：2026-11-01（第二次：耐震梁側撐間距原引 AISC 341-10 之 $0.086r_yE/F_y$ = 352 cm，更正為本國《鋼結構極限設計法》13.6.7 之 $170r_y/\sqrt{F_y}$ = 639 cm 與側撐強度 2% $F_yb_ft_f$；本題仍由 $L_p$ = 300.6 cm 控制，每 300 cm 側撐、$w_u$ = 17.9 t/m 結論不變）</em><br />
+<em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2021-3.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em><br />
 <em>驗證狀態：unverified</em></p>
 <p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2021-3-problem.md</code>（已確認）＋常見誤讀＋本解記號，避免題意兩份不同步；解題內容與答案不變）</em></p>
 <p><em>修正日期：2026-11-03（§1 補入題目附圖重繪 <code>figs/SS-2021-3-fig-1-problem.svg</code>（依已確認的題目正本判讀清單，腳本 <code>gen_SS-2021-3.py</code>，可重跑）；解題內容與答案不變）</em></p>

@@ -555,6 +555,8 @@ $$\boxed{\sum P_{cr}} = n_{col} \times \frac{\pi^2 EI}{(K'_{AB} \cdot L)^2}$$</p
 </table>
 <p>$$K'_{(II)AB} = \sqrt{\frac{\pi^2EI/L^2}{P} \times \frac{4P}{\pi^2EI/(4L^2)}} = \sqrt{4 \times 4} = 4$$</p>
 <p>$$\boxed{K_{(II)AB} = 4.0}$$</p>
+<p><img alt="SS-2011-2 兩格：鋼架 (I) 與 (II) 側移 δ 的變形，AB 為底固頂鉸的懸臂（旗桿）柱，靠桿兩端鉸接、整根傾斜，每根把 P·δ/L 沿側移方向推給頂梁；(I) AB 須抵抗 2·P·δ/L、K' = 2.83，(II) 須抵抗 4·P·δ/L、K' = 4.00" src="../../raw/solutions/SS-2011-2/figs/SS-2011-2-fig-1-sway.svg" /></p>
+<p><em>圖 1　只有 AB 抗側：靠桿把自己的 $P\delta/L$ 推給頂梁，靠桿愈多，AB 的 $K'$ 愈大（$2\sqrt2 \to 4$）。這張圖攔的是把 AB 頂端當固接（$K_0$ 取 1）、把靠桿計入 $\sum P_{eK}$，或漏算靠桿的載重。</em></p>
 <hr />
 <h3>Step 4：系統總挫屈載重比值</h3>
 <p><strong>鋼架（I）：</strong> 柱 AB 挫屈時所受載重</p>
@@ -566,6 +568,8 @@ $$\boxed{\sum P_{cr}} = n_{col} \times \frac{\pi^2 EI}{(K'_{AB} \cdot L)^2}$$</p
 <p><strong>比值：</strong></p>
 <p>$$\boxed{\frac{\sum P_{(I)cr}}{\sum P_{(II)cr}} = \frac{\pi^2 EI/(4L^2)}{\pi^2 EI/(4L^2)} = 1}$$</p>
 <p><strong>雙路徑驗算（直接平衡法）：</strong> 讓整個構架側移 $\Delta$。靠柱兩端鉸接，每根把 $P\Delta/L$ 的水平力推給頂梁；柱 AB 為懸臂柱，其側向勁度在挫屈時需平衡全部 $P\Delta$ 效應。系統臨界條件為 $\sum P = P_{eK,AB} = \pi^2EI/(4L^2)$，與靠柱數無關，兩個鋼架的 $\sum P_{cr}$ 皆為 $\pi^2EI/(4L^2)$ ✔。</p>
+<p><img alt="SS-2011-2 圖解：兩鋼架的系統總挫屈載重以長條表示，每格是一根柱的 Pcr；(I) 2 × 1/8 = 1/4、(II) 4 × 1/16 = 1/4（單位 π²EI/L²），都等於 AB 單獨的旗桿柱挫屈載重，比值 = 1" src="../../raw/solutions/SS-2011-2/figs/SS-2011-2-fig-2-sum.svg" /></p>
+<p><em>圖 2　兩鋼架的 $\sum P_{cr}$ 都等於 AB 單獨的 $\pi^2EI/(4L^2)$，比值 = 1；靠桿只是把總重分到更多柱上。這張圖攔的是以為靠桿愈多系統愈弱，或把每柱 $P_{cr}$ 當成系統總值。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>核心洞察：靠柱效應不改變系統總挫屈載重</h3>
@@ -632,6 +636,7 @@ $$\boxed{\sum P_{cr}} = n_{col} \times \frac{\pi^2 EI}{(K'_{AB} \cdot L)^2}$$</p
 <p><strong>觀察：</strong> 新規範把「靠柱拖垮整層穩定」的效應放到二階分析裡處理，考生仍須懂 LeMessurier 式背後的「整層挫屈＝$\sum P_{eK}$」觀念，因為它就是直接分析法要模擬的物理。</p>
 <hr />
 <p><em>修正日期：2026-11-01（考卷原圖 A 點有小圓圈＝柱頂鉸接，原解誤作剛接取 $K_0 = 1.0$；更正為底固頂鉸 $K_0 = 2.0$，$K_{(I)AB}$ 由 1.414 更正為 <strong>2.83</strong>、$K_{(II)AB}$ 由 2.0 更正為 <strong>4.0</strong>，比值 1 不變；釐清 $P_e$ 與 $\sum P_{eK}$ 的長度取法；新增直接平衡法驗算與 §6 對照）</em><br />
+<em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2011-2.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em><br />
 <em>驗證狀態：unverified</em></p>
 <p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2011-2-problem.md</code>（已確認）＋常見誤讀＋本解記號；解題內容與答案不變）</em></p>
 <p><em>修正日期：2026-11-03（§1 補入題目附圖重繪 <code>figs/SS-2011-2-fig-1-problem.svg</code>（依已確認的題目正本判讀清單，腳本 <code>gen_SS-2011-2.py</code>，可重跑）；解題內容與答案不變）</em></p>

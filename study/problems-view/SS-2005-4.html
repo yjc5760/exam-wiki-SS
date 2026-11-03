@@ -457,6 +457,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </table>
 <p>$$M_p = F_y Z = 2.5 \times 667.43 = \boxed{1668.6\ \text{tf}\cdot\text{cm} = 16.69\ \text{tf}\cdot\text{m}}$$</p>
 <p>（驗算：PNA 上下面積各 77.68 cm² ✓；T 斷面正負彎矩 $M_p$ 相同。）</p>
+<p><img alt="SS-2005-4 T 形斷面（依比例）：翼板 40×2.6、腹板 2.4×21.4 cm，PNA 距頂 1.94 cm 落在翼板內，彈性形心距頂 5.27 cm，上下面積各 77.68 cm²，Z = 667.4 cm³" src="../../raw/solutions/SS-2005-4/figs/SS-2005-4-fig-1-pna.svg" /></p>
+<p><em>圖 1　PNA 由上下面積相等決定，T 形斷面的 PNA 落在翼板內（距頂 1.942 cm），與彈性形心（5.27 cm）不同。這張圖攔的是以彈性形心為軸算 $Z$（高估約 26%），以及把 PNA 放進腹板。</em></p>
 <h3>4.3 虛功法</h3>
 <p>令固端 A 虛轉角 $\theta_A$，C 點虛位移 $\delta_C = x\theta_A$，CB 段轉角 $x\theta_A/(L-x)$，C 點相對轉角 $\theta_A L/(L-x)$：</p>
 <p>$$W_{ext} = w_u \frac{L\,\delta_C}{2} = w_u\frac{Lx\theta_A}{2}, \qquad W_{int} = M_p\theta_A\frac{2L-x}{L-x}$$</p>
@@ -468,6 +470,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$R_A = \frac{w_uL}{2} + \frac{M_p}{L} = \frac{0.05403 \times 600}{2} + \frac{1668.6}{600} = 16.21 + 2.78 = 18.99\ \text{tf}$$</p>
 <p>$$M(x) = R_A x - \frac{w_u x^2}{2} - M_p = 18.99 \times 351.5 - \frac{0.05403 \times 351.5^2}{2} - 1668.6 = 1668.6\ \text{tf}\cdot\text{cm} = M_p\ \checkmark$$</p>
 <p>且沿全跨數值掃描 $M_{max}$ 恰在 $x = 351.5$ cm、等於 $M_p$，不超過 $M_p$（下限定理成立）。</p>
+<p><img alt="SS-2005-4 上為一端固定一端簡支梁的崩塌機構與崩塌時彎矩圖（固定端 −Mp、跨內距簡支端 248.5 cm 處 +Mp）；下為 wu·L²/Mp 隨跨內鉸位置的曲線，最小值 11.657 在 s = (√2 − 1)L，跨中為 12.00" src="../../raw/solutions/SS-2005-4/figs/SS-2005-4-fig-2-mech.svg" /></p>
+<p><em>圖 2　虛功法的 $w_u$ 隨跨內鉸位置變化，取最小值：鉸距固定端 351.5 cm、$w_u = 11.657M_p/L^2 = 5.40$ tf/m。這張圖攔的是把跨內鉸放在跨中（$w_u$ 偏大 2.9%，偏不安全）與鉸距量錯端點。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討</h2>
 <h3>5.1 解析解化簡</h3>
@@ -515,6 +519,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>（數值掃描最小值同為 4.278 tf/m；代回平衡：$R_A = w_uL/2 + M_A/L$，跨間最大正彎矩恰為 $M_C = 1{,}488.2$ tf·cm、全跨無一處超過，上下限重合。）較考卷版 5.40 tf/m 低約 21%。新版對 T 型肢受壓的限制正是為了避免肢部局部降伏後失穩。</p>
 <hr />
 <p><em>修正日期：2026-11-01（依考卷原圖 600 dpi：T 型斷面「24 cm」為全深（翼板頂至腹板底），原解誤作腹板高 24 cm、全深 26.6 cm。更正腹板淨高 21.4 cm、$A$ = 155.36 cm²、PNA 距頂 1.942 cm、$Z$ 813.0 → <strong>667.4 cm³</strong>、$M_p$ 2032.5 → <strong>1668.6 tf·cm</strong>，$w_u$ 6.58 → <strong>5.40 tf/m</strong>；平衡法與全跨彎矩掃描驗算；§5.2 刪除殘留英文草稿並重算彈性比較；新增 §6 對照）</em><br />
+<em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2005-4.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em><br />
 <em>驗證狀態：unverified</em><br />
 <em>第二次修正日期：2026-11-01（§5.2 肢端在固端負彎矩下為受壓（原誤寫受拉，數值不變）；§5.3 改以塑性設計斷面 $\lambda_{pd} = 14/\sqrt{F_y}$ 檢核；§6 F9 之 $1.6M_y$ 原以翼板側 $S$ = 1323.2 計得 5293，應以肢端 $S_x$ = 372.0 計得 1488.2，跨間正彎矩改由 $1.6M_y$ 控制，並補兩鉸不等強度之閉合解與下限檢核，$w_u$ 由「約 4.2」更正為 <strong>4.28 tf/m</strong>（低約 21%）。考卷 94 年第四題原圖目視確認題意不變）</em></p>
 <p><em>修正日期：2026-11-02（§1 全文重述改為指向題目正本 <code>SS-2005-4-problem.md</code>（已確認）＋常見誤讀＋本解記號，避免題意兩份不同步；解題內容與答案不變）</em></p>

@@ -686,6 +686,8 @@ $$\text{For flange: } \lambda_{pd} = 14/\sqrt{F_y},\ \lambda_p = 17/\sqrt{F_y},\
 <p><strong>段 A-B（C-D 對稱）：</strong></p>
 <p>四分點式 $C_b = \dfrac{12.5 \times 18}{2.5 \times 18 + 3 \times 7.875 + 4 \times 13.5 + 3 \times 16.875} = 1.30$（若用 1.75 式，$M_A = 0$ → 1.75）</p>
 <p>$$M_n = \min(1.30 \times 74.65,\ M_p) = 96.9\ \text{t}\cdot\text{m}\ \ (\text{1.75 式則達 } M_p = 112.4)$$</p>
+<p><img alt="SS-2008-3 圖解：18 m 梁三等分，w 只在 AB、CD；彎矩圖 AB 段拋物線上升（四分點 7.875w、13.5w、16.875w），BC 段常數 18w，CD 對稱；各段 Cb：AB 1.30、BC 1.00、CD 1.30" src="../../raw/solutions/SS-2008-3/figs/SS-2008-3-fig-1-cb.svg" /></p>
+<p><em>圖 1　三段 $L_b$ 都是 6 m，但 BC 段是均勻彎矩 $C_b = 1.0$，最不利；AB、CD 段 $C_b = 1.30$。這張圖攔的是以為 BC 段沒載重就不控制、BC 段 $C_b$ 誤取 1.75，或四分點彎矩算錯。</em></p>
 <hr />
 <h3>Step 7：求解 $w_{n,cr}$</h3>
 <table>
@@ -721,6 +723,8 @@ $$\text{For flange: } \lambda_{pd} = 14/\sqrt{F_y},\ \lambda_p = 17/\sqrt{F_y},\
 <p>$$18\,w_{n,cr} = 67.18\ \Rightarrow\ \boxed{w_{n,cr} = 3.73\ \text{t/m}}$$</p>
 <p>（不乘 $\phi_b$ 的標稱值：$w = 74.65/18 = 4.15$ t/m。）</p>
 <p><strong>雙路徑驗算：</strong> 直接以 AISC 彈性 LTB 式 $M_{cr} = \dfrac{\pi}{L_b}\sqrt{EI_yGJ + \left(\dfrac{\pi E}{L_b}\right)^2I_yC_w}$ 計算：$\dfrac{\pi}{600}\sqrt{2100 \times 3388 \times 840 \times 181 + (\pi \times 2100/600)^2 \times 3388 \times 2{,}317{,}464} = 7{,}462$ t·cm ✔，與 $X_1$、$X_2$ 式（7,465）相同。</p>
+<p><img alt="SS-2008-3 圖解：φbMn 對 Lb 曲線，Cb = 1.0 與 1.30，Lp = 199、Lr = 579 cm，Lb = 600 cm 在彈性區；BC 段 67.18、AB 與 CD 段 87.3 t·m；右側列 Mcr = 7,465（直接公式驗算 7,462）與 w = 67.18 / 18 = 3.73 t/m" src="../../raw/solutions/SS-2008-3/figs/SS-2008-3-fig-2-curve.svg" /></p>
+<p><em>圖 2　$L_b = 600$ cm 剛超過 $L_r = 579$ cm，屬彈性 LTB；BC 段 $\phi_bM_n = 67.18$ t·m 控制，$w = 3.73$ t/m。這張圖攔的是把 $L_b$ 判成非彈性區而用直線內插，或控制段選錯。（$M_{cr}$ 精確為 7,465 t·cm；解析 Step 5 寫 7,469、Step 6 寫 7,465，以後者為準。）</em></p>
 <hr />
 <h3>Step 8：剪力驗核（確認不控制）</h3>
 <p>$$V_u = 6w = 6 \times 3.73 = 22.4\ \text{t},\qquad \phi_vV_n = 0.9 \times 0.6 \times 3.5 \times (54.43 \times 1.31) = 134.7\ \text{t}\quad\checkmark$$</p>
@@ -798,6 +802,7 @@ $$\text{For flange: } \lambda_{pd} = 14/\sqrt{F_y},\ \lambda_p = 17/\sqrt{F_y},\
 <p><strong>本題以 360-16 估算：</strong> $r_{ts} = \sqrt{\sqrt{I_yC_w}/S_x} = 5.62$ cm、$h_o = 52.31$ cm → $L_r = 631$ cm，$L_b = 600$ cm 改落在<strong>非彈性</strong>段：$M_n = 112.42 - (112.42 - 68.65) \times \dfrac{600 - 200.5}{631 - 200.5} = 71.8$ t·m，$w_{n,cr} = 3.59$ t/m，與考卷版（3.73）相差約 4%。差異來自新版以 $0.7F_y$ 取代 $F_y - F_r$。</p>
 <hr />
 <p><em>修正日期：2026-11-01（依考卷原圖：均佈載重 $w$ 只作用於 AB、CD 兩段，原解誤作全跨，致跨中彎矩 $40.5w$；更正 BC 段為常數 $18w$。另更正均勻彎矩段 $C_b$ 之正負號（原解代 $M_1/M_2 = +1$ 得 3.10，應為單曲率 $-1$ → 1.0）。BC 段 $L_b = 6$ m $&gt; L_r = 5.79$ m 彈性 LTB 控制，$w_{n,cr}$ 由 2.50 更正為 <strong>3.73 t/m</strong>（標稱 4.15）；新增雙路徑驗算、$F_r$ 敏感度與 §6 對照）</em><br />
+<em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2008-3.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em><br />
 <em>驗證狀態：unverified</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2008-3/SS-2008-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>

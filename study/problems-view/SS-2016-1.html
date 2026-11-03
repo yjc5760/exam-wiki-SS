@@ -485,6 +485,8 @@ $\lambda_p$ 是能形成塑性鉸的上限；$\lambda_r$ 是確保初始降伏�
 </ol>
 <p>因此：</p>
 <p>$$\lambda_r^{\text{梁腹板}} = \frac{260}{\sqrt{F_y}} \gg \lambda_r^{\text{柱腹板}} = \frac{68}{\sqrt{F_y}}$$</p>
+<p><img alt="SS-2016-1 圖解：三塊受壓平板。(a) 翼板突出肢：一邊接腹板、一邊自由、均勻受壓，梁柱相同，λr = 25/√Fy；(b) 梁腹板：兩邊接翼板、上壓下拉，k 由約 4 提高到約 23.9，λr = 260/√Fy；(c) 柱腹板：兩邊接翼板、全高均勻受壓，k 約 4，λr = 68/√Fy" src="../../raw/solutions/SS-2016-1/figs/SS-2016-1-fig-1-plates.svg" /></p>
+<p><em>圖 1　翼板 $\lambda_r$ 梁柱相同、腹板 $\lambda_r$ 梁大於柱，差在壓應力分布：梁腹板只有上半受壓，挫屈係數 $k$ 從約 4 提高到約 23.9。這張圖攔的是以為梁翼板也有應力梯度，或把梁腹板 $\lambda_r$ 較大歸因於腹板較厚、構材名稱不同。</em></p>
 <hr />
 <h3>(二) 制定梁之 $\lambda_p$ 與 $\lambda_r$ 時所考慮的因素</h3>
 <h4>$\lambda_r$（非結實斷面上限；確保彈性階段無局部挫屈）</h4>
@@ -560,6 +562,8 @@ $\lambda_p$ 是能形成塑性鉸的上限；$\lambda_r$ 是確保初始降伏�
    $$\lambda_p \leq \lambda_r \quad \Rightarrow \quad \frac{17}{\sqrt{F_y}} &lt; \frac{25}{\sqrt{F_y}} \text{（翼板）}$$<br />
    $$\frac{170}{\sqrt{F_y}} &lt; \frac{260}{\sqrt{F_y}} \text{（腹板）}$$</li>
 </ol>
+<p><img alt="SS-2016-1 圖解：(a) 題表係數長條：梁翼板 λp 17、λr 25；柱翼板 λp 16、λr 25；梁腹板 λp 170、λr 260；柱腹板 λp 不適用、λr 68；(b) Mn 對寬厚比示意：λp 以內達 Mp（結實、有轉動能力），λp～λr 直線降到 Mr（非結實），λr 以外彈性局部挫屈（細長）" src="../../raw/solutions/SS-2016-1/figs/SS-2016-1-fig-2-limits.svg" /></p>
+<p><em>圖 2　$\lambda_r$ 只要求降伏前不局部挫屈；$\lambda_p$ 還要撐到塑性鉸轉動完成（約 3～4 倍彈性轉角），所以更嚴，約為 $\lambda_r$ 的 0.64～0.68。這張圖攔的是把 $\lambda_p$、$\lambda_r$ 的物理意義對調，或制定因素漏了殘留應力、轉動能力、$F_y$。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>進階：為何柱翼板沒有 $\lambda_p$？</h3>
@@ -593,6 +597,8 @@ $\lambda_p$ 是能形成塑性鉸的上限；$\lambda_r$ 是確保初始降伏�
 </tr>
 </tbody>
 </table>
+<hr />
+<p><em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2016-1.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2016-1/SS-2016-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

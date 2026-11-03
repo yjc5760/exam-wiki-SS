@@ -550,6 +550,8 @@ $$L_c = s - d_h = 60 - 22 = 38 \text{ mm}$$</p>
 <p><strong>承壓總容量 ≥ Vu：</strong><br />
 $$\phi \left(2 \times 9{,}120t + 1 \times 18{,}240t\right) = 0.75 \times 36{,}480t = 27{,}360t \text{ N}$$</p>
 <p>$$27{,}360t \geq 180{,}000 \quad \Rightarrow \quad t \geq 6.58 \text{ mm} \quad \cdots \text{(a)}$$</p>
+<p><img alt="SS-2012-4 兩格：左為剪力板 180×80 mm 與三顆 M20（距柱面 40，邊距 30、間距 60），紅虛線為淨剪斷面 Anv = 114t；右為承壓淨距 Lc：內部孔 38 mm、下方邊緣孔 19 mm" src="../../raw/solutions/SS-2012-4/figs/SS-2012-4-fig-1-plate.svg" /></p>
+<p><em>圖 1　剪力板配置、淨剪斷面與承壓淨距。$1.5d + 2 \times 3d + 1.5d = 180$ mm 恰好排滿；剪力方向的邊緣孔 $L_c$ 只有 19 mm。這張圖攔的是邊距、間距配錯，淨剪面積扣錯孔徑，以及邊緣孔誤用內部孔的 $L_c$。</em></p>
 <h3>Step 5：剪力板淨截面剪力破壞（Shear Rupture，控制）</h3>
 <p>$$A_{nv} = (h - n \cdot d_h) \times t = (180 - 3 \times 22) \times t = 114t \text{ mm}^2$$</p>
 <p>$$\phi V_n^{(\text{rupture})} = 0.75 \times 0.6 F_u \times A_{nv} = 0.75 \times 0.6 \times 400 \times 114t = 20{,}520t \text{ N}$$</p>
@@ -621,6 +623,8 @@ $$\phi \left(2 \times 9{,}120t + 1 \times 18{,}240t\right) = 0.75 \times 36{,}48
 </tbody>
 </table>
 <p><strong>→ 全部極限狀態均滿足，設計完成。</strong></p>
+<p><img alt="SS-2012-4 兩格：左為各極限狀態所需板厚：承壓 6.58、剪力降伏 7.47、淨斷面剪力破壞 8.77 mm（控制），採用 10 mm；右為 t = 10 mm 時各項容量 233.3、273.6、241.1、205.2 kN 對需求 180 kN" src="../../raw/solutions/SS-2012-4/figs/SS-2012-4-fig-2-thick.svg" /></p>
+<p><em>圖 2　三個板件極限狀態都與 $t$ 成正比，可直接比較所需板厚：淨斷面剪力破壞 8.77 mm 控制，採 10 mm。這張圖攔的是以剪力降伏（7.47 mm）為控制而選板太薄。</em></p>
 <hr />
 <h2>5. 螺栓配置圖（圖示說明）</h2>
 <pre><code>━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -664,7 +668,9 @@ mm   │          │
 <li>本題為一般重力載重接頭（非耐震或疲勞），承壓型在 LRFD 下效率更高</li>
 </ul>
 <h3>6.3 全滲透銲（CJP）的強度驗核說明</h3>
-<p>本題假設梁翼板以 CJP 承擔彎矩（力偶方式），剪力板僅傳遞剪力。此為簡單接頭（Simple Connection）的典型設計假設，在彈性分析模型中通常對應梁端為鉸接條件。如果翼板銲縫需要驗算，則依 $M_u = V_u \times e$（$e$ = 偏心矩）計算翼板承受的拉壓力後，與 CJP 容量比對。</p></main>
+<p>本題假設梁翼板以 CJP 承擔彎矩（力偶方式），剪力板僅傳遞剪力。此為簡單接頭（Simple Connection）的典型設計假設，在彈性分析模型中通常對應梁端為鉸接條件。如果翼板銲縫需要驗算，則依 $M_u = V_u \times e$（$e$ = 偏心矩）計算翼板承受的拉壓力後，與 CJP 容量比對。</p>
+<hr />
+<p><em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2012-4.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em></p></main>
 <footer>來源：raw/solutions/SS-2012-4/SS-2012-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，

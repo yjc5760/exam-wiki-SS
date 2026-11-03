@@ -442,6 +442,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>試 3：PNA 在腹板內（$12.4 \le y \le 57.6$）</strong></p>
 <p>$$\underbrace{8.925y + 68.8 + 135.0 + 2.75(y - 12.4)}_{C} = \underbrace{2.75(57.6 - y) + 135.0 + 68.8}_{T}$$</p>
 <p>$$14.425y = 158.4 + 34.1\ \Rightarrow\ \boxed{y = 13.34\ \text{cm}}\quad(\text{落在腹板頂端下方 0.94 cm})\ \checkmark$$</p>
+<p><img alt="SS-2005-2 圖解：PNA 位置 y 由 8 到 20 cm 時的總壓力 C(y) 與總拉力 T(y) 曲線；y = 10.6 時 C 163.4 小於 T 463.1，y = 12.4（上翼板底）時 C 314.5 仍小於 T 328.1，兩線在腹板內 y = 13.34 cm 相交，C = T = 325.5 tf；右側列三次試算" src="../../raw/solutions/SS-2005-2/figs/SS-2005-2-fig-1-trial.svg" /></p>
+<p><em>圖 1　$C(y)$ 與 $T(y)$ 在腹板內相交，PNA $y = 13.34$ cm：試 1 假設鋼骨全拉得 $y = 44.2$ 矛盾；試 2 在上翼板底 $y = 12.4$ 時 $C = 314.5 &lt; T = 328.1$，還要往下；試 3 在腹板內成立。這張圖攔的是 PNA 停在上翼板內就作答，或試 1 矛盾後沒有換段重算。</em></p>
 <h3>4.4 公稱彎矩強度 $M_n$（對 PNA 取矩）</h3>
 <table>
 <thead>
@@ -524,6 +526,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$\boxed{M_n = 13{,}549\ \text{tf}\cdot\text{cm} \approx 135.5\ \text{tf}\cdot\text{m}}$$</p>
 <p>$$\phi_bM_n = 0.9 \times 135.5 = \boxed{121.9\ \text{tf}\cdot\text{m}}$$</p>
 <p><strong>雙路徑驗算：</strong> 以頂面為力矩中心，$M_n = \sum T_iy_i - \sum C_iy_i = 13{,}549$ tf·cm ✔。若扣除型鋼在受壓區排開的混凝土（上翼板與 0.94 cm 腹板處不計混凝土），PNA 移至 14.04 cm，$M_n = 135.3$ tf·m，差 0.2%。</p>
+<p><img alt="SS-2005-2 圖解：50×70 cm 包覆斷面與塑性應力分布，PNA 在 y = 13.34 cm（腹板頂端下方 0.94 cm）；混凝土 0.1785 受壓、上翼板與 0.94 cm 腹板受壓、其餘鋼骨受拉 Fy、上排筋壓下排筋拉；右側七個力與對 PNA 力臂、力矩，C = T = 325.5，合計 13,548.9 tf·cm，Mn = 135.5、φbMn = 121.9 tf·m" src="../../raw/solutions/SS-2005-2/figs/SS-2005-2-fig-2-pna.svg" /></p>
+<p><em>圖 2　七個力對 PNA 取矩合計 13,548.9 tf·cm，$M_n = 135.5$ tf·m，$\phi_bM_n = 121.9$ tf·m；下翼板（45.16 cm）與下排筋（48.66 cm）力臂最長，貢獻七成力矩。這張圖攔的是力臂沒量到 PNA、漏了上排或下排鋼筋，或混凝土壓力深度取錯。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討</h2>
 <h3>5.1 舊版解析的單位錯誤</h3>
@@ -565,6 +569,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>觀察：</strong> 我國鋼骨鋼筋混凝土構造設計規範對 SRC 梁另有規定，實務設計應依該規範；考題依題意以塑性應力分布計算即可。</p>
 <hr />
 <p><em>修正日期：2026-11-01（原解將 $0.85f'_c$ 誤寫為 1.785 tf/cm²（應為 0.1785），致 PNA 誤落在 5.96 cm、全部鋼材受拉；更正 PNA 為距頂 13.34 cm（上翼板下方腹板內），上排鋼筋與上翼板受壓，$M_n$ 由 170.3 更正為 <strong>135.5 tf·m</strong>、$\phi_bM_n$ 由 153.3 更正為 <strong>121.9 tf·m</strong>；依原卷重述題目（原解自行增列「列出各組成材料降伏力」子題）；新增雙路徑驗算與 §6 對照）</em><br />
+<em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2005-2.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em><br />
 <em>驗證狀態：unverified</em></p>
 </main>
 <footer>來源：raw/solutions/SS-2005-2/SS-2005-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>

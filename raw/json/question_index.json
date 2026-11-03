@@ -2177,7 +2177,9 @@
         "弱軸彎曲",
         "45°斜置構材",
         "互制方程式",
-        "有效長度"
+        "有效長度",
+        "Cm下限0.4廢止",
+        "M1/M2正負號"
       ],
       "hasHandwritten": false,
       "hasSolution": true

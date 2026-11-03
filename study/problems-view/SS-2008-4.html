@@ -611,6 +611,8 @@ $$M_H\bigg|_{x=600} = \frac{H \cdot L}{4} = \frac{2.5 \times 1200}{4} = 750 \tex
 <blockquote>
 <p><strong>驗證最大彎矩在 B：</strong> 僅當 $P &lt; 60$ t 時成立（$dM/dx = -25P/1200 + 1.25 &gt; 0$ 時彎矩向 B 遞增）。由最終結果 $P \approx 11$ t &lt; 60 t，故 $M_{max} = M_B = 12.5P + 750$。</p>
 </blockquote>
+<p><img alt="SS-2008-4 上下兩格：上為以 P = 11.1 t 代入的強軸彎矩疊加（偏心矩線性分佈＋H 的三角形分佈，A 端 277.5、B 點 888.8 t·cm）；下為強軸單一半波 KL = 1200 cm 與弱軸兩個半波 KL = 600 cm 的挫屈形狀" src="../../raw/solutions/SS-2008-4/figs/SS-2008-4-fig-1-bmd.svg" /></p>
+<p><em>圖 1　上：偏心矩與 $H$ 的彎矩同號相加，最大在 B（$12.5P + 750$）；下：兩軸挫屈長度。這張圖攔的是把最大彎矩取在 A 端（$25P$）或兩者相減，以及 $F_a$ 與 $F'_{ex}$ 用錯方向的有效長度。</em></p>
 <hr />
 <h3>Step 2：柱強度 $F_a$</h3>
 <p><strong>Cc（臨界細長比）：</strong></p>
@@ -687,6 +689,8 @@ $P/(76 \times 0.700) &gt; 0.15 \Rightarrow P &gt; 7.98$ t</p>
 <p>$$M_B = 12.5(11.1) + 750 = 888.8 \text{ t}\cdot\text{cm}, \quad f_{bx} = 888.8/851 = 1.044 \text{ t/cm}^2$$</p>
 <p>$$\text{方程式 1} = 0.209 + \frac{1.0 \times 1.044}{0.881 \times 1.5} = 0.209 + \frac{1.044}{1.322} = 0.209 + 0.790 = 0.999 \approx 1.00 \checkmark$$</p>
 <p>$$\text{方程式 2} = \frac{0.1461}{1.5} + \frac{1.044}{1.5} = 0.097 + 0.696 = 0.793 &lt; 1 \checkmark$$</p>
+<p><img alt="SS-2008-4 互制比隨 P 變化的曲線：穩定式（實線）於 P ≈ 11.1 t 達 1.0，強度式（虛線）於 22.2 t 達 1.0；陰影區為 fa/Fa ≤ 0.15" src="../../raw/solutions/SS-2008-4/figs/SS-2008-4-fig-2-pmax.svg" /></p>
+<p><em>圖 2　互制比隨 $P$ 的變化。穩定式在 $P \approx 11.1$ t 就達 1.0，強度式要到 22.2 t；這張圖攔的是二次式取到大根，或以強度式的 22.2 t 當答案。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>強軸 vs 弱軸的有效長度選取</h3>
@@ -725,7 +729,9 @@ $$C_m = 0.6 - 0.4(M_A/M_B) = 0.6 - 0.4 \times \frac{25P}{12.5P+750}$$</p>
 <p>穩定方程式中的放大係數 $1/(1 - f_a/F'_{ex})$：<br />
 - 當 $f_a \to F'_{ex}$（歐拉臨界應力），放大係數 $\to \infty$（理論上挫屈）<br />
 - 本題：$f_a/F'_{ex} = 0.119$，放大係數 = $1/0.881 = 1.135$（約 13.5% 放大）</p>
-<p>偏心矩 $P \times d$ + 橫向 $H$，加上 P-Δ 放大，使容許 P 僅約 11.1 t（約為純壓容許值 $F_a \times A = 0.700 \times 76 = 53.2$ t 的 20.9%）。</p></main>
+<p>偏心矩 $P \times d$ + 橫向 $H$，加上 P-Δ 放大，使容許 P 僅約 11.1 t（約為純壓容許值 $F_a \times A = 0.700 \times 76 = 53.2$ t 的 20.9%）。</p>
+<hr />
+<p><em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2008-4.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em></p></main>
 <footer>來源：raw/solutions/SS-2008-4/SS-2008-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，

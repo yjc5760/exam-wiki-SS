@@ -11,6 +11,11 @@ SS-2011-3 H 型鋼梁側扭挫屈（LTB）— 解題圖解產生腳本
      以腹板淨高 40.62 為輸入，全深 d = 43.16），
      改一個 t_f 或 F_r，三分區的界線與曲線會一起變
   3. 每張圖在 FIGURES 表寫明攔什麼錯
+
+圖 1（fig1_problem，2026-11-03 追加）：題目附圖重繪。
+  重繪依據：題目正本 SS-2011-3-problem.md §4 判讀清單（待確認）；只畫考卷給的東西，不含解題結果。
+  斷面依題給尺寸按比例；立面與平面的跨度、彎矩符號大小、右上斷面方位小圖為示意。
+  不重繪：第 3 頁參考公式（已照錄於 problem.md §2）。
 """
 import sys, os, math
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
@@ -302,7 +307,99 @@ def fig3_code_flip():
 
 
 # ══════════════════════════════════════════════════════════
+# 圖 1：題目附圖重繪（依題目正本 SS-2011-3-problem.md §4 判讀清單，待確認）
+# 只畫考卷給的東西，與上方解題常數分開；不含任何解題結果（不標 C_b、L_p、L_r、M_n）
+# ══════════════════════════════════════════════════════════
+Q_L = 812.8                 # 題文 L = 812.8 cm
+Q_SUP_A, Q_SUP_B = "roller", "pin"   # #1 A 滾支、B 鉸支；平面 A、B 兩端兩側側撐、無中間側撐
+#                             #2 只有 A 端彎矩 M（方向照考卷附圖：順時針）
+Q_BF = 20.32                # 圖面 翼寬 20.32 cm
+Q_TF = 1.27                 # 圖面 t_f = 1.27 cm（上下）
+Q_TW = 1.27                 # 圖面 t_w = 1.27 cm
+Q_HW = 40.62                # #4 40.62 為腹板淨高（尺寸線止於上下翼板內側面）
+Q_D = Q_HW + 2 * Q_TF       # 全深（推得值 43.16 cm，圖上不標）
+Q_PW, Q_PH = 600, 560
+
+
+def _q_ibeam(cv, x0, y0, k, lw=1.5):
+    """以 (x0, y0) 為形心畫 I 斷面；k = 每 cm 對應的模型長度"""
+    bf, d, tf, tw = Q_BF * k, Q_D * k, Q_TF * k, Q_TW * k
+    for xa, xb, ya, yb in ((-bf / 2, bf / 2, d / 2 - tf, d / 2), (-bf / 2, bf / 2, -d / 2, -d / 2 + tf),
+                           (-tw / 2, tw / 2, -d / 2 + tf, d / 2 - tf)):
+        cv.polygon([(x0 + xa, y0 + ya), (x0 + xb, y0 + ya), (x0 + xb, y0 + yb), (x0 + xa, y0 + yb)],
+                   C["fill_c"], C["member"], lw)
+    return bf / 2, d / 2
+
+
+def _q_beam():
+    sx = 400 / Q_L
+    cv = Canvas(Q_PW, Q_PH, sx=sx, ox=80, oy=0)
+    cv.panel("立面與平面", "跨長示意；A 端受彎矩 M")
+    # ── 立面（梁軸 y = ye）
+    ye = (Q_PH - 170) / sx
+    cv.line((0, ye), (Q_L, ye), C["member"], 4.5, cap="butt")
+    cv.support((0, ye), Q_SUP_A, 0, size=13)
+    cv.support((Q_L, ye), Q_SUP_B, 0, size=13)
+    cv.moment_arrow((0, ye), r=24, ccw=False, color=C["load"], w=2.6, span=200, start=200)
+    cv.math((0, ye), "M", 17, C["load"], "end", dx=-30, dy=-20, weight="700")
+    cv.text((0, ye), "A", 15, C["text"], "start", dx=28, dy=-14, weight="700")
+    cv.text((Q_L, ye), "B", 15, C["text"], dy=-22, weight="700")
+    cv.arrow((Q_L + 18, ye), (Q_L + 80, ye), C["text"], 1.6, 8)
+    cv.math((Q_L + 80, ye), "z", 15, C["text"], "start", dx=6)
+    cv.arrow((-40, ye - 40), (-40, ye - 110), C["text"], 1.6, 8)
+    cv.math((-40, ye - 110), "y", 15, C["text"], "end", dx=-6, dy=4)
+    cv.dim((0, ye), (Q_L, ye), "L", off=48, label_off=14)
+    # 右上斷面方位小圖（x 向左、y 向下）
+    sxo, syo = Q_L + 130, ye + 150
+    hb, hd = _q_ibeam(cv, sxo, syo, 1.5, 1.2)
+    cv.arrow((sxo, syo), (sxo - hb - 40, syo), C["text"], 1.6, 8)
+    cv.math((sxo - hb - 40, syo), "x", 15, C["text"], "end", dx=-6)
+    cv.arrow((sxo, syo), (sxo, syo - hd - 40), C["text"], 1.6, 8)
+    cv.math((sxo, syo - hd - 40), "y", 15, C["text"], dy=14)
+    # ── 平面（梁軸 y = yp）
+    yp = (Q_PH - 400) / sx
+    cv.line((0, yp), (Q_L, yp), C["member"], 4.5, cap="butt")
+    for x, nm in ((0, "A"), (Q_L, "B")):
+        cv.support((x, yp), "roller", 0, size=11)
+        cv.support((x, yp), "roller", 180, size=11)
+        cv.text((x, yp), nm, 15, C["text"], dy=-50, weight="700")
+    cv.arrow((Q_L + 30, yp), (Q_L + 92, yp), C["text"], 1.6, 8)
+    cv.math((Q_L + 92, yp), "z", 15, C["text"], "start", dx=6)
+    cv.arrow((-40, yp - 20), (-40, yp - 95), C["text"], 1.6, 8)
+    cv.math((-40, yp - 95), "x", 15, C["text"], "end", dx=-6, dy=4)
+    cv.text((Q_L / 2, yp), "平面：A、B 兩端兩側側撐，中間無側撐", 12.5, C["muted"], dy=-40)
+    return cv
+
+
+def _q_section():
+    sx = 7.0
+    cv = Canvas(Q_PW, Q_PH, sx=sx, ox=Q_PW / 2 - 40, oy=Q_PH / 2 - Q_D / 2 * sx - 40)
+    cv.panel("斷面尺寸", "依比例；單位：cm")
+    _q_ibeam(cv, 0, Q_D / 2, 1.0, 1.8)
+    top, bot = Q_D, 0.0
+    cv.dim((-Q_BF / 2, top), (Q_BF / 2, top), f"{Q_BF}", off=-30, label_off=-14)
+    cv.dim((-Q_BF / 2, top - Q_TF), (-Q_BF / 2, bot + Q_TF), f"{Q_HW}", off=40, label_off=30,
+           color=C["accent"])
+    cv.math((Q_BF / 2, top - Q_TF / 2), "t_{f} = 1.27", 15, C["text"], "start", dx=10)
+    cv.math((Q_TW / 2, Q_D / 2), "t_{w} = 1.27", 15, C["text"], "start", dx=12)
+    cv.math((Q_BF / 2, bot + Q_TF / 2), "t_{f} = 1.27", 15, C["text"], "start", dx=10)
+    return cv
+
+
+def fig1_problem():
+    path = os.path.join(OUT, f"{TAG}-fig-1-problem.svg")
+    compose([_q_beam(), _q_section()], cols=2,
+            title="SS-2011-3 題目附圖（重繪）",
+            sub="依題目正本判讀清單 #1–#4；只畫考卷所給條件（L = 812.8 cm 取自題文）",
+            note="40.62 的尺寸線止於上下翼板內側面：是腹板淨高，不是全深",
+            path=path)
+    return path
+
+
+# ══════════════════════════════════════════════════════════
 FIGURES = [
+    (fig1_problem, "§1（題目正本 §4）",
+     "把 40.62 讀成全深；A、B 支承或彎矩作用端讀反；平面圖誤以為有中間側撐"),
     (fig2_ltb_curve, "§4 Step 4～6·§5",
      "把腹板淨高 40.62 讀成全深（L_r 變 833.2 而誤判非彈性、M_n 3,378），或 C_b 直接取 1.0"),
     (fig3_code_flip, "§6.2·§6.4",

@@ -535,6 +535,8 @@ $$B_{1,y} = \frac{C_m}{1 - P_u / P_{el,y}} = \frac{0.6}{1 - 800/4{,}831} = \frac
 <p><strong>放大後設計彎矩：</strong></p>
 <p>$$M_{ux}' = \max(B_{1,x}, 1.0) \times M_{ux} = 1.0 \times 100 = \boxed{100 \text{ kN}\cdot\text{m}}$$</p>
 <p>$$M_{uy}' = \max(B_{1,y}, 1.0) \times M_{uy} = 1.0 \times 50 = \boxed{50 \text{ kN}\cdot\text{m}}$$</p>
+<p><img alt="SS-2012-3 兩格：左為柱底固接、柱頂鉸接的強軸與弱軸一階彎矩（底端 100、50 kN·m，頂端 0）；右為 B1x = 0.617、B1y = 0.719 與下限 1.0 的長條對照" src="../../raw/solutions/SS-2012-3/figs/SS-2012-3-fig-1-b1.svg" /></p>
+<p><em>圖 1　固接－鉸接柱的一階彎矩與 $B_1$。兩軸 $B_1$ 都小於 1，取 1.0；這張圖攔的是拿 $B_1 &lt; 1$ 去折減一階彎矩——互制比會被低估成 0.568。</em></p>
 <h3>Step 3：計算彎曲強度 φbMnx、φbMny</h3>
 <p>斜撐構架中柱有樓板提供足夠的側向支撐（本題無特別說明不穩定），取全截面塑性彎矩：</p>
 <p>$$\phi_b M_{nx} = \phi_b \cdot F_y \cdot Z_x = 0.9 \times 350 \times 1{,}884{,}512$$</p>
@@ -552,6 +554,8 @@ $$B_{1,y} = \frac{C_m}{1 - P_u / P_{el,y}} = \frac{0.6}{1 - 800/4{,}831} = \frac
 <p>$$= 0.308 + 0.383 = \boxed{0.691}$$</p>
 <p>$$\because 0.691 &lt; 1.0 \quad \checkmark \quad \text{符合設計需求}$$</p>
 <p><strong>結論：</strong> 此 W14×68 柱之軸力彎矩需求強度比（D/C Ratio）= <strong>0.691 &lt; 1.0，設計充裕，OK。</strong></p>
+<p><img alt="SS-2012-3 兩格：左為正規化 H1 互制圖，需求點 (0.431, 0.308) 位於 H1-1a 段、距離比 0.691；右為 H1-1a 三項堆疊與漏乘 8/9、誤用 H1-1b、拿 B1 折減三種誤算" src="../../raw/solutions/SS-2012-3/figs/SS-2012-3-fig-2-pm.svg" /></p>
+<p><em>圖 2　H1 互制圖與 H1-1a 的組成。需求點落在 H1-1a 段，距離比 0.691；這張圖攔的是 $P_u/\phi_cP_n \geq 0.2$ 卻套 H1-1b，以及漏乘 8/9。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>5.1 固接-鉸接柱的 Cm 合理性</h3>
@@ -602,7 +606,9 @@ $$B_{1,y} = \frac{C_m}{1 - P_u / P_{el,y}} = \frac{0.6}{1 - 800/4{,}831} = \frac
 $$0.308 + (0.169 + 0.263) = 0.740 &gt; 0.691$$（偏保守但公式不同）</p>
 <p>規範 H1-1a 含 8/9 是經過驗證的最合理近似互制公式，不可省略。</p>
 <h3>5.4 弱軸對控制的重要性</h3>
-<p>若 $r_y = 62$ mm 再降低（斷面更細長），$\phi_c P_n$ 會更小，$P_u/\phi_c P_n$ 超過 0.2 後軸力項比重大增，整體 D/C 比迅速攀升。本題 D/C = 0.69 仍有相當餘裕，說明 W14×68 對於此組合載重是合適的斷面。</p></main>
+<p>若 $r_y = 62$ mm 再降低（斷面更細長），$\phi_c P_n$ 會更小，$P_u/\phi_c P_n$ 超過 0.2 後軸力項比重大增，整體 D/C 比迅速攀升。本題 D/C = 0.69 仍有相當餘裕，說明 W14×68 對於此組合載重是合適的斷面。</p>
+<hr />
+<p><em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2012-3.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em></p></main>
 <footer>來源：raw/solutions/SS-2012-3/SS-2012-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：若由 unit-/study-/lecture-/formula-given-SS-Un-m.html 點入，

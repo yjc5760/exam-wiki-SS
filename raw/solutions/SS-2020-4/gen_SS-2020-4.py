@@ -4,6 +4,8 @@
 
 斷面性質、三項作用力、螺栓群向量與鈑厚全部由下方常數區重算；改螺栓排數重跑，圖跟著變。
 執行：python3 gen_SS-2020-4.py   →   figs/*.svg
+附加 fig1_problem：題目附圖重繪（重繪依據：題目正本 -problem.md §4 判讀清單，待確認）；
+輸出目錄可由參數指定：python3 gen_<id>.py [輸出目錄]（預設 figs/）。
 """
 import sys, os, math
 _HERE = os.path.dirname(os.path.abspath(__file__))
@@ -13,7 +15,7 @@ SKILL = os.environ.get("SD_SKILL",
 sys.path.insert(0, os.path.join(SKILL, "scripts"))
 from structdraw import Canvas, C, compose
 
-OUT = os.path.join(_HERE, "figs")
+OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(_HERE, "figs")
 
 # ══════════════════════════════════════════════════════════════
 # L1：題目給定（§1）
@@ -299,8 +301,134 @@ def fig4_plate():
     cv.save(os.path.join(OUT, "SS-2020-4-fig-4-plate.svg"))
 
 
+# ══════════════════════════════════════════════════════════════
+# 圖 1：題目附圖重繪（依題目正本 SS-2020-4-problem.md §4 判讀清單，待確認）
+# 只畫考卷給的東西，與上方解題常數分開；不含螺栓直徑、鈑厚、彎矩分配等任何解題結果。
+# ══════════════════════════════════════════════════════════════
+Q_D, Q_BF, Q_TF, Q_TW = 70.0, 30.0, 2.5, 1.4   # 題文 H700×300×14×25；圖面 70 cm、30 cm
+Q_HP = 48.0       # 圖面 腹板續接鈑高 48 cm
+Q_E4, Q_G10 = 4.0, 10.0                       # #3 鈑邊至螺栓列 4 cm、兩縱列相距 10 cm（寬 18 cm）
+Q_NR, Q_SR = 6, 8.0                           # #2 每縱列 6 支、列距 5@8 cm（上下邊距 4 cm）
+#                                               #1 四鈑：上下翼板外側各 1 片＋腹板兩側各 1 片
+# 示意（考卷未標）：翼續接鈑長與厚、腹續接鈑厚、翼板螺栓位置、梁畫出長度
+Q_LPF, Q_TPF, Q_TPW = 64.0, 2.0, 2.2
+Q_XFB = (5.0, 12.5, 20.0, 27.5)
+Q_LB = 64.0
+Q_XS = 110.0      # 斷面圖中心 x（排版用）
+
+
+def _q_rect(cv, x0, x1, y0, y1, fill="#FFFFFF", w=1.6):
+    cv.polygon([(x0, y0), (x1, y0), (x1, y1), (x0, y1)], fill, C["member"], w)
+
+
+def _q_hatch(cv, x0, x1, y0, y1, step=1.6):
+    _q_rect(cv, x0, x1, y0, y1, "#FFFFFF", 1.6)
+    h = y1 - y0
+    k = x0 - h
+    while k < x1:
+        p0 = (max(k, x0), y0 + max(0, x0 - k))
+        p1 = (min(k + h, x1), y0 + min(h, x1 - k))
+        if p1[0] > p0[0]:
+            cv.line(p0, p1, C["member"], 0.9)
+        k += step
+
+
+def _q_leader(cv, tip, at, txt):
+    cv.line(at, tip, C["muted"], 1.1)
+    cv.text(at, txt, 15, C["text"], "end", dx=-4)
+
+
+def fig1_problem():
+    path = os.path.join(OUT, "SS-2020-4-fig-1-problem.svg")
+    cv = Canvas(1200, 700, sx=5.2, ox=410, oy=330)
+    cv.panel("梁續接立面與斷面", "四鈑接合：翼板外側各 1 片、腹板兩側各 1 片")
+    h = Q_D / 2
+    # ── 立面：梁（兩段於 x = 0 對接）──
+    for y0 in (h - Q_TF, -h):
+        _q_rect(cv, -Q_LB, Q_LB, y0, y0 + Q_TF)
+    for sg in (-1, 1):
+        xe = sg * Q_LB
+        cv.poly([(xe, -h), (xe, -6), (xe - sg * 4.5, -1.5), (xe, 3), (xe, h)], C["member"], 1.6)
+        cv.line((sg * 0.6, h - Q_TF), (sg * 0.6, Q_HP / 2), C["member"], 1.3)
+        cv.line((sg * 0.6, -Q_HP / 2), (sg * 0.6, -h + Q_TF), C["member"], 1.3)
+        cv.line((sg * 0.6, Q_HP / 2), (sg * 0.6, -Q_HP / 2), C["member"], 1.1, dash="4 3")
+    # 翼續接鈑（外側，斜線）＋翼板螺栓（示意）
+    _q_hatch(cv, -Q_LPF / 2, Q_LPF / 2, h, h + Q_TPF)
+    _q_hatch(cv, -Q_LPF / 2, Q_LPF / 2, -h - Q_TPF, -h)
+    for x in Q_XFB:
+        for sg in (-1, 1):
+            cv.line((sg * x, h + Q_TPF + 1.2), (sg * x, h - Q_TF - 1.2), C["member"], 1.1)
+            cv.line((sg * x, -h - Q_TPF - 1.2), (sg * x, -h + Q_TF + 1.2), C["member"], 1.1)
+    # 腹續接鈑與螺栓
+    wpl = Q_E4 * 2 + Q_G10
+    _q_rect(cv, -wpl / 2, wpl / 2, -Q_HP / 2, Q_HP / 2, "rgba(29,78,216,0.10)", 1.8)
+    ys = [-Q_HP / 2 + Q_E4 + i * Q_SR for i in range(Q_NR)]
+    for x in (-Q_G10 / 2, Q_G10 / 2):
+        for y in ys:
+            cv.circle((x, y), 0.65, "#FFFFFF", C["member"], 1.4)
+    # 立面尺寸
+    xl = -wpl / 2 - 6
+    cv.dim((xl, Q_HP / 2), (xl, -Q_HP / 2), f"{Q_HP:.0f} cm", label_off=22, size=14)
+    xr = Q_D / 2 - 19
+    for y in (Q_HP / 2, ys[-1], ys[0], -Q_HP / 2):
+        cv.line((Q_G10 / 2, y), (xr + 1.5, y), C["dim"], 1, dash="3 3")
+    cv.dim((xr, Q_HP / 2), (xr, ys[-1]), f"{Q_E4:.0f} cm", label_off=-26, size=13)
+    cv.dim((xr, ys[-1]), (xr, ys[0]), f"{Q_NR - 1} @ {Q_SR:.0f} cm", label_off=-42, size=14)
+    cv.dim((xr, ys[0]), (xr, -Q_HP / 2), f"{Q_E4:.0f} cm", label_off=-26, size=13)
+    yb = -h - Q_TPF - 5
+    for x in (-wpl / 2, wpl / 2):
+        cv.line((x, -Q_HP / 2), (x, yb - 6.5), C["dim"], 1, dash="3 3")
+    for x in (-Q_G10 / 2, Q_G10 / 2):
+        cv.line((x, ys[0]), (x, yb - 0.8), C["dim"], 1, dash="3 3")
+    cv.dim((-wpl / 2, yb), (-Q_G10 / 2, yb), f"{Q_E4:.0f}", label_off=12, size=13)
+    cv.dim((-Q_G10 / 2, yb), (Q_G10 / 2, yb), f"{Q_G10:.0f}", label_off=12, size=13)
+    cv.dim((Q_G10 / 2, yb), (wpl / 2, yb), f"{Q_E4:.0f}", label_off=12, size=13)
+    cv.math((wpl / 2, yb), "cm", 13, C["dim"], "start", dx=5, dy=12)
+    cv.dim((-wpl / 2, yb - 6), (wpl / 2, yb - 6), f"{wpl:.0f} cm", label_off=13, size=14)
+    _q_leader(cv, (-Q_LPF / 2 + 18, h + Q_TPF), (-Q_LPF / 2 + 6, h + 11), "梁翼續接鋼鈑")
+    _q_leader(cv, (-wpl / 2, Q_HP / 2 - 6), (-wpl / 2 - 14, Q_HP / 2 + 2), "梁腹續接鋼鈑")
+    # ── 斷面 ──
+    xs = Q_XS
+    _q_rect(cv, xs - Q_BF / 2, xs + Q_BF / 2, h - Q_TF, h, C["fill_c"])
+    _q_rect(cv, xs - Q_BF / 2, xs + Q_BF / 2, -h, -h + Q_TF, C["fill_c"])
+    _q_rect(cv, xs - Q_TW / 2, xs + Q_TW / 2, -h + Q_TF, h - Q_TF, C["fill_c"])
+    bpf = Q_BF * 0.72
+    _q_hatch(cv, xs - bpf / 2, xs + bpf / 2, h, h + Q_TPF, 1.2)
+    _q_hatch(cv, xs - bpf / 2, xs + bpf / 2, -h - Q_TPF, -h, 1.2)
+    for sg in (-1, 1):
+        x0 = xs + sg * Q_TW / 2
+        _q_hatch(cv, min(x0, x0 + sg * Q_TPW), max(x0, x0 + sg * Q_TPW), -Q_HP / 2, Q_HP / 2, 1.2)
+    for y in ys:
+        cv.line((xs - Q_TW / 2 - Q_TPW - 2, y), (xs + Q_TW / 2 + Q_TPW + 2, y), C["member"], 1.1)
+    for x in (-Q_BF * 0.25, Q_BF * 0.25):
+        cv.line((xs + x, h + Q_TPF + 1.2), (xs + x, h - Q_TF - 1.2), C["member"], 1.1)
+        cv.line((xs + x, -h - Q_TPF - 1.2), (xs + x, -h + Q_TF + 1.2), C["member"], 1.1)
+    x48, x70 = xs + Q_BF / 2 - 3, xs + Q_BF / 2 + 13
+    for y in (Q_HP / 2, -Q_HP / 2):
+        cv.line((xs + Q_TW / 2 + Q_TPW, y), (x48 + 1.5, y), C["dim"], 1, dash="3 3")
+    cv.dim((x48, Q_HP / 2), (x48, -Q_HP / 2), f"{Q_HP:.0f} cm", label_off=-22, size=14)
+    cv.dim((x70, h), (x70, -h), f"{Q_D:.0f} cm", label_off=-22, size=14)
+    cv.dim((xs - Q_BF / 2, -h), (xs + Q_BF / 2, -h), f"{Q_BF:.0f} cm", off=36, label_off=14, size=14)
+    _q_leader(cv, (xs - bpf / 2 + 3, h + Q_TPF), (xs - 4, h + 11), "梁翼續接鋼鈑")
+    _q_leader(cv, (xs - Q_TW / 2 - Q_TPW, Q_HP / 2 - 4), (xs - Q_BF / 2 - 2, Q_HP / 2 + 4), "梁腹續接鋼鈑")
+    compose([cv], cols=1,
+            title="SS-2020-4 題目附圖（重繪）",
+            sub="依題目正本判讀清單 #1–#3；梁斷面與腹鈑尺寸依比例，翼鈑長與厚、腹鈑厚、翼板螺栓為示意",
+            note="腹鈑兩縱列分居續接縫兩側（4＋10＋4 cm），每側梁只有一列 6 支螺栓；腹板兩側各一片鈑 → 雙剪",
+            path=path)
+    return path
+
+
+FIGURES = [
+    (fig1_problem, "§1（題目正本 §4）",
+     "把 12 支螺栓全算成同一側（每側其實只有 6 支）；漏看腹板兩側各一片鈑而按單剪；偏心取 10 cm 而非 5 cm"),
+]
+
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
+    for fn, section, catches in FIGURES:
+        print(f"{os.path.basename(fn()):<34} {section:<20} 攔：{catches}")
     fig1_splice(); fig2_moment_share(); fig3_bolt_force(); fig4_plate()
     print(f"Ix={IX:,.0f} Sx={SX:,.0f} Iw={IW:,.0f} Iw/Ix={RATIO_W:.4f}")
     print(f"Ma={MA:,.0f} tf·cm (0.5Ma={0.5*MA/100:.1f} tf·m)  Va={VA:g} (0.5Va={0.5*VA:g})")

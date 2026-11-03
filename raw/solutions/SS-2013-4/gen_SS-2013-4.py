@@ -16,7 +16,7 @@ SKILL = os.environ.get("SD_SKILL",
 sys.path.insert(0, os.path.join(SKILL, "scripts"))
 from structdraw import Canvas, C, compose, column_shape, beam_shape
 
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "figs")
+OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "figs")
 
 # ══════════════════════════════════════════════════════════════
 # 由 SS-2013-4 §1 / §4 解得（每個數字都標明出處章節）
@@ -282,7 +282,64 @@ def fig3_b2():
     cv.save(os.path.join(OUT, "SS-2013-4-fig-3-b2-curve.svg"))
 
 
+# ══════════════════════════════════════════════════════════════
+# 圖 1（題目）：題目附圖重繪（依題目正本 SS-2013-4-problem.md §4 判讀清單，待確認）
+# 只畫考卷給的東西，與上方解題常數分開；不含任何解題結果（G、K、B1、B2、彎矩不畫）
+# 幾何依 L 比例（梁 1.5L、柱 L）
+# ══════════════════════════════════════════════════════════════
+Q_LC = 1.0            # #5 柱 BC = L
+Q_LB = 1.5            # #5 梁 AB = BD = 1.5 L
+#   #1 A、D 滾支承，梁端以鉸（小圓圈）接於支承
+#   #2 C 鉸支承（三角形＋圓圈）
+#   #3 B 梁柱剛接（無圓圈）
+#   #5 三者 EI 相同；#6 H 水平作用於 A（梁高程）、P 向下作用於 B
+
+
+def _q_hinge(cv, p):
+    cv.dot(p, 6, fill="#FFFFFF", stroke=C["member"], w=2.4)
+
+
+def _q_frame():
+    W1, H1 = 900, 500
+    sx = 210
+    cv = Canvas(W1, H1, sx=sx, ox=(W1 - 2 * Q_LB * sx) / 2, oy=130)
+    cv.panel(None, None)
+    A, B, D, Cc = (0, Q_LC), (Q_LB, Q_LC), (2 * Q_LB, Q_LC), (Q_LB, 0)
+    cv.line(A, D, C["member"], 4, cap="butt")
+    cv.line(B, Cc, C["member"], 4, cap="butt")
+    cv.support(A, "roller", 0, size=13)
+    cv.support(D, "roller", 0, size=13)
+    cv.support(Cc, "pin", 0, size=13)
+    for p in (A, D, Cc):
+        _q_hinge(cv, p)
+    cv.arrow((-70 / sx, Q_LC), (-8 / sx, Q_LC), C["load"], 3.0, 11)
+    cv.math((-70 / sx, Q_LC), "H", 18, C["load"], "end", dx=-8, weight="700")
+    cv.arrow((Q_LB, Q_LC + 66 / sx), (Q_LB, Q_LC + 3 / sx), C["load"], 3.0, 11)
+    cv.math((Q_LB, Q_LC + 66 / sx), "P", 18, C["load"], "start", dx=10, dy=6, weight="700")
+    for p, lab, dx, dy in ((A, "A", 4, -22), (B, "B", -16, -18), (D, "D", 0, -24), (Cc, "C", -20, -4)):
+        cv.text(p, lab, 16, C["text"], "middle", dx=dx, dy=dy, weight="700")
+    for p, dx, dy in (((Q_LB / 2, Q_LC), 0, -16), ((1.5 * Q_LB, Q_LC), 0, -16), ((Q_LB, Q_LC / 2), 26, 0)):
+        cv.math(p, "EI", 16, C["text"], dx=dx, dy=dy)
+    cv.dim((-0.22, 0), (-0.22, Q_LC), "L", off=0, label_off=-16, size=16)
+    cv.line((-0.30, 0), (Q_LB - 0.12, 0), C["dim"], 1, dash="3 3")
+    cv.dim((0, 0), (Q_LB, 0), "1.5 L", off=62, label_off=16, size=16)
+    cv.dim((Q_LB, 0), (2 * Q_LB, 0), "1.5 L", off=62, label_off=16, size=16)
+    return cv
+
+
+def fig1_problem():
+    path = os.path.join(OUT, "SS-2013-4-fig-1-problem.svg")
+    compose([_q_frame()], cols=1,
+            title="SS-2013-4 題目附圖（重繪，考卷圖 4）",
+            sub="依題目正本判讀清單 #1–#3、#5、#6；幾何依 L 比例，全題無數值",
+            note="A、D 是梁端滾支承（不是柱）；C 為鉸支、B 為剛接；唯一水平束制在 C",
+            path=path)
+    return path
+
+
 FIGURES = [
+    (fig1_problem, "§1（題目正本 §4）",
+     "把 A、D 梁端滾支承讀成柱或固定端；C 讀成固接（G 取 1）；H 作用點讀成 B"),
     (fig1_frame, "§1", "把 A、D 梁端滾支承誤讀為柱頂（三根柱），並提示梁遠端轉動自由"),
     (fig2_nt_lt, "§4 五", "把層剪力分給三根柱而得 M_lt = HL/3"),
     (fig3_b2, "§4 六·§5 爭議一·§6",

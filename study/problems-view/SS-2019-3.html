@@ -607,6 +607,8 @@ $$\text{互制二：}\frac{f_a}{0.6F_y} + \frac{f_{bx}}{F_{bx}} \leq 1.0$$</p>
 <blockquote>
 <p>原解漏看 B 點水平支承、把 A–C 當成單跨簡支，得 A-B 4、B-C 8 tf·m（分配剛好相反），並把軸力算到整根柱。</p>
 </blockquote>
+<p><img alt="SS-2019-3 兩格：左為正解，B 點靠牆滾支、兩跨連續，A-B 段 8、B-C 段 4 tf·m，水平反力 2.67／3.33／0.67 tf；右為漏看 B 點支承的 9 m 單跨，A-B 段 4、B-C 段 8 tf·m" src="../../raw/solutions/SS-2019-3/figs/SS-2019-3-fig-1-models.svg" /></p>
+<p><em>圖 1　節點力矩 $M_B = P \cdot e = 12$ tf·m 的兩種分配。正解（兩跨連續）短跨 A-B 分到 8、B-C 分到 4；漏看 B 點支承的單跨模型恰好相反——這張圖攔的就是本題 2026-11-01 勘誤的那個錯。</em></p>
 <hr />
 <h3>Step 2：計算軸壓應力 $f_a$</h3>
 <p>$$f_a = \frac{P}{A} = \frac{12}{83.4} = \mathbf{0.1439 \text{ tf/cm}^2}$$</p>
@@ -668,6 +670,8 @@ $$\frac{KL_b}{r_b} = \frac{1.0 \times 600}{r_x} = \frac{600}{16.8} = 35.71$$</p>
 <h3>結論</h3>
 <p>$$\boxed{\text{鋼柱 H400×200×8×13 滿足 ASD 設計需求（A-B 段撓曲控制，比值 0.456；B-C 段互制 0.376）} \quad \checkmark}$$</p>
 <p><strong>替代解讀（A 點也承受垂直反力）：</strong> 兩端鉸支皆可承受軸力時，軸力依軸向勁度 $EA/L$ 分配：A-B 段受<strong>拉</strong> $12 \times 6/9 = 8$ tf、B-C 段受壓 $4$ tf。B-C：$f_a/F_a = 0.079 &lt; 0.15$ → $0.079 + 0.228 = 0.307$；A-B（拉＋彎）：$0.096/1.5 + 0.456 = 0.520$。結論仍 OK。</p>
+<p><img alt="SS-2019-3 兩格：左為軸力路徑（A-B 段 0、B-C 段 12 tf 受壓）；右為 A-B 段純彎 0.456（控制）、B-C 段互制一 0.376 與互制二 0.324" src="../../raw/solutions/SS-2019-3/figs/SS-2019-3-fig-2-check.svg" /></p>
+<p><em>圖 2　軸力路徑與兩段檢核。A-B 段沒有軸力，卻分到兩倍彎矩，純彎 0.456 反而控制；這張圖攔的是把軸力算到整根柱，以及只驗 B-C 段。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>偏心載重的彎矩分布（最容易出錯處）</h3>
@@ -714,6 +718,7 @@ $$\frac{KL_b}{r_b} = \frac{1.0 \times 600}{r_x} = \frac{600}{16.8} = 35.71$$</p>
 <p><strong>本題以 360-16 估算 B-C 段軸力：</strong> $KL/r_y = 131.6$ → $F_e = 1.163$ tf/cm²，$F_y/F_e = 2.15 &lt; 2.25$ → $F_{cr} = 0.658^{2.15} \times 2.5 = 1.017$ tf/cm²，$P_c = 1.017 \times 83.4/1.67 = 50.8$ tf，$P_r/P_c = 0.236$（與考卷 $f_a/F_a = 0.237$ 幾乎相同）。撓曲強度需 $J$、$C_w$（題目未給），A-B 段 $L_b = 300$ cm 僅略大於 $L_p = 1.76r_y\sqrt{E/F_y} = 229$ cm，$M_n$ 接近 $M_p$，比值將低於考卷版 0.456，結論不變。</p>
 <hr />
 <p><em>修正日期：2026-11-01（依考卷原圖：B 點為靠牆滾支（水平束制），柱為 A–B–C 兩跨連續；原解漏看 B 點支承當成 A–C 簡支，彎矩分配相反（A-B 4／B-C 8 tf·m）且把軸力算到整根柱。更正為依勁度分配 A-B 8、B-C 4 tf·m，軸力只在 B-C 段：B-C 互制 0.376、A-B 純彎 0.456（控制），結論 OK 不變（原解 0.552）；補替代解讀（A 點承受垂直反力）、§6 對照，並修正檔內 <code>\times</code>／<code>\text</code> 被轉成 Tab 字元的亂碼）</em><br />
+<em>圖解補繪：2026-11-03（向量圖 2 張，腳本 <code>gen_SS-2019-3.py</code>，改輸入可原地重跑；SVG 供 wiki／PDF，2× PNG 供 pptx／影片）</em><br />
 <em>驗證狀態：unverified</em></p></main>
 <footer>來源：raw/solutions/SS-2019-3/SS-2019-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
